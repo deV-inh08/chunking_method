@@ -182,34 +182,27 @@ function VocabHints({ hints = [] }) {
   );
 }
 
-// ─── WritingSession ───────────────────────────────────────────
-function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
-  const [exIndex,       setExIndex]      = useState(0);
+// ─── ExerciseCard (self-contained per exercise) ───────────────
+function ExerciseCard({ exercise, index, total, chunk, onComplete, onToast }) {
   const [userInput,     setUserInput]    = useState('');
+  const [showSample,    setShowSample]   = useState(false);
   const [grading,       setGrading]      = useState(false);
   const [gradingResult, setGradingResult] = useState(null);
-  const textareaRef = useRef(null);
 
-  const exercise = exercises[exIndex];
-  const hasTyped = userInput.trim().length > 0;
+  const wordCount = userInput.trim() ? userInput.trim().split(/\s+/).length : 0;
 
-  // Reset state when switching exercises or chunks
-  useEffect(() => {
-    setUserInput('');
-    setGradingResult(null);
-    setTimeout(() => textareaRef.current?.focus(), 50);
-  }, [exIndex, chunk.id]);
+  const handleKeyDown = (e) => {
+    // Enter (not Shift+Enter) → reveal sample
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      setShowSample(true);
+    }
+  };
 
   const handleGrade = async () => {
-    if (!userInput.trim()) {
-      onToast('error', 'Vui lòng nhập bản dịch trước.');
-      return;
-    }
+    if (!userInput.trim()) { onToast('error', 'Vui lòng nhập bản dịch trước.'); return; }
     const apiKey = getApiKey();
-    if (!apiKey) {
-      onToast('error', 'Chưa có API key. Vào Settings để nhập.');
-      return;
-    }
+    if (!apiKey) { onToast('error', 'Chưa có API key. Vào Settings để nhập.'); return; }
     setGrading(true);
     try {
       const result = await gradeWriting(chunk, exercise.vietnameseSentence, userInput.trim(), apiKey);
@@ -222,16 +215,122 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
     }
   };
 
-  const handleReset = () => {
-    setUserInput('');
-    setGradingResult(null);
-    setTimeout(() => textareaRef.current?.focus(), 50);
-  };
+  return (
+    <div
+      className="card animate-fade-in"
+      style={{ padding: '18px 20px' }}
+    >
+      {/* Header: Vietnamese sentence + label */}
+      <div className="flex items-start justify-between gap-3 mb-3">
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <p style={{
+            fontSize: 15, fontWeight: 700,
+            color: 'var(--text-primary)',
+            lineHeight: 1.6,
+            margin: 0,
+          }}>
+            {exercise.vietnameseSentence}
+          </p>
+          {/* Vocab hints */}
+          <VocabHints hints={exercise.vocabHints} />
+          {exercise.vocabHints === undefined && (
+            <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 5, display: 'flex', alignItems: 'center', gap: 3 }}>
+              <RefreshCw size={10} /> Tái tạo để xem gợi ý từ vựng
+            </p>
+          )}
+        </div>
+        <span style={{
+          flexShrink: 0, fontSize: 11, fontWeight: 600,
+          color: 'var(--text-muted)', whiteSpace: 'nowrap',
+        }}>
+          Câu mẫu {index + 1}
+        </span>
+      </div>
 
-  const handleNext = () => setExIndex(i => Math.min(i + 1, exercises.length - 1));
-  const handlePrev = () => setExIndex(i => Math.max(i - 1, 0));
+      {/* Textarea */}
+      <div style={{ position: 'relative', marginBottom: 12 }}>
+        <textarea
+          id={`ex-input-${chunk.id}-${index}`}
+          className="textarea-field"
+          rows={2}
+          placeholder={`Viết bản dịch tiếng Anh…`}
+          value={userInput}
+          onChange={e => setUserInput(e.target.value)}
+          onKeyDown={handleKeyDown}
+          disabled={grading}
+          style={{ resize: 'none', minHeight: 72, paddingBottom: 28, fontSize: 14 }}
+        />
+        <span style={{
+          position: 'absolute', bottom: 8, right: 12,
+          fontSize: 11, color: 'var(--text-muted)',
+          pointerEvents: 'none',
+        }}>
+          {wordCount} từ
+        </span>
+      </div>
 
-  if (!exercise) {
+      {/* Sample answer — shown on toggle or Enter */}
+      {showSample && exercise.sampleTranslation && (
+        <div
+          className="animate-fade-in"
+          style={{
+            marginBottom: 12,
+            background: 'rgba(34,197,94,0.06)',
+            border: '1px solid rgba(34,197,94,0.2)',
+            borderRadius: 'var(--radius-sm)',
+            padding: '10px 14px',
+          }}
+        >
+          <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--success-text)', marginBottom: 4, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+            ✅ Câu dịch tham khảo
+          </p>
+          <p style={{ fontSize: 13.5, color: 'var(--text-primary)', lineHeight: 1.6, margin: 0, fontStyle: 'italic' }}>
+            "{exercise.sampleTranslation}"
+          </p>
+        </div>
+      )}
+
+      {/* AI grading result */}
+      {gradingResult && (
+        <GradingResult result={gradingResult} chunkPhrase={chunk.phrase} />
+      )}
+
+      {/* Buttons */}
+      <div className="flex gap-2" style={{ marginTop: gradingResult ? 12 : 0 }}>
+        <button
+          id={`grade-btn-${chunk.id}-${index}`}
+          className="btn btn-ghost btn-sm"
+          onClick={handleGrade}
+          disabled={grading || !userInput.trim()}
+          title="Nhờ AI phân tích chi tiết: điểm, lỗi ngữ pháp, gợi ý"
+          style={{ color: 'var(--text-muted)', border: '1px solid var(--border-subtle)' }}
+        >
+          {grading
+            ? <><Loader size={13} style={{ animation: 'spin 1s linear infinite' }} /> Đang chấm…</>
+            : <><Sparkles size={13} /> Chấm bài AI</>
+          }
+        </button>
+
+        <button
+          id={`sample-btn-${chunk.id}-${index}`}
+          className="btn btn-sm"
+          onClick={() => setShowSample(s => !s)}
+          style={{
+            background: showSample ? 'rgba(99,102,241,0.15)' : 'rgba(99,102,241,0.1)',
+            color: 'var(--accent-300)',
+            border: '1px solid rgba(99,102,241,0.25)',
+          }}
+        >
+          👁 {showSample ? 'Ẩn câu mẫu' : 'Xem câu mẫu'}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ─── WritingSession ───────────────────────────────────────────
+function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
+  if (!exercises || exercises.length === 0) {
     return (
       <div className="card" style={{ textAlign: 'center', padding: 40 }}>
         <p className="text-muted">Chunk này chưa có bài luyện. Hãy vào Chunks để sinh bài tập trước.</p>
@@ -240,144 +339,41 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      {/* Chunk target card */}
-      <div className="card-glass" style={{ padding: 20 }}>
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-muted text-xs font-medium uppercase tracking-wider">Target Chunk</span>
+    <div className="flex flex-col gap-3">
+      {/* Header */}
+      <div style={{ marginBottom: 4 }}>
+        <div className="flex items-center gap-2 flex-wrap mb-1">
+          <span style={{ fontSize: 15, fontWeight: 800, color: 'var(--text-primary)' }}>
+            {chunk.phrase}
+          </span>
           <Badge type={chunk.type}>{CHUNK_TYPE_LABELS[chunk.type]}</Badge>
-          {progress && <Badge type="success">{progress.practiceCount} lần luyện{progress.lastScore != null ? ` · ${progress.lastScore}đ` : ''}</Badge>}
-        </div>
-        <div style={{ fontSize: 22, fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
-          {chunk.phrase}
-        </div>
-        <div className="flex gap-4 mt-1 flex-wrap">
-          <span className="text-secondary text-sm">🇻🇳 {chunk.meaningVi}</span>
-          {chunk.meaningEn && <span className="text-muted text-sm">🇬🇧 {chunk.meaningEn}</span>}
-        </div>
-      </div>
-
-      {/* Exercise card */}
-      <div className="card">
-        {/* Nav bar */}
-        <div className="flex items-center justify-between mb-4">
-          <span className="badge badge-neutral">Câu {exIndex + 1} / {exercises.length}</span>
-          <div className="flex items-center gap-1">
-            <button className="btn btn-ghost btn-icon" onClick={handlePrev} disabled={exIndex === 0}>
-              <ChevronLeft size={16} />
-            </button>
-            <button className="btn btn-ghost btn-icon" onClick={handleNext} disabled={exIndex === exercises.length - 1}>
-              <ChevronRight size={16} />
-            </button>
-          </div>
-        </div>
-
-        {/* Vietnamese sentence prompt */}
-        <div style={{ marginBottom: 16 }}>
-          <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted)', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-            🇻🇳 Dịch câu sau sang tiếng Anh
-          </p>
-          <div style={{
-            background: 'linear-gradient(135deg, rgba(99,102,241,0.08), rgba(67,56,202,0.05))',
-            border: '1px solid rgba(99,102,241,0.2)',
-            borderLeft: '3px solid var(--accent-500)',
-            borderRadius: 'var(--radius-md)',
-            padding: '14px 18px',
-            fontSize: 17, fontWeight: 600,
-            color: 'var(--text-primary)',
-            lineHeight: 1.65,
-            letterSpacing: '-0.01em',
-          }}>
-            {exercise.vietnameseSentence}
-          </div>
-
-          {/* Vocab hints — shown when AI provides them */}
-          <VocabHints hints={exercise.vocabHints} />
-
-          {/* Notice for old-format exercises (no vocabHints field) */}
-          {exercise.vocabHints === undefined && (
-            <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 6, display: 'flex', alignItems: 'center', gap: 4 }}>
-              <RefreshCw size={11} />
-              Bài này chưa có gợi ý từ vựng — bấm nút ⟳ bên sidebar để tái tạo.
-            </p>
-          )}
-
-          <p style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 8 }}>
-            💡 Dùng chunk <strong style={{ color: 'var(--accent-300)' }}>"{chunk.phrase}"</strong> trong câu dịch
-          </p>
-        </div>
-
-
-        {/* Translation input */}
-        <div style={{ marginBottom: 14 }}>
-          <label className="label">Bản dịch của bạn (Tiếng Anh)</label>
-          <textarea
-            ref={textareaRef}
-            id={`writing-input-${chunk.id}-${exIndex}`}
-            className="textarea-field"
-            rows={3}
-            placeholder={`Nhập bản dịch tiếng Anh, có dùng "${chunk.phrase}"…`}
-            value={userInput}
-            onChange={e => setUserInput(e.target.value)}
-            disabled={grading}
-            style={{ resize: 'vertical', minHeight: 90 }}
-          />
-        </div>
-
-        {/* Sample translation — always visible once user has typed */}
-        {hasTyped && exercise.sampleTranslation && (
-          <div
-            className="animate-fade-in"
-            style={{
-              marginBottom: 14,
-              background: 'rgba(34,197,94,0.06)',
-              border: '1px solid rgba(34,197,94,0.2)',
-              borderRadius: 'var(--radius-sm)',
-              padding: '12px 14px',
-            }}
-          >
-            <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--success-text)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-              ✅ Câu dịch tham khảo
-            </p>
-            <p style={{ fontSize: 14, color: 'var(--text-primary)', lineHeight: 1.6, margin: 0, fontStyle: 'italic' }}>
-              "{exercise.sampleTranslation}"
-            </p>
-          </div>
-        )}
-
-        {/* Action buttons */}
-        <div className="flex gap-2 flex-wrap">
-          {/* AI grading — optional, secondary */}
-          <button
-            id={`grade-btn-${chunk.id}`}
-            className="btn btn-secondary"
-            style={{ flex: 1, minWidth: 140 }}
-            onClick={handleGrade}
-            disabled={grading || !hasTyped}
-            title="Nhờ AI phân tích chi tiết: điểm, lỗi ngữ pháp, gợi ý"
-          >
-            {grading
-              ? <><Loader size={15} style={{ animation: 'spin 1s linear infinite' }} /> Đang chấm…</>
-              : <><Sparkles size={15} /> Chấm bài bằng AI</>
-            }
-          </button>
-
-          {hasTyped && (
-            <button className="btn btn-ghost btn-icon" onClick={handleReset} title="Làm lại">
-              <RotateCcw size={15} />
-            </button>
+          {progress && (
+            <Badge type="success">
+              {progress.practiceCount} lần luyện{progress.lastScore != null ? ` · ${progress.lastScore}đ` : ''}
+            </Badge>
           )}
         </div>
-
-        {!hasTyped && (
-          <p style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 8, textAlign: 'center' }}>
-            Gõ bản dịch để xem câu tham khảo · Bấm "Chấm bài bằng AI" để nhận phân tích chi tiết
-          </p>
-        )}
+        <p style={{ fontSize: 12.5, color: 'var(--text-secondary)' }}>
+          {chunk.meaningVi}
+          {chunk.meaningEn && <span style={{ color: 'var(--text-muted)', marginLeft: 8 }}>· {chunk.meaningEn}</span>}
+        </p>
+        <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 6 }}>
+          Việt → Anh · Nhấn <kbd style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border-default)', borderRadius: 3, padding: '1px 5px', fontSize: 10 }}>Enter</kbd> hoặc bấm "Xem câu mẫu" để đối chiếu
+        </p>
       </div>
 
-      {/* Grading result — only shown after AI grading */}
-      <GradingResult result={gradingResult} chunkPhrase={chunk.phrase} />
+      {/* All exercises stacked */}
+      {exercises.map((exercise, i) => (
+        <ExerciseCard
+          key={exercise.id || i}
+          exercise={exercise}
+          index={i}
+          total={exercises.length}
+          chunk={chunk}
+          onComplete={onComplete}
+          onToast={onToast}
+        />
+      ))}
     </div>
   );
 }
