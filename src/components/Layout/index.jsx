@@ -1,6 +1,6 @@
 import {
   FileText, Layers, Mic, BarChart2,
-  Settings, ChevronRight, BookOpen
+  Settings, ChevronRight, BookOpen, LogOut, User
 } from 'lucide-react';
 
 const NAV_ITEMS = [
@@ -13,7 +13,7 @@ const NAV_ITEMS = [
 const PAGE_TITLES = {
   transcripts: { title: 'Transcripts',       subtitle: 'Nhập transcript TOEIC và trích xuất chunk' },
   chunks:      { title: 'Chunks',            subtitle: 'Danh sách cụm từ đã phân tích' },
-  practice:    { title: 'Speaking Practice', subtitle: 'Luyện nói theo tình huống' },
+  practice:    { title: 'Speaking Practice', subtitle: 'Luyện nói theo câu mẫu' },
   progress:    { title: 'Progress',          subtitle: 'Theo dõi tiến độ học tập' },
 };
 
@@ -87,7 +87,7 @@ export function BottomNav({ activePage, onNavigate, counts = {} }) {
 }
 
 // ─── Header ───────────────────────────────────────────────────
-export function Header({ page, rightSlot, onSettingsClick }) {
+export function Header({ page, rightSlot, onSettingsClick, user, onSignOut }) {
   const info = PAGE_TITLES[page] || {};
   return (
     <header className="main-header">
@@ -97,7 +97,33 @@ export function Header({ page, rightSlot, onSettingsClick }) {
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         {rightSlot && <div>{rightSlot}</div>}
-        {/* Settings button visible only on mobile */}
+
+        {/* User info + logout */}
+        {user && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: 6,
+              padding: '4px 10px', borderRadius: 'var(--radius-md)',
+              background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)',
+            }}>
+              <User size={13} style={{ color: 'var(--accent-400)', flexShrink: 0 }} />
+              <span style={{ fontSize: 12, color: 'var(--text-secondary)', maxWidth: 140, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {user.email}
+              </span>
+            </div>
+            <button
+              id="logout-btn"
+              className="btn btn-ghost btn-icon"
+              onClick={onSignOut}
+              title="Đăng xuất"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              <LogOut size={15} />
+            </button>
+          </div>
+        )}
+
+        {/* Settings button — mobile only */}
         {onSettingsClick && (
           <button
             id="mobile-settings-btn"

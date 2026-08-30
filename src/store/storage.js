@@ -1,3 +1,13 @@
+import {
+  dbSaveTranscript,
+  dbDeleteTranscript,
+  dbSaveChunks,
+  dbSaveSituations,
+  dbSaveProgress,
+  dbFetchAllData,
+  isSupabaseConfigured,
+} from '../services/supabase';
+
 // ─── Storage keys ─────────────────────────────────────────────
 const KEYS = {
   transcripts: 'toeic_transcripts',
@@ -30,6 +40,9 @@ export function saveTranscript(transcript) {
   const all = get(KEYS.transcripts) || {};
   all[transcript.id] = transcript;
   set(KEYS.transcripts, all);
+
+  // Sync to Supabase in background
+  dbSaveTranscript(transcript).catch(err => console.error('Cloud sync error:', err));
 }
 
 export function getTranscripts() {
@@ -46,8 +59,11 @@ export function deleteTranscript(id) {
   const all = get(KEYS.transcripts) || {};
   delete all[id];
   set(KEYS.transcripts, all);
-  // cascade delete
+  // cascade delete local
   deleteChunks(id);
+
+  // Sync delete to Supabase
+  dbDeleteTranscript(id).catch(err => console.error('Cloud delete error:', err));
 }
 
 // ─── Chunks ───────────────────────────────────────────────────
@@ -55,6 +71,9 @@ export function saveChunks(transcriptId, chunks) {
   const all = get(KEYS.chunks) || {};
   all[transcriptId] = chunks;
   set(KEYS.chunks, all);
+
+  // Sync to Supabase in background
+  dbSaveChunks(chunks).catch(err => console.error('Cloud sync error:', err));
 }
 
 export function getChunks(transcriptId) {
@@ -81,6 +100,9 @@ export function saveSituations(chunkId, situations) {
   const all = get(KEYS.situations) || {};
   all[chunkId] = situations;
   set(KEYS.situations, all);
+
+  // Sync to Supabase in background
+  dbSaveSituations(situations).catch(err => console.error('Cloud sync error:', err));
 }
 
 export function getSituations(chunkId) {
@@ -98,15 +120,20 @@ export function deleteSituations(chunkId) {
 export function updateProgress(chunkId, result) {
   const all = get(KEYS.progress) || {};
   const prev = all[chunkId] || { practiceCount: 0, successCount: 0 };
-  all[chunkId] = {
+  const updated = {
     chunkId,
     practiceCount: prev.practiceCount + 1,
     successCount:  result ? prev.successCount + 1 : prev.successCount,
     lastPracticed: Date.now(),
     lastResult:    result,
   };
+  all[chunkId] = updated;
   set(KEYS.progress, all);
-  return all[chunkId];
+
+  // Sync to Supabase in background
+  dbSaveProgress(updated).catch(err => console.error('Cloud sync error:', err));
+
+  return updated;
 }
 
 export function getProgress(chunkId) {
@@ -120,7 +147,12 @@ export function getAllProgress() {
 
 // ─── Settings ─────────────────────────────────────────────────
 export function getSettings() {
-  return get(KEYS.settings) || { apiKey: '', language: 'vi-VN' };
+  return get(KEYS.settings) || {
+    apiKey: '',
+    language: 'vi-VN',
+    supabaseUrl: '',
+    supabaseKey: '',
+  };
 }
 
 export function saveSettings(settings) {
@@ -135,4 +167,35 @@ export function getApiKey() {
   }
   // Priority 2: key entered manually in Settings (stored in localStorage)
   return getSettings().apiKey || '';
+}
+
+// ─── Full Cloud Sync (Cloud → Local Cache) ────────────────────
+export async function syncFromSupabase() {
+  if (!isSupabaseConfigured()) return false;
+
+  const cloudData = await dbFetchAllData();
+  if (!cloudData) return false;
+
+  // Merge/Update local storage with cloud data
+  if (cloudData.transcripts && Object.keys(cloudData.transcripts).length > 0) {
+    const localT = get(KEYS.transcripts) || {};
+    set(KEYS.transcripts, { ...localT, ...cloudData.transcripts });
+  }
+
+  if (cloudData.chunks && Object.keys(cloudData.chunks).length > 0) {
+    const localC = get(KEYS.chunks) || {};
+    set(KEYS.chunks, { ...localC, ...cloudData.chunks });
+  }
+
+  if (cloudData.situations && Object.keys(cloudData.situations).length > 0) {
+    const localS = get(KEYS.situations) || {};
+    set(KEYS.situations, { ...localS, ...cloudData.situations });
+  }
+
+  if (cloudData.progress && Object.keys(cloudData.progress).length > 0) {
+    const localP = get(KEYS.progress) || {};
+    set(KEYS.progress, { ...localP, ...cloudData.progress });
+  }
+
+  return true;
 }

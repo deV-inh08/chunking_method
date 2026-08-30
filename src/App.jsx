@@ -5,29 +5,26 @@ import { ChunkModule } from './components/ChunkModule';
 import { PracticeModule } from './components/PracticeModule';
 import { ProgressModule } from './components/ProgressModule';
 import { SettingsModal } from './components/Settings';
-import { Toast } from './components/ui';
-import {
-  useTranscripts,
-  useSettings,
-  useProgress,
-} from './hooks/useStorage';
+import { AuthScreen } from './components/Auth';
+import { Toast, Spinner } from './components/ui';
+import { useTranscripts, useSettings, useProgress } from './hooks/useStorage';
+import { useAuth } from './hooks/useAuth';
+import { generateSituations } from './services/ai';
+import { isSupabaseConfigured } from './services/supabase';
 import * as storage from './store/storage';
 
 // ─── Toast hook ───────────────────────────────────────────────
 let toastId = 0;
 function useToast() {
   const [toasts, setToasts] = useState([]);
-
   const addToast = useCallback((type, message) => {
     const id = ++toastId;
     setToasts(prev => [...prev, { id, type, message }]);
     setTimeout(() => setToasts(prev => prev.filter(t => t.id !== id)), 4000);
   }, []);
-
   const removeToast = useCallback((id) => {
     setToasts(prev => prev.filter(t => t.id !== id));
   }, []);
-
   return { toasts, addToast, removeToast };
 }
 
@@ -39,22 +36,40 @@ export default function App() {
   const [selectedChunks, setSelectedChunks] = useState(new Set());
   const [allChunks, setAllChunks]       = useState([]);
 
+  // Auto-generate state
+  const [autoGenerating, setAutoGenerating] = useState(false);
+  const [autoGenProgress, setAutoGenProgress] = useState({ done: 0, total: 0 });
+
   const { transcripts, save: saveTranscript, remove: deleteTranscript } = useTranscripts();
   const { settings, save: saveSettings }  = useSettings();
   const { allProgress, update: updateProgress, refresh: refreshProgress } = useProgress();
   const { toasts, addToast, removeToast } = useToast();
 
-  // Refresh all chunks from storage whenever transcripts change
+  // Auth state
+  const { user, loading: authLoading, signIn, signUp, signOut } = useAuth();
+
+  // Refresh all chunks whenever transcripts change
   useEffect(() => {
     setAllChunks(storage.getAllChunks());
   }, [transcripts]);
 
-  // Show settings on first load if no API key
+  // Initial Cloud Sync when user is logged in
   useEffect(() => {
-    if (!storage.getApiKey()) {
+    if (!user) return;
+    storage.syncFromSupabase().then(synced => {
+      if (synced) {
+        setAllChunks(storage.getAllChunks());
+        refreshProgress();
+      }
+    });
+  }, [user, refreshProgress]);
+
+  // Show settings on first load if no API key (only after auth resolved)
+  useEffect(() => {
+    if (!authLoading && !storage.getApiKey()) {
       setTimeout(() => setShowSettings(true), 600);
     }
-  }, []);
+  }, [authLoading]);
 
   // ── Transcript handlers ──────────────────────────────────────
   const handleSaveTranscript = useCallback((transcript) => {
@@ -68,11 +83,42 @@ export default function App() {
     addToast('success', 'Đã xóa transcript.');
   }, [deleteTranscript, selectedTranscriptId, addToast]);
 
-  const handleChunksExtracted = useCallback((transcriptId, chunks) => {
+  // ── Auto-generate situations after analysis ──────────────────
+  const handleChunksExtracted = useCallback(async (transcriptId, chunks) => {
     storage.saveChunks(transcriptId, chunks);
     setAllChunks(storage.getAllChunks());
     setSelectedTranscriptId(transcriptId);
-    setPage('chunks');
+
+    // Auto-select all new chunks
+    setSelectedChunks(new Set(chunks.map(c => c.id)));
+
+    // Auto-generate situations for all chunks
+    const apiKey = storage.getApiKey();
+    if (apiKey && chunks.length > 0) {
+      setAutoGenerating(true);
+      setAutoGenProgress({ done: 0, total: chunks.length });
+      setPage('practice');
+
+      // Sequential with progress (avoids rate-limit issues)
+      for (const chunk of chunks) {
+        try {
+          const result = await generateSituations(chunk, apiKey);
+          const situations = (result.situations || []).map((s, i) => ({
+            ...s,
+            id: s.id || `sit_${chunk.id}_${i}`,
+            chunkId: chunk.id,
+          }));
+          storage.saveSituations(chunk.id, situations);
+        } catch (err) {
+          console.error(`Auto-gen failed for "${chunk.phrase}":`, err);
+        }
+        setAutoGenProgress(prev => ({ ...prev, done: prev.done + 1 }));
+      }
+
+      setAutoGenerating(false);
+    } else {
+      setPage('practice');
+    }
   }, []);
 
   const handleSelectTranscript = useCallback((id) => {
@@ -114,16 +160,37 @@ export default function App() {
     progress:    Object.keys(allProgress).length,
   };
 
-  // ── Chunk counts per transcript (for transcript list) ────────
   const chunkCounts = {};
   transcripts.forEach(t => {
     chunkCounts[t.id] = storage.getChunks(t.id).length;
   });
 
-  // ── Chunks to display in chunk module ────────────────────────
   const displayChunks = selectedTranscriptId
     ? storage.getChunks(selectedTranscriptId)
     : allChunks;
+
+  // ── Auth guard ───────────────────────────────────────────────
+  if (authLoading) {
+    return (
+      <div style={{
+        minHeight: '100vh',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        background: 'var(--bg-base)',
+      }}>
+        <Spinner size={32} />
+      </div>
+    );
+  }
+
+  // Show auth screen only if Supabase is configured AND user is not logged in
+  if (isSupabaseConfigured() && !user) {
+    return (
+      <>
+        <AuthScreen onSignIn={signIn} onSignUp={signUp} />
+        <Toast toasts={toasts} removeToast={removeToast} />
+      </>
+    );
+  }
 
   return (
     <div className="app-shell">
@@ -137,6 +204,8 @@ export default function App() {
       <div className="main-content">
         <Header
           page={page}
+          user={user}
+          onSignOut={signOut}
           onSettingsClick={() => setShowSettings(true)}
           rightSlot={
             page === 'chunks' && allChunks.length > 0 && (
@@ -154,6 +223,34 @@ export default function App() {
             )
           }
         />
+
+        {/* Auto-generate progress banner */}
+        {autoGenerating && (
+          <div style={{
+            position: 'sticky', top: 0, zIndex: 50,
+            background: 'linear-gradient(135deg, rgba(99,102,241,0.15), rgba(67,56,202,0.12))',
+            borderBottom: '1px solid rgba(99,102,241,0.3)',
+            padding: '10px 24px',
+            display: 'flex', alignItems: 'center', gap: 12,
+          }}>
+            <Spinner size={16} />
+            <span style={{ fontSize: 13, color: 'var(--accent-300)', fontWeight: 600 }}>
+              Đang sinh câu luyện tập…
+            </span>
+            <div style={{ flex: 1, height: 4, background: 'rgba(255,255,255,0.1)', borderRadius: 99 }}>
+              <div style={{
+                height: '100%',
+                width: `${(autoGenProgress.done / autoGenProgress.total) * 100}%`,
+                background: 'linear-gradient(90deg, var(--accent-500), var(--accent-400))',
+                borderRadius: 99,
+                transition: 'width 0.3s ease',
+              }} />
+            </div>
+            <span style={{ fontSize: 12, color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>
+              {autoGenProgress.done} / {autoGenProgress.total} chunk
+            </span>
+          </div>
+        )}
 
         <main className="page-content">
           {page === 'transcripts' && (
@@ -189,6 +286,8 @@ export default function App() {
               allProgress={allProgress}
               onProgressUpdate={handleProgressUpdate}
               onToast={addToast}
+              autoGenerating={autoGenerating}
+              autoGenProgress={autoGenProgress}
             />
           )}
 
@@ -202,11 +301,7 @@ export default function App() {
       </div>
 
       {/* Mobile bottom navigation */}
-      <BottomNav
-        activePage={page}
-        onNavigate={setPage}
-        counts={counts}
-      />
+      <BottomNav activePage={page} onNavigate={setPage} counts={counts} />
 
       {/* Modals */}
       {showSettings && (

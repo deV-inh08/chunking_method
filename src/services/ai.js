@@ -130,13 +130,13 @@ Quy tắc bắt buộc:
   return callGemini(apiKey, systemPrompt, userMessage);
 }
 
-// ─── Generate practice situations for a chunk ─────────────────
+// ─── Generate practice sentences for a chunk ─────────────────
 export async function generateSituations(chunk, apiKey) {
-  const systemPrompt = `Bạn là chuyên gia thiết kế bài luyện nói tiếng Anh.
-Nhiệm vụ: Tạo tình huống luyện nói cho người học TOEIC để luyện dùng chunk mục tiêu.
+  const systemPrompt = `Bạn là chuyên gia thiết kế bài luyện nói tiếng Anh cho người học TOEIC.
+Nhiệm vụ: Tạo các câu luyện nói ngắn gọn để người học tự nói theo.
 Trả về JSON hợp lệ, không có text nào khác ngoài JSON.`;
 
-  const userMessage = `Tạo 3 tình huống luyện nói mới (KHÁC bối cảnh gốc) cho chunk sau:
+  const userMessage = `Tạo 3 câu luyện nói cho chunk sau:
 
 CHUNK: "${chunk.phrase}"
 NGHĨA: ${chunk.meaningVi}
@@ -148,19 +148,18 @@ Trả về JSON:
   "situations": [
     {
       "id": "sit_1",
-      "prompt": "Mô tả tình huống bằng tiếng Anh (2-3 câu, rõ ràng, thực tế)",
-      "hint": "Gợi ý nhẹ bằng tiếng Việt về cách dùng chunk",
-      "exampleResponse": "Câu ví dụ có dùng chunk '${chunk.phrase}' tự nhiên"
+      "context": "Bối cảnh ngắn gọn bằng tiếng Việt (5-10 từ)",
+      "exampleSentence": "Một câu tiếng Anh HOÀN CHỈNH có dùng '${chunk.phrase}' — KHÔNG phải hội thoại, chỉ 1 câu duy nhất"
     }
   ]
 }
 \`\`\`
 
-Yêu cầu:
-- 3 tình huống với 3 bối cảnh KHÁC NHAU, không giống câu gốc
-- prompt bằng tiếng Anh, mô tả tình huống giao tiếp thực tế
-- hint bằng tiếng Việt, ngắn gọn (max 1 câu)
-- exampleResponse phải dùng đúng chunk "${chunk.phrase}"
+Quy tắc bắt buộc:
+- Mỗi situation là 1 câu đơn hoàn chỉnh bằng tiếng Anh (KHÔNG phải hội thoại, KHÔNG có "A:", "B:")
+- context bằng tiếng Việt, tối đa 10 từ, mô tả tình huống dùng chunk
+- exampleSentence phải chứa chính xác chunk "${chunk.phrase}"
+- 3 câu có 3 bối cảnh KHÁC nhau và KHÁC câu gốc
 - id: sit_1, sit_2, sit_3`;
 
   return callGemini(apiKey, systemPrompt, userMessage);

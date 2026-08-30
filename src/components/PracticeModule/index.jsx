@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Mic, MicOff, RotateCcw, ChevronRight, ChevronLeft, Check, X, Lightbulb, Volume2 } from 'lucide-react';
+import { Mic, MicOff, RotateCcw, ChevronRight, ChevronLeft, Check, X } from 'lucide-react';
 import { EmptyState, Badge } from '../ui';
 import { useSpeech } from '../../hooks/useSpeech';
 import { getSituations } from '../../store/storage';
@@ -191,7 +191,10 @@ function PracticeSession({ chunk, situations, progress, onComplete, onToast }) {
       <div className="card">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <span className="badge badge-neutral">Situation {sitIndex + 1}/{situations.length}</span>
+            <span className="badge badge-neutral">Câu {sitIndex + 1} / {situations.length}</span>
+            {situation.context && (
+              <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>— {situation.context}</span>
+            )}
           </div>
           <div className="flex items-center gap-1">
             <button className="btn btn-ghost btn-icon" onClick={handlePrev} disabled={sitIndex === 0}>
@@ -203,48 +206,39 @@ function PracticeSession({ chunk, situations, progress, onComplete, onToast }) {
           </div>
         </div>
 
+        {/* Example sentence to practice */}
         <div style={{
           background: 'var(--bg-elevated)', borderRadius: 'var(--radius-md)',
           padding: '16px 18px', lineHeight: 1.7,
-          fontSize: 15, color: 'var(--text-primary)',
+          fontSize: 17, fontWeight: 500,
+          color: 'var(--text-primary)',
           borderLeft: '3px solid var(--accent-500)',
+          letterSpacing: '-0.01em',
         }}>
-          {situation.prompt}
+          {situation.exampleSentence
+            /* Highlight chunk in sentence */
+            ? (() => {
+                const sent = situation.exampleSentence;
+                const phrase = chunk.phrase;
+                const idx = sent.toLowerCase().indexOf(phrase.toLowerCase());
+                if (idx === -1) return sent;
+                return (
+                  <>
+                    {sent.slice(0, idx)}
+                    <mark style={{ background: 'rgba(99,102,241,0.28)', borderRadius: 4, padding: '1px 3px', color: 'var(--accent-200)' }}>
+                      {sent.slice(idx, idx + phrase.length)}
+                    </mark>
+                    {sent.slice(idx + phrase.length)}
+                  </>
+                );
+              })()
+            : (situation.exampleResponse || situation.prompt)
+          }
         </div>
 
-        {/* Hint */}
-        <div className="flex gap-2 mt-3">
-          <button
-            className={`btn btn-sm ${showHint ? 'btn-secondary' : 'btn-ghost'}`}
-            onClick={() => setShowHint(h => !h)}
-          >
-            <Lightbulb size={13} /> Hint
-          </button>
-          <button
-            className={`btn btn-sm ${showExample ? 'btn-secondary' : 'btn-ghost'}`}
-            onClick={() => setShowExample(e => !e)}
-          >
-            <Volume2 size={13} /> Example
-          </button>
-        </div>
-
-        {showHint && situation.hint && (
-          <div className="mt-2" style={{
-            background: 'var(--warning-bg)', borderRadius: 'var(--radius-md)',
-            padding: '10px 14px', fontSize: 13, color: 'var(--warning-text)',
-          }}>
-            💡 {situation.hint}
-          </div>
-        )}
-
-        {showExample && situation.exampleResponse && (
-          <div className="mt-2" style={{
-            background: 'rgba(99,102,241,0.08)', borderRadius: 'var(--radius-md)',
-            padding: '10px 14px', fontSize: 13, color: 'var(--accent-300)',
-          }}>
-            📢 {situation.exampleResponse}
-          </div>
-        )}
+        <p style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 8 }}>
+          Đọc to câu trên rồi bấm mic để thực hành
+        </p>
       </div>
 
       {/* Interim text while recording */}
@@ -309,6 +303,7 @@ export function PracticeModule({ selectedChunks, chunks, allProgress, onProgress
         <p className="label mb-1">Selected Chunks ({chunkList.length})</p>
         {chunkList.map((chunk) => {
           const prog = allProgress[chunk.id];
+          const isActive = activeChunkId === chunk.id;
           return (
             <button
               key={chunk.id}
@@ -316,17 +311,24 @@ export function PracticeModule({ selectedChunks, chunks, allProgress, onProgress
               className="card"
               style={{
                 textAlign: 'left', cursor: 'pointer', padding: '12px 14px',
-                borderColor: activeChunkId === chunk.id ? 'rgba(99,102,241,0.5)' : undefined,
-                background: activeChunkId === chunk.id ? 'rgba(99,102,241,0.08)' : undefined,
+                borderColor: isActive ? 'var(--accent-400)' : 'var(--border-subtle)',
+                background: isActive ? 'rgba(99,102,241,0.15)' : 'var(--bg-surface)',
+                color: 'var(--text-primary)',
               }}
               onClick={() => setActiveChunkId(chunk.id)}
             >
-              <div className="flex items-center gap-2 flex-wrap">
-                <span style={{ fontWeight: 600, fontSize: 13 }}>{chunk.phrase}</span>
+              <div className="flex items-center gap-2 flex-wrap justify-between">
+                <span style={{
+                  fontWeight: 600,
+                  fontSize: 14,
+                  color: isActive ? 'var(--accent-300)' : 'var(--text-primary)'
+                }}>
+                  {chunk.phrase}
+                </span>
                 {prog && <Badge type="success">✓</Badge>}
               </div>
               <div className="mt-1">
-                <Badge type={chunk.type}>{CHUNK_TYPE_LABELS[chunk.type]}</Badge>
+                <Badge type={chunk.type}>{CHUNK_TYPE_LABELS[chunk.type] || chunk.type}</Badge>
               </div>
             </button>
           );
