@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { PenLine, ChevronRight, ChevronLeft, RotateCcw,
-         CheckCircle, XCircle, Sparkles, Loader } from 'lucide-react';
+         CheckCircle, XCircle, Sparkles, Loader, RefreshCw } from 'lucide-react';
 import { EmptyState, Badge, Spinner } from '../ui';
-import { getSituations } from '../../store/storage';
-import { gradeWriting } from '../../services/ai';
+import { getSituations, saveSituations } from '../../store/storage';
+import { gradeWriting, generateWritingExercises } from '../../services/ai';
 import { getApiKey } from '../../store/storage';
 
 
@@ -294,10 +294,19 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
           {/* Vocab hints — shown when AI provides them */}
           <VocabHints hints={exercise.vocabHints} />
 
+          {/* Notice for old-format exercises (no vocabHints field) */}
+          {exercise.vocabHints === undefined && (
+            <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 6, display: 'flex', alignItems: 'center', gap: 4 }}>
+              <RefreshCw size={11} />
+              Bài này chưa có gợi ý từ vựng — bấm nút ⟳ bên sidebar để tái tạo.
+            </p>
+          )}
+
           <p style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 8 }}>
             💡 Dùng chunk <strong style={{ color: 'var(--accent-300)' }}>"{chunk.phrase}"</strong> trong câu dịch
           </p>
         </div>
+
 
         {/* Translation input */}
         <div style={{ marginBottom: 14 }}>
@@ -374,7 +383,7 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
 }
 
 
-// ─── PracticeModule (main export) ─────────────────────────────
+// ─── PracticeModule (main export) ─────────────────────────────────
 export function PracticeModule({
   selectedChunks, chunks, allProgress,
   onProgressUpdate, onToast,
@@ -384,6 +393,9 @@ export function PracticeModule({
   const chunkList = chunks.filter(c => selectedChunks.has(c.id));
 
   const [activeChunkId, setActiveChunkId] = useState(null);
+  const [regenId,       setRegenId]       = useState(null); // chunk being regenerated
+  const [, forceUpdate] = useState(0); // trigger re-render after save
+
   useEffect(() => {
     if (chunkList.length > 0 && !activeChunkId) {
       setActiveChunkId(chunkList[0].id);
@@ -392,6 +404,31 @@ export function PracticeModule({
 
   const handleComplete = (chunkId, success, score, feedback) => {
     onProgressUpdate(chunkId, success, score, feedback);
+  };
+
+  // Regenerate exercises for a specific chunk (picks up vocabHints)
+  const handleRegen = async (e, chunk) => {
+    e.stopPropagation(); // don't activate the chunk
+    const apiKey = getApiKey();
+    if (!apiKey) { onToast('error', 'Chưa có API key. Vào Settings để nhập.'); return; }
+    setRegenId(chunk.id);
+    try {
+      const result = await generateWritingExercises(chunk, apiKey);
+      const exercises = (result.exercises || []).map((ex, i) => ({
+        ...ex,
+        id: ex.id || `ex_${chunk.id}_${i}`,
+        chunkId: chunk.id,
+      }));
+      saveSituations(chunk.id, exercises);
+      // Switch to this chunk and force re-render so WritingSession picks up new data
+      setActiveChunkId(chunk.id);
+      forceUpdate(n => n + 1);
+      onToast('success', `Đã tái tạo bài luyện cho "${chunk.phrase}"`);
+    } catch (err) {
+      onToast('error', `Lỗi tái tạo: ${err.message}`);
+    } finally {
+      setRegenId(null);
+    }
   };
 
   if (chunkList.length === 0 && !autoGenerating) {
@@ -420,7 +457,11 @@ export function PracticeModule({
         {chunkList.map((chunk) => {
           const prog = allProgress[chunk.id];
           const isActive = activeChunkId === chunk.id;
-          const hasExercises = getSituations(chunk.id).length > 0;
+          const exercises = getSituations(chunk.id);
+          const hasExercises = exercises.length > 0;
+          // Detect old format (no vocabHints field)
+          const isOldFormat = hasExercises && exercises[0].vocabHints === undefined;
+          const isRegening = regenId === chunk.id;
           return (
             <button
               key={chunk.id}
@@ -440,10 +481,12 @@ export function PracticeModule({
                 <span style={{
                   fontWeight: 600, fontSize: 14,
                   color: isActive ? 'var(--accent-300)' : 'var(--text-primary)',
+                  flex: 1, minWidth: 0,
+                  overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
                 }}>
                   {chunk.phrase}
                 </span>
-                <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+                <div style={{ display: 'flex', gap: 4, alignItems: 'center', flexShrink: 0 }}>
                   {!hasExercises && autoGenerating && <Spinner size={12} />}
                   {prog && (
                     <span style={{
@@ -453,6 +496,25 @@ export function PracticeModule({
                       {prog.lastScore != null ? `${prog.lastScore}đ` : '✓'}
                     </span>
                   )}
+                  {/* Regenerate button — always shown, highlighted when old format */}
+                  <button
+                    id={`regen-${chunk.id}`}
+                    onClick={(e) => handleRegen(e, chunk)}
+                    disabled={isRegening}
+                    title={isOldFormat ? 'Tái tạo để có gợi ý từ vựng' : 'Tái tạo bài luyện'}
+                    style={{
+                      padding: '3px 5px',
+                      borderRadius: 'var(--radius-sm)',
+                      border: isOldFormat ? '1px solid rgba(251,191,36,0.4)' : '1px solid transparent',
+                      background: isOldFormat ? 'rgba(251,191,36,0.1)' : 'transparent',
+                      color: isOldFormat ? '#fbbf24' : 'var(--text-muted)',
+                      cursor: isRegening ? 'not-allowed' : 'pointer',
+                      display: 'flex', alignItems: 'center',
+                      opacity: isRegening ? 0.5 : 1,
+                    }}
+                  >
+                    <RefreshCw size={11} style={{ animation: isRegening ? 'spin 1s linear infinite' : 'none' }} />
+                  </button>
                 </div>
               </div>
               <div className="mt-1 flex items-center gap-2">
