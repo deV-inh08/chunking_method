@@ -3,8 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 // ─── Credentials ───────────────────────────────────────────────
 export function getSupabaseCredentials() {
   const envUrl = import.meta.env.VITE_SUPABASE_URL;
-  const envKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-    || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+  const envKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
   if (envUrl && envKey && !envUrl.includes('your-project') && envKey.length > 20) {
     return { url: envUrl, key: envKey, source: 'env' };
@@ -24,7 +23,7 @@ export function getSupabaseCredentials() {
 }
 
 let cachedClient = null;
-let cachedCombo   = null;
+let cachedCombo = null;
 
 export function getSupabaseClient() {
   const { url, key } = getSupabaseCredentials();
@@ -33,7 +32,7 @@ export function getSupabaseClient() {
   if (cachedClient && cachedCombo === combo) return cachedClient;
   try {
     cachedClient = createClient(url, key);
-    cachedCombo  = combo;
+    cachedCombo = combo;
     return cachedClient;
   } catch (err) {
     console.error('Supabase client error:', err);
@@ -85,7 +84,7 @@ export async function authGetSession() {
 
 export function authOnChange(callback) {
   const client = getSupabaseClient();
-  if (!client) return () => {};
+  if (!client) return () => { };
   const { data: { subscription } } = client.auth.onAuthStateChange(callback);
   return () => subscription.unsubscribe();
 }
@@ -97,14 +96,14 @@ export async function dbSaveTranscript(transcript) {
   const userId = await getCurrentUserId();
 
   const { data, error } = await client.from('transcripts').upsert({
-    id:                transcript.id,
-    user_id:           userId,
-    text:              transcript.text,
-    part:              transcript.part,
-    theme:             transcript.theme             || '',
-    theme_vi:          transcript.themeVi           || '',
-    theme_description: transcript.themeDescription  || '',
-    created_at:        transcript.createdAt,
+    id: transcript.id,
+    user_id: userId,
+    text: transcript.text,
+    part: transcript.part,
+    theme: transcript.theme || '',
+    theme_vi: transcript.themeVi || '',
+    theme_description: transcript.themeDescription || '',
+    created_at: transcript.createdAt,
   });
   if (error) console.error('Supabase save transcript error:', error);
   return data;
@@ -124,18 +123,18 @@ export async function dbSaveChunks(chunks) {
   const userId = await getCurrentUserId();
 
   const rows = chunks.map(c => ({
-    id:               c.id,
-    user_id:          userId,
-    transcript_id:    c.transcriptId,
-    phrase:           c.phrase,
-    type:             c.type,
-    meaning_vi:       c.meaningVi       || '',
-    usage_note:       c.usageNote       || '',
-    original_sentence:c.originalSentence|| '',
-    another_example:  c.anotherExample  || '',
-    formality:        c.formality       || 'neutral',
-    group_id:         c.groupId         || '',
-    group_name:       c.groupName       || '',
+    id: c.id,
+    user_id: userId,
+    transcript_id: c.transcriptId,
+    phrase: c.phrase,
+    type: c.type,
+    meaning_vi: c.meaningVi || '',
+    usage_note: c.usageNote || '',
+    original_sentence: c.originalSentence || '',
+    another_example: c.anotherExample || '',
+    formality: c.formality || 'neutral',
+    group_id: c.groupId || '',
+    group_name: c.groupName || '',
   }));
 
   const { error } = await client.from('chunks').upsert(rows);
@@ -149,15 +148,15 @@ export async function dbSaveSituations(situations) {
   const userId = await getCurrentUserId();
 
   const rows = situations.map(s => ({
-    id:               s.id,
-    user_id:          userId,
-    chunk_id:         s.chunkId,
-    context:          s.context          || '',
-    example_sentence: s.exampleSentence  || s.exampleResponse || '',
+    id: s.id,
+    user_id: userId,
+    chunk_id: s.chunkId,
+    context: s.context || '',
+    example_sentence: s.exampleSentence || s.exampleResponse || '',
     // Keep old fields for backward compat
-    prompt:           s.prompt           || '',
-    hint:             s.hint             || '',
-    example_response: s.exampleResponse  || '',
+    prompt: s.prompt || '',
+    hint: s.hint || '',
+    example_response: s.exampleResponse || '',
   }));
 
   const { error } = await client.from('situations').upsert(rows);
@@ -171,12 +170,12 @@ export async function dbSaveProgress(progressItem) {
   const userId = await getCurrentUserId();
 
   const { error } = await client.from('progress').upsert({
-    chunk_id:      progressItem.chunkId,
-    user_id:       userId,
-    practice_count:progressItem.practiceCount,
+    chunk_id: progressItem.chunkId,
+    user_id: userId,
+    practice_count: progressItem.practiceCount,
     success_count: progressItem.successCount,
-    last_practiced:progressItem.lastPracticed,
-    last_result:   progressItem.lastResult,
+    last_practiced: progressItem.lastPracticed,
+    last_result: progressItem.lastResult,
   });
   if (error) console.error('Supabase save progress error:', error);
 }

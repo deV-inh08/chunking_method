@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Mic, MicOff, RotateCcw, ChevronRight, ChevronLeft, Check, X } from 'lucide-react';
-import { EmptyState, Badge } from '../ui';
+import { EmptyState, Badge, Spinner } from '../ui';
 import { useSpeech } from '../../hooks/useSpeech';
 import { getSituations } from '../../store/storage';
 
@@ -129,16 +129,12 @@ function ResultFeedback({ matched, finalText, chunkPhrase }) {
 // ─── PracticeSession ──────────────────────────────────────────
 function PracticeSession({ chunk, situations, progress, onComplete, onToast }) {
   const [sitIndex, setSitIndex] = useState(0);
-  const [showHint, setShowHint] = useState(false);
-  const [showExample, setShowExample] = useState(false);
 
   const situation = situations[sitIndex];
   const { state, interimText, finalText, matched, error, supported, start, stop, reset } = useSpeech(chunk.phrase);
 
   useEffect(() => {
     reset();
-    setShowHint(false);
-    setShowExample(false);
   }, [sitIndex]);
 
   useEffect(() => {
@@ -268,16 +264,27 @@ function PracticeSession({ chunk, situations, progress, onComplete, onToast }) {
 }
 
 // ─── PracticeModule (main export) ─────────────────────────────
-export function PracticeModule({ selectedChunks, chunks, allProgress, onProgressUpdate, onToast }) {
-  const [activeChunkId, setActiveChunkId] = useState(null);
-
+export function PracticeModule({
+  selectedChunks, chunks, allProgress,
+  onProgressUpdate, onToast,
+  autoGenerating = false,
+  autoGenProgress = { done: 0, total: 0 },
+}) {
   const chunkList = chunks.filter(c => selectedChunks.has(c.id));
+
+  // Auto-select first chunk when list populates
+  const [activeChunkId, setActiveChunkId] = useState(null);
+  useEffect(() => {
+    if (chunkList.length > 0 && !activeChunkId) {
+      setActiveChunkId(chunkList[0].id);
+    }
+  }, [chunkList.length]);
 
   const handleComplete = (chunkId, matched) => {
     onProgressUpdate(chunkId, matched);
   };
 
-  if (chunkList.length === 0) {
+  if (chunkList.length === 0 && !autoGenerating) {
     return (
       <EmptyState
         icon={<Mic size={24} />}
@@ -291,6 +298,8 @@ export function PracticeModule({ selectedChunks, chunks, allProgress, onProgress
     ? chunks.find(c => c.id === activeChunkId)
     : null;
 
+  const activeSituations = activeChunk ? getSituations(activeChunk.id) : [];
+
   return (
     <div style={{
       display: 'grid',
@@ -300,10 +309,11 @@ export function PracticeModule({ selectedChunks, chunks, allProgress, onProgress
     }}>
       {/* Chunk list sidebar */}
       <div className="flex flex-col gap-2">
-        <p className="label mb-1">Selected Chunks ({chunkList.length})</p>
+        <p className="label mb-1">Chunks ({chunkList.length})</p>
         {chunkList.map((chunk) => {
           const prog = allProgress[chunk.id];
           const isActive = activeChunkId === chunk.id;
+          const hasSituations = getSituations(chunk.id).length > 0;
           return (
             <button
               key={chunk.id}
@@ -314,18 +324,22 @@ export function PracticeModule({ selectedChunks, chunks, allProgress, onProgress
                 borderColor: isActive ? 'var(--accent-400)' : 'var(--border-subtle)',
                 background: isActive ? 'rgba(99,102,241,0.15)' : 'var(--bg-surface)',
                 color: 'var(--text-primary)',
+                opacity: (!hasSituations && autoGenerating) ? 0.5 : 1,
+                transition: 'opacity 0.3s',
               }}
               onClick={() => setActiveChunkId(chunk.id)}
             >
               <div className="flex items-center gap-2 flex-wrap justify-between">
                 <span style={{
-                  fontWeight: 600,
-                  fontSize: 14,
-                  color: isActive ? 'var(--accent-300)' : 'var(--text-primary)'
+                  fontWeight: 600, fontSize: 14,
+                  color: isActive ? 'var(--accent-300)' : 'var(--text-primary)',
                 }}>
                   {chunk.phrase}
                 </span>
-                {prog && <Badge type="success">✓</Badge>}
+                <div style={{ display: 'flex', gap: 4 }}>
+                  {!hasSituations && autoGenerating && <Spinner size={12} />}
+                  {prog && <Badge type="success">✓</Badge>}
+                </div>
               </div>
               <div className="mt-1">
                 <Badge type={chunk.type}>{CHUNK_TYPE_LABELS[chunk.type] || chunk.type}</Badge>
@@ -337,20 +351,30 @@ export function PracticeModule({ selectedChunks, chunks, allProgress, onProgress
 
       {/* Practice area */}
       <div>
-        {activeChunk ? (
+        {activeChunk && activeSituations.length > 0 ? (
           <PracticeSession
             key={activeChunk.id}
             chunk={activeChunk}
-            situations={getSituations(activeChunk.id)}
+            situations={activeSituations}
             progress={allProgress[activeChunk.id] || null}
             onComplete={handleComplete}
             onToast={onToast}
           />
+        ) : autoGenerating ? (
+          <div className="card" style={{ padding: 40, textAlign: 'center' }}>
+            <Spinner size={36} />
+            <p style={{ marginTop: 16, color: 'var(--text-secondary)', fontWeight: 600 }}>
+              Đang sinh câu luyện tập…
+            </p>
+            <p style={{ marginTop: 8, color: 'var(--text-muted)', fontSize: 13 }}>
+              {autoGenProgress.done} / {autoGenProgress.total} chunk xong
+            </p>
+          </div>
         ) : (
           <EmptyState
             icon={<Mic size={24} />}
-            title="Chọn một chunk để bắt đầu"
-            description="Bấm vào chunk bên trái để luyện nói."
+            title="Chưa có câu luyện tập"
+            description="Chunk này chưa được sinh câu. Vào Chunks → bấm nút luyện tập."
           />
         )}
       </div>
