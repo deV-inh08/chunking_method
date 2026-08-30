@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, Layers, Zap, CheckSquare, Square, BookOpen } from 'lucide-react';
+import { ChevronDown, ChevronUp, Layers, PenLine, CheckSquare, Square, BookOpen } from 'lucide-react';
 import { EmptyState, Badge, SkeletonCard } from '../ui';
-import { generateSituations } from '../../services/ai';
+import { generateWritingExercises } from '../../services/ai';
 import { getApiKey } from '../../store/storage';
 
 const CHUNK_TYPE_LABELS = {
@@ -138,16 +138,16 @@ function ChunkCard({ chunk, selected, onToggle, progress, generatingSit, onGener
           )}
         </div>
 
-        {/* Generate button */}
+        {/* Generate writing exercises button */}
         <button
-          id={`gen-situations-${chunk.id}`}
+          id={`gen-exercises-${chunk.id}`}
           className="btn btn-secondary btn-sm"
           style={{ flexShrink: 0 }}
           onClick={() => onGenerate(chunk)}
           disabled={generatingSit}
-          title="Sinh tình huống luyện tập"
+          title="Sinh bài luyện viết"
         >
-          {generatingSit ? '⏳' : <><Zap size={13} /> Practice</>}
+          {generatingSit ? '⏳' : <><PenLine size={13} /> Luyện viết</>}
         </button>
       </div>
     </div>
@@ -186,16 +186,16 @@ export function ChunkModule({
 
     setGenId(chunk.id);
     try {
-      const result = await generateSituations(chunk, apiKey);
-      const situations = (result.situations || []).map((s, i) => ({
-        ...s,
-        id: s.id || `sit_${chunk.id}_${i}`,
+      const result = await generateWritingExercises(chunk, apiKey);
+      const exercises = (result.exercises || []).map((ex, i) => ({
+        ...ex,
+        id: ex.id || `ex_${chunk.id}_${i}`,
         chunkId: chunk.id,
       }));
-      onSituationsGenerated(chunk.id, situations);
-      onToast('success', `Đã sinh ${situations.length} tình huống cho "${chunk.phrase}"`);
+      onSituationsGenerated(chunk.id, exercises);
+      onToast('success', `Đã sinh ${exercises.length} bài luyện viết cho "${chunk.phrase}"`);
     } catch (err) {
-      onToast('error', `Lỗi sinh tình huống: ${err.message}`);
+      onToast('error', `Lỗi sinh bài luyện: ${err.message}`);
     } finally {
       setGenId(null);
     }
@@ -293,8 +293,8 @@ export function ChunkModule({
             className="btn btn-primary"
             onClick={onStartPractice}
           >
-            <Zap size={15} />
-            Practice {selectedCount} chunk{selectedCount > 1 ? 's' : ''}
+            <PenLine size={15} />
+            Luyện viết {selectedCount} chunk{selectedCount > 1 ? 's' : ''}
           </button>
         )}
       </div>

@@ -9,7 +9,7 @@ import { AuthScreen } from './components/Auth';
 import { Toast, Spinner } from './components/ui';
 import { useTranscripts, useSettings, useProgress } from './hooks/useStorage';
 import { useAuth } from './hooks/useAuth';
-import { generateSituations } from './services/ai';
+import { generateWritingExercises } from './services/ai';
 import { isSupabaseConfigured } from './services/supabase';
 import * as storage from './store/storage';
 
@@ -92,7 +92,7 @@ export default function App() {
     // Auto-select all new chunks
     setSelectedChunks(new Set(chunks.map(c => c.id)));
 
-    // Auto-generate situations for all chunks
+    // Auto-generate writing exercises for all chunks
     const apiKey = storage.getApiKey();
     if (apiKey && chunks.length > 0) {
       setAutoGenerating(true);
@@ -102,13 +102,13 @@ export default function App() {
       // Sequential with progress (avoids rate-limit issues)
       for (const chunk of chunks) {
         try {
-          const result = await generateSituations(chunk, apiKey);
-          const situations = (result.situations || []).map((s, i) => ({
-            ...s,
-            id: s.id || `sit_${chunk.id}_${i}`,
+          const result = await generateWritingExercises(chunk, apiKey);
+          const exercises = (result.exercises || []).map((ex, i) => ({
+            ...ex,
+            id: ex.id || `ex_${chunk.id}_${i}`,
             chunkId: chunk.id,
           }));
-          storage.saveSituations(chunk.id, situations);
+          storage.saveSituations(chunk.id, exercises);
         } catch (err) {
           console.error(`Auto-gen failed for "${chunk.phrase}":`, err);
         }
@@ -144,11 +144,11 @@ export default function App() {
     setPage('practice');
   }, []);
 
-  // ── Progress handler ─────────────────────────────────────────
-  const handleProgressUpdate = useCallback((chunkId, matched) => {
-    updateProgress(chunkId, matched);
-    if (matched) {
-      addToast('success', 'Chunk match! Tiến độ đã được lưu. 🎉');
+  // ── Progress handler ─────────────────────────────────
+  const handleProgressUpdate = useCallback((chunkId, success, score = null, feedback = null) => {
+    updateProgress(chunkId, success, score, feedback);
+    if (success) {
+      addToast('success', 'Dịch đúng chunk! Tiến độ đã được lưu. 🎉');
     }
   }, [updateProgress, addToast]);
 
@@ -235,7 +235,7 @@ export default function App() {
           }}>
             <Spinner size={16} />
             <span style={{ fontSize: 13, color: 'var(--accent-300)', fontWeight: 600 }}>
-              Đang sinh câu luyện tập…
+              Đang sinh bài luyện viết…
             </span>
             <div style={{ flex: 1, height: 4, background: 'rgba(255,255,255,0.1)', borderRadius: 99 }}>
               <div style={{

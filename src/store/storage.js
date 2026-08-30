@@ -117,7 +117,7 @@ export function deleteSituations(chunkId) {
 }
 
 // ─── Progress ─────────────────────────────────────────────────
-export function updateProgress(chunkId, result) {
+export function updateProgress(chunkId, result, score = null, feedback = null) {
   const all = get(KEYS.progress) || {};
   const prev = all[chunkId] || { practiceCount: 0, successCount: 0 };
   const updated = {
@@ -126,6 +126,8 @@ export function updateProgress(chunkId, result) {
     successCount:  result ? prev.successCount + 1 : prev.successCount,
     lastPracticed: Date.now(),
     lastResult:    result,
+    lastScore:     score,
+    lastFeedback:  feedback,
   };
   all[chunkId] = updated;
   set(KEYS.progress, all);
