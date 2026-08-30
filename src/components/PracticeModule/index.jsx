@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { PenLine, ChevronRight, ChevronLeft, RotateCcw, Eye, EyeOff,
-         CheckCircle, XCircle, AlertCircle, Sparkles, Loader } from 'lucide-react';
+import { PenLine, ChevronRight, ChevronLeft, RotateCcw,
+         CheckCircle, XCircle, Sparkles, Loader } from 'lucide-react';
 import { EmptyState, Badge, Spinner } from '../ui';
 import { getSituations } from '../../store/storage';
 import { gradeWriting } from '../../services/ai';
 import { getApiKey } from '../../store/storage';
+
 
 const CHUNK_TYPE_LABELS = {
   collocation: 'Collocation',
@@ -146,22 +147,56 @@ function GradingResult({ result, chunkPhrase }) {
   );
 }
 
+// ─── VocabHints ───────────────────────────────────────────────
+function VocabHints({ hints = [] }) {
+  if (!hints || hints.length === 0) return null;
+  return (
+    <div
+      className="animate-fade-in"
+      style={{
+        display: 'flex', flexWrap: 'wrap', gap: 6,
+        marginTop: 8,
+      }}
+    >
+      <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted)', alignSelf: 'center', marginRight: 2 }}>
+        💬 Gợi ý:
+      </span>
+      {hints.map((h, i) => (
+        <span
+          key={i}
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 4,
+            background: 'rgba(251,191,36,0.08)',
+            border: '1px solid rgba(251,191,36,0.2)',
+            borderRadius: 'var(--radius-full)',
+            padding: '3px 10px',
+            fontSize: 12,
+          }}
+        >
+          <span style={{ color: 'var(--text-secondary)' }}>{h.vi}</span>
+          <span style={{ color: 'var(--text-muted)' }}>→</span>
+          <span style={{ color: '#fbbf24', fontWeight: 600 }}>{h.en}</span>
+        </span>
+      ))}
+    </div>
+  );
+}
+
 // ─── WritingSession ───────────────────────────────────────────
 function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
   const [exIndex,       setExIndex]      = useState(0);
   const [userInput,     setUserInput]    = useState('');
   const [grading,       setGrading]      = useState(false);
   const [gradingResult, setGradingResult] = useState(null);
-  const [showSample,    setShowSample]   = useState(false);
   const textareaRef = useRef(null);
 
   const exercise = exercises[exIndex];
+  const hasTyped = userInput.trim().length > 0;
 
   // Reset state when switching exercises or chunks
   useEffect(() => {
     setUserInput('');
     setGradingResult(null);
-    setShowSample(false);
     setTimeout(() => textareaRef.current?.focus(), 50);
   }, [exIndex, chunk.id]);
 
@@ -190,16 +225,11 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
   const handleReset = () => {
     setUserInput('');
     setGradingResult(null);
-    setShowSample(false);
     setTimeout(() => textareaRef.current?.focus(), 50);
   };
 
-  const handleNext = () => {
-    setExIndex(i => Math.min(i + 1, exercises.length - 1));
-  };
-  const handlePrev = () => {
-    setExIndex(i => Math.max(i - 1, 0));
-  };
+  const handleNext = () => setExIndex(i => Math.min(i + 1, exercises.length - 1));
+  const handlePrev = () => setExIndex(i => Math.max(i - 1, 0));
 
   if (!exercise) {
     return (
@@ -260,7 +290,11 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
           }}>
             {exercise.vietnameseSentence}
           </div>
-          <p style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 6 }}>
+
+          {/* Vocab hints — shown when AI provides them */}
+          <VocabHints hints={exercise.vocabHints} />
+
+          <p style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 8 }}>
             💡 Dùng chunk <strong style={{ color: 'var(--accent-300)' }}>"{chunk.phrase}"</strong> trong câu dịch
           </p>
         </div>
@@ -277,53 +311,16 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
             value={userInput}
             onChange={e => setUserInput(e.target.value)}
             disabled={grading}
-            onKeyDown={e => {
-              if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) handleGrade();
-            }}
             style={{ resize: 'vertical', minHeight: 90 }}
           />
-          <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 4 }}>
-            Ctrl + Enter để chấm bài nhanh
-          </p>
         </div>
 
-        {/* Action buttons */}
-        <div className="flex gap-2 flex-wrap">
-          <button
-            id={`grade-btn-${chunk.id}`}
-            className="btn btn-primary"
-            style={{ flex: 1, minWidth: 140 }}
-            onClick={handleGrade}
-            disabled={grading || !userInput.trim()}
-          >
-            {grading
-              ? <><Loader size={15} style={{ animation: 'spin 1s linear infinite' }} /> Đang chấm…</>
-              : <><Sparkles size={15} /> Chấm bài AI</>
-            }
-          </button>
-
-          <button
-            id={`sample-btn-${chunk.id}`}
-            className="btn btn-secondary"
-            onClick={() => setShowSample(s => !s)}
-            title="Xem câu dịch mẫu"
-          >
-            {showSample ? <><EyeOff size={14} /> Ẩn mẫu</> : <><Eye size={14} /> Xem câu mẫu</>}
-          </button>
-
-          {gradingResult && (
-            <button className="btn btn-ghost btn-icon" onClick={handleReset} title="Làm lại">
-              <RotateCcw size={15} />
-            </button>
-          )}
-        </div>
-
-        {/* Sample answer */}
-        {showSample && exercise.sampleTranslation && (
+        {/* Sample translation — always visible once user has typed */}
+        {hasTyped && exercise.sampleTranslation && (
           <div
             className="animate-fade-in"
             style={{
-              marginTop: 14,
+              marginBottom: 14,
               background: 'rgba(34,197,94,0.06)',
               border: '1px solid rgba(34,197,94,0.2)',
               borderRadius: 'var(--radius-sm)',
@@ -331,20 +328,51 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
             }}
           >
             <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--success-text)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-              ✅ Câu dịch mẫu tham khảo
+              ✅ Câu dịch tham khảo
             </p>
             <p style={{ fontSize: 14, color: 'var(--text-primary)', lineHeight: 1.6, margin: 0, fontStyle: 'italic' }}>
               "{exercise.sampleTranslation}"
             </p>
           </div>
         )}
+
+        {/* Action buttons */}
+        <div className="flex gap-2 flex-wrap">
+          {/* AI grading — optional, secondary */}
+          <button
+            id={`grade-btn-${chunk.id}`}
+            className="btn btn-secondary"
+            style={{ flex: 1, minWidth: 140 }}
+            onClick={handleGrade}
+            disabled={grading || !hasTyped}
+            title="Nhờ AI phân tích chi tiết: điểm, lỗi ngữ pháp, gợi ý"
+          >
+            {grading
+              ? <><Loader size={15} style={{ animation: 'spin 1s linear infinite' }} /> Đang chấm…</>
+              : <><Sparkles size={15} /> Chấm bài bằng AI</>
+            }
+          </button>
+
+          {hasTyped && (
+            <button className="btn btn-ghost btn-icon" onClick={handleReset} title="Làm lại">
+              <RotateCcw size={15} />
+            </button>
+          )}
+        </div>
+
+        {!hasTyped && (
+          <p style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 8, textAlign: 'center' }}>
+            Gõ bản dịch để xem câu tham khảo · Bấm "Chấm bài bằng AI" để nhận phân tích chi tiết
+          </p>
+        )}
       </div>
 
-      {/* Grading result */}
+      {/* Grading result — only shown after AI grading */}
       <GradingResult result={gradingResult} chunkPhrase={chunk.phrase} />
     </div>
   );
 }
+
 
 // ─── PracticeModule (main export) ─────────────────────────────
 export function PracticeModule({

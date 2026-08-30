@@ -149,7 +149,10 @@ Trả về JSON:
     {
       "id": "ex_1",
       "vietnameseSentence": "Câu tiếng Việt hoàn chỉnh, TỰ NHIÊN, tình huống HOÀN TOÀN KHÁC bài gốc, khi dịch sang Anh PHẢI dùng chunk '${chunk.phrase}'",
-      "sampleTranslation": "Câu dịch mẫu tiếng Anh tham khảo có dùng đúng chunk '${chunk.phrase}'"
+      "sampleTranslation": "Câu dịch mẫu tiếng Anh tham khảo có dùng đúng chunk '${chunk.phrase}'",
+      "vocabHints": [
+        { "vi": "từ/cụm tiếng Việt khó dịch", "en": "English equivalent" }
+      ]
     }
   ]
 }
@@ -158,11 +161,13 @@ Trả về JSON:
 Quy tắc bắt buộc:
 - vietnameseSentence: câu tiếng Việt hoàn chỉnh, tự nhiên, bối cảnh KHÁC transcript gốc (không phải văn phòng/họp hành nếu gốc là vậy). Ví dụ: du lịch, mua sắm, y tế, nhà hàng, học tập...
 - sampleTranslation: câu tiếng Anh chuẩn, tự nhiên, BẮT BUỘC có chunk "${chunk.phrase}"
+- vocabHints: CHỈ liệt kê các từ/cụm THỰC SỰ khó dịch trong câu (từ chuyên ngành, thành ngữ, cụm từ ít gặp). Nếu câu đơn giản thì để mảng rỗng []. Tối đa 4 hints/câu. KHÔNG hint chunk mục tiêu vì đã biết rồi.
 - 3 bài có 3 bối cảnh khác nhau và khác câu gốc
 - id: ex_1, ex_2, ex_3`;
 
   return callGemini(apiKey, systemPrompt, userMessage);
 }
+
 
 // ─── Grade a user's translation attempt ───────────────────────
 export async function gradeWriting(chunk, vietnameseSentence, userTranslation, apiKey) {
