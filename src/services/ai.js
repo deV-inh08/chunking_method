@@ -156,12 +156,20 @@ Quy tắc bắt buộc:
 }
 
 // ─── Generate writing exercises for a chunk ──────────────────
-export async function generateWritingExercises(chunk, apiKey) {
-  const systemPrompt = `Bạn là chuyên gia thiết kế bài luyện dịch tiếng Anh cho người học TOEIC.
+//
+// options.mode:
+//   'level'     — 3 bài theo 3 độ khó (Cơ bản / Trung cấp / Nâng cao) [default]
+//   'situation' — 2-3 bài theo tình huống thực tế khác nhau (dùng cho vocab chunks)
+export async function generateWritingExercises(chunk, apiKey, options = {}) {
+  const mode = options.mode || 'level';
+
+  // ── MODE: level (luồng transcript gốc — không thay đổi) ──────
+  if (mode === 'level') {
+    const systemPrompt = `Bạn là chuyên gia thiết kế bài luyện dịch tiếng Anh cho người học TOEIC.
 Nhiệm vụ: Tạo 3 bài luyện dịch Việt → Anh với 3 độ khó khác nhau, giúp người học sử dụng thành thạo chunk và hiểu rõ ngữ pháp thì (tense) trong giao tiếp thực tế.
 Trả về JSON hợp lệ, không có text nào khác ngoài JSON.`;
 
-  const userMessage = `Tạo 3 bài luyện dịch theo 3 độ khó cho chunk sau:
+    const userMessage = `Tạo 3 bài luyện dịch theo 3 độ khó cho chunk sau:
 
 CHUNK: "${chunk.phrase}"
 NGHĨA TIẾNG VIỆT: ${chunk.meaningVi}
@@ -250,6 +258,119 @@ Quy tắc bắt buộc:
   - note: 1 câu tiếng Việt giải thích TẠI SAO dùng từ này (sở hữu từ, giới từ, mạo từ, collocation…). Nhấn mạnh điểm người Việt hay nhầm.
   - Ví dụ tốt: {"phrase": "our vacation", "vi": "kỳ nghỉ của chúng tôi", "note": "Tiếng Anh bắt buộc dùng 'our' trước danh từ khi chỉ về đối tượng của nhóm người nói — tiếng Việt thường bỏ qua đại từ sở hữu này."}
 - Độ khó phải THỰC SỰ khác nhau về độ dài và cấu trúc ngữ pháp`;
+
+    return callGemini(apiKey, systemPrompt, userMessage);
+  }
+
+  // ── MODE: situation (vocab chunks — 2-3 tình huống thực tế) ──
+  const systemPrompt = `Bạn là chuyên gia thiết kế bài luyện dịch tiếng Anh cho người học.
+Nhiệm vụ: Tạo 2-3 bài luyện dịch Việt → Anh theo các TÌNH HUỐNG THỰC TẾ KHÁC NHAU (không phải theo độ khó), giúp người học dùng chunk tự nhiên trong cuộc sống.
+Trả về JSON hợp lệ, không có text nào khác ngoài JSON.`;
+
+  const userMessage = `Tạo 2-3 bài luyện dịch theo tình huống thực tế cho chunk sau:
+
+CHUNK: "${chunk.phrase}"
+NGHĨA TIẾNG VIỆT: ${chunk.meaningVi}
+
+Trả về JSON:
+\`\`\`json
+{
+  "exercises": [
+    {
+      "id": "ex_1",
+      "level": 1,
+      "levelLabel": "Tại văn phòng",
+      "vietnameseSentence": "Câu tiếng Việt có dấu đầy đủ, tự nhiên, bối cảnh văn phòng / công việc. Bắt buộc dùng chunk.",
+      "sampleTranslation": "Câu tiếng Anh có chunk mục tiêu.",
+      "tenseUsed": "Present Simple",
+      "tenseExplanation": "Dùng thì này vì … (1 câu tiếng Việt)",
+      "vocabHints": [],
+      "sentenceBreakdown": [
+        {
+          "phrase": "cụm từ trong sampleTranslation",
+          "vi": "nghĩa tiếng Việt của cụm đó",
+          "note": "Giải thích ngắn tại sao dùng từ/cấu trúc này"
+        }
+      ]
+    },
+    {
+      "id": "ex_2",
+      "level": 2,
+      "levelLabel": "Khi đi du lịch",
+      "vietnameseSentence": "Câu tiếng Việt bối cảnh du lịch / cuộc sống hàng ngày. Bắt buộc dùng chunk.",
+      "sampleTranslation": "Câu tiếng Anh có chunk mục tiêu.",
+      "tenseUsed": "Past Simple",
+      "tenseExplanation": "Dùng thì này vì …",
+      "vocabHints": [{ "vi": "từ khó", "en": "English" }],
+      "sentenceBreakdown": []
+    },
+    {
+      "id": "ex_3",
+      "level": 3,
+      "levelLabel": "Trong cuộc trò chuyện",
+      "vietnameseSentence": "Câu tiếng Việt bối cảnh xã hội / học tập / gia đình. Bắt buộc dùng chunk.",
+      "sampleTranslation": "Câu tiếng Anh có chunk mục tiêu.",
+      "tenseUsed": "Present Perfect",
+      "tenseExplanation": "Dùng thì này vì …",
+      "vocabHints": [],
+      "sentenceBreakdown": []
+    }
+  ]
+}
+\`\`\`
+
+Quy tắc bắt buộc:
+- levelLabel: tên TÌNH HUỐNG thực tế (Tại văn phòng / Khi đi du lịch / Tại nhà hàng / Khi mua sắm / Trong lớp học / Khi đi khám bệnh / Trong cuộc trò chuyện...) — KHÔNG phải tên độ khó
+- sampleTranslation: BẮT BUỘC chứa chunk "${chunk.phrase}" (có thể chia động từ phù hợp thì)
+- 2-3 câu với 2-3 tình huống HOÀN TOÀN KHÁC NHAU
+- vietnameseSentence: câu TIẾNG VIỆT có dấu đầy đủ, tự nhiên
+- tenseUsed: tên thì tiếng Anh
+- tenseExplanation: 1 câu tiếng Việt, giải thích TẠI SAO dùng thì đó
+- sentenceBreakdown: phân tích 2-4 cụm quan trọng, KHÔNG phân tích bản thân chunk mục tiêu
+  - note: nhấn mạnh điểm ngữ pháp người Việt hay nhầm`;
+
+  return callGemini(apiKey, systemPrompt, userMessage);
+}
+
+
+// ─── Generate chunks from a single vocabulary word ─────────────
+// Dùng cho fallback trong app khi từ chưa được batch-generate sẵn.
+// Không có originalSentence (không có transcript gốc).
+export async function generateChunksFromWord(word, meaningVi, topic, partOfSpeech, apiKey) {
+  const systemPrompt = `Bạn là chuyên gia giảng dạy tiếng Anh, chuyên tạo chunk (cụm từ) có giá trị giao tiếp cao.
+Nhiệm vụ: Với từ vựng được cung cấp, sinh 2-3 chunk (cụm từ/cấu trúc) thực tế dùng từ đó.
+Trả về JSON hợp lệ, không có text nào khác ngoài JSON.`;
+
+  const userMessage = `Sinh 2-3 chunk thực tế cho từ vựng sau:
+
+TỪ: "${word}"
+NGHĨA TIẾNG VIỆT: ${meaningVi}
+LOẠI TỪ: ${partOfSpeech || 'không rõ'}
+CHỦ ĐỀ: ${topic}
+
+Trả về JSON:
+\`\`\`json
+{
+  "chunks": [
+    {
+      "phrase": "cụm từ tiếng Anh thực tế (ví dụ: nếu word là 'run' thì 'run a meeting')",
+      "meaningVi": "Nghĩa tiếng Việt đầy đủ của CỤM TỪ này (không phải của từ đơn)",
+      "usageNote": "Giải thích ngắn bằng tiếng Việt: cách dùng, ngữ cảnh điển hình, điểm đặc biệt (1-2 câu)",
+      "anotherExample": "Câu ví dụ hoàn chỉnh, tự nhiên, dùng chunk này trong 1 tình huống thực tế",
+      "type": "collocation",
+      "formality": "neutral"
+    }
+  ]
+}
+\`\`\`
+
+Quy tắc bắt buộc:
+- 2-3 chunk (không ít hơn 2, không nhiều hơn 3)
+- phrase: CỤM TỪ thực tế hay dùng, KHÔNG chỉ là từ đơn lẻ, phải chứa từ "${word}" hoặc dạng biến thể
+- KHÔNG có field "originalSentence"
+- type: "collocation" | "functional" | "connector"
+- formality: "formal" | "informal" | "neutral"
+- anotherExample: câu đầy đủ, tự nhiên, bối cảnh thực tế phù hợp chủ đề ${topic}`;
 
   return callGemini(apiKey, systemPrompt, userMessage);
 }

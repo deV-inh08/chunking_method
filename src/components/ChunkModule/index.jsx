@@ -57,6 +57,10 @@ function ChunkCard({ chunk, selected, onToggle, progress, generatingSit, onGener
             {chunk.formality && chunk.formality !== 'neutral' && (
               <Badge type="neutral">{chunk.formality}</Badge>
             )}
+            {/* Nguồn vocab: hiện từ gốc nếu chunk được sinh từ từ vựng */}
+            {chunk.sourceType === 'vocab' && chunk.sourceWord && (
+              <Badge type="neutral">📖 {chunk.sourceWord}</Badge>
+            )}
             {progress && (
               <Badge type="success">✓ {progress.practiceCount}×</Badge>
             )}

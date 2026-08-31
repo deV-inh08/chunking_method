@@ -3,6 +3,7 @@ import {
   authSignIn,
   authSignUp,
   authSignOut,
+  authResend,
   authGetSession,
   authOnChange,
   isSupabaseConfigured,
@@ -46,12 +47,17 @@ export function useAuth() {
   const signOut = async () => {
     await authSignOut();
     setUser(null);
-    // Clear local cache so we don't show stale data
+    // Clear local cache so we don't show stale data when another user logs in
     localStorage.removeItem('toeic_transcripts');
     localStorage.removeItem('toeic_chunks');
     localStorage.removeItem('toeic_situations');
     localStorage.removeItem('toeic_progress');
+    localStorage.removeItem('toeic_vocab_cache'); // vocab cache
   };
 
-  return { user, loading, signIn, signUp, signOut };
+  const resendConfirm = async (email) => {
+    await authResend(email);
+  };
+
+  return { user, loading, signIn, signUp, signOut, resendConfirm };
 }

@@ -75,6 +75,14 @@ export async function authSignOut() {
   await client.auth.signOut();
 }
 
+// Resend xác nhận email (khi user chưa confirm sau khi đăng ký)
+export async function authResend(email) {
+  const client = getSupabaseClient();
+  if (!client) throw new Error('Supabase chưa được cấu hình. Vào Settings để nhập URL & Key.');
+  const { error } = await client.auth.resend({ type: 'signup', email });
+  if (error) throw error;
+}
+
 export async function authGetSession() {
   const client = getSupabaseClient();
   if (!client) return null;
@@ -125,7 +133,7 @@ export async function dbSaveChunks(chunks) {
   const rows = chunks.map(c => ({
     id: c.id,
     user_id: userId,
-    transcript_id: c.transcriptId,
+    transcript_id: c.transcriptId || null,
     phrase: c.phrase,
     type: c.type,
     meaning_vi: c.meaningVi || '',
@@ -135,6 +143,10 @@ export async function dbSaveChunks(chunks) {
     formality: c.formality || 'neutral',
     group_id: c.groupId || '',
     group_name: c.groupName || '',
+    // Vocab fields (null for transcript chunks)
+    source_type:    c.sourceType    || 'transcript',
+    source_word_id: c.sourceWordId  || null,
+    topic:          c.topic         || null,
   }));
 
   const { error } = await client.from('chunks').upsert(rows);
@@ -168,15 +180,20 @@ export async function dbSaveProgress(progressItem) {
   const client = getSupabaseClient();
   if (!client || !progressItem) return;
   const userId = await getCurrentUserId();
+  if (!userId) return; // không lưu khi chưa đăng nhập
 
   const { error } = await client.from('progress').upsert({
-    chunk_id: progressItem.chunkId,
-    user_id: userId,
+    chunk_id:       progressItem.chunkId,
+    user_id:        userId,
     practice_count: progressItem.practiceCount,
-    success_count: progressItem.successCount,
+    success_count:  progressItem.successCount,
     last_practiced: progressItem.lastPracticed,
-    last_result: progressItem.lastResult,
-  });
+    last_result:    progressItem.lastResult,
+    last_score:     progressItem.lastScore    ?? null,
+    last_feedback:  progressItem.lastFeedback
+      ? JSON.stringify(progressItem.lastFeedback)
+      : null,
+  }, { onConflict: 'user_id,chunk_id' }); // composite PK sau migration
   if (error) console.error('Supabase save progress error:', error);
 }
 

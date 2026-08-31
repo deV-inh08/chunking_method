@@ -6,6 +6,7 @@ import {
   dbSaveProgress,
   dbFetchAllData,
   isSupabaseConfigured,
+  getSupabaseClient,
 } from '../services/supabase';
 
 // ─── Storage keys ─────────────────────────────────────────────
@@ -15,6 +16,7 @@ const KEYS = {
   situations:  'toeic_situations',
   progress:    'toeic_progress',
   settings:    'toeic_settings',
+  vocabCache:  'toeic_vocab_cache',   // cache danh sách từ vựng (fetch 1 lần từ Supabase)
 };
 
 // ─── Helpers ──────────────────────────────────────────────────
@@ -200,4 +202,106 @@ export async function syncFromSupabase() {
   }
 
   return true;
+}
+
+// ─── Vocab Words ────────────────────────────────────────────────
+
+/**
+ * Lưu cache danh sách từ vựng vào localStorage để tránh fetch lại Supabase liên tục.
+ * Dữ liệu có dạng: { words: [...], fetchedAt: timestamp }
+ */
+export function cacheVocabWords(words) {
+  set(KEYS.vocabCache, { words, fetchedAt: Date.now() });
+}
+
+/**
+ * Đọc danh sách từ vựng từ cache localStorage.
+ * topic: optional string — nếu truyền vào sẽ filter theo topic.
+ * maxAgeMs: thời gian cache hợp lệ (default 1 giờ). Sau đó cần refetch.
+ */
+export function getCachedVocabWords(topic = null, maxAgeMs = 60 * 60 * 1000) {
+  const cache = get(KEYS.vocabCache);
+  if (!cache || !cache.words) return null;
+  if (Date.now() - cache.fetchedAt > maxAgeMs) return null; // hết hạn
+  if (topic) return cache.words.filter(w => w.topic === topic);
+  return cache.words;
+}
+
+/**
+ * Fetch danh sách từ vựng từ bảng vocab_words trong Supabase.
+ * Kết quả được cache vào localStorage sau khi fetch xong.
+ * Nếu Supabase chưa cấu hình, trả về null.
+ */
+export async function fetchVocabWordsFromSupabase(topic = null) {
+  const client = getSupabaseClient();
+  if (!client) return null;
+
+  try {
+    let query = client
+      .from('vocab_words')
+      .select('id, word, meaning_vi, topic, part_of_speech, status')
+      .in('status', ['generated', 'reviewed'])  // chỉ lấy từ đã được xử lý
+      .order('word', { ascending: true });
+
+    if (topic) query = query.eq('topic', topic);
+
+    const { data, error } = await query;
+    if (error) {
+      console.error('Fetch vocab_words error:', error);
+      return null;
+    }
+
+    // Normalize snake_case → camelCase cho app
+    const words = (data || []).map(w => ({
+      id:           w.id,
+      word:         w.word,
+      meaningVi:    w.meaning_vi,
+      topic:        w.topic,
+      partOfSpeech: w.part_of_speech,
+      status:       w.status,
+    }));
+
+    // Cache toàn bộ (không cache từng topic riêng)
+    if (!topic) cacheVocabWords(words);
+    return words;
+  } catch (err) {
+    console.error('fetchVocabWordsFromSupabase error:', err);
+    return null;
+  }
+}
+
+// ─── Vocab Chunks ────────────────────────────────────────────────
+
+/**
+ * Lưu chunks sinh từ từ vựng vào chunk store chung.
+ * Dùng wordId làm key (thay cho transcriptId), giữ nguyên API của getChunks / getAllChunks.
+ * Mỗi chunk được đánh dấu: sourceType: 'vocab', sourceWordId, sourceWord, topic.
+ */
+export function saveVocabChunks(wordId, word, topic, chunks) {
+  // Gán thêm metadata nguồn gốc cho từng chunk
+  const annotated = chunks.map(c => ({
+    ...c,
+    sourceType:   'vocab',
+    sourceWordId: wordId,
+    sourceWord:   word,     // từ gốc dạng text — dùng hiển thị badge
+    topic,
+    // Group vocab chunks theo từ gốc
+    groupId:   `vocab_${wordId}`,
+    groupName: word,
+  }));
+  saveChunks(wordId, annotated);
+}
+
+/**
+ * Lấy chunks của 1 từ vựng cụ thể.
+ */
+export function getVocabChunks(wordId) {
+  return getChunks(wordId);
+}
+
+/**
+ * Kiểm tra 1 từ đã có chunk chưa.
+ */
+export function wordHasChunks(wordId) {
+  return getChunks(wordId).length > 0;
 }

@@ -215,10 +215,17 @@ export function ProgressModule({ allProgress, chunks, transcripts = [], onReprac
   const transcriptMap = {};
   transcripts.forEach(t => { transcriptMap[t.id] = t; });
 
-  // Group chunks by their transcriptId
-  const groupMap = new Map(); // key: transcriptId | 'unknown'
+  // Build a map: transcriptId | vocab_topic_{topic} | 'unknown'
+  const groupMap = new Map();
   chunksWithProgress.forEach(({ chunk, progress }) => {
-    const tId  = chunk.transcriptId || 'unknown';
+    let tId;
+    if (chunk.transcriptId) {
+      tId = chunk.transcriptId;
+    } else if (chunk.sourceType === 'vocab') {
+      tId = `vocab_topic_${chunk.topic || 'misc'}`;
+    } else {
+      tId = 'unknown';
+    }
     if (!groupMap.has(tId)) groupMap.set(tId, []);
     groupMap.get(tId).push({ chunk, progress });
   });
@@ -227,9 +234,15 @@ export function ProgressModule({ allProgress, chunks, transcripts = [], onReprac
   const groups = Array.from(groupMap.entries()).map(([tId, items]) => {
     const transcript = transcriptMap[tId];
     const lastPracticed = Math.max(...items.map(i => i.progress.lastPracticed || 0));
-    const label = transcript
-      ? (transcript.themeVi || transcript.theme || `Đoạn hội thoại ${tId.slice(-4)}`)
-      : 'Không rõ nguồn';
+    let label;
+    if (transcript) {
+      label = transcript.themeVi || transcript.theme || `Đoạn hội thoại ${tId.slice(-4)}`;
+    } else if (tId.startsWith('vocab_topic_')) {
+      const topicName = tId.replace('vocab_topic_', '').replace('misc', 'Chung');
+      label = `📖 Từ vựng: ${topicName}`;
+    } else {
+      label = 'Khác';
+    }
     const date  = transcript ? formatDate(transcript.createdAt) : null;
     return { tId, label, date, items, lastPracticed };
   }).sort((a, b) => b.lastPracticed - a.lastPracticed);
@@ -248,7 +261,9 @@ export function ProgressModule({ allProgress, chunks, transcripts = [], onReprac
         <div>
           <div className="section-title">Chunk Progress</div>
           <div className="section-subtitle">
-            {chunksWithProgress.length} chunks đã luyện · {groups.length} đoạn hội thoại
+            {chunksWithProgress.length} chunks đã luyện ·{' '}
+            {groups.filter(g => !g.tId.startsWith('vocab_topic_')).length} đoạn hội thoại ·{' '}
+            {groups.filter(g => g.tId.startsWith('vocab_topic_')).length} chủ đề từ vựng
           </div>
         </div>
       </div>

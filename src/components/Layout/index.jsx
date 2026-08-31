@@ -1,18 +1,20 @@
 import {
   FileText, Layers, Mic, BarChart2,
-  Settings, ChevronRight, BookOpen, LogOut, User
+  Settings, ChevronRight, BookOpen, LogOut, User, BookMarked
 } from 'lucide-react';
 
 const NAV_ITEMS = [
-  { id: 'transcripts', label: 'Transcripts', icon: FileText },
-  { id: 'chunks',      label: 'Chunks',      icon: Layers   },
-  { id: 'practice',   label: 'Practice',    icon: Mic      },
-  { id: 'progress',   label: 'Progress',    icon: BarChart2 },
+  { id: 'transcripts', label: 'Transcripts', icon: FileText   },
+  { id: 'chunks',      label: 'Chunks',      icon: Layers     },
+  { id: 'vocab',       label: 'Từ vựng',    icon: BookMarked },
+  { id: 'practice',   label: 'Practice',    icon: Mic        },
+  { id: 'progress',   label: 'Progress',    icon: BarChart2  },
 ];
 
 const PAGE_TITLES = {
   transcripts: { title: 'Transcripts',       subtitle: 'Nhập transcript TOEIC và trích xuất chunk' },
   chunks:      { title: 'Chunks',            subtitle: 'Danh sách cụm từ đã phân tích' },
+  vocab:       { title: 'Từ vựng',          subtitle: 'Học 5000 từ theo chủ đề — phân tích chunk & luyện viết' },
   practice:    { title: 'Speaking Practice', subtitle: 'Luyện nói theo câu mẫu' },
   progress:    { title: 'Progress',          subtitle: 'Theo dõi tiến độ học tập' },
 };

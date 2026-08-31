@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { Sidebar, Header, BottomNav } from './components/Layout';
 import { TranscriptModule } from './components/TranscriptModule';
 import { ChunkModule } from './components/ChunkModule';
+import { VocabModule } from './components/VocabModule';
 import { PracticeModule } from './components/PracticeModule';
 import { ProgressModule } from './components/ProgressModule';
 import { SettingsModal } from './components/Settings';
@@ -46,7 +47,7 @@ export default function App() {
   const { toasts, addToast, removeToast } = useToast();
 
   // Auth state
-  const { user, loading: authLoading, signIn, signUp, signOut } = useAuth();
+  const { user, loading: authLoading, signIn, signUp, signOut, resendConfirm } = useAuth();
 
   // Refresh all chunks whenever transcripts change
   useEffect(() => {
@@ -121,6 +122,19 @@ export default function App() {
     }
   }, []);
 
+  // ── Vocab: chunks được sinh từ 1 từ (không auto-navigate sang practice) ──
+  const handleVocabChunksExtracted = useCallback((wordId, chunks) => {
+    storage.saveChunks(wordId, chunks);
+    setAllChunks(storage.getAllChunks());
+    // Không set selectedTranscriptId — vocab chunks hiển chung trong "Tất cả"
+    // Auto-select các chunk mới để có thể luyện ngay
+    setSelectedChunks(prev => {
+      const next = new Set(prev);
+      chunks.forEach(c => next.add(c.id));
+      return next;
+    });
+  }, []);
+
   const handleSelectTranscript = useCallback((id) => {
     setSelectedTranscriptId(id);
     setPage('chunks');
@@ -191,7 +205,7 @@ export default function App() {
   if (isSupabaseConfigured() && !user) {
     return (
       <>
-        <AuthScreen onSignIn={signIn} onSignUp={signUp} />
+        <AuthScreen onSignIn={signIn} onSignUp={signUp} onResendConfirm={resendConfirm} />
         <Toast toasts={toasts} removeToast={removeToast} />
       </>
     );
@@ -281,6 +295,15 @@ export default function App() {
               allProgress={allProgress}
               onToast={addToast}
               onStartPractice={handleStartPractice}
+            />
+          )}
+
+          {page === 'vocab' && (
+            <VocabModule
+              allChunks={allChunks}
+              onChunksExtracted={handleVocabChunksExtracted}
+              onNavigateToChunks={() => setPage('chunks')}
+              onToast={addToast}
             />
           )}
 

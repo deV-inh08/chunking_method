@@ -77,8 +77,9 @@ export function useProgress() {
 
   useEffect(() => { refresh(); }, [refresh]);
 
-  const update = useCallback((chunkId, result) => {
-    storage.updateProgress(chunkId, result);
+  // BUG FIX: trước đây chỉ truyền 2 args, mất score và feedback
+  const update = useCallback((chunkId, success, score = null, feedback = null) => {
+    storage.updateProgress(chunkId, success, score, feedback);
     refresh();
   }, [refresh]);
 
