@@ -295,6 +295,7 @@ export default function App() {
             <ProgressModule
               allProgress={allProgress}
               chunks={allChunks}
+              transcripts={transcripts}
             />
           )}
         </main>

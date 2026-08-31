@@ -1,4 +1,5 @@
-import { BarChart2, TrendingUp, Award, Clock } from 'lucide-react';
+import { useState } from 'react';
+import { BarChart2, TrendingUp, Award, Clock, ChevronDown, ChevronUp, MessageSquare } from 'lucide-react';
 import { EmptyState, Badge } from '../ui';
 
 const CHUNK_TYPE_LABELS = {
@@ -17,6 +18,12 @@ function formatRelativeTime(ts) {
   if (mins < 60)  return `${mins} phút trước`;
   if (hours < 24) return `${hours} giờ trước`;
   return `${days} ngày trước`;
+}
+
+function formatDate(ts) {
+  if (!ts) return '';
+  const d = new Date(ts);
+  return d.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
 }
 
 // ─── Stat card ────────────────────────────────────────────────
@@ -86,8 +93,89 @@ function ChunkProgressCard({ chunk, progress }) {
   );
 }
 
+// ─── TranscriptGroup ──────────────────────────────────────────
+function TranscriptGroup({ groupKey, groupLabel, groupDate, items, defaultOpen = true }) {
+  const [open, setOpen] = useState(defaultOpen);
+
+  const totalPractice = items.reduce((s, { progress }) => s + progress.practiceCount, 0);
+  const avgSuccess    = items.length > 0
+    ? Math.round(items.reduce((s, { progress }) => {
+        const rate = progress.practiceCount > 0
+          ? (progress.successCount / progress.practiceCount) * 100 : 0;
+        return s + rate;
+      }, 0) / items.length)
+    : 0;
+
+  return (
+    <div style={{
+      border: '1px solid var(--border-subtle)',
+      borderRadius: 'var(--radius-lg)',
+      overflow: 'hidden',
+      marginBottom: 16,
+    }}>
+      {/* Group header */}
+      <button
+        id={`progress-group-${groupKey}`}
+        onClick={() => setOpen(o => !o)}
+        style={{
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 12,
+          padding: '14px 18px',
+          background: 'var(--bg-surface)',
+          border: 'none',
+          cursor: 'pointer',
+          textAlign: 'left',
+        }}
+      >
+        <div style={{
+          width: 32, height: 32, borderRadius: 'var(--radius-md)',
+          background: 'linear-gradient(135deg, rgba(99,102,241,0.25), rgba(67,56,202,0.2))',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          flexShrink: 0,
+        }}>
+          <MessageSquare size={14} style={{ color: 'var(--accent-400)' }} />
+        </div>
+
+        <div className="flex-1 min-w-0">
+          <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--text-primary)', marginBottom: 2 }}>
+            {groupLabel}
+          </div>
+          <div style={{ fontSize: 12, color: 'var(--text-muted)', display: 'flex', gap: 10 }}>
+            <span>{items.length} chunks</span>
+            <span>·</span>
+            <span>{totalPractice} lần luyện</span>
+            <span>·</span>
+            <span>{avgSuccess}% thành công</span>
+            {groupDate && (
+              <>
+                <span>·</span>
+                <span>Tạo {groupDate}</span>
+              </>
+            )}
+          </div>
+        </div>
+
+        <div style={{ flexShrink: 0, color: 'var(--text-muted)' }}>
+          {open ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+        </div>
+      </button>
+
+      {/* Chunk cards */}
+      {open && (
+        <div style={{ padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: 10, background: 'var(--bg-base)' }}>
+          {items.map(({ chunk, progress }) => (
+            <ChunkProgressCard key={chunk.id} chunk={chunk} progress={progress} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── ProgressModule (main export) ─────────────────────────────
-export function ProgressModule({ allProgress, chunks }) {
+export function ProgressModule({ allProgress, chunks, transcripts = [] }) {
   const progressEntries = Object.values(allProgress);
   const totalPractice   = progressEntries.reduce((s, p) => s + p.practiceCount, 0);
   const totalSuccess    = progressEntries.reduce((s, p) => s + (p.successCount || 0), 0);
@@ -109,6 +197,30 @@ export function ProgressModule({ allProgress, chunks }) {
     );
   }
 
+  // ── Group by transcript then by date ──────────────────────────
+  // Build a map: transcriptId → transcript info
+  const transcriptMap = {};
+  transcripts.forEach(t => { transcriptMap[t.id] = t; });
+
+  // Group chunks by their transcriptId
+  const groupMap = new Map(); // key: transcriptId | 'unknown'
+  chunksWithProgress.forEach(({ chunk, progress }) => {
+    const tId  = chunk.transcriptId || 'unknown';
+    if (!groupMap.has(tId)) groupMap.set(tId, []);
+    groupMap.get(tId).push({ chunk, progress });
+  });
+
+  // Sort groups: most recently practiced first
+  const groups = Array.from(groupMap.entries()).map(([tId, items]) => {
+    const transcript = transcriptMap[tId];
+    const lastPracticed = Math.max(...items.map(i => i.progress.lastPracticed || 0));
+    const label = transcript
+      ? (transcript.themeVi || transcript.theme || `Đoạn hội thoại ${tId.slice(-4)}`)
+      : 'Không rõ nguồn';
+    const date  = transcript ? formatDate(transcript.createdAt) : null;
+    return { tId, label, date, items, lastPracticed };
+  }).sort((a, b) => b.lastPracticed - a.lastPracticed);
+
   return (
     <div>
       {/* Stats overview */}
@@ -118,17 +230,26 @@ export function ProgressModule({ allProgress, chunks }) {
         <StatCard icon={BarChart2}  label="Lần thành công"       value={totalSuccess}    accent="249,115,22" />
       </div>
 
-      {/* Per-chunk progress */}
-      <div className="section-header">
+      {/* Per-transcript groups */}
+      <div className="section-header" style={{ marginBottom: 16 }}>
         <div>
           <div className="section-title">Chunk Progress</div>
-          <div className="section-subtitle">{chunksWithProgress.length} chunks đã luyện</div>
+          <div className="section-subtitle">
+            {chunksWithProgress.length} chunks đã luyện · {groups.length} đoạn hội thoại
+          </div>
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 stagger-children">
-        {chunksWithProgress.map(({ chunk, progress }) => (
-          <ChunkProgressCard key={chunk.id} chunk={chunk} progress={progress} />
+      <div>
+        {groups.map(({ tId, label, date, items }, i) => (
+          <TranscriptGroup
+            key={tId}
+            groupKey={tId}
+            groupLabel={label}
+            groupDate={date}
+            items={items}
+            defaultOpen={i === 0}
+          />
         ))}
       </div>
     </div>

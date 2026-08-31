@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, Layers, PenLine, CheckSquare, Square, BookOpen } from 'lucide-react';
+import { ChevronDown, ChevronUp, Layers, PenLine, CheckSquare, Square, BookOpen, EyeOff, Eye } from 'lucide-react';
 import { EmptyState, Badge, SkeletonCard } from '../ui';
 import { generateWritingExercises } from '../../services/ai';
 import { getApiKey } from '../../store/storage';
@@ -160,11 +160,18 @@ export function ChunkModule({
   selectedChunks, onToggleChunk, onSituationsGenerated,
   allProgress, onToast, onStartPractice,
 }) {
-  const [filter, setFilter] = useState('all');
-  const [genId,  setGenId]  = useState(null);
+  const [filter, setFilter]           = useState('all');
+  const [genId,  setGenId]            = useState(null);
+  const [showPracticed, setShowPracticed] = useState(false);
 
   const transcript   = transcripts.find(t => t.id === selectedTranscriptId);
-  const filtered     = filter === 'all' ? chunks : chunks.filter(c => c.type === filter);
+
+  // Split chunks into unpracticed / practiced
+  const unpracticed = chunks.filter(c => !allProgress[c.id]);
+  const practiced   = chunks.filter(c =>  allProgress[c.id]);
+  const visibleChunks = showPracticed ? chunks : unpracticed;
+
+  const filtered     = filter === 'all' ? visibleChunks : visibleChunks.filter(c => c.type === filter);
   const selectedCount = selectedChunks.size;
 
   // Group filtered chunks by groupName
@@ -281,22 +288,46 @@ export function ChunkModule({
             >
               {label}
               <span style={{ opacity: 0.6 }}>
-                ({id === 'all' ? chunks.length : chunks.filter(c => c.type === id).length})
+                ({id === 'all' ? visibleChunks.length : visibleChunks.filter(c => c.type === id).length})
               </span>
             </button>
           ))}
         </div>
 
-        {selectedCount > 0 && (
-          <button
-            id="start-practice-btn"
-            className="btn btn-primary"
-            onClick={onStartPractice}
-          >
-            <PenLine size={15} />
-            Luyện viết {selectedCount} chunk{selectedCount > 1 ? 's' : ''}
-          </button>
-        )}
+        <div className="flex items-center gap-2">
+          {/* Toggle practiced chunks */}
+          {practiced.length > 0 && (
+            <button
+              id="toggle-practiced-btn"
+              className="btn btn-ghost btn-sm"
+              onClick={() => setShowPracticed(s => !s)}
+              title={showPracticed ? 'Ẩn chunk đã luyện' : `Xem ${practiced.length} chunk đã luyện`}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 6,
+                fontSize: 12, color: showPracticed ? 'var(--accent-300)' : 'var(--text-muted)',
+                border: '1px solid var(--border-subtle)',
+                borderRadius: 'var(--radius-full)',
+                padding: '4px 12px',
+              }}
+            >
+              {showPracticed
+                ? <><EyeOff size={12} /> Ẩn đã luyện ({practiced.length})</>
+                : <><Eye     size={12} /> Đã luyện ({practiced.length})</>
+              }
+            </button>
+          )}
+
+          {selectedCount > 0 && (
+            <button
+              id="start-practice-btn"
+              className="btn btn-primary"
+              onClick={onStartPractice}
+            >
+              <PenLine size={15} />
+              Luyện viết {selectedCount} chunk{selectedCount > 1 ? 's' : ''}
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Grouped chunk list */}
@@ -341,8 +372,16 @@ export function ChunkModule({
       ) : (
         <EmptyState
           icon={<Layers size={24} />}
-          title={`Không có chunk loại "${filter}"`}
-          description="Thử chọn bộ lọc khác."
+          title={
+            unpracticed.length === 0 && !showPracticed
+              ? '🎉 Đã luyện hết tất cả chunk!'
+              : `Không có chunk loại "${filter}"`
+          }
+          description={
+            unpracticed.length === 0 && !showPracticed
+              ? `Tuyệt vời! ${practiced.length} chunk đã được luyện tập. Bấm "Đã luyện" để ôn lại.`
+              : 'Thử chọn bộ lọc khác.'
+          }
         />
       )}
     </div>
