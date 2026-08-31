@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { PenLine, ChevronRight, ChevronLeft, RotateCcw,
-         CheckCircle, XCircle, Sparkles, Loader, RefreshCw } from 'lucide-react';
+import {
+  PenLine, ChevronRight, ChevronLeft, RotateCcw,
+  CheckCircle, XCircle, Sparkles, Loader, RefreshCw, Volume2, VolumeX
+} from 'lucide-react';
 import { EmptyState, Badge, Spinner } from '../ui';
 import { getSituations, saveSituations } from '../../store/storage';
 import { gradeWriting, generateWritingExercises } from '../../services/ai';
@@ -9,15 +11,15 @@ import { getApiKey } from '../../store/storage';
 
 const CHUNK_TYPE_LABELS = {
   collocation: 'Collocation',
-  functional:  'Functional',
-  connector:   'Connector',
+  functional: 'Functional',
+  connector: 'Connector',
 };
 
 // ─── ScoreRing ────────────────────────────────────────────────
 function ScoreRing({ score }) {
   const r = 28;
   const circ = 2 * Math.PI * r;
-  const pct  = Math.max(0, Math.min(100, score));
+  const pct = Math.max(0, Math.min(100, score));
   const dash = (pct / 100) * circ;
   const color = pct >= 80 ? 'var(--success-text)' : pct >= 50 ? '#f59e0b' : 'var(--error-text)';
 
@@ -70,20 +72,20 @@ function GradingResult({ result, chunkPhrase }) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap mb-1">
             {usedChunk
-              ? <span style={{ display:'flex', alignItems:'center', gap:5, fontWeight:700, color:'var(--success-text)', fontSize:14 }}>
-                  <CheckCircle size={16} /> Đã dùng đúng chunk!
-                </span>
-              : <span style={{ display:'flex', alignItems:'center', gap:5, fontWeight:700, color:'var(--error-text)', fontSize:14 }}>
-                  <XCircle size={16} /> Chưa dùng chunk "{chunkPhrase}"
-                </span>
+              ? <span style={{ display: 'flex', alignItems: 'center', gap: 5, fontWeight: 700, color: 'var(--success-text)', fontSize: 14 }}>
+                <CheckCircle size={16} /> Đã dùng đúng chunk!
+              </span>
+              : <span style={{ display: 'flex', alignItems: 'center', gap: 5, fontWeight: 700, color: 'var(--error-text)', fontSize: 14 }}>
+                <XCircle size={16} /> Chưa dùng chunk "{chunkPhrase}"
+              </span>
             }
             {correct
-              ? <span style={{ display:'flex', alignItems:'center', gap:4, fontSize:13, color:'var(--success-text)' }}>
-                  <CheckCircle size={13} /> Nghĩa đúng
-                </span>
-              : <span style={{ display:'flex', alignItems:'center', gap:4, fontSize:13, color:'var(--error-text)' }}>
-                  <XCircle size={13} /> Nghĩa chưa khớp
-                </span>
+              ? <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 13, color: 'var(--success-text)' }}>
+                <CheckCircle size={13} /> Nghĩa đúng
+              </span>
+              : <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 13, color: 'var(--error-text)' }}>
+                <XCircle size={13} /> Nghĩa chưa khớp
+              </span>
             }
           </div>
           {overallFeedback && (
@@ -182,23 +184,101 @@ function VocabHints({ hints = [] }) {
   );
 }
 
+// ─── SampleWithTTS ────────────────────────────────────────────
+function SampleWithTTS({ text, id }) {
+  const [speaking, setSpeaking] = useState(false);
+
+  const handleSpeak = () => {
+    if (!window.speechSynthesis) return;
+
+    if (speaking) {
+      window.speechSynthesis.cancel();
+      setSpeaking(false);
+      return;
+    }
+
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang  = 'en-US';
+    utter.rate  = 0.9;   // slightly slower for learning
+    utter.pitch = 1;
+    utter.onend   = () => setSpeaking(false);
+    utter.onerror = () => setSpeaking(false);
+    window.speechSynthesis.speak(utter);
+    setSpeaking(true);
+  };
+
+  return (
+    <div
+      className="animate-fade-in"
+      style={{
+        marginBottom: 12,
+        background: 'rgba(34,197,94,0.06)',
+        border: '1px solid rgba(34,197,94,0.2)',
+        borderRadius: 'var(--radius-sm)',
+        padding: '10px 14px',
+      }}
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between mb-1">
+        <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--success-text)', textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0 }}>
+          ✅ Câu dịch tham khảo
+        </p>
+        <button
+          id={id ? `tts-${id}` : undefined}
+          onClick={handleSpeak}
+          title={speaking ? 'Dừng đọc' : 'Nghe phát âm (miễn phí)'}
+          style={{
+            display: 'flex', alignItems: 'center', gap: 4,
+            background: speaking ? 'rgba(34,197,94,0.15)' : 'rgba(34,197,94,0.08)',
+            border: `1px solid ${speaking ? 'rgba(34,197,94,0.4)' : 'rgba(34,197,94,0.2)'}`,
+            borderRadius: 'var(--radius-full)',
+            padding: '3px 10px',
+            cursor: 'pointer',
+            fontSize: 11, fontWeight: 600,
+            color: 'var(--success-text)',
+            transition: 'all 0.2s',
+          }}
+        >
+          {speaking
+            ? <><VolumeX size={12} style={{ animation: 'pulse 1s infinite' }} /> Dừng</>
+            : <><Volume2 size={12} /> Nghe</>
+          }
+        </button>
+      </div>
+
+      {/* Text */}
+      <p
+        onClick={handleSpeak}
+        style={{
+          fontSize: 13.5, color: 'var(--text-primary)', lineHeight: 1.6,
+          margin: 0, fontStyle: 'italic', cursor: 'pointer',
+        }}
+        title="Click để nghe phát âm"
+      >
+        "{text}"
+      </p>
+    </div>
+  );
+}
+
 // ─── Level badge config ───────────────────────────────────────
 const LEVEL_CONFIG = {
-  1: { label: 'Cơ bản',   color: '34,197,94',   bg: 'rgba(34,197,94,0.1)',   border: 'rgba(34,197,94,0.25)'   },
-  2: { label: 'Trung cấp', color: '251,191,36',  bg: 'rgba(251,191,36,0.1)',  border: 'rgba(251,191,36,0.25)'  },
-  3: { label: 'Nâng cao', color: '239,68,68',    bg: 'rgba(239,68,68,0.1)',   border: 'rgba(239,68,68,0.25)'   },
+  1: { label: 'Cơ bản', color: '34,197,94', bg: 'rgba(34,197,94,0.1)', border: 'rgba(34,197,94,0.25)' },
+  2: { label: 'Trung cấp', color: '251,191,36', bg: 'rgba(251,191,36,0.1)', border: 'rgba(251,191,36,0.25)' },
+  3: { label: 'Nâng cao', color: '239,68,68', bg: 'rgba(239,68,68,0.1)', border: 'rgba(239,68,68,0.25)' },
 };
+
 
 // ─── ExerciseCard (self-contained per exercise) ───────────────
 function ExerciseCard({ exercise, index, total, chunk, onComplete, onToast }) {
-  const [userInput,     setUserInput]    = useState('');
-  const [showSample,    setShowSample]   = useState(false);
-  const [grading,       setGrading]      = useState(false);
+  const [userInput, setUserInput] = useState('');
+  const [showSample, setShowSample] = useState(false);
+  const [grading, setGrading] = useState(false);
   const [gradingResult, setGradingResult] = useState(null);
 
   const wordCount = userInput.trim() ? userInput.trim().split(/\s+/).length : 0;
-  const level     = exercise.level || (index + 1);
-  const lvCfg     = LEVEL_CONFIG[level] || LEVEL_CONFIG[1];
+  const level = exercise.level || (index + 1);
+  const lvCfg = LEVEL_CONFIG[level] || LEVEL_CONFIG[1];
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -318,23 +398,7 @@ function ExerciseCard({ exercise, index, total, chunk, onComplete, onToast }) {
 
       {/* Sample answer — shown on toggle or Enter */}
       {showSample && exercise.sampleTranslation && (
-        <div
-          className="animate-fade-in"
-          style={{
-            marginBottom: 12,
-            background: 'rgba(34,197,94,0.06)',
-            border: '1px solid rgba(34,197,94,0.2)',
-            borderRadius: 'var(--radius-sm)',
-            padding: '10px 14px',
-          }}
-        >
-          <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--success-text)', marginBottom: 4, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-            ✅ Câu dịch tham khảo
-          </p>
-          <p style={{ fontSize: 13.5, color: 'var(--text-primary)', lineHeight: 1.6, margin: 0, fontStyle: 'italic' }}>
-            "{exercise.sampleTranslation}"
-          </p>
-        </div>
+        <SampleWithTTS text={exercise.sampleTranslation} id={`sample-${chunk.id}-${index}`} />
       )}
 
       {/* AI grading result */}
@@ -436,7 +500,7 @@ export function PracticeModule({
   const chunkList = chunks.filter(c => selectedChunks.has(c.id));
 
   const [activeChunkId, setActiveChunkId] = useState(null);
-  const [regenId,       setRegenId]       = useState(null); // chunk being regenerated
+  const [regenId, setRegenId] = useState(null); // chunk being regenerated
   const [, forceUpdate] = useState(0); // trigger re-render after save
 
   useEffect(() => {
