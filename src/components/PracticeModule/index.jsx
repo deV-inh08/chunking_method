@@ -186,8 +186,7 @@ function VocabHints({ hints = [] }) {
 
 // ─── SampleWithTTS ────────────────────────────────────────────
 function SampleWithTTS({ text, id, breakdown }) {
-  const [speaking,     setSpeaking]     = useState(false);
-  const [showBreakdown, setShowBreakdown] = useState(false);
+  const [speaking, setSpeaking] = useState(false);
 
   const handleSpeak = () => {
     if (!window.speechSynthesis) return;
@@ -217,59 +216,36 @@ function SampleWithTTS({ text, id, breakdown }) {
         overflow: 'hidden',
       }}
     >
-      {/* Header + buttons */}
+      {/* Header + TTS button */}
       <div style={{ padding: '10px 14px' }}>
         <div className="flex items-center justify-between mb-1">
           <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--success-text)', textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0 }}>
             ✅ Câu dịch tham khảo
           </p>
-          <div className="flex items-center gap-2">
-            {/* Breakdown toggle */}
-            {breakdown && breakdown.length > 0 && (
-              <button
-                onClick={() => setShowBreakdown(s => !s)}
-                title="Phân tích cấu trúc câu"
-                style={{
-                  display: 'flex', alignItems: 'center', gap: 4,
-                  background: showBreakdown ? 'rgba(99,102,241,0.2)' : 'rgba(99,102,241,0.08)',
-                  border: `1px solid ${showBreakdown ? 'rgba(99,102,241,0.4)' : 'rgba(99,102,241,0.2)'}`,
-                  borderRadius: 'var(--radius-full)',
-                  padding: '3px 10px',
-                  cursor: 'pointer',
-                  fontSize: 11, fontWeight: 600,
-                  color: 'var(--accent-300)',
-                  transition: 'all 0.2s',
-                }}
-              >
-                🔍 {showBreakdown ? 'Ẩn phân tích' : `Phân tích (${breakdown.length})`}
-              </button>
-            )}
-            {/* TTS button */}
-            <button
-              id={id ? `tts-${id}` : undefined}
-              onClick={handleSpeak}
-              title={speaking ? 'Dừng đọc' : 'Nghe phát âm'}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 4,
-                background: speaking ? 'rgba(34,197,94,0.15)' : 'rgba(34,197,94,0.08)',
-                border: `1px solid ${speaking ? 'rgba(34,197,94,0.4)' : 'rgba(34,197,94,0.2)'}`,
-                borderRadius: 'var(--radius-full)',
-                padding: '3px 10px',
-                cursor: 'pointer',
-                fontSize: 11, fontWeight: 600,
-                color: 'var(--success-text)',
-                transition: 'all 0.2s',
-              }}
-            >
-              {speaking
-                ? <><VolumeX size={12} /> Dừng</>
-                : <><Volume2 size={12} /> Nghe</>
-              }
-            </button>
-          </div>
+          <button
+            id={id ? `tts-${id}` : undefined}
+            onClick={handleSpeak}
+            title={speaking ? 'Dừng đọc' : 'Nghe phát âm'}
+            style={{
+              display: 'flex', alignItems: 'center', gap: 4,
+              background: speaking ? 'rgba(34,197,94,0.15)' : 'rgba(34,197,94,0.08)',
+              border: `1px solid ${speaking ? 'rgba(34,197,94,0.4)' : 'rgba(34,197,94,0.2)'}`,
+              borderRadius: 'var(--radius-full)',
+              padding: '3px 10px',
+              cursor: 'pointer',
+              fontSize: 11, fontWeight: 600,
+              color: 'var(--success-text)',
+              transition: 'all 0.2s',
+            }}
+          >
+            {speaking
+              ? <><VolumeX size={12} /> Dừng</>
+              : <><Volume2 size={12} /> Nghe</>
+            }
+          </button>
         </div>
 
-        {/* Sample text — clickable to speak */}
+        {/* Sample text */}
         <p
           onClick={handleSpeak}
           style={{
@@ -282,10 +258,9 @@ function SampleWithTTS({ text, id, breakdown }) {
         </p>
       </div>
 
-      {/* Sentence breakdown panel */}
-      {showBreakdown && breakdown && breakdown.length > 0 && (
+      {/* Sentence breakdown — always visible */}
+      {breakdown && breakdown.length > 0 && (
         <div
-          className="animate-fade-in"
           style={{
             borderTop: '1px solid rgba(99,102,241,0.15)',
             background: 'rgba(99,102,241,0.04)',
@@ -293,7 +268,7 @@ function SampleWithTTS({ text, id, breakdown }) {
             display: 'flex', flexDirection: 'column', gap: 8,
           }}
         >
-          <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--accent-400)', textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 4px' }}>
+          <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--accent-400)', textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 2px' }}>
             🔍 Phân tích cấu trúc câu
           </p>
           {breakdown.map((item, i) => (
@@ -326,8 +301,8 @@ function SampleWithTTS({ text, id, breakdown }) {
   );
 }
 
-
 // ─── Level badge config ───────────────────────────────────────
+
 const LEVEL_CONFIG = {
   1: { label: 'Cơ bản', color: '34,197,94', bg: 'rgba(34,197,94,0.1)', border: 'rgba(34,197,94,0.25)' },
   2: { label: 'Trung cấp', color: '251,191,36', bg: 'rgba(251,191,36,0.1)', border: 'rgba(251,191,36,0.25)' },
