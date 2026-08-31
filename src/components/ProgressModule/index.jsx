@@ -44,7 +44,7 @@ function StatCard({ icon: Icon, label, value, accent }) {
 }
 
 // ─── ChunkProgressCard ────────────────────────────────────────
-function ChunkProgressCard({ chunk, progress }) {
+function ChunkProgressCard({ chunk, progress, onRepractice }) {
   const successRate = progress.practiceCount > 0
     ? Math.round((progress.successCount / progress.practiceCount) * 100)
     : 0;
@@ -82,11 +82,23 @@ function ChunkProgressCard({ chunk, progress }) {
           </div>
         </div>
 
-        <div style={{ textAlign: 'right', flexShrink: 0 }}>
-          <div style={{ fontSize: 22, fontWeight: 800, color: levelColor }}>
-            {progress.practiceCount}
+        <div style={{ textAlign: 'right', flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+          <div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: levelColor }}>
+              {progress.practiceCount}
+            </div>
+            <div className="text-muted text-xs">lần luyện</div>
           </div>
-          <div className="text-muted text-xs">lần luyện</div>
+          {onRepractice && (
+            <button
+              onClick={() => onRepractice(chunk.id)}
+              className="btn btn-secondary btn-sm"
+              style={{ marginTop: 12, padding: '4px 10px', fontSize: 11 }}
+              title="Luyện tập lại chunk này"
+            >
+              Luyện lại
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -94,7 +106,7 @@ function ChunkProgressCard({ chunk, progress }) {
 }
 
 // ─── TranscriptGroup ──────────────────────────────────────────
-function TranscriptGroup({ groupKey, groupLabel, groupDate, items, defaultOpen = true }) {
+function TranscriptGroup({ groupKey, groupLabel, groupDate, items, defaultOpen = true, onRepractice }) {
   const [open, setOpen] = useState(defaultOpen);
 
   const totalPractice = items.reduce((s, { progress }) => s + progress.practiceCount, 0);
@@ -166,7 +178,7 @@ function TranscriptGroup({ groupKey, groupLabel, groupDate, items, defaultOpen =
       {open && (
         <div style={{ padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: 10, background: 'var(--bg-base)' }}>
           {items.map(({ chunk, progress }) => (
-            <ChunkProgressCard key={chunk.id} chunk={chunk} progress={progress} />
+            <ChunkProgressCard key={chunk.id} chunk={chunk} progress={progress} onRepractice={onRepractice} />
           ))}
         </div>
       )}
@@ -175,7 +187,7 @@ function TranscriptGroup({ groupKey, groupLabel, groupDate, items, defaultOpen =
 }
 
 // ─── ProgressModule (main export) ─────────────────────────────
-export function ProgressModule({ allProgress, chunks, transcripts = [] }) {
+export function ProgressModule({ allProgress, chunks, transcripts = [], onRepractice }) {
   const progressEntries = Object.values(allProgress);
   const totalPractice   = progressEntries.reduce((s, p) => s + p.practiceCount, 0);
   const totalSuccess    = progressEntries.reduce((s, p) => s + (p.successCount || 0), 0);
@@ -250,6 +262,7 @@ export function ProgressModule({ allProgress, chunks, transcripts = [] }) {
             groupDate={date}
             items={items}
             defaultOpen={i === 0}
+            onRepractice={onRepractice}
           />
         ))}
       </div>

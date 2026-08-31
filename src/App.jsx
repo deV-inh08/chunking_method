@@ -144,6 +144,11 @@ export default function App() {
     setPage('practice');
   }, []);
 
+  const handleRepractice = useCallback((chunkId) => {
+    setSelectedChunks(new Set([chunkId]));
+    setPage('practice');
+  }, []);
+
   // ── Progress handler ─────────────────────────────────
   const handleProgressUpdate = useCallback((chunkId, success, score = null, feedback = null) => {
     updateProgress(chunkId, success, score, feedback);
@@ -296,6 +301,7 @@ export default function App() {
               allProgress={allProgress}
               chunks={allChunks}
               transcripts={transcripts}
+              onRepractice={handleRepractice}
             />
           )}
         </main>
