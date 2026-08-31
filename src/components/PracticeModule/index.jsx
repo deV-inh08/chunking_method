@@ -182,6 +182,13 @@ function VocabHints({ hints = [] }) {
   );
 }
 
+// ─── Level badge config ───────────────────────────────────────
+const LEVEL_CONFIG = {
+  1: { label: 'Cơ bản',   color: '34,197,94',   bg: 'rgba(34,197,94,0.1)',   border: 'rgba(34,197,94,0.25)'   },
+  2: { label: 'Trung cấp', color: '251,191,36',  bg: 'rgba(251,191,36,0.1)',  border: 'rgba(251,191,36,0.25)'  },
+  3: { label: 'Nâng cao', color: '239,68,68',    bg: 'rgba(239,68,68,0.1)',   border: 'rgba(239,68,68,0.25)'   },
+};
+
 // ─── ExerciseCard (self-contained per exercise) ───────────────
 function ExerciseCard({ exercise, index, total, chunk, onComplete, onToast }) {
   const [userInput,     setUserInput]    = useState('');
@@ -190,9 +197,10 @@ function ExerciseCard({ exercise, index, total, chunk, onComplete, onToast }) {
   const [gradingResult, setGradingResult] = useState(null);
 
   const wordCount = userInput.trim() ? userInput.trim().split(/\s+/).length : 0;
+  const level     = exercise.level || (index + 1);
+  const lvCfg     = LEVEL_CONFIG[level] || LEVEL_CONFIG[1];
 
   const handleKeyDown = (e) => {
-    // Enter (not Shift+Enter) → reveal sample
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       setShowSample(true);
@@ -220,17 +228,62 @@ function ExerciseCard({ exercise, index, total, chunk, onComplete, onToast }) {
       className="card animate-fade-in"
       style={{ padding: '18px 20px' }}
     >
-      {/* Header: Vietnamese sentence + label */}
+      {/* Level badge + sentence header */}
       <div className="flex items-start justify-between gap-3 mb-3">
         <div style={{ flex: 1, minWidth: 0 }}>
+          {/* Level badge row */}
+          <div className="flex items-center gap-2 mb-2">
+            <span style={{
+              display: 'inline-flex', alignItems: 'center', gap: 4,
+              background: lvCfg.bg,
+              border: `1px solid ${lvCfg.border}`,
+              borderRadius: 'var(--radius-full)',
+              padding: '2px 10px',
+              fontSize: 11, fontWeight: 700,
+              color: `rgb(${lvCfg.color})`,
+            }}>
+              {'★'.repeat(level)} {exercise.levelLabel || lvCfg.label}
+            </span>
+            {exercise.tenseUsed && (
+              <span style={{
+                fontSize: 11, color: 'var(--accent-300)',
+                background: 'rgba(99,102,241,0.1)',
+                border: '1px solid rgba(99,102,241,0.2)',
+                borderRadius: 'var(--radius-full)',
+                padding: '2px 8px', fontWeight: 600,
+              }}>
+                {exercise.tenseUsed}
+              </span>
+            )}
+          </div>
+
+          {/* Vietnamese sentence */}
           <p style={{
             fontSize: 15, fontWeight: 700,
             color: 'var(--text-primary)',
-            lineHeight: 1.6,
-            margin: 0,
+            lineHeight: 1.6, margin: 0,
           }}>
             {exercise.vietnameseSentence}
           </p>
+
+          {/* Tense explanation */}
+          {exercise.tenseExplanation && (
+            <div style={{
+              marginTop: 8,
+              display: 'flex', alignItems: 'flex-start', gap: 6,
+              background: 'rgba(99,102,241,0.06)',
+              border: '1px solid rgba(99,102,241,0.15)',
+              borderRadius: 'var(--radius-sm)',
+              padding: '7px 10px',
+            }}>
+              <span style={{ fontSize: 13, flexShrink: 0 }}>📘</span>
+              <p style={{ fontSize: 12, color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
+                <span style={{ fontWeight: 700, color: 'var(--accent-300)' }}>{exercise.tenseUsed}: </span>
+                {exercise.tenseExplanation}
+              </p>
+            </div>
+          )}
+
           {/* Vocab hints */}
           <VocabHints hints={exercise.vocabHints} />
           {exercise.vocabHints === undefined && (
@@ -239,12 +292,6 @@ function ExerciseCard({ exercise, index, total, chunk, onComplete, onToast }) {
             </p>
           )}
         </div>
-        <span style={{
-          flexShrink: 0, fontSize: 11, fontWeight: 600,
-          color: 'var(--text-muted)', whiteSpace: 'nowrap',
-        }}>
-          Câu mẫu {index + 1}
-        </span>
       </div>
 
       {/* Textarea */}

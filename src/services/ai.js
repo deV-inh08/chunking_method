@@ -1,4 +1,4 @@
-// Priority list — tries each in order until one works
+﻿// Priority list — tries each in order until one works
 // Lite models first: RPD 500/day (vs 20/day for standard Flash)
 const MODEL_CANDIDATES = [
   'gemini-3.5-flash-lite',  // RPM 15, RPD 500 ← best free tier
@@ -159,38 +159,71 @@ Quy tắc bắt buộc:
 
 // ─── Generate writing exercises for a chunk ──────────────────
 export async function generateWritingExercises(chunk, apiKey) {
-  const systemPrompt = `Bạn là chuyên gia thiết kế bài luyện dịch tiếng Anh cho người học TOEIC.
-Nhiệm vụ: Tạo bài luyện dịch Việt → Anh, giúp người học sử dụng thành thạo một chunk tiếng Anh cụ thể.
-Trả về JSON hợp lệ, không có text nào khác ngoài JSON.`;
+  const systemPrompt = `Ban la chuyen gia thiet ke bai luyen dich tieng Anh cho nguoi hoc TOEIC.
+Nhiem vu: Tao 3 bai luyen dich Viet -> Anh voi 3 do kho khac nhau, giup nguoi hoc su dung thanh thao chunk va hieu ro ngu phap thi (tense) trong giao tiep thuc te.
+Tra ve JSON hop le, khong co text nao khac ngoai JSON.`;
 
-  const userMessage = `Tạo 3 bài luyện dịch cho chunk sau:
+  const userMessage = `Tao 3 bai luyen dich theo 3 do kho cho chunk sau:
 
 CHUNK: "${chunk.phrase}"
-NGHĨA TIẾNG VIỆT: ${chunk.meaningVi}
-CÂU GỐC TRONG TRANSCRIPT: "${chunk.originalSentence}"
+NGHIA TIENG VIET: ${chunk.meaningVi}
+CAU GOC TRONG TRANSCRIPT: "${chunk.originalSentence}"
 
-Trả về JSON:
+Tra ve JSON:
 \`\`\`json
 {
   "exercises": [
     {
       "id": "ex_1",
-      "vietnameseSentence": "Câu tiếng Việt hoàn chỉnh, TỰ NHIÊN, tình huống HOÀN TOÀN KHÁC bài gốc, khi dịch sang Anh PHẢI dùng chunk '${chunk.phrase}'",
-      "sampleTranslation": "Câu dịch mẫu tiếng Anh tham khảo có dùng đúng chunk '${chunk.phrase}'",
+      "level": 1,
+      "levelLabel": "Co ban",
+      "vietnameseSentence": "Cau NGAN DON GIAN 5-10 tu. 1 menh de. Ngu canh quen thuoc mua sam an uong hoi tham. Phai dung chunk.",
+      "sampleTranslation": "Cau tieng Anh ngan, don gian, co chunk target",
+      "tenseUsed": "Present Simple",
+      "tenseExplanation": "Dung thi nay vi... (1 cau tieng Viet, giai thich tinh huong thuc te)",
+      "vocabHints": []
+    },
+    {
+      "id": "ex_2",
+      "level": 2,
+      "levelLabel": "Trung cap",
+      "vietnameseSentence": "Cau TRUNG BINH 10-15 tu. Co trang ngu thoi gian dia diem. Boi canh thuc te cong viec du lich hoc tap. Phai dung chunk.",
+      "sampleTranslation": "Cau tieng Anh trung binh, tu nhien, co chunk target",
+      "tenseUsed": "Past Simple",
+      "tenseExplanation": "Dung thi nay vi... (1 cau tieng Viet, giai thich logic thi)",
       "vocabHints": [
-        { "vi": "từ/cụm tiếng Việt khó dịch", "en": "English equivalent" }
+        { "vi": "tu kho", "en": "English" }
+      ]
+    },
+    {
+      "id": "ex_3",
+      "level": 3,
+      "levelLabel": "Nang cao",
+      "vietnameseSentence": "Cau KHO 15-20 tu. Cau ghep hoac co menh de phu vi mac du sau khi. Ngu canh phuc tap. Phai dung chunk.",
+      "sampleTranslation": "Cau tieng Anh phuc tap hon, co chunk target",
+      "tenseUsed": "Present Perfect",
+      "tenseExplanation": "Dung thi nay vi... (1 cau tieng Viet, giai thich logic trong cau ghep)",
+      "vocabHints": [
+        { "vi": "tu kho", "en": "English" },
+        { "vi": "tu kho 2", "en": "English 2" },
+        { "vi": "tu kho 3", "en": "English 3" }
       ]
     }
   ]
 }
 \`\`\`
 
-Quy tắc bắt buộc:
-- vietnameseSentence: câu tiếng Việt hoàn chỉnh, tự nhiên, bối cảnh KHÁC transcript gốc (không phải văn phòng/họp hành nếu gốc là vậy). Ví dụ: du lịch, mua sắm, y tế, nhà hàng, học tập...
-- sampleTranslation: câu tiếng Anh chuẩn, tự nhiên, BẮT BUỘC có chunk "${chunk.phrase}"
-- vocabHints: CHỈ liệt kê các từ/cụm THỰC SỰ khó dịch trong câu (từ chuyên ngành, thành ngữ, cụm từ ít gặp). Nếu câu đơn giản thì để mảng rỗng []. Tối đa 4 hints/câu. KHÔNG hint chunk mục tiêu vì đã biết rồi.
-- 3 bài có 3 bối cảnh khác nhau và khác câu gốc
-- id: ex_1, ex_2, ex_3`;
+Quy tac bat buoc:
+- 3 cau co 3 boi canh KHAC NHAU, KHAC transcript goc (du lich, y te, nha hang, mua sam, hoc tap, gia dinh...)
+- sampleTranslation: BAT BUOC chua chunk "${chunk.phrase}"
+- tenseUsed: ten thi tieng Anh (Present Simple, Past Perfect, Present Continuous...)
+- tenseExplanation: 1 cau tieng Viet, giai thich TAI SAO dung thi do trong tinh huong nay (khong phai dinh nghia thi)
+- Cau Vietnamese phai su dung tieng Viet dung chinh ta, tu nhien
+- vocabHints: THUC SU kho dich, KHONG hint chunk muc tieu
+  - Cau 1 de: 0-2 hints
+  - Cau 2 trung: 2-3 hints
+  - Cau 3 kho: 4-5 hints
+- Do kho phai THUC SU khac nhau ve do dai va cau truc ngu phap`;
 
   return callGemini(apiKey, systemPrompt, userMessage);
 }
