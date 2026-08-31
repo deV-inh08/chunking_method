@@ -1,4 +1,4 @@
-﻿// Priority list — tries each in order until one works
+// Priority list — tries each in order until one works
 // Lite models first: RPD 500/day (vs 20/day for standard Flash)
 const MODEL_CANDIDATES = [
   'gemini-3.5-flash-lite',  // RPM 15, RPD 500 ← best free tier
@@ -159,71 +159,73 @@ Quy tắc bắt buộc:
 
 // ─── Generate writing exercises for a chunk ──────────────────
 export async function generateWritingExercises(chunk, apiKey) {
-  const systemPrompt = `Ban la chuyen gia thiet ke bai luyen dich tieng Anh cho nguoi hoc TOEIC.
-Nhiem vu: Tao 3 bai luyen dich Viet -> Anh voi 3 do kho khac nhau, giup nguoi hoc su dung thanh thao chunk va hieu ro ngu phap thi (tense) trong giao tiep thuc te.
-Tra ve JSON hop le, khong co text nao khac ngoai JSON.`;
+  const systemPrompt = `Bạn là chuyên gia thiết kế bài luyện dịch tiếng Anh cho người học TOEIC.
+Nhiệm vụ: Tạo 3 bài luyện dịch Việt → Anh với 3 độ khó khác nhau, giúp người học sử dụng thành thạo chunk và hiểu rõ ngữ pháp thì (tense) trong giao tiếp thực tế.
+Trả về JSON hợp lệ, không có text nào khác ngoài JSON.`;
 
-  const userMessage = `Tao 3 bai luyen dich theo 3 do kho cho chunk sau:
+  const userMessage = `Tạo 3 bài luyện dịch theo 3 độ khó cho chunk sau:
 
 CHUNK: "${chunk.phrase}"
-NGHIA TIENG VIET: ${chunk.meaningVi}
-CAU GOC TRONG TRANSCRIPT: "${chunk.originalSentence}"
+NGHĨA TIẾNG VIỆT: ${chunk.meaningVi}
+CÂU GỐC TRONG TRANSCRIPT: "${chunk.originalSentence}"
 
-Tra ve JSON:
+Trả về JSON:
 \`\`\`json
 {
   "exercises": [
     {
       "id": "ex_1",
       "level": 1,
-      "levelLabel": "Co ban",
-      "vietnameseSentence": "Cau NGAN DON GIAN 5-10 tu. 1 menh de. Ngu canh quen thuoc mua sam an uong hoi tham. Phai dung chunk.",
-      "sampleTranslation": "Cau tieng Anh ngan, don gian, co chunk target",
+      "levelLabel": "Cơ bản",
+      "vietnameseSentence": "Câu TIỬNG VIẮT NGẮN (≤ 10 từ). 1 mệnh đề. Ngữ cảnh quen thuộc (mua sắm / ăn uống / hỏi thăm). BẮt buộc dùng chunk.",
+      "sampleTranslation": "Câu tiếng Anh ngắn, đơn giản, có chunk mục tiêu.",
       "tenseUsed": "Present Simple",
-      "tenseExplanation": "Dung thi nay vi... (1 cau tieng Viet, giai thich tinh huong thuc te)",
+      "tenseExplanation": "Dùng thì này vì … (1 câu tiếng Việt, giải thích tình huống thực tế)",
       "vocabHints": []
     },
     {
       "id": "ex_2",
       "level": 2,
-      "levelLabel": "Trung cap",
-      "vietnameseSentence": "Cau TRUNG BINH 10-15 tu. Co trang ngu thoi gian dia diem. Boi canh thuc te cong viec du lich hoc tap. Phai dung chunk.",
-      "sampleTranslation": "Cau tieng Anh trung binh, tu nhien, co chunk target",
+      "levelLabel": "Trung cấp",
+      "vietnameseSentence": "Câu TIỬNG VIẮT TRUNG BÌNH (10-15 từ). Có trạng ngữ thời gian / địa điểm. Bối cảnh thực tế (công việc / du lịch / học tập). BẮt buộc dùng chunk.",
+      "sampleTranslation": "Câu tiếng Anh trung bình, tự nhiên, có chunk mục tiêu.",
       "tenseUsed": "Past Simple",
-      "tenseExplanation": "Dung thi nay vi... (1 cau tieng Viet, giai thich logic thi)",
+      "tenseExplanation": "Dùng thì này vì … (1 câu tiếng Việt, giải thích logic thì)",
       "vocabHints": [
-        { "vi": "tu kho", "en": "English" }
+        { "vi": "từ khó", "en": "English" },
+        { "vi": "từ khó 2", "en": "English 2" }
       ]
     },
     {
       "id": "ex_3",
       "level": 3,
-      "levelLabel": "Nang cao",
-      "vietnameseSentence": "Cau KHO 15-20 tu. Cau ghep hoac co menh de phu vi mac du sau khi. Ngu canh phuc tap. Phai dung chunk.",
-      "sampleTranslation": "Cau tieng Anh phuc tap hon, co chunk target",
+      "levelLabel": "Nâng cao",
+      "vietnameseSentence": "Câu TIỬNG VIẮT KHÓ (15-20 từ). Câu ghép hoặc có mệnh đề phụ (vì / mặc dù / sau khi). Ngữ cảnh phức tạp. BẮt buộc dùng chunk.",
+      "sampleTranslation": "Câu tiếng Anh phức tạp, tự nhiên, có chunk mục tiêu.",
       "tenseUsed": "Present Perfect",
-      "tenseExplanation": "Dung thi nay vi... (1 cau tieng Viet, giai thich logic trong cau ghep)",
+      "tenseExplanation": "Dùng thì này vì … (1 câu tiếng Việt, giải thích logic trong câu ghép)",
       "vocabHints": [
-        { "vi": "tu kho", "en": "English" },
-        { "vi": "tu kho 2", "en": "English 2" },
-        { "vi": "tu kho 3", "en": "English 3" }
+        { "vi": "từ khó", "en": "English" },
+        { "vi": "từ khó 2", "en": "English 2" },
+        { "vi": "từ khó 3", "en": "English 3" },
+        { "vi": "từ khó 4", "en": "English 4" }
       ]
     }
   ]
 }
 \`\`\`
 
-Quy tac bat buoc:
-- 3 cau co 3 boi canh KHAC NHAU, KHAC transcript goc (du lich, y te, nha hang, mua sam, hoc tap, gia dinh...)
-- sampleTranslation: BAT BUOC chua chunk "${chunk.phrase}"
-- tenseUsed: ten thi tieng Anh (Present Simple, Past Perfect, Present Continuous...)
-- tenseExplanation: 1 cau tieng Viet, giai thich TAI SAO dung thi do trong tinh huong nay (khong phai dinh nghia thi)
-- Cau Vietnamese phai su dung tieng Viet dung chinh ta, tu nhien
-- vocabHints: THUC SU kho dich, KHONG hint chunk muc tieu
-  - Cau 1 de: 0-2 hints
-  - Cau 2 trung: 2-3 hints
-  - Cau 3 kho: 4-5 hints
-- Do kho phai THUC SU khac nhau ve do dai va cau truc ngu phap`;
+Quy tắc bắt buộc:
+- vietnameseSentence: câu TIỬNG VIẮT có dấu đầy đủ, tự nhiên, bối cảnh KHÁC transcript gốc
+- sampleTranslation: BẮt BUỘC chứa chunk "${chunk.phrase}"
+- 3 câu có 3 bối cảnh KHÁC NHAU (du lịch, y tế, nhà hàng, mua sắm, học tập, gia đình…)
+- tenseUsed: tên thì tiếng Anh (Present Simple, Past Perfect, Present Continuous…)
+- tenseExplanation: 1 câu tiếng Việt, giải thích TẠI SAO dùng thì đó trong tình huống này (không phải định nghĩa thì)
+- vocabHints: chỉ các từ THỰC SỰ khó dịch, KHÔNG hint chunk mục tiêu
+  - Câu 1 (đề): 0–2 hints, ưu tiên để mảng rỗng [] nếu câu quá đơn giản
+  - Câu 2 (trung): 2–3 hints
+  - Câu 3 (khó): 4–5 hints
+- Độ khó phải THỰC SỰ khác nhau về độ dài và cấu trúc ngữ pháp`;
 
   return callGemini(apiKey, systemPrompt, userMessage);
 }
