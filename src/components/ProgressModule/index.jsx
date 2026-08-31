@@ -181,11 +181,12 @@ export function ProgressModule({ allProgress, chunks, transcripts = [] }) {
   const totalSuccess    = progressEntries.reduce((s, p) => s + (p.successCount || 0), 0);
   const learnedChunks   = progressEntries.filter(p => p.practiceCount >= 3).length;
 
-  // Chunks with progress data
+  // Chunks with actual practice sessions (not just generated exercises)
   const chunksWithProgress = chunks
-    .filter(c => allProgress[c.id])
+    .filter(c => allProgress[c.id] && allProgress[c.id].practiceCount > 0)
     .map(c => ({ chunk: c, progress: allProgress[c.id] }))
     .sort((a, b) => b.progress.lastPracticed - a.progress.lastPracticed);
+
 
   if (chunksWithProgress.length === 0) {
     return (

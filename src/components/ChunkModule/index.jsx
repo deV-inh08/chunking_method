@@ -166,10 +166,16 @@ export function ChunkModule({
 
   const transcript   = transcripts.find(t => t.id === selectedTranscriptId);
 
-  // Split chunks into unpracticed / practiced
-  const unpracticed = chunks.filter(c => !allProgress[c.id]);
-  const practiced   = chunks.filter(c =>  allProgress[c.id]);
+  // A chunk is "practiced" only if it has at least 1 actual practice session
+  const hasPracticed = (c) => {
+    const p = allProgress[c.id];
+    return p && (p.practiceCount > 0 || p.score > 0 || p.completed === true);
+  };
+
+  const unpracticed   = chunks.filter(c => !hasPracticed(c));
+  const practiced     = chunks.filter(c =>  hasPracticed(c));
   const visibleChunks = showPracticed ? chunks : unpracticed;
+
 
   const filtered     = filter === 'all' ? visibleChunks : visibleChunks.filter(c => c.type === filter);
   const selectedCount = selectedChunks.size;
