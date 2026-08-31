@@ -1,17 +1,26 @@
 // Priority list — tries each in order until one works
+// Lite models first: RPD 500/day (vs 20/day for standard Flash)
 const MODEL_CANDIDATES = [
-  'gemini-3.6-flash',
-  'gemini-3.0-flash',
-  'gemini-2.5-flash',
-  'gemini-2.5-flash-lite',
-  'gemini-2.0-flash-lite',
+  'gemini-3.5-flash-lite',  // RPM 15, RPD 500 ← best free tier
+  'gemini-3.1-flash-lite',  // RPM 15, RPD 500 ← second best
+  'gemini-3.7-flash',       // RPM  5, RPD  20
+  'gemini-3.5-flash',       // RPM  5, RPD  20
+  'gemini-3.6-flash',       // RPM  5, RPD  20 (previously hit limit)
+  'gemini-3-flash',         // RPM  5, RPD  20
+  'gemini-2.5-flash',       // RPM  5, RPD  20
+  'gemini-2.5-flash-lite',  // RPM 10, RPD  20
+  'gemini-2.0-flash-lite',  // older stable fallback
 ];
 
 const BASE_URL = 'https://generativelanguage.googleapis.com/v1beta';
 
+// ─── Rate-limit blacklist (resets on page reload) ─────────────
+const _rateLimitedModels = new Set();
+
 async function resolveModel(apiKey) {
-  // Try each candidate; return first that the API accepts
+  // Try each candidate; skip rate-limited ones; return first that the API accepts
   for (const model of MODEL_CANDIDATES) {
+    if (_rateLimitedModels.has(model)) continue;
     const testRes = await fetch(
       `${BASE_URL}/models/${model}?key=${apiKey}`
     );
@@ -23,7 +32,7 @@ async function resolveModel(apiKey) {
     const { models = [] } = await listRes.json();
     const flash = models
       .map(m => m.name.replace('models/', ''))
-      .filter(n => n.includes('flash') && !n.includes('preview'))
+      .filter(n => n.includes('flash') && !n.includes('preview') && !_rateLimitedModels.has(n))
       .sort()
       .reverse()[0]; // highest version first
     if (flash) return flash;
@@ -40,42 +49,60 @@ async function getModel(apiKey) {
 const GEMINI_URL = (model, apiKey) =>
   `${BASE_URL}/models/${model}:generateContent?key=${apiKey}`;
 
-// ─── Core call ────────────────────────────────────────────────
+// ─── Core call (with auto-fallback on rate limit) ─────────────
 async function callGemini(apiKey, systemPrompt, userMessage) {
-  const model = await getModel(apiKey);
-  const res = await fetch(GEMINI_URL(model, apiKey), {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      systemInstruction: {
-        parts: [{ text: systemPrompt }],
-      },
-      contents: [
-        { role: 'user', parts: [{ text: userMessage }] },
-      ],
-      generationConfig: {
-        maxOutputTokens: 4096,
-        temperature: 0.7,
-      },
-    }),
-  });
+  // Try up to all candidate models in case of rate limits
+  for (let attempt = 0; attempt < MODEL_CANDIDATES.length; attempt++) {
+    const model = await getModel(apiKey);
+    const res = await fetch(GEMINI_URL(model, apiKey), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        systemInstruction: {
+          parts: [{ text: systemPrompt }],
+        },
+        contents: [
+          { role: 'user', parts: [{ text: userMessage }] },
+        ],
+        generationConfig: {
+          maxOutputTokens: 4096,
+          temperature: 0.7,
+        },
+      }),
+    });
 
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    const msg = err?.error?.message || `Gemini API error ${res.status}`;
-    throw new Error(msg);
+    // Rate limit → blacklist this model and try next
+    if (res.status === 429) {
+      console.warn(`[AI] Rate limit hit for ${model}, switching to next model…`);
+      _rateLimitedModels.add(model);
+      _cachedModel = null; // force re-resolve on next call
+      const remaining = MODEL_CANDIDATES.filter(m => !_rateLimitedModels.has(m));
+      if (remaining.length === 0) {
+        throw new Error('Đã vượt giới hạn tất cả model. Vui lòng thử lại sau hoặc nâng cấp API key.');
+      }
+      continue; // retry with next model
+    }
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      const msg = err?.error?.message || `Gemini API error ${res.status}`;
+      throw new Error(msg);
+    }
+
+    const data = await res.json();
+    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+
+    // Extract JSON block from response
+    const jsonMatch = text.match(/```json\s*([\s\S]*?)\s*```/) ||
+                      text.match(/(\{[\s\S]*\})/);
+    if (!jsonMatch) throw new Error('Gemini response không chứa JSON hợp lệ');
+
+    return JSON.parse(jsonMatch[1]);
   }
 
-  const data = await res.json();
-  const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-
-  // Extract JSON block from response
-  const jsonMatch = text.match(/```json\s*([\s\S]*?)\s*```/) ||
-                    text.match(/(\{[\s\S]*\})/);
-  if (!jsonMatch) throw new Error('Gemini response không chứa JSON hợp lệ');
-
-  return JSON.parse(jsonMatch[1]);
+  throw new Error('Không thể gọi Gemini API sau nhiều lần thử. Vui lòng thử lại sau.');
 }
+
 
 // ─── Analyze transcript → extract chunks ──────────────────────
 export async function analyzeTranscript(text, part, apiKey) {
