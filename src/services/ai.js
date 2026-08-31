@@ -177,30 +177,44 @@ Trả về JSON:
       "id": "ex_1",
       "level": 1,
       "levelLabel": "Cơ bản",
-      "vietnameseSentence": "Câu TIỬNG VIẮT NGẮN (≤ 10 từ). 1 mệnh đề. Ngữ cảnh quen thuộc (mua sắm / ăn uống / hỏi thăm). BẮt buộc dùng chunk.",
+      "vietnameseSentence": "Câu TIẾNG VIỆT NGẮN (≤ 10 từ). 1 mệnh đề. Ngữ cảnh quen thuộc (mua sắm / ăn uống / hỏi thăm). Bắt buộc dùng chunk.",
       "sampleTranslation": "Câu tiếng Anh ngắn, đơn giản, có chunk mục tiêu.",
       "tenseUsed": "Present Simple",
       "tenseExplanation": "Dùng thì này vì … (1 câu tiếng Việt, giải thích tình huống thực tế)",
-      "vocabHints": []
+      "vocabHints": [],
+      "sentenceBreakdown": [
+        {
+          "phrase": "cụm từ trong sampleTranslation",
+          "vi": "nghĩa tiếng Việt của cụm đó",
+          "note": "Giải thích ngắn tại sao dùng từ/cấu trúc này (ngữ pháp, collocation, thành ngữ)"
+        }
+      ]
     },
     {
       "id": "ex_2",
       "level": 2,
       "levelLabel": "Trung cấp",
-      "vietnameseSentence": "Câu TIỬNG VIẮT TRUNG BÌNH (10-15 từ). Có trạng ngữ thời gian / địa điểm. Bối cảnh thực tế (công việc / du lịch / học tập). BẮt buộc dùng chunk.",
+      "vietnameseSentence": "Câu TIẾNG VIỆT TRUNG BÌNH (10-15 từ). Có trạng ngữ thời gian / địa điểm. Bối cảnh thực tế (công việc / du lịch / học tập). Bắt buộc dùng chunk.",
       "sampleTranslation": "Câu tiếng Anh trung bình, tự nhiên, có chunk mục tiêu.",
       "tenseUsed": "Past Simple",
       "tenseExplanation": "Dùng thì này vì … (1 câu tiếng Việt, giải thích logic thì)",
       "vocabHints": [
         { "vi": "từ khó", "en": "English" },
         { "vi": "từ khó 2", "en": "English 2" }
+      ],
+      "sentenceBreakdown": [
+        {
+          "phrase": "cụm từ trong sampleTranslation",
+          "vi": "nghĩa tiếng Việt",
+          "note": "Giải thích tại sao dùng từ/cấu trúc này"
+        }
       ]
     },
     {
       "id": "ex_3",
       "level": 3,
       "levelLabel": "Nâng cao",
-      "vietnameseSentence": "Câu TIỬNG VIẮT KHÓ (15-20 từ). Câu ghép hoặc có mệnh đề phụ (vì / mặc dù / sau khi). Ngữ cảnh phức tạp. BẮt buộc dùng chunk.",
+      "vietnameseSentence": "Câu TIẾNG VIỆT KHÓ (15-20 từ). Câu ghép hoặc có mệnh đề phụ (vì / mặc dù / sau khi). Ngữ cảnh phức tạp. Bắt buộc dùng chunk.",
       "sampleTranslation": "Câu tiếng Anh phức tạp, tự nhiên, có chunk mục tiêu.",
       "tenseUsed": "Present Perfect",
       "tenseExplanation": "Dùng thì này vì … (1 câu tiếng Việt, giải thích logic trong câu ghép)",
@@ -209,6 +223,13 @@ Trả về JSON:
         { "vi": "từ khó 2", "en": "English 2" },
         { "vi": "từ khó 3", "en": "English 3" },
         { "vi": "từ khó 4", "en": "English 4" }
+      ],
+      "sentenceBreakdown": [
+        {
+          "phrase": "cụm từ trong sampleTranslation",
+          "vi": "nghĩa tiếng Việt",
+          "note": "Giải thích tại sao dùng từ/cấu trúc này"
+        }
       ]
     }
   ]
@@ -216,15 +237,20 @@ Trả về JSON:
 \`\`\`
 
 Quy tắc bắt buộc:
-- vietnameseSentence: câu TIỬNG VIẮT có dấu đầy đủ, tự nhiên, bối cảnh KHÁC transcript gốc
-- sampleTranslation: BẮt BUỘC chứa chunk "${chunk.phrase}"
+- vietnameseSentence: câu TIẾNG VIỆT có dấu đầy đủ, tự nhiên, bối cảnh KHÁC transcript gốc
+- sampleTranslation: BẮT BUỘC chứa chunk "${chunk.phrase}"
 - 3 câu có 3 bối cảnh KHÁC NHAU (du lịch, y tế, nhà hàng, mua sắm, học tập, gia đình…)
 - tenseUsed: tên thì tiếng Anh (Present Simple, Past Perfect, Present Continuous…)
-- tenseExplanation: 1 câu tiếng Việt, giải thích TẠI SAO dùng thì đó trong tình huống này (không phải định nghĩa thì)
+- tenseExplanation: 1 câu tiếng Việt, giải thích TẠI SAO dùng thì đó (không phải định nghĩa thì)
 - vocabHints: chỉ các từ THỰC SỰ khó dịch, KHÔNG hint chunk mục tiêu
-  - Câu 1 (đề): 0–2 hints, ưu tiên để mảng rỗng [] nếu câu quá đơn giản
+  - Câu 1 (dễ): 0–2 hints
   - Câu 2 (trung): 2–3 hints
   - Câu 3 (khó): 4–5 hints
+- sentenceBreakdown: phân tích 3–5 cụm quan trọng trong sampleTranslation
+  - phrase: cụm từ TIẾNG ANH đúng như trong sampleTranslation, KHÔNG là chunk mục tiêu, KHÔNG là toàn bộ câu
+  - vi: nghĩa tiếng Việt của cụm đó
+  - note: 1 câu tiếng Việt giải thích TẠI SAO dùng từ này (sở hữu từ, giới từ, mạo từ, collocation…). Nhấn mạnh điểm người Việt hay nhầm.
+  - Ví dụ tốt: {"phrase": "our vacation", "vi": "kỳ nghỉ của chúng tôi", "note": "Tiếng Anh bắt buộc dùng 'our' trước danh từ khi chỉ về đối tượng của nhóm người nói — tiếng Việt thường bỏ qua đại từ sở hữu này."}
 - Độ khó phải THỰC SỰ khác nhau về độ dài và cấu trúc ngữ pháp`;
 
   return callGemini(apiKey, systemPrompt, userMessage);
