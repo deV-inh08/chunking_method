@@ -3,7 +3,9 @@ import { createClient } from '@supabase/supabase-js';
 // ─── Credentials ───────────────────────────────────────────────
 export function getSupabaseCredentials() {
   const envUrl = import.meta.env.VITE_SUPABASE_URL;
-  const envKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+  // Supabase mới đổi tên: PUBLISHABLE_KEY = ANON_KEY (cùng 1 key)
+  const envKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+              || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
   if (envUrl && envKey && !envUrl.includes('your-project') && envKey.length > 20) {
     return { url: envUrl, key: envKey, source: 'env' };
