@@ -173,8 +173,10 @@ export function ChunkModule({
   };
 
   const unpracticed   = chunks.filter(c => !hasPracticed(c));
+
   const practiced     = chunks.filter(c =>  hasPracticed(c));
   const visibleChunks = showPracticed ? chunks : unpracticed;
+
 
 
   const filtered     = filter === 'all' ? visibleChunks : visibleChunks.filter(c => c.type === filter);

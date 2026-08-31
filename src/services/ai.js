@@ -123,11 +123,9 @@ Trả về JSON theo đúng format sau:
   "themeDescription": "Mô tả ngắn bằng tiếng Việt về bối cảnh/tình huống của đoạn hội thoại này (1-2 câu)",
   "groups": [
     {
-      "id": "group_1",
       "name": "Tên nhóm tình huống tiếng Việt (Hỏi thăm & Bắt kịp nội dung cuộc họp)",
       "chunks": [
         {
-          "id": "chunk_1",
           "phrase": "cụm từ tiếng Anh chính xác như trong transcript",
           "meaningVi": "Nghĩa tiếng Việt đầy đủ, tự nhiên",
           "usageNote": "Giải thích ngắn bằng tiếng Việt: cách dùng, ngữ pháp, ngữ cảnh điển hình của cụm từ này (1-2 câu)",

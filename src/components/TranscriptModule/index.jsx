@@ -53,14 +53,16 @@ function TranscriptInput({ onSave, onChunksExtracted, onToast }) {
       };
       onSave(transcript);
 
-      // Flatten groups → chunks
+      // Flatten groups → chunks with guaranteed unique IDs
       const chunks = [];
+      const ts = Date.now();
       (result.groups || []).forEach((group, gi) => {
         (group.chunks || []).forEach((c, ci) => {
           chunks.push({
             ...c,
-            id:        c.id || `chunk_${id}_${gi}_${ci}`,
-            groupId:   group.id   || `group_${gi + 1}`,
+            // Always override AI's generic IDs (chunk_1, chunk_2...) with unique ones
+            id:        `chunk_${id}_${gi}_${ci}_${ts}`,
+            groupId:   `group_${id}_${gi}`,
             groupName: group.name || `Nhóm ${gi + 1}`,
             transcriptId: id,
           });
@@ -70,7 +72,7 @@ function TranscriptInput({ onSave, onChunksExtracted, onToast }) {
       // Fallback: if AI returned flat chunks (old format)
       if (chunks.length === 0 && Array.isArray(result.chunks)) {
         result.chunks.forEach((c, i) => {
-          chunks.push({ ...c, id: c.id || `chunk_${id}_${i}`, transcriptId: id });
+          chunks.push({ ...c, id: `chunk_${id}_${i}_${ts}`, transcriptId: id });
         });
       }
 
