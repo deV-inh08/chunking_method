@@ -1,5 +1,48 @@
-import { useEffect, useRef } from 'react';
-import { X } from 'lucide-react';
+import React, { Component, useEffect, useRef } from 'react';
+import { X, AlertTriangle, RotateCcw } from 'lucide-react';
+
+export class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('ErrorBoundary caught an error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: 24, textAlign: 'center', maxWidth: 480, margin: '40px auto' }} className="card">
+          <AlertTriangle size={36} color="var(--error-text)" style={{ margin: '0 auto 12px' }} />
+          <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 8 }}>
+            Đã có lỗi xảy ra trong phần này
+          </h3>
+          <p style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 16 }}>
+            {this.state.error?.message || 'Lỗi không xác định'}
+          </p>
+          <button
+            className="btn btn-primary btn-sm"
+            onClick={() => {
+              this.setState({ hasError: false, error: null });
+              if (this.props.onReset) this.props.onReset();
+              else window.location.reload();
+            }}
+            style={{ margin: '0 auto', display: 'inline-flex', alignItems: 'center', gap: 6 }}
+          >
+            <RotateCcw size={14} /> Thử lại / Tải lại
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 export function Modal({ title, description, children, footer, onClose }) {
   const overlayRef = useRef(null);

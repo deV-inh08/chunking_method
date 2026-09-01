@@ -7,7 +7,7 @@ import { PracticeModule } from './components/PracticeModule';
 import { ProgressModule } from './components/ProgressModule';
 import { SettingsModal } from './components/Settings';
 import { AuthScreen } from './components/Auth';
-import { Toast, Spinner } from './components/ui';
+import { Toast, Spinner, ErrorBoundary } from './components/ui';
 import { useTranscripts, useSettings, useProgress } from './hooks/useStorage';
 import { useAuth } from './hooks/useAuth';
 import { generateWritingExercises } from './services/ai';
@@ -288,58 +288,60 @@ export default function App() {
         )}
 
         <main className="page-content">
-          {page === 'transcripts' && (
-            <TranscriptModule
-              transcripts={transcripts}
-              onSave={handleSaveTranscript}
-              onDelete={handleDeleteTranscript}
-              onChunksExtracted={handleChunksExtracted}
-              onSelectTranscript={handleSelectTranscript}
-              chunkCounts={chunkCounts}
-              onToast={addToast}
-            />
-          )}
+          <ErrorBoundary>
+            {page === 'transcripts' && (
+              <TranscriptModule
+                transcripts={transcripts}
+                onSave={handleSaveTranscript}
+                onDelete={handleDeleteTranscript}
+                onChunksExtracted={handleChunksExtracted}
+                onSelectTranscript={handleSelectTranscript}
+                chunkCounts={chunkCounts}
+                onToast={addToast}
+              />
+            )}
 
-          {page === 'chunks' && (
-            <ChunkModule
-              chunks={displayChunks}
-              selectedTranscriptId={selectedTranscriptId}
-              transcripts={transcripts}
-              selectedChunks={selectedChunks}
-              onToggleChunk={handleToggleChunk}
-              onSituationsGenerated={handleSituationsGenerated}
-              allProgress={allProgress}
-              onToast={addToast}
-              onStartPractice={handleStartPractice}
-            />
-          )}
+            {page === 'chunks' && (
+              <ChunkModule
+                chunks={displayChunks}
+                selectedTranscriptId={selectedTranscriptId}
+                transcripts={transcripts}
+                selectedChunks={selectedChunks}
+                onToggleChunk={handleToggleChunk}
+                onSituationsGenerated={handleSituationsGenerated}
+                allProgress={allProgress}
+                onToast={addToast}
+                onStartPractice={handleStartPractice}
+              />
+            )}
 
-          {/* VocabModule: luôn mounted, chỉ ẩn bằng CSS khi không active
-              → giữ nguyên state sinh chunk khi user đổi tab rồi quay lại */}
-          <div style={{ display: page === 'vocab' ? 'block' : 'none' }}>
-            <VocabModule onToast={addToast} />
-          </div>
+            {/* VocabModule: luôn mounted, chỉ ẩn bằng CSS khi không active
+                → giữ nguyên state sinh chunk khi user đổi tab rồi quay lại */}
+            <div style={{ display: page === 'vocab' ? 'block' : 'none' }}>
+              <VocabModule onToast={addToast} />
+            </div>
 
-          {page === 'practice' && (
-            <PracticeModule
-              selectedChunks={selectedChunks}
-              chunks={allChunks}
-              allProgress={allProgress}
-              onProgressUpdate={handleProgressUpdate}
-              onToast={addToast}
-              autoGenerating={autoGenerating}
-              autoGenProgress={autoGenProgress}
-            />
-          )}
+            {page === 'practice' && (
+              <PracticeModule
+                selectedChunks={selectedChunks}
+                chunks={allChunks}
+                allProgress={allProgress}
+                onProgressUpdate={handleProgressUpdate}
+                onToast={addToast}
+                autoGenerating={autoGenerating}
+                autoGenProgress={autoGenProgress}
+              />
+            )}
 
-          {page === 'progress' && (
-            <ProgressModule
-              allProgress={allProgress}
-              chunks={allChunks}
-              transcripts={transcripts}
-              onRepractice={handleRepractice}
-            />
-          )}
+            {page === 'progress' && (
+              <ProgressModule
+                allProgress={allProgress}
+                chunks={allChunks}
+                transcripts={transcripts}
+                onRepractice={handleRepractice}
+              />
+            )}
+          </ErrorBoundary>
         </main>
       </div>
 

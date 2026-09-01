@@ -9,7 +9,7 @@ import { generateChunksBatch, generateExercisesForChunks, gradeWriting, gradeWri
 import {
   getApiKey, saveVocabChunks, saveSituations, getSituations,
   getLearnedVocab, markVocabLearned, updateProgress,
-  saveTodaySession,
+  saveTodaySession, getChunks,
 } from '../../store/storage';
 
 // ── Tải vocab từ JSON tĩnh (không cần Supabase/script) ──────────
@@ -750,93 +750,148 @@ function WordLearningCard({
 // ─── Screen 3: Learning Session ────────────────────────────────────
 function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, onBack, onToast }) {
   // chunks per wordId: { [wordId]: chunk[] }
-  const [chunkMap, setChunkMap] = useState({});
+  const [chunkMap, setChunkMap] = useState(() => {
+    const initial = {};
+    selectedWords.forEach(w => {
+      const wid = makeWordId(w.word, w.topic);
+      const existing = getChunks(wid);
+      if (existing && existing.length > 0) {
+        initial[wid] = existing;
+      }
+    });
+    return initial;
+  });
+
   // overall batch status: 'idle' | 'loading' | 'done' | 'error'
   const [batchStatus, setBatchStatus] = useState('idle');
+  const [genProgress, setGenProgress] = useState({ done: 0, total: selectedWords.length });
   const [errorMsg, setErrorMsg] = useState('');
   const sessionIdRef = useRef(0);
 
-  // Auto-generate tất cả chunks trong 1 request duy nhất
-  useEffect(() => {
-    const sid = ++sessionIdRef.current;
-    runBatch(sid);
-  }, []); // eslint-disable-line
-
-  const runBatch = async (sid) => {
+  const runBatch = useCallback(async (sid) => {
     const apiKey = getApiKey();
-    if (!apiKey) { onToast('error', 'Chưa có API key. Vào Settings để nhập.'); return; }
+    if (!apiKey) {
+      onToast('error', 'Chưa có API key. Vào Settings để nhập.');
+      setBatchStatus('error');
+      setErrorMsg('Chưa có Gemini API key. Vui lòng vào Cài đặt để nhập API key.');
+      return;
+    }
+
+    // Filter words that actually need chunks generated
+    const initial = {};
+    const wordsToFetch = [];
+    selectedWords.forEach(w => {
+      const wid = makeWordId(w.word, w.topic);
+      const existing = getChunks(wid);
+      if (existing && existing.length > 0) {
+        initial[wid] = existing;
+      } else {
+        wordsToFetch.push(w);
+      }
+    });
+
+    setChunkMap(prev => ({ ...prev, ...initial }));
+
+    if (wordsToFetch.length === 0) {
+      setBatchStatus('done');
+      setGenProgress({ done: selectedWords.length, total: selectedWords.length });
+      return;
+    }
 
     setBatchStatus('loading');
     setErrorMsg('');
+    const alreadyDone = selectedWords.length - wordsToFetch.length;
+    setGenProgress({ done: alreadyDone, total: selectedWords.length });
+
     try {
-      // 1 REQUEST cho tất cả N từ
-      const result = await generateChunksBatch(selectedWords, apiKey);
-      if (sessionIdRef.current !== sid) return; // session đã bị cancel
-
-      const resultList = result.results || [];
+      const BATCH_SIZE = 10;
       const ts = Date.now();
-      const newChunkMap = {};
+      let currentMap = { ...initial };
 
-      selectedWords.forEach((word, wi) => {
-        const wordId = makeWordId(word.word, word.topic);
-        // Match by index hoặc by word name
-        const match = resultList.find(r => r.word?.toLowerCase() === word.word.toLowerCase())
-          || resultList[wi];
-        const rawChunks = match?.chunks || [];
+      for (let i = 0; i < wordsToFetch.length; i += BATCH_SIZE) {
+        if (sessionIdRef.current !== sid) return;
+        const slice = wordsToFetch.slice(i, i + BATCH_SIZE);
+        const result = await generateChunksBatch(slice, apiKey);
+        if (sessionIdRef.current !== sid) return;
 
-        const chunks = rawChunks.map((c, ci) => ({
-          ...c,
-          id: `chunk_vocab_${wordId}_${ci}_${ts}`,
-          sourceType: 'vocab', sourceWordId: wordId, sourceWord: word.word, topic: word.topic,
-          groupId: `vocab_${wordId}`, groupName: word.word,
-          transcriptId: null,
-        }));
+        const resultList = result.results || [];
+        slice.forEach((word, wi) => {
+          const wordId = makeWordId(word.word, word.topic);
+          const match = resultList.find(r => r.word?.toLowerCase() === word.word.toLowerCase()) || resultList[wi];
+          const rawChunks = match?.chunks || [];
+          const chunks = rawChunks.map((c, ci) => ({
+            ...c,
+            id: `chunk_vocab_${wordId}_${ci}_${ts}`,
+            sourceType: 'vocab',
+            sourceWordId: wordId,
+            sourceWord: word.word,
+            topic: word.topic,
+            groupId: `vocab_${wordId}`,
+            groupName: word.word,
+            transcriptId: null,
+          }));
 
-        // Lưu vào storage để ChunkModule hiển thị
-        if (chunks.length > 0) {
-          saveVocabChunks(wordId, word.word, word.topic, chunks);
-        }
-        newChunkMap[wordId] = chunks;
-      });
+          if (chunks.length > 0) {
+            saveVocabChunks(wordId, word.word, word.topic, chunks);
+          }
+          currentMap[wordId] = chunks;
+        });
 
-      setChunkMap(newChunkMap);
+        setChunkMap({ ...currentMap });
+        setGenProgress({
+          done: alreadyDone + Math.min(i + BATCH_SIZE, wordsToFetch.length),
+          total: selectedWords.length,
+        });
+      }
+
       setBatchStatus('done');
     } catch (err) {
       if (sessionIdRef.current !== sid) return;
       console.error('Batch chunk generation failed:', err);
-      setErrorMsg(err.message || 'Lỗi không xác định');
+      setErrorMsg(err.message || 'Lỗi không xác định khi sinh chunk');
       setBatchStatus('error');
       onToast('error', `Lỗi sinh chunk: ${err.message}`);
     }
-  };
+  }, [selectedWords, onToast]);
 
+  useEffect(() => {
+    const sid = ++sessionIdRef.current;
+    runBatch(sid);
+  }, [runBatch]);
+
+  const isLoading = batchStatus === 'loading';
   const learnedToday = selectedWords.filter(w => learnedVocab[makeWordId(w.word, w.topic)]).length;
 
   return (
     <div>
       {/* Header */}
       <div className="flex items-center gap-3 mb-4">
-        <button id="back-to-selector" className="btn btn-ghost btn-sm" onClick={onBack}
-          disabled={generating}
-          style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+        <button
+          id="back-to-selector"
+          className="btn btn-ghost btn-sm"
+          onClick={onBack}
+          disabled={isLoading}
+          style={{ display: 'flex', alignItems: 'center', gap: 5 }}
+        >
           <ChevronLeft size={14} /> Chọn từ
         </button>
-        <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--text-primary)', flex: 1 }}>
+        <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--text-primary)', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
           Học từ vựng – {topic}
         </div>
         <Badge type="success">{learnedToday}/{selectedWords.length} đã học</Badge>
       </div>
 
-      {/* Progress bar */}
-      {generating && (
+      {/* Progress / Loading bar */}
+      {isLoading && (
         <div className="card mb-4" style={{
-          background: 'rgba(99,102,241,0.06)', borderColor: 'rgba(99,102,241,0.2)',
-          padding: '12px 16px',
+          background: 'linear-gradient(135deg, rgba(99,102,241,0.12), rgba(67,56,202,0.08))',
+          borderColor: 'rgba(99,102,241,0.25)',
+          padding: '14px 16px',
         }}>
           <div className="flex items-center gap-3 mb-2">
-            <Spinner size={14} />
+            <Spinner size={15} />
             <span style={{ fontSize: 13, color: 'var(--accent-300)', fontWeight: 600 }}>
-              Đang sinh chunk và bài luyện…
+              AI đang trích xuất chunks cho các từ vựng…
             </span>
             <span style={{ fontSize: 12, color: 'var(--text-muted)', marginLeft: 'auto' }}>
               {genProgress.done}/{genProgress.total} từ
@@ -850,18 +905,34 @@ function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, on
               borderRadius: 99, transition: 'width 0.4s ease',
             }} />
           </div>
-          {/* Ước tính thời gian còn lại */}
-          {genProgress.done < genProgress.total && (
-            <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 6 }}>
-              ⏱ Ước tính còn ~{Math.ceil((genProgress.total - genProgress.done) * 15 / 60)} phút
-              · Đang dùng delay để tránh rate limit Gemini
-            </p>
-          )}
+          <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 6, margin: '6px 0 0' }}>
+            ⚡ Đang chia theo batch tối ưu tốc độ & tránh giới hạn API
+          </p>
         </div>
       )}
 
-      {/* All words */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      {/* Error state with retry */}
+      {batchStatus === 'error' && (
+        <div className="card mb-4" style={{
+          background: 'var(--error-bg)',
+          borderColor: 'var(--error-border)',
+          padding: '14px 16px',
+        }}>
+          <div style={{ color: 'var(--error-text)', fontSize: 13, fontWeight: 600, marginBottom: 8 }}>
+            ❌ {errorMsg || 'Không thể tạo chunk cho danh sách từ này.'}
+          </div>
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={() => { const sid = ++sessionIdRef.current; runBatch(sid); }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
+          >
+            <RotateCcw size={13} /> Thử lại
+          </button>
+        </div>
+      )}
+
+      {/* All words cards */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
         {selectedWords.map((word) => {
           const wordId = makeWordId(word.word, word.topic);
           return (
@@ -869,9 +940,7 @@ function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, on
               key={wordId}
               word={word}
               wordId={wordId}
-              chunkStatus={chunkStatuses[wordId] || 'pending'}
-              exercises={exerciseData[wordId] || []}
-              onGenChunks={handleRetryWord}
+              chunks={chunkMap[wordId] || []}
               onMarkLearned={onMarkLearned}
               learnedVocab={learnedVocab}
               onToast={onToast}
@@ -881,7 +950,7 @@ function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, on
       </div>
 
       {/* Completion banner */}
-      {!generating && learnedToday === selectedWords.length && selectedWords.length > 0 && (
+      {!isLoading && learnedToday === selectedWords.length && selectedWords.length > 0 && (
         <div className="card mt-6 animate-fade-in" style={{
           background: 'linear-gradient(135deg, rgba(34,197,94,0.12), rgba(16,185,129,0.08))',
           borderColor: 'rgba(34,197,94,0.3)', textAlign: 'center', padding: '28px 24px',
@@ -891,10 +960,13 @@ function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, on
             Tuyệt vời! Hoàn thành {selectedWords.length} từ! 🎉
           </div>
           <p style={{ fontSize: 13, color: 'var(--text-muted)' }}>
-            Các từ đã được lưu vào danh sách đã học. Ngày mai bạn sẽ thấy từ mới.
+            Các từ đã được lưu vào danh sách đã học. Bạn có thể luyện tập tiếp bất kỳ lúc nào.
           </p>
-          <button className="btn btn-primary mt-4" onClick={onBack}
-            style={{ margin: '16px auto 0' }}>
+          <button
+            className="btn btn-primary mt-4"
+            onClick={onBack}
+            style={{ margin: '16px auto 0' }}
+          >
             <BookMarked size={15} /> Chọn thêm từ khác
           </button>
         </div>
