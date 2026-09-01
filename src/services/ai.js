@@ -1,4 +1,4 @@
-// Priority list — tries each in order until one works
+﻿// Priority list — tries each in order until one works
 // Lite models first: RPD 500/day (vs 20/day for standard Flash)
 const MODEL_CANDIDATES = [
   'gemini-3.5-flash-lite',  // RPM 15, RPD 500 ← best free tier
@@ -98,7 +98,7 @@ async function callGemini(apiKey, systemPrompt, userMessage, opts = {}) {
       // Đọc Retry-After header nếu có, mặc định 20s
       const retryAfter = parseInt(res.headers.get('Retry-After') || '0', 10);
       const backoffMs = retryAfter > 0 ? retryAfter * 1000 : 20000 + attempt * 5000;
-      console.warn(`[AI] 429 rate limit on ${model}. Chờ ${backoffMs/1000}s rồi đổi model…`);
+      console.warn(`[AI] 429 rate limit on ${model}. Chờ ${backoffMs / 1000}s rồi đổi model…`);
       _rateLimitedModels.add(model);
       _cachedModel = null; // force re-resolve on next call
       const remaining = MODEL_CANDIDATES.filter(m => !_rateLimitedModels.has(m));
@@ -122,7 +122,7 @@ async function callGemini(apiKey, systemPrompt, userMessage, opts = {}) {
 
     // Extract JSON block from response
     const jsonMatch = text.match(/```json\s*([\s\S]*?)\s*```/) ||
-                      text.match(/(\{[\s\S]*\})/);
+      text.match(/(\{[\s\S]*\})/);
     if (!jsonMatch) throw new Error('Gemini response không chứa JSON hợp lệ');
 
     return JSON.parse(jsonMatch[1]);
@@ -502,7 +502,7 @@ Quy tắc bắt buộc:
 - anotherExample: câu đầy đủ, tự nhiên, phù hợp chủ đề ${words[0]?.topic || ''}`;
 
   // Tăng output tokens vì có nhiều từ cần sinh
-  return callGemini(apiKey, systemPrompt, userMessage, { maxOutputTokens: 8192 });
+  return callGemini(apiKey, systemPrompt, userMessage, { maxOutputTokens: 24000 });
 }
 
 
