@@ -17,6 +17,25 @@ const BASE_URL = 'https://generativelanguage.googleapis.com/v1beta';
 // ─── Rate-limit blacklist (resets on page reload) ─────────────
 const _rateLimitedModels = new Set();
 
+// ─── Throttle: delay giữa các lần gọi API ────────────────────
+// Gemini free tier: 5 RPM → tối thiểu 12s/request
+// Dùng 2.5s delay nhẹ nhàng + backoff khi 429 để không spam
+const _minDelayMs = 2500; // 2.5s giữa mỗi request (an toàn với 15 RPM Lite)
+let _lastCallTime = 0;
+
+async function waitForRateLimit() {
+  const now = Date.now();
+  const elapsed = now - _lastCallTime;
+  if (elapsed < _minDelayMs) {
+    await new Promise(r => setTimeout(r, _minDelayMs - elapsed));
+  }
+  _lastCallTime = Date.now();
+}
+
+async function sleep(ms) {
+  return new Promise(r => setTimeout(r, ms));
+}
+
 async function resolveModel(apiKey) {
   // Try each candidate; skip rate-limited ones; return first that the API accepts
   for (const model of MODEL_CANDIDATES) {
@@ -49,9 +68,12 @@ async function getModel(apiKey) {
 const GEMINI_URL = (model, apiKey) =>
   `${BASE_URL}/models/${model}:generateContent?key=${apiKey}`;
 
-// ─── Core call (with auto-fallback on rate limit) ─────────────
-async function callGemini(apiKey, systemPrompt, userMessage) {
-  // Try up to all candidate models in case of rate limits
+// ─── Core call (với delay + exponential backoff khi rate limit) ─
+async function callGemini(apiKey, systemPrompt, userMessage, opts = {}) {
+  // Chờ đủ thời gian giữa các request để không vượt RPM
+  await waitForRateLimit();
+
+  // Thử tối đa MODEL_CANDIDATES.length lần (mỗi lần có thể đổi model)
   for (let attempt = 0; attempt < MODEL_CANDIDATES.length; attempt++) {
     const model = await getModel(apiKey);
     const res = await fetch(GEMINI_URL(model, apiKey), {
@@ -65,22 +87,28 @@ async function callGemini(apiKey, systemPrompt, userMessage) {
           { role: 'user', parts: [{ text: userMessage }] },
         ],
         generationConfig: {
-          maxOutputTokens: 4096,
-          temperature: 0.7,
+          maxOutputTokens: opts.maxOutputTokens || 4096,
+          temperature: opts.temperature ?? 0.7,
         },
       }),
     });
 
-    // Rate limit → blacklist this model and try next
+    // Rate limit → backoff rồi thử model tiếp theo
     if (res.status === 429) {
-      console.warn(`[AI] Rate limit hit for ${model}, switching to next model…`);
+      // Đọc Retry-After header nếu có, mặc định 20s
+      const retryAfter = parseInt(res.headers.get('Retry-After') || '0', 10);
+      const backoffMs = retryAfter > 0 ? retryAfter * 1000 : 20000 + attempt * 5000;
+      console.warn(`[AI] 429 rate limit on ${model}. Chờ ${backoffMs/1000}s rồi đổi model…`);
       _rateLimitedModels.add(model);
       _cachedModel = null; // force re-resolve on next call
       const remaining = MODEL_CANDIDATES.filter(m => !_rateLimitedModels.has(m));
       if (remaining.length === 0) {
-        throw new Error('Đã vượt giới hạn tất cả model. Vui lòng thử lại sau hoặc nâng cấp API key.');
+        throw new Error('Đã vượt giới hạn tất cả model. Vui lòng thử lại sau vài phút.');
       }
-      continue; // retry with next model
+      // Chờ backoff trước khi thử model mới
+      await sleep(backoffMs);
+      _lastCallTime = Date.now(); // reset timer sau khi chờ
+      continue;
     }
 
     if (!res.ok) {
@@ -102,6 +130,7 @@ async function callGemini(apiKey, systemPrompt, userMessage) {
 
   throw new Error('Không thể gọi Gemini API sau nhiều lần thử. Vui lòng thử lại sau.');
 }
+
 
 
 // ─── Analyze transcript → extract chunks ──────────────────────
@@ -423,4 +452,122 @@ export async function testApiKey(apiKey) {
   } catch {
     return false;
   }
+}
+
+
+// ─── [BATCH] Sinh chunk cho nhiều từ cùng lúc – 1 request ──────
+// words: Array<{ word, meaningVi, topic, partOfSpeech }>
+// Returns: { results: [ { word, chunks: [...] } ] }
+export async function generateChunksBatch(words, apiKey) {
+  const wordList = words
+    .map((w, i) => `${i + 1}. "${w.word}" (${w.partOfSpeech || 'n/a'}) — ${w.meaningVi} [${w.topic}]`)
+    .join('\n');
+
+  const systemPrompt = `Bạn là chuyên gia giảng dạy tiếng Anh, chuyên tạo chunk (cụm từ) có giá trị giao tiếp cao.
+Nhiệm vụ: Với danh sách từ vựng, sinh đúng 2 chunk thực tế cho MỖI TỪ trong danh sách (không bỏ sót từ nào).
+Trả về JSON hợp lệ, không có text nào khác ngoài JSON.`;
+
+  const userMessage = `Sinh 2 chunk thực tế cho MỖI TỪ trong danh sách ${words.length} từ sau:
+
+${wordList}
+
+Trả về JSON:
+\`\`\`json
+{
+  "results": [
+    {
+      "word": "từ như trong danh sách",
+      "chunks": [
+        {
+          "phrase": "cụm từ tiếng Anh thực tế (ví dụ: nếu word là 'run' thì 'run a meeting')",
+          "meaningVi": "Nghĩa tiếng Việt của CỤM TỪ này (không phải của từ đơn)",
+          "usageNote": "Cách dùng ngắn gọn (tối đa 15 từ tiếng Việt)",
+          "anotherExample": "Câu ví dụ hoàn chỉnh tiếng Anh dùng chunk này",
+          "type": "collocation",
+          "formality": "neutral"
+        }
+      ]
+    }
+  ]
+}
+\`\`\`
+
+Quy tắc bắt buộc:
+- Trả về ĐÚNG ${words.length} phần tử trong results, đúng thứ tự danh sách gốc
+- Mỗi từ có đúng 2 chunk (không ít hơn, không nhiều hơn)
+- phrase: CỤM TỪ thực tế hay dùng, PHẢI chứa từ gốc hoặc dạng biến thể
+- type: "collocation" | "functional" | "connector"
+- formality: "formal" | "informal" | "neutral"
+- usageNote: ngắn gọn (không quá 15 từ tiếng Việt)
+- anotherExample: câu đầy đủ, tự nhiên, phù hợp chủ đề ${words[0]?.topic || ''}`;
+
+  // Tăng output tokens vì có nhiều từ cần sinh
+  return callGemini(apiKey, systemPrompt, userMessage, { maxOutputTokens: 8192 });
+}
+
+
+// ─── [BATCH] Sinh bài luyện cho tất cả chunk của 1 từ – 1 request ─
+// chunks: Array<{ id, phrase, meaningVi, ... }> (2 chunk của cùng 1 từ gốc)
+// Returns: { results: [ { phrase, exercises: [...] } ] }
+export async function generateExercisesForChunks(chunks, apiKey) {
+  const chunkList = chunks
+    .map((c, i) => `${i + 1}. "${c.phrase}" — ${c.meaningVi}`)
+    .join('\n');
+
+  const systemPrompt = `Bạn là chuyên gia thiết kế bài luyện dịch tiếng Anh cho người học.
+Nhiệm vụ: Với mỗi chunk, tạo 3 bài luyện dịch Việt → Anh theo 3 tình huống thực tế khác nhau.
+Trả về JSON hợp lệ, không có text nào khác ngoài JSON.`;
+
+  const userMessage = `Tạo 3 bài luyện dịch cho MỖI chunk sau (${chunks.length} chunk):
+
+${chunkList}
+
+Trả về JSON:
+\`\`\`json
+{
+  "results": [
+    {
+      "phrase": "cụm từ chunk (copy y chang)",
+      "exercises": [
+        {
+          "id": "ex_1",
+          "level": 1,
+          "levelLabel": "Tại văn phòng",
+          "vietnameseSentence": "Câu tiếng Việt có dấu, tự nhiên, bắt buộc dùng chunk.",
+          "sampleTranslation": "Câu tiếng Anh có chunk mục tiêu.",
+          "tenseUsed": "Present Simple",
+          "vocabHints": []
+        },
+        {
+          "id": "ex_2",
+          "level": 2,
+          "levelLabel": "Khi đi du lịch",
+          "vietnameseSentence": "Câu tiếng Việt bối cảnh du lịch / cuộc sống hàng ngày. Bắt buộc dùng chunk.",
+          "sampleTranslation": "Câu tiếng Anh có chunk mục tiêu.",
+          "tenseUsed": "Past Simple",
+          "vocabHints": [{ "vi": "từ khó", "en": "English" }]
+        },
+        {
+          "id": "ex_3",
+          "level": 3,
+          "levelLabel": "Trong cuộc trò chuyện",
+          "vietnameseSentence": "Câu tiếng Việt bối cảnh xã hội / học tập. Bắt buộc dùng chunk.",
+          "sampleTranslation": "Câu tiếng Anh có chunk mục tiêu.",
+          "tenseUsed": "Present Perfect",
+          "vocabHints": []
+        }
+      ]
+    }
+  ]
+}
+\`\`\`
+
+Quy tắc bắt buộc:
+- Trả về ĐÚNG ${chunks.length} phần tử trong results
+- Mỗi chunk có đúng 3 bài, 3 tình huống HOÀN TOÀN KHÁC NHAU
+- sampleTranslation: BẮT BUỘC chứa chunk mục tiêu (có thể chia động từ phù hợp thì)
+- levelLabel: tên tình huống thực tế (KHÔNG phải tên độ khó)
+- vietnameseSentence: câu tiếng Việt có dấu đầy đủ, tự nhiên`;
+
+  return callGemini(apiKey, systemPrompt, userMessage, { maxOutputTokens: 8192 });
 }

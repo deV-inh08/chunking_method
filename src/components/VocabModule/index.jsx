@@ -5,11 +5,11 @@ import {
   GraduationCap, Target, Trophy, BookMarked,
 } from 'lucide-react';
 import { EmptyState, Badge, Spinner } from '../ui';
-import { generateChunksFromWord, generateWritingExercises, gradeWriting } from '../../services/ai';
+import { generateChunksBatch, generateExercisesForChunks, gradeWriting } from '../../services/ai';
 import {
   getApiKey, saveVocabChunks, saveSituations, getSituations,
-  getLearnedVocab, markVocabLearned, isVocabLearned,
-  getTodaySession, saveTodaySession, getAllChunks,
+  getLearnedVocab, markVocabLearned,
+  saveTodaySession,
 } from '../../store/storage';
 
 // ── Tải vocab từ JSON tĩnh (không cần Supabase/script) ──────────
@@ -533,25 +533,61 @@ function InlineExerciseCard({ exercise, index, chunk, onPass, onToast }) {
   );
 }
 
-// ─── Single Word Session ──────────────────────────────────────────
+// ─── Single Word Card (chunks hiện sẵn, exercises lazy) ──────────
 function WordLearningCard({
-  word, wordId, chunkStatus, exercises, onGenChunks, onMarkLearned,
-  learnedVocab, onToast,
+  word, wordId, chunks, onMarkLearned, learnedVocab, onToast,
 }) {
   const isLearned = !!learnedVocab[wordId];
-  const [level2Passed, setLevel2Passed] = useState(false);
   const [localLearned, setLocalLearned] = useState(isLearned);
+  // exerciseStatus: 'idle' | 'loading' | 'done' | 'error'
+  const [exStatus, setExStatus] = useState('idle');
+  const [exerciseData, setExerciseData] = useState(null); // { [phrase]: exercises[] }
+  const [expanded, setExpanded] = useState(false);
 
-  // Track which exercises have been completed per level
+  const posColor = POS_COLORS[word.partOfSpeech] || 'neutral';
+  const isReady = chunks && chunks.length > 0;
+
+  // Khi user bấm "Luyện viết" → sinh exercises cho tất cả chunk của từ này (1 request)
+  const handleLoadExercises = async () => {
+    if (exStatus === 'loading') return;
+    const apiKey = getApiKey();
+    if (!apiKey) { onToast('error', 'Chưa có API key. Vào Settings để nhập.'); return; }
+    setExpanded(true);
+    setExStatus('loading');
+    try {
+      const result = await generateExercisesForChunks(chunks, apiKey);
+      const resultList = result.results || [];
+      // Map exercises về từng chunk theo phrase
+      const exMap = {};
+      resultList.forEach(r => { exMap[r.phrase] = r.exercises || []; });
+      // Fallback: nếu phrase không match, map theo thứ tự
+      chunks.forEach((c, ci) => {
+        if (!exMap[c.phrase] && resultList[ci]) {
+          exMap[c.phrase] = resultList[ci].exercises || [];
+        }
+      });
+      // Save to storage
+      chunks.forEach(c => {
+        const exs = (exMap[c.phrase] || []).map((ex, ei) => ({
+          ...ex, id: ex.id || `ex_${c.id}_${ei}`, chunkId: c.id,
+        }));
+        saveSituations(c.id, exs);
+      });
+      setExerciseData(exMap);
+      setExStatus('done');
+    } catch (err) {
+      console.error('Lỗi sinh exercises:', err);
+      setExStatus('error');
+      onToast('error', `Lỗi sinh bài luyện: ${err.message}`);
+    }
+  };
+
   const handleExercisePass = useCallback((level) => {
     if (level === 2 && !localLearned) {
-      setLevel2Passed(true);
       setLocalLearned(true);
       onMarkLearned(wordId, word.word, word.topic);
     }
-  }, [level2Passed, localLearned, wordId, word, onMarkLearned]);
-
-  const posColor = POS_COLORS[word.partOfSpeech] || 'neutral';
+  }, [localLearned, wordId, word, onMarkLearned]);
 
   return (
     <div
@@ -563,7 +599,7 @@ function WordLearningCard({
       }}
     >
       {/* Word header */}
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-3 mb-3">
         <div style={{ flex: 1, minWidth: 0 }}>
           <div className="flex items-center gap-2 flex-wrap mb-1">
             <span style={{ fontWeight: 800, fontSize: 17, color: 'var(--text-primary)' }}>{word.word}</span>
@@ -572,114 +608,141 @@ function WordLearningCard({
           </div>
           <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: 0 }}>{word.meaningVi}</p>
         </div>
-
-        {/* Status / action */}
-        {chunkStatus === 'generating' ? (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-muted)', fontSize: 12 }}>
-            <Spinner size={14} /> Đang sinh chunk…
-          </div>
-        ) : chunkStatus === 'error' ? (
-          <button className="btn btn-ghost btn-sm" onClick={() => onGenChunks(word, wordId)}
-            style={{ color: 'var(--error-text)', fontSize: 12 }}>
-            <RotateCcw size={12} /> Thử lại
-          </button>
-        ) : chunkStatus === 'done' ? (
-          <Badge type="success">✓ {exercises.length} chunk</Badge>
-        ) : null}
+        {isReady && <Badge type="success">✓ {chunks.length} chunk</Badge>}
       </div>
 
-      {/* Exercises per chunk */}
-      {chunkStatus === 'done' && exercises.length > 0 && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {exercises.map((chunk, ci) => (
-            <div key={chunk.id}>
-              {/* Chunk phrase */}
-              <div style={{
-                fontSize: 12, fontWeight: 700, color: 'var(--accent-300)',
-                marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6,
-              }}>
-                <span style={{
-                  background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)',
-                  borderRadius: 'var(--radius-sm)', padding: '2px 8px',
-                }}>{chunk.phrase}</span>
-                <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>{chunk.meaningVi}</span>
-              </div>
-              {/* Writing exercises for this chunk */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginLeft: 8 }}>
-                {chunk.exercises.map((ex, ei) => (
-                  <InlineExerciseCard
-                    key={ex.id || ei}
-                    exercise={ex}
-                    index={ei}
-                    chunk={chunk}
-                    onPass={handleExercisePass}
-                    onToast={onToast}
-                  />
-                ))}
-              </div>
+      {/* Chunk pills (luôn hiện) */}
+      {isReady && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 12 }}>
+          {chunks.map((c, ci) => (
+            <div key={ci} style={{
+              background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.2)',
+              borderRadius: 'var(--radius-sm)', padding: '4px 10px',
+              fontSize: 12,
+            }}>
+              <span style={{ fontWeight: 700, color: 'var(--accent-300)' }}>{c.phrase}</span>
+              <span style={{ color: 'var(--text-muted)', marginLeft: 6 }}>{c.meaningVi}</span>
             </div>
           ))}
         </div>
       )}
 
-      {chunkStatus === 'done' && localLearned && (
+      {/* Luyện viết — lazy load */}
+      {isReady && !localLearned && exStatus === 'idle' && (
+        <button
+          id={`practice-btn-${wordId}`}
+          className="btn btn-ghost btn-sm"
+          onClick={handleLoadExercises}
+          style={{
+            display: 'flex', alignItems: 'center', gap: 6,
+            border: '1px solid rgba(99,102,241,0.25)',
+            color: 'var(--accent-300)', fontSize: 12,
+          }}
+        >
+          <PenLine size={13} /> Luyện viết với chunk này
+        </button>
+      )}
+
+      {exStatus === 'loading' && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: 'var(--text-muted)', padding: '6px 0' }}>
+          <Spinner size={13} /> Đang sinh bài luyện…
+        </div>
+      )}
+
+      {exStatus === 'error' && (
+        <button className="btn btn-ghost btn-sm" onClick={handleLoadExercises}
+          style={{ color: 'var(--error-text)', fontSize: 12 }}>
+          <RotateCcw size={12} /> Thử lại
+        </button>
+      )}
+
+      {/* Exercises */}
+      {exStatus === 'done' && exerciseData && expanded && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginTop: 8 }}>
+          {chunks.map((chunk) => {
+            const exs = exerciseData[chunk.phrase] || [];
+            return (
+              <div key={chunk.id}>
+                <div style={{
+                  fontSize: 12, fontWeight: 700, color: 'var(--accent-300)',
+                  marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6,
+                }}>
+                  <span style={{
+                    background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)',
+                    borderRadius: 'var(--radius-sm)', padding: '2px 8px',
+                  }}>{chunk.phrase}</span>
+                  <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>{chunk.meaningVi}</span>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginLeft: 8 }}>
+                  {exs.map((ex, ei) => (
+                    <InlineExerciseCard
+                      key={ex.id || ei}
+                      exercise={ex}
+                      index={ei}
+                      chunk={chunk}
+                      onPass={handleExercisePass}
+                      onToast={onToast}
+                    />
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {localLearned && (
         <div style={{
-          marginTop: 12, padding: '10px 14px',
+          marginTop: 10, padding: '8px 12px',
           background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)',
           borderRadius: 'var(--radius-sm)',
           display: 'flex', alignItems: 'center', gap: 8,
-          fontSize: 13, color: 'var(--success-text)', fontWeight: 600,
+          fontSize: 12, color: 'var(--success-text)', fontWeight: 600,
         }}>
-          <CheckCircle size={15} />
-          Từ này đã được đánh dấu hoàn thành! Tiếp tục các từ bên dưới.
+          <CheckCircle size={14} /> Đã hoàn thành! Tiếp tục từ bên dưới.
         </div>
       )}
     </div>
   );
 }
 
-// ─── Screen 3: Learning Session ───────────────────────────────────
+// ─── Screen 3: Learning Session ────────────────────────────────────
 function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, onBack, onToast }) {
-  // chunkStatus per wordId: 'pending' | 'generating' | 'done' | 'error'
-  const [chunkStatuses, setChunkStatuses] = useState(() =>
-    Object.fromEntries(selectedWords.map(w => [makeWordId(w.word, w.topic), 'pending']))
-  );
-  // exerciseData: { [wordId]: Array<{ ...chunk, exercises: [] }> }
-  const [exerciseData, setExerciseData] = useState({});
-
-  const [generating, setGenerating] = useState(false);
-  const [genProgress, setGenProgress] = useState({ done: 0, total: selectedWords.length });
-  // Dùng sessionId để cancel generation an toàn (tránh abortRef bị set sai khi component hide/show)
+  // chunks per wordId: { [wordId]: chunk[] }
+  const [chunkMap, setChunkMap] = useState({});
+  // overall batch status: 'idle' | 'loading' | 'done' | 'error'
+  const [batchStatus, setBatchStatus] = useState('idle');
+  const [errorMsg, setErrorMsg] = useState('');
   const sessionIdRef = useRef(0);
 
-  // Auto-generate chunks for all words on mount (chỉ chạy 1 lần)
+  // Auto-generate tất cả chunks trong 1 request duy nhất
   useEffect(() => {
     const sid = ++sessionIdRef.current;
-    generateAll(sid);
-    // Không cần cleanup abort vì component không unmount (luôn mounted, ẩn bằng CSS)
+    runBatch(sid);
   }, []); // eslint-disable-line
 
-  const generateAll = async (sid) => {
+  const runBatch = async (sid) => {
     const apiKey = getApiKey();
     if (!apiKey) { onToast('error', 'Chưa có API key. Vào Settings để nhập.'); return; }
 
-    setGenerating(true);
-    setGenProgress({ done: 0, total: selectedWords.length });
+    setBatchStatus('loading');
+    setErrorMsg('');
+    try {
+      // 1 REQUEST cho tất cả N từ
+      const result = await generateChunksBatch(selectedWords, apiKey);
+      if (sessionIdRef.current !== sid) return; // session đã bị cancel
 
-    for (let i = 0; i < selectedWords.length; i++) {
-      // Nếu có session mới hơn (user bấm Start lại) thì dừng session này
-      if (sessionIdRef.current !== sid) break;
-      const word = selectedWords[i];
-      const wordId = makeWordId(word.word, word.topic);
+      const resultList = result.results || [];
+      const ts = Date.now();
+      const newChunkMap = {};
 
-      setChunkStatuses(s => ({ ...s, [wordId]: 'generating' }));
-      try {
-        // 1. Generate chunks
-        const result = await generateChunksFromWord(word.word, word.meaningVi, word.topic, word.partOfSpeech, apiKey);
-        const rawChunks = result.chunks || [];
-        if (rawChunks.length === 0) throw new Error('Không có chunk');
+      selectedWords.forEach((word, wi) => {
+        const wordId = makeWordId(word.word, word.topic);
+        // Match by index hoặc by word name
+        const match = resultList.find(r => r.word?.toLowerCase() === word.word.toLowerCase())
+          || resultList[wi];
+        const rawChunks = match?.chunks || [];
 
-        const ts = Date.now();
         const chunks = rawChunks.map((c, ci) => ({
           ...c,
           id: `chunk_vocab_${wordId}_${ci}_${ts}`,
@@ -688,75 +751,24 @@ function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, on
           transcriptId: null,
         }));
 
-        // Save chunks to storage
-        saveVocabChunks(wordId, word.word, word.topic, chunks);
-
-        // 2. Generate writing exercises for each chunk
-        const chunksWithExercises = [];
-        for (const chunk of chunks) {
-          if (sessionIdRef.current !== sid) break;
-          try {
-            const exResult = await generateWritingExercises(chunk, apiKey, { mode: 'situation' });
-            const exercises = (exResult.exercises || []).map((ex, ei) => ({
-              ...ex, id: ex.id || `ex_${chunk.id}_${ei}`, chunkId: chunk.id,
-            }));
-            saveSituations(chunk.id, exercises);
-            chunksWithExercises.push({ ...chunk, exercises });
-          } catch {
-            chunksWithExercises.push({ ...chunk, exercises: [] });
-          }
+        // Lưu vào storage để ChunkModule hiển thị
+        if (chunks.length > 0) {
+          saveVocabChunks(wordId, word.word, word.topic, chunks);
         }
+        newChunkMap[wordId] = chunks;
+      });
 
-        setExerciseData(d => ({ ...d, [wordId]: chunksWithExercises }));
-        setChunkStatuses(s => ({ ...s, [wordId]: 'done' }));
-      } catch (err) {
-        console.error(`Failed for "${word.word}":`, err);
-        setChunkStatuses(s => ({ ...s, [wordId]: 'error' }));
-      }
-
-      setGenProgress(p => ({ done: p.done + 1, total: p.total }));
-    }
-
-    setGenerating(false);
-  };
-
-  // Retry single word
-  const handleRetryWord = async (word, wordId) => {
-    const apiKey = getApiKey();
-    if (!apiKey) { onToast('error', 'Chưa có API key.'); return; }
-    setChunkStatuses(s => ({ ...s, [wordId]: 'generating' }));
-    try {
-      const result = await generateChunksFromWord(word.word, word.meaningVi, word.topic, word.partOfSpeech, apiKey);
-      const rawChunks = result.chunks || [];
-      const ts = Date.now();
-      const chunks = rawChunks.map((c, ci) => ({
-        ...c, id: `chunk_vocab_${wordId}_${ci}_${ts}`,
-        sourceType: 'vocab', sourceWordId: wordId, sourceWord: word.word, topic: word.topic,
-        groupId: `vocab_${wordId}`, groupName: word.word, transcriptId: null,
-      }));
-      saveVocabChunks(wordId, word.word, word.topic, chunks);
-
-      const chunksWithExercises = [];
-      for (const chunk of chunks) {
-        try {
-          const exResult = await generateWritingExercises(chunk, apiKey, { mode: 'situation' });
-          const exercises = (exResult.exercises || []).map((ex, ei) => ({
-            ...ex, id: ex.id || `ex_${chunk.id}_${ei}`, chunkId: chunk.id,
-          }));
-          saveSituations(chunk.id, exercises);
-          chunksWithExercises.push({ ...chunk, exercises });
-        } catch {
-          chunksWithExercises.push({ ...chunk, exercises: [] });
-        }
-      }
-      setExerciseData(d => ({ ...d, [wordId]: chunksWithExercises }));
-      setChunkStatuses(s => ({ ...s, [wordId]: 'done' }));
-    } catch {
-      setChunkStatuses(s => ({ ...s, [wordId]: 'error' }));
+      setChunkMap(newChunkMap);
+      setBatchStatus('done');
+    } catch (err) {
+      if (sessionIdRef.current !== sid) return;
+      console.error('Batch chunk generation failed:', err);
+      setErrorMsg(err.message || 'Lỗi không xác định');
+      setBatchStatus('error');
+      onToast('error', `Lỗi sinh chunk: ${err.message}`);
     }
   };
 
-  const doneCount = Object.values(chunkStatuses).filter(s => s === 'done').length;
   const learnedToday = selectedWords.filter(w => learnedVocab[makeWordId(w.word, w.topic)]).length;
 
   return (
@@ -797,6 +809,13 @@ function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, on
               borderRadius: 99, transition: 'width 0.4s ease',
             }} />
           </div>
+          {/* Ước tính thời gian còn lại */}
+          {genProgress.done < genProgress.total && (
+            <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 6 }}>
+              ⏱ Ước tính còn ~{Math.ceil((genProgress.total - genProgress.done) * 15 / 60)} phút
+              · Đang dùng delay để tránh rate limit Gemini
+            </p>
+          )}
         </div>
       )}
 
