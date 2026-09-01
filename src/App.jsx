@@ -165,6 +165,45 @@ export default function App() {
     setPage('practice');
   }, []);
 
+  const handleStartVocabPractice = useCallback(async (chunksToPractice) => {
+    if (!chunksToPractice || chunksToPractice.length === 0) return;
+
+    // Refresh allChunks from storage
+    const all = storage.getAllChunks();
+    setAllChunks(all);
+
+    // Auto-select these chunks
+    setSelectedChunks(new Set(chunksToPractice.map(c => c.id)));
+
+    // Switch to Practice tab
+    setPage('practice');
+
+    // Auto-generate writing exercises for any chunks that don't have them yet
+    const apiKey = storage.getApiKey();
+    const chunksNeedingExercises = chunksToPractice.filter(c => storage.getSituations(c.id).length === 0);
+
+    if (apiKey && chunksNeedingExercises.length > 0) {
+      setAutoGenerating(true);
+      setAutoGenProgress({ done: 0, total: chunksNeedingExercises.length });
+
+      for (const chunk of chunksNeedingExercises) {
+        try {
+          const result = await generateWritingExercises(chunk, apiKey);
+          const exercises = (result.exercises || []).map((ex, i) => ({
+            ...ex,
+            id: ex.id || `ex_${chunk.id}_${i}`,
+            chunkId: chunk.id,
+          }));
+          storage.saveSituations(chunk.id, exercises);
+        } catch (err) {
+          console.error(`Auto-gen failed for "${chunk.phrase}":`, err);
+        }
+        setAutoGenProgress(prev => ({ ...prev, done: prev.done + 1 }));
+      }
+      setAutoGenerating(false);
+    }
+  }, []);
+
   const handleRepractice = useCallback((chunkId) => {
     setSelectedChunks(new Set([chunkId]));
     setPage('practice');
@@ -318,7 +357,7 @@ export default function App() {
             {/* VocabModule: luôn mounted, chỉ ẩn bằng CSS khi không active
                 → giữ nguyên state sinh chunk khi user đổi tab rồi quay lại */}
             <div style={{ display: page === 'vocab' ? 'block' : 'none' }}>
-              <VocabModule onToast={addToast} />
+              <VocabModule onToast={addToast} onStartPractice={handleStartVocabPractice} />
             </div>
 
             {page === 'practice' && (

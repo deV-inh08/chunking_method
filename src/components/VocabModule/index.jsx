@@ -1,14 +1,14 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import {
-  BookOpen, ChevronRight, ChevronLeft, Sparkles, Shuffle,
-  X, CheckCircle, Loader, PenLine, RefreshCw, RotateCcw,
-  GraduationCap, Target, Trophy, BookMarked,
+  ChevronLeft, Sparkles, Shuffle,
+  X, CheckCircle, PenLine, RotateCcw,
+  GraduationCap, Trophy, BookMarked,
 } from 'lucide-react';
-import { EmptyState, Badge, Spinner } from '../ui';
-import { generateChunksBatch, generateExercisesForChunks, gradeWriting, gradeWritingBatch } from '../../services/ai';
+import { Badge, Spinner } from '../ui';
+import { generateChunksBatch } from '../../services/ai';
 import {
-  getApiKey, saveVocabChunks, saveSituations, getSituations,
-  getLearnedVocab, markVocabLearned, updateProgress,
+  getApiKey, saveVocabChunks,
+  getLearnedVocab, markVocabLearned,
   saveTodaySession, getChunks,
 } from '../../store/storage';
 
@@ -25,12 +25,6 @@ function makeWordId(word, topic) {
   return `w_${slug(word)}_${slug(topic)}`.slice(0, 100);
 }
 
-function todayKey() {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-}
-
-// Shuffle mảng (Fisher-Yates)
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -43,13 +37,6 @@ function shuffle(arr) {
 const POS_COLORS = {
   noun: 'part3', verb: 'part4', adjective: 'collocation',
   adverb: 'connector', conjunction: 'functional', preposition: 'neutral',
-};
-
-const CHUNK_TYPE_LABELS = { collocation: 'Collocation', functional: 'Functional', connector: 'Connector' };
-const LEVEL_CONFIG = {
-  1: { label: 'Cơ bản',   color: '34,197,94',  bg: 'rgba(34,197,94,0.1)',   border: 'rgba(34,197,94,0.25)' },
-  2: { label: 'Trung cấp', color: '251,191,36', bg: 'rgba(251,191,36,0.1)', border: 'rgba(251,191,36,0.25)' },
-  3: { label: 'Nâng cao', color: '239,68,68',  bg: 'rgba(239,68,68,0.1)',   border: 'rgba(239,68,68,0.25)' },
 };
 
 const MIN_WORDS = 20;
@@ -386,272 +373,20 @@ function WordSelector({ topic, words, learnedVocab, onStartLearning, onBack }) {
   );
 }
 
-// ─── ChunkExercisesBlock (batch grade all exercises for a chunk) ──
-function ChunkExercisesBlock({ chunk, exercises, onPassWord, onToast }) {
-  const [userInputs, setUserInputs] = useState({});
-  const [showSamples, setShowSamples] = useState({});
-  const [gradingResults, setGradingResults] = useState({});
-  const [isGrading, setIsGrading] = useState(false);
-
-  const filledItems = exercises
-    .map((ex, idx) => ({
-      index: idx,
-      vietnameseSentence: ex.vietnameseSentence,
-      userTranslation: (userInputs[idx] || '').trim(),
-    }))
-    .filter(item => item.userTranslation.length > 0);
-
-  const filledCount = filledItems.length;
-  const canGrade = filledCount >= 2;
-
-  const handleBatchGrade = async () => {
-    if (!canGrade) {
-      onToast('error', 'Vui lòng điền ít nhất 2 câu trước khi chấm bài!');
-      return;
-    }
-    const apiKey = getApiKey();
-    if (!apiKey) {
-      onToast('error', 'Chưa có API key. Vào Settings để nhập.');
-      return;
-    }
-
-    setIsGrading(true);
-    try {
-      const res = await gradeWritingBatch(chunk, filledItems, apiKey);
-      const resultsArr = res.results || [];
-
-      const newResultsMap = { ...gradingResults };
-      let totalScore = 0;
-      let successSentences = 0;
-
-      resultsArr.forEach((r) => {
-        newResultsMap[r.index] = r;
-        totalScore += (r.score || 0);
-        if (r.usedChunk && r.correct) {
-          successSentences += 1;
-        }
-      });
-
-      setGradingResults(newResultsMap);
-
-      const avgScore = Math.round(totalScore / (resultsArr.length || 1));
-      const isSuccess = successSentences >= 2 || (successSentences >= 1 && resultsArr.length === 1);
-
-      // Cập nhật progress trong storage
-      updateProgress(chunk.id, isSuccess, avgScore, res);
-
-      if (isSuccess) {
-        onPassWord();
-      }
-      onToast('success', `✓ Đã chấm xong ${resultsArr.length} câu! Điểm TB: ${avgScore}đ`);
-    } catch (err) {
-      console.error('Lỗi chấm bài batch:', err);
-      onToast('error', `Lỗi chấm bài: ${err.message}`);
-    } finally {
-      setIsGrading(false);
-    }
-  };
-
-  return (
-    <div style={{
-      background: 'rgba(99,102,241,0.03)',
-      border: '1px solid rgba(99,102,241,0.15)',
-      borderRadius: 'var(--radius-md)',
-      padding: '14px 16px',
-      marginBottom: 12,
-    }}>
-      {/* Chunk phrase title */}
-      <div style={{
-        fontSize: 13, fontWeight: 700, color: 'var(--accent-300)',
-        marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6,
-      }}>
-        <span style={{
-          background: 'rgba(99,102,241,0.12)', border: '1px solid rgba(99,102,241,0.25)',
-          borderRadius: 'var(--radius-sm)', padding: '2px 10px',
-        }}>{chunk.phrase}</span>
-        <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>{chunk.meaningVi}</span>
-      </div>
-
-      {/* Exercises list */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-        {exercises.map((exercise, idx) => {
-          const level = exercise.level || (idx + 1);
-          const lvCfg = LEVEL_CONFIG[level] || LEVEL_CONFIG[1];
-          const result = gradingResults[idx];
-          const showSample = !!showSamples[idx];
-
-          return (
-            <div
-              key={exercise.id || idx}
-              style={{
-                background: 'var(--bg-surface)',
-                border: '1px solid var(--border-subtle)',
-                borderRadius: 'var(--radius-sm)',
-                padding: '12px 14px',
-              }}
-            >
-              {/* Level label & sentence */}
-              <div className="flex items-center gap-2 mb-2">
-                <span style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 4,
-                  background: lvCfg.bg, border: `1px solid ${lvCfg.border}`,
-                  borderRadius: 'var(--radius-full)', padding: '1px 8px',
-                  fontSize: 10.5, fontWeight: 700, color: `rgb(${lvCfg.color})`,
-                }}>
-                  {'★'.repeat(level)} {exercise.levelLabel || lvCfg.label}
-                </span>
-              </div>
-              <p style={{ fontSize: 13.5, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 8, lineHeight: 1.5 }}>
-                {exercise.vietnameseSentence}
-              </p>
-
-              {/* Textarea */}
-              <textarea
-                id={`ex-input-${chunk.id}-${idx}`}
-                className="textarea-field"
-                rows={2}
-                placeholder={`Viết bản dịch tiếng Anh cho câu ${idx + 1}…`}
-                value={userInputs[idx] || ''}
-                onChange={e => setUserInputs(prev => ({ ...prev, [idx]: e.target.value }))}
-                disabled={isGrading}
-                style={{ resize: 'none', minHeight: 60, fontSize: 13, marginBottom: 6 }}
-              />
-
-              {/* Sample */}
-              {showSample && exercise.sampleTranslation && (
-                <div style={{
-                  background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.2)',
-                  borderRadius: 'var(--radius-sm)', padding: '8px 10px', marginBottom: 6,
-                }}>
-                  <p style={{ fontSize: 10.5, fontWeight: 700, color: 'var(--success-text)', marginBottom: 2, textTransform: 'uppercase' }}>
-                    ✅ Câu tham khảo
-                  </p>
-                  <p style={{ fontSize: 12.5, color: 'var(--text-primary)', fontStyle: 'italic', margin: 0 }}>
-                    "{exercise.sampleTranslation}"
-                  </p>
-                </div>
-              )}
-
-              {/* Result */}
-              {result && (
-                <div style={{
-                  background: result.usedChunk && result.correct
-                    ? 'rgba(34,197,94,0.06)' : 'rgba(239,68,68,0.06)',
-                  border: `1px solid ${result.usedChunk && result.correct
-                    ? 'rgba(34,197,94,0.25)' : 'rgba(239,68,68,0.25)'}`,
-                  borderRadius: 'var(--radius-sm)', padding: '8px 10px', marginBottom: 6,
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
-                    {result.usedChunk && result.correct
-                      ? <><CheckCircle size={13} color="var(--success-text)" /><span style={{ fontSize: 12, fontWeight: 700, color: 'var(--success-text)' }}>Đúng chunk + nghĩa!</span></>
-                      : <><X size={13} color="var(--error-text)" /><span style={{ fontSize: 12, fontWeight: 700, color: 'var(--error-text)' }}>{!result.usedChunk ? `Chưa dùng chunk "${chunk.phrase}"` : 'Nghĩa chưa khớp'}</span></>
-                    }
-                    <span style={{ fontSize: 12, fontWeight: 700, marginLeft: 'auto', color: result.score >= 80 ? 'var(--success-text)' : result.score >= 50 ? '#f59e0b' : 'var(--error-text)' }}>
-                      {result.score}đ
-                    </span>
-                  </div>
-                  {result.overallFeedback && (
-                    <p style={{ fontSize: 11.5, color: 'var(--text-secondary)', margin: 0 }}>
-                      {result.overallFeedback}
-                    </p>
-                  )}
-                </div>
-              )}
-
-              <button
-                className="btn btn-ghost btn-sm"
-                onClick={() => setShowSamples(prev => ({ ...prev, [idx]: !prev[idx] }))}
-                style={{ fontSize: 11, padding: '2px 8px', color: 'var(--accent-300)' }}
-              >
-                👁 {showSample ? 'Ẩn câu mẫu' : 'Xem câu mẫu'}
-              </button>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Batch Grade button per chunk */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyBetween: 'space-between', gap: 12, marginTop: 12 }}>
-        <span style={{ fontSize: 11.5, color: canGrade ? 'var(--success-text)' : 'var(--text-muted)' }}>
-          {filledCount >= 2
-            ? `✓ Đã hoàn thành ${filledCount}/${exercises.length} câu`
-            : `Đã viết ${filledCount}/${exercises.length} câu (Viết ít nhất 2 câu để chấm)`
-          }
-        </span>
-        <button
-          id={`batch-grade-${chunk.id}`}
-          className="btn btn-primary btn-sm"
-          onClick={handleBatchGrade}
-          disabled={!canGrade || isGrading}
-          style={{ display: 'flex', alignItems: 'center', gap: 6, marginLeft: 'auto' }}
-        >
-          {isGrading
-            ? <><Loader size={12} style={{ animation: 'spin 1s linear infinite' }} /> Đang chấm AI…</>
-            : <><Sparkles size={12} /> Chấm bài AI ({filledCount} câu)</>
-          }
-        </button>
-      </div>
-    </div>
-  );
-}
-
-// ─── Single Word Card (chunks hiện sẵn, exercises lazy) ──────────
+// ─── Single Word Card (hiện chunks + nút nhảy sang tab Practice) ──
 function WordLearningCard({
-  word, wordId, chunks, onMarkLearned, learnedVocab, onToast,
+  word, wordId, chunks, learnedVocab, onStartPractice,
 }) {
   const isLearned = !!learnedVocab[wordId];
-  const [localLearned, setLocalLearned] = useState(isLearned);
-  const [exStatus, setExStatus] = useState('idle');
-  const [exerciseData, setExerciseData] = useState(null);
-  const [expanded, setExpanded] = useState(false);
-
   const posColor = POS_COLORS[word.partOfSpeech] || 'neutral';
   const isReady = chunks && chunks.length > 0;
-
-  const handleLoadExercises = async () => {
-    if (exStatus === 'loading') return;
-    const apiKey = getApiKey();
-    if (!apiKey) { onToast('error', 'Chưa có API key. Vào Settings để nhập.'); return; }
-    setExpanded(true);
-    setExStatus('loading');
-    try {
-      const result = await generateExercisesForChunks(chunks, apiKey);
-      const resultList = result.results || [];
-      const exMap = {};
-      resultList.forEach(r => { exMap[r.phrase] = r.exercises || []; });
-      chunks.forEach((c, ci) => {
-        if (!exMap[c.phrase] && resultList[ci]) {
-          exMap[c.phrase] = resultList[ci].exercises || [];
-        }
-      });
-      chunks.forEach(c => {
-        const exs = (exMap[c.phrase] || []).map((ex, ei) => ({
-          ...ex, id: ex.id || `ex_${c.id}_${ei}`, chunkId: c.id,
-        }));
-        saveSituations(c.id, exs);
-      });
-      setExerciseData(exMap);
-      setExStatus('done');
-    } catch (err) {
-      console.error('Lỗi sinh exercises:', err);
-      setExStatus('error');
-      onToast('error', `Lỗi sinh bài luyện: ${err.message}`);
-    }
-  };
-
-  const handlePassWord = useCallback(() => {
-    if (!localLearned) {
-      setLocalLearned(true);
-      onMarkLearned(wordId, word.word, word.topic);
-    }
-  }, [localLearned, wordId, word, onMarkLearned]);
 
   return (
     <div
       className="card animate-fade-in"
       style={{
-        borderColor: localLearned ? 'rgba(34,197,94,0.3)' : undefined,
-        background: localLearned ? 'rgba(34,197,94,0.04)' : undefined,
+        borderColor: isLearned ? 'rgba(34,197,94,0.3)' : undefined,
+        background: isLearned ? 'rgba(34,197,94,0.04)' : undefined,
         transition: 'all 0.4s',
       }}
     >
@@ -661,7 +396,7 @@ function WordLearningCard({
           <div className="flex items-center gap-2 flex-wrap mb-1">
             <span style={{ fontWeight: 800, fontSize: 17, color: 'var(--text-primary)' }}>{word.word}</span>
             {word.partOfSpeech && <Badge type={posColor}>{word.partOfSpeech}</Badge>}
-            {localLearned && <Badge type="success">✓ Đã học</Badge>}
+            {isLearned && <Badge type="success">✓ Đã học</Badge>}
           </div>
           <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: 0 }}>{word.meaningVi}</p>
         </div>
@@ -684,54 +419,23 @@ function WordLearningCard({
         </div>
       )}
 
-      {/* Luyện viết — lazy load */}
-      {isReady && !localLearned && exStatus === 'idle' && (
+      {/* Chuyển sang Tab Practice để luyện viết */}
+      {isReady && (
         <button
           id={`practice-btn-${wordId}`}
           className="btn btn-ghost btn-sm"
-          onClick={handleLoadExercises}
+          onClick={() => onStartPractice(chunks)}
           style={{
-            display: 'flex', alignItems: 'center', gap: 6,
+            display: 'inline-flex', alignItems: 'center', gap: 6,
             border: '1px solid rgba(99,102,241,0.25)',
             color: 'var(--accent-300)', fontSize: 12,
           }}
         >
-          <PenLine size={13} /> Luyện viết với chunk này
+          <PenLine size={13} /> Luyện viết với chunk này →
         </button>
       )}
 
-      {exStatus === 'loading' && (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: 'var(--text-muted)', padding: '6px 0' }}>
-          <Spinner size={13} /> Đang sinh bài luyện…
-        </div>
-      )}
-
-      {exStatus === 'error' && (
-        <button className="btn btn-ghost btn-sm" onClick={handleLoadExercises}
-          style={{ color: 'var(--error-text)', fontSize: 12 }}>
-          <RotateCcw size={12} /> Thử lại
-        </button>
-      )}
-
-      {/* Exercises */}
-      {exStatus === 'done' && exerciseData && expanded && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginTop: 8 }}>
-          {chunks.map((chunk) => {
-            const exs = exerciseData[chunk.phrase] || [];
-            return (
-              <ChunkExercisesBlock
-                key={chunk.id}
-                chunk={chunk}
-                exercises={exs}
-                onPassWord={handlePassWord}
-                onToast={onToast}
-              />
-            );
-          })}
-        </div>
-      )}
-
-      {localLearned && (
+      {isLearned && (
         <div style={{
           marginTop: 10, padding: '8px 12px',
           background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)',
@@ -739,7 +443,7 @@ function WordLearningCard({
           display: 'flex', alignItems: 'center', gap: 8,
           fontSize: 12, color: 'var(--success-text)', fontWeight: 600,
         }}>
-          <CheckCircle size={14} /> Đã hoàn thành! Tiếp tục từ bên dưới.
+          <CheckCircle size={14} /> Đã hoàn thành!
         </div>
       )}
     </div>
@@ -748,7 +452,7 @@ function WordLearningCard({
 
 
 // ─── Screen 3: Learning Session ────────────────────────────────────
-function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, onBack, onToast }) {
+function LearningSession({ topic, selectedWords, learnedVocab, onBack, onToast, onStartPractice }) {
   // chunks per wordId: { [wordId]: chunk[] }
   const [chunkMap, setChunkMap] = useState(() => {
     const initial = {};
@@ -862,10 +566,20 @@ function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, on
   const isLoading = batchStatus === 'loading';
   const learnedToday = selectedWords.filter(w => learnedVocab[makeWordId(w.word, w.topic)]).length;
 
+  const allSessionChunks = useMemo(() => {
+    const list = [];
+    selectedWords.forEach(w => {
+      const wid = makeWordId(w.word, w.topic);
+      const chs = chunkMap[wid] || [];
+      list.push(...chs);
+    });
+    return list;
+  }, [selectedWords, chunkMap]);
+
   return (
     <div>
       {/* Header */}
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-3 mb-4 flex-wrap">
         <button
           id="back-to-selector"
           className="btn btn-ghost btn-sm"
@@ -879,6 +593,16 @@ function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, on
           Học từ vựng – {topic}
         </div>
         <Badge type="success">{learnedToday}/{selectedWords.length} đã học</Badge>
+        {allSessionChunks.length > 0 && !isLoading && (
+          <button
+            id="practice-all-vocab-btn"
+            className="btn btn-primary btn-sm"
+            onClick={() => onStartPractice(allSessionChunks)}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
+          >
+            <PenLine size={13} /> Luyện viết tất cả ({allSessionChunks.length} chunk) →
+          </button>
+        )}
       </div>
 
       {/* Progress / Loading bar */}
@@ -941,9 +665,8 @@ function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, on
               word={word}
               wordId={wordId}
               chunks={chunkMap[wordId] || []}
-              onMarkLearned={onMarkLearned}
               learnedVocab={learnedVocab}
-              onToast={onToast}
+              onStartPractice={onStartPractice}
             />
           );
         })}
@@ -976,7 +699,7 @@ function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, on
 }
 
 // ─── VocabModule (main export) ────────────────────────────────────
-export function VocabModule({ onToast }) {
+export function VocabModule({ onToast, onStartPractice }) {
   // Parse vocab from static JSON
   const words = useMemo(() => VOCAB_RAW.map(w => ({
     ...w,
@@ -1034,9 +757,9 @@ export function VocabModule({ onToast }) {
           topic={selectedTopic}
           selectedWords={wordsToLearn}
           learnedVocab={learnedVocab}
-          onMarkLearned={handleMarkLearned}
           onBack={() => setScreen('selector')}
           onToast={onToast}
+          onStartPractice={onStartPractice}
         />
       )}
     </div>
