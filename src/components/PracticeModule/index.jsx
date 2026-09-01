@@ -310,13 +310,12 @@ const LEVEL_CONFIG = {
 };
 
 
-// ─── ExerciseCard (self-contained per exercise) ───────────────
-function ExerciseCard({ exercise, index, total, chunk, onComplete, onToast }) {
-  const [userInput, setUserInput] = useState('');
-  const [showSample, setShowSample] = useState(false);
-  const [grading, setGrading] = useState(false);
-  const [gradingResult, setGradingResult] = useState(null);
-
+// ─── ExerciseCard (single sentence row with input & sample) ────
+function ExerciseCard({
+  exercise, index, total, chunk,
+  userInput, setUserInput, showSample, setShowSample,
+  gradingResult, isGrading,
+}) {
   const wordCount = userInput.trim() ? userInput.trim().split(/\s+/).length : 0;
   const level = exercise.level || (index + 1);
   const lvCfg = LEVEL_CONFIG[level] || LEVEL_CONFIG[1];
@@ -324,23 +323,7 @@ function ExerciseCard({ exercise, index, total, chunk, onComplete, onToast }) {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      setShowSample(true);
-    }
-  };
-
-  const handleGrade = async () => {
-    if (!userInput.trim()) { onToast('error', 'Vui lòng nhập bản dịch trước.'); return; }
-    const apiKey = getApiKey();
-    if (!apiKey) { onToast('error', 'Chưa có API key. Vào Settings để nhập.'); return; }
-    setGrading(true);
-    try {
-      const result = await gradeWriting(chunk, exercise.vietnameseSentence, userInput.trim(), apiKey);
-      setGradingResult(result);
-      onComplete(chunk.id, result.usedChunk && result.correct, result.score, result);
-    } catch (err) {
-      onToast('error', `Lỗi chấm bài: ${err.message}`);
-    } finally {
-      setGrading(false);
+      setShowSample(s => !s);
     }
   };
 
@@ -421,11 +404,11 @@ function ExerciseCard({ exercise, index, total, chunk, onComplete, onToast }) {
           id={`ex-input-${chunk.id}-${index}`}
           className="textarea-field"
           rows={2}
-          placeholder={`Viết bản dịch tiếng Anh…`}
+          placeholder={`Viết bản dịch tiếng Anh cho câu ${index + 1}…`}
           value={userInput}
           onChange={e => setUserInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          disabled={grading}
+          disabled={isGrading}
           style={{ resize: 'none', minHeight: 72, paddingBottom: 28, fontSize: 14 }}
         />
         <span style={{
@@ -437,36 +420,22 @@ function ExerciseCard({ exercise, index, total, chunk, onComplete, onToast }) {
         </span>
       </div>
 
-      {/* Sample answer — shown on toggle or Enter */}
+      {/* Sample answer — shown on toggle */}
       {showSample && exercise.sampleTranslation && (
         <SampleWithTTS
-            text={exercise.sampleTranslation}
-            id={`sample-${chunk.id}-${index}`}
-            breakdown={exercise.sentenceBreakdown}
-          />
+          text={exercise.sampleTranslation}
+          id={`sample-${chunk.id}-${index}`}
+          breakdown={exercise.sentenceBreakdown}
+        />
       )}
 
-      {/* AI grading result */}
+      {/* AI grading result for this sentence */}
       {gradingResult && (
         <GradingResult result={gradingResult} chunkPhrase={chunk.phrase} />
       )}
 
-      {/* Buttons */}
-      <div className="flex gap-2" style={{ marginTop: gradingResult ? 12 : 0 }}>
-        <button
-          id={`grade-btn-${chunk.id}-${index}`}
-          className="btn btn-ghost btn-sm"
-          onClick={handleGrade}
-          disabled={grading || !userInput.trim()}
-          title="Nhờ AI phân tích chi tiết: điểm, lỗi ngữ pháp, gợi ý"
-          style={{ color: 'var(--text-muted)', border: '1px solid var(--border-subtle)' }}
-        >
-          {grading
-            ? <><Loader size={13} style={{ animation: 'spin 1s linear infinite' }} /> Đang chấm…</>
-            : <><Sparkles size={13} /> Chấm bài AI</>
-          }
-        </button>
-
+      {/* Toggle sample button */}
+      <div className="flex gap-2" style={{ marginTop: 8 }}>
         <button
           id={`sample-btn-${chunk.id}-${index}`}
           className="btn btn-sm"
@@ -484,8 +453,13 @@ function ExerciseCard({ exercise, index, total, chunk, onComplete, onToast }) {
   );
 }
 
-// ─── WritingSession ───────────────────────────────────────────
+// ─── WritingSession (batch grading 1 request for chunk) ────────
 function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
+  const [userInputs, setUserInputs] = useState({});
+  const [showSamples, setShowSamples] = useState({});
+  const [gradingResults, setGradingResults] = useState({});
+  const [isGrading, setIsGrading] = useState(false);
+
   if (!exercises || exercises.length === 0) {
     return (
       <div className="card" style={{ textAlign: 'center', padding: 40 }}>
@@ -494,27 +468,82 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
     );
   }
 
+  const filledItems = exercises
+    .map((ex, idx) => ({
+      index: idx,
+      vietnameseSentence: ex.vietnameseSentence,
+      userTranslation: (userInputs[idx] || '').trim(),
+    }))
+    .filter(item => item.userTranslation.length > 0);
+
+  const filledCount = filledItems.length;
+  const canGrade = filledCount >= 2;
+
+  const handleBatchGrade = async () => {
+    if (!canGrade) {
+      onToast('error', 'Vui lòng hoàn thành ít nhất 2 câu trước khi chấm bài!');
+      return;
+    }
+    const apiKey = getApiKey();
+    if (!apiKey) {
+      onToast('error', 'Chưa có API key. Vào Settings để nhập.');
+      return;
+    }
+
+    setIsGrading(true);
+    try {
+      // Gọi 1 request duy nhất chấm tất cả câu đã viết
+      const res = await gradeWritingBatch(chunk, filledItems, apiKey);
+      const resultsArr = res.results || [];
+
+      const newResultsMap = { ...gradingResults };
+      let totalScore = 0;
+      let successSentences = 0;
+
+      resultsArr.forEach((r) => {
+        newResultsMap[r.index] = r;
+        totalScore += (r.score || 0);
+        if (r.usedChunk && r.correct) {
+          successSentences += 1;
+        }
+      });
+
+      setGradingResults(newResultsMap);
+
+      const avgScore = Math.round(totalScore / resultsArr.length);
+      const isSuccess = successSentences >= 2 || (successSentences >= 1 && resultsArr.length === 1);
+
+      onComplete(chunk.id, isSuccess, avgScore, res);
+      onToast('success', `✓ Đã chấm xong ${resultsArr.length} câu! Điểm TB: ${avgScore}đ`);
+    } catch (err) {
+      console.error('Batch grading error:', err);
+      onToast('error', `Lỗi chấm bài: ${err.message}`);
+    } finally {
+      setIsGrading(false);
+    }
+  };
+
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-4">
       {/* Header */}
       <div style={{ marginBottom: 4 }}>
         <div className="flex items-center gap-2 flex-wrap mb-1">
-          <span style={{ fontSize: 15, fontWeight: 800, color: 'var(--text-primary)' }}>
+          <span style={{ fontSize: 17, fontWeight: 800, color: 'var(--text-primary)' }}>
             {chunk.phrase}
           </span>
-          <Badge type={chunk.type}>{CHUNK_TYPE_LABELS[chunk.type]}</Badge>
+          <Badge type={chunk.type}>{CHUNK_TYPE_LABELS[chunk.type] || chunk.type}</Badge>
           {progress && (
             <Badge type="success">
               {progress.practiceCount} lần luyện{progress.lastScore != null ? ` · ${progress.lastScore}đ` : ''}
             </Badge>
           )}
         </div>
-        <p style={{ fontSize: 12.5, color: 'var(--text-secondary)' }}>
+        <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
           {chunk.meaningVi}
           {chunk.meaningEn && <span style={{ color: 'var(--text-muted)', marginLeft: 8 }}>· {chunk.meaningEn}</span>}
         </p>
-        <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 6 }}>
-          Việt → Anh · Nhấn <kbd style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border-default)', borderRadius: 3, padding: '1px 5px', fontSize: 10 }}>Enter</kbd> hoặc bấm "Xem câu mẫu" để đối chiếu
+        <p style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 6 }}>
+          📝 Hãy hoàn thành <strong>ít nhất 2 câu</strong> bên dưới rồi bấm <strong>"Chấm bài AI"</strong> (chấm 1 lần duy nhất cho cả bài).
         </p>
       </div>
 

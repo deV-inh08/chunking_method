@@ -146,7 +146,41 @@ export function updateProgress(chunkId, result, score = null, feedback = null) {
   // Sync to Supabase in background
   dbSaveProgress(updated).catch(err => console.error('Cloud sync error:', err));
 
+  // Tự động đánh dấu từ vựng là "đã học" nếu chunk thuộc về một từ vựng
+  if (result || updated.successCount > 0) {
+    autoMarkVocabLearnedFromChunk(chunkId);
+  }
+
   return updated;
+}
+
+/** Tự động trích xuất wordId và đánh dấu đã học cho vocab chunk */
+function autoMarkVocabLearnedFromChunk(chunkId) {
+  const allChunks = getAllChunks();
+  const chunk = allChunks.find(c => c.id === chunkId);
+  if (!chunk) return;
+
+  const slug = (s) => (s || '')
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+
+  let wordId = chunk.sourceWordId;
+  let word = chunk.sourceWord || chunk.groupName;
+  let topic = chunk.topic;
+
+  if (!wordId && chunk.groupId && chunk.groupId.startsWith('vocab_')) {
+    wordId = chunk.groupId.replace(/^vocab_/, '');
+  }
+
+  if (!wordId && word && topic) {
+    wordId = `w_${slug(word)}_${slug(topic)}`.slice(0, 100);
+  }
+
+  if (wordId) {
+    markVocabLearned(wordId, word || 'Vocab', topic || '');
+  }
 }
 
 export function getProgress(chunkId) {
@@ -319,12 +353,48 @@ export function wordHasChunks(wordId) {
 
 /** Lấy toàn bộ từ đã học: { [wordId]: { learnedAt, word, topic } } */
 export function getLearnedVocab() {
-  return get(KEYS.vocabLearned) || {};
+  const explicitLearned = get(KEYS.vocabLearned) || {};
+  const allChunks = getAllChunks();
+  const allProg = getAllProgress();
+
+  const slug = (s) => (s || '')
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+
+  // Tự quét tất cả progress để nhận diện các từ vựng đã luyện thành công
+  allChunks.forEach(chunk => {
+    const prog = allProg[chunk.id];
+    if (prog && (prog.successCount > 0 || prog.lastResult)) {
+      let wordId = chunk.sourceWordId;
+      let word = chunk.sourceWord || chunk.groupName;
+      let topic = chunk.topic;
+
+      if (!wordId && chunk.groupId && chunk.groupId.startsWith('vocab_')) {
+        wordId = chunk.groupId.replace(/^vocab_/, '');
+      }
+
+      if (!wordId && word && topic) {
+        wordId = `w_${slug(word)}_${slug(topic)}`.slice(0, 100);
+      }
+
+      if (wordId && !explicitLearned[wordId]) {
+        explicitLearned[wordId] = {
+          learnedAt: prog.lastPracticed || Date.now(),
+          word: word || 'Vocab',
+          topic: topic || '',
+        };
+      }
+    }
+  });
+
+  return explicitLearned;
 }
 
-/** Đánh dấu 1 từ đã học xong (hoàn thành level 2 writing) */
+/** Đánh dấu 1 từ đã học xong */
 export function markVocabLearned(wordId, word, topic) {
-  const all = getLearnedVocab();
+  const all = get(KEYS.vocabLearned) || {};
   if (!all[wordId]) {
     all[wordId] = { learnedAt: Date.now(), word, topic };
     set(KEYS.vocabLearned, all);

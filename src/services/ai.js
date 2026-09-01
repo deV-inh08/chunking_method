@@ -1,4 +1,4 @@
-﻿// Priority list — tries each in order until one works
+// Priority list — tries each in order until one works
 // Lite models first: RPD 500/day (vs 20/day for standard Flash)
 const MODEL_CANDIDATES = [
   'gemini-3.5-flash-lite',  // RPM 15, RPD 500 ← best free tier
@@ -441,6 +441,55 @@ Quy tắc chấm:
 
   return callGemini(apiKey, systemPrompt, userMessage);
 }
+
+// ─── [BATCH] Grade multiple sentences for a chunk at once ───────
+// items: Array<{ index, vietnameseSentence, userTranslation }>
+// Returns: { results: [ { index, usedChunk, correct, score, grammarErrors, naturalSuggestion, overallFeedback } ] }
+export async function gradeWritingBatch(chunk, items, apiKey) {
+  const systemPrompt = `Bạn là giáo viên tiếng Anh chuyên chấm bài dịch Việt → Anh.
+Nhiệm vụ: Chấm các bản dịch của học viên cho cùng một chunk mục tiêu.
+Trả về JSON hợp lệ, không có text nào khác ngoài JSON.`;
+
+  const itemTexts = items
+    .map((item, idx) => `CÂU ${idx + 1} (Index ${item.index}):
+- Câu Việt gốc: "${item.vietnameseSentence}"
+- Bản dịch của học viên: "${item.userTranslation}"`)
+    .join('\n\n');
+
+  const userMessage = `Chấm các bài dịch sau cho CHUNK MỤC TIÊU: "${chunk.phrase}" (${chunk.meaningVi})
+
+${itemTexts}
+
+Trả về JSON:
+\`\`\`json
+{
+  "results": [
+    {
+      "index": 0,
+      "usedChunk": true,
+      "correct": true,
+      "score": 85,
+      "grammarErrors": [
+        { "error": "Lỗi ngữ pháp cụ thể", "correction": "Cách sửa đúng", "explanation": "Giải thích ngắn gọn bằng tiếng Việt" }
+      ],
+      "naturalSuggestion": "Gợi ý cách diễn đạt tự nhiên hơn (để null nếu không cần)",
+      "overallFeedback": "Nhận xét 1-2 câu cho câu dịch này"
+    }
+  ]
+}
+\`\`\`
+
+Quy tắc chấm:
+- Trả về ĐÚNG ${items.length} phần tử trong results tương ứng với các câu được gửi lên
+- usedChunk: true nếu bản dịch có dùng chunk "${chunk.phrase}" (có thể biến thể chia động từ, số nhiều)
+- correct: true nếu bản dịch truyền đạt đúng nghĩa câu tiếng Việt gốc
+- score: 0-100 (dùng chunk đúng +50đ, nghĩa đúng +30đ, ngữ pháp hoàn hảo +20đ)
+- grammarErrors: [] nếu không có lỗi
+- naturalSuggestion: null nếu bản dịch đã tự nhiên`;
+
+  return callGemini(apiKey, systemPrompt, userMessage, { maxOutputTokens: 4096 });
+}
+
 
 // ─── Validate API key ──────────────────────────────────────────
 export async function testApiKey(apiKey) {

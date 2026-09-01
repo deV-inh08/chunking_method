@@ -386,147 +386,212 @@ function WordSelector({ topic, words, learnedVocab, onStartLearning, onBack }) {
   );
 }
 
-// ─── Writing Exercise Card (inline, per exercise) ────────────────
-function InlineExerciseCard({ exercise, index, chunk, onPass, onToast }) {
-  const [userInput, setUserInput] = useState('');
-  const [showSample, setShowSample] = useState(false);
-  const [grading, setGrading] = useState(false);
-  const [gradingResult, setGradingResult] = useState(null);
-  const [passed, setPassed] = useState(false);
+import { gradeWritingBatch } from '../../services/ai';
+import { updateProgress } from '../../store/storage';
 
-  const level = exercise.level || (index + 1);
-  const lvCfg = LEVEL_CONFIG[level] || LEVEL_CONFIG[1];
+// ─── ChunkExercisesBlock (batch grade all exercises for a chunk) ──
+function ChunkExercisesBlock({ chunk, exercises, onPassWord, onToast }) {
+  const [userInputs, setUserInputs] = useState({});
+  const [showSamples, setShowSamples] = useState({});
+  const [gradingResults, setGradingResults] = useState({});
+  const [isGrading, setIsGrading] = useState(false);
 
-  const handleGrade = async () => {
-    if (!userInput.trim()) { onToast('error', 'Vui lòng nhập bản dịch trước.'); return; }
+  const filledItems = exercises
+    .map((ex, idx) => ({
+      index: idx,
+      vietnameseSentence: ex.vietnameseSentence,
+      userTranslation: (userInputs[idx] || '').trim(),
+    }))
+    .filter(item => item.userTranslation.length > 0);
+
+  const filledCount = filledItems.length;
+  const canGrade = filledCount >= 2;
+
+  const handleBatchGrade = async () => {
+    if (!canGrade) {
+      onToast('error', 'Vui lòng điền ít nhất 2 câu trước khi chấm bài!');
+      return;
+    }
     const apiKey = getApiKey();
-    if (!apiKey) { onToast('error', 'Chưa có API key. Vào Settings để nhập.'); return; }
-    setGrading(true);
+    if (!apiKey) {
+      onToast('error', 'Chưa có API key. Vào Settings để nhập.');
+      return;
+    }
+
+    setIsGrading(true);
     try {
-      const result = await gradeWriting(chunk, exercise.vietnameseSentence, userInput.trim(), apiKey);
-      setGradingResult(result);
-      const isPass = result.usedChunk && result.correct;
-      if (isPass && !passed) {
-        setPassed(true);
-        onPass(level, result); // notify parent
+      const res = await gradeWritingBatch(chunk, filledItems, apiKey);
+      const resultsArr = res.results || [];
+
+      const newResultsMap = { ...gradingResults };
+      let totalScore = 0;
+      let successSentences = 0;
+
+      resultsArr.forEach((r) => {
+        newResultsMap[r.index] = r;
+        totalScore += (r.score || 0);
+        if (r.usedChunk && r.correct) {
+          successSentences += 1;
+        }
+      });
+
+      setGradingResults(newResultsMap);
+
+      const avgScore = Math.round(totalScore / (resultsArr.length || 1));
+      const isSuccess = successSentences >= 2 || (successSentences >= 1 && resultsArr.length === 1);
+
+      // Cập nhật progress trong storage
+      updateProgress(chunk.id, isSuccess, avgScore, res);
+
+      if (isSuccess) {
+        onPassWord();
       }
+      onToast('success', `✓ Đã chấm xong ${resultsArr.length} câu! Điểm TB: ${avgScore}đ`);
     } catch (err) {
+      console.error('Lỗi chấm bài batch:', err);
       onToast('error', `Lỗi chấm bài: ${err.message}`);
     } finally {
-      setGrading(false);
+      setIsGrading(false);
     }
   };
 
   return (
-    <div
-      className="card animate-fade-in"
-      style={{
-        padding: '16px 18px',
-        borderColor: passed ? 'rgba(34,197,94,0.35)' : undefined,
-        background: passed ? 'rgba(34,197,94,0.04)' : undefined,
-      }}
-    >
-      {/* Level badge */}
-      <div className="flex items-center gap-2 mb-3">
+    <div style={{
+      background: 'rgba(99,102,241,0.03)',
+      border: '1px solid rgba(99,102,241,0.15)',
+      borderRadius: 'var(--radius-md)',
+      padding: '14px 16px',
+      marginBottom: 12,
+    }}>
+      {/* Chunk phrase title */}
+      <div style={{
+        fontSize: 13, fontWeight: 700, color: 'var(--accent-300)',
+        marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6,
+      }}>
         <span style={{
-          display: 'inline-flex', alignItems: 'center', gap: 4,
-          background: lvCfg.bg, border: `1px solid ${lvCfg.border}`,
-          borderRadius: 'var(--radius-full)', padding: '2px 10px',
-          fontSize: 11, fontWeight: 700, color: `rgb(${lvCfg.color})`,
-        }}>
-          {'★'.repeat(level)} {exercise.levelLabel || lvCfg.label}
-        </span>
-        {passed && (
-          <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: 'var(--success-text)', fontWeight: 600 }}>
-            <CheckCircle size={13} /> Hoàn thành!
-          </span>
-        )}
+          background: 'rgba(99,102,241,0.12)', border: '1px solid rgba(99,102,241,0.25)',
+          borderRadius: 'var(--radius-sm)', padding: '2px 10px',
+        }}>{chunk.phrase}</span>
+        <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>{chunk.meaningVi}</span>
       </div>
 
-      {/* Vietnamese sentence */}
-      <p style={{ fontSize: 14, fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1.6, marginBottom: 10 }}>
-        {exercise.vietnameseSentence}
-      </p>
+      {/* Exercises list */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        {exercises.map((exercise, idx) => {
+          const level = exercise.level || (idx + 1);
+          const lvCfg = LEVEL_CONFIG[level] || LEVEL_CONFIG[1];
+          const result = gradingResults[idx];
+          const showSample = !!showSamples[idx];
 
-      {/* Textarea */}
-      <textarea
-        id={`ex-input-${chunk.id}-${index}`}
-        className="textarea-field"
-        rows={2}
-        placeholder="Viết bản dịch tiếng Anh…"
-        value={userInput}
-        onChange={e => setUserInput(e.target.value)}
-        disabled={grading || passed}
-        style={{ resize: 'none', minHeight: 64, fontSize: 13, marginBottom: 8 }}
-      />
+          return (
+            <div
+              key={exercise.id || idx}
+              style={{
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border-subtle)',
+                borderRadius: 'var(--radius-sm)',
+                padding: '12px 14px',
+              }}
+            >
+              {/* Level label & sentence */}
+              <div className="flex items-center gap-2 mb-2">
+                <span style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 4,
+                  background: lvCfg.bg, border: `1px solid ${lvCfg.border}`,
+                  borderRadius: 'var(--radius-full)', padding: '1px 8px',
+                  fontSize: 10.5, fontWeight: 700, color: `rgb(${lvCfg.color})`,
+                }}>
+                  {'★'.repeat(level)} {exercise.levelLabel || lvCfg.label}
+                </span>
+              </div>
+              <p style={{ fontSize: 13.5, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 8, lineHeight: 1.5 }}>
+                {exercise.vietnameseSentence}
+              </p>
 
-      {/* Sample answer */}
-      {showSample && exercise.sampleTranslation && (
-        <div style={{
-          background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.2)',
-          borderRadius: 'var(--radius-sm)', padding: '10px 12px', marginBottom: 8,
-        }}>
-          <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--success-text)', marginBottom: 4, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-            ✅ Câu tham khảo
-          </p>
-          <p style={{ fontSize: 13, color: 'var(--text-primary)', fontStyle: 'italic', margin: 0 }}>
-            "{exercise.sampleTranslation}"
-          </p>
-        </div>
-      )}
+              {/* Textarea */}
+              <textarea
+                id={`ex-input-${chunk.id}-${idx}`}
+                className="textarea-field"
+                rows={2}
+                placeholder={`Viết bản dịch tiếng Anh cho câu ${idx + 1}…`}
+                value={userInputs[idx] || ''}
+                onChange={e => setUserInputs(prev => ({ ...prev, [idx]: e.target.value }))}
+                disabled={isGrading}
+                style={{ resize: 'none', minHeight: 60, fontSize: 13, marginBottom: 6 }}
+              />
 
-      {/* AI grading result */}
-      {gradingResult && (
-        <div style={{
-          background: gradingResult.usedChunk && gradingResult.correct
-            ? 'rgba(34,197,94,0.06)' : 'rgba(239,68,68,0.06)',
-          border: `1px solid ${gradingResult.usedChunk && gradingResult.correct
-            ? 'rgba(34,197,94,0.25)' : 'rgba(239,68,68,0.25)'}`,
-          borderRadius: 'var(--radius-sm)', padding: '10px 12px', marginBottom: 8,
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-            {gradingResult.usedChunk && gradingResult.correct
-              ? <><CheckCircle size={14} color="var(--success-text)" /><span style={{ fontSize: 12, fontWeight: 700, color: 'var(--success-text)' }}>Đúng chunk + nghĩa!</span></>
-              : <><X size={14} color="var(--error-text)" /><span style={{ fontSize: 12, fontWeight: 700, color: 'var(--error-text)' }}>{!gradingResult.usedChunk ? `Chưa dùng chunk "${chunk.phrase}"` : 'Nghĩa chưa khớp'}</span></>
-            }
-            <span style={{ fontSize: 12, fontWeight: 700, marginLeft: 'auto', color: gradingResult.score >= 80 ? 'var(--success-text)' : gradingResult.score >= 50 ? '#f59e0b' : 'var(--error-text)' }}>
-              {gradingResult.score}đ
-            </span>
-          </div>
-          {gradingResult.overallFeedback && (
-            <p style={{ fontSize: 12, color: 'var(--text-secondary)', margin: 0, lineHeight: 1.5 }}>
-              {gradingResult.overallFeedback}
-            </p>
-          )}
-        </div>
-      )}
+              {/* Sample */}
+              {showSample && exercise.sampleTranslation && (
+                <div style={{
+                  background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.2)',
+                  borderRadius: 'var(--radius-sm)', padding: '8px 10px', marginBottom: 6,
+                }}>
+                  <p style={{ fontSize: 10.5, fontWeight: 700, color: 'var(--success-text)', marginBottom: 2, textTransform: 'uppercase' }}>
+                    ✅ Câu tham khảo
+                  </p>
+                  <p style={{ fontSize: 12.5, color: 'var(--text-primary)', fontStyle: 'italic', margin: 0 }}>
+                    "{exercise.sampleTranslation}"
+                  </p>
+                </div>
+              )}
 
-      {/* Buttons */}
-      <div className="flex gap-2">
-        {!passed && (
-          <button
-            id={`grade-btn-${chunk.id}-${index}`}
-            className="btn btn-ghost btn-sm"
-            onClick={handleGrade}
-            disabled={grading || !userInput.trim()}
-            style={{ color: 'var(--text-muted)', border: '1px solid var(--border-subtle)' }}
-          >
-            {grading
-              ? <><Loader size={12} style={{ animation: 'spin 1s linear infinite' }} /> Đang chấm…</>
-              : <><Sparkles size={12} /> Chấm bài AI</>
-            }
-          </button>
-        )}
+              {/* Result */}
+              {result && (
+                <div style={{
+                  background: result.usedChunk && result.correct
+                    ? 'rgba(34,197,94,0.06)' : 'rgba(239,68,68,0.06)',
+                  border: `1px solid ${result.usedChunk && result.correct
+                    ? 'rgba(34,197,94,0.25)' : 'rgba(239,68,68,0.25)'}`,
+                  borderRadius: 'var(--radius-sm)', padding: '8px 10px', marginBottom: 6,
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 2 }}>
+                    {result.usedChunk && result.correct
+                      ? <><CheckCircle size={13} color="var(--success-text)" /><span style={{ fontSize: 12, fontWeight: 700, color: 'var(--success-text)' }}>Đúng chunk + nghĩa!</span></>
+                      : <><X size={13} color="var(--error-text)" /><span style={{ fontSize: 12, fontWeight: 700, color: 'var(--error-text)' }}>{!result.usedChunk ? `Chưa dùng chunk "${chunk.phrase}"` : 'Nghĩa chưa khớp'}</span></>
+                    }
+                    <span style={{ fontSize: 12, fontWeight: 700, marginLeft: 'auto', color: result.score >= 80 ? 'var(--success-text)' : result.score >= 50 ? '#f59e0b' : 'var(--error-text)' }}>
+                      {result.score}đ
+                    </span>
+                  </div>
+                  {result.overallFeedback && (
+                    <p style={{ fontSize: 11.5, color: 'var(--text-secondary)', margin: 0 }}>
+                      {result.overallFeedback}
+                    </p>
+                  )}
+                </div>
+              )}
+
+              <button
+                className="btn btn-ghost btn-sm"
+                onClick={() => setShowSamples(prev => ({ ...prev, [idx]: !prev[idx] }))}
+                style={{ fontSize: 11, padding: '2px 8px', color: 'var(--accent-300)' }}
+              >
+                👁 {showSample ? 'Ẩn câu mẫu' : 'Xem câu mẫu'}
+              </button>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Batch Grade button per chunk */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyBetween: 'space-between', gap: 12, marginTop: 12 }}>
+        <span style={{ fontSize: 11.5, color: canGrade ? 'var(--success-text)' : 'var(--text-muted)' }}>
+          {filledCount >= 2
+            ? `✓ Đã hoàn thành ${filledCount}/${exercises.length} câu`
+            : `Đã viết ${filledCount}/${exercises.length} câu (Viết ít nhất 2 câu để chấm)`
+          }
+        </span>
         <button
-          className="btn btn-sm"
-          onClick={() => setShowSample(s => !s)}
-          style={{
-            background: showSample ? 'rgba(99,102,241,0.15)' : 'rgba(99,102,241,0.08)',
-            color: 'var(--accent-300)',
-            border: '1px solid rgba(99,102,241,0.2)',
-          }}
+          id={`batch-grade-${chunk.id}`}
+          className="btn btn-primary btn-sm"
+          onClick={handleBatchGrade}
+          disabled={!canGrade || isGrading}
+          style={{ display: 'flex', alignItems: 'center', gap: 6, marginLeft: 'auto' }}
         >
-          👁 {showSample ? 'Ẩn câu mẫu' : 'Xem câu mẫu'}
+          {isGrading
+            ? <><Loader size={12} style={{ animation: 'spin 1s linear infinite' }} /> Đang chấm AI…</>
+            : <><Sparkles size={12} /> Chấm bài AI ({filledCount} câu)</>
+          }
         </button>
       </div>
     </div>
@@ -539,15 +604,13 @@ function WordLearningCard({
 }) {
   const isLearned = !!learnedVocab[wordId];
   const [localLearned, setLocalLearned] = useState(isLearned);
-  // exerciseStatus: 'idle' | 'loading' | 'done' | 'error'
   const [exStatus, setExStatus] = useState('idle');
-  const [exerciseData, setExerciseData] = useState(null); // { [phrase]: exercises[] }
+  const [exerciseData, setExerciseData] = useState(null);
   const [expanded, setExpanded] = useState(false);
 
   const posColor = POS_COLORS[word.partOfSpeech] || 'neutral';
   const isReady = chunks && chunks.length > 0;
 
-  // Khi user bấm "Luyện viết" → sinh exercises cho tất cả chunk của từ này (1 request)
   const handleLoadExercises = async () => {
     if (exStatus === 'loading') return;
     const apiKey = getApiKey();
@@ -557,16 +620,13 @@ function WordLearningCard({
     try {
       const result = await generateExercisesForChunks(chunks, apiKey);
       const resultList = result.results || [];
-      // Map exercises về từng chunk theo phrase
       const exMap = {};
       resultList.forEach(r => { exMap[r.phrase] = r.exercises || []; });
-      // Fallback: nếu phrase không match, map theo thứ tự
       chunks.forEach((c, ci) => {
         if (!exMap[c.phrase] && resultList[ci]) {
           exMap[c.phrase] = resultList[ci].exercises || [];
         }
       });
-      // Save to storage
       chunks.forEach(c => {
         const exs = (exMap[c.phrase] || []).map((ex, ei) => ({
           ...ex, id: ex.id || `ex_${c.id}_${ei}`, chunkId: c.id,
@@ -582,8 +642,8 @@ function WordLearningCard({
     }
   };
 
-  const handleExercisePass = useCallback((level) => {
-    if (level === 2 && !localLearned) {
+  const handlePassWord = useCallback(() => {
+    if (!localLearned) {
       setLocalLearned(true);
       onMarkLearned(wordId, word.word, word.topic);
     }
@@ -611,7 +671,7 @@ function WordLearningCard({
         {isReady && <Badge type="success">✓ {chunks.length} chunk</Badge>}
       </div>
 
-      {/* Chunk pills (luôn hiện) */}
+      {/* Chunk pills */}
       {isReady && (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 12 }}>
           {chunks.map((c, ci) => (
@@ -662,30 +722,13 @@ function WordLearningCard({
           {chunks.map((chunk) => {
             const exs = exerciseData[chunk.phrase] || [];
             return (
-              <div key={chunk.id}>
-                <div style={{
-                  fontSize: 12, fontWeight: 700, color: 'var(--accent-300)',
-                  marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6,
-                }}>
-                  <span style={{
-                    background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)',
-                    borderRadius: 'var(--radius-sm)', padding: '2px 8px',
-                  }}>{chunk.phrase}</span>
-                  <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>{chunk.meaningVi}</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginLeft: 8 }}>
-                  {exs.map((ex, ei) => (
-                    <InlineExerciseCard
-                      key={ex.id || ei}
-                      exercise={ex}
-                      index={ei}
-                      chunk={chunk}
-                      onPass={handleExercisePass}
-                      onToast={onToast}
-                    />
-                  ))}
-                </div>
-              </div>
+              <ChunkExercisesBlock
+                key={chunk.id}
+                chunk={chunk}
+                exercises={exs}
+                onPassWord={handlePassWord}
+                onToast={onToast}
+              />
             );
           })}
         </div>
@@ -705,6 +748,7 @@ function WordLearningCard({
     </div>
   );
 }
+
 
 // ─── Screen 3: Learning Session ────────────────────────────────────
 function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, onBack, onToast }) {
