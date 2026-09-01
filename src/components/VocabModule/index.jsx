@@ -649,16 +649,17 @@ function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, on
 
   const [generating, setGenerating] = useState(false);
   const [genProgress, setGenProgress] = useState({ done: 0, total: selectedWords.length });
-  const abortRef = useRef(false);
+  // Dùng sessionId để cancel generation an toàn (tránh abortRef bị set sai khi component hide/show)
+  const sessionIdRef = useRef(0);
 
-  // Auto-generate chunks for all words on mount
+  // Auto-generate chunks for all words on mount (chỉ chạy 1 lần)
   useEffect(() => {
-    abortRef.current = false;
-    generateAll();
-    return () => { abortRef.current = true; };
+    const sid = ++sessionIdRef.current;
+    generateAll(sid);
+    // Không cần cleanup abort vì component không unmount (luôn mounted, ẩn bằng CSS)
   }, []); // eslint-disable-line
 
-  const generateAll = async () => {
+  const generateAll = async (sid) => {
     const apiKey = getApiKey();
     if (!apiKey) { onToast('error', 'Chưa có API key. Vào Settings để nhập.'); return; }
 
@@ -666,7 +667,8 @@ function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, on
     setGenProgress({ done: 0, total: selectedWords.length });
 
     for (let i = 0; i < selectedWords.length; i++) {
-      if (abortRef.current) break;
+      // Nếu có session mới hơn (user bấm Start lại) thì dừng session này
+      if (sessionIdRef.current !== sid) break;
       const word = selectedWords[i];
       const wordId = makeWordId(word.word, word.topic);
 
@@ -692,7 +694,7 @@ function LearningSession({ topic, selectedWords, learnedVocab, onMarkLearned, on
         // 2. Generate writing exercises for each chunk
         const chunksWithExercises = [];
         for (const chunk of chunks) {
-          if (abortRef.current) break;
+          if (sessionIdRef.current !== sid) break;
           try {
             const exResult = await generateWritingExercises(chunk, apiKey, { mode: 'situation' });
             const exercises = (exResult.exercises || []).map((ex, ei) => ({

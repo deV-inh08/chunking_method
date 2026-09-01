@@ -298,11 +298,11 @@ export default function App() {
             />
           )}
 
-          {page === 'vocab' && (
-            <VocabModule
-              onToast={addToast}
-            />
-          )}
+          {/* VocabModule: luôn mounted, chỉ ẩn bằng CSS khi không active
+              → giữ nguyên state sinh chunk khi user đổi tab rồi quay lại */}
+          <div style={{ display: page === 'vocab' ? 'block' : 'none' }}>
+            <VocabModule onToast={addToast} />
+          </div>
 
           {page === 'practice' && (
             <PracticeModule

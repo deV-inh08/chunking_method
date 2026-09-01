@@ -87,7 +87,14 @@ export function getChunks(transcriptId) {
 
 export function getAllChunks() {
   const all = get(KEYS.chunks) || {};
-  return Object.values(all).flat();
+  const flat = Object.values(all).flat();
+  // Deduplicate by ID (tránh trùng chunk cũ từ script + chunk mới từ session)
+  const seen = new Set();
+  return flat.filter(c => {
+    if (!c.id || seen.has(c.id)) return false;
+    seen.add(c.id);
+    return true;
+  });
 }
 
 export function deleteChunks(transcriptId) {
