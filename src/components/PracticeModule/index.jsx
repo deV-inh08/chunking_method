@@ -313,10 +313,11 @@ const LEVEL_CONFIG = {
 // ─── ExerciseCard (single sentence row with input & sample) ────
 function ExerciseCard({
   exercise, index, total, chunk,
-  userInput, setUserInput, showSample, setShowSample,
+  userInput = '', setUserInput, showSample, setShowSample,
   gradingResult, isGrading,
 }) {
-  const wordCount = userInput.trim() ? userInput.trim().split(/\s+/).length : 0;
+  const text = (userInput || '').trim();
+  const wordCount = text ? text.split(/\s+/).length : 0;
   const level = exercise.level || (index + 1);
   const lvCfg = LEVEL_CONFIG[level] || LEVEL_CONFIG[1];
 
