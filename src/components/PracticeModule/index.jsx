@@ -5,7 +5,7 @@ import {
 } from 'lucide-react';
 import { EmptyState, Badge, Spinner } from '../ui';
 import { getSituations, saveSituations } from '../../store/storage';
-import { gradeWriting, generateWritingExercises } from '../../services/ai';
+import { gradeWriting, gradeWritingBatch, generateWritingExercises } from '../../services/ai';
 import { getApiKey } from '../../store/storage';
 
 

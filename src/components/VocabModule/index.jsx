@@ -5,10 +5,10 @@ import {
   GraduationCap, Target, Trophy, BookMarked,
 } from 'lucide-react';
 import { EmptyState, Badge, Spinner } from '../ui';
-import { generateChunksBatch, generateExercisesForChunks, gradeWriting } from '../../services/ai';
+import { generateChunksBatch, generateExercisesForChunks, gradeWriting, gradeWritingBatch } from '../../services/ai';
 import {
   getApiKey, saveVocabChunks, saveSituations, getSituations,
-  getLearnedVocab, markVocabLearned,
+  getLearnedVocab, markVocabLearned, updateProgress,
   saveTodaySession,
 } from '../../store/storage';
 
@@ -385,9 +385,6 @@ function WordSelector({ topic, words, learnedVocab, onStartLearning, onBack }) {
     </div>
   );
 }
-
-import { gradeWritingBatch } from '../../services/ai';
-import { updateProgress } from '../../store/storage';
 
 // ─── ChunkExercisesBlock (batch grade all exercises for a chunk) ──
 function ChunkExercisesBlock({ chunk, exercises, onPassWord, onToast }) {
