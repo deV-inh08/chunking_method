@@ -556,13 +556,67 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
           index={i}
           total={exercises.length}
           chunk={chunk}
-          onComplete={onComplete}
-          onToast={onToast}
+          userInput={userInputs[i] || ''}
+          setUserInput={(val) => setUserInputs(prev => ({ ...prev, [i]: val }))}
+          showSample={!!showSamples[i]}
+          setShowSample={(fn) => setShowSamples(prev => ({ ...prev, [i]: typeof fn === 'function' ? fn(prev[i]) : fn }))}
+          gradingResult={gradingResults[i] || null}
+          isGrading={isGrading}
         />
       ))}
+
+      {/* Sticky Floating Batch Grade Bar */}
+      <div
+        className="card animate-fade-in"
+        style={{
+          position: 'sticky',
+          bottom: 16,
+          zIndex: 20,
+          background: 'linear-gradient(135deg, rgba(30, 27, 75, 0.95), rgba(49, 46, 129, 0.95))',
+          backdropFilter: 'blur(12px)',
+          borderColor: canGrade ? 'rgba(99,102,241,0.6)' : 'var(--border-subtle)',
+          boxShadow: canGrade ? '0 8px 32px rgba(99,102,241,0.3)' : '0 4px 20px rgba(0,0,0,0.3)',
+          padding: '16px 20px',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16,
+          flexWrap: 'wrap',
+          borderRadius: 'var(--radius-md)',
+          marginTop: 12,
+        }}
+      >
+        <div>
+          <div style={{ fontWeight: 800, fontSize: 15, color: '#fff', marginBottom: 3, display: 'flex', alignItems: 'center', gap: 6 }}>
+            <Sparkles size={16} color="var(--accent-300)" /> Chấm bài luyện viết bằng AI
+          </div>
+          <div style={{ fontSize: 12.5, color: canGrade ? '#4ade80' : 'var(--text-muted)' }}>
+            {filledCount >= 2
+              ? `✓ Đã hoàn thành ${filledCount}/${exercises.length} câu — Sẵn sàng chấm AI!`
+              : `Đã viết ${filledCount}/${exercises.length} câu (Bắt buộc điền ít nhất 2 câu để bấm chấm)`
+            }
+          </div>
+        </div>
+
+        <button
+          id={`batch-grade-btn-${chunk.id}`}
+          className="btn btn-primary"
+          onClick={handleBatchGrade}
+          disabled={!canGrade || isGrading}
+          style={{
+            padding: '10px 24px',
+            fontSize: 14, fontWeight: 700,
+            display: 'flex', alignItems: 'center', gap: 8,
+            boxShadow: canGrade ? '0 0 16px rgba(99,102,241,0.5)' : 'none',
+          }}
+        >
+          {isGrading
+            ? <><Loader size={16} style={{ animation: 'spin 1s linear infinite' }} /> Đang chấm AI…</>
+            : <><Sparkles size={16} /> Chấm bài AI ({filledCount} câu)</>
+          }
+        </button>
+      </div>
     </div>
   );
 }
+
 
 
 // ─── PracticeModule (main export) ─────────────────────────────────
