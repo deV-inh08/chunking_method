@@ -300,9 +300,6 @@ export default function App() {
 
           {page === 'vocab' && (
             <VocabModule
-              allChunks={allChunks}
-              onChunksExtracted={handleVocabChunksExtracted}
-              onNavigateToChunks={() => setPage('chunks')}
               onToast={addToast}
             />
           )}

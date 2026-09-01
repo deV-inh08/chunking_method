@@ -11,12 +11,14 @@ import {
 
 // ─── Storage keys ─────────────────────────────────────────────
 const KEYS = {
-  transcripts: 'toeic_transcripts',
-  chunks:      'toeic_chunks',
-  situations:  'toeic_situations',
-  progress:    'toeic_progress',
-  settings:    'toeic_settings',
-  vocabCache:  'toeic_vocab_cache',   // cache danh sách từ vựng (fetch 1 lần từ Supabase)
+  transcripts:      'toeic_transcripts',
+  chunks:           'toeic_chunks',
+  situations:       'toeic_situations',
+  progress:         'toeic_progress',
+  settings:         'toeic_settings',
+  vocabCache:       'toeic_vocab_cache',   // cache danh sách từ vựng (fetch 1 lần từ Supabase)
+  vocabLearned:     'toeic_vocab_learned', // { [wordId]: { learnedAt, word, topic } }
+  vocabDailySession:'toeic_vocab_daily',   // { date: 'YYYY-MM-DD', wordIds: [] }
 };
 
 // ─── Helpers ──────────────────────────────────────────────────
@@ -304,4 +306,56 @@ export function getVocabChunks(wordId) {
  */
 export function wordHasChunks(wordId) {
   return getChunks(wordId).length > 0;
+}
+
+// ─── Vocab Learned Tracking ───────────────────────────────────────
+
+/** Lấy toàn bộ từ đã học: { [wordId]: { learnedAt, word, topic } } */
+export function getLearnedVocab() {
+  return get(KEYS.vocabLearned) || {};
+}
+
+/** Đánh dấu 1 từ đã học xong (hoàn thành level 2 writing) */
+export function markVocabLearned(wordId, word, topic) {
+  const all = getLearnedVocab();
+  if (!all[wordId]) {
+    all[wordId] = { learnedAt: Date.now(), word, topic };
+    set(KEYS.vocabLearned, all);
+  }
+  return all[wordId];
+}
+
+/** Kiểm tra 1 từ đã học chưa */
+export function isVocabLearned(wordId) {
+  const all = getLearnedVocab();
+  return !!all[wordId];
+}
+
+// ─── Vocab Daily Session ─────────────────────────────────────────
+
+/** Lấy ngày hiện tại theo format YYYY-MM-DD (theo giờ local) */
+function todayDateStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+/**
+ * Lấy phiên học hôm nay: { date, wordIds: [] }
+ * Nếu phiên cũ hơn hôm nay → trả về null (ngày mới, session mới)
+ */
+export function getTodaySession() {
+  const session = get(KEYS.vocabDailySession);
+  if (!session || session.date !== todayDateStr()) return null;
+  return session;
+}
+
+/** Lưu phiên học hôm nay (danh sách wordId đã chọn để học) */
+export function saveTodaySession(wordIds) {
+  set(KEYS.vocabDailySession, { date: todayDateStr(), wordIds });
+}
+
+/** Tổng số từ đã chọn học hôm nay (kể cả từ nhiều topic) */
+export function getTodayWordCount() {
+  const session = getTodaySession();
+  return session ? session.wordIds.length : 0;
 }
