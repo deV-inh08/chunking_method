@@ -196,6 +196,7 @@ export function getAllProgress() {
 export function getSettings() {
   return get(KEYS.settings) || {
     apiKey: '',
+    apiKey2: '',
     language: 'vi-VN',
     supabaseUrl: '',
     supabaseKey: '',
@@ -206,14 +207,46 @@ export function saveSettings(settings) {
   set(KEYS.settings, settings);
 }
 
-export function getApiKey() {
-  // Priority 1: VITE_API_KEY in .env (baked at build time)
-  const envKey = import.meta.env.VITE_API_KEY;
-  if (envKey && envKey !== 'your-key-here' && !envKey.includes('your-key')) {
-    return envKey;
+/** Lấy tất cả các Gemini API key khả dụng (Key chính + Key dự phòng) */
+export function getApiKeys() {
+  const keys = [];
+
+  // 1. Env keys (VITE_API_KEY phẩy phân cách hoặc VITE_API_KEY_2)
+  const envKey = import.meta.env.VITE_API_KEY || '';
+  const envKey2 = import.meta.env.VITE_API_KEY_2 || '';
+
+  if (envKey && !envKey.includes('your-key')) {
+    envKey.split(',').forEach(k => {
+      const trimmed = k.trim();
+      if (trimmed && !keys.includes(trimmed)) keys.push(trimmed);
+    });
   }
-  // Priority 2: key entered manually in Settings (stored in localStorage)
-  return getSettings().apiKey || '';
+
+  if (envKey2 && !envKey2.includes('your-key')) {
+    const trimmed = envKey2.trim();
+    if (trimmed && !keys.includes(trimmed)) keys.push(trimmed);
+  }
+
+  // 2. LocalStorage settings (apiKey và apiKey2)
+  const settings = getSettings();
+  if (settings.apiKey) {
+    settings.apiKey.split(',').forEach(k => {
+      const trimmed = k.trim();
+      if (trimmed && !keys.includes(trimmed)) keys.push(trimmed);
+    });
+  }
+
+  if (settings.apiKey2) {
+    const trimmed = settings.apiKey2.trim();
+    if (trimmed && !keys.includes(trimmed)) keys.push(trimmed);
+  }
+
+  return keys;
+}
+
+export function getApiKey() {
+  const keys = getApiKeys();
+  return keys[0] || '';
 }
 
 // ─── Full Cloud Sync (Cloud → Local Cache) ────────────────────

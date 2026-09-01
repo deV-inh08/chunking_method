@@ -1,5 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
 
+// ─── Supabase Project Fallback Credentials ─────────────────────
+// Fallback publishable key and URL for client-side cloud sync
+const FALLBACK_SUPABASE_URL = 'https://htbphzjxjdupigxkrdfk.supabase.co';
+const FALLBACK_SUPABASE_KEY = 'sb_publishable_xjwDQf0UQ4KEsqWsWrsqwg_fAIvvN4g';
+
 // ─── Credentials ───────────────────────────────────────────────
 export function getSupabaseCredentials() {
   const envUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -20,6 +25,10 @@ export function getSupabaseCredentials() {
       }
     }
   } catch { /* ignore */ }
+
+  if (FALLBACK_SUPABASE_URL && FALLBACK_SUPABASE_KEY) {
+    return { url: FALLBACK_SUPABASE_URL, key: FALLBACK_SUPABASE_KEY, source: 'fallback' };
+  }
 
   return { url: '', key: '', source: 'none' };
 }

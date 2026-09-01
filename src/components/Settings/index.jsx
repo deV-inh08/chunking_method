@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Key, CheckCircle, XCircle, AlertTriangle, Globe, FileCode, Database } from 'lucide-react';
+import { Key, CheckCircle, XCircle, AlertTriangle, Globe, FileCode, Database, User, LogIn, LogOut } from 'lucide-react';
 import { Modal, Spinner } from '../ui';
 import { testApiKey } from '../../services/ai';
 import { isSpeechSupported } from '../../services/speech';
@@ -8,30 +8,36 @@ import { testSupabaseConnection } from '../../services/supabase';
 const ENV_KEY = import.meta.env.VITE_API_KEY;
 const hasEnvKey = ENV_KEY && !ENV_KEY.includes('your-key') && ENV_KEY.length > 10;
 
-const ENV_SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const ENV_SUPABASE_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const ENV_SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || 'https://htbphzjxjdupigxkrdfk.supabase.co';
+const ENV_SUPABASE_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY
+  || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
+  || 'sb_publishable_xjwDQf0UQ4KEsqWsWrsqwg_fAIvvN4g';
 const hasEnvSupabase = ENV_SUPABASE_URL && ENV_SUPABASE_KEY && !ENV_SUPABASE_URL.includes('your-project') && ENV_SUPABASE_KEY.length > 20;
 
-export function SettingsModal({ settings, onSave, onClose }) {
+export function SettingsModal({ settings, onSave, onClose, user, onSignOut, onOpenAuth }) {
   const [apiKey, setApiKey]             = useState(settings.apiKey || '');
+  const [apiKey2, setApiKey2]           = useState(settings.apiKey2 || '');
   const [supabaseUrl, setSupabaseUrl]   = useState(settings.supabaseUrl || '');
   const [supabaseKey, setSupabaseKey]   = useState(settings.supabaseKey || '');
 
   const [testingAi, setTestingAi]           = useState(false);
   const [aiTestResult, setAiTestResult]     = useState(null);
 
+  const [testingAi2, setTestingAi2]         = useState(false);
+  const [aiTestResult2, setAiTestResult2]   = useState(null);
+
   const [testingDb, setTestingDb]           = useState(false);
   const [dbTestResult, setDbTestResult]     = useState(null);
 
   const speechOk = isSpeechSupported();
 
-  const handleTestAi = async () => {
-    if (!apiKey.trim()) return;
-    setTestingAi(true);
-    setAiTestResult(null);
-    const ok = await testApiKey(apiKey.trim());
-    setAiTestResult(ok);
-    setTestingAi(false);
+  const handleTestAi = async (keyToTest, setTesting, setResult) => {
+    if (!keyToTest.trim()) return;
+    setTesting(true);
+    setResult(null);
+    const ok = await testApiKey(keyToTest.trim());
+    setResult(ok);
+    setTesting(false);
   };
 
   const handleTestDb = async () => {
@@ -50,6 +56,7 @@ export function SettingsModal({ settings, onSave, onClose }) {
     onSave({
       ...settings,
       apiKey: apiKey.trim(),
+      apiKey2: apiKey2.trim(),
       supabaseUrl: supabaseUrl.trim(),
       supabaseKey: supabaseKey.trim(),
     });
@@ -59,7 +66,7 @@ export function SettingsModal({ settings, onSave, onClose }) {
   return (
     <Modal
       title="Settings"
-      description="Cấu hình Gemini API key và Supabase Cloud Storage."
+      description="Cấu hình Gemini API Keys (hỗ trợ nhiều Account tự động chuyển khi 429) và Supabase Cloud Storage."
       onClose={onClose}
       footer={
         <>
@@ -70,61 +77,159 @@ export function SettingsModal({ settings, onSave, onClose }) {
         </>
       }
     >
-      {/* ─── Section 1: AI Key ───────────────────────────────── */}
+      {/* ─── Section 0: Account / Cloud Sync ─────────────────── */}
       <div className="mb-5">
         <label className="label">
-          <Key size={12} style={{ display: 'inline', marginRight: 4 }} />
-          Gemini API Key
+          <User size={12} style={{ display: 'inline', marginRight: 4 }} />
+          Tài khoản & Đồng bộ Cloud
         </label>
-
-        {hasEnvKey ? (
-          <div
-            className="card"
-            style={{ background: 'var(--success-bg)', borderColor: 'var(--success-border)', padding: '12px 16px' }}
-          >
-            <div className="flex items-center gap-2 mb-1" style={{ color: 'var(--success-text)', fontWeight: 600, fontSize: 13 }}>
-              <FileCode size={14} />
-              Key đã được load từ <code style={{ fontFamily: 'monospace', background: 'rgba(0,0,0,0.2)', padding: '1px 5px', borderRadius: 4 }}>.env</code>
+        {user ? (
+          <div className="card flex items-center justify-between" style={{ padding: '12px 16px', background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)' }}>
+            <div style={{ minWidth: 0, flex: 1, marginRight: 10 }}>
+              <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {user.email}
+              </div>
+              <div style={{ fontSize: 11.5, color: 'var(--success-text)', marginTop: 2 }}>
+                ✓ Đang đồng bộ Supabase Cloud
+              </div>
             </div>
-            <p className="text-sm" style={{ color: 'var(--success-text)', opacity: 0.75 }}>
-              {ENV_KEY.slice(0, 12)}{'•'.repeat(16)}
-            </p>
+            <button
+              type="button"
+              className="btn btn-secondary btn-sm"
+              onClick={() => { onSignOut?.(); }}
+              style={{ display: 'flex', alignItems: 'center', gap: 5, flexShrink: 0 }}
+            >
+              <LogOut size={13} />
+              Đăng xuất
+            </button>
           </div>
         ) : (
-          <>
-            <div className="flex gap-2">
-              <input
-                id="api-key-input"
-                type="password"
-                className="input-field flex-1"
-                placeholder="AIzaSy..."
-                value={apiKey}
-                onChange={(e) => { setApiKey(e.target.value); setAiTestResult(null); }}
-                autoComplete="off"
-              />
-              <button
-                id="test-api-key-btn"
-                className="btn btn-secondary"
-                onClick={handleTestAi}
-                disabled={!apiKey.trim() || testingAi}
-              >
-                {testingAi ? <Spinner size={16} /> : 'Test'}
-              </button>
+          <div className="card flex items-center justify-between" style={{ padding: '12px 16px', background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)' }}>
+            <div style={{ minWidth: 0, flex: 1, marginRight: 10 }}>
+              <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)' }}>
+                Chưa đăng nhập
+              </div>
+              <div style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 2 }}>
+                Đăng nhập để đồng bộ tiến độ trên mọi thiết bị
+              </div>
             </div>
-
-            {aiTestResult === true && (
-              <div className="flex items-center gap-2 mt-2" style={{ color: 'var(--success-text)', fontSize: 13 }}>
-                <CheckCircle size={14} /> API key hợp lệ!
-              </div>
-            )}
-            {aiTestResult === false && (
-              <div className="flex items-center gap-2 mt-2" style={{ color: 'var(--error-text)', fontSize: 13 }}>
-                <XCircle size={14} /> API key không hợp lệ. Vui lòng kiểm tra lại.
-              </div>
-            )}
-          </>
+            <button
+              type="button"
+              className="btn btn-primary btn-sm"
+              onClick={() => { onClose(); onOpenAuth?.(); }}
+              style={{ display: 'flex', alignItems: 'center', gap: 5, whiteSpace: 'nowrap', flexShrink: 0 }}
+            >
+              <LogIn size={13} />
+              Đăng nhập
+            </button>
+          </div>
         )}
       </div>
+
+      <div className="divider" />
+
+      {/* ─── Section 1: AI Keys ───────────────────────────────── */}
+      <div className="mb-5 flex flex-col gap-4">
+        <div>
+          <label className="label">
+            <Key size={12} style={{ display: 'inline', marginRight: 4 }} />
+            Gemini API Key chính (Account 1)
+          </label>
+
+          {hasEnvKey ? (
+            <div
+              className="card"
+              style={{ background: 'var(--success-bg)', borderColor: 'var(--success-border)', padding: '10px 14px' }}
+            >
+              <div className="flex items-center gap-2 mb-1" style={{ color: 'var(--success-text)', fontWeight: 600, fontSize: 12.5 }}>
+                <FileCode size={14} />
+                Key đã được load từ <code style={{ fontFamily: 'monospace', background: 'rgba(0,0,0,0.2)', padding: '1px 5px', borderRadius: 4 }}>.env</code>
+              </div>
+              <p className="text-sm" style={{ color: 'var(--success-text)', opacity: 0.75, margin: 0 }}>
+                {ENV_KEY.slice(0, 12)}{'•'.repeat(16)}
+              </p>
+            </div>
+          ) : (
+            <>
+              <div className="flex gap-2">
+                <input
+                  id="api-key-input"
+                  type="password"
+                  className="input-field flex-1"
+                  placeholder="AIzaSy... (API Key Account 1)"
+                  value={apiKey}
+                  onChange={(e) => { setApiKey(e.target.value); setAiTestResult(null); }}
+                  autoComplete="off"
+                />
+                <button
+                  id="test-api-key-btn"
+                  className="btn btn-secondary"
+                  onClick={() => handleTestAi(apiKey, setTestingAi, setAiTestResult)}
+                  disabled={!apiKey.trim() || testingAi}
+                >
+                  {testingAi ? <Spinner size={16} /> : 'Test'}
+                </button>
+              </div>
+
+              {aiTestResult === true && (
+                <div className="flex items-center gap-2 mt-2" style={{ color: 'var(--success-text)', fontSize: 13 }}>
+                  <CheckCircle size={14} /> API Key 1 hợp lệ!
+                </div>
+              )}
+              {aiTestResult === false && (
+                <div className="flex items-center gap-2 mt-2" style={{ color: 'var(--error-text)', fontSize: 13 }}>
+                  <XCircle size={14} /> API Key 1 không hợp lệ. Vui lòng kiểm tra lại.
+                </div>
+              )}
+            </>
+          )}
+        </div>
+
+        {/* Secondary API Key (Account 2 - Failover) */}
+        <div>
+          <label className="label" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <span>
+              <Key size={12} style={{ display: 'inline', marginRight: 4 }} />
+              Gemini API Key dự phòng (Account 2)
+            </span>
+            <span style={{ fontSize: 11, color: 'var(--accent-300)', fontWeight: 400 }}>
+              ⚡ Tự động chuyển khi Account 1 hết quota / chạm 429 limit
+            </span>
+          </label>
+
+          <div className="flex gap-2">
+            <input
+              id="api-key-2-input"
+              type="password"
+              className="input-field flex-1"
+              placeholder="AIzaSy... (API Key Account 2 dự phòng - tùy chọn)"
+              value={apiKey2}
+              onChange={(e) => { setApiKey2(e.target.value); setAiTestResult2(null); }}
+              autoComplete="off"
+            />
+            <button
+              id="test-api-key-2-btn"
+              className="btn btn-secondary"
+              onClick={() => handleTestAi(apiKey2, setTestingAi2, setAiTestResult2)}
+              disabled={!apiKey2.trim() || testingAi2}
+            >
+              {testingAi2 ? <Spinner size={16} /> : 'Test'}
+            </button>
+          </div>
+
+          {aiTestResult2 === true && (
+            <div className="flex items-center gap-2 mt-2" style={{ color: 'var(--success-text)', fontSize: 13 }}>
+              <CheckCircle size={14} /> API Key 2 hợp lệ! Sẵn sàng đóng vai trò dự phòng.
+            </div>
+          )}
+          {aiTestResult2 === false && (
+            <div className="flex items-center gap-2 mt-2" style={{ color: 'var(--error-text)', fontSize: 13 }}>
+              <XCircle size={14} /> API Key 2 không hợp lệ. Vui lòng kiểm tra lại.
+            </div>
+          )}
+        </div>
+      </div>
+
 
       <div className="divider" />
 

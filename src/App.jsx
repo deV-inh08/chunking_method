@@ -11,7 +11,6 @@ import { Toast, Spinner } from './components/ui';
 import { useTranscripts, useSettings, useProgress } from './hooks/useStorage';
 import { useAuth } from './hooks/useAuth';
 import { generateWritingExercises } from './services/ai';
-import { isSupabaseConfigured } from './services/supabase';
 import * as storage from './store/storage';
 
 // ─── Toast hook ───────────────────────────────────────────────
@@ -33,6 +32,8 @@ function useToast() {
 export default function App() {
   const [page, setPage]                 = useState('transcripts');
   const [showSettings, setShowSettings] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [guestMode, setGuestMode]       = useState(false);
   const [selectedTranscriptId, setSelectedTranscriptId] = useState(null);
   const [selectedChunks, setSelectedChunks] = useState(new Set());
   const [allChunks, setAllChunks]       = useState([]);
@@ -47,7 +48,13 @@ export default function App() {
   const { toasts, addToast, removeToast } = useToast();
 
   // Auth state
-  const { user, loading: authLoading, signIn, signUp, signOut, resendConfirm } = useAuth();
+  const { user, loading: authLoading, signIn, signUp, signOut: authSignOut, resendConfirm } = useAuth();
+
+  const handleSignOut = useCallback(async () => {
+    await authSignOut();
+    setGuestMode(false);
+    addToast('info', 'Đã đăng xuất.');
+  }, [authSignOut, addToast]);
 
   // Refresh all chunks whenever transcripts change
   useEffect(() => {
@@ -201,11 +208,16 @@ export default function App() {
     );
   }
 
-  // Show auth screen only if Supabase is configured AND user is not logged in
-  if (isSupabaseConfigured() && !user) {
+  // Show auth screen on initial load if user is not logged in AND has not opted for guest mode
+  if (!user && !guestMode) {
     return (
       <>
-        <AuthScreen onSignIn={signIn} onSignUp={signUp} onResendConfirm={resendConfirm} />
+        <AuthScreen
+          onSignIn={signIn}
+          onSignUp={signUp}
+          onResendConfirm={resendConfirm}
+          onContinueAsGuest={() => setGuestMode(true)}
+        />
         <Toast toasts={toasts} removeToast={removeToast} />
       </>
     );
@@ -217,6 +229,9 @@ export default function App() {
         activePage={page}
         onNavigate={setPage}
         counts={counts}
+        user={user}
+        onSignOut={handleSignOut}
+        onLoginClick={() => setShowAuthModal(true)}
         onSettingsClick={() => setShowSettings(true)}
       />
 
@@ -224,7 +239,8 @@ export default function App() {
         <Header
           page={page}
           user={user}
-          onSignOut={signOut}
+          onSignOut={handleSignOut}
+          onLoginClick={() => setShowAuthModal(true)}
           onSettingsClick={() => setShowSettings(true)}
           rightSlot={
             page === 'chunks' && allChunks.length > 0 && (
@@ -336,6 +352,27 @@ export default function App() {
           settings={settings}
           onSave={saveSettings}
           onClose={() => setShowSettings(false)}
+          user={user}
+          onSignOut={handleSignOut}
+          onOpenAuth={() => setShowAuthModal(true)}
+        />
+      )}
+
+      {/* Auth Modal (when triggered from header / sidebar / settings) */}
+      {showAuthModal && !user && (
+        <AuthScreen
+          isModal={true}
+          onSignIn={async (...args) => {
+            const res = await signIn(...args);
+            setShowAuthModal(false);
+            return res;
+          }}
+          onSignUp={async (...args) => {
+            const res = await signUp(...args);
+            return res;
+          }}
+          onResendConfirm={resendConfirm}
+          onClose={() => setShowAuthModal(false)}
         />
       )}
 

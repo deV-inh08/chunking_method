@@ -19,19 +19,36 @@ export function useAuth() {
       return;
     }
 
+    let isMounted = true;
+
     // Restore existing session on mount
-    authGetSession().then(session => {
-      setUser(session?.user || null);
-      setLoading(false);
-    });
+    authGetSession()
+      .then(session => {
+        if (isMounted) {
+          setUser(session?.user || null);
+          setLoading(false);
+        }
+      })
+      .catch(err => {
+        console.error('Session restore error:', err);
+        if (isMounted) {
+          setUser(null);
+          setLoading(false);
+        }
+      });
 
     // Listen for login/logout events
     const unsub = authOnChange((_event, session) => {
-      setUser(session?.user || null);
-      setLoading(false);
+      if (isMounted) {
+        setUser(session?.user || null);
+        setLoading(false);
+      }
     });
 
-    return unsub;
+    return () => {
+      isMounted = false;
+      if (typeof unsub === 'function') unsub();
+    };
   }, []);
 
   const signIn = async (email, password) => {

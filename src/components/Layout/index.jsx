@@ -1,6 +1,6 @@
 import {
   FileText, Layers, Mic, BarChart2,
-  Settings, ChevronRight, BookOpen, LogOut, User, BookMarked
+  Settings, ChevronRight, BookOpen, LogOut, LogIn, User, BookMarked
 } from 'lucide-react';
 
 const NAV_ITEMS = [
@@ -20,7 +20,7 @@ const PAGE_TITLES = {
 };
 
 // ─── Desktop Sidebar ──────────────────────────────────────────
-export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick }) {
+export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick, user, onSignOut, onLoginClick }) {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
@@ -50,7 +50,42 @@ export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick }
         ))}
       </nav>
 
-      <div className="sidebar-footer">
+      <div className="sidebar-footer" style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+        {user ? (
+          <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            padding: '8px 10px', borderRadius: 'var(--radius-md)',
+            background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0, flex: 1 }}>
+              <User size={13} style={{ color: 'var(--accent-400)', flexShrink: 0 }} />
+              <span style={{ fontSize: 12, color: 'var(--text-secondary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {user.email}
+              </span>
+            </div>
+            <button
+              id="sidebar-logout-btn"
+              className="btn btn-ghost btn-icon"
+              onClick={onSignOut}
+              title="Đăng xuất"
+              style={{ color: 'var(--text-muted)', padding: 4, width: 24, height: 24 }}
+            >
+              <LogOut size={13} />
+            </button>
+          </div>
+        ) : (
+          <button
+            id="sidebar-login-btn"
+            className="nav-item"
+            style={{ width: '100%', color: 'var(--accent-400)', fontWeight: 600 }}
+            onClick={onLoginClick}
+          >
+            <LogIn size={17} className="nav-icon" />
+            <span className="nav-label">Đăng nhập / Đăng ký</span>
+            <ChevronRight size={14} style={{ color: 'var(--text-muted)' }} />
+          </button>
+        )}
+
         <button
           id="nav-settings"
           className="nav-item"
@@ -89,27 +124,27 @@ export function BottomNav({ activePage, onNavigate, counts = {} }) {
 }
 
 // ─── Header ───────────────────────────────────────────────────
-export function Header({ page, rightSlot, onSettingsClick, user, onSignOut }) {
+export function Header({ page, rightSlot, onSettingsClick, user, onSignOut, onLoginClick }) {
   const info = PAGE_TITLES[page] || {};
   return (
     <header className="main-header">
-      <div>
+      <div style={{ minWidth: 0, flex: '1 1 auto' }}>
         <div className="main-header-title">{info.title}</div>
         {info.subtitle && <div className="main-header-subtitle">{info.subtitle}</div>}
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
         {rightSlot && <div>{rightSlot}</div>}
 
-        {/* User info + logout */}
-        {user && (
+        {/* User info + logout if logged in */}
+        {user ? (
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <div style={{
-              display: 'flex', alignItems: 'center', gap: 6,
-              padding: '4px 10px', borderRadius: 'var(--radius-md)',
+              display: 'flex', alignItems: 'center', gap: 5,
+              padding: '4px 8px', borderRadius: 'var(--radius-md)',
               background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)',
             }}>
               <User size={13} style={{ color: 'var(--accent-400)', flexShrink: 0 }} />
-              <span style={{ fontSize: 12, color: 'var(--text-secondary)', maxWidth: 140, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <span style={{ fontSize: 11.5, color: 'var(--text-secondary)', maxWidth: 110, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 {user.email}
               </span>
             </div>
@@ -123,6 +158,19 @@ export function Header({ page, rightSlot, onSettingsClick, user, onSignOut }) {
               <LogOut size={15} />
             </button>
           </div>
+        ) : (
+          /* Login button if not logged in */
+          onLoginClick && (
+            <button
+              id="header-login-btn"
+              className="btn btn-primary btn-sm"
+              onClick={onLoginClick}
+              style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '5px 10px', fontSize: 12.5, fontWeight: 600, whiteSpace: 'nowrap' }}
+            >
+              <LogIn size={13} />
+              <span>Đăng nhập</span>
+            </button>
+          )
         )}
 
         {/* Settings button — mobile only */}

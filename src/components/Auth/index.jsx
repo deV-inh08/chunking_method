@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BookOpen, Mail, Lock, Eye, EyeOff, AlertCircle, CheckCircle, Send, ArrowLeft } from 'lucide-react';
+import { BookOpen, Mail, Lock, Eye, EyeOff, AlertCircle, CheckCircle, Send, ArrowLeft, X } from 'lucide-react';
 import { isSupabaseConfigured } from '../../services/supabase';
 
 // ─── AwaitingConfirmScreen ────────────────────────────────────
@@ -138,7 +138,7 @@ function AwaitingConfirmScreen({ email, onBack, onResend }) {
 }
 
 // ─── AuthScreen ───────────────────────────────────────────────
-export function AuthScreen({ onSignIn, onSignUp, onResendConfirm }) {
+export function AuthScreen({ onSignIn, onSignUp, onResendConfirm, onContinueAsGuest, onClose, isModal = false }) {
   const [mode, setMode]                   = useState('login'); // 'login' | 'register' | 'awaiting-confirm'
   const [email, setEmail]                 = useState('');
   const [password, setPassword]           = useState('');
@@ -225,214 +225,261 @@ export function AuthScreen({ onSignIn, onSignUp, onResendConfirm }) {
   }
 
   // ── Màn đăng nhập / đăng ký ──────────────────────────────────
+  const content = (
+    <div style={{ width: '100%', maxWidth: 420, animation: 'fadeIn 0.4s ease', position: 'relative' }}>
+
+      {/* Logo */}
+      <div style={{ textAlign: 'center', marginBottom: 28 }}>
+        <div style={{
+          width: 60, height: 60,
+          borderRadius: 'var(--radius-lg)',
+          background: 'linear-gradient(135deg, var(--accent-500), var(--accent-700))',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          margin: '0 auto 14px',
+          boxShadow: '0 8px 32px rgba(99,102,241,0.4)',
+        }}>
+          <BookOpen size={28} color="white" />
+        </div>
+        <h1 style={{ fontSize: 24, fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.03em' }}>
+          Chunk Trainer
+        </h1>
+        <p style={{ color: 'var(--text-muted)', fontSize: 13, marginTop: 4 }}>
+          Luyện nói TOEIC theo phương pháp chunking
+        </p>
+      </div>
+
+      {/* Card */}
+      <div className="card" style={{ padding: '28px 24px', position: 'relative' }}>
+        {/* Close button if onClose is provided */}
+        {onClose && (
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Đóng"
+            style={{
+              position: 'absolute', top: 14, right: 14,
+              background: 'transparent', border: 'none',
+              color: 'var(--text-muted)', cursor: 'pointer',
+              padding: 4, borderRadius: 'var(--radius-sm)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}
+          >
+            <X size={18} />
+          </button>
+        )}
+
+        {/* Supabase not configured warning */}
+        {!supabaseReady && (
+          <div style={{
+            background: 'var(--warning-bg)', border: '1px solid var(--warning-border)',
+            borderRadius: 'var(--radius-md)', padding: '12px 14px', marginBottom: 18,
+            fontSize: 12.5, color: 'var(--warning-text)',
+          }}>
+            <strong>⚠️ Chưa cấu hình Supabase.</strong><br />
+            Thêm <code style={{ fontFamily: 'monospace' }}>VITE_SUPABASE_URL</code> và{' '}
+            <code style={{ fontFamily: 'monospace' }}>VITE_SUPABASE_ANON_KEY</code> vào file <code>.env</code>,
+            rồi restart dev server.
+          </div>
+        )}
+
+        {/* Mode toggle */}
+        <div style={{
+          display: 'flex', background: 'var(--bg-base)',
+          borderRadius: 'var(--radius-md)', padding: 4, marginBottom: 20,
+        }}>
+          {[
+            { key: 'login',    label: 'Đăng nhập' },
+            { key: 'register', label: 'Đăng ký'   },
+          ].map(({ key, label }) => (
+            <button
+              key={key}
+              type="button"
+              onClick={() => { setMode(key); setError(''); setSuccess(''); setShowResendHint(false); }}
+              style={{
+                flex: 1, padding: '8px 12px', borderRadius: 'var(--radius-sm)',
+                fontWeight: 600, fontSize: 13.5, transition: 'all 0.2s',
+                background: mode === key ? 'var(--bg-surface)' : 'transparent',
+                color: mode === key ? 'var(--text-primary)' : 'var(--text-muted)',
+                boxShadow: mode === key ? 'var(--shadow-sm)' : 'none',
+                border: 'none', cursor: 'pointer',
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+
+          {/* Email */}
+          <div>
+            <label className="label" style={{ marginBottom: 6 }}>
+              <Mail size={12} style={{ display: 'inline', marginRight: 4 }} />
+              Email
+            </label>
+            <input
+              id="auth-email"
+              type="email"
+              className="input-field w-full"
+              placeholder="your@email.com"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              autoComplete="email"
+              disabled={loading}
+            />
+          </div>
+
+          {/* Password */}
+          <div>
+            <label className="label" style={{ marginBottom: 6 }}>
+              <Lock size={12} style={{ display: 'inline', marginRight: 4 }} />
+              Mật khẩu
+            </label>
+            <div style={{ position: 'relative' }}>
+              <input
+                id="auth-password"
+                type={showPw ? 'text' : 'password'}
+                className="input-field w-full"
+                placeholder="Ít nhất 6 ký tự"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                autoComplete={mode === 'register' ? 'new-password' : 'current-password'}
+                disabled={loading}
+                style={{ paddingRight: 44 }}
+              />
+              <button
+                type="button"
+                onClick={() => setShowPw(v => !v)}
+                style={{
+                  position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)',
+                  color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer',
+                }}
+              >
+                {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
+              </button>
+            </div>
+          </div>
+
+          {/* Confirm Password (register only) */}
+          {mode === 'register' && (
+            <div>
+              <label className="label" style={{ marginBottom: 6 }}>
+                <Lock size={12} style={{ display: 'inline', marginRight: 4 }} />
+                Xác nhận mật khẩu
+              </label>
+              <input
+                id="auth-confirm"
+                type="password"
+                className="input-field w-full"
+                placeholder="Nhập lại mật khẩu"
+                value={confirm}
+                onChange={e => setConfirm(e.target.value)}
+                autoComplete="new-password"
+                disabled={loading}
+              />
+            </div>
+          )}
+
+          {/* Error */}
+          {error && (
+            <div style={{
+              display: 'flex', flexDirection: 'column', gap: 8,
+              background: 'var(--error-bg)', border: '1px solid var(--error-border)',
+              borderRadius: 'var(--radius-md)', padding: '10px 14px',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, color: 'var(--error-text)' }}>
+                <AlertCircle size={14} style={{ flexShrink: 0, marginTop: 1 }} />
+                {error}
+              </div>
+              {/* Nút gửi lại khi lỗi chưa xác thực */}
+              {showResendHint && onResendConfirm && (
+                <button
+                  id="resend-hint-btn"
+                  type="button"
+                  onClick={() => handleResend(email.trim())}
+                  style={{
+                    alignSelf: 'flex-start', marginLeft: 22,
+                    fontSize: 12, fontWeight: 700,
+                    color: 'var(--accent-300)',
+                    background: 'rgba(99,102,241,0.12)',
+                    border: '1px solid rgba(99,102,241,0.3)',
+                    borderRadius: 'var(--radius-full)',
+                    padding: '3px 10px', cursor: 'pointer',
+                    display: 'flex', alignItems: 'center', gap: 5,
+                  }}
+                >
+                  <Send size={11} /> Gửi lại email xác nhận
+                </button>
+              )}
+            </div>
+          )}
+
+          {/* Success */}
+          {success && (
+            <div style={{
+              display: 'flex', alignItems: 'flex-start', gap: 8,
+              background: 'var(--success-bg)', border: '1px solid var(--success-border)',
+              borderRadius: 'var(--radius-md)', padding: '10px 14px',
+              fontSize: 13, color: 'var(--success-text)',
+            }}>
+              <CheckCircle size={14} style={{ flexShrink: 0, marginTop: 1 }} />
+              {success}
+            </div>
+          )}
+
+          {/* Submit */}
+          <button
+            id="auth-submit-btn"
+            type="submit"
+            className="btn btn-primary w-full"
+            disabled={loading || !supabaseReady}
+            style={{ padding: '12px 20px', fontSize: 14.5, fontWeight: 700, marginTop: 4 }}
+          >
+            {loading
+              ? (mode === 'register' ? 'Đang đăng ký…' : 'Đang đăng nhập…')
+              : (mode === 'register' ? 'Tạo tài khoản' : 'Đăng nhập')
+            }
+          </button>
+
+          {/* Guest mode button */}
+          {onContinueAsGuest && (
+            <button
+              type="button"
+              className="btn btn-ghost w-full"
+              onClick={onContinueAsGuest}
+              style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 2 }}
+            >
+              Dùng thử không cần tài khoản →
+            </button>
+          )}
+        </form>
+      </div>
+
+      <p style={{ textAlign: 'center', fontSize: 12, color: 'var(--text-muted)', marginTop: 16 }}>
+        Dữ liệu được lưu trên Supabase Cloud, đồng bộ mọi thiết bị.
+      </p>
+    </div>
+  );
+
+  if (isModal) {
+    return (
+      <div
+        className="modal-overlay"
+        onClick={(e) => { if (e.target === e.currentTarget && onClose) onClose(); }}
+        style={{ zIndex: 1100 }}
+      >
+        {content}
+      </div>
+    );
+  }
+
   return (
     <div style={{
       minHeight: '100vh',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      background: 'var(--bg-base)', padding: 24,
+      background: 'var(--bg-base)', padding: 20,
     }}>
-      <div style={{ width: '100%', maxWidth: 420, animation: 'fadeIn 0.4s ease' }}>
-
-        {/* Logo */}
-        <div style={{ textAlign: 'center', marginBottom: 40 }}>
-          <div style={{
-            width: 64, height: 64,
-            borderRadius: 'var(--radius-lg)',
-            background: 'linear-gradient(135deg, var(--accent-500), var(--accent-700))',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            margin: '0 auto 16px',
-            boxShadow: '0 8px 32px rgba(99,102,241,0.4)',
-          }}>
-            <BookOpen size={30} color="white" />
-          </div>
-          <h1 style={{ fontSize: 26, fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.03em' }}>
-            Chunk Trainer
-          </h1>
-          <p style={{ color: 'var(--text-muted)', fontSize: 14, marginTop: 4 }}>
-            Luyện nói TOEIC theo phương pháp chunking
-          </p>
-        </div>
-
-        {/* Card */}
-        <div className="card" style={{ padding: 32 }}>
-
-          {/* Supabase not configured warning */}
-          {!supabaseReady && (
-            <div style={{
-              background: 'var(--warning-bg)', border: '1px solid var(--warning-border)',
-              borderRadius: 'var(--radius-md)', padding: '12px 16px', marginBottom: 20,
-              fontSize: 13, color: 'var(--warning-text)',
-            }}>
-              <strong>⚠️ Chưa cấu hình Supabase.</strong><br />
-              Thêm <code style={{ fontFamily: 'monospace' }}>VITE_SUPABASE_URL</code> và{' '}
-              <code style={{ fontFamily: 'monospace' }}>VITE_SUPABASE_ANON_KEY</code> vào file <code>.env</code>,
-              rồi restart dev server.
-            </div>
-          )}
-
-          {/* Mode toggle */}
-          <div style={{
-            display: 'flex', background: 'var(--bg-base)',
-            borderRadius: 'var(--radius-md)', padding: 4, marginBottom: 24,
-          }}>
-            {[
-              { key: 'login',    label: 'Đăng nhập' },
-              { key: 'register', label: 'Đăng ký'   },
-            ].map(({ key, label }) => (
-              <button
-                key={key}
-                onClick={() => { setMode(key); setError(''); setSuccess(''); setShowResendHint(false); }}
-                style={{
-                  flex: 1, padding: '8px 12px', borderRadius: 'var(--radius-sm)',
-                  fontWeight: 600, fontSize: 14, transition: 'all 0.2s',
-                  background: mode === key ? 'var(--bg-surface)' : 'transparent',
-                  color: mode === key ? 'var(--text-primary)' : 'var(--text-muted)',
-                  boxShadow: mode === key ? 'var(--shadow-sm)' : 'none',
-                }}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-
-            {/* Email */}
-            <div>
-              <label className="label" style={{ marginBottom: 6 }}>
-                <Mail size={12} style={{ display: 'inline', marginRight: 4 }} />
-                Email
-              </label>
-              <input
-                id="auth-email"
-                type="email"
-                className="input-field w-full"
-                placeholder="your@email.com"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                autoComplete="email"
-                disabled={loading}
-              />
-            </div>
-
-            {/* Password */}
-            <div>
-              <label className="label" style={{ marginBottom: 6 }}>
-                <Lock size={12} style={{ display: 'inline', marginRight: 4 }} />
-                Mật khẩu
-              </label>
-              <div style={{ position: 'relative' }}>
-                <input
-                  id="auth-password"
-                  type={showPw ? 'text' : 'password'}
-                  className="input-field w-full"
-                  placeholder="Ít nhất 6 ký tự"
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  autoComplete={mode === 'register' ? 'new-password' : 'current-password'}
-                  disabled={loading}
-                  style={{ paddingRight: 44 }}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPw(v => !v)}
-                  style={{
-                    position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)',
-                    color: 'var(--text-muted)',
-                  }}
-                >
-                  {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
-                </button>
-              </div>
-            </div>
-
-            {/* Confirm Password (register only) */}
-            {mode === 'register' && (
-              <div>
-                <label className="label" style={{ marginBottom: 6 }}>
-                  <Lock size={12} style={{ display: 'inline', marginRight: 4 }} />
-                  Xác nhận mật khẩu
-                </label>
-                <input
-                  id="auth-confirm"
-                  type="password"
-                  className="input-field w-full"
-                  placeholder="Nhập lại mật khẩu"
-                  value={confirm}
-                  onChange={e => setConfirm(e.target.value)}
-                  autoComplete="new-password"
-                  disabled={loading}
-                />
-              </div>
-            )}
-
-            {/* Error */}
-            {error && (
-              <div style={{
-                display: 'flex', flexDirection: 'column', gap: 8,
-                background: 'var(--error-bg)', border: '1px solid var(--error-border)',
-                borderRadius: 'var(--radius-md)', padding: '10px 14px',
-              }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 13, color: 'var(--error-text)' }}>
-                  <AlertCircle size={14} style={{ flexShrink: 0, marginTop: 1 }} />
-                  {error}
-                </div>
-                {/* Nút gửi lại khi lỗi chưa xác thực */}
-                {showResendHint && onResendConfirm && (
-                  <button
-                    id="resend-hint-btn"
-                    type="button"
-                    onClick={() => handleResend(email.trim())}
-                    style={{
-                      alignSelf: 'flex-start', marginLeft: 22,
-                      fontSize: 12, fontWeight: 700,
-                      color: 'var(--accent-300)',
-                      background: 'rgba(99,102,241,0.12)',
-                      border: '1px solid rgba(99,102,241,0.3)',
-                      borderRadius: 'var(--radius-full)',
-                      padding: '3px 10px', cursor: 'pointer',
-                      display: 'flex', alignItems: 'center', gap: 5,
-                    }}
-                  >
-                    <Send size={11} /> Gửi lại email xác nhận
-                  </button>
-                )}
-              </div>
-            )}
-
-            {/* Success */}
-            {success && (
-              <div style={{
-                display: 'flex', alignItems: 'flex-start', gap: 8,
-                background: 'var(--success-bg)', border: '1px solid var(--success-border)',
-                borderRadius: 'var(--radius-md)', padding: '10px 14px',
-                fontSize: 13, color: 'var(--success-text)',
-              }}>
-                <CheckCircle size={14} style={{ flexShrink: 0, marginTop: 1 }} />
-                {success}
-              </div>
-            )}
-
-            {/* Submit */}
-            <button
-              id="auth-submit-btn"
-              type="submit"
-              className="btn btn-primary w-full"
-              disabled={loading || !supabaseReady}
-              style={{ padding: '12px 20px', fontSize: 15, fontWeight: 700, marginTop: 4 }}
-            >
-              {loading
-                ? (mode === 'register' ? 'Đang đăng ký…' : 'Đang đăng nhập…')
-                : (mode === 'register' ? 'Tạo tài khoản' : 'Đăng nhập')
-              }
-            </button>
-          </form>
-        </div>
-
-        <p style={{ textAlign: 'center', fontSize: 12, color: 'var(--text-muted)', marginTop: 16 }}>
-          Dữ liệu được lưu trên Supabase Cloud, đồng bộ mọi thiết bị.
-        </p>
-      </div>
+      {content}
     </div>
   );
 }

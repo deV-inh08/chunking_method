@@ -1,3 +1,5 @@
+import { getApiKeys } from '../store/storage';
+
 // Priority list — tries each in order until one works
 // Lite models first: RPD 500/day (vs 20/day for standard Flash)
 const MODEL_CANDIDATES = [
@@ -68,68 +70,96 @@ async function getModel(apiKey) {
 const GEMINI_URL = (model, apiKey) =>
   `${BASE_URL}/models/${model}:generateContent?key=${apiKey}`;
 
-// ─── Core call (với delay + exponential backoff khi rate limit) ─
-async function callGemini(apiKey, systemPrompt, userMessage, opts = {}) {
-  // Chờ đủ thời gian giữa các request để không vượt RPM
-  await waitForRateLimit();
+// Rate-limit blacklist (model & key combined)
+const _rateLimitedKeys = new Set();
 
-  // Thử tối đa MODEL_CANDIDATES.length lần (mỗi lần có thể đổi model)
-  for (let attempt = 0; attempt < MODEL_CANDIDATES.length; attempt++) {
-    const model = await getModel(apiKey);
-    const res = await fetch(GEMINI_URL(model, apiKey), {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        systemInstruction: {
-          parts: [{ text: systemPrompt }],
-        },
-        contents: [
-          { role: 'user', parts: [{ text: userMessage }] },
-        ],
-        generationConfig: {
-          maxOutputTokens: opts.maxOutputTokens || 4096,
-          temperature: opts.temperature ?? 0.7,
-        },
-      }),
-    });
-
-    // Rate limit → backoff rồi thử model tiếp theo
-    if (res.status === 429) {
-      // Đọc Retry-After header nếu có, mặc định 20s
-      const retryAfter = parseInt(res.headers.get('Retry-After') || '0', 10);
-      const backoffMs = retryAfter > 0 ? retryAfter * 1000 : 20000 + attempt * 5000;
-      console.warn(`[AI] 429 rate limit on ${model}. Chờ ${backoffMs / 1000}s rồi đổi model…`);
-      _rateLimitedModels.add(model);
-      _cachedModel = null; // force re-resolve on next call
-      const remaining = MODEL_CANDIDATES.filter(m => !_rateLimitedModels.has(m));
-      if (remaining.length === 0) {
-        throw new Error('Đã vượt giới hạn tất cả model. Vui lòng thử lại sau vài phút.');
-      }
-      // Chờ backoff trước khi thử model mới
-      await sleep(backoffMs);
-      _lastCallTime = Date.now(); // reset timer sau khi chờ
-      continue;
-    }
-
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      const msg = err?.error?.message || `Gemini API error ${res.status}`;
-      throw new Error(msg);
-    }
-
-    const data = await res.json();
-    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-
-    // Extract JSON block from response
-    const jsonMatch = text.match(/```json\s*([\s\S]*?)\s*```/) ||
-      text.match(/(\{[\s\S]*\})/);
-    if (!jsonMatch) throw new Error('Gemini response không chứa JSON hợp lệ');
-
-    return JSON.parse(jsonMatch[1]);
+async function callGemini(passedApiKey, systemPrompt, userMessage, opts = {}) {
+  // Lấy danh sách tất cả API key khả dụng (Key 1, Key 2...)
+  let allKeys = getApiKeys();
+  if (passedApiKey && !allKeys.includes(passedApiKey)) {
+    allKeys = [passedApiKey, ...allKeys];
+  }
+  if (allKeys.length === 0) {
+    throw new Error('Chưa có API key. Vào Settings để nhập.');
   }
 
-  throw new Error('Không thể gọi Gemini API sau nhiều lần thử. Vui lòng thử lại sau.');
+  let lastError = null;
+
+  // Thử lần lượt từng API Key (Account 1 → Account 2)
+  for (let kIdx = 0; kIdx < allKeys.length; kIdx++) {
+    const currentApiKey = allKeys[kIdx];
+
+    // Với mỗi Key, thử các model candidates
+    for (let attempt = 0; attempt < MODEL_CANDIDATES.length; attempt++) {
+      const model = await getModel(currentApiKey);
+      const keyModelId = `${currentApiKey.slice(-6)}_${model}`;
+
+      if (_rateLimitedKeys.has(keyModelId) || _rateLimitedModels.has(model)) continue;
+
+      try {
+        await waitForRateLimit();
+
+        const res = await fetch(GEMINI_URL(model, currentApiKey), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            systemInstruction: { parts: [{ text: systemPrompt }] },
+            contents: [{ role: 'user', parts: [{ text: userMessage }] }],
+            generationConfig: {
+              maxOutputTokens: opts.maxOutputTokens || 4096,
+              temperature: opts.temperature ?? 0.7,
+            },
+          }),
+        });
+
+        // Xử lý 429 Rate Limit
+        if (res.status === 429) {
+          console.warn(`[AI] Key ${kIdx + 1} (${currentApiKey.slice(0, 8)}…) hit 429 on ${model}.`);
+          _rateLimitedKeys.add(keyModelId);
+          _rateLimitedModels.add(model);
+          _cachedModel = null;
+
+          // Nếu có Key dự phòng (Account 2), chuyển sang Key 2 ngay lập tức!
+          if (kIdx < allKeys.length - 1) {
+            console.warn(`[AI] 🔄 Tự động chuyển sang API Key dự phòng (Account ${kIdx + 2})…`);
+            break; // Thử key tiếp theo
+          }
+
+          const retryAfter = parseInt(res.headers.get('Retry-After') || '0', 10);
+          const backoffMs = retryAfter > 0 ? retryAfter * 1000 : 15000 + attempt * 5000;
+          await sleep(backoffMs);
+          _lastCallTime = Date.now();
+          continue;
+        }
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          const msg = err?.error?.message || `Gemini API error ${res.status}`;
+          throw new Error(msg);
+        }
+
+        const data = await res.json();
+        const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        const jsonMatch = text.match(/```json\s*([\s\S]*?)\s*```/) || text.match(/(\{[\s\S]*\})/);
+        if (!jsonMatch) throw new Error('Gemini response không chứa JSON hợp lệ');
+
+        return JSON.parse(jsonMatch[1]);
+      } catch (err) {
+        lastError = err;
+        // Nếu lỗi rate limit/quota từ response error message
+        if (err.message?.includes('429') || err.message?.includes('QUOTA') || err.message?.includes('RESOURCE_EXHAUSTED')) {
+          if (kIdx < allKeys.length - 1) {
+            console.warn(`[AI] 🔄 Quota hết ở Key ${kIdx + 1}. Chuyển sang API Key dự phòng (Account ${kIdx + 2})…`);
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  throw lastError || new Error('Tất cả API Key và Model đều bị rate limit. Vui lòng thử lại sau ít phút.');
 }
+
 
 
 
