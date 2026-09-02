@@ -6,10 +6,10 @@ import {
 } from 'lucide-react';
 import { EmptyState, Badge, Spinner, Modal } from '../ui';
 import {
-  getSituations, getApiKey, getPracticeDraft, savePracticeDraft, clearPracticeDraft,
+  getSituations, saveSituations, getApiKey, getPracticeDraft, savePracticeDraft, clearPracticeDraft,
   saveSpeakingProgress,
 } from '../../store/storage';
-import { gradeWritingBatch } from '../../services/ai';
+import { gradeWritingBatch, generateWritingExercises } from '../../services/ai';
 import { formatTimeUntilReview, isDueForReview } from '../../services/srs';
 import { SpeakingSession } from './SpeakingSession';
 
@@ -1200,13 +1200,122 @@ export function PracticeModule({
     }
   }, [activeChunkId]);
 
+  const [situationsVersion, setSituationsVersion] = useState(0);
+  const [isGeneratingCurrent, setIsGeneratingCurrent] = useState(false);
+  const [isGeneratingAll, setIsGeneratingAll] = useState(false);
+  const [genAllProgress, setGenAllProgress] = useState({ done: 0, total: 0 });
+  const [genError, setGenError] = useState('');
+  const autoAttemptedRef = useRef(new Set());
+
   const groups = useMemo(() => {
     return groupPracticeChunks(chunkList, transcripts);
   }, [chunkList, transcripts]);
 
   const activeChunkIndex = chunkList.findIndex(c => c.id === activeChunkId);
   const activeChunk = activeChunkIndex >= 0 ? chunkList[activeChunkIndex] : null;
-  const activeExercises = activeChunk ? getSituations(activeChunk.id) : [];
+  const activeExercises = useMemo(() => {
+    void situationsVersion;
+    return activeChunk ? getSituations(activeChunk.id) : [];
+  }, [activeChunk, situationsVersion]);
+
+  const chunksWithoutExercises = useMemo(() => {
+    void situationsVersion;
+    return chunkList.filter(c => getSituations(c.id).length === 0);
+  }, [chunkList, situationsVersion]);
+
+  const handleGenerateSingleChunk = useCallback(async (targetChunk) => {
+    if (!targetChunk) return;
+    const apiKey = getApiKey();
+    if (!apiKey) {
+      if (onToast) onToast('error', 'Chưa có API key. Vui lòng kiểm tra cài đặt.');
+      return;
+    }
+    setIsGeneratingCurrent(true);
+    setGenError('');
+    try {
+      const result = await generateWritingExercises(targetChunk, apiKey);
+      const exercises = (result.exercises || []).map((ex, i) => ({
+        ...ex,
+        id: ex.id || `ex_${targetChunk.id}_${i}`,
+        chunkId: targetChunk.id,
+      }));
+      if (exercises.length === 0) throw new Error('AI không trả về bài tập hợp lệ');
+      saveSituations(targetChunk.id, exercises);
+      setSituationsVersion(v => v + 1);
+      if (onToast) onToast('success', `Đã tạo ${exercises.length} bài tập cho "${targetChunk.phrase}"! 🎉`);
+    } catch (err) {
+      console.error('Single chunk gen error:', err);
+      setGenError(err.message || 'Lỗi khi tạo bài tập');
+      if (onToast) onToast('error', `Lỗi tạo bài tập: ${err.message}`);
+    } finally {
+      setIsGeneratingCurrent(false);
+    }
+  }, [onToast]);
+
+  // Tự động kích hoạt tạo bài tập cho activeChunk nếu chưa có bài tập
+  useEffect(() => {
+    if (
+      activeChunk &&
+      activeExercises.length === 0 &&
+      !autoGenerating &&
+      !isGeneratingCurrent &&
+      !isGeneratingAll &&
+      !autoAttemptedRef.current.has(activeChunk.id)
+    ) {
+      autoAttemptedRef.current.add(activeChunk.id);
+      handleGenerateSingleChunk(activeChunk);
+    }
+  }, [activeChunk, activeExercises.length, autoGenerating, isGeneratingCurrent, isGeneratingAll, handleGenerateSingleChunk]);
+
+  const handleGenerateAllMissing = async () => {
+    const apiKey = getApiKey();
+    if (!apiKey) {
+      if (onToast) onToast('error', 'Chưa có API key. Vui lòng kiểm tra cài đặt.');
+      return;
+    }
+    const missing = chunkList.filter(c => getSituations(c.id).length === 0);
+    if (missing.length === 0) return;
+
+    setIsGeneratingAll(true);
+    setGenAllProgress({ done: 0, total: missing.length });
+
+    let failed = 0;
+    for (let i = 0; i < missing.length; i++) {
+      const chunk = missing[i];
+      let success = false;
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          const result = await generateWritingExercises(chunk, apiKey);
+          const exercises = (result.exercises || []).map((ex, exIdx) => ({
+            ...ex,
+            id: ex.id || `ex_${chunk.id}_${exIdx}`,
+            chunkId: chunk.id,
+          }));
+          if (exercises.length > 0) {
+            saveSituations(chunk.id, exercises);
+            setSituationsVersion(v => v + 1);
+            success = true;
+            break;
+          }
+        } catch (err) {
+          console.warn(`[Gen-All] Chunk "${chunk.phrase}" retry ${attempt + 1}:`, err.message);
+          if (attempt < 1) await new Promise(r => setTimeout(r, 2500));
+        }
+      }
+      if (!success) {
+        failed++;
+        await new Promise(r => setTimeout(r, 2000));
+      }
+      setGenAllProgress(prev => ({ ...prev, done: i + 1 }));
+    }
+
+    setIsGeneratingAll(false);
+    if (failed > 0) {
+      if (onToast) onToast('warning', `Đã tạo ${missing.length - failed}/${missing.length} chunk. Chunk còn lại bạn có thể bấm tạo trực tiếp.`);
+    } else {
+      if (onToast) onToast('success', 'Đã hoàn tất chuẩn bị bài luyện cho tất cả các chunk! 🎉');
+    }
+  };
 
   const activeGroup = useMemo(() => {
     if (!activeChunk) return null;
@@ -1373,12 +1482,72 @@ export function PracticeModule({
                 {autoGenProgress.done} / {autoGenProgress.total} chunk xong
               </p>
             </div>
+          ) : isGeneratingCurrent ? (
+            <div className="card animate-fade-in" style={{ padding: '48px 24px', textAlign: 'center' }}>
+              <Spinner size={36} />
+              <p style={{ marginTop: 16, color: 'var(--text-primary)', fontWeight: 700, fontSize: 15 }}>
+                Đang tạo 3 câu bài tập cho &ldquo;{activeChunk?.phrase}&rdquo;…
+              </p>
+              <p style={{ marginTop: 6, color: 'var(--text-muted)', fontSize: 13 }}>
+                AI đang soạn các tình huống thực tế theo độ khó Cơ bản → Nâng cao. Vui lòng đợi vài giây.
+              </p>
+            </div>
+          ) : isGeneratingAll ? (
+            <div className="card animate-fade-in" style={{ padding: '48px 24px', textAlign: 'center' }}>
+              <Spinner size={36} />
+              <p style={{ marginTop: 16, color: 'var(--text-primary)', fontWeight: 700, fontSize: 15 }}>
+                Đang tự động chuẩn bị bài tập cho các chunk còn thiếu…
+              </p>
+              <p style={{ marginTop: 6, color: 'var(--text-muted)', fontSize: 13 }}>
+                {genAllProgress.done} / {genAllProgress.total} chunk xong
+              </p>
+            </div>
           ) : (
-            <EmptyState
-              icon={<PenLine size={24} />}
-              title="Chưa có bài luyện"
-              description="Chunk này chưa được sinh bài tập. Vào Chunks → bấm 'Luyện viết'."
-            />
+            <div className="card animate-fade-in" style={{ padding: '36px 20px', textAlign: 'center', maxWidth: 500, margin: '20px auto' }}>
+              <div style={{
+                width: 52, height: 52, borderRadius: 'var(--radius-full)',
+                background: 'rgba(99,102,241,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                margin: '0 auto 16px',
+              }}>
+                <Sparkles size={26} color="var(--accent-300)" />
+              </div>
+              <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 8, color: 'var(--text-primary)' }}>
+                Chunk này chưa có bài luyện
+              </h3>
+              <p style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 20, lineHeight: 1.6 }}>
+                AI sẽ soạn 3 câu thực tế (Cơ bản → Nâng cao) để bạn luyện dịch và khắc sâu cụm <strong>&ldquo;{activeChunk?.phrase}&rdquo;</strong>.
+              </p>
+
+              {genError && (
+                <div style={{
+                  marginBottom: 16, fontSize: 12.5, color: 'var(--error-text)',
+                  background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)',
+                  padding: '10px 14px', borderRadius: 'var(--radius-sm)', textAlign: 'left',
+                }}>
+                  ⚠️ {genError}
+                </div>
+              )}
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleGenerateSingleChunk(activeChunk)}
+                  style={{ width: '100%', justifyContent: 'center', padding: '12px 20px', gap: 8, fontWeight: 700 }}
+                >
+                  <Sparkles size={16} /> Tạo bài luyện cho chunk này ngay
+                </button>
+
+                {chunksWithoutExercises.length > 1 && (
+                  <button
+                    className="btn btn-secondary"
+                    onClick={handleGenerateAllMissing}
+                    style={{ width: '100%', justifyContent: 'center', padding: '10px 16px', fontSize: 13, gap: 8 }}
+                  >
+                    <Layers size={15} /> Tự động tạo tất cả {chunksWithoutExercises.length} chunk còn thiếu
+                  </button>
+                )}
+              </div>
+            </div>
           )}
         </div>
       </div>

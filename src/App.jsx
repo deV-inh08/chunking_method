@@ -193,6 +193,50 @@ export default function App() {
     addToast('success', 'Đã xóa transcript.');
   }, [deleteTranscript, selectedTranscriptId, addToast]);
 
+  // Helper: batch generate exercises with retry and delay to prevent 429 rate limit
+  const runBatchExerciseGen = useCallback(async (chunksNeedingExercises, apiKey) => {
+    if (!apiKey || !chunksNeedingExercises || chunksNeedingExercises.length === 0) return;
+    setAutoGenerating(true);
+    setAutoGenProgress({ done: 0, total: chunksNeedingExercises.length });
+
+    let failedCount = 0;
+    for (let i = 0; i < chunksNeedingExercises.length; i++) {
+      const chunk = chunksNeedingExercises[i];
+      let success = false;
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          const result = await generateWritingExercises(chunk, apiKey);
+          const exercises = (result.exercises || []).map((ex, exIdx) => ({
+            ...ex,
+            id: ex.id || `ex_${chunk.id}_${exIdx}`,
+            chunkId: chunk.id,
+          }));
+          if (exercises.length > 0) {
+            storage.saveSituations(chunk.id, exercises);
+            success = true;
+            break;
+          }
+        } catch (err) {
+          console.warn(`[Auto-gen] Chunk "${chunk.phrase}" thử lại (${attempt + 1}/2):`, err.message);
+          if (attempt < 1) {
+            await new Promise(r => setTimeout(r, 2500));
+          }
+        }
+      }
+      if (!success) {
+        failedCount++;
+        // Nghỉ 2s tránh spam liên tục khi vừa chạm 429
+        await new Promise(r => setTimeout(r, 2000));
+      }
+      setAutoGenProgress(prev => ({ ...prev, done: i + 1 }));
+    }
+
+    setAutoGenerating(false);
+    if (failedCount > 0) {
+      addToast('info', `Đã chuẩn bị xong ${chunksNeedingExercises.length - failedCount}/${chunksNeedingExercises.length} chunk. Chunk còn lại bạn có thể bấm "Tạo bài luyện" trực tiếp.`);
+    }
+  }, [addToast]);
+
   // ── Auto-generate situations after analysis ──────────────────
   const handleChunksExtracted = useCallback(async (transcriptId, chunks) => {
     storage.saveChunks(transcriptId, chunks);
@@ -204,32 +248,11 @@ export default function App() {
 
     // Auto-generate writing exercises for all chunks
     const apiKey = storage.getApiKey();
+    setPage('practice');
     if (apiKey && chunks.length > 0) {
-      setAutoGenerating(true);
-      setAutoGenProgress({ done: 0, total: chunks.length });
-      setPage('practice');
-
-      // Sequential with progress (avoids rate-limit issues)
-      for (const chunk of chunks) {
-        try {
-          const result = await generateWritingExercises(chunk, apiKey);
-          const exercises = (result.exercises || []).map((ex, i) => ({
-            ...ex,
-            id: ex.id || `ex_${chunk.id}_${i}`,
-            chunkId: chunk.id,
-          }));
-          storage.saveSituations(chunk.id, exercises);
-        } catch (err) {
-          console.error(`Auto-gen failed for "${chunk.phrase}":`, err);
-        }
-        setAutoGenProgress(prev => ({ ...prev, done: prev.done + 1 }));
-      }
-
-      setAutoGenerating(false);
-    } else {
-      setPage('practice');
+      runBatchExerciseGen(chunks, apiKey);
     }
-  }, []);
+  }, [runBatchExerciseGen]);
 
   // ── Vocab: chunks được sinh từ 1 từ (không auto-navigate sang practice) ──
   const handleVocabChunksExtracted = useCallback((wordId, chunks) => {
@@ -285,26 +308,9 @@ export default function App() {
     const chunksNeedingExercises = chunksToPractice.filter(c => storage.getSituations(c.id).length === 0);
 
     if (apiKey && chunksNeedingExercises.length > 0) {
-      setAutoGenerating(true);
-      setAutoGenProgress({ done: 0, total: chunksNeedingExercises.length });
-
-      for (const chunk of chunksNeedingExercises) {
-        try {
-          const result = await generateWritingExercises(chunk, apiKey);
-          const exercises = (result.exercises || []).map((ex, i) => ({
-            ...ex,
-            id: ex.id || `ex_${chunk.id}_${i}`,
-            chunkId: chunk.id,
-          }));
-          storage.saveSituations(chunk.id, exercises);
-        } catch (err) {
-          console.error(`Auto-gen failed for "${chunk.phrase}":`, err);
-        }
-        setAutoGenProgress(prev => ({ ...prev, done: prev.done + 1 }));
-      }
-      setAutoGenerating(false);
+      runBatchExerciseGen(chunksNeedingExercises, apiKey);
     }
-  }, []);
+  }, [runBatchExerciseGen]);
 
   const handleStartDueReview = useCallback(async () => {
     if (dueChunks.length === 0) return;
@@ -322,26 +328,9 @@ export default function App() {
     const chunksNeedingExercises = dueChunks.filter(c => storage.getSituations(c.id).length === 0);
 
     if (apiKey && chunksNeedingExercises.length > 0) {
-      setAutoGenerating(true);
-      setAutoGenProgress({ done: 0, total: chunksNeedingExercises.length });
-
-      for (const chunk of chunksNeedingExercises) {
-        try {
-          const result = await generateWritingExercises(chunk, apiKey);
-          const exercises = (result.exercises || []).map((ex, i) => ({
-            ...ex,
-            id: ex.id || `ex_${chunk.id}_${i}`,
-            chunkId: chunk.id,
-          }));
-          storage.saveSituations(chunk.id, exercises);
-        } catch (err) {
-          console.error(`Auto-gen failed for "${chunk.phrase}":`, err);
-        }
-        setAutoGenProgress(prev => ({ ...prev, done: prev.done + 1 }));
-      }
-      setAutoGenerating(false);
+      runBatchExerciseGen(chunksNeedingExercises, apiKey);
     }
-  }, [dueChunks]);
+  }, [dueChunks, runBatchExerciseGen]);
 
   const handleRepractice = useCallback((chunkId) => {
     setSelectedChunks(new Set([chunkId]));
