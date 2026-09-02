@@ -84,6 +84,7 @@ export function SpeakingSession({
   const [transcripts, setTranscripts] = useState([]);
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
   const [volume, setVolume] = useState(0);
+  const [isMuted, setIsMuted] = useState(false);
   const [turnCount, setTurnCount] = useState(1);
   const [errorMessage, setErrorMessage] = useState(null);
   const [gradingResult, setGradingResult] = useState(null);
