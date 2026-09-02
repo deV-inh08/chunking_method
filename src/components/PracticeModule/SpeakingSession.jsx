@@ -419,26 +419,20 @@ export function SpeakingSession({
       const SpeechRecognitionClass = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SpeechRecognitionClass) {
         if (recognitionRef.current) {
-          try { recognitionRef.current.stop(); } catch {}
+          try { recognitionRef.current.abort(); } catch {}
         }
 
         const recognition = new SpeechRecognitionClass();
-        recognition.continuous = false; // continuous: false hoạt động ổn định nhất trên Mobile!
+        recognition.continuous = true;
         recognition.interimResults = true;
         recognition.lang = 'en-US';
 
         recognition.onresult = (event) => {
-          let interim = '';
-          let final = '';
+          let text = '';
           for (let i = 0; i < event.results.length; i++) {
-            const res = event.results[i];
-            if (res.isFinal) {
-              final += res[0].transcript + ' ';
-            } else {
-              interim += res[0].transcript;
-            }
+            text += event.results[i][0].transcript + ' ';
           }
-          const fullText = (final + interim).trim();
+          const fullText = text.trim();
           if (fullText) {
             capturedSpeechRef.current = fullText;
             setLiveSpokenText(fullText);
@@ -470,12 +464,7 @@ export function SpeakingSession({
     setIsEvaluating(true);
     setVolume(0);
 
-    if (recognitionRef.current) {
-      try { recognitionRef.current.stop(); } catch {}
-      recognitionRef.current = null;
-    }
-
-    // Dừng MediaRecorder và flush toàn bộ dữ liệu audio
+    // Dừng MediaRecorder và flush toàn bộ dữ liệu audio trước
     if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
       await new Promise(resolve => {
         mediaRecorderRef.current.onstop = () => {
@@ -490,6 +479,16 @@ export function SpeakingSession({
       });
     }
 
+    // Đợi 200ms để SpeechRecognition nhận nốt event cuối
+    await new Promise(r => setTimeout(r, 200));
+
+    let spoken = capturedSpeechRef.current.trim() || liveSpokenText.trim();
+
+    if (recognitionRef.current) {
+      try { recognitionRef.current.stop(); } catch {}
+      recognitionRef.current = null;
+    }
+
     if (mediaStreamRef.current) {
       mediaStreamRef.current.getTracks().forEach(t => {
         try { t.stop(); } catch {}
@@ -501,16 +500,13 @@ export function SpeakingSession({
       audioContextRef.current = null;
     }
 
-    // Lấy câu nhận diện từ Web Speech API trước
-    let spoken = capturedSpeechRef.current.trim() || liveSpokenText.trim();
-
     // NẾU Web Speech API chưa bắt được chữ (đặc biệt trên Android Brave / Chrome Mobile)
     // Dùng Gemini Flash Audio Multimodal để chuyển giọng nói thành văn bản chính xác 100%!
     if (!spoken && audioChunksRef.current.length > 0) {
       try {
         const mime = mediaRecorderRef.current?.mimeType || 'audio/webm';
         const audioBlob = new Blob(audioChunksRef.current, { type: mime });
-        if (audioBlob.size > 500) {
+        if (audioBlob.size > 200) {
           const reader = new FileReader();
           const base64Promise = new Promise((res, rej) => {
             reader.onloadend = () => {

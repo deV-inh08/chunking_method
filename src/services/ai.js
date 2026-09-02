@@ -793,49 +793,48 @@ export async function transcribeAudioWithGemini(audioBase64, mimeType = 'audio/w
   if (allKeys.length === 0) return '';
 
   const cleanMime = mimeType ? mimeType.split(';')[0] : 'audio/webm';
-  const audioModels = ['gemini-2.5-flash', 'gemini-1.5-flash', 'gemini-2.0-flash-lite', 'gemini-2.5-flash-lite'];
 
   for (const apiKey of allKeys) {
-    for (const model of audioModels) {
-      try {
-        const url = `${BASE_URL}/models/${model}:generateContent?key=${apiKey}`;
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [
-              {
-                role: 'user',
-                parts: [
-                  { text: 'Transcribe this spoken English audio recording. Return ONLY the English words spoken, with no commentary, no markdown, and no quotation marks.' },
-                  {
-                    inlineData: {
-                      mimeType: cleanMime,
-                      data: audioBase64,
-                    },
+    try {
+      const model = await getModel(apiKey);
+      const url = `${BASE_URL}/models/${model}:generateContent?key=${apiKey}`;
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [
+            {
+              role: 'user',
+              parts: [
+                { text: 'Transcribe this spoken English audio recording. Return ONLY the English words spoken, with no commentary, no markdown, and no quotation marks.' },
+                {
+                  inlineData: {
+                    mimeType: cleanMime,
+                    data: audioBase64,
                   },
-                ],
-              },
-            ],
-            generationConfig: {
-              temperature: 0.0,
+                },
+              ],
             },
-          }),
-        });
+          ],
+          generationConfig: {
+            temperature: 0.0,
+          },
+        }),
+      });
 
-        if (!response.ok) {
-          console.warn(`[Gemini Audio] ${model} status ${response.status}`);
-          continue;
-        }
-
-        const data = await response.json();
-        const transcript = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
-        if (transcript) {
-          return transcript.replace(/["\n\r]/g, ' ').replace(/\s+/g, ' ').trim();
-        }
-      } catch (err) {
-        console.warn(`[Gemini Audio] Error with ${model}:`, err);
+      if (!response.ok) {
+        console.warn(`[Gemini Audio] ${model} status ${response.status}`);
+        continue;
       }
+
+      const data = await response.json();
+      const transcript = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
+      if (transcript) {
+        return transcript.replace(/["\n\r]/g, ' ').replace(/\s+/g, ' ').trim();
+      }
+    } catch (err) {
+      console.warn(`[Gemini Audio] Error with ${apiKey}:`, err);
     }
   }
 
