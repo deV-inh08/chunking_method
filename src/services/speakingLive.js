@@ -1,23 +1,22 @@
 ﻿// ─── Gemini Live API WebSocket & Web Audio Service ───────────────────────
 
-/**
- * Cấu hình mặc định cho Speaking Session
- */
+export const LIVE_MODELS = [
+  'models/gemini-2.5-flash-native-audio-dialog',
+  'models/gemini-2.0-flash-exp',
+  'models/gemini-2.0-flash',
+];
+
 export const SPEAKING_CONFIG = {
   MIN_TURNS: 3,           // Tối thiểu số lượt user nói trước khi có thể kết thúc
   MAX_TURNS: 5,           // Tối đa số lượt, tự động chuyển WRAP_UP nếu chạm mốc
   NUDGE_AT_TURN: 4,       // Nếu đến lượt này mà chưa dùng chunk → AI chủ động dẫn dắt
-  SESSION_TIMEOUT_MS: 3 * 60 * 1000, // Tự đóng session nếu quá 3 phút không hoạt động
-  MODEL: 'models/gemini-2.5-flash-native-audio-dialog',
-  FALLBACK_MODEL: 'models/gemini-2.0-flash-exp',
+  SESSION_TIMEOUT_MS: 3 * 60 * 1000,
+  MODEL: LIVE_MODELS[0],
   GRADING_MODEL: 'gemini-2.5-flash-lite',
 };
 
 // ─── Audio Helpers (PCM 16kHz Mono Encoding & 24kHz Playback) ────────────
 
-/**
- * Chuyển Float32Array sang 16-bit PCM ArrayBuffer
- */
 function floatTo16BitPCM(input) {
   const output = new DataView(new ArrayBuffer(input.length * 2));
   for (let i = 0; i < input.length; i++) {
@@ -27,9 +26,6 @@ function floatTo16BitPCM(input) {
   return output.buffer;
 }
 
-/**
- * Chuyển ArrayBuffer sang Base64 string
- */
 function arrayBufferToBase64(buffer) {
   let binary = '';
   const bytes = new Uint8Array(buffer);
@@ -40,9 +36,6 @@ function arrayBufferToBase64(buffer) {
   return window.btoa(binary);
 }
 
-/**
- * Chuyển Base64 string (PCM 24kHz 16-bit) sang Float32Array để phát
- */
 function base64ToFloat32Array(base64) {
   const binary = window.atob(base64);
   const len = binary.length;
@@ -61,7 +54,7 @@ function base64ToFloat32Array(base64) {
 }
 
 /**
- * Lớp quản lý phát âm thanh liền mạch (Seamless Audio Queue)
+ * Quản lý phát âm thanh mượt mà qua Web Audio Context
  */
 class AudioPlayer {
   constructor(sampleRate = 24000) {
@@ -84,6 +77,9 @@ class AudioPlayer {
 
   playChunk(float32Array) {
     if (!this.audioCtx) this.init();
+    if (this.audioCtx.state === 'suspended') {
+      this.audioCtx.resume();
+    }
     if (!float32Array || float32Array.length === 0) return;
 
     const buffer = this.audioCtx.createBuffer(1, float32Array.length, this.sampleRate);
@@ -129,6 +125,7 @@ export class GeminiLiveSession {
   constructor({
     apiKey,
     systemInstruction,
+    model = SPEAKING_CONFIG.MODEL,
     onStateChange,
     onTranscript,
     onAiSpeaking,
@@ -137,6 +134,7 @@ export class GeminiLiveSession {
   }) {
     this.apiKey = apiKey;
     this.systemInstruction = systemInstruction;
+    this.model = model;
     this.onStateChange = onStateChange || (() => {});
     this.onTranscript = onTranscript || (() => {});
     this.onAiSpeaking = onAiSpeaking || (() => {});
@@ -148,11 +146,12 @@ export class GeminiLiveSession {
     this.mediaStream = null;
     this.scriptProcessor = null;
     this.player = new AudioPlayer(24000);
-    this.transcriptHistory = []; // { role: 'ai' | 'user', text, timestamp }
-    this.state = 'IDLE'; // IDLE | CONNECTING | WARMUP | SITUATION_INTRO | CONVERSATION | WRAP_UP | GRADING | SUMMARY
+    this.transcriptHistory = [];
+    this.state = 'IDLE';
     this.turnCount = 0;
     this.isConnected = false;
     this.isAiSpeaking = false;
+    this.isMuted = false;
   }
 
   setState(newState) {
@@ -188,11 +187,10 @@ export class GeminiLiveSession {
 
       this.ws.onopen = () => {
         this.isConnected = true;
-        // Gửi handshake setup message
+        // Bước 1: Gửi setup handshake
         this.sendSetupMessage();
-        // Bắt đầu thu âm gửi stream
+        // Bước 2: Bắt đầu thu âm gửi audio
         this.startAudioRecording();
-        this.setState('WARMUP');
       };
 
       this.ws.onmessage = async (event) => {
@@ -210,7 +208,7 @@ export class GeminiLiveSession {
 
       this.ws.onerror = (err) => {
         console.error('Gemini Live WebSocket error:', err);
-        this.onError(new Error('Lỗi kết nối tới máy chủ Gemini Live API.'));
+        this.onError(new Error('Không thể kết nối máy chủ Gemini Live API. Vui lòng kiểm tra API key.'));
       };
 
       this.ws.onclose = (event) => {
@@ -226,18 +224,18 @@ export class GeminiLiveSession {
   }
 
   /**
-   * Gửi cấu hình khởi tạo (Setup Handshake)
+   * Gửi setup configuration
    */
   sendSetupMessage() {
     const setupMsg = {
       setup: {
-        model: SPEAKING_CONFIG.MODEL,
+        model: this.model,
         generationConfig: {
           responseModalities: ['AUDIO'],
           speechConfig: {
             voiceConfig: {
               prebuiltVoiceConfig: {
-                voiceName: 'Aoede', // Giọng nữ tự nhiên, ấm áp của Gemini
+                voiceName: 'Aoede', // Giọng nữ tự nhiên
               },
             },
           },
@@ -252,32 +250,83 @@ export class GeminiLiveSession {
   }
 
   /**
-   * Bắt đầu thu âm 16kHz PCM và gửi đều đặn qua WebSocket
+   * Gửi trigger yêu cầu AI bắt đầu nói câu chào Warm-up
+   */
+  sendInitialGreetingTrigger() {
+    if (!this.isConnected || this.ws.readyState !== WebSocket.OPEN) return;
+    const triggerMsg = {
+      clientContent: {
+        turns: [
+          {
+            role: 'user',
+            parts: [
+              {
+                text: 'Hello! I am ready to practice speaking. Please greet me warmly and invite me to read the warm-up sentence out loud.',
+              },
+            ],
+          },
+        ],
+        turnComplete: true,
+      },
+    };
+    try {
+      this.ws.send(JSON.stringify(triggerMsg));
+      this.setState('WARMUP');
+    } catch (e) {
+      console.error('Failed to send greeting trigger:', e);
+    }
+  }
+
+  /**
+   * Gửi text do user nhập hoặc nói
+   */
+  sendUserTextMessage(text) {
+    if (!this.isConnected || this.ws.readyState !== WebSocket.OPEN || !text.trim()) return;
+    this.appendTranscript('user', text);
+    const msg = {
+      clientContent: {
+        turns: [
+          {
+            role: 'user',
+            parts: [{ text: text.trim() }],
+          },
+        ],
+        turnComplete: true,
+      },
+    };
+    try {
+      this.ws.send(JSON.stringify(msg));
+    } catch (e) {
+      console.error('Failed to send text message:', e);
+    }
+  }
+
+  /**
+   * Bắt đầu thu âm 16kHz PCM và stream đều đặn
    */
   startAudioRecording() {
     const AudioContextClass = window.AudioContext || window.webkitAudioContext;
     this.audioContext = new AudioContextClass({ sampleRate: 16000 });
     const source = this.audioContext.createMediaStreamSource(this.mediaStream);
 
-    // Buffer size 2048 cho khoảng 128ms latency mỗi chunk
     this.scriptProcessor = this.audioContext.createScriptProcessor(2048, 1, 1);
 
     this.scriptProcessor.onaudioprocess = (e) => {
-      if (!this.isConnected || this.ws.readyState !== WebSocket.OPEN) return;
+      if (!this.isConnected || this.ws.readyState !== WebSocket.OPEN || this.isMuted) return;
 
       const inputData = e.inputBuffer.getChannelData(0);
 
-      // Tính volume (RMS) để render visualizer sóng âm
+      // Tính volume (RMS)
       let sum = 0;
       for (let i = 0; i < inputData.length; i++) {
         sum += inputData[i] * inputData[i];
       }
       const rms = Math.sqrt(sum / inputData.length);
-      const volume = Math.min(100, Math.round(rms * 250));
+      const volume = Math.min(100, Math.round(rms * 280));
       this.onVolume(volume);
 
-      // Nếu user đang nói to trong lúc AI đang nói -> ngắt AI (Interruption)
-      if (volume > 20 && this.isAiSpeaking) {
+      // Ngắt lời AI nếu user nói to
+      if (volume > 22 && this.isAiSpeaking) {
         this.player.stop();
         this.isAiSpeaking = false;
         this.onAiSpeaking(false);
@@ -307,10 +356,22 @@ export class GeminiLiveSession {
     this.scriptProcessor.connect(this.audioContext.destination);
   }
 
+  toggleMute() {
+    this.isMuted = !this.isMuted;
+    return this.isMuted;
+  }
+
   /**
    * Xử lý gói tin phản hồi từ Gemini Live
    */
   handleServerMessage(msg) {
+    // 0. Setup hoàn tất -> Kích hoạt AI chào mở màn ngay
+    if (msg.setupComplete) {
+      console.log('Gemini Live Setup complete, sending initial greeting trigger...');
+      this.sendInitialGreetingTrigger();
+      return;
+    }
+
     // 1. Nhận các mẩu âm thanh & text từ AI
     if (msg.serverContent?.modelTurn?.parts) {
       const parts = msg.serverContent.modelTurn.parts;
@@ -330,13 +391,12 @@ export class GeminiLiveSession {
       }
     }
 
-    // 2. Nhận text transcript từ User (User audio transcription)
+    // 2. Khi AI nói xong 1 lượt
     if (msg.serverContent?.turnComplete) {
       this.isAiSpeaking = false;
       this.onAiSpeaking(false);
       this.turnCount += 1;
 
-      // Cập nhật state chuyển tiếp theo số lượt
       if (this.turnCount === 1 && this.state === 'WARMUP') {
         this.setState('SITUATION_INTRO');
       } else if (this.turnCount >= 2 && this.state !== 'WRAP_UP' && this.state !== 'GRADING') {
@@ -348,7 +408,7 @@ export class GeminiLiveSession {
       }
     }
 
-    // 3. User transcript event
+    // 3. User interrupted
     if (msg.serverContent?.interrupted) {
       this.player.stop();
       this.isAiSpeaking = false;
@@ -356,9 +416,6 @@ export class GeminiLiveSession {
     }
   }
 
-  /**
-   * Ghi nhận câu nói vào lịch sử transcript
-   */
   appendTranscript(role, text) {
     if (!text || !text.trim()) return;
     const cleanText = text.trim();
@@ -377,19 +434,14 @@ export class GeminiLiveSession {
     this.onTranscript([...this.transcriptHistory]);
   }
 
-  /**
-   * Dừng buổi luyện nói và giải phóng tài nguyên
-   */
   stop() {
     this.isConnected = false;
 
-    // Đóng WebSocket
     if (this.ws) {
       try { this.ws.close(); } catch {}
       this.ws = null;
     }
 
-    // Dừng thu âm
     if (this.scriptProcessor) {
       try { this.scriptProcessor.disconnect(); } catch {}
       this.scriptProcessor = null;
@@ -407,19 +459,15 @@ export class GeminiLiveSession {
       this.audioContext = null;
     }
 
-    // Dừng phát âm
     if (this.player) {
       this.player.stop();
     }
   }
 
-  /**
-   * Lấy toàn bộ transcript hoàn chỉnh dưới dạng text để gửi chấm điểm
-   */
   getFormattedTranscript() {
     if (this.transcriptHistory.length === 0) return 'User and AI conversation';
     return this.transcriptHistory
-      .map(item => `${item.role === 'ai' ? 'AI (Partner)' : 'Learner (User)'}: "${item.text}"`)
+      .map(item => `${item.role === 'ai' ? 'AI Partner' : 'User'}: "${item.text}"`)
       .join('\n\n');
   }
 }

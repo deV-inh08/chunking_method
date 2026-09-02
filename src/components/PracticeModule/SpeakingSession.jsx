@@ -1,6 +1,6 @@
-﻿import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import {
-  Mic, Volume2,
+  Mic, MicOff, Volume2, Send,
   CheckCircle, XCircle, RotateCcw, X, MessageSquare, ChevronDown, ChevronUp,
 } from 'lucide-react';
 import { Spinner } from '../ui';
@@ -397,18 +397,50 @@ export function SpeakingSession({
                     borderColor: 'rgba(99, 102, 241, 0.3)',
                   }}
                 >
-                  <div style={{ fontSize: 11.5, fontWeight: 700, color: 'var(--accent-400)', textTransform: 'uppercase', marginBottom: 4 }}>
-                    🎙️ Bước 1: Khởi động giọng nói (Warm-up)
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
+                    <div style={{ fontSize: 11.5, fontWeight: 700, color: 'var(--accent-400)', textTransform: 'uppercase' }}>
+                      🎙️ Bước 1: Khởi động giọng nói (Warm-up)
+                    </div>
+                    <button
+                      type="button"
+                      className="btn btn-ghost btn-xs"
+                      onClick={() => {
+                        if (liveSessionRef.current) {
+                          liveSessionRef.current.sendInitialGreetingTrigger();
+                          onToast('info', 'Đang yêu cầu AI chào và hướng dẫn lại...');
+                        }
+                      }}
+                      style={{ fontSize: 11, color: '#38bdf8', padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 4 }}
+                      title="Yêu cầu AI chào lại"
+                    >
+                      <RotateCcw size={12} /> AI chào lại
+                    </button>
                   </div>
                   <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: 0, lineHeight: 1.5 }}>
                     Hãy nghe AI chào và <strong>đọc to câu tiếng Anh bạn vừa học</strong> vào micro:
                   </p>
                   <div style={{
-                    marginTop: 8, padding: '8px 12px', borderRadius: 'var(--radius-sm)',
+                    marginTop: 8, padding: '10px 12px', borderRadius: 'var(--radius-sm)',
                     background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)',
-                    fontSize: 13.5, fontWeight: 600, color: '#fbbf24',
+                    fontSize: 13.5, fontWeight: 700, color: '#fbbf24',
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8,
                   }}>
-                    "{sentences.basic.userAnswer || sentences.basic.sampleTranslation}"
+                    <span>"{sentences.basic.userAnswer || sentences.basic.sampleTranslation}"</span>
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-xs"
+                      onClick={() => {
+                        const txt = sentences.basic.userAnswer || sentences.basic.sampleTranslation;
+                        if (liveSessionRef.current && txt) {
+                          liveSessionRef.current.sendUserTextMessage(txt);
+                          onToast('success', 'Đã gửi câu đọc mẫu vào phòng!');
+                        }
+                      }}
+                      style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 4, fontSize: 11 }}
+                      title="Gửi câu đọc này"
+                    >
+                      <Send size={11} /> Gửi câu này
+                    </button>
                   </div>
                 </div>
               ) : (
@@ -438,31 +470,126 @@ export function SpeakingSession({
                 </div>
               )}
 
-              {/* Audio Wave & Status Indicator */}
+              {/* ── BIG INTERACTIVE MICROPHONE CONTROLLER ── */}
               <div
                 className="card"
                 style={{
-                  padding: '16px',
+                  padding: '18px 16px',
                   textAlign: 'center',
                   background: 'var(--bg-elevated)',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: 8,
+                  gap: 12,
+                  borderRadius: 'var(--radius-md)',
+                  border: isAiSpeaking ? '1px solid rgba(56, 189, 248, 0.4)' : volume > 10 ? '1px solid rgba(34, 197, 94, 0.4)' : '1px solid var(--border-subtle)',
                 }}
               >
                 <AudioWaveVisualizer volume={volume} isAiSpeaking={isAiSpeaking} />
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 600 }}>
+                {/* Big Center Action Button */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (liveSessionRef.current) {
+                        const muted = liveSessionRef.current.toggleMute();
+                        setIsMuted(muted);
+                        onToast('info', muted ? 'Đã tắt micro' : 'Đã bật micro');
+                      }
+                    }}
+                    className="btn btn-secondary"
+                    style={{
+                      width: 42,
+                      height: 42,
+                      borderRadius: 'var(--radius-full)',
+                      padding: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: isMuted ? 'var(--error-text)' : 'var(--text-muted)',
+                    }}
+                    title={isMuted ? 'Bật Micro' : 'Tắt Micro'}
+                  >
+                    {isMuted ? <MicOff size={18} /> : <Mic size={18} />}
+                  </button>
+
+                  {/* Main animated Mic Button */}
+                  <div
+                    style={{
+                      width: 72,
+                      height: 72,
+                      borderRadius: 'var(--radius-full)',
+                      background: isAiSpeaking
+                        ? 'linear-gradient(135deg, #0284c7, #38bdf8)'
+                        : isMuted
+                        ? 'rgba(239, 68, 68, 0.2)'
+                        : 'linear-gradient(135deg, #10b981, #059669)',
+                      boxShadow: isAiSpeaking
+                        ? '0 0 25px rgba(56, 189, 248, 0.6)'
+                        : volume > 10
+                        ? '0 0 30px rgba(34, 197, 94, 0.7)'
+                        : '0 0 16px rgba(16, 185, 129, 0.3)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#fff',
+                      transition: 'all 0.2s ease',
+                      cursor: 'default',
+                    }}
+                  >
+                    {isAiSpeaking ? (
+                      <Volume2 size={30} className="animate-pulse" />
+                    ) : isMuted ? (
+                      <MicOff size={28} />
+                    ) : (
+                      <Mic size={30} style={{ transform: volume > 10 ? 'scale(1.15)' : 'scale(1)', transition: 'transform 0.1s ease' }} />
+                    )}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (liveSessionRef.current) {
+                        liveSessionRef.current.sendInitialGreetingTrigger();
+                        onToast('info', 'Đang yêu cầu AI chào và bắt đầu lại...');
+                      }
+                    }}
+                    className="btn btn-secondary"
+                    style={{
+                      width: 42,
+                      height: 42,
+                      borderRadius: 'var(--radius-full)',
+                      padding: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#38bdf8',
+                    }}
+                    title="Phát lại / Bắt đầu lại"
+                  >
+                    <RotateCcw size={16} />
+                  </button>
+                </div>
+
+                {/* Status Indicator Text */}
+                <div style={{ fontSize: 13, fontWeight: 700 }}>
                   {isAiSpeaking ? (
                     <span style={{ color: '#38bdf8', display: 'flex', alignItems: 'center', gap: 6 }}>
-                      <Volume2 size={16} className="animate-pulse" /> AI đang trò chuyện với bạn…
+                      🔊 AI đang nói... (Bạn có thể nói vào mic để ngắt lời)
+                    </span>
+                  ) : isMuted ? (
+                    <span style={{ color: 'var(--error-text)' }}>
+                      🔇 Micro đang tắt. Bấm nút Mic để mở lại.
+                    </span>
+                  ) : volume > 10 ? (
+                    <span style={{ color: '#4ade80', display: 'flex', alignItems: 'center', gap: 6 }}>
+                      🎙️ Đang nghe giọng bạn nói...
                     </span>
                   ) : (
-                    <span style={{ color: volume > 10 ? '#4ade80' : 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 6 }}>
-                      <Mic size={16} style={{ animation: volume > 10 ? 'pulse 1s infinite' : 'none' }} />
-                      {volume > 10 ? 'Đang nhận giọng nói của bạn…' : 'Hãy nói vào micro…'}
+                    <span style={{ color: 'var(--text-secondary)' }}>
+                      🎙️ Micro đang mở — Hãy nói hoặc đọc to câu trên vào micro
                     </span>
                   )}
                 </div>
