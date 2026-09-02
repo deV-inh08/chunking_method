@@ -433,6 +433,7 @@ export default function App() {
                 selectedChunks={selectedChunks}
                 chunks={allChunks}
                 allProgress={allProgress}
+                transcripts={transcripts}
                 onProgressUpdate={handleProgressUpdate}
                 onToast={addToast}
                 autoGenerating={autoGenerating}

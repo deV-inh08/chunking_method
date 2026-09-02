@@ -1,13 +1,13 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
-  PenLine, ChevronRight, ChevronLeft, RotateCcw,
+  PenLine, ChevronRight, ChevronLeft, ChevronDown, ChevronUp, RotateCcw,
   CheckCircle, XCircle, Sparkles, Loader, RefreshCw, Volume2, VolumeX,
-  Flame,
+  Flame, BookMarked, FileText, Layers,
 } from 'lucide-react';
-import { EmptyState, Badge, Spinner } from '../ui';
-import { getSituations, saveSituations, getApiKey } from '../../store/storage';
-import { gradeWriting, gradeWritingBatch, generateWritingExercises } from '../../services/ai';
-import { formatTimeUntilReview, isDueForReview, formatIntervalText } from '../../services/srs';
+import { EmptyState, Badge, Spinner, Modal } from '../ui';
+import { getSituations, getApiKey } from '../../store/storage';
+import { gradeWritingBatch } from '../../services/ai';
+import { formatTimeUntilReview, isDueForReview } from '../../services/srs';
 
 
 const CHUNK_TYPE_LABELS = {
@@ -592,17 +592,12 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
         />
       ))}
 
-      {/* Sticky Floating Batch Grade Bar */}
+      {/* Non-floating, clean static Bottom Batch Grade Bar at end of exercises */}
       <div
-        className="floating-grade-bar card animate-fade-in"
+        className="card animate-fade-in"
         style={{
-          position: 'sticky',
-          bottom: 16,
-          zIndex: 20,
-          background: 'linear-gradient(135deg, rgba(30, 27, 75, 0.95), rgba(49, 46, 129, 0.95))',
-          backdropFilter: 'blur(12px)',
-          borderColor: canGrade ? 'rgba(99,102,241,0.6)' : 'var(--border-subtle)',
-          boxShadow: canGrade ? '0 8px 32px rgba(99,102,241,0.3)' : '0 4px 20px rgba(0,0,0,0.3)',
+          background: 'linear-gradient(135deg, rgba(30, 27, 75, 0.75), rgba(49, 46, 129, 0.75))',
+          borderColor: canGrade ? 'rgba(99,102,241,0.5)' : 'var(--border-subtle)',
           padding: '16px 20px',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16,
           flexWrap: 'wrap',
@@ -616,10 +611,10 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
           </div>
           <div style={{ fontSize: 12.5, color: canGrade ? '#4ade80' : 'var(--text-muted)' }}>
             {hasGraded
-              ? '✓ Đã chấm xong bài! Bạn có thể xem nhận xét hoặc bấm "Viết lại" để luyện tiếp.'
+              ? '✓ Đã chấm xong bài! Bạn có thể xem nhận xét bên dưới hoặc bấm "Viết lại".'
               : filledCount >= 2
-              ? `✓ Đã hoàn thành ${filledCount}/${exercises.length} câu — Sẵn sàng chấm AI!`
-              : `Đã viết ${filledCount}/${exercises.length} câu (Bắt buộc điền ít nhất 2 câu để bấm chấm)`
+              ? `✓ Đã điền ${filledCount}/${exercises.length} câu — Sẵn sàng bấm chấm bài!`
+              : `Đã viết ${filledCount}/${exercises.length} câu (Hoàn thành ít nhất 2 câu để chấm bài)`
             }
           </div>
         </div>
@@ -646,7 +641,7 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
               padding: '10px 24px',
               fontSize: 14, fontWeight: 700,
               display: 'flex', alignItems: 'center', gap: 8,
-              boxShadow: canGrade ? '0 0 16px rgba(99,102,241,0.5)' : 'none',
+              boxShadow: canGrade ? '0 0 16px rgba(99,102,241,0.4)' : 'none',
             }}
           >
             {isGrading
@@ -656,15 +651,258 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
           </button>
         </div>
       </div>
+
+      {/* Navigation between chunks */}
+      {(onNavigatePrev || onNavigateNext) && (
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          gap: 12, marginTop: 8, paddingTop: 16, borderTop: '1px solid var(--border-subtle)',
+        }}>
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={onNavigatePrev}
+            disabled={!hasPrev}
+            style={{ display: 'flex', alignItems: 'center', gap: 6, opacity: hasPrev ? 1 : 0.4 }}
+          >
+            <ChevronLeft size={16} /> Chunk trước
+          </button>
+
+          <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>
+            Bài {currentIndex + 1} / {totalChunks}
+          </span>
+
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={onNavigateNext}
+            disabled={!hasNext}
+            style={{ display: 'flex', alignItems: 'center', gap: 6, opacity: hasNext ? 1 : 0.4 }}
+          >
+            Chunk tiếp theo <ChevronRight size={16} />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
 
+// ─── Helper: Group chunks by vocabulary word or transcript ─────────
+function groupPracticeChunks(chunkList = [], transcripts = []) {
+  const transcriptMap = new Map();
+  (transcripts || []).forEach(t => transcriptMap.set(t.id, t));
 
+  const groupMap = new Map();
+
+  chunkList.forEach(chunk => {
+    let groupKey, groupTitle, groupSubtitle, groupType;
+
+    if (chunk.sourceType === 'vocab' || chunk.sourceWord || (chunk.groupId && chunk.groupId.startsWith('vocab_'))) {
+      const word = chunk.sourceWord || chunk.groupName || (chunk.groupId ? chunk.groupId.replace(/^vocab_/, '') : 'Từ vựng');
+      groupKey = `vocab_${word.toLowerCase().trim()}`;
+      groupTitle = word;
+      groupSubtitle = chunk.topic ? `Chủ đề: ${chunk.topic}` : '5000 Từ vựng';
+      groupType = 'vocab';
+    } else if (chunk.transcriptId) {
+      const t = transcriptMap.get(chunk.transcriptId);
+      groupKey = `transcript_${chunk.transcriptId}`;
+      groupTitle = t ? (t.themeVi || t.theme || `Đoạn hội thoại #${chunk.transcriptId.slice(-4)}`) : `Transcript #${chunk.transcriptId.slice(-4)}`;
+      groupSubtitle = t?.part ? `TOEIC Part ${t.part}` : 'Transcript hội thoại';
+      groupType = 'transcript';
+    } else {
+      groupKey = 'other';
+      groupTitle = 'Cụm từ khác';
+      groupSubtitle = 'Cụm từ tổng hợp';
+      groupType = 'other';
+    }
+
+    if (!groupMap.has(groupKey)) {
+      groupMap.set(groupKey, {
+        id: groupKey,
+        title: groupTitle,
+        subtitle: groupSubtitle,
+        type: groupType,
+        chunks: [],
+      });
+    }
+
+    groupMap.get(groupKey).chunks.push(chunk);
+  });
+
+  return Array.from(groupMap.values());
+}
+
+// ─── PracticeOutline Accordion Component ───────────────────────────
+function PracticeOutline({
+  groups, activeChunkId, onSelectChunk, allProgress, autoGenerating,
+}) {
+  const [collapsedGroups, setCollapsedGroups] = useState({});
+
+  const toggleGroup = (groupId) => {
+    setCollapsedGroups(prev => ({ ...prev, [groupId]: !prev[groupId] }));
+  };
+
+  return (
+    <div className="flex flex-col gap-2">
+      {groups.map((group, gIdx) => {
+        const isCollapsed = Boolean(collapsedGroups[group.id]);
+        const completedCount = group.chunks.filter(c => allProgress[c.id]?.practiceCount > 0).length;
+        const hasActive = group.chunks.some(c => c.id === activeChunkId);
+        const hasDue = group.chunks.some(c => isDueForReview(allProgress[c.id]));
+
+        return (
+          <div
+            key={group.id}
+            className="card"
+            style={{
+              padding: 0,
+              overflow: 'hidden',
+              borderColor: hasActive ? 'var(--accent-400)' : 'var(--border-subtle)',
+              background: hasActive ? 'rgba(99,102,241,0.04)' : 'var(--bg-surface)',
+            }}
+          >
+            {/* Group Header */}
+            <button
+              onClick={() => toggleGroup(group.id)}
+              style={{
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '10px 12px',
+                background: hasActive ? 'rgba(99,102,241,0.12)' : 'var(--bg-elevated)',
+                border: 'none',
+                cursor: 'pointer',
+                textAlign: 'left',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0, flex: 1 }}>
+                {group.type === 'vocab' ? (
+                  <BookMarked size={15} style={{ color: 'var(--accent-400)', flexShrink: 0 }} />
+                ) : (
+                  <FileText size={15} style={{ color: '#38bdf8', flexShrink: 0 }} />
+                )}
+                <div style={{ minWidth: 0, flex: 1 }}>
+                  <div style={{
+                    fontWeight: 700,
+                    fontSize: 13,
+                    color: 'var(--text-primary)',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  }}>
+                    {gIdx + 1}. {group.title}
+                  </div>
+                  <div style={{ fontSize: 11, color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <span>{completedCount}/{group.chunks.length} chunks</span>
+                    {hasDue && (
+                      <span style={{ color: '#ef4444', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 2 }}>
+                        · <Flame size={10} color="#ef4444" /> Đến hạn ôn
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ color: 'var(--text-muted)', flexShrink: 0, marginLeft: 6 }}>
+                {isCollapsed ? <ChevronDown size={15} /> : <ChevronUp size={15} />}
+              </div>
+            </button>
+
+            {/* Chunks inside this group */}
+            {!isCollapsed && (
+              <div style={{ padding: '6px', display: 'flex', flexDirection: 'column', gap: 4, background: 'var(--bg-surface)' }}>
+                {group.chunks.map((chunk, cIdx) => {
+                  const prog = allProgress[chunk.id];
+                  const isActive = activeChunkId === chunk.id;
+                  const isDone = prog && prog.practiceCount > 0;
+                  const isDue = isDueForReview(prog);
+
+                  return (
+                    <button
+                      key={chunk.id}
+                      id={`practice-nav-${chunk.id}`}
+                      onClick={() => onSelectChunk(chunk.id)}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        gap: 8,
+                        padding: '8px 10px',
+                        borderRadius: 'var(--radius-sm)',
+                        background: isActive
+                          ? 'linear-gradient(135deg, rgba(99,102,241,0.25), rgba(67,56,202,0.2))'
+                          : 'transparent',
+                        border: isActive ? '1px solid rgba(99,102,241,0.5)' : '1px solid transparent',
+                        color: isActive ? '#fff' : 'var(--text-primary)',
+                        cursor: 'pointer',
+                        textAlign: 'left',
+                        transition: 'all 0.15s ease',
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 7, minWidth: 0, flex: 1 }}>
+                        {isDone ? (
+                          <CheckCircle size={14} style={{ color: 'var(--success-text)', flexShrink: 0 }} />
+                        ) : (
+                          <span style={{
+                            width: 13,
+                            height: 13,
+                            borderRadius: 'var(--radius-full)',
+                            border: '1.5px solid var(--border-strong)',
+                            flexShrink: 0,
+                            display: 'inline-block',
+                          }} />
+                        )}
+                        <span style={{
+                          fontSize: 12.5,
+                          fontWeight: isActive ? 700 : 500,
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap',
+                          color: isActive ? 'var(--accent-300)' : 'var(--text-primary)',
+                        }}>
+                          {gIdx + 1}.{cIdx + 1} {chunk.phrase}
+                        </span>
+                      </div>
+
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 5, flexShrink: 0 }}>
+                        {isDue ? (
+                          <span style={{
+                            fontSize: 10,
+                            color: '#ef4444',
+                            background: 'rgba(239,68,68,0.12)',
+                            padding: '1px 5px',
+                            borderRadius: 4,
+                            fontWeight: 700,
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 2,
+                          }}>
+                            <Flame size={10} color="#ef4444" /> Ôn
+                          </span>
+                        ) : prog?.lastScore != null ? (
+                          <span style={{
+                            fontSize: 10.5,
+                            fontWeight: 700,
+                            color: prog.lastScore >= 80 ? 'var(--success-text)' : '#f59e0b',
+                          }}>
+                            {prog.lastScore}đ
+                          </span>
+                        ) : null}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 // ─── PracticeModule (main export) ─────────────────────────────────
 export function PracticeModule({
-  selectedChunks, chunks, allProgress,
+  selectedChunks, chunks, allProgress, transcripts = [],
   onProgressUpdate, onToast,
   autoGenerating = false,
   autoGenProgress = { done: 0, total: 0 },
@@ -673,41 +911,50 @@ export function PracticeModule({
   const chunkList = chunks.filter(c => selectedChunks.has(c.id));
 
   const [activeChunkId, setActiveChunkId] = useState(null);
-  const [regenId, setRegenId] = useState(null); // chunk being regenerated
-  const [, forceUpdate] = useState(0); // trigger re-render after save
+  const [showMobileOutline, setShowMobileOutline] = useState(false);
 
   useEffect(() => {
-    if (chunkList.length > 0 && !activeChunkId) {
+    if (chunkList.length > 0 && (!activeChunkId || !chunkList.some(c => c.id === activeChunkId))) {
       setActiveChunkId(chunkList[0].id);
     }
-  }, [chunkList.length]);
+  }, [chunkList, activeChunkId]);
+
+  const groups = useMemo(() => {
+    return groupPracticeChunks(chunkList, transcripts);
+  }, [chunkList, transcripts]);
+
+  const activeChunkIndex = chunkList.findIndex(c => c.id === activeChunkId);
+  const activeChunk = activeChunkIndex >= 0 ? chunkList[activeChunkIndex] : null;
+  const activeExercises = activeChunk ? getSituations(activeChunk.id) : [];
+
+  const activeGroup = useMemo(() => {
+    if (!activeChunk) return null;
+    return groups.find(g => g.chunks.some(c => c.id === activeChunk.id));
+  }, [groups, activeChunk]);
+
+  const activeChunkInGroupIndex = useMemo(() => {
+    if (!activeGroup || !activeChunk) return 0;
+    return activeGroup.chunks.findIndex(c => c.id === activeChunk.id);
+  }, [activeGroup, activeChunk]);
 
   const handleComplete = (chunkId, success, score, feedback) => {
     onProgressUpdate(chunkId, success, score, feedback);
   };
 
-  // Regenerate exercises for a specific chunk (picks up vocabHints)
-  const handleRegen = async (e, chunk) => {
-    e.stopPropagation(); // don't activate the chunk
-    const apiKey = getApiKey();
-    if (!apiKey) { onToast('error', 'Chưa có API key. Vào Settings để nhập.'); return; }
-    setRegenId(chunk.id);
-    try {
-      const result = await generateWritingExercises(chunk, apiKey);
-      const exercises = (result.exercises || []).map((ex, i) => ({
-        ...ex,
-        id: ex.id || `ex_${chunk.id}_${i}`,
-        chunkId: chunk.id,
-      }));
-      saveSituations(chunk.id, exercises);
-      // Switch to this chunk and force re-render so WritingSession picks up new data
-      setActiveChunkId(chunk.id);
-      forceUpdate(n => n + 1);
-      onToast('success', `Đã tái tạo bài luyện cho "${chunk.phrase}"`);
-    } catch (err) {
-      onToast('error', `Lỗi tái tạo: ${err.message}`);
-    } finally {
-      setRegenId(null);
+  const handleSelectChunk = (chunkId) => {
+    setActiveChunkId(chunkId);
+    setShowMobileOutline(false);
+  };
+
+  const handlePrevChunk = () => {
+    if (activeChunkIndex > 0) {
+      setActiveChunkId(chunkList[activeChunkIndex - 1].id);
+    }
+  };
+
+  const handleNextChunk = () => {
+    if (activeChunkIndex < chunkList.length - 1) {
+      setActiveChunkId(chunkList[activeChunkIndex + 1].id);
     }
   };
 
@@ -763,132 +1010,111 @@ export function PracticeModule({
     );
   }
 
-  const activeChunk = activeChunkId ? chunks.find(c => c.id === activeChunkId) : null;
-  const activeExercises = activeChunk ? getSituations(activeChunk.id) : [];
-
   return (
-    <div className="practice-layout">
-      {/* Chunk list sidebar */}
-      <div className="practice-sidebar">
-        <p className="label mb-1 desktop-only">Chunks ({chunkList.length})</p>
-        {chunkList.map((chunk) => {
-          const prog = allProgress[chunk.id];
-          const isActive = activeChunkId === chunk.id;
-          const exercises = getSituations(chunk.id);
-          const hasExercises = exercises.length > 0;
-          // Detect old format (no vocabHints field)
-          const isOldFormat = hasExercises && exercises[0].vocabHints === undefined;
-          const isRegening = regenId === chunk.id;
-          return (
-            <button
-              key={chunk.id}
-              id={`practice-nav-${chunk.id}`}
-              className={`practice-chunk-item card ${isActive ? 'active' : ''}`}
-              style={{
-                textAlign: 'left', cursor: 'pointer', padding: '12px 14px',
-                borderColor: isActive ? 'var(--accent-400)' : 'var(--border-subtle)',
-                background: isActive ? 'rgba(99,102,241,0.15)' : 'var(--bg-surface)',
-                color: 'var(--text-primary)',
-                opacity: (!hasExercises && autoGenerating) ? 0.5 : 1,
-                transition: 'all 0.2s ease',
-              }}
-              onClick={() => setActiveChunkId(chunk.id)}
-            >
-              <div className="flex items-center gap-2 flex-wrap justify-between">
-                <span style={{
-                  fontWeight: 600, fontSize: 14,
-                  color: isActive ? 'var(--accent-300)' : 'var(--text-primary)',
-                  flex: 1, minWidth: 0,
-                  overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-                }}>
-                  {chunk.phrase}
-                </span>
-                <div style={{ display: 'flex', gap: 4, alignItems: 'center', flexShrink: 0 }}>
-                  {!hasExercises && autoGenerating && <Spinner size={12} />}
-                  {prog && (
-                    <span style={{
-                      fontSize: 11, fontWeight: 700,
-                      color: prog.lastScore >= 80 ? 'var(--success-text)' : prog.lastScore >= 50 ? '#f59e0b' : 'var(--text-muted)',
-                    }}>
-                      {prog.lastScore != null ? `${prog.lastScore}đ` : '✓'}
-                    </span>
-                  )}
-                  {/* Regenerate button — always shown, highlighted when old format */}
-                  <button
-                    id={`regen-${chunk.id}`}
-                    onClick={(e) => handleRegen(e, chunk)}
-                    disabled={isRegening}
-                    title={isOldFormat ? 'Tái tạo để có gợi ý từ vựng' : 'Tái tạo bài luyện'}
-                    style={{
-                      padding: '3px 5px',
-                      borderRadius: 'var(--radius-sm)',
-                      border: isOldFormat ? '1px solid rgba(251,191,36,0.4)' : '1px solid transparent',
-                      background: isOldFormat ? 'rgba(251,191,36,0.1)' : 'transparent',
-                      color: isOldFormat ? '#fbbf24' : 'var(--text-muted)',
-                      cursor: isRegening ? 'not-allowed' : 'pointer',
-                      display: 'flex', alignItems: 'center',
-                      opacity: isRegening ? 0.5 : 1,
-                    }}
-                  >
-                    <RefreshCw size={11} style={{ animation: isRegening ? 'spin 1s linear infinite' : 'none' }} />
-                  </button>
-                </div>
-              </div>
-              <div className="mt-1 flex items-center gap-2 flex-wrap">
-                <Badge type={chunk.type}>{CHUNK_TYPE_LABELS[chunk.type] || chunk.type}</Badge>
-                {prog && (
-                  <span style={{
-                    fontSize: 10.5, fontWeight: 700, padding: '1px 6px', borderRadius: 4,
-                    background: isDueForReview(prog) ? 'rgba(239,68,68,0.15)' : 'rgba(99,102,241,0.1)',
-                    color: isDueForReview(prog) ? 'var(--error-text)' : 'var(--accent-300)',
-                    border: `1px solid ${isDueForReview(prog) ? 'rgba(239,68,68,0.25)' : 'rgba(99,102,241,0.2)'}`,
-                    display: 'inline-flex', alignItems: 'center', gap: 3,
-                  }}>
-                    {isDueForReview(prog) && <Flame size={9} color="#ef4444" />}
-                    {isDueForReview(prog)
-                      ? 'Đến hạn ôn'
-                      : prog.status === 'mastered'
-                      ? '🧠 Mastered'
-                      : `Lv.${prog.srsLevel || 1}`
-                    }
-                  </span>
-                )}
-                {prog && <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>{prog.practiceCount}×</span>}
-              </div>
-            </button>
-          );
-        })}
+    <div>
+      {/* Mobile Chapter Selector Header */}
+      <div
+        className="mobile-only card mb-3"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '10px 12px',
+          background: 'linear-gradient(135deg, rgba(99,102,241,0.12), rgba(168,85,247,0.08))',
+          borderColor: 'rgba(99,102,241,0.25)',
+          gap: 10,
+          width: '100%',
+        }}
+      >
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <div style={{ fontSize: 11, color: 'var(--accent-400)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            {activeGroup?.type === 'vocab' ? '📖 Từ vựng' : '🎧 Transcript'}: {activeGroup?.title} ({activeChunkInGroupIndex + 1}/{activeGroup?.chunks.length})
+          </div>
+          <div style={{ fontSize: 13.5, fontWeight: 700, color: 'var(--text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            {activeChunk ? activeChunk.phrase : 'Chọn bài'}
+          </div>
+        </div>
+
+        <button
+          className="btn btn-secondary btn-sm"
+          onClick={() => setShowMobileOutline(true)}
+          style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, padding: '6px 10px', fontSize: 12, fontWeight: 600 }}
+        >
+          <Layers size={14} color="var(--accent-400)" />
+          <span>Mục lục ({chunkList.length})</span>
+        </button>
       </div>
 
-      {/* Practice area */}
-      <div>
-        {activeChunk && activeExercises.length > 0 ? (
-          <WritingSession
-            key={activeChunk.id}
-            chunk={activeChunk}
-            exercises={activeExercises}
-            progress={allProgress[activeChunk.id] || null}
-            onComplete={handleComplete}
-            onToast={onToast}
-          />
-        ) : autoGenerating ? (
-          <div className="card" style={{ padding: 40, textAlign: 'center' }}>
-            <Spinner size={36} />
-            <p style={{ marginTop: 16, color: 'var(--text-secondary)', fontWeight: 600 }}>
-              Đang sinh bài luyện viết…
-            </p>
-            <p style={{ marginTop: 8, color: 'var(--text-muted)', fontSize: 13 }}>
-              {autoGenProgress.done} / {autoGenProgress.total} chunk xong
-            </p>
+      {/* Main Layout Grid */}
+      <div className="practice-layout">
+        {/* Desktop Sidebar Course Outline Accordion */}
+        <div className="desktop-only flex flex-col gap-2" style={{ maxHeight: 'calc(100vh - 120px)', overflowY: 'auto', paddingRight: 4 }}>
+          <div className="flex items-center justify-between mb-1">
+            <p className="label" style={{ margin: 0 }}>Mục lục ({groups.length} nhóm · {chunkList.length} bài)</p>
           </div>
-        ) : (
-          <EmptyState
-            icon={<PenLine size={24} />}
-            title="Chưa có bài luyện"
-            description="Chunk này chưa được sinh bài tập. Vào Chunks → bấm 'Luyện viết'."
+          <PracticeOutline
+            groups={groups}
+            activeChunkId={activeChunkId}
+            onSelectChunk={handleSelectChunk}
+            allProgress={allProgress}
+            autoGenerating={autoGenerating}
           />
-        )}
+        </div>
+
+        {/* Practice writing area */}
+        <div style={{ minWidth: 0 }}>
+          {activeChunk && activeExercises.length > 0 ? (
+            <WritingSession
+              key={activeChunk.id}
+              chunk={activeChunk}
+              exercises={activeExercises}
+              progress={allProgress[activeChunk.id] || null}
+              onComplete={handleComplete}
+              onToast={onToast}
+              onNavigatePrev={handlePrevChunk}
+              onNavigateNext={handleNextChunk}
+              hasPrev={activeChunkIndex > 0}
+              hasNext={activeChunkIndex < chunkList.length - 1}
+              currentIndex={activeChunkIndex}
+              totalChunks={chunkList.length}
+            />
+          ) : autoGenerating ? (
+            <div className="card" style={{ padding: 40, textAlign: 'center' }}>
+              <Spinner size={36} />
+              <p style={{ marginTop: 16, color: 'var(--text-secondary)', fontWeight: 600 }}>
+                Đang chuẩn bị bài luyện viết…
+              </p>
+              <p style={{ marginTop: 8, color: 'var(--text-muted)', fontSize: 13 }}>
+                {autoGenProgress.done} / {autoGenProgress.total} chunk xong
+              </p>
+            </div>
+          ) : (
+            <EmptyState
+              icon={<PenLine size={24} />}
+              title="Chưa có bài luyện"
+              description="Chunk này chưa được sinh bài tập. Vào Chunks → bấm 'Luyện viết'."
+            />
+          )}
+        </div>
       </div>
+
+      {/* Mobile Course Outline Modal */}
+      {showMobileOutline && (
+        <Modal
+          title={`Mục lục bài luyện (${chunkList.length} chunks)`}
+          onClose={() => setShowMobileOutline(false)}
+        >
+          <div style={{ maxHeight: '70vh', overflowY: 'auto', paddingRight: 4 }}>
+            <PracticeOutline
+              groups={groups}
+              activeChunkId={activeChunkId}
+              onSelectChunk={handleSelectChunk}
+              allProgress={allProgress}
+              autoGenerating={autoGenerating}
+            />
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }
