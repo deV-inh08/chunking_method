@@ -178,25 +178,18 @@ export class GeminiLiveSession {
         },
       });
 
-      // 2. Mở kết nối WebSocket tới Gemini Live API
+      // 2. Mở kết nối WebSocket tới Gemini Live API (v1beta)
       const host = 'generativelanguage.googleapis.com';
-      const path = '/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContent';
+      const path = '/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent';
       const url = `wss://${host}${path}?key=${encodeURIComponent(this.apiKey)}`;
 
       this.ws = new WebSocket(url);
 
       this.ws.onopen = () => {
         this.isConnected = true;
-        // Chuyển sang trạng thái WARMUP ngay khi WebSocket kết nối thành công
         this.setState('WARMUP');
-        // Bước 1: Gửi setup handshake
+        // Gửi setup handshake trước
         this.sendSetupMessage();
-        // Bước 2: Bắt đầu thu âm gửi audio
-        this.startAudioRecording();
-        // Bước 3: Gửi trigger chào hỏi
-        setTimeout(() => {
-          this.sendInitialGreetingTrigger();
-        }, 400);
       };
 
       this.ws.onmessage = async (event) => {
@@ -371,10 +364,13 @@ export class GeminiLiveSession {
    * Xử lý gói tin phản hồi từ Gemini Live
    */
   handleServerMessage(msg) {
-    // 0. Setup hoàn tất -> Kích hoạt AI chào mở màn ngay
-    if (msg.setupComplete) {
-      console.log('Gemini Live Setup complete, sending initial greeting trigger...');
-      this.sendInitialGreetingTrigger();
+    // 0. Setup hoàn tất từ server -> Bắt đầu thu âm và gửi trigger câu chào mở màn
+    if (msg.setupComplete !== undefined) {
+      console.log('Gemini Live Setup complete from server, activating audio stream and greeting trigger...');
+      this.startAudioRecording();
+      setTimeout(() => {
+        this.sendInitialGreetingTrigger();
+      }, 100);
       return;
     }
 
