@@ -488,58 +488,72 @@ Do NOT output markdown, labels or explanations. Output ONLY the spoken response.
   }
 
   /**
-   * Bắt đầu thu âm 16kHz PCM và stream đều đặn
+   * Bắt đầu thu âm 16kHz PCM với bộ lọc tạp âm và chống ngắt tiếng AI
    */
   startAudioRecording() {
-    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    this.audioContext = new AudioContextClass({ sampleRate: 16000 });
-    const source = this.audioContext.createMediaStreamSource(this.mediaStream);
+    if (!this.mediaStream) return;
+    try {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      this.audioContext = new AudioContextClass({ sampleRate: 16000 });
+      const source = this.audioContext.createMediaStreamSource(this.mediaStream);
 
-    this.scriptProcessor = this.audioContext.createScriptProcessor(2048, 1, 1);
+      // Bộ lọc cắt tần số thấp < 100Hz (loại bỏ tiếng gió, tiếng quạt, tiếng ù nền)
+      const highPassFilter = this.audioContext.createBiquadFilter();
+      highPassFilter.type = 'highpass';
+      highPassFilter.frequency.setValueAtTime(100, this.audioContext.currentTime);
 
-    this.scriptProcessor.onaudioprocess = (e) => {
-      if (!this.isConnected || this.ws.readyState !== WebSocket.OPEN || this.isMuted) return;
+      this.scriptProcessor = this.audioContext.createScriptProcessor(2048, 1, 1);
 
-      const inputData = e.inputBuffer.getChannelData(0);
+      this.scriptProcessor.onaudioprocess = (e) => {
+        if (!this.isConnected || this.ws?.readyState !== WebSocket.OPEN || this.isMuted) return;
 
-      // Tính volume (RMS)
-      let sum = 0;
-      for (let i = 0; i < inputData.length; i++) {
-        sum += inputData[i] * inputData[i];
-      }
-      const rms = Math.sqrt(sum / inputData.length);
-      const volume = Math.min(100, Math.round(rms * 280));
-      this.onVolume(volume);
+        const inputData = e.inputBuffer.getChannelData(0);
 
-      // Ngắt lời AI nếu user nói to
-      if (volume > 22 && this.isAiSpeaking) {
-        this.player.stop();
-        this.isAiSpeaking = false;
-        this.onAiSpeaking(false);
-      }
+        // Tính volume (RMS)
+        let sum = 0;
+        for (let i = 0; i < inputData.length; i++) {
+          sum += inputData[i] * inputData[i];
+        }
+        const rms = Math.sqrt(sum / inputData.length);
+        const volume = Math.min(100, Math.round(rms * 280));
+        this.onVolume(volume);
 
-      // Convert Float32 -> 16-bit PCM -> Base64
-      const pcmBuffer = floatTo16BitPCM(inputData);
-      const base64Data = arrayBufferToBase64(pcmBuffer);
+        // 1. Chống ngắt lời AI: Khi AI đang nói, ngắt luồng mic lên server để loa ngoài không dội vào mic
+        if (this.isAiSpeaking) {
+          return;
+        }
 
-      const clientChunk = {
-        realtimeInput: {
-          mediaChunks: [
-            {
-              mimeType: 'audio/pcm;rate=16000',
-              data: base64Data,
-            },
-          ],
-        },
+        // 2. Noise Gate: Tạp âm nhỏ (tiếng thở nhẹ, tiếng gió volume < 15) sẽ bị chặn
+        if (volume < 15) {
+          return;
+        }
+
+        // Convert Float32 -> 16-bit PCM -> Base64
+        const pcmBuffer = floatTo16BitPCM(inputData);
+        const base64Data = arrayBufferToBase64(pcmBuffer);
+
+        const clientChunk = {
+          realtimeInput: {
+            mediaChunks: [
+              {
+                mimeType: 'audio/pcm;rate=16000',
+                data: base64Data,
+              },
+            ],
+          },
+        };
+
+        try {
+          this.ws.send(JSON.stringify(clientChunk));
+        } catch {}
       };
 
-      try {
-        this.ws.send(JSON.stringify(clientChunk));
-      } catch {}
-    };
-
-    source.connect(this.scriptProcessor);
-    this.scriptProcessor.connect(this.audioContext.destination);
+      source.connect(highPassFilter);
+      highPassFilter.connect(this.scriptProcessor);
+      this.scriptProcessor.connect(this.audioContext.destination);
+    } catch (e) {
+      console.error('Failed to start audio recording:', e);
+    }
   }
 
   toggleMute() {
@@ -607,7 +621,14 @@ Do NOT output markdown, labels or explanations. Output ONLY the spoken response.
 
   appendTranscript(role, text) {
     if (!text || !text.trim()) return;
-    const cleanText = text.trim();
+    let cleanText = text.trim();
+
+    // Loại bỏ suy nghĩ nội tâm (reasoning / chain of thought) của AI
+    cleanText = cleanText.replace(/<thought>[\s\S]*?<\/thought>/gi, '');
+    cleanText = cleanText.replace(/(My next thought|I will prompt|I'll prompt|thought:|thinking:)[\s\S]*$/gim, '');
+    cleanText = cleanText.trim();
+    if (!cleanText) return;
+
     const lastItem = this.transcriptHistory[this.transcriptHistory.length - 1];
 
     if (lastItem && lastItem.role === role) {

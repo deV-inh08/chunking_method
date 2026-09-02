@@ -595,7 +595,8 @@ export async function generateExercisesForChunks(chunks, apiKey) {
 
   const systemPrompt = `Bạn là chuyên gia thiết kế bài luyện dịch tiếng Anh cho người học.
 Nhiệm vụ: Với mỗi chunk, tạo 3 bài luyện dịch Việt → Anh theo 3 tình huống thực tế khác nhau.
-Trả về JSON hợp lệ, không có text nào khác ngoài JSON.`;
+Trả về JSON hợp lệ, không có text nào khác ngoài JSON.
+TUYỆT ĐỐI KHÔNG SUY NGHĨ THÀNH TIẾNG (Do NOT output reasoning, internal thinking, planning steps, or meta comments).`;
 
   const userMessage = `Tạo 3 bài luyện dịch cho MỖI chunk sau (${chunks.length} chunk):
 
@@ -670,6 +671,7 @@ export const SPEAKING_SYSTEM_PROMPT_TEMPLATE = `Bạn là một người bạn l
 2. KHÔNG chấm điểm, KHÔNG liệt kê lỗi sai giữa lúc đang trò chuyện. Nếu người học nói sai nhẹ nhưng vẫn hiểu được ý, HÃY TIẾP TỤC hội thoại tự nhiên như một người bản xứ sẽ làm (không ngắt lời để sửa lỗi ngữ pháp nhỏ).
 3. CHỈ can thiệp nếu câu nói khiến bạn HOÀN TOÀN không hiểu ý — khi đó, hỏi lại một cách tự nhiên như "Sorry, could you say that again?" thay vì chỉ ra lỗi cụ thể.
 4. Giữ mỗi lượt trả lời của bạn NGẮN GỌN (1-2 câu), giống hội thoại đời thường, không giảng giải dài dòng.
+5. TUYỆT ĐỐI KHÔNG SUY NGHĨ THÀNH TIẾNG (Do NOT output internal thoughts, chain of thought, reasoning, or meta-comments like 'My next thought...'). CHỈ phát ra câu nói trực tiếp dành cho người học nghe.
 
 ## LUỒNG BUỔI HỌC (theo đúng thứ tự)
 

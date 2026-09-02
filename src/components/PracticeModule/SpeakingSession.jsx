@@ -392,45 +392,59 @@ export function SpeakingSession({
           {(sessionState === 'WARMUP' || sessionState === 'SITUATION_INTRO' || sessionState === 'CONVERSATION' || sessionState === 'WRAP_UP') && (
             <div style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: 14 }}>
 
-              {/* Phase Banner */}
-              {sessionState === 'WARMUP' ? (
-                <div
-                  className="card"
-                  style={{
-                    padding: '12px 14px',
-                    background: 'rgba(99, 102, 241, 0.1)',
-                    borderColor: 'rgba(99, 102, 241, 0.3)',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
-                    <div style={{ fontSize: 11.5, fontWeight: 700, color: 'var(--accent-400)', textTransform: 'uppercase' }}>
-                      🎙️ Bước 1: Khởi động giọng nói (Warm-up)
-                    </div>
-                    <button
-                      type="button"
-                      className="btn btn-ghost btn-xs"
-                      onClick={() => {
-                        if (liveSessionRef.current) {
-                          liveSessionRef.current.sendInitialGreetingTrigger();
-                          onToast('info', 'Đang yêu cầu AI chào và hướng dẫn lại...');
-                        }
-                      }}
-                      style={{ fontSize: 11, color: '#38bdf8', padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 4 }}
-                      title="Yêu cầu AI chào lại"
-                    >
-                      <RotateCcw size={12} /> AI chào lại
-                    </button>
+              {/* ── 💡 GỢI Ý CỤM TỪ & CÂU MẪU (DÀNH CHO USER KHI CẦN NHÌN) ── */}
+              <div
+                className="card"
+                style={{
+                  padding: '12px 14px',
+                  background: 'rgba(99, 102, 241, 0.08)',
+                  borderColor: 'rgba(99, 102, 241, 0.25)',
+                  borderRadius: 'var(--radius-md)',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--accent-400)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <span>💡 Cụm từ & Câu gợi nhớ:</span>
+                    <strong style={{ color: '#fff', fontSize: 13 }}>{chunk.phrase}</strong>
+                    <span style={{ fontSize: 11.5, color: 'var(--text-secondary)' }}>({chunk.meaningVi})</span>
                   </div>
-                  <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: 0, lineHeight: 1.5 }}>
-                    Hãy nghe AI chào và <strong>đọc to câu tiếng Anh bạn vừa học</strong> vào micro:
-                  </p>
-                  <div style={{
-                    marginTop: 8, padding: '10px 12px', borderRadius: 'var(--radius-sm)',
-                    background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)',
-                    fontSize: 13.5, fontWeight: 700, color: '#fbbf24',
-                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8,
-                  }}>
-                    <span>"{sentences.basic.userAnswer || sentences.basic.sampleTranslation}"</span>
+                  <button
+                    type="button"
+                    className="btn btn-ghost btn-xs"
+                    onClick={() => {
+                      if (liveSessionRef.current) {
+                        liveSessionRef.current.sendInitialGreetingTrigger();
+                        onToast('info', 'Đang yêu cầu AI chào lại...');
+                      }
+                    }}
+                    style={{ fontSize: 11, color: '#38bdf8', padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 4 }}
+                    title="Yêu cầu AI chào lại"
+                  >
+                    <RotateCcw size={12} /> AI chào lại
+                  </button>
+                </div>
+
+                {/* Danh sách 2-3 câu mẫu trực quan để liếc nhìn */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  {/* Câu 1 */}
+                  <div
+                    style={{
+                      padding: '6px 10px',
+                      borderRadius: 'var(--radius-sm)',
+                      background: 'var(--bg-elevated)',
+                      border: '1px solid var(--border-subtle)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      gap: 8,
+                      fontSize: 12.5,
+                      color: '#fbbf24',
+                      fontWeight: 600,
+                    }}
+                  >
+                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      1. "{sentences.basic.userAnswer || sentences.basic.sampleTranslation}"
+                    </span>
                     <button
                       type="button"
                       className="btn btn-secondary btn-xs"
@@ -438,42 +452,53 @@ export function SpeakingSession({
                         const txt = sentences.basic.userAnswer || sentences.basic.sampleTranslation;
                         if (liveSessionRef.current && txt) {
                           liveSessionRef.current.sendUserTextMessage(txt);
-                          onToast('success', 'Đã gửi câu đọc mẫu vào phòng!');
+                          onToast('success', 'Đã gửi câu mẫu 1!');
                         }
                       }}
-                      style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 4, fontSize: 11 }}
-                      title="Gửi câu đọc này"
+                      style={{ flexShrink: 0, fontSize: 11, padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 3 }}
+                      title="Gửi câu này vào phòng"
                     >
-                      <Send size={11} /> Gửi câu này
+                      <Send size={10} /> Gửi
+                    </button>
+                  </div>
+
+                  {/* Câu 2 */}
+                  <div
+                    style={{
+                      padding: '6px 10px',
+                      borderRadius: 'var(--radius-sm)',
+                      background: 'var(--bg-elevated)',
+                      border: '1px solid var(--border-subtle)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      gap: 8,
+                      fontSize: 12.5,
+                      color: 'var(--accent-200)',
+                      fontWeight: 600,
+                    }}
+                  >
+                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      2. "{sentences.intermediate.userAnswer || sentences.intermediate.sampleTranslation}"
+                    </span>
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-xs"
+                      onClick={() => {
+                        const txt = sentences.intermediate.userAnswer || sentences.intermediate.sampleTranslation;
+                        if (liveSessionRef.current && txt) {
+                          liveSessionRef.current.sendUserTextMessage(txt);
+                          onToast('success', 'Đã gửi câu mẫu 2!');
+                        }
+                      }}
+                      style={{ flexShrink: 0, fontSize: 11, padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 3 }}
+                      title="Gửi câu này vào phòng"
+                    >
+                      <Send size={10} /> Gửi
                     </button>
                   </div>
                 </div>
-              ) : (
-                <div
-                  className="card"
-                  style={{
-                    padding: '10px 14px',
-                    background: 'rgba(56, 189, 248, 0.08)',
-                    borderColor: 'rgba(56, 189, 248, 0.25)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                  }}
-                >
-                  <div>
-                    <span style={{ fontSize: 11, fontWeight: 700, color: '#38bdf8', textTransform: 'uppercase' }}>
-                      💬 Bước 2: Tình huống & Đối thoại tự do
-                    </span>
-                    <div style={{ fontSize: 12.5, color: 'var(--text-primary)', marginTop: 2 }}>
-                      Nhớ lồng ghép cụm: <strong style={{ color: 'var(--accent-300)' }}>"{chunk.phrase}"</strong>
-                    </div>
-                  </div>
-                  <span style={{
-                    fontSize: 11, fontWeight: 700, padding: '3px 8px', borderRadius: 'var(--radius-full)',
-                    background: 'rgba(99,102,241,0.2)', color: 'var(--accent-300)',
-                  }}>
-                    Lượt {turnCount} / {SPEAKING_CONFIG.MAX_TURNS}
-                  </span>
-                </div>
-              )}
+              </div>
 
               {/* ── BIG INTERACTIVE MICROPHONE CONTROLLER ── */}
               <div
