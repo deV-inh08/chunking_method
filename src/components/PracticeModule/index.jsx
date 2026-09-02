@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import {
   PenLine, ChevronRight, ChevronLeft, ChevronDown, ChevronUp, RotateCcw,
   CheckCircle, XCircle, Sparkles, Loader, RefreshCw, Volume2, VolumeX,
@@ -479,6 +479,42 @@ function WritingSession({
   });
   const [isGrading, setIsGrading] = useState(false);
   const [showSpeakingModal, setShowSpeakingModal] = useState(false);
+  const [hasCompletedSpeaking, setHasCompletedSpeaking] = useState(false);
+  const [isAutoAdvancing, setIsAutoAdvancing] = useState(false);
+  const autoAdvanceTimerRef = useRef(null);
+
+  const triggerAutoAdvance = useCallback(() => {
+    if (autoAdvanceTimerRef.current) {
+      clearTimeout(autoAdvanceTimerRef.current);
+    }
+    setIsAutoAdvancing(true);
+
+    if (hasNext) {
+      if (onToast) {
+        onToast('success', '🎉 Xuất sắc! Đã hoàn thành cả Viết & Nói. Đang chuyển sang chunk tiếp theo...');
+      }
+      autoAdvanceTimerRef.current = setTimeout(() => {
+        setIsAutoAdvancing(false);
+        if (onNavigateNext) {
+          onNavigateNext();
+        }
+      }, 1800);
+    } else {
+      setIsAutoAdvancing(false);
+      if (onToast) {
+        onToast('success', '🎉 Chúc mừng bạn đã hoàn thành xuất sắc tất cả các chunk!');
+      }
+    }
+  }, [hasNext, onNavigateNext, onToast]);
+
+  // Dọn dẹp timer khi unmount
+  useEffect(() => {
+    return () => {
+      if (autoAdvanceTimerRef.current) {
+        clearTimeout(autoAdvanceTimerRef.current);
+      }
+    };
+  }, []);
 
   // Điều kiện mở Luyện nói: đã chấm ít nhất 2 câu đạt >= 50đ, hoặc chunk đã có tiến độ trước đó
   const canStartSpeaking = useMemo(() => {
@@ -506,10 +542,25 @@ function WritingSession({
     const updatedProg = saveSpeakingProgress(chunkId, safePayload);
     onComplete(chunkId, safeScore >= 70, safeScore, updatedProg?.lastFeedback);
     if (onToast) onToast('success', `Đã lưu kết quả luyện nói: ${safeScore} điểm!`);
+
+    setHasCompletedSpeaking(true);
+
+    // Nếu phần Writing đã hoàn thành (ít nhất 2 câu đã được chấm điểm) -> Tự động chuyển sang chunk tiếp theo
+    const writingDone = Object.keys(gradingResults || {}).length >= Math.min(2, exercises.length);
+    if (writingDone) {
+      triggerAutoAdvance();
+    }
   };
 
   // Sync draft states when chunk changes
   useEffect(() => {
+    if (autoAdvanceTimerRef.current) {
+      clearTimeout(autoAdvanceTimerRef.current);
+      autoAdvanceTimerRef.current = null;
+    }
+    setIsAutoAdvancing(false);
+    setHasCompletedSpeaking(false);
+
     if (isDue) {
       // Khi chunk đến hạn ôn tập, clear bản nháp cũ để người học làm mới từ đầu
       clearPracticeDraft(chunk.id);
@@ -597,6 +648,12 @@ function WritingSession({
 
       onComplete(chunk.id, isSuccess, avgScore, res);
       onToast('success', `✓ Đã chấm xong ${resultsArr.length} câu! Điểm TB: ${avgScore}đ`);
+
+      // Nếu cả 2 phần (Writing vừa chấm xong & Speaking đã hoàn thành) -> Tự động chuyển sang chunk tiếp theo
+      const writingDone = Object.keys(newResultsMap).length >= Math.min(2, exercises.length);
+      if (writingDone && hasCompletedSpeaking) {
+        triggerAutoAdvance();
+      }
     } catch (err) {
       console.error('Batch grading error:', err);
       onToast('error', `Lỗi chấm bài: ${err.message}`);
@@ -610,7 +667,30 @@ function WritingSession({
     setUserInputs({});
     setGradingResults({});
     setShowSamples({});
+    if (autoAdvanceTimerRef.current) {
+      clearTimeout(autoAdvanceTimerRef.current);
+      autoAdvanceTimerRef.current = null;
+    }
+    setIsAutoAdvancing(false);
     onToast('info', 'Đã làm mới ô nhập để bạn luyện viết lại!');
+  };
+
+  const handleManualPrev = () => {
+    if (autoAdvanceTimerRef.current) {
+      clearTimeout(autoAdvanceTimerRef.current);
+      autoAdvanceTimerRef.current = null;
+    }
+    setIsAutoAdvancing(false);
+    if (onNavigatePrev) onNavigatePrev();
+  };
+
+  const handleManualNext = () => {
+    if (autoAdvanceTimerRef.current) {
+      clearTimeout(autoAdvanceTimerRef.current);
+      autoAdvanceTimerRef.current = null;
+    }
+    setIsAutoAdvancing(false);
+    if (onNavigateNext) onNavigateNext();
   };
 
   const hasGraded = Object.keys(gradingResults).length > 0;
@@ -751,12 +831,23 @@ function WritingSession({
         }}
       >
         <div>
-          <div style={{ fontWeight: 800, fontSize: 15, color: '#fff', marginBottom: 3, display: 'flex', alignItems: 'center', gap: 6 }}>
-            <Mic size={18} color={canStartSpeaking ? '#34d399' : 'var(--text-muted)'} />
-            Luyện nói phản xạ với AI (Live Voice Session)
+          <div style={{ fontWeight: 800, fontSize: 15, color: '#fff', marginBottom: 3, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+            <Mic size={18} color={hasCompletedSpeaking || canStartSpeaking ? '#34d399' : 'var(--text-muted)'} />
+            <span>Luyện nói phản xạ với AI (Live Voice Session)</span>
+            {hasCompletedSpeaking && (
+              <span style={{
+                fontSize: 11, background: 'rgba(52,211,153,0.15)', color: '#34d399',
+                border: '1px solid rgba(52,211,153,0.3)', padding: '1px 8px', borderRadius: 'var(--radius-full)',
+                fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 4,
+              }}>
+                <CheckCircle size={11} /> Đã hoàn thành nói
+              </span>
+            )}
           </div>
           <div style={{ fontSize: 12.5, color: canStartSpeaking ? 'var(--text-secondary)' : 'var(--text-muted)' }}>
-            {canStartSpeaking
+            {hasCompletedSpeaking
+              ? 'Bạn đã hoàn thành bài nói của chunk này. Có thể bấm vào để luyện lại bất kỳ lúc nào.'
+              : canStartSpeaking
               ? 'Trò chuyện thời gian thực qua giọng nói với Gemini Live API để đưa chunk vào phản xạ tự nhiên.'
               : 'Hoàn thành chấm bài viết Cơ bản & Trung cấp (≥ 50đ) để mở khóa phòng luyện nói AI.'
             }
@@ -767,13 +858,13 @@ function WritingSession({
           type="button"
           className="btn"
           onClick={() => {
-            if (!canStartSpeaking) {
+            if (!canStartSpeaking && !hasCompletedSpeaking) {
               onToast('info', 'Bạn có thể luyện nói trực tiếp hoặc hoàn thành bài viết trước để đạt hiệu quả cao nhất!');
             }
             setShowSpeakingModal(true);
           }}
           style={{
-            background: canStartSpeaking
+            background: hasCompletedSpeaking || canStartSpeaking
               ? 'linear-gradient(135deg, #10b981, #059669)'
               : 'rgba(16, 185, 129, 0.2)',
             color: '#fff',
@@ -781,12 +872,16 @@ function WritingSession({
             padding: '10px 22px',
             fontSize: 14, fontWeight: 700,
             display: 'flex', alignItems: 'center', gap: 8,
-            boxShadow: canStartSpeaking ? '0 0 16px rgba(16, 185, 129, 0.4)' : 'none',
+            boxShadow: hasCompletedSpeaking || canStartSpeaking ? '0 0 16px rgba(16, 185, 129, 0.4)' : 'none',
             cursor: 'pointer',
           }}
-          title="Bắt đầu luyện nói trực tiếp với AI"
+          title={hasCompletedSpeaking ? 'Luyện nói lại' : 'Bắt đầu luyện nói trực tiếp với AI'}
         >
-          <Mic size={16} /> 🎙️ Luyện nói với AI
+          {hasCompletedSpeaking ? (
+            <><RotateCcw size={15} /> Luyện nói lại</>
+          ) : (
+            <><Mic size={16} /> 🎙️ Luyện nói với AI</>
+          )}
         </button>
       </div>
 
@@ -802,6 +897,24 @@ function WritingSession({
         />
       )}
 
+      {/* Auto-advancing Banner */}
+      {isAutoAdvancing && (
+        <div className="card animate-fade-in" style={{
+          background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 78, 59, 0.25))',
+          borderColor: 'rgba(16, 185, 129, 0.4)',
+          padding: '14px 18px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          marginTop: 8,
+        }}>
+          <span style={{ fontSize: 13.5, fontWeight: 700, color: '#34d399', display: 'flex', alignItems: 'center', gap: 8 }}>
+            <CheckCircle size={18} /> 🎉 Đã hoàn thành cả Viết & Nói! Đang chuyển sang chunk tiếp theo...
+          </span>
+          <Spinner size={16} />
+        </div>
+      )}
+
       {/* Navigation between chunks */}
       {(onNavigatePrev || onNavigateNext) && (
         <div style={{
@@ -810,7 +923,7 @@ function WritingSession({
         }}>
           <button
             className="btn btn-secondary btn-sm"
-            onClick={onNavigatePrev}
+            onClick={handleManualPrev}
             disabled={!hasPrev}
             style={{ display: 'flex', alignItems: 'center', gap: 6, opacity: hasPrev ? 1 : 0.4 }}
           >
@@ -823,7 +936,7 @@ function WritingSession({
 
           <button
             className="btn btn-secondary btn-sm"
-            onClick={onNavigateNext}
+            onClick={handleManualNext}
             disabled={!hasNext}
             style={{ display: 'flex', alignItems: 'center', gap: 6, opacity: hasNext ? 1 : 0.4 }}
           >
