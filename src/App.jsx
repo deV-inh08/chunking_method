@@ -437,7 +437,9 @@ export default function App() {
               <VocabModule onToast={addToast} onStartPractice={handleStartVocabPractice} />
             </div>
 
-            {page === 'practice' && (
+            {/* PracticeModule: luôn mounted, chỉ ẩn bằng CSS khi không active
+                → giữ nguyên câu đang viết dở & state khi user chuyển tab */}
+            <div style={{ display: page === 'practice' ? 'block' : 'none' }}>
               <PracticeModule
                 selectedChunks={selectedChunks}
                 chunks={allChunks}
@@ -449,7 +451,7 @@ export default function App() {
                 autoGenProgress={autoGenProgress}
                 onStartDueReview={handleStartDueReview}
               />
-            )}
+            </div>
 
             {page === 'progress' && (
               <ProgressModule

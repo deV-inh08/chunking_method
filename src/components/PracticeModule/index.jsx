@@ -5,7 +5,7 @@ import {
   Flame, BookMarked, FileText, Layers,
 } from 'lucide-react';
 import { EmptyState, Badge, Spinner, Modal } from '../ui';
-import { getSituations, getApiKey } from '../../store/storage';
+import { getSituations, getApiKey, getPracticeDraft, savePracticeDraft, clearPracticeDraft } from '../../store/storage';
 import { gradeWritingBatch } from '../../services/ai';
 import { formatTimeUntilReview, isDueForReview } from '../../services/srs';
 
@@ -459,10 +459,41 @@ function WritingSession({
   chunk, exercises, progress, onComplete, onToast,
   onNavigatePrev, onNavigateNext, hasPrev, hasNext, currentIndex, totalChunks,
 }) {
-  const [userInputs, setUserInputs] = useState({});
-  const [showSamples, setShowSamples] = useState({});
-  const [gradingResults, setGradingResults] = useState({});
+  const [userInputs, setUserInputs] = useState(() => {
+    return getPracticeDraft(chunk.id)?.inputs || {};
+  });
+  const [showSamples, setShowSamples] = useState(() => {
+    return getPracticeDraft(chunk.id)?.showSamples || {};
+  });
+  const [gradingResults, setGradingResults] = useState(() => {
+    return getPracticeDraft(chunk.id)?.gradingResults || {};
+  });
   const [isGrading, setIsGrading] = useState(false);
+
+  // Sync draft states when chunk changes
+  useEffect(() => {
+    const draft = getPracticeDraft(chunk.id) || {};
+    setUserInputs(draft.inputs || {});
+    setShowSamples(draft.showSamples || {});
+    setGradingResults(draft.gradingResults || {});
+  }, [chunk.id]);
+
+  const handleUserInputChange = (index, val) => {
+    setUserInputs(prev => {
+      const next = { ...prev, [index]: val };
+      savePracticeDraft(chunk.id, { inputs: next });
+      return next;
+    });
+  };
+
+  const handleShowSampleChange = (index, updater) => {
+    setShowSamples(prev => {
+      const nextVal = typeof updater === 'function' ? updater(prev[index]) : updater;
+      const next = { ...prev, [index]: nextVal };
+      savePracticeDraft(chunk.id, { showSamples: next });
+      return next;
+    });
+  };
 
   if (!exercises || exercises.length === 0) {
     return (
@@ -513,6 +544,7 @@ function WritingSession({
       });
 
       setGradingResults(newResultsMap);
+      savePracticeDraft(chunk.id, { gradingResults: newResultsMap });
 
       const avgScore = Math.round(totalScore / resultsArr.length);
       const isSuccess = successSentences >= 2 || (successSentences >= 1 && resultsArr.length === 1);
@@ -528,6 +560,7 @@ function WritingSession({
   };
 
   const handleReset = () => {
+    clearPracticeDraft(chunk.id);
     setUserInputs({});
     setGradingResults({});
     setShowSamples({});
@@ -586,9 +619,9 @@ function WritingSession({
           total={exercises.length}
           chunk={chunk}
           userInput={userInputs[i] || ''}
-          setUserInput={(val) => setUserInputs(prev => ({ ...prev, [i]: val }))}
+          setUserInput={(val) => handleUserInputChange(i, val)}
           showSample={!!showSamples[i]}
-          setShowSample={(fn) => setShowSamples(prev => ({ ...prev, [i]: typeof fn === 'function' ? fn(prev[i]) : fn }))}
+          setShowSample={(updater) => handleShowSampleChange(i, updater)}
           gradingResult={gradingResults[i] || null}
           isGrading={isGrading}
         />

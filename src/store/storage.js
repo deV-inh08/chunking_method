@@ -20,6 +20,7 @@ const KEYS = {
   vocabCache:       'toeic_vocab_cache',   // cache danh sách từ vựng (fetch 1 lần từ Supabase)
   vocabLearned:     'toeic_vocab_learned', // { [wordId]: { learnedAt, word, topic } }
   vocabDailySession:'toeic_vocab_daily',   // { date: 'YYYY-MM-DD', wordIds: [] }
+  practiceDrafts:   'toeic_practice_drafts', // { [chunkId]: { inputs, gradingResults, showSamples } }
 };
 
 // ─── Helpers ──────────────────────────────────────────────────
@@ -552,4 +553,39 @@ export function saveTodaySession(wordIds) {
 export function getTodayWordCount() {
   const session = getTodaySession();
   return session ? session.wordIds.length : 0;
+}
+
+// ─── Practice Drafts (State Persistence) ──────────────────────────
+
+/**
+ * Lấy bản nháp câu trả lời & kết quả chấm của 1 chunk
+ */
+export function getPracticeDraft(chunkId) {
+  if (!chunkId) return null;
+  const all = get(KEYS.practiceDrafts) || {};
+  return all[chunkId] || null;
+}
+
+/**
+ * Lưu bản nháp (inputs, showSamples, gradingResults) của 1 chunk
+ */
+export function savePracticeDraft(chunkId, patch = {}) {
+  if (!chunkId) return;
+  const all = get(KEYS.practiceDrafts) || {};
+  all[chunkId] = {
+    ...all[chunkId],
+    ...patch,
+    updatedAt: Date.now(),
+  };
+  set(KEYS.practiceDrafts, all);
+}
+
+/**
+ * Xóa bản nháp khi người dùng bấm "Viết lại"
+ */
+export function clearPracticeDraft(chunkId) {
+  if (!chunkId) return;
+  const all = get(KEYS.practiceDrafts) || {};
+  delete all[chunkId];
+  set(KEYS.practiceDrafts, all);
 }
