@@ -198,11 +198,52 @@ function autoMarkVocabLearnedFromChunk(chunkId) {
 
 export function getProgress(chunkId) {
   const all = get(KEYS.progress) || {};
-  return all[chunkId] || null;
+  const item = all[chunkId];
+  if (!item) return null;
+  const settings = getSettings();
+  return ensureSrsProgress(item, settings.srsTrack);
 }
 
 export function getAllProgress() {
-  return get(KEYS.progress) || {};
+  const all = get(KEYS.progress) || {};
+  const settings = getSettings();
+  const result = {};
+  let changed = false;
+
+  Object.entries(all).forEach(([id, prog]) => {
+    const fixed = ensureSrsProgress(prog, settings.srsTrack);
+    result[id] = fixed;
+    if (fixed !== prog) changed = true;
+  });
+
+  if (changed) {
+    set(KEYS.progress, result);
+  }
+
+  return result;
+}
+
+/** Tự động bổ sung thông tin SRS nếu progress cũ hoặc đồng bộ từ cloud bị thiếu nextReviewAt */
+function ensureSrsProgress(prog, track = 'track_a') {
+  if (!prog || !prog.practiceCount) return prog;
+  if (prog.nextReviewAt) return prog;
+
+  const lastTime = prog.lastPracticed || Date.now();
+  const srsUpdates = calculateNextReview({
+    prevProgress: {
+      srsLevel: Math.max(0, (prog.practiceCount || 1) - 1),
+      easeFactor: prog.easeFactor || (track === 'track_b' ? 2.0 : 1.65),
+    },
+    score: prog.lastScore != null ? prog.lastScore : (prog.lastResult ? 80 : 40),
+    success: Boolean(prog.lastResult),
+    track: prog.srsTrack || track,
+  });
+
+  return {
+    ...prog,
+    ...srsUpdates,
+    nextReviewAt: lastTime + (srsUpdates.intervalMinutes * 60 * 1000),
+  };
 }
 
 // ─── Settings ─────────────────────────────────────────────────
@@ -240,22 +281,19 @@ export function getApiKeys() {
   }
 
   if (envKey2 && !envKey2.includes('your-key')) {
-    const trimmed = envKey2.trim();
-    if (trimmed && !keys.includes(trimmed)) keys.push(trimmed);
-  }
-
-  // 2. LocalStorage settings (apiKey và apiKey2)
-  const settings = getSettings();
-  if (settings.apiKey) {
-    settings.apiKey.split(',').forEach(k => {
+    envKey2.split(',').forEach(k => {
       const trimmed = k.trim();
       if (trimmed && !keys.includes(trimmed)) keys.push(trimmed);
     });
   }
 
-  if (settings.apiKey2) {
-    const trimmed = settings.apiKey2.trim();
-    if (trimmed && !keys.includes(trimmed)) keys.push(trimmed);
+  // 2. Settings keys (người dùng nhập trong modal Settings)
+  const settings = getSettings();
+  if (settings.apiKey && !keys.includes(settings.apiKey)) {
+    keys.push(settings.apiKey);
+  }
+  if (settings.apiKey2 && !keys.includes(settings.apiKey2)) {
+    keys.push(settings.apiKey2);
   }
 
   return keys;
@@ -291,7 +329,36 @@ export async function syncFromSupabase() {
 
   if (cloudData.progress && Object.keys(cloudData.progress).length > 0) {
     const localP = get(KEYS.progress) || {};
-    set(KEYS.progress, { ...localP, ...cloudData.progress });
+    const settings = getSettings();
+    const mergedP = { ...localP };
+
+    Object.entries(cloudData.progress).forEach(([chunkId, cloudProg]) => {
+      const localProg = localP[chunkId];
+      if (!localProg) {
+        mergedP[chunkId] = ensureSrsProgress(cloudProg, settings.srsTrack);
+      } else {
+        const isCloudNewer = (cloudProg.lastPracticed || 0) > (localProg.lastPracticed || 0);
+        const base = isCloudNewer ? cloudProg : localProg;
+        const fallback = isCloudNewer ? localProg : cloudProg;
+
+        const mergedItem = {
+          ...fallback,
+          ...base,
+          srsLevel: base.srsLevel ?? fallback.srsLevel,
+          srsTrack: base.srsTrack ?? fallback.srsTrack ?? settings.srsTrack,
+          easeFactor: base.easeFactor ?? fallback.easeFactor,
+          intervalMinutes: base.intervalMinutes ?? fallback.intervalMinutes,
+          nextReviewAt: base.nextReviewAt ?? fallback.nextReviewAt,
+          status: base.status ?? fallback.status,
+          lastScore: base.lastScore ?? fallback.lastScore,
+          lastFeedback: base.lastFeedback ?? fallback.lastFeedback,
+        };
+
+        mergedP[chunkId] = ensureSrsProgress(mergedItem, settings.srsTrack);
+      }
+    });
+
+    set(KEYS.progress, mergedP);
   }
 
   return true;

@@ -193,6 +193,16 @@ export async function dbSaveProgress(progressItem) {
   const userId = await getCurrentUserId();
   if (!userId) return; // không lưu khi chưa đăng nhập
 
+  const srsPayload = {
+    feedback: progressItem.lastFeedback || null,
+    srsLevel: progressItem.srsLevel,
+    srsTrack: progressItem.srsTrack,
+    easeFactor: progressItem.easeFactor,
+    intervalMinutes: progressItem.intervalMinutes,
+    nextReviewAt: progressItem.nextReviewAt,
+    status: progressItem.status,
+  };
+
   const { error } = await client.from('progress').upsert({
     chunk_id:       progressItem.chunkId,
     user_id:        userId,
@@ -201,9 +211,7 @@ export async function dbSaveProgress(progressItem) {
     last_practiced: progressItem.lastPracticed,
     last_result:    progressItem.lastResult,
     last_score:     progressItem.lastScore    ?? null,
-    last_feedback:  progressItem.lastFeedback
-      ? JSON.stringify(progressItem.lastFeedback)
-      : null,
+    last_feedback:  JSON.stringify(srsPayload),
   }, { onConflict: 'user_id,chunk_id' }); // composite PK sau migration
   if (error) console.error('Supabase save progress error:', error);
 }
@@ -268,12 +276,49 @@ export async function dbFetchAllData() {
 
     const progressMap = {};
     (pRes.data || []).forEach(p => {
+      let feedback = null;
+      let srsLevel = null;
+      let srsTrack = null;
+      let easeFactor = null;
+      let intervalMinutes = null;
+      let nextReviewAt = null;
+      let status = null;
+
+      if (p.last_feedback) {
+        try {
+          const parsed = JSON.parse(p.last_feedback);
+          if (parsed && typeof parsed === 'object') {
+            if ('srsLevel' in parsed || 'nextReviewAt' in parsed || 'feedback' in parsed) {
+              feedback = parsed.feedback ?? null;
+              srsLevel = parsed.srsLevel ?? null;
+              srsTrack = parsed.srsTrack ?? null;
+              easeFactor = parsed.easeFactor ?? null;
+              intervalMinutes = parsed.intervalMinutes ?? null;
+              nextReviewAt = parsed.nextReviewAt ? Number(parsed.nextReviewAt) : null;
+              status = parsed.status ?? null;
+            } else {
+              feedback = parsed;
+            }
+          }
+        } catch {
+          feedback = p.last_feedback;
+        }
+      }
+
       progressMap[p.chunk_id] = {
         chunkId: p.chunk_id,
         practiceCount: p.practice_count || 0,
         successCount: p.success_count || 0,
         lastPracticed: p.last_practiced ? Number(p.last_practiced) : null,
         lastResult: p.last_result,
+        lastScore: p.last_score != null ? Number(p.last_score) : null,
+        lastFeedback: feedback,
+        srsLevel,
+        srsTrack,
+        easeFactor,
+        intervalMinutes,
+        nextReviewAt,
+        status,
       };
     });
 
