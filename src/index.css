@@ -935,16 +935,52 @@ input, textarea {
 .text-2xl { font-size: 22px; }
 
 /* ═══════════════════════════════════════════
-   BOTTOM NAV (mobile only)
+   RESPONSIVE LAYOUT & HELPERS
 ═══════════════════════════════════════════ */
+/* Helper visibility classes */
+.desktop-only { display: flex !important; }
+.mobile-only  { display: none !important; }
+
+/* Bottom Nav (hidden on desktop) */
 .bottom-nav {
   display: none;
+}
+
+/* Mobile Settings Button (hidden on desktop) */
+.mobile-settings-btn {
+  display: none;
+}
+
+/* Practice layout defaults (desktop) */
+.practice-layout {
+  display: grid;
+  grid-template-columns: min(280px, 32%) 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.practice-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.practice-chunk-item {
+  width: 100%;
+}
+
+.floating-grade-bar {
+  position: sticky;
+  bottom: 16px;
 }
 
 /* ═══════════════════════════════════════════
    RESPONSIVE — MOBILE (≤ 767px)
 ═══════════════════════════════════════════ */
 @media (max-width: 767px) {
+  .desktop-only { display: none !important; }
+  .mobile-only  { display: inline-flex !important; }
+
   body {
     overflow: auto; /* allow scroll on mobile */
   }
@@ -966,20 +1002,34 @@ input, textarea {
     height: 100dvh;
     display: flex;
     flex-direction: column;
+    min-width: 0;
   }
 
+  /* ── Header mobile ────────────────────── */
   .main-header {
-    padding: 0 var(--space-4);
-    height: 52px;
+    height: auto;
+    min-height: 52px;
+    padding: 8px 12px;
+    gap: 8px;
+    background: var(--bg-surface);
   }
 
-  .main-header-title  { font-size: 15px; }
-  .main-header-subtitle { display: none; }
+  .main-header-title {
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .main-header-subtitle {
+    display: none;
+  }
 
   .page-content {
-    padding: var(--space-4);
+    padding: 12px;
     /* leave room for bottom nav */
-    padding-bottom: calc(var(--space-4) + 64px);
+    padding-bottom: calc(var(--space-4) + 72px);
     flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -992,14 +1042,14 @@ input, textarea {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 64px;
-    background: var(--bg-surface);
+    height: 60px;
+    background: rgba(15, 23, 42, 0.95);
     border-top: 1px solid var(--border-subtle);
     z-index: 100;
     padding: 0 var(--space-1);
     padding-bottom: env(safe-area-inset-bottom);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
 
   .bottom-nav-item {
@@ -1008,14 +1058,14 @@ input, textarea {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3px;
-    padding: var(--space-2) var(--space-1);
+    gap: 2px;
+    padding: 6px 2px;
     border-radius: var(--radius-md);
     cursor: pointer;
     color: var(--text-muted);
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
     transition: all var(--transition-fast);
     border: none;
     background: none;
@@ -1026,22 +1076,9 @@ input, textarea {
     color: var(--accent-400);
   }
 
-  .bottom-nav-item.active::before {
-    content: '';
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 32px;
-    height: 32px;
-    background: rgba(99,102,241,0.12);
-    border-radius: var(--radius-md);
-    z-index: -1;
-  }
-
   .bottom-nav-badge {
     position: absolute;
-    top: 5px;
+    top: 4px;
     right: calc(50% - 16px);
     font-size: 9px;
     font-weight: 700;
@@ -1056,16 +1093,17 @@ input, textarea {
 
   /* ── Settings button ───────────────────── */
   .mobile-settings-btn {
-    display: flex !important;   /* override the desktop display:none */
+    display: flex !important;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: var(--radius-md);
     background: var(--bg-elevated);
     border: 1px solid var(--border-subtle);
     color: var(--text-secondary);
     cursor: pointer;
+    flex-shrink: 0;
   }
 
   /* ── Grids: collapse to 1 column ──────── */
@@ -1115,8 +1153,8 @@ input, textarea {
 
   /* ── Buttons: easier tap targets ───────── */
   .btn-lg {
-    padding: 14px 20px;
-    font-size: 15px;
+    padding: 12px 18px;
+    font-size: 14px;
   }
 
   /* ── Section headers ───────────────────── */
@@ -1127,8 +1165,8 @@ input, textarea {
 
   /* ── Empty state: compact ──────────────── */
   .empty-state {
-    padding: var(--space-8);
-    min-height: 200px;
+    padding: var(--space-6);
+    min-height: 180px;
   }
 
   /* ── Filter chips: horizontal scroll ───── */
@@ -1137,23 +1175,46 @@ input, textarea {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 4px;
-    /* hide scrollbar */
     scrollbar-width: none;
   }
   .filter-group::-webkit-scrollbar { display: none; }
 
   .chip { white-space: nowrap; flex-shrink: 0; }
 
-  /* ── Practice: stack chunk list above session ── */
-  .practice-layout,
-  [style*="min(260px"] {
-    grid-template-columns: 1fr !important;
+  /* ── Practice: horizontal swipeable chunk list on mobile ── */
+  .practice-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
-}
 
-/* Mobile-settings-btn hidden on desktop */
-.mobile-settings-btn {
-  display: none;
+  .practice-sidebar {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 6px;
+    width: 100%;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .practice-sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .practice-chunk-item {
+    flex-shrink: 0;
+    min-width: 130px;
+    max-width: 200px;
+    padding: 8px 10px !important;
+  }
+
+  /* ── Floating AI grade bar above bottom nav ── */
+  .floating-grade-bar {
+    bottom: 72px !important;
+    padding: 12px 14px !important;
+  }
 }
 
 /* ═══════════════════════════════════════════

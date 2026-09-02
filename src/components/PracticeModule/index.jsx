@@ -594,7 +594,7 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
 
       {/* Sticky Floating Batch Grade Bar */}
       <div
-        className="card animate-fade-in"
+        className="floating-grade-bar card animate-fade-in"
         style={{
           position: 'sticky',
           bottom: 16,
@@ -715,26 +715,40 @@ export function PracticeModule({
     const dueCount = chunks.filter(c => isDueForReview(allProgress[c.id])).length;
     if (dueCount > 0 && onStartDueReview) {
       return (
-        <div className="card animate-fade-in" style={{ textAlign: 'center', padding: '48px 24px', maxWidth: 560, margin: '40px auto' }}>
+        <div className="card animate-fade-in" style={{ textAlign: 'center', padding: '32px 18px', maxWidth: 520, margin: '24px auto' }}>
           <div style={{
-            width: 56, height: 56, borderRadius: 'var(--radius-full)',
+            width: 52, height: 52, borderRadius: 'var(--radius-full)',
             background: 'rgba(239,68,68,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            margin: '0 auto 16px',
+            margin: '0 auto 14px',
           }}>
-            <Flame size={28} color="#ef4444" />
+            <Flame size={26} color="#ef4444" />
           </div>
-          <h3 style={{ fontSize: 18, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8 }}>
+          <h3 style={{ fontSize: 17, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8, lineHeight: 1.4 }}>
             Có {dueCount} chunk đến hạn ôn tập hôm nay!
           </h3>
           <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: 20 }}>
             Hệ thống sẽ <strong>sử dụng lại các câu mẫu bạn đã học</strong> (không cần tạo câu mới) để giúp củng cố phản xạ và đưa chunk vào trí nhớ dài hạn.
           </p>
           <button
-            className="btn btn-primary"
+            className="btn btn-primary btn-lg"
             onClick={onStartDueReview}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 24px', fontSize: 14, fontWeight: 700 }}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 8,
+              padding: '12px 20px',
+              fontSize: 14,
+              fontWeight: 700,
+              width: '100%',
+              maxWidth: 380,
+              whiteSpace: 'normal',
+              textAlign: 'center',
+              lineHeight: 1.3,
+            }}
           >
-            <Flame size={16} /> Bắt đầu ôn tập {dueCount} chunk ngay (Dùng lại câu cũ)
+            <Flame size={16} style={{ flexShrink: 0 }} />
+            <span>Bắt đầu ôn tập {dueCount} chunk (Dùng lại câu cũ)</span>
           </button>
         </div>
       );
@@ -753,15 +767,10 @@ export function PracticeModule({
   const activeExercises = activeChunk ? getSituations(activeChunk.id) : [];
 
   return (
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'min(260px, 38%) 1fr',
-      gap: 24,
-      alignItems: 'start',
-    }}>
+    <div className="practice-layout">
       {/* Chunk list sidebar */}
-      <div className="flex flex-col gap-2">
-        <p className="label mb-1">Chunks ({chunkList.length})</p>
+      <div className="practice-sidebar">
+        <p className="label mb-1 desktop-only">Chunks ({chunkList.length})</p>
         {chunkList.map((chunk) => {
           const prog = allProgress[chunk.id];
           const isActive = activeChunkId === chunk.id;
@@ -774,14 +783,14 @@ export function PracticeModule({
             <button
               key={chunk.id}
               id={`practice-nav-${chunk.id}`}
-              className="card"
+              className={`practice-chunk-item card ${isActive ? 'active' : ''}`}
               style={{
                 textAlign: 'left', cursor: 'pointer', padding: '12px 14px',
                 borderColor: isActive ? 'var(--accent-400)' : 'var(--border-subtle)',
                 background: isActive ? 'rgba(99,102,241,0.15)' : 'var(--bg-surface)',
                 color: 'var(--text-primary)',
                 opacity: (!hasExercises && autoGenerating) ? 0.5 : 1,
-                transition: 'opacity 0.3s',
+                transition: 'all 0.2s ease',
               }}
               onClick={() => setActiveChunkId(chunk.id)}
             >

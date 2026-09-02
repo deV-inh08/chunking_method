@@ -137,11 +137,12 @@ export function Header({ page, rightSlot, onSettingsClick, user, onSignOut, onLo
   const info = PAGE_TITLES[page] || {};
   return (
     <header className="main-header">
-      <div style={{ minWidth: 0, flex: '1 1 auto' }}>
+      <div style={{ minWidth: 0, flex: '1 1 auto', overflow: 'hidden' }}>
         <div className="main-header-title">{info.title}</div>
-        {info.subtitle && <div className="main-header-subtitle">{info.subtitle}</div>}
+        {info.subtitle && <div className="main-header-subtitle desktop-only">{info.subtitle}</div>}
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
         {/* Due review quick button */}
         {dueCount > 0 && onDueClick && (
           <button
@@ -157,20 +158,21 @@ export function Header({ page, rightSlot, onSettingsClick, user, onSignOut, onLo
               display: 'inline-flex',
               alignItems: 'center',
               gap: 4,
-              padding: '4px 10px',
+              padding: '4px 8px',
             }}
             title="Chạm để ôn tập các chunk đến hạn"
           >
             <Flame size={13} color="#ef4444" />
-            <span>Ôn tập ({dueCount})</span>
+            <span className="desktop-only">Ôn tập ({dueCount})</span>
+            <span className="mobile-only">{dueCount}</span>
           </button>
         )}
 
         {rightSlot && <div>{rightSlot}</div>}
 
-        {/* User info + logout if logged in */}
+        {/* User info + logout if logged in (Desktop only) */}
         {user ? (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <div className="desktop-only" style={{ alignItems: 'center', gap: 6 }}>
             <div style={{
               display: 'flex', alignItems: 'center', gap: 5,
               padding: '4px 8px', borderRadius: 'var(--radius-md)',
@@ -186,7 +188,7 @@ export function Header({ page, rightSlot, onSettingsClick, user, onSignOut, onLo
               className="btn btn-ghost btn-icon"
               onClick={onSignOut}
               title="Đăng xuất"
-              style={{ color: 'var(--text-muted)' }}
+              style={{ color: 'var(--text-muted)', padding: 5 }}
             >
               <LogOut size={15} />
             </button>
@@ -198,10 +200,10 @@ export function Header({ page, rightSlot, onSettingsClick, user, onSignOut, onLo
               id="header-login-btn"
               className="btn btn-primary btn-sm"
               onClick={onLoginClick}
-              style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '5px 10px', fontSize: 12.5, fontWeight: 600, whiteSpace: 'nowrap' }}
+              style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '4px 8px', fontSize: 12, fontWeight: 600, whiteSpace: 'nowrap' }}
             >
               <LogIn size={13} />
-              <span>Đăng nhập</span>
+              <span className="desktop-only">Đăng nhập</span>
             </button>
           )
         )}
@@ -213,8 +215,9 @@ export function Header({ page, rightSlot, onSettingsClick, user, onSignOut, onLo
             className="mobile-settings-btn"
             onClick={onSettingsClick}
             aria-label="Settings"
+            title="Cài đặt & Tài khoản"
           >
-            <Settings size={18} />
+            <Settings size={17} />
           </button>
         )}
       </div>
