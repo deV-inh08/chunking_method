@@ -1,9 +1,9 @@
-﻿// ─── Gemini Live API WebSocket & Web Audio Service ───────────────────────
+// ─── Gemini Live API WebSocket & Web Audio Service ───────────────────────
 
 export const LIVE_MODELS = [
-  'models/gemini-2.5-flash-native-audio-dialog',
   'models/gemini-2.0-flash-exp',
   'models/gemini-2.0-flash',
+  'models/gemini-2.5-flash',
 ];
 
 export const SPEAKING_CONFIG = {
@@ -187,10 +187,16 @@ export class GeminiLiveSession {
 
       this.ws.onopen = () => {
         this.isConnected = true;
+        // Chuyển sang trạng thái WARMUP ngay khi WebSocket kết nối thành công
+        this.setState('WARMUP');
         // Bước 1: Gửi setup handshake
         this.sendSetupMessage();
         // Bước 2: Bắt đầu thu âm gửi audio
         this.startAudioRecording();
+        // Bước 3: Gửi trigger chào hỏi
+        setTimeout(() => {
+          this.sendInitialGreetingTrigger();
+        }, 400);
       };
 
       this.ws.onmessage = async (event) => {
