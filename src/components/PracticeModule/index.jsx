@@ -455,8 +455,10 @@ function ExerciseCard({
   );
 }
 
-// ─── WritingSession (batch grading 1 request for chunk) ────────
-function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
+function WritingSession({
+  chunk, exercises, progress, onComplete, onToast,
+  onNavigatePrev, onNavigateNext, hasPrev, hasNext, currentIndex, totalChunks,
+}) {
   const [userInputs, setUserInputs] = useState({});
   const [showSamples, setShowSamples] = useState({});
   const [gradingResults, setGradingResults] = useState({});
