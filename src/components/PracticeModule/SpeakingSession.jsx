@@ -726,35 +726,123 @@ export function SpeakingSession({
                 </div>
               )}
 
-              {/* Toggle full transcript */}
-              <div>
-                <button
-                  className="btn btn-ghost btn-sm"
-                  onClick={() => setShowFullTranscript(!showFullTranscript)}
-                  style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, padding: '4px 8px', color: 'var(--text-muted)' }}
-                >
-                  <MessageSquare size={13} />
-                  <span>{showFullTranscript ? 'Ẩn toàn bộ hội thoại' : 'Xem lại toàn bộ hội thoại'}</span>
-                  {showFullTranscript ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
-                </button>
-
-                {showFullTranscript && (
-                  <div
-                    className="card mt-2"
-                    style={{
-                      maxHeight: 180,
-                      overflowY: 'auto',
-                      padding: '10px 14px',
-                      fontSize: 12,
-                      background: 'var(--bg-elevated)',
-                      whiteSpace: 'pre-wrap',
-                      lineHeight: 1.6,
-                      color: 'var(--text-secondary)',
-                    }}
-                  >
-                    {gradingResult.transcriptText}
+              {/* ── CHI TIẾT ĐOẠN HỘI THOẠI & PHÂN TÍCH PHÁT ÂM ── */}
+              <div
+                className="card"
+                style={{
+                  padding: '14px',
+                  background: 'var(--bg-elevated)',
+                  borderRadius: 'var(--radius-md)',
+                  border: '1px solid var(--border-subtle)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 10,
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 6 }}>
+                  <div style={{ fontSize: 12.5, fontWeight: 700, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <MessageSquare size={14} color="#38bdf8" />
+                    <span>Nội dung hội thoại & Đánh giá phát âm:</span>
                   </div>
-                )}
+
+                  {/* Chú giải màu sắc */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11 }}>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 3, color: '#22c55e', fontWeight: 600 }}>
+                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e' }} /> Đúng
+                    </span>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 3, color: '#ef4444', fontWeight: 600 }}>
+                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#ef4444' }} /> Cần sửa
+                    </span>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 3, color: '#fbbf24', fontWeight: 600 }}>
+                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#fbbf24' }} /> Chunk
+                    </span>
+                  </div>
+                </div>
+
+                {/* Danh sách từng lượt đối thoại */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxHeight: 240, overflowY: 'auto', paddingRight: 4 }}>
+                  {gradingResult.dialogueTurns && gradingResult.dialogueTurns.length > 0 ? (
+                    gradingResult.dialogueTurns.map((turn, idx) => (
+                      <div
+                        key={idx}
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: 6,
+                          padding: '10px 12px',
+                          borderRadius: 'var(--radius-sm)',
+                          background: 'rgba(255,255,255,0.03)',
+                          border: '1px solid rgba(255,255,255,0.06)',
+                        }}
+                      >
+                        {/* Câu hỏi của AI */}
+                        {turn.ai && (
+                          <div style={{ fontSize: 12.5, color: '#38bdf8', lineHeight: 1.4 }}>
+                            <strong style={{ color: '#0284c7', marginRight: 4 }}>🤖 AI:</strong>
+                            "{turn.ai}"
+                          </div>
+                        )}
+
+                        {/* Câu nói của User với từng từ được tô màu */}
+                        {turn.user && (
+                          <div style={{ fontSize: 13, color: 'var(--text-primary)', lineHeight: 1.7, marginTop: 2 }}>
+                            <strong style={{ color: 'var(--accent-300)', marginRight: 6 }}>🗣️ Bạn:</strong>
+                            {turn.wordAnalysis && turn.wordAnalysis.length > 0 ? (
+                              turn.wordAnalysis.map((item, wIdx) => {
+                                const isCorrect = item.status === 'correct';
+                                const isChunk = item.status === 'chunk';
+                                const isIncorrect = item.status === 'incorrect';
+
+                                return (
+                                  <span
+                                    key={wIdx}
+                                    title={item.note || (isIncorrect ? 'Phát âm chưa chuẩn' : isCorrect ? 'Phát âm chuẩn' : 'Chunk mục tiêu')}
+                                    style={{
+                                      display: 'inline-block',
+                                      padding: '1px 5px',
+                                      margin: '0 2px 2px 0',
+                                      borderRadius: 4,
+                                      fontWeight: isIncorrect || isChunk ? 700 : 600,
+                                      color: isChunk ? '#fbbf24' : isCorrect ? '#22c55e' : '#ef4444',
+                                      background: isChunk
+                                        ? 'rgba(251, 191, 36, 0.15)'
+                                        : isCorrect
+                                        ? 'rgba(34, 197, 94, 0.12)'
+                                        : 'rgba(239, 68, 68, 0.18)',
+                                      borderBottom: isIncorrect ? '2px dashed #ef4444' : isChunk ? '1px solid rgba(251, 191, 36, 0.4)' : 'none',
+                                      cursor: item.note ? 'help' : 'default',
+                                    }}
+                                  >
+                                    {item.word}
+                                    {item.note && (
+                                      <span style={{ fontSize: 9.5, opacity: 0.8, marginLeft: 3, fontStyle: 'italic' }}>
+                                        ({item.note})
+                                      </span>
+                                    )}
+                                  </span>
+                                );
+                              })
+                            ) : (
+                              <span>"{turn.user}"</span>
+                            )}
+                          </div>
+                        )}
+
+                        {/* Ghi chú phản hồi cho lượt nói nếu có */}
+                        {turn.feedback && (
+                          <div style={{ fontSize: 11.5, color: 'var(--text-secondary)', fontStyle: 'italic', marginTop: 2 }}>
+                            💡 {turn.feedback}
+                          </div>
+                        )}
+                      </div>
+                    ))
+                  ) : (
+                    /* Fallback nếu chưa có dialogueTurns */
+                    <div style={{ fontSize: 12.5, color: 'var(--text-secondary)', lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>
+                      {gradingResult.transcriptText || 'Không có dữ liệu hội thoại.'}
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Footer action buttons */}

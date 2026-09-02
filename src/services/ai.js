@@ -711,16 +711,23 @@ export function buildSpeakingSystemPrompt(chunk, sentences = {}, config = {}) {
 }
 
 export async function gradeSpeakingSession(transcriptText, chunk, apiKey) {
-  const systemPrompt = `Bạn là AI chấm bài luyện nói tiếng Anh giao tiếp. Nhiệm vụ: Chấm điểm buổi hội thoại luyện nói dựa trên transcript được cung cấp.
-Ưu tiên hàng đầu là tiêu chí GIAO TIẾP HIỂU ĐƯỢC (comprehensibility) và việc sử dụng đúng chunk mục tiêu trong bối cảnh thực tế.
-Trả về JSON hợp lệ, không có text nào khác ngoài JSON.`;
+  // Loại bỏ các đoạn suy nghĩ ngầm bị rò rỉ nếu có
+  const cleanTranscript = (transcriptText || '')
+    .replace(/<thought>[\s\S]*?<\/thought>/gi, '')
+    .replace(/\*\*.*?\*\*/g, '')
+    .replace(/(Crafting the Opening|Developing the Situation|My next thought|I will prompt)[\s\S]*?(?=\nAI:|\nLearner:|\nUser:|$)/gi, '')
+    .trim();
 
-  const userMessage = `Chấm điểm buổi hội thoại luyện nói sau:
+  const systemPrompt = `Bạn là chuyên gia thẩm định và phân tích phát âm tiếng Anh giao tiếp.
+Nhiệm vụ: Phân tích buổi hội thoại luyện nói tiếng Anh giữa AI và người học, đánh giá độ chính xác của từng từ trong câu nói của người học (tô màu xanh cho từ đúng, tô màu đỏ cho từ phát âm/dùng sai).
+Trả về JSON hợp lệ duy nhất, không có markdown text ngoài JSON.`;
+
+  const userMessage = `Phân tích và chấm điểm buổi hội thoại luyện nói:
 
 CHUNK MỤC TIÊU: "${chunk.phrase}" (Nghĩa: "${chunk.meaningVi}")
 
 TRANSCRIPT BUỔI HỘI THOẠI:
-${transcriptText}
+${cleanTranscript || 'Learner: ' + chunk.phrase}
 
 Trả về JSON theo format sau:
 \`\`\`json
@@ -728,21 +735,46 @@ Trả về JSON theo format sau:
   "score": 85,
   "usedTargetChunk": true,
   "comprehensible": true,
-  "grammarIssues": [
-    "Lỗi chia động từ: 'he go' -> 'he goes'"
-  ],
-  "feedbackSummary": "Bạn phản xạ nhanh và diễn đạt ý tưởng rất tự tin, đã sử dụng chunk chính xác trong tình huống mới!",
-  "naturalSuggestion": "Thay vì 'I make a decision fast', bạn có thể nói 'I made a quick decision'."
+  "feedbackSummary": "Bạn phản xạ nhanh và phát âm rõ ràng, đã lồng ghép chunk chính xác!",
+  "naturalSuggestion": "Thay vì 'I want apply for a loan', bạn có thể nói 'I would like to apply for a loan'.",
+  "dialogueTurns": [
+    {
+      "ai": "Hello! Welcome to speaking practice. Please read the sentence out loud!",
+      "user": "I want to apply for a loan at this bank.",
+      "wordAnalysis": [
+        { "word": "I", "status": "correct" },
+        { "word": "want", "status": "correct" },
+        { "word": "to", "status": "correct" },
+        { "word": "apply", "status": "chunk" },
+        { "word": "for", "status": "chunk" },
+        { "word": "a", "status": "chunk" },
+        { "word": "loan", "status": "chunk" },
+        { "word": "at", "status": "correct" },
+        { "word": "this", "status": "correct" },
+        { "word": "bank", "status": "correct" }
+      ],
+      "feedback": "Phát âm chuẩn xác và ngắt nhịp tự nhiên."
+    }
+  ]
 }
 \`\`\`
 
-NGUYÊN TẮC CHẤM:
-- score: số nguyên từ 0-100 (Dùng đúng chunk +50đ, nghĩa hiểu tốt +30đ, ngữ pháp tốt +20đ).
-- usedTargetChunk: true nếu người học có nói ra chunk mục tiêu hoặc biến thể chia thì/số trong câu.
-- comprehensible: true nếu người nghe bản xứ hoàn toàn hiểu được ý chính của người học.
-- grammarIssues: mảng tối đa 3 lỗi ngữ pháp NGHIÊM TRỌNG ảnh hưởng đến nghĩa (bỏ qua lỗi nhỏ).
-- feedbackSummary: 1-2 câu nhận xét tổng quan bằng tiếng Việt thân thiện, mang tính khích lệ.
-- naturalSuggestion: 1 câu ví dụ diễn đạt tự nhiên hơn cho câu nói của người học (hoặc null nếu câu đã tốt).`;
+NGUYÊN TẮC PHÂN TÍCH:
+- score: số nguyên 0-100.
+- usedTargetChunk: true nếu người học có dùng chunk "${chunk.phrase}".
+- dialogueTurns: Mảng từng lượt đối thoại giữa AI và người học:
+  + ai: Lời thoại ngắn gọn của AI (bỏ sạch các meta text).
+  + user: Câu người học đã nói.
+  + wordAnalysis: Mảng từng từ trong câu của người học, với status:
+    * "correct": từ phát âm đúng, chuẩn (tô xanh lá).
+    * "incorrect": từ phát âm sai, nói nhầm, nuốt âm hoặc lỗi ngữ pháp (tô đỏ). Kèm theo note ghi rõ lỗi (ví dụ: 'Thiếu âm đuôi /t/', 'Phát âm sai nguyên âm', 'Sai thì').
+    * "chunk": từ thuộc chunk mục tiêu "${chunk.phrase}".
+- feedbackSummary: 1-2 câu nhận xét tổng kết ngắn gọn, thân thiện.`;
 
-  return callGemini(apiKey, systemPrompt, userMessage);
+  return callGemini(apiKey, systemPrompt, userMessage, {
+    model: 'gemini-2.5-flash-lite',
+    generationConfig: {
+      temperature: 0.2,
+    },
+  });
 }
