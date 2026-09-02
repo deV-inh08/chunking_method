@@ -1,0 +1,18 @@
+{
+  "name": "TOEIC Chunk Trainer",
+  "short_name": "ChunkTrainer",
+  "description": "Luyện nói & viết tiếng Anh TOEIC theo phương pháp Chunking & Spaced Repetition",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0d14",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

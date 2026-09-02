@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, Layers, PenLine, CheckSquare, Square, BookOpen, EyeOff, Eye } from 'lucide-react';
+import { ChevronDown, ChevronUp, Layers, PenLine, CheckSquare, Square, BookOpen, EyeOff, Eye, Flame } from 'lucide-react';
 import { EmptyState, Badge, SkeletonCard } from '../ui';
 import { generateWritingExercises } from '../../services/ai';
 import { getApiKey } from '../../store/storage';
+import { isDueForReview, formatTimeUntilReview } from '../../services/srs';
 
 const CHUNK_TYPE_LABELS = {
   collocation: 'Collocation',
@@ -12,6 +13,7 @@ const CHUNK_TYPE_LABELS = {
 
 const FILTER_OPTIONS = [
   { id: 'all',         label: 'Tất cả' },
+  { id: 'due',         label: '🔥 Cần ôn tập' },
   { id: 'collocation', label: 'Collocation' },
   { id: 'functional',  label: 'Functional' },
   { id: 'connector',   label: 'Connector' },
@@ -20,14 +22,16 @@ const FILTER_OPTIONS = [
 // ─── ChunkCard ────────────────────────────────────────────────
 function ChunkCard({ chunk, selected, onToggle, progress, generatingSit, onGenerate }) {
   const [expanded, setExpanded] = useState(false);
+  const isDue = isDueForReview(progress);
+  const reviewTimeInfo = formatTimeUntilReview(progress?.nextReviewAt);
 
   return (
     <div
       id={`chunk-card-${chunk.id}`}
       className="card animate-fade-in"
       style={{
-        borderColor: selected ? 'rgba(99,102,241,0.4)' : undefined,
-        background:  selected ? 'rgba(99,102,241,0.06)' : undefined,
+        borderColor: selected ? 'rgba(99,102,241,0.4)' : isDue ? 'rgba(239,68,68,0.4)' : undefined,
+        background:  selected ? 'rgba(99,102,241,0.06)' : isDue ? 'rgba(239,68,68,0.03)' : undefined,
       }}
     >
       {/* Header row */}
@@ -63,6 +67,23 @@ function ChunkCard({ chunk, selected, onToggle, progress, generatingSit, onGener
             )}
             {progress && (
               <Badge type="success">✓ {progress.practiceCount}×</Badge>
+            )}
+            {progress && (
+              <span style={{
+                display: 'inline-flex', alignItems: 'center', gap: 3,
+                fontSize: 10.5, fontWeight: 700, padding: '1px 7px', borderRadius: 'var(--radius-full)',
+                background: isDue ? 'rgba(239,68,68,0.15)' : 'rgba(99,102,241,0.12)',
+                color: isDue ? 'var(--error-text)' : 'var(--accent-300)',
+                border: `1px solid ${isDue ? 'rgba(239,68,68,0.3)' : 'rgba(99,102,241,0.25)'}`,
+              }}>
+                <Flame size={10} color={isDue ? '#ef4444' : '#f59e0b'} />
+                {isDue
+                  ? 'Cần ôn ngay'
+                  : progress.status === 'mastered'
+                  ? '🧠 Mastered'
+                  : `Lv.${progress.srsLevel || 1} · ${reviewTimeInfo?.text || 'Đang học'}`
+                }
+              </span>
             )}
           </div>
 
@@ -181,9 +202,11 @@ export function ChunkModule({
   const practiced     = chunks.filter(c =>  hasPracticed(c));
   const visibleChunks = showPracticed ? chunks : unpracticed;
 
-
-
-  const filtered     = filter === 'all' ? visibleChunks : visibleChunks.filter(c => c.type === filter);
+  const filtered = filter === 'all'
+    ? visibleChunks
+    : filter === 'due'
+    ? chunks.filter(c => isDueForReview(allProgress[c.id]))
+    : visibleChunks.filter(c => c.type === filter);
   const selectedCount = selectedChunks.size;
 
   // Group filtered chunks by groupName
@@ -291,19 +314,26 @@ export function ChunkModule({
       {/* Filter + action bar */}
       <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
         <div className="filter-group">
-          {FILTER_OPTIONS.map(({ id, label }) => (
-            <button
-              key={id}
-              id={`filter-${id}`}
-              className={`chip ${filter === id ? 'active' : ''}`}
-              onClick={() => setFilter(id)}
-            >
-              {label}
-              <span style={{ opacity: 0.6 }}>
-                ({id === 'all' ? visibleChunks.length : visibleChunks.filter(c => c.type === id).length})
-              </span>
-            </button>
-          ))}
+          {FILTER_OPTIONS.map(({ id, label }) => {
+            const count = id === 'all'
+              ? visibleChunks.length
+              : id === 'due'
+              ? chunks.filter(c => isDueForReview(allProgress[c.id])).length
+              : visibleChunks.filter(c => c.type === id).length;
+            return (
+              <button
+                key={id}
+                id={`filter-${id}`}
+                className={`chip ${filter === id ? 'active' : ''}`}
+                onClick={() => setFilter(id)}
+              >
+                {label}
+                <span style={{ opacity: 0.6 }}>
+                  ({count})
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         <div className="flex items-center gap-2">

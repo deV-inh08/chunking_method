@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import {
   PenLine, ChevronRight, ChevronLeft, RotateCcw,
-  CheckCircle, XCircle, Sparkles, Loader, RefreshCw, Volume2, VolumeX
+  CheckCircle, XCircle, Sparkles, Loader, RefreshCw, Volume2, VolumeX,
+  Flame,
 } from 'lucide-react';
 import { EmptyState, Badge, Spinner } from '../ui';
-import { getSituations, saveSituations } from '../../store/storage';
+import { getSituations, saveSituations, getApiKey } from '../../store/storage';
 import { gradeWriting, gradeWritingBatch, generateWritingExercises } from '../../services/ai';
-import { getApiKey } from '../../store/storage';
+import { formatTimeUntilReview, isDueForReview, formatIntervalText } from '../../services/srs';
 
 
 const CHUNK_TYPE_LABELS = {
@@ -538,6 +539,23 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
               {progress.practiceCount} lần luyện{progress.lastScore != null ? ` · ${progress.lastScore}đ` : ''}
             </Badge>
           )}
+          {progress && (
+            <span style={{
+              display: 'inline-flex', alignItems: 'center', gap: 4,
+              fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 'var(--radius-full)',
+              background: isDueForReview(progress) ? 'rgba(239,68,68,0.15)' : 'rgba(99,102,241,0.15)',
+              color: isDueForReview(progress) ? 'var(--error-text)' : 'var(--accent-300)',
+              border: `1px solid ${isDueForReview(progress) ? 'rgba(239,68,68,0.3)' : 'rgba(99,102,241,0.3)'}`,
+            }}>
+              <Flame size={11} color={isDueForReview(progress) ? '#ef4444' : '#f59e0b'} />
+              {isDueForReview(progress)
+                ? '🔥 Đến hạn ôn tập'
+                : progress.status === 'mastered'
+                ? '🧠 Thành thạo'
+                : `Level ${progress.srsLevel || 1} · ${formatTimeUntilReview(progress.nextReviewAt)?.text || 'Đang học'}`
+              }
+            </span>
+          )}
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
           {chunk.meaningVi}
@@ -753,9 +771,26 @@ export function PracticeModule({
                   </button>
                 </div>
               </div>
-              <div className="mt-1 flex items-center gap-2">
+              <div className="mt-1 flex items-center gap-2 flex-wrap">
                 <Badge type={chunk.type}>{CHUNK_TYPE_LABELS[chunk.type] || chunk.type}</Badge>
-                {prog && <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>{prog.practiceCount}× luyện</span>}
+                {prog && (
+                  <span style={{
+                    fontSize: 10.5, fontWeight: 700, padding: '1px 6px', borderRadius: 4,
+                    background: isDueForReview(prog) ? 'rgba(239,68,68,0.15)' : 'rgba(99,102,241,0.1)',
+                    color: isDueForReview(prog) ? 'var(--error-text)' : 'var(--accent-300)',
+                    border: `1px solid ${isDueForReview(prog) ? 'rgba(239,68,68,0.25)' : 'rgba(99,102,241,0.2)'}`,
+                    display: 'inline-flex', alignItems: 'center', gap: 3,
+                  }}>
+                    {isDueForReview(prog) && <Flame size={9} color="#ef4444" />}
+                    {isDueForReview(prog)
+                      ? 'Đến hạn ôn'
+                      : prog.status === 'mastered'
+                      ? '🧠 Mastered'
+                      : `Lv.${prog.srsLevel || 1}`
+                    }
+                  </span>
+                )}
+                {prog && <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>{prog.practiceCount}×</span>}
               </div>
             </button>
           );

@@ -1,6 +1,7 @@
 import {
   FileText, Layers, Mic, BarChart2,
-  Settings, ChevronRight, BookOpen, LogOut, LogIn, User, BookMarked
+  Settings, ChevronRight, BookOpen, LogOut, LogIn, User, BookMarked,
+  Flame,
 } from 'lucide-react';
 
 const NAV_ITEMS = [
@@ -20,7 +21,7 @@ const PAGE_TITLES = {
 };
 
 // ─── Desktop Sidebar ──────────────────────────────────────────
-export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick, user, onSignOut, onLoginClick }) {
+export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick, user, onSignOut, onLoginClick, dueCount = 0 }) {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
@@ -43,9 +44,13 @@ export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick, 
           >
             <Icon size={17} className="nav-icon" />
             <span className="nav-label">{label}</span>
-            {counts[id] > 0 && (
+            {id === 'practice' && dueCount > 0 ? (
+              <span className="nav-badge" style={{ background: '#ef4444', color: '#fff', display: 'inline-flex', alignItems: 'center', gap: 2 }}>
+                <Flame size={10} /> {dueCount}
+              </span>
+            ) : counts[id] > 0 ? (
               <span className="nav-badge">{counts[id]}</span>
-            )}
+            ) : null}
           </button>
         ))}
       </nav>
@@ -102,7 +107,7 @@ export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick, 
 }
 
 // ─── Mobile Bottom Navigation ─────────────────────────────────
-export function BottomNav({ activePage, onNavigate, counts = {} }) {
+export function BottomNav({ activePage, onNavigate, counts = {}, dueCount = 0 }) {
   return (
     <nav className="bottom-nav">
       {NAV_ITEMS.map(({ id, label, icon: Icon }) => (
@@ -112,9 +117,13 @@ export function BottomNav({ activePage, onNavigate, counts = {} }) {
           className={`bottom-nav-item ${activePage === id ? 'active' : ''}`}
           onClick={() => onNavigate(id)}
         >
-          {counts[id] > 0 && (
+          {id === 'practice' && dueCount > 0 ? (
+            <span className="bottom-nav-badge" style={{ background: '#ef4444', color: '#fff' }}>
+              {dueCount}
+            </span>
+          ) : counts[id] > 0 ? (
             <span className="bottom-nav-badge">{counts[id]}</span>
-          )}
+          ) : null}
           <Icon size={20} />
           <span>{label}</span>
         </button>
@@ -124,7 +133,7 @@ export function BottomNav({ activePage, onNavigate, counts = {} }) {
 }
 
 // ─── Header ───────────────────────────────────────────────────
-export function Header({ page, rightSlot, onSettingsClick, user, onSignOut, onLoginClick }) {
+export function Header({ page, rightSlot, onSettingsClick, user, onSignOut, onLoginClick, dueCount = 0, onDueClick }) {
   const info = PAGE_TITLES[page] || {};
   return (
     <header className="main-header">
@@ -133,6 +142,30 @@ export function Header({ page, rightSlot, onSettingsClick, user, onSignOut, onLo
         {info.subtitle && <div className="main-header-subtitle">{info.subtitle}</div>}
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+        {/* Due review quick button */}
+        {dueCount > 0 && onDueClick && (
+          <button
+            id="header-due-btn"
+            className="btn btn-secondary btn-sm"
+            onClick={onDueClick}
+            style={{
+              background: 'rgba(239,68,68,0.12)',
+              borderColor: 'rgba(239,68,68,0.35)',
+              color: '#ef4444',
+              fontWeight: 700,
+              fontSize: 12,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 4,
+              padding: '4px 10px',
+            }}
+            title="Chạm để ôn tập các chunk đến hạn"
+          >
+            <Flame size={13} color="#ef4444" />
+            <span>Ôn tập ({dueCount})</span>
+          </button>
+        )}
+
         {rightSlot && <div>{rightSlot}</div>}
 
         {/* User info + logout if logged in */}

@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import { Sidebar, Header, BottomNav } from './components/Layout';
 import { TranscriptModule } from './components/TranscriptModule';
 import { ChunkModule } from './components/ChunkModule';
@@ -11,6 +11,8 @@ import { Toast, Spinner, ErrorBoundary } from './components/ui';
 import { useTranscripts, useSettings, useProgress } from './hooks/useStorage';
 import { useAuth } from './hooks/useAuth';
 import { generateWritingExercises } from './services/ai';
+import { getDueChunks } from './services/srs';
+import { registerServiceWorker, sendDueNotification } from './services/notifications';
 import * as storage from './store/storage';
 
 // ─── Toast hook ───────────────────────────────────────────────
@@ -61,6 +63,21 @@ export default function App() {
     setAllChunks(storage.getAllChunks());
   }, [transcripts]);
 
+  // Register Service Worker on mount & listen for notification click messages
+  useEffect(() => {
+    registerServiceWorker();
+
+    if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+      const handler = (event) => {
+        if (event.data && event.data.type === 'NAVIGATE') {
+          setPage(event.data.page || 'practice');
+        }
+      };
+      navigator.serviceWorker.addEventListener('message', handler);
+      return () => navigator.serviceWorker.removeEventListener('message', handler);
+    }
+  }, []);
+
   // Initial Cloud Sync when user is logged in
   useEffect(() => {
     if (!user) return;
@@ -71,6 +88,17 @@ export default function App() {
       }
     });
   }, [user, refreshProgress]);
+
+  // Spaced Repetition: Calculate Due Chunks
+  const dueChunks = useMemo(() => {
+    return getDueChunks(allChunks, allProgress);
+  }, [allChunks, allProgress]);
+
+  // Web Notification reminder when chunks are due
+  useEffect(() => {
+    if (!settings.notificationsEnabled || dueChunks.length === 0) return;
+    sendDueNotification(dueChunks.length, dueChunks[0]?.phrase || '');
+  }, [settings.notificationsEnabled, dueChunks.length]);
 
   // Show settings on first load if no API key (only after auth resolved)
   useEffect(() => {
@@ -204,6 +232,43 @@ export default function App() {
     }
   }, []);
 
+  const handleStartDueReview = useCallback(async () => {
+    if (dueChunks.length === 0) return;
+
+    // Refresh allChunks
+    const all = storage.getAllChunks();
+    setAllChunks(all);
+
+    // Select all due chunks
+    setSelectedChunks(new Set(dueChunks.map(c => c.id)));
+    setPage('practice');
+
+    // Auto-generate writing exercises for any chunks that don't have them
+    const apiKey = storage.getApiKey();
+    const chunksNeedingExercises = dueChunks.filter(c => storage.getSituations(c.id).length === 0);
+
+    if (apiKey && chunksNeedingExercises.length > 0) {
+      setAutoGenerating(true);
+      setAutoGenProgress({ done: 0, total: chunksNeedingExercises.length });
+
+      for (const chunk of chunksNeedingExercises) {
+        try {
+          const result = await generateWritingExercises(chunk, apiKey);
+          const exercises = (result.exercises || []).map((ex, i) => ({
+            ...ex,
+            id: ex.id || `ex_${chunk.id}_${i}`,
+            chunkId: chunk.id,
+          }));
+          storage.saveSituations(chunk.id, exercises);
+        } catch (err) {
+          console.error(`Auto-gen failed for "${chunk.phrase}":`, err);
+        }
+        setAutoGenProgress(prev => ({ ...prev, done: prev.done + 1 }));
+      }
+      setAutoGenerating(false);
+    }
+  }, [dueChunks]);
+
   const handleRepractice = useCallback((chunkId) => {
     setSelectedChunks(new Set([chunkId]));
     setPage('practice');
@@ -268,6 +333,7 @@ export default function App() {
         activePage={page}
         onNavigate={setPage}
         counts={counts}
+        dueCount={dueChunks.length}
         user={user}
         onSignOut={handleSignOut}
         onLoginClick={() => setShowAuthModal(true)}
@@ -278,6 +344,8 @@ export default function App() {
         <Header
           page={page}
           user={user}
+          dueCount={dueChunks.length}
+          onDueClick={handleStartDueReview}
           onSignOut={handleSignOut}
           onLoginClick={() => setShowAuthModal(true)}
           onSettingsClick={() => setShowSettings(true)}
@@ -385,7 +453,7 @@ export default function App() {
       </div>
 
       {/* Mobile bottom navigation */}
-      <BottomNav activePage={page} onNavigate={setPage} counts={counts} />
+      <BottomNav activePage={page} onNavigate={setPage} counts={counts} dueCount={dueChunks.length} />
 
       {/* Modals */}
       {showSettings && (

@@ -8,6 +8,7 @@ import {
   isSupabaseConfigured,
   getSupabaseClient,
 } from '../services/supabase';
+import { calculateNextReview } from '../services/srs';
 
 // ─── Storage keys ─────────────────────────────────────────────
 const KEYS = {
@@ -131,6 +132,17 @@ export function deleteSituations(chunkId) {
 export function updateProgress(chunkId, result, score = null, feedback = null) {
   const all = get(KEYS.progress) || {};
   const prev = all[chunkId] || { practiceCount: 0, successCount: 0 };
+  const settings = getSettings();
+  const track = settings.srsTrack || 'track_a';
+
+  // Tính toán các chỉ số Spaced Repetition (SRS)
+  const srsUpdates = calculateNextReview({
+    prevProgress: prev,
+    score: score != null ? score : (result ? 80 : 40),
+    success: Boolean(result),
+    track,
+  });
+
   const updated = {
     chunkId,
     practiceCount: prev.practiceCount + 1,
@@ -139,6 +151,7 @@ export function updateProgress(chunkId, result, score = null, feedback = null) {
     lastResult:    result,
     lastScore:     score,
     lastFeedback:  feedback,
+    ...srsUpdates,
   };
   all[chunkId] = updated;
   set(KEYS.progress, all);
@@ -194,12 +207,16 @@ export function getAllProgress() {
 
 // ─── Settings ─────────────────────────────────────────────────
 export function getSettings() {
-  return get(KEYS.settings) || {
-    apiKey: '',
-    apiKey2: '',
-    language: 'vi-VN',
-    supabaseUrl: '',
-    supabaseKey: '',
+  const s = get(KEYS.settings) || {};
+  return {
+    apiKey: s.apiKey || '',
+    apiKey2: s.apiKey2 || '',
+    language: s.language || 'vi-VN',
+    supabaseUrl: s.supabaseUrl || '',
+    supabaseKey: s.supabaseKey || '',
+    srsTrack: s.srsTrack || 'track_a', // 'track_a' | 'track_b'
+    notificationsEnabled: Boolean(s.notificationsEnabled),
+    dailyReminderTime: s.dailyReminderTime || '20:00',
   };
 }
 

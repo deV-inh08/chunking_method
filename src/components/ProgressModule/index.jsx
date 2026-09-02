@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { BarChart2, TrendingUp, Award, Clock, ChevronDown, ChevronUp, MessageSquare } from 'lucide-react';
+import { BarChart2, TrendingUp, Award, Clock, ChevronDown, ChevronUp, MessageSquare, Flame } from 'lucide-react';
 import { EmptyState, Badge } from '../ui';
+import { isDueForReview, formatTimeUntilReview, getSrsStats } from '../../services/srs';
 
 const CHUNK_TYPE_LABELS = {
   collocation: 'Collocation',
@@ -29,16 +30,16 @@ function formatDate(ts) {
 // ─── Stat card ────────────────────────────────────────────────
 function StatCard({ icon: Icon, label, value, accent }) {
   return (
-    <div className="card" style={{ textAlign: 'center', padding: '20px 16px' }}>
+    <div className="card" style={{ textAlign: 'center', padding: '16px 14px' }}>
       <div style={{
-        width: 44, height: 44, margin: '0 auto 10px',
+        width: 38, height: 38, margin: '0 auto 8px',
         background: `rgba(${accent}, 0.15)`, borderRadius: 'var(--radius-lg)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>
-        <Icon size={22} style={{ color: `rgb(${accent})` }} />
+        <Icon size={20} style={{ color: `rgb(${accent})` }} />
       </div>
-      <div style={{ fontSize: 26, fontWeight: 800, color: 'var(--text-primary)' }}>{value}</div>
-      <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 2 }}>{label}</div>
+      <div style={{ fontSize: 22, fontWeight: 800, color: 'var(--text-primary)' }}>{value}</div>
+      <div style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 2 }}>{label}</div>
     </div>
   );
 }
@@ -48,6 +49,9 @@ function ChunkProgressCard({ chunk, progress, onRepractice }) {
   const successRate = progress.practiceCount > 0
     ? Math.round((progress.successCount / progress.practiceCount) * 100)
     : 0;
+
+  const isDue = isDueForReview(progress);
+  const reviewInfo = formatTimeUntilReview(progress?.nextReviewAt);
 
   const levelColor = progress.practiceCount >= 5
     ? 'var(--success-text)'
@@ -64,6 +68,23 @@ function ChunkProgressCard({ chunk, progress, onRepractice }) {
               {chunk.phrase}
             </span>
             <Badge type={chunk.type}>{CHUNK_TYPE_LABELS[chunk.type]}</Badge>
+            {progress && (
+              <span style={{
+                display: 'inline-flex', alignItems: 'center', gap: 3,
+                fontSize: 10.5, fontWeight: 700, padding: '1px 7px', borderRadius: 'var(--radius-full)',
+                background: isDue ? 'rgba(239,68,68,0.15)' : 'rgba(99,102,241,0.12)',
+                color: isDue ? 'var(--error-text)' : 'var(--accent-300)',
+                border: `1px solid ${isDue ? 'rgba(239,68,68,0.3)' : 'rgba(99,102,241,0.25)'}`,
+              }}>
+                <Flame size={10} color={isDue ? '#ef4444' : '#f59e0b'} />
+                {isDue
+                  ? 'Đến hạn ôn'
+                  : progress.status === 'mastered'
+                  ? '🧠 Mastered'
+                  : `Level ${progress.srsLevel || 1} · ${reviewInfo?.text || 'Đang học'}`
+                }
+              </span>
+            )}
           </div>
           <p className="text-secondary text-sm mb-3">{chunk.meaningVi}</p>
 
@@ -247,9 +268,56 @@ export function ProgressModule({ allProgress, chunks, transcripts = [], onReprac
     return { tId, label, date, items, lastPracticed };
   }).sort((a, b) => b.lastPracticed - a.lastPracticed);
 
+  // SRS Stats
+  const srsStats = getSrsStats(allProgress, chunks);
+
   return (
     <div>
-      {/* Stats overview */}
+      {/* SRS Spaced Repetition Overview */}
+      <div className="card mb-6" style={{ background: 'linear-gradient(135deg, rgba(99,102,241,0.08), rgba(168,85,247,0.05))', border: '1px solid rgba(99,102,241,0.25)', padding: '18px 20px' }}>
+        <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
+          <div className="flex items-center gap-2">
+            <Flame size={18} color="#f59e0b" />
+            <span style={{ fontWeight: 800, fontSize: 15, color: 'var(--text-primary)' }}>
+              Lộ trình Lặp lại ngắt quãng (Spaced Repetition)
+            </span>
+          </div>
+          {srsStats.dueCount > 0 && onRepractice && (
+            <span style={{ fontSize: 12, color: 'var(--error-text)', fontWeight: 700 }}>
+              🔥 Có {srsStats.dueCount} chunk cần ôn hôm nay
+            </span>
+          )}
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: 10 }}>
+          <div style={{ background: 'var(--bg-elevated)', borderRadius: 'var(--radius-md)', padding: '12px 14px', border: '1px solid var(--border-subtle)', textAlign: 'center' }}>
+            <div style={{ fontSize: 20, fontWeight: 800, color: srsStats.dueCount > 0 ? '#ef4444' : 'var(--text-muted)' }}>
+              {srsStats.dueCount}
+            </div>
+            <div style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 2 }}>🔥 Cần ôn ngay</div>
+          </div>
+          <div style={{ background: 'var(--bg-elevated)', borderRadius: 'var(--radius-md)', padding: '12px 14px', border: '1px solid var(--border-subtle)', textAlign: 'center' }}>
+            <div style={{ fontSize: 20, fontWeight: 800, color: 'var(--accent-400)' }}>
+              {srsStats.learningCount}
+            </div>
+            <div style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 2 }}>⚡ Đang trong chu trình</div>
+          </div>
+          <div style={{ background: 'var(--bg-elevated)', borderRadius: 'var(--radius-md)', padding: '12px 14px', border: '1px solid var(--border-subtle)', textAlign: 'center' }}>
+            <div style={{ fontSize: 20, fontWeight: 800, color: 'var(--success-text)' }}>
+              {srsStats.masteredCount}
+            </div>
+            <div style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 2 }}>🧠 Đã thành thạo</div>
+          </div>
+          <div style={{ background: 'var(--bg-elevated)', borderRadius: 'var(--radius-md)', padding: '12px 14px', border: '1px solid var(--border-subtle)', textAlign: 'center' }}>
+            <div style={{ fontSize: 20, fontWeight: 800, color: '#f59e0b' }}>
+              {srsStats.dueSoon24hCount}
+            </div>
+            <div style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 2 }}>⏳ Sắp đến hạn (24h)</div>
+          </div>
+        </div>
+      </div>
+
+      {/* General Stats overview */}
       <div className="grid-3 mb-6" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
         <StatCard icon={Award}      label="Chunks đã thuần thục" value={learnedChunks}   accent="99,102,241" />
         <StatCard icon={TrendingUp} label="Tổng lần luyện"       value={totalPractice}   accent="34,197,94"  />
@@ -259,7 +327,7 @@ export function ProgressModule({ allProgress, chunks, transcripts = [], onReprac
       {/* Per-transcript groups */}
       <div className="section-header" style={{ marginBottom: 16 }}>
         <div>
-          <div className="section-title">Chunk Progress</div>
+          <div className="section-title">Chi tiết tiến độ theo nguồn bài học</div>
           <div className="section-subtitle">
             {chunksWithProgress.length} chunks đã luyện ·{' '}
             {groups.filter(g => !g.tId.startsWith('vocab_topic_')).length} đoạn hội thoại ·{' '}
