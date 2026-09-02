@@ -4,6 +4,8 @@ import {
   authSignUp,
   authSignOut,
   authResend,
+  authResetPasswordForEmail,
+  authUpdatePassword,
   authGetSession,
   authOnChange,
   isSupabaseConfigured,
@@ -12,6 +14,10 @@ import {
 export function useAuth() {
   const [user, setUser]       = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isPasswordRecovery, setIsPasswordRecovery] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.location.hash.includes('type=recovery') || window.location.search.includes('type=recovery');
+  });
 
   useEffect(() => {
     if (!isSupabaseConfigured()) {
@@ -37,8 +43,11 @@ export function useAuth() {
         }
       });
 
-    // Listen for login/logout events
-    const unsub = authOnChange((_event, session) => {
+    // Listen for login/logout and recovery events
+    const unsub = authOnChange((event, session) => {
+      if (event === 'PASSWORD_RECOVERY') {
+        setIsPasswordRecovery(true);
+      }
       if (isMounted) {
         setUser(session?.user || null);
         setLoading(false);
@@ -76,5 +85,36 @@ export function useAuth() {
     await authResend(email);
   };
 
-  return { user, loading, signIn, signUp, signOut, resendConfirm };
+  const resetPassword = async (email) => {
+    return await authResetPasswordForEmail(email);
+  };
+
+  const updatePassword = async (newPassword) => {
+    const res = await authUpdatePassword(newPassword);
+    setIsPasswordRecovery(false);
+    if (typeof window !== 'undefined') {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+    return res;
+  };
+
+  const clearPasswordRecovery = () => {
+    setIsPasswordRecovery(false);
+    if (typeof window !== 'undefined') {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+  };
+
+  return {
+    user,
+    loading,
+    signIn,
+    signUp,
+    signOut,
+    resendConfirm,
+    resetPassword,
+    updatePassword,
+    isPasswordRecovery,
+    clearPasswordRecovery,
+  };
 }

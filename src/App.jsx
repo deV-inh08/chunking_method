@@ -6,7 +6,7 @@ import { VocabModule } from './components/VocabModule';
 import { PracticeModule } from './components/PracticeModule';
 import { ProgressModule } from './components/ProgressModule';
 import { SettingsModal } from './components/Settings';
-import { AuthScreen } from './components/Auth';
+import { AuthScreen, ResetPasswordModal } from './components/Auth';
 import { Toast, Spinner, ErrorBoundary } from './components/ui';
 import { useTranscripts, useSettings, useProgress } from './hooks/useStorage';
 import { useAuth } from './hooks/useAuth';
@@ -50,7 +50,11 @@ export default function App() {
   const { toasts, addToast, removeToast } = useToast();
 
   // Auth state
-  const { user, loading: authLoading, signIn, signUp, signOut: authSignOut, resendConfirm } = useAuth();
+  const {
+    user, loading: authLoading,
+    signIn, signUp, signOut: authSignOut, resendConfirm,
+    resetPassword, updatePassword, isPasswordRecovery, clearPasswordRecovery,
+  } = useAuth();
 
   const handleSignOut = useCallback(async () => {
     await authSignOut();
@@ -321,6 +325,23 @@ export default function App() {
     );
   }
 
+  // Reset password modal if user landed with recovery token
+  if (isPasswordRecovery) {
+    return (
+      <>
+        <ResetPasswordModal
+          onUpdatePassword={updatePassword}
+          onSuccess={() => {
+            clearPasswordRecovery();
+            addToast('success', '🎉 Đã cập nhật mật khẩu mới thành công!');
+          }}
+          onClose={() => clearPasswordRecovery()}
+        />
+        <Toast toasts={toasts} removeToast={removeToast} />
+      </>
+    );
+  }
+
   // Show auth screen on initial load if user is not logged in AND has not opted for guest mode
   if (!user && !guestMode) {
     return (
@@ -329,6 +350,7 @@ export default function App() {
           onSignIn={signIn}
           onSignUp={signUp}
           onResendConfirm={resendConfirm}
+          onResetPassword={resetPassword}
           onContinueAsGuest={() => setGuestMode(true)}
         />
         <Toast toasts={toasts} removeToast={removeToast} />
@@ -494,7 +516,20 @@ export default function App() {
             return res;
           }}
           onResendConfirm={resendConfirm}
+          onResetPassword={resetPassword}
           onClose={() => setShowAuthModal(false)}
+        />
+      )}
+
+      {/* Reset Password Modal (khi user click link recovery từ email) */}
+      {isPasswordRecovery && (
+        <ResetPasswordModal
+          onUpdatePassword={updatePassword}
+          onSuccess={() => {
+            clearPasswordRecovery();
+            addToast('success', '🎉 Đã cập nhật mật khẩu mới thành công!');
+          }}
+          onClose={() => clearPasswordRecovery()}
         />
       )}
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BookOpen, Mail, Lock, Eye, EyeOff, AlertCircle, CheckCircle, Send, ArrowLeft, X } from 'lucide-react';
+import { BookOpen, Mail, Lock, Eye, EyeOff, AlertCircle, CheckCircle, Send, ArrowLeft, X, Key } from 'lucide-react';
 import { isSupabaseConfigured } from '../../services/supabase';
 
 // ─── AwaitingConfirmScreen ────────────────────────────────────
@@ -137,9 +137,165 @@ function AwaitingConfirmScreen({ email, onBack, onResend }) {
   );
 }
 
+// ─── ForgotPasswordScreen ─────────────────────────────────────
+function ForgotPasswordScreen({ onBack, onResetPassword, onClose }) {
+  const [email, setEmail]     = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError]     = useState('');
+  const [sentEmail, setSentEmail] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email.trim()) {
+      setError('Vui lòng nhập địa chỉ email.');
+      return;
+    }
+    setLoading(true);
+    setError('');
+    try {
+      if (onResetPassword) {
+        await onResetPassword(email.trim());
+      }
+      setSentEmail(email.trim());
+    } catch (err) {
+      setError(err.message || 'Không thể gửi email đặt lại mật khẩu. Thử lại sau ít phút.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div style={{ width: '100%', maxWidth: 420, animation: 'fadeIn 0.4s ease', position: 'relative' }}>
+      {/* Icon & Title */}
+      <div style={{ textAlign: 'center', marginBottom: 28 }}>
+        <div style={{
+          width: 60, height: 60,
+          borderRadius: 'var(--radius-lg)',
+          background: 'linear-gradient(135deg, var(--accent-500), var(--accent-700))',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          margin: '0 auto 14px',
+          boxShadow: '0 8px 32px rgba(99,102,241,0.4)',
+        }}>
+          <Key size={28} color="white" />
+        </div>
+        <h1 style={{ fontSize: 24, fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.03em' }}>
+          Quên mật khẩu
+        </h1>
+        <p style={{ color: 'var(--text-muted)', fontSize: 13, marginTop: 4 }}>
+          Nhập email để nhận liên kết đặt lại mật khẩu mới
+        </p>
+      </div>
+
+      <div className="card" style={{ padding: '28px 24px', position: 'relative' }}>
+        {onClose && (
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Đóng"
+            style={{
+              position: 'absolute', top: 14, right: 14,
+              background: 'transparent', border: 'none',
+              color: 'var(--text-muted)', cursor: 'pointer',
+              padding: 4, borderRadius: 'var(--radius-sm)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}
+          >
+            <X size={18} />
+          </button>
+        )}
+
+        {sentEmail ? (
+          <div style={{ textAlign: 'center' }}>
+            <div style={{
+              width: 56, height: 56, margin: '0 auto 16px',
+              borderRadius: 'var(--radius-full)',
+              background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.3)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <CheckCircle size={28} color="var(--success-text)" />
+            </div>
+            <h3 style={{ fontSize: 17, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 8 }}>
+              Kiểm tra hộp thư của bạn
+            </h3>
+            <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 8 }}>
+              Chúng tôi đã gửi đường dẫn đặt lại mật khẩu đến:
+            </p>
+            <p style={{ fontWeight: 700, fontSize: 14, color: 'var(--accent-300)', marginBottom: 16, wordBreak: 'break-all' }}>
+              {sentEmail}
+            </p>
+            <p style={{ fontSize: 12, color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: 22 }}>
+              Vui lòng kiểm tra hộp thư đến (hoặc thư mục Spam/Junk) và bấm vào liên kết trong email để đặt lại mật khẩu.
+            </p>
+            <button
+              type="button"
+              className="btn btn-primary w-full"
+              onClick={onBack}
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, fontSize: 13.5 }}
+            >
+              <ArrowLeft size={15} /> Quay lại đăng nhập
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <div>
+              <label className="label" style={{ marginBottom: 6 }}>
+                <Mail size={12} style={{ display: 'inline', marginRight: 4 }} />
+                Email đăng ký
+              </label>
+              <input
+                id="forgot-email"
+                type="email"
+                className="input-field w-full"
+                placeholder="your@email.com"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                autoComplete="email"
+                disabled={loading}
+                autoFocus
+              />
+            </div>
+
+            {error && (
+              <div style={{
+                display: 'flex', alignItems: 'flex-start', gap: 8,
+                background: 'var(--error-bg)', border: '1px solid var(--error-border)',
+                borderRadius: 'var(--radius-md)', padding: '10px 14px',
+                fontSize: 13, color: 'var(--error-text)',
+              }}>
+                <AlertCircle size={14} style={{ flexShrink: 0, marginTop: 1 }} />
+                {error}
+              </div>
+            )}
+
+            <button
+              id="send-reset-email-btn"
+              type="submit"
+              className="btn btn-primary w-full"
+              disabled={loading}
+              style={{ padding: '12px 20px', fontSize: 14.5, fontWeight: 700, marginTop: 4 }}
+            >
+              {loading ? 'Đang gửi…' : 'Gửi liên kết đặt lại mật khẩu'}
+            </button>
+
+            <button
+              type="button"
+              className="btn btn-ghost w-full"
+              onClick={onBack}
+              disabled={loading}
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, fontSize: 13 }}
+            >
+              <ArrowLeft size={14} /> Quay lại đăng nhập
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ─── AuthScreen ───────────────────────────────────────────────
-export function AuthScreen({ onSignIn, onSignUp, onResendConfirm, onContinueAsGuest, onClose, isModal = false }) {
-  const [mode, setMode]                   = useState('login'); // 'login' | 'register' | 'awaiting-confirm'
+export function AuthScreen({ onSignIn, onSignUp, onResendConfirm, onResetPassword, onContinueAsGuest, onClose, isModal = false }) {
+  const [mode, setMode]                   = useState('login'); // 'login' | 'register' | 'awaiting-confirm' | 'forgot-password'
   const [email, setEmail]                 = useState('');
   const [password, setPassword]           = useState('');
   const [confirm, setConfirm]             = useState('');
@@ -221,6 +377,37 @@ export function AuthScreen({ onSignIn, onSignUp, onResendConfirm, onContinueAsGu
         onBack={() => { setMode('login'); setError(''); setSuccess(''); }}
         onResend={handleResend}
       />
+    );
+  }
+
+  // ── Màn quên mật khẩu ───────────────────────────────────────
+  if (mode === 'forgot-password') {
+    const forgotContent = (
+      <ForgotPasswordScreen
+        onBack={() => { setMode('login'); setError(''); setSuccess(''); }}
+        onResetPassword={onResetPassword}
+        onClose={onClose}
+      />
+    );
+    if (isModal) {
+      return (
+        <div
+          className="modal-overlay"
+          onClick={(e) => { if (e.target === e.currentTarget && onClose) onClose(); }}
+          style={{ zIndex: 1100 }}
+        >
+          {forgotContent}
+        </div>
+      );
+    }
+    return (
+      <div style={{
+        minHeight: '100vh',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        background: 'var(--bg-base)', padding: 20,
+      }}>
+        {forgotContent}
+      </div>
     );
   }
 
@@ -331,10 +518,26 @@ export function AuthScreen({ onSignIn, onSignUp, onResendConfirm, onContinueAsGu
 
           {/* Password */}
           <div>
-            <label className="label" style={{ marginBottom: 6 }}>
-              <Lock size={12} style={{ display: 'inline', marginRight: 4 }} />
-              Mật khẩu
-            </label>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+              <label className="label" style={{ margin: 0 }}>
+                <Lock size={12} style={{ display: 'inline', marginRight: 4 }} />
+                Mật khẩu
+              </label>
+              {mode === 'login' && onResetPassword && (
+                <button
+                  type="button"
+                  id="forgot-password-link"
+                  onClick={() => { setMode('forgot-password'); setError(''); setSuccess(''); }}
+                  style={{
+                    background: 'none', border: 'none', padding: 0,
+                    fontSize: 12, color: 'var(--accent-300)', cursor: 'pointer',
+                    textDecoration: 'underline',
+                  }}
+                >
+                  Quên mật khẩu?
+                </button>
+              )}
+            </div>
             <div style={{ position: 'relative' }}>
               <input
                 id="auth-password"
@@ -480,6 +683,162 @@ export function AuthScreen({ onSignIn, onSignUp, onResendConfirm, onContinueAsGu
       background: 'var(--bg-base)', padding: 20,
     }}>
       {content}
+    </div>
+  );
+}
+
+// ─── ResetPasswordModal ────────────────────────────────────────
+export function ResetPasswordModal({ onUpdatePassword, onSuccess, onClose }) {
+  const [password, setPassword]       = useState('');
+  const [confirm, setConfirm]         = useState('');
+  const [showPw, setShowPw]           = useState(false);
+  const [loading, setLoading]         = useState(false);
+  const [error, setError]             = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    if (!password.trim()) {
+      setError('Vui lòng nhập mật khẩu mới.');
+      return;
+    }
+    if (password.length < 6) {
+      setError('Mật khẩu mới phải có ít nhất 6 ký tự.');
+      return;
+    }
+    if (password !== confirm) {
+      setError('Mật khẩu xác nhận không khớp.');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      await onUpdatePassword(password.trim());
+      if (onSuccess) onSuccess();
+    } catch (err) {
+      setError(err.message || 'Không thể cập nhật mật khẩu. Vui lòng thử lại.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div
+      className="modal-overlay"
+      style={{ zIndex: 1200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}
+    >
+      <div style={{ width: '100%', maxWidth: 420, animation: 'fadeIn 0.3s ease' }}>
+        <div className="card" style={{ padding: '28px 24px', position: 'relative' }}>
+          {onClose && (
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Đóng"
+              style={{
+                position: 'absolute', top: 14, right: 14,
+                background: 'transparent', border: 'none',
+                color: 'var(--text-muted)', cursor: 'pointer',
+                padding: 4, borderRadius: 'var(--radius-sm)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}
+            >
+              <X size={18} />
+            </button>
+          )}
+
+          <div style={{ textAlign: 'center', marginBottom: 22 }}>
+            <div style={{
+              width: 56, height: 56,
+              borderRadius: 'var(--radius-lg)',
+              background: 'linear-gradient(135deg, var(--accent-500), var(--accent-700))',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              margin: '0 auto 12px',
+              boxShadow: '0 8px 24px rgba(99,102,241,0.35)',
+            }}>
+              <Key size={26} color="white" />
+            </div>
+            <h2 style={{ fontSize: 20, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 4 }}>
+              Đặt lại mật khẩu mới
+            </h2>
+            <p style={{ fontSize: 13, color: 'var(--text-muted)', margin: 0 }}>
+              Vui lòng nhập mật khẩu mới cho tài khoản của bạn
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <div>
+              <label className="label" style={{ marginBottom: 6 }}>
+                <Lock size={12} style={{ display: 'inline', marginRight: 4 }} />
+                Mật khẩu mới
+              </label>
+              <div style={{ position: 'relative' }}>
+                <input
+                  id="reset-new-password"
+                  type={showPw ? 'text' : 'password'}
+                  className="input-field w-full"
+                  placeholder="Ít nhất 6 ký tự"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  autoComplete="new-password"
+                  disabled={loading}
+                  autoFocus
+                  style={{ paddingRight: 44 }}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPw(v => !v)}
+                  style={{
+                    position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)',
+                    color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer',
+                  }}
+                >
+                  {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label className="label" style={{ marginBottom: 6 }}>
+                <Lock size={12} style={{ display: 'inline', marginRight: 4 }} />
+                Xác nhận mật khẩu mới
+              </label>
+              <input
+                id="reset-confirm-password"
+                type={showPw ? 'text' : 'password'}
+                className="input-field w-full"
+                placeholder="Nhập lại mật khẩu mới"
+                value={confirm}
+                onChange={e => setConfirm(e.target.value)}
+                autoComplete="new-password"
+                disabled={loading}
+              />
+            </div>
+
+            {error && (
+              <div style={{
+                display: 'flex', alignItems: 'flex-start', gap: 8,
+                background: 'var(--error-bg)', border: '1px solid var(--error-border)',
+                borderRadius: 'var(--radius-md)', padding: '10px 14px',
+                fontSize: 13, color: 'var(--error-text)',
+              }}>
+                <AlertCircle size={14} style={{ flexShrink: 0, marginTop: 1 }} />
+                {error}
+              </div>
+            )}
+
+            <button
+              id="reset-password-submit-btn"
+              type="submit"
+              className="btn btn-primary w-full"
+              disabled={loading}
+              style={{ padding: '12px 20px', fontSize: 14.5, fontWeight: 700, marginTop: 6 }}
+            >
+              {loading ? 'Đang cập nhật…' : 'Cập nhật mật khẩu'}
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

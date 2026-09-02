@@ -94,6 +94,27 @@ export async function authResend(email) {
   if (error) throw error;
 }
 
+// Gửi email đặt lại mật khẩu
+export async function authResetPasswordForEmail(email) {
+  const client = getSupabaseClient();
+  if (!client) throw new Error('Supabase chưa được cấu hình. Vào Settings để nhập URL & Key.');
+  const redirectTo = typeof window !== 'undefined' ? window.location.origin : undefined;
+  const { data, error } = await client.auth.resetPasswordForEmail(email, {
+    redirectTo,
+  });
+  if (error) throw error;
+  return data;
+}
+
+// Cập nhật mật khẩu mới
+export async function authUpdatePassword(newPassword) {
+  const client = getSupabaseClient();
+  if (!client) throw new Error('Supabase chưa được cấu hình. Vào Settings để nhập URL & Key.');
+  const { data, error } = await client.auth.updateUser({ password: newPassword });
+  if (error) throw error;
+  return data;
+}
+
 export async function authGetSession() {
   const client = getSupabaseClient();
   if (!client) return null;
