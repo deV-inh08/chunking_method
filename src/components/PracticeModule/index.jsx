@@ -472,6 +472,7 @@ function WritingSession({
   const [gradingResults, setGradingResults] = useState(() => {
     return getPracticeDraft(chunk.id)?.gradingResults || {};
   });
+  const [isGrading, setIsGrading] = useState(false);
   const [showSpeakingModal, setShowSpeakingModal] = useState(false);
 
   // Điều kiện mở Luyện nói: đã chấm ít nhất 2 câu đạt >= 50đ, hoặc chunk đã có tiến độ trước đó
@@ -622,6 +623,35 @@ function WritingSession({
               }
             </span>
           )}
+
+          {/* Nút Luyện nói AI nhanh ở Header */}
+          <button
+            type="button"
+            className="btn btn-sm"
+            onClick={() => {
+              if (!canStartSpeaking) {
+                onToast('info', 'Bạn có thể luyện nói trực tiếp hoặc hoàn thành bài viết trước để đạt hiệu quả cao nhất!');
+              }
+              setShowSpeakingModal(true);
+            }}
+            style={{
+              marginLeft: 'auto',
+              background: canStartSpeaking ? 'linear-gradient(135deg, #10b981, #059669)' : 'rgba(16, 185, 129, 0.2)',
+              color: '#fff',
+              border: '1px solid rgba(16, 185, 129, 0.4)',
+              padding: '4px 12px',
+              fontSize: 12,
+              fontWeight: 700,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 5,
+              borderRadius: 'var(--radius-full)',
+              boxShadow: canStartSpeaking ? '0 0 12px rgba(16, 185, 129, 0.4)' : 'none',
+              cursor: 'pointer',
+            }}
+          >
+            <Mic size={13} /> 🎙️ Luyện nói AI
+          </button>
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
           {chunk.meaningVi}
@@ -740,21 +770,25 @@ function WritingSession({
         <button
           type="button"
           className="btn"
-          onClick={() => setShowSpeakingModal(true)}
-          disabled={!canStartSpeaking}
+          onClick={() => {
+            if (!canStartSpeaking) {
+              onToast('info', 'Bạn có thể luyện nói trực tiếp hoặc hoàn thành bài viết trước để đạt hiệu quả cao nhất!');
+            }
+            setShowSpeakingModal(true);
+          }}
           style={{
             background: canStartSpeaking
               ? 'linear-gradient(135deg, #10b981, #059669)'
-              : 'rgba(255, 255, 255, 0.08)',
-            color: canStartSpeaking ? '#fff' : 'var(--text-muted)',
-            border: canStartSpeaking ? 'none' : '1px solid var(--border-subtle)',
+              : 'rgba(16, 185, 129, 0.2)',
+            color: '#fff',
+            border: '1px solid rgba(16, 185, 129, 0.4)',
             padding: '10px 22px',
             fontSize: 14, fontWeight: 700,
             display: 'flex', alignItems: 'center', gap: 8,
             boxShadow: canStartSpeaking ? '0 0 16px rgba(16, 185, 129, 0.4)' : 'none',
-            cursor: canStartSpeaking ? 'pointer' : 'not-allowed',
+            cursor: 'pointer',
           }}
-          title={canStartSpeaking ? 'Bắt đầu luyện nói trực tiếp với AI' : 'Hoàn thành bài viết trước'}
+          title="Bắt đầu luyện nói trực tiếp với AI"
         >
           <Mic size={16} /> 🎙️ Luyện nói với AI
         </button>
