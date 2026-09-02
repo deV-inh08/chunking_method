@@ -222,3 +222,44 @@ export function formatTimeUntilReview(nextReviewAt) {
   const diffDays = Math.round(diffHours / 24);
   return { text: `Ôn sau ${diffDays} ngày`, isDue: false, badgeType: 'neutral' };
 }
+
+/**
+ * Tính Quality Grade (0-5) từ kết quả Speaking Session
+ */
+export function computeQualityFromSpeaking(speakingResult) {
+  if (!speakingResult) return 2;
+  const { score = 0, usedTargetChunk, comprehensible } = speakingResult;
+
+  // Nếu không dùng đúng chunk dù đã được AI dẫn dắt -> chưa đạt (q = 1 hoặc 2)
+  if (!usedTargetChunk) {
+    return score >= 40 ? 2 : 1;
+  }
+
+  // Nếu dùng đúng chunk nhưng người nghe hoàn toàn không hiểu được ý -> q = 2
+  if (!comprehensible) {
+    return 2;
+  }
+
+  // Quy đổi theo điểm số
+  if (score >= 90) return 5;
+  if (score >= 75) return 4;
+  if (score >= 50) return 3;
+  return 2;
+}
+
+/**
+ * Cập nhật chu kỳ SRS sau buổi luyện nói (Speaking Session)
+ */
+export function updateSRSAfterSpeaking(prevProgress, speakingResult, track = 'track_a') {
+  const q = computeQualityFromSpeaking(speakingResult);
+  const isSuccess = q >= 3;
+  const score = speakingResult?.score || 0;
+
+  // Tái sử dụng calculateNextReview với kết quả speaking
+  const srsUpdate = calculateNextReview(prevProgress, isSuccess, score, track);
+
+  return {
+    ...srsUpdate,
+    review_mode: 'speaking_first',
+  };
+}

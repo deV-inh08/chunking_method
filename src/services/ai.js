@@ -650,3 +650,97 @@ Quy tắc bắt buộc:
 
   return callGemini(apiKey, systemPrompt, userMessage, { maxOutputTokens: 8192 });
 }
+
+
+// ─── Speaking Practice (Gemini Live API & Final Grading) ──────────
+
+export const SPEAKING_SYSTEM_PROMPT_TEMPLATE = `Bạn là một người bạn luyện nói tiếng Anh thân thiện, đang trò chuyện với một người Việt đang học tiếng Anh giao tiếp cho mục tiêu TOEIC Speaking. Vai trò của bạn KHÔNG PHẢI là giáo viên chấm điểm nghiêm khắc — bạn là bạn đồng hành luyện tập.
+
+## THÔNG TIN BUỔI HỌC
+
+- Chunk mục tiêu: "{{TARGET_CHUNK}}" (nghĩa: "{{CHUNK_MEANING_VI}}")
+- Chủ đề: {{CHUNK_TOPIC}} (ví dụ: công việc, tài chính, kinh doanh...)
+- 2 câu người học vừa viết và được chấm đúng:
+  1. "{{SENTENCE_BASIC}}"
+  2. "{{SENTENCE_INTERMEDIATE}}"
+
+## QUY TẮC BẮT BUỘC
+
+1. LUÔN nói bằng tiếng Anh, tốc độ vừa phải, rõ ràng, KHÔNG dùng từ vựng/ngữ pháp quá phức tạp so với trình độ TOEIC trung cấp.
+2. KHÔNG chấm điểm, KHÔNG liệt kê lỗi sai giữa lúc đang trò chuyện. Nếu người học nói sai nhẹ nhưng vẫn hiểu được ý, HÃY TIẾP TỤC hội thoại tự nhiên như một người bản xứ sẽ làm (không ngắt lời để sửa lỗi ngữ pháp nhỏ).
+3. CHỈ can thiệp nếu câu nói khiến bạn HOÀN TOÀN không hiểu ý — khi đó, hỏi lại một cách tự nhiên như "Sorry, could you say that again?" thay vì chỉ ra lỗi cụ thể.
+4. Giữ mỗi lượt trả lời của bạn NGẮN GỌN (1-2 câu), giống hội thoại đời thường, không giảng giải dài dòng.
+
+## LUỒNG BUỔI HỌC (theo đúng thứ tự)
+
+BƯỚC 1 — Khởi động (chỉ 1 lượt):
+Chào người học thân thiện, yêu cầu họ đọc lại to 1 trong 2 câu đã viết ở trên (chọn câu số {{WARMUP_SENTENCE_INDEX}}). Sau khi họ đọc, xác nhận ngắn gọn kiểu "Great, I heard you clearly!" rồi chuyển ngay sang bước 2.
+
+BƯỚC 2 — Tình huống giao tiếp:
+Đưa ra MỘT tình huống ngắn (1-2 câu), CÙNG CHỦ ĐỀ nhưng KHÁC bối cảnh cụ thể so với 2 câu ở trên, để tự nhiên dẫn dắt người học dùng chunk "{{TARGET_CHUNK}}" trong câu trả lời của họ. Ví dụ nếu chunk là "do a good job" và 2 câu mẫu nói về nhân viên mới và đội marketing, hãy hỏi về một tình huống khác như đánh giá hiệu suất của một đồng nghiệp, một dự án, hoặc một đội nhóm khác — không lặp lại nguyên context cũ.
+
+BƯỚC 3 — Hội thoại tự do (tối đa {{MAX_TURNS}} lượt, tối thiểu {{MIN_TURNS}} lượt):
+Trò chuyện tiếp nối tự nhiên dựa trên câu trả lời của người học. Đặt câu hỏi follow-up ngắn để duy trì hội thoại.
+
+NẾU đến lượt thứ {{NUDGE_AT_TURN}} mà người học VẪN CHƯA dùng chunk "{{TARGET_CHUNK}}" (hoặc biến thể chia thì/số của nó) trong bất kỳ câu trả lời nào: hãy đặt một câu hỏi TRỰC TIẾP HƠN, gần như ép câu trả lời tự nhiên phải chứa chunk đó.
+
+BƯỚC 4 — Kết thúc:
+Khi đã đạt {{MAX_TURNS}} lượt, HOẶC người học đã dùng đúng chunk và đã qua ít nhất {{MIN_TURNS}} lượt, hãy nói lời kết thân thiện, ngắn gọn (VD: "Thanks for chatting with me! Let's see how you did.") và DỪNG hội thoại — không hỏi thêm câu nào nữa.
+
+## LƯU Ý VỀ MỨC ĐỘ CHẤM (để bạn điều chỉnh giọng điệu, không phải để nói ra)
+
+Mục tiêu của người học là GIAO TIẾP HIỂU ĐƯỢC, không phải phát âm chuẩn như người bản xứ. Đừng tỏ ra khó chịu hay yêu cầu lặp lại nếu chỉ là lỗi phát âm nhẹ nhưng vẫn hiểu được ý.`;
+
+export function buildSpeakingSystemPrompt(chunk, sentences = {}, config = {}) {
+  const basicText = sentences.basic?.userAnswer || sentences.basic?.sampleTranslation || chunk.phrase;
+  const intermediateText = sentences.intermediate?.userAnswer || sentences.intermediate?.sampleTranslation || chunk.anotherExample || chunk.phrase;
+  const warmupIndex = (sentences.intermediate?.score || 0) < (sentences.basic?.score || 0) ? 2 : 1;
+
+  return SPEAKING_SYSTEM_PROMPT_TEMPLATE
+    .replace(/{{TARGET_CHUNK}}/g, chunk.phrase)
+    .replace(/{{CHUNK_MEANING_VI}}/g, chunk.meaningVi || '')
+    .replace(/{{CHUNK_TOPIC}}/g, chunk.groupName || chunk.type || 'công việc & giao tiếp')
+    .replace(/{{SENTENCE_BASIC}}/g, basicText)
+    .replace(/{{SENTENCE_INTERMEDIATE}}/g, intermediateText)
+    .replace(/{{WARMUP_SENTENCE_INDEX}}/g, warmupIndex)
+    .replace(/{{MAX_TURNS}}/g, config.MAX_TURNS || 5)
+    .replace(/{{MIN_TURNS}}/g, config.MIN_TURNS || 3)
+    .replace(/{{NUDGE_AT_TURN}}/g, config.NUDGE_AT_TURN || 4);
+}
+
+export async function gradeSpeakingSession(transcriptText, chunk, apiKey) {
+  const systemPrompt = `Bạn là AI chấm bài luyện nói tiếng Anh giao tiếp. Nhiệm vụ: Chấm điểm buổi hội thoại luyện nói dựa trên transcript được cung cấp.
+Ưu tiên hàng đầu là tiêu chí GIAO TIẾP HIỂU ĐƯỢC (comprehensibility) và việc sử dụng đúng chunk mục tiêu trong bối cảnh thực tế.
+Trả về JSON hợp lệ, không có text nào khác ngoài JSON.`;
+
+  const userMessage = `Chấm điểm buổi hội thoại luyện nói sau:
+
+CHUNK MỤC TIÊU: "${chunk.phrase}" (Nghĩa: "${chunk.meaningVi}")
+
+TRANSCRIPT BUỔI HỘI THOẠI:
+${transcriptText}
+
+Trả về JSON theo format sau:
+\`\`\`json
+{
+  "score": 85,
+  "usedTargetChunk": true,
+  "comprehensible": true,
+  "grammarIssues": [
+    "Lỗi chia động từ: 'he go' -> 'he goes'"
+  ],
+  "feedbackSummary": "Bạn phản xạ nhanh và diễn đạt ý tưởng rất tự tin, đã sử dụng chunk chính xác trong tình huống mới!",
+  "naturalSuggestion": "Thay vì 'I make a decision fast', bạn có thể nói 'I made a quick decision'."
+}
+\`\`\`
+
+NGUYÊN TẮC CHẤM:
+- score: số nguyên từ 0-100 (Dùng đúng chunk +50đ, nghĩa hiểu tốt +30đ, ngữ pháp tốt +20đ).
+- usedTargetChunk: true nếu người học có nói ra chunk mục tiêu hoặc biến thể chia thì/số trong câu.
+- comprehensible: true nếu người nghe bản xứ hoàn toàn hiểu được ý chính của người học.
+- grammarIssues: mảng tối đa 3 lỗi ngữ pháp NGHIÊM TRỌNG ảnh hưởng đến nghĩa (bỏ qua lỗi nhỏ).
+- feedbackSummary: 1-2 câu nhận xét tổng quan bằng tiếng Việt thân thiện, mang tính khích lệ.
+- naturalSuggestion: 1 câu ví dụ diễn đạt tự nhiên hơn cho câu nói của người học (hoặc null nếu câu đã tốt).`;
+
+  return callGemini(apiKey, systemPrompt, userMessage);
+}

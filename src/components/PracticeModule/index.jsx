@@ -2,12 +2,16 @@ import { useState, useEffect, useMemo } from 'react';
 import {
   PenLine, ChevronRight, ChevronLeft, ChevronDown, ChevronUp, RotateCcw,
   CheckCircle, XCircle, Sparkles, Loader, RefreshCw, Volume2, VolumeX,
-  Flame, BookMarked, FileText, Layers,
+  Flame, BookMarked, FileText, Layers, Mic,
 } from 'lucide-react';
 import { EmptyState, Badge, Spinner, Modal } from '../ui';
-import { getSituations, getApiKey, getPracticeDraft, savePracticeDraft, clearPracticeDraft } from '../../store/storage';
+import {
+  getSituations, getApiKey, getPracticeDraft, savePracticeDraft, clearPracticeDraft,
+  saveSpeakingProgress,
+} from '../../store/storage';
 import { gradeWritingBatch } from '../../services/ai';
 import { formatTimeUntilReview, isDueForReview } from '../../services/srs';
+import { SpeakingSession } from './SpeakingSession';
 
 
 const CHUNK_TYPE_LABELS = {
@@ -468,7 +472,25 @@ function WritingSession({
   const [gradingResults, setGradingResults] = useState(() => {
     return getPracticeDraft(chunk.id)?.gradingResults || {};
   });
-  const [isGrading, setIsGrading] = useState(false);
+  const [showSpeakingModal, setShowSpeakingModal] = useState(false);
+
+  // Điều kiện mở Luyện nói: đã chấm ít nhất 2 câu đạt >= 50đ, hoặc chunk đã có tiến độ trước đó
+  const canStartSpeaking = useMemo(() => {
+    const results = Object.values(gradingResults || {});
+    if (results.length >= 2) {
+      const passedCount = results.filter(r => (r.score || 0) >= 50).length;
+      if (passedCount >= 2) return true;
+    }
+    if (progress && progress.practiceCount > 0 && (progress.lastScore == null || progress.lastScore >= 50)) {
+      return true;
+    }
+    return false;
+  }, [gradingResults, progress]);
+
+  const handleSpeakingComplete = (chunkId, speakingResult) => {
+    const updatedProg = saveSpeakingProgress(chunkId, speakingResult);
+    onComplete(chunkId, speakingResult.score >= 70, speakingResult.score, updatedProg.lastFeedback);
+  };
 
   // Sync draft states when chunk changes
   useEffect(() => {
@@ -686,6 +708,69 @@ function WritingSession({
           </button>
         </div>
       </div>
+
+      {/* ── SPEAKING PRACTICE CTA CARD ── */}
+      <div
+        className="card animate-fade-in"
+        style={{
+          background: canStartSpeaking
+            ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 78, 59, 0.22))'
+            : 'rgba(255, 255, 255, 0.02)',
+          borderColor: canStartSpeaking ? 'rgba(16, 185, 129, 0.4)' : 'var(--border-subtle)',
+          padding: '16px 20px',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16,
+          flexWrap: 'wrap',
+          borderRadius: 'var(--radius-md)',
+          marginTop: 8,
+        }}
+      >
+        <div>
+          <div style={{ fontWeight: 800, fontSize: 15, color: '#fff', marginBottom: 3, display: 'flex', alignItems: 'center', gap: 6 }}>
+            <Mic size={18} color={canStartSpeaking ? '#34d399' : 'var(--text-muted)'} />
+            Luyện nói phản xạ với AI (Live Voice Session)
+          </div>
+          <div style={{ fontSize: 12.5, color: canStartSpeaking ? 'var(--text-secondary)' : 'var(--text-muted)' }}>
+            {canStartSpeaking
+              ? 'Trò chuyện thời gian thực qua giọng nói với Gemini Live API để đưa chunk vào phản xạ tự nhiên.'
+              : 'Hoàn thành chấm bài viết Cơ bản & Trung cấp (≥ 50đ) để mở khóa phòng luyện nói AI.'
+            }
+          </div>
+        </div>
+
+        <button
+          type="button"
+          className="btn"
+          onClick={() => setShowSpeakingModal(true)}
+          disabled={!canStartSpeaking}
+          style={{
+            background: canStartSpeaking
+              ? 'linear-gradient(135deg, #10b981, #059669)'
+              : 'rgba(255, 255, 255, 0.08)',
+            color: canStartSpeaking ? '#fff' : 'var(--text-muted)',
+            border: canStartSpeaking ? 'none' : '1px solid var(--border-subtle)',
+            padding: '10px 22px',
+            fontSize: 14, fontWeight: 700,
+            display: 'flex', alignItems: 'center', gap: 8,
+            boxShadow: canStartSpeaking ? '0 0 16px rgba(16, 185, 129, 0.4)' : 'none',
+            cursor: canStartSpeaking ? 'pointer' : 'not-allowed',
+          }}
+          title={canStartSpeaking ? 'Bắt đầu luyện nói trực tiếp với AI' : 'Hoàn thành bài viết trước'}
+        >
+          <Mic size={16} /> 🎙️ Luyện nói với AI
+        </button>
+      </div>
+
+      {/* Speaking Session Modal */}
+      {showSpeakingModal && (
+        <SpeakingSession
+          chunk={chunk}
+          exercises={exercises}
+          progress={progress}
+          onComplete={handleSpeakingComplete}
+          onClose={() => setShowSpeakingModal(false)}
+          onToast={onToast}
+        />
+      )}
 
       {/* Navigation between chunks */}
       {(onNavigatePrev || onNavigateNext) && (

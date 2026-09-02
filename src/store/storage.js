@@ -8,7 +8,7 @@ import {
   isSupabaseConfigured,
   getSupabaseClient,
 } from '../services/supabase';
-import { calculateNextReview } from '../services/srs';
+import { calculateNextReview, updateSRSAfterSpeaking } from '../services/srs';
 
 // ─── Storage keys ─────────────────────────────────────────────
 const KEYS = {
@@ -162,6 +162,56 @@ export function updateProgress(chunkId, result, score = null, feedback = null) {
 
   // Tự động đánh dấu từ vựng là "đã học" nếu chunk thuộc về một từ vựng
   if (result || updated.successCount > 0) {
+    autoMarkVocabLearnedFromChunk(chunkId);
+  }
+
+  return updated;
+}
+
+/**
+ * Lưu kết quả của một buổi luyện nói (Speaking Session) và cập nhật SRS
+ */
+export function saveSpeakingProgress(chunkId, speakingResult) {
+  const all = get(KEYS.progress) || {};
+  const prev = all[chunkId] || { practiceCount: 0, successCount: 0 };
+  const settings = getSettings();
+  const track = settings.srsTrack || 'track_a';
+
+  const isSuccess = Boolean(speakingResult.score >= 70 && speakingResult.usedTargetChunk && speakingResult.comprehensible);
+
+  // Tính SRS updates cho Speaking
+  const srsUpdates = updateSRSAfterSpeaking(prev, speakingResult, track);
+
+  // Cập nhật speakingHistory (lưu tối đa 5 lần gần nhất)
+  const prevHistory = prev.lastFeedback?.speakingHistory || [];
+  const newHistory = [speakingResult, ...prevHistory].slice(0, 5);
+
+  const updatedLastFeedback = {
+    ...(prev.lastFeedback || {}),
+    review_mode: 'speaking_first',
+    speaking: speakingResult,
+    speakingHistory: newHistory,
+  };
+
+  const updated = {
+    ...prev,
+    chunkId,
+    practiceCount: prev.practiceCount + 1,
+    successCount: isSuccess ? prev.successCount + 1 : prev.successCount,
+    lastPracticed: Date.now(),
+    lastResult: isSuccess,
+    lastScore: speakingResult.score,
+    lastFeedback: updatedLastFeedback,
+    ...srsUpdates,
+  };
+
+  all[chunkId] = updated;
+  set(KEYS.progress, all);
+
+  // Sync to Supabase in background
+  dbSaveProgress(updated).catch(err => console.error('Cloud sync error:', err));
+
+  if (isSuccess || updated.successCount > 0) {
     autoMarkVocabLearnedFromChunk(chunkId);
   }
 
