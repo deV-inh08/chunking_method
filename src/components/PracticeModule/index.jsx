@@ -647,34 +647,7 @@ function WritingSession({
             </span>
           )}
 
-          {/* Nút Luyện nói AI nhanh ở Header */}
-          <button
-            type="button"
-            className="btn btn-sm"
-            onClick={() => {
-              if (!canStartSpeaking) {
-                onToast('info', 'Bạn có thể luyện nói trực tiếp hoặc hoàn thành bài viết trước để đạt hiệu quả cao nhất!');
-              }
-              setShowSpeakingModal(true);
-            }}
-            style={{
-              marginLeft: 'auto',
-              background: canStartSpeaking ? 'linear-gradient(135deg, #10b981, #059669)' : 'rgba(16, 185, 129, 0.2)',
-              color: '#fff',
-              border: '1px solid rgba(16, 185, 129, 0.4)',
-              padding: '4px 12px',
-              fontSize: 12,
-              fontWeight: 700,
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 5,
-              borderRadius: 'var(--radius-full)',
-              boxShadow: canStartSpeaking ? '0 0 12px rgba(16, 185, 129, 0.4)' : 'none',
-              cursor: 'pointer',
-            }}
-          >
-            <Mic size={13} /> 🎙️ Luyện nói AI
-          </button>
+
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
           {chunk.meaningVi}
