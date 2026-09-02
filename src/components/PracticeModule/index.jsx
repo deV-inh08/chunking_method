@@ -525,6 +525,15 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
     }
   };
 
+  const handleReset = () => {
+    setUserInputs({});
+    setGradingResults({});
+    setShowSamples({});
+    onToast('info', 'Đã làm mới ô nhập để bạn luyện viết lại!');
+  };
+
+  const hasGraded = Object.keys(gradingResults).length > 0;
+
   return (
     <div className="flex flex-col gap-4">
       {/* Header */}
@@ -562,7 +571,7 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
           {chunk.meaningEn && <span style={{ color: 'var(--text-muted)', marginLeft: 8 }}>· {chunk.meaningEn}</span>}
         </p>
         <p style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 6 }}>
-          📝 Hãy hoàn thành <strong>ít nhất 2 câu</strong> bên dưới rồi bấm <strong>"Chấm bài AI"</strong> (chấm 1 lần duy nhất cho cả bài).
+          📝 Hãy hoàn thành <strong>ít nhất 2 câu</strong> bên dưới rồi bấm <strong>"Chấm bài AI"</strong> (ôn tập theo câu mẫu đã học).
         </p>
       </div>
 
@@ -606,30 +615,46 @@ function WritingSession({ chunk, exercises, progress, onComplete, onToast }) {
             <Sparkles size={16} color="var(--accent-300)" /> Chấm bài luyện viết bằng AI
           </div>
           <div style={{ fontSize: 12.5, color: canGrade ? '#4ade80' : 'var(--text-muted)' }}>
-            {filledCount >= 2
+            {hasGraded
+              ? '✓ Đã chấm xong bài! Bạn có thể xem nhận xét hoặc bấm "Viết lại" để luyện tiếp.'
+              : filledCount >= 2
               ? `✓ Đã hoàn thành ${filledCount}/${exercises.length} câu — Sẵn sàng chấm AI!`
               : `Đã viết ${filledCount}/${exercises.length} câu (Bắt buộc điền ít nhất 2 câu để bấm chấm)`
             }
           </div>
         </div>
 
-        <button
-          id={`batch-grade-btn-${chunk.id}`}
-          className="btn btn-primary"
-          onClick={handleBatchGrade}
-          disabled={!canGrade || isGrading}
-          style={{
-            padding: '10px 24px',
-            fontSize: 14, fontWeight: 700,
-            display: 'flex', alignItems: 'center', gap: 8,
-            boxShadow: canGrade ? '0 0 16px rgba(99,102,241,0.5)' : 'none',
-          }}
-        >
-          {isGrading
-            ? <><Loader size={16} style={{ animation: 'spin 1s linear infinite' }} /> Đang chấm AI…</>
-            : <><Sparkles size={16} /> Chấm bài AI ({filledCount} câu)</>
-          }
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+          {hasGraded && (
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={handleReset}
+              style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 600 }}
+              title="Làm mới ô nhập để viết lại câu này"
+            >
+              <RotateCcw size={14} /> Viết lại
+            </button>
+          )}
+
+          <button
+            id={`batch-grade-btn-${chunk.id}`}
+            className="btn btn-primary"
+            onClick={handleBatchGrade}
+            disabled={!canGrade || isGrading}
+            style={{
+              padding: '10px 24px',
+              fontSize: 14, fontWeight: 700,
+              display: 'flex', alignItems: 'center', gap: 8,
+              boxShadow: canGrade ? '0 0 16px rgba(99,102,241,0.5)' : 'none',
+            }}
+          >
+            {isGrading
+              ? <><Loader size={16} style={{ animation: 'spin 1s linear infinite' }} /> Đang chấm AI…</>
+              : <><Sparkles size={16} /> Chấm bài AI ({filledCount} câu)</>
+            }
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -643,6 +668,7 @@ export function PracticeModule({
   onProgressUpdate, onToast,
   autoGenerating = false,
   autoGenProgress = { done: 0, total: 0 },
+  onStartDueReview,
 }) {
   const chunkList = chunks.filter(c => selectedChunks.has(c.id));
 
@@ -686,11 +712,39 @@ export function PracticeModule({
   };
 
   if (chunkList.length === 0 && !autoGenerating) {
+    const dueCount = chunks.filter(c => isDueForReview(allProgress[c.id])).length;
+    if (dueCount > 0 && onStartDueReview) {
+      return (
+        <div className="card animate-fade-in" style={{ textAlign: 'center', padding: '48px 24px', maxWidth: 560, margin: '40px auto' }}>
+          <div style={{
+            width: 56, height: 56, borderRadius: 'var(--radius-full)',
+            background: 'rgba(239,68,68,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            margin: '0 auto 16px',
+          }}>
+            <Flame size={28} color="#ef4444" />
+          </div>
+          <h3 style={{ fontSize: 18, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8 }}>
+            Có {dueCount} chunk đến hạn ôn tập hôm nay!
+          </h3>
+          <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: 20 }}>
+            Hệ thống sẽ <strong>sử dụng lại các câu mẫu bạn đã học</strong> (không cần tạo câu mới) để giúp củng cố phản xạ và đưa chunk vào trí nhớ dài hạn.
+          </p>
+          <button
+            className="btn btn-primary"
+            onClick={onStartDueReview}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 24px', fontSize: 14, fontWeight: 700 }}
+          >
+            <Flame size={16} /> Bắt đầu ôn tập {dueCount} chunk ngay (Dùng lại câu cũ)
+          </button>
+        </div>
+      );
+    }
+
     return (
       <EmptyState
         icon={<PenLine size={24} />}
         title="Chưa có chunk nào được chọn"
-        description="Vào Chunks, chọn các chunk muốn luyện rồi bấm 'Luyện viết'."
+        description="Vào Chunks hoặc Từ vựng, chọn các chunk muốn luyện rồi bấm 'Luyện viết'."
       />
     );
   }

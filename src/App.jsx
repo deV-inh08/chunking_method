@@ -437,6 +437,7 @@ export default function App() {
                 onToast={addToast}
                 autoGenerating={autoGenerating}
                 autoGenProgress={autoGenProgress}
+                onStartDueReview={handleStartDueReview}
               />
             )}
 
