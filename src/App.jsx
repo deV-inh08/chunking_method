@@ -94,10 +94,19 @@ export default function App() {
     return getDueChunks(allChunks, allProgress);
   }, [allChunks, allProgress]);
 
-  // Web Notification reminder when chunks are due
+  // Web Notification: 4 khung giờ vàng nhắc nhở trong ngày (8h, 12h, 18h, 21h)
   useEffect(() => {
     if (!settings.notificationsEnabled || dueChunks.length === 0) return;
+    
+    // Check ngay khi số lượng dueChunks thay đổi hoặc app khởi động
     sendDueNotification(dueChunks.length, dueChunks[0]?.phrase || '');
+
+    // Định kỳ mỗi 1 phút kiểm tra lại xem đã tới khung giờ tiếp theo chưa
+    const interval = setInterval(() => {
+      sendDueNotification(dueChunks.length, dueChunks[0]?.phrase || '');
+    }, 60 * 1000);
+
+    return () => clearInterval(interval);
   }, [settings.notificationsEnabled, dueChunks.length]);
 
   // Show settings on first load if no API key (only after auth resolved)

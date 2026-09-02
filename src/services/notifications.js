@@ -102,26 +102,119 @@ export async function sendNotification({
 }
 
 /**
+ * 4 Khung giờ vàng ôn tập trong ngày
+ */
+export const DAILY_NOTIFICATION_SLOTS = [
+  {
+    id: 'slot_8',
+    hour: 8,
+    label: '08:00 (Sáng)',
+    title: (count) => `🌅 Buổi sáng: Có ${count} chunk TOEIC cần ôn tập!`,
+    body: (hint) => `Khởi đầu ngày mới với 5 phút ôn tập${hint} để củng cố trí nhớ dài hạn.`,
+  },
+  {
+    id: 'slot_12',
+    hour: 12,
+    label: '12:00 (Trưa)',
+    title: (count) => `☀️ Nghỉ trưa: Ôn lại ${count} chunk TOEIC nào!`,
+    body: (hint) => `Tận dụng vài phút nghỉ trưa để luyện dịch các chunk${hint}.`,
+  },
+  {
+    id: 'slot_18',
+    hour: 18,
+    label: '18:00 (Chiều tối)',
+    title: (count) => `🌆 Chiều tối: Có ${count} chunk đang chờ bạn ôn!`,
+    body: (hint) => `Củng cố lại phản xạ dịch câu${hint} trước khi kết thúc ngày.`,
+  },
+  {
+    id: 'slot_21',
+    hour: 21,
+    label: '21:00 (Tối)',
+    title: (count) => `🌙 Buổi tối: Hoàn thành ${count} chunk trước khi ngủ!`,
+    body: (hint) => `Ôn tập nhẹ nhàng trước khi ngủ giúp não bộ ghi nhớ sâu hơn${hint}.`,
+  },
+];
+
+/**
+ * Lấy lịch sử gửi thông báo trong ngày
+ */
+function getTodaySentSlots() {
+  if (typeof window === 'undefined') return {};
+  const todayKey = `srs_notif_date_${new Date().toISOString().slice(0, 10)}`;
+  try {
+    return JSON.parse(localStorage.getItem(todayKey) || '{}');
+  } catch {
+    return {};
+  }
+}
+
+/**
+ * Đánh dấu slot đã được gửi trong ngày
+ */
+function markSlotSentToday(slotId) {
+  if (typeof window === 'undefined') return;
+  const todayKey = `srs_notif_date_${new Date().toISOString().slice(0, 10)}`;
+  try {
+    const sent = getTodaySentSlots();
+    sent[slotId] = Date.now();
+    localStorage.setItem(todayKey, JSON.stringify(sent));
+  } catch (err) {
+    console.warn('Failed to save sent slot:', err);
+  }
+}
+
+/**
  * Gửi thông báo kiểm tra (Test Notification)
  */
 export async function sendTestNotification() {
   return sendNotification({
     title: '🔔 Thông báo ôn tập TOEIC',
-    body: 'Tuyệt vời! Thiết bị của bạn đã được kết nối với hệ thống nhắc nhở Spaced Repetition.',
+    body: 'Tuyệt vời! Thiết bị của bạn đã được kết nối với hệ thống 4 khung giờ ôn tập mỗi ngày (8h, 12h, 18h, 21h).',
     tag: 'srs-test',
   });
 }
 
 /**
- * Gửi thông báo nhắc nhở khi có chunk đến hạn
+ * Kiểm tra và kích hoạt thông báo theo 4 khung giờ vàng trong ngày (08:00, 12:00, 18:00, 21:00)
  */
-export async function sendDueNotification(dueCount, sampleChunkPhrase = '') {
+export async function checkAndTriggerDailyReminders(dueCount, sampleChunkPhrase = '') {
   if (dueCount <= 0) return false;
+
+  const now = new Date();
+  const currentHour = now.getHours();
+  const sentSlots = getTodaySentSlots();
+
+  // Tìm khung giờ hợp lệ gần nhất trong ngày chưa được gửi
+  const availableSlots = [...DAILY_NOTIFICATION_SLOTS]
+    .filter(slot => currentHour >= slot.hour)
+    .reverse(); // Ưu tiên slot gần với giờ hiện tại nhất
+
+  const pendingSlot = availableSlots.find(slot => !sentSlots[slot.id]);
+
+  if (!pendingSlot) {
+    // Tất cả các slot trước giờ hiện tại đã được gửi hôm nay
+    return false;
+  }
+
   const chunkHint = sampleChunkPhrase ? ` (ví dụ: "${sampleChunkPhrase}")` : '';
-  return sendNotification({
-    title: `🔥 Có ${dueCount} chunk TOEIC đến hạn ôn tập!`,
-    body: `Đã đến thời điểm vàng để ôn tập lại các chunk${chunkHint}. Chạm để luyện dịch ngay!`,
-    tag: `srs-due-${Math.floor(Date.now() / (1000 * 60 * 30))}`, // đổi tag mỗi 30p để tránh spam
+
+  const sent = await sendNotification({
+    title: pendingSlot.title(dueCount),
+    body: pendingSlot.body(chunkHint),
+    tag: `srs-${pendingSlot.id}-${now.toISOString().slice(0, 10)}`,
     url: '/#practice',
   });
+
+  if (sent) {
+    markSlotSentToday(pendingSlot.id);
+  }
+
+  return sent;
+}
+
+/**
+ * Gửi thông báo nhắc nhở khi có chunk đến hạn (gọi trực tiếp theo 4 khung giờ)
+ */
+export async function sendDueNotification(dueCount, sampleChunkPhrase = '') {
+  return checkAndTriggerDailyReminders(dueCount, sampleChunkPhrase);
 }

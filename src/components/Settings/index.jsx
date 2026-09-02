@@ -406,10 +406,10 @@ export function SettingsModal({ settings, onSave, onClose, user, onSignOut, onOp
               <Bell size={16} style={{ color: notificationsEnabled ? 'var(--accent-400)' : 'var(--text-muted)' }} />
               <div>
                 <div style={{ fontWeight: 600, fontSize: 13, color: 'var(--text-primary)' }}>
-                  Thông báo nhắc nhở ôn tập trên thiết bị
+                  Thông báo nhắc nhở ôn tập (4 lần/ngày)
                 </div>
                 <div style={{ fontSize: 11.5, color: 'var(--text-muted)' }}>
-                  Gửi thông báo khi có chunk đến hạn ôn tập (Spaced Repetition)
+                  Nhắc nhở ôn chunk đến hạn vào 4 khung giờ vàng: <strong>08:00, 12:00, 18:00, 21:00</strong>
                 </div>
               </div>
             </div>
