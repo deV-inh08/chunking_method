@@ -1,8 +1,10 @@
-// ─── Gemini Live API WebSocket & Web Audio Service ───────────────────────
+// ─── Gemini Live API & Smart Voice Interactive Service ───────────────────
 
 export const LIVE_MODELS = [
-  'models/gemini-2.0-flash-exp',
-  'models/gemini-2.0-flash',
+  'models/gemini-2.5-flash-native-audio-dialog',
+  'models/gemini-2.5-flash-native-audio-preview-09-2025',
+  'models/gemini-3-flash-live',
+  'models/gemini-3.1-flash-live-preview',
   'models/gemini-2.5-flash',
 ];
 
@@ -152,6 +154,9 @@ export class GeminiLiveSession {
     this.isConnected = false;
     this.isAiSpeaking = false;
     this.isMuted = false;
+    this.useFallbackVoiceEngine = false;
+    this.recognition = null;
+    this.candidateModelIndex = 0;
   }
 
   setState(newState) {
@@ -163,11 +168,9 @@ export class GeminiLiveSession {
    * Bắt đầu kết nối WebSocket và thu âm
    */
   async start() {
+    this.setState('CONNECTING');
     try {
-      this.setState('CONNECTING');
       this.player.init();
-
-      // 1. Yêu cầu quyền Micro
       this.mediaStream = await navigator.mediaDevices.getUserMedia({
         audio: {
           channelCount: 1,
@@ -178,18 +181,25 @@ export class GeminiLiveSession {
         },
       });
 
-      // 2. Mở kết nối WebSocket tới Gemini Live API (v1beta)
-      const host = 'generativelanguage.googleapis.com';
-      const path = '/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent';
-      const url = `wss://${host}${path}?key=${encodeURIComponent(this.apiKey)}`;
+      this.connectWebSocket(LIVE_MODELS[this.candidateModelIndex]);
+    } catch (err) {
+      console.warn('Microphone or WS init failed, switching to Voice Engine:', err);
+      this.startVoiceEngineFallback();
+    }
+  }
 
+  connectWebSocket(modelName) {
+    const host = 'generativelanguage.googleapis.com';
+    const path = '/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent';
+    const url = `wss://${host}${path}?key=${encodeURIComponent(this.apiKey)}`;
+
+    try {
       this.ws = new WebSocket(url);
 
       this.ws.onopen = () => {
         this.isConnected = true;
         this.setState('WARMUP');
-        // Gửi setup handshake trước
-        this.sendSetupMessage();
+        this.sendSetupMessage(modelName);
       };
 
       this.ws.onmessage = async (event) => {
@@ -206,29 +216,38 @@ export class GeminiLiveSession {
       };
 
       this.ws.onerror = (err) => {
-        console.error('Gemini Live WebSocket error:', err);
-        this.onError(new Error('Không thể kết nối máy chủ Gemini Live API. Vui lòng kiểm tra API key.'));
+        console.warn('Gemini Live WebSocket warning on model:', modelName, err);
       };
 
       this.ws.onclose = (event) => {
         this.isConnected = false;
         console.log('Gemini Live WebSocket closed:', event.code, event.reason);
-      };
 
-    } catch (err) {
-      console.error('Failed to start speaking session:', err);
-      this.onError(err);
-      this.stop();
+        // Nếu mã lỗi 1008 (model not found/supported), tự động thử model tiếp theo hoặc chuyển Voice Engine
+        if (event.code === 1008 || event.code === 1007 || event.code === 1006) {
+          this.candidateModelIndex += 1;
+          if (this.candidateModelIndex < LIVE_MODELS.length) {
+            console.log('Trying next candidate model:', LIVE_MODELS[this.candidateModelIndex]);
+            this.connectWebSocket(LIVE_MODELS[this.candidateModelIndex]);
+          } else {
+            console.log('Live WebSocket models unavailable. Seamlessly activating Smart Voice Engine.');
+            this.startVoiceEngineFallback();
+          }
+        }
+      };
+    } catch (e) {
+      console.warn('WebSocket connection error:', e);
+      this.startVoiceEngineFallback();
     }
   }
 
   /**
    * Gửi setup configuration
    */
-  sendSetupMessage() {
+  sendSetupMessage(modelName = LIVE_MODELS[0]) {
     const setupMsg = {
       setup: {
-        model: this.model,
+        model: modelName,
         generationConfig: {
           responseModalities: ['AUDIO'],
           speechConfig: {
@@ -245,14 +264,25 @@ export class GeminiLiveSession {
       },
     };
 
-    this.ws.send(JSON.stringify(setupMsg));
+    if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+      this.ws.send(JSON.stringify(setupMsg));
+    }
   }
 
   /**
    * Gửi trigger yêu cầu AI bắt đầu nói câu chào Warm-up
    */
   sendInitialGreetingTrigger() {
-    if (!this.isConnected || this.ws.readyState !== WebSocket.OPEN) return;
+    if (this.useFallbackVoiceEngine) {
+      this.runVoiceEngineGreeting();
+      return;
+    }
+
+    if (!this.isConnected || !this.ws || this.ws.readyState !== WebSocket.OPEN) {
+      this.runVoiceEngineGreeting();
+      return;
+    }
+
     const triggerMsg = {
       clientContent: {
         turns: [
@@ -260,7 +290,7 @@ export class GeminiLiveSession {
             role: 'user',
             parts: [
               {
-                text: 'Hello! I am ready to practice speaking. Please greet me warmly and invite me to read the warm-up sentence out loud.',
+                text: 'Please warmly say hello and invite me to read the warm-up sentence out loud.',
               },
             ],
           },
@@ -273,30 +303,187 @@ export class GeminiLiveSession {
       this.setState('WARMUP');
     } catch (e) {
       console.error('Failed to send greeting trigger:', e);
+      this.runVoiceEngineGreeting();
+    }
+  }
+
+  // ─── Smart Voice Engine Fallback (TTS + STT + Gemini Flash) ─────────────
+
+  startVoiceEngineFallback() {
+    this.useFallbackVoiceEngine = true;
+    this.setState('WARMUP');
+    this.startMicrophoneVisualizer();
+    this.initSpeechRecognition();
+    this.runVoiceEngineGreeting();
+  }
+
+  runVoiceEngineGreeting() {
+    const greetingText = "Hello! Welcome to speaking practice. Let's start by warming up: please read the sentence on your screen out loud!";
+    this.speakAiResponse(greetingText);
+  }
+
+  speakAiResponse(text) {
+    this.isAiSpeaking = true;
+    this.onAiSpeaking(true);
+    this.appendTranscript('ai', text);
+
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      utterance.rate = 1.0;
+      utterance.pitch = 1.0;
+
+      utterance.onend = () => {
+        this.isAiSpeaking = false;
+        this.onAiSpeaking(false);
+      };
+
+      utterance.onerror = () => {
+        this.isAiSpeaking = false;
+        this.onAiSpeaking(false);
+      };
+
+      window.speechSynthesis.speak(utterance);
+    } else {
+      setTimeout(() => {
+        this.isAiSpeaking = false;
+        this.onAiSpeaking(false);
+      }, 2500);
+    }
+  }
+
+  startMicrophoneVisualizer() {
+    if (!this.mediaStream) return;
+    try {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      this.audioContext = new AudioContextClass();
+      const source = this.audioContext.createMediaStreamSource(this.mediaStream);
+      const analyser = this.audioContext.createAnalyser();
+      analyser.fftSize = 256;
+      source.connect(analyser);
+
+      const dataArray = new Uint8Array(analyser.frequencyBinCount);
+      const checkVolume = () => {
+        if (!this.mediaStream) return;
+        analyser.getByteFrequencyData(dataArray);
+        let sum = 0;
+        for (let i = 0; i < dataArray.length; i++) {
+          sum += dataArray[i];
+        }
+        const avg = sum / dataArray.length;
+        const vol = Math.min(100, Math.round(avg * 2.2));
+        this.onVolume(vol);
+        requestAnimationFrame(checkVolume);
+      };
+      checkVolume();
+    } catch {}
+  }
+
+  initSpeechRecognition() {
+    const SpeechRecognitionClass = typeof window !== 'undefined' ? (window.SpeechRecognition || window.webkitSpeechRecognition) : null;
+    if (!SpeechRecognitionClass) return;
+
+    try {
+      this.recognition = new SpeechRecognitionClass();
+      this.recognition.continuous = true;
+      this.recognition.interimResults = false;
+      this.recognition.lang = 'en-US';
+
+      this.recognition.onresult = (event) => {
+        if (this.isMuted || this.isAiSpeaking) return;
+        const lastResult = event.results[event.results.length - 1];
+        if (lastResult.isFinal) {
+          const spokenText = lastResult[0].transcript.trim();
+          if (spokenText) {
+            this.sendUserTextMessage(spokenText);
+          }
+        }
+      };
+
+      this.recognition.onerror = (e) => {
+        console.warn('Speech recognition event:', e.error);
+      };
+
+      this.recognition.start();
+    } catch (e) {
+      console.warn('Speech recognition init:', e);
     }
   }
 
   /**
    * Gửi text do user nhập hoặc nói
    */
-  sendUserTextMessage(text) {
-    if (!this.isConnected || this.ws.readyState !== WebSocket.OPEN || !text.trim()) return;
-    this.appendTranscript('user', text);
-    const msg = {
-      clientContent: {
-        turns: [
-          {
-            role: 'user',
-            parts: [{ text: text.trim() }],
-          },
-        ],
-        turnComplete: true,
-      },
-    };
+  async sendUserTextMessage(text) {
+    if (!text || !text.trim()) return;
+    const cleanText = text.trim();
+    this.appendTranscript('user', cleanText);
+    this.turnCount += 1;
+
+    // Cập nhật trạng thái lượt
+    if (this.turnCount === 1) {
+      this.setState('SITUATION_INTRO');
+    } else if (this.turnCount >= 2 && this.turnCount < SPEAKING_CONFIG.MAX_TURNS) {
+      this.setState('CONVERSATION');
+    } else if (this.turnCount >= SPEAKING_CONFIG.MAX_TURNS) {
+      this.setState('WRAP_UP');
+    }
+
+    // Nếu đang chạy qua WebSocket
+    if (this.isConnected && this.ws && this.ws.readyState === WebSocket.OPEN) {
+      const msg = {
+        clientContent: {
+          turns: [
+            {
+              role: 'user',
+              parts: [{ text: cleanText }],
+            },
+          ],
+          turnComplete: true,
+        },
+      };
+      try {
+        this.ws.send(JSON.stringify(msg));
+        return;
+      } catch {}
+    }
+
+    // Voice Engine Fallback: Tạo phản hồi tiếp nối qua Gemini Flash API
     try {
-      this.ws.send(JSON.stringify(msg));
-    } catch (e) {
-      console.error('Failed to send text message:', e);
+      this.isAiSpeaking = true;
+      this.onAiSpeaking(true);
+
+      const conversationHistory = this.transcriptHistory
+        .map(t => `${t.role === 'ai' ? 'AI Partner' : 'User'}: "${t.text}"`)
+        .join('\n');
+
+      const prompt = `${this.systemInstruction}
+
+CONVERSATION HISTORY SO FAR:
+${conversationHistory}
+
+Current turn count: ${this.turnCount} / ${SPEAKING_CONFIG.MAX_TURNS}
+
+Generate the next response as the AI speaking partner.
+Keep it natural, concise (1-2 sentences in spoken English), and encourage the learner to talk.
+Do NOT output markdown, labels or explanations. Output ONLY the spoken response.`;
+
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(this.apiKey)}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { maxOutputTokens: 120, temperature: 0.7 },
+        }),
+      });
+
+      const data = await res.json();
+      const aiReply = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || "Great job! Let's continue.";
+
+      this.speakAiResponse(aiReply);
+    } catch (err) {
+      console.error('Error generating AI voice response:', err);
+      this.speakAiResponse('Good job! Tell me more.');
     }
   }
 
@@ -438,6 +625,15 @@ export class GeminiLiveSession {
 
   stop() {
     this.isConnected = false;
+
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+    }
+
+    if (this.recognition) {
+      try { this.recognition.stop(); } catch {}
+      this.recognition = null;
+    }
 
     if (this.ws) {
       try { this.ws.close(); } catch {}
