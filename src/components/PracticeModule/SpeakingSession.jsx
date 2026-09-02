@@ -5,43 +5,50 @@ import {
   Award, Play, AlertCircle, Square,
   Settings, Check, X,
 } from 'lucide-react';
-import { getApiKey, getPracticeDraft, getSettings, saveSettings } from '../../store/storage';
+import { getPracticeDraft, getSettings, saveSettings } from '../../store/storage';
 import { transcribeAudioWithGemini } from '../../services/ai';
 
 // ─── AI Voice Candidates ───────────────────────────────────────
 const AI_VOICES = [
-  { id: 'en-US-female', label: '👩 🇺🇸 Anh - Mỹ (Nữ)', lang: 'en-US', gender: 'female', sample: 'Hello, let\'s practice American English together.' },
-  { id: 'en-US-male', label: '👨 🇺🇸 Anh - Mỹ (Nam)', lang: 'en-US', gender: 'male', sample: 'Hi there, welcome to speaking practice.' },
-  { id: 'en-GB-female', label: '👩 🇬🇧 Anh - Anh (Nữ)', lang: 'en-GB', gender: 'female', sample: 'Good day! Let\'s practise British pronunciation.' },
-  { id: 'en-GB-male', label: '👨 🇬🇧 Anh - Anh (Nam)', lang: 'en-GB', gender: 'male', sample: 'Welcome! Ready to practice your English sentences?' },
-  { id: 'en-AU-female', label: '👩 🇦🇺 Anh - Úc (Nữ)', lang: 'en-AU', gender: 'female', sample: 'G\'day! Let\'s improve your speaking skills.' },
+  { id: 'en-US-female', label: '👩 🇺🇸 Anh - Mỹ (Nữ)', lang: 'en-US', gender: 'female', sample: 'Hello! Let\'s practice American English pronunciation.' },
+  { id: 'en-US-male', label: '👨 🇺🇸 Anh - Mỹ (Nam)', lang: 'en-US', gender: 'male', sample: 'Hi there! Welcome to American English speaking practice.' },
+  { id: 'en-GB-female', label: '👩 🇬🇧 Anh - Anh (Nữ)', lang: 'en-GB', gender: 'female', sample: 'Good day! Let\'s practise British English pronunciation.' },
+  { id: 'en-GB-male', label: '👨 🇬🇧 Anh - Anh (Nam)', lang: 'en-GB', gender: 'male', sample: 'Hello! Ready to practise your British accent?' },
+  { id: 'en-AU-female', label: '👩 🇦🇺 Anh - Úc (Nữ)', lang: 'en-AU', gender: 'female', sample: 'G\'day mate! Let\'s improve your English speaking skills.' },
 ];
 
-function findBestVoice(voiceConfig) {
+function findBestVoice(voiceConfig, customVoices = []) {
   if (typeof window === 'undefined' || !window.speechSynthesis) return null;
-  const voices = window.speechSynthesis.getVoices() || [];
+  const voices = customVoices.length > 0 ? customVoices : window.speechSynthesis.getVoices() || [];
   if (voices.length === 0) return null;
 
   const targetLang = (voiceConfig.lang || 'en-US').toLowerCase();
   const targetGender = voiceConfig.gender || 'female';
 
-  const langVoices = voices.filter(v => v.lang.toLowerCase().replace('_', '-').startsWith(targetLang));
+  const langVoices = voices.filter(v => {
+    const l = (v.lang || '').toLowerCase().replace('_', '-');
+    return l.startsWith(targetLang) || l.startsWith(targetLang.split('-')[0]);
+  });
 
-  const maleKeywords = ['male', 'david', 'guy', 'george', 'james', 'daniel', 'richard', 'alex', 'fred', 'rishi', 'mark', 'tom'];
-  const femaleKeywords = ['female', 'zira', 'samantha', 'jenny', 'victoria', 'karen', 'susan', 'catherine', 'hazel', 'moira', 'tessa', 'ava', 'emma'];
+  // Identifiers for Android Google TTS, iOS Siri, Windows & Mac TTS
+  const maleKeywords = ['male', 'david', 'guy', 'george', 'james', 'daniel', 'richard', 'alex', 'fred', 'rishi', 'mark', 'tom', 'oliver', 'iom', 'iob', 'iol', 'rjs', 'aub'];
+  const femaleKeywords = ['female', 'zira', 'samantha', 'jenny', 'victoria', 'karen', 'susan', 'catherine', 'hazel', 'moira', 'tessa', 'ava', 'emma', 'sfg', 'tpd'];
 
-  const matchedByGender = (langVoices.length > 0 ? langVoices : voices).filter(v => {
-    const name = v.name.toLowerCase();
+  const candidatePool = langVoices.length > 0 ? langVoices : voices.filter(v => (v.lang || '').toLowerCase().startsWith('en'));
+
+  const matchedByGender = candidatePool.filter(v => {
+    const name = (v.name || '').toLowerCase();
+    const uri = (v.voiceURI || '').toLowerCase();
     if (targetGender === 'male') {
-      return maleKeywords.some(k => name.includes(k)) || (!femaleKeywords.some(k => name.includes(k)) && name.includes('male'));
+      return maleKeywords.some(k => name.includes(k) || uri.includes(k));
     } else {
-      return femaleKeywords.some(k => name.includes(k)) || (!maleKeywords.some(k => name.includes(k)) && (name.includes('female') || name.includes('natural')));
+      return femaleKeywords.some(k => name.includes(k) || uri.includes(k));
     }
   });
 
   if (matchedByGender.length > 0) return matchedByGender[0];
-  if (langVoices.length > 0) return langVoices[0];
-  return voices.find(v => v.lang.startsWith('en')) || voices[0];
+  if (candidatePool.length > 0) return candidatePool[0];
+  return voices[0] || null;
 }
 
 // ─── ScoreRing Component ───────────────────────────────────────
@@ -183,6 +190,9 @@ export function SpeakingSession({
   const [volume, setVolume] = useState(0);
   const [liveSpokenText, setLiveSpokenText] = useState('');
 
+  // Voices list from SpeechSynthesis
+  const [systemVoices, setSystemVoices] = useState([]);
+
   // AI Voice Selection
   const [selectedVoiceId, setSelectedVoiceId] = useState(() => {
     return getSettings().speakingVoice || 'en-US-female';
@@ -199,6 +209,28 @@ export function SpeakingSession({
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
   const capturedSpeechRef = useRef('');
+
+  // Load available system voices asynchronously
+  useEffect(() => {
+    const loadVoices = () => {
+      if (typeof window !== 'undefined' && window.speechSynthesis) {
+        const v = window.speechSynthesis.getVoices() || [];
+        if (v.length > 0) {
+          setSystemVoices(v);
+        }
+      }
+    };
+
+    loadVoices();
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    return () => {
+      if (typeof window !== 'undefined' && window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = null;
+      }
+    };
+  }, []);
 
   // Lấy câu học ổn định
   const sentenceList = useMemo(() => {
@@ -227,7 +259,7 @@ export function SpeakingSession({
 
   const currentSentence = sentenceList[currentStepIndex] || sentenceList[0];
 
-  // Phát âm thanh mẫu của AI qua Web Speech Synthesis
+  // Phát âm thanh mẫu của AI qua Web Speech Synthesis (Hỗ trợ Nam / Nữ rõ rệt)
   const playAiVoice = useCallback((text, onEndCallback, customVoiceId) => {
     if (typeof window === 'undefined' || !window.speechSynthesis) return;
     window.speechSynthesis.cancel();
@@ -238,13 +270,19 @@ export function SpeakingSession({
     const selectedVoiceObj = AI_VOICES.find(v => v.id === voiceId) || AI_VOICES[0];
     utterance.lang = selectedVoiceObj.lang;
 
-    const matchedVoice = findBestVoice(selectedVoiceObj);
+    const matchedVoice = findBestVoice(selectedVoiceObj, systemVoices);
     if (matchedVoice) {
       utterance.voice = matchedVoice;
     }
 
-    utterance.rate = selectedVoiceObj.lang === 'en-GB' ? 0.92 : 0.95;
-    utterance.pitch = selectedVoiceObj.gender === 'male' ? 0.92 : 1.02;
+    // ĐIỀU CHỈNH PITCH & RATE ĐỂ PHÂN BIỆT RÕ RÀNG GIỌNG NAM (TRẦM) VÀ NỮ (THANH)
+    if (selectedVoiceObj.gender === 'male') {
+      utterance.pitch = 0.65; // Giọng nam trầm ấm, rõ rệt trên mọi thiết bị
+      utterance.rate = selectedVoiceObj.lang === 'en-GB' ? 0.86 : 0.88;
+    } else {
+      utterance.pitch = 1.18; // Giọng nữ tự nhiên, trong trẻo
+      utterance.rate = selectedVoiceObj.lang === 'en-GB' ? 0.92 : 0.95;
+    }
 
     utterance.onend = () => {
       setIsAiSpeaking(false);
@@ -256,7 +294,7 @@ export function SpeakingSession({
     };
 
     window.speechSynthesis.speak(utterance);
-  }, [selectedVoiceId]);
+  }, [selectedVoiceId, systemVoices]);
 
   // Đổi giọng AI
   const handleSelectVoice = (voiceId) => {
@@ -273,7 +311,7 @@ export function SpeakingSession({
     setIsEvaluating(false);
 
     if (!spokenText || !spokenText.trim()) {
-      if (onToast) onToast('warning', 'Chưa thu được giọng nói. Hãy đưa micro lại gần và đọc to câu tiếng Anh nhé!');
+      if (onToast) onToast('warning', 'Chưa nhận diện được giọng nói. Hãy nói to hơn và đưa micro lại gần nhé!');
       setCurrentAttempt({
         targetText: currentSentence.sampleTranslation,
         spokenText: '(Chưa nhận diện được giọng nói)',
@@ -351,15 +389,20 @@ export function SpeakingSession({
         checkVol();
       }
 
-      // 1. MediaRecorder Capture (Fallback siêu mạnh & chuẩn xác)
+      // 1. MediaRecorder Capture (Đa nền tảng: Chrome, Brave, Safari, Android)
       try {
-        const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
+        const preferredMime = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
           ? 'audio/webm;codecs=opus'
+          : MediaRecorder.isTypeSupported('audio/webm')
+          ? 'audio/webm'
           : MediaRecorder.isTypeSupported('audio/mp4')
           ? 'audio/mp4'
-          : 'audio/webm';
+          : '';
 
-        const recorder = new MediaRecorder(mediaStreamRef.current, { mimeType });
+        const recorder = preferredMime
+          ? new MediaRecorder(mediaStreamRef.current, { mimeType: preferredMime })
+          : new MediaRecorder(mediaStreamRef.current);
+
         audioChunksRef.current = [];
         recorder.ondataavailable = (e) => {
           if (e.data && e.data.size > 0) {
@@ -372,7 +415,7 @@ export function SpeakingSession({
         console.warn('MediaRecorder init warning:', recErr);
       }
 
-      // 2. Speech Recognition (Real-time feedback)
+      // 2. Speech Recognition (Real-time fallback feedback)
       const SpeechRecognitionClass = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SpeechRecognitionClass) {
         if (recognitionRef.current) {
@@ -380,7 +423,7 @@ export function SpeakingSession({
         }
 
         const recognition = new SpeechRecognitionClass();
-        recognition.continuous = true;
+        recognition.continuous = false; // continuous: false hoạt động ổn định nhất trên Mobile!
         recognition.interimResults = true;
         recognition.lang = 'en-US';
 
@@ -396,22 +439,28 @@ export function SpeakingSession({
             }
           }
           const fullText = (final + interim).trim();
-          capturedSpeechRef.current = fullText;
-          setLiveSpokenText(fullText);
+          if (fullText) {
+            capturedSpeechRef.current = fullText;
+            setLiveSpokenText(fullText);
+          }
         };
 
         recognition.onerror = (e) => {
           console.warn('Speech recognition status:', e.error);
         };
 
-        recognition.start();
-        recognitionRef.current = recognition;
+        try {
+          recognition.start();
+          recognitionRef.current = recognition;
+        } catch (e) {
+          console.warn('Recognition start warning:', e);
+        }
       }
 
       setIsRecording(true);
     } catch (err) {
       console.warn('Microphone access warning:', err);
-      if (onToast) onToast('warning', 'Không thể mở micro. Bạn có thể bấm gửi câu đọc mẫu để kiểm tra.');
+      if (onToast) onToast('warning', 'Không thể mở micro. Hãy kiểm tra quyền truy cập microphone trên trình duyệt.');
     }
   }, [isAiSpeaking, onToast]);
 
@@ -426,14 +475,18 @@ export function SpeakingSession({
       recognitionRef.current = null;
     }
 
-    // Lấy câu nhận diện từ Web Speech API trước
-    let spoken = capturedSpeechRef.current.trim() || liveSpokenText.trim();
-
-    // Dừng MediaRecorder và thu thập blob
+    // Dừng MediaRecorder và flush toàn bộ dữ liệu audio
     if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
       await new Promise(resolve => {
-        mediaRecorderRef.current.onstop = resolve;
-        mediaRecorderRef.current.stop();
+        mediaRecorderRef.current.onstop = () => {
+          resolve();
+        };
+        try {
+          mediaRecorderRef.current.requestData(); // Ép flush dữ liệu audio còn trong buffer!
+          mediaRecorderRef.current.stop();
+        } catch {
+          resolve();
+        }
       });
     }
 
@@ -448,25 +501,33 @@ export function SpeakingSession({
       audioContextRef.current = null;
     }
 
-    // NẾU Web Speech API chưa bắt được chữ (ví dụ trên Android Brave hoặc micro lag)
+    // Lấy câu nhận diện từ Web Speech API trước
+    let spoken = capturedSpeechRef.current.trim() || liveSpokenText.trim();
+
+    // NẾU Web Speech API chưa bắt được chữ (đặc biệt trên Android Brave / Chrome Mobile)
     // Dùng Gemini Flash Audio Multimodal để chuyển giọng nói thành văn bản chính xác 100%!
     if (!spoken && audioChunksRef.current.length > 0) {
       try {
-        const audioBlob = new Blob(audioChunksRef.current, { type: mediaRecorderRef.current?.mimeType || 'audio/webm' });
-        if (audioBlob.size > 2000) {
+        const mime = mediaRecorderRef.current?.mimeType || 'audio/webm';
+        const audioBlob = new Blob(audioChunksRef.current, { type: mime });
+        if (audioBlob.size > 500) {
           const reader = new FileReader();
-          const base64Promise = new Promise(res => {
+          const base64Promise = new Promise((res, rej) => {
             reader.onloadend = () => {
-              const base64 = reader.result.split(',')[1];
-              res(base64);
+              if (reader.result) {
+                const base64 = reader.result.split(',')[1];
+                res(base64);
+              } else {
+                res('');
+              }
             };
+            reader.onerror = rej;
           });
           reader.readAsDataURL(audioBlob);
           const base64Audio = await base64Promise;
 
-          const apiKey = getApiKey();
-          if (apiKey) {
-            const geminiTranscript = await transcribeAudioWithGemini(base64Audio, audioBlob.type, apiKey);
+          if (base64Audio) {
+            const geminiTranscript = await transcribeAudioWithGemini(base64Audio, audioBlob.type);
             if (geminiTranscript) {
               spoken = geminiTranscript;
             }
@@ -529,7 +590,7 @@ export function SpeakingSession({
         overflowY: 'auto',
       }}
     >
-      {/* ── 1. Responsive Top Fullscreen Header (Không vỡ trên Mobile) ── */}
+      {/* ── 1. Responsive Top Fullscreen Header ─────────────────── */}
       <header
         style={{
           padding: '12px 16px',

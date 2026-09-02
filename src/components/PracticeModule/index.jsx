@@ -1182,15 +1182,20 @@ export function PracticeModule({
       {/* Mobile Chapter Selector Header */}
       <div
         className="mobile-only card mb-3"
+        onClick={() => setShowMobileOutline(true)}
+        role="button"
+        tabIndex={0}
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: '10px 12px',
-          background: 'linear-gradient(135deg, rgba(99,102,241,0.12), rgba(168,85,247,0.08))',
-          borderColor: 'rgba(99,102,241,0.25)',
+          background: 'linear-gradient(135deg, rgba(99,102,241,0.16), rgba(168,85,247,0.12))',
+          borderColor: 'rgba(99,102,241,0.3)',
           gap: 10,
           width: '100%',
+          cursor: 'pointer',
+          transition: 'transform 0.1s ease, border-color 0.15s ease',
         }}
       >
         <div style={{ minWidth: 0, flex: 1 }}>
@@ -1202,14 +1207,13 @@ export function PracticeModule({
           </div>
         </div>
 
-        <button
+        <div
           className="btn btn-secondary btn-sm"
-          onClick={() => setShowMobileOutline(true)}
-          style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, padding: '6px 10px', fontSize: 12, fontWeight: 600 }}
+          style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, padding: '6px 10px', fontSize: 12, fontWeight: 600, pointerEvents: 'none' }}
         >
           <Layers size={14} color="var(--accent-400)" />
           <span>Mục lục ({chunkList.length})</span>
-        </button>
+        </div>
       </div>
 
       {/* Main Layout Grid */}
