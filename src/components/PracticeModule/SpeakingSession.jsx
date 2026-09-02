@@ -1175,7 +1175,15 @@ export function SpeakingSession({
                 type="button"
                 className="btn btn-primary"
                 onClick={() => {
-                  if (onComplete) onComplete({ score: totalScore });
+                  const speakingResult = {
+                    score: totalScore,
+                    usedTargetChunk: true,
+                    comprehensible: totalScore >= 65,
+                    overallFeedback: `Đạt độ chính xác ${totalScore}% qua 2 câu luyện nói.`,
+                    stepResults: stepResults,
+                    timestamp: Date.now(),
+                  };
+                  if (onComplete) onComplete(chunk.id, speakingResult);
                   onClose();
                 }}
                 style={{

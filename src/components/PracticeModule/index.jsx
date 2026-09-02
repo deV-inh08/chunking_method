@@ -493,9 +493,19 @@ function WritingSession({
     return false;
   }, [gradingResults, progress]);
 
-  const handleSpeakingComplete = (chunkId, speakingResult) => {
-    const updatedProg = saveSpeakingProgress(chunkId, speakingResult);
-    onComplete(chunkId, speakingResult.score >= 70, speakingResult.score, updatedProg.lastFeedback);
+  const handleSpeakingComplete = (arg1, arg2) => {
+    const chunkId = (typeof arg1 === 'string') ? arg1 : chunk.id;
+    const speakingResult = (arg2 && typeof arg2 === 'object') ? arg2 : (arg1 && typeof arg1 === 'object') ? arg1 : { score: 80 };
+    const safeScore = typeof speakingResult.score === 'number' ? speakingResult.score : 80;
+    const safePayload = {
+      score: safeScore,
+      usedTargetChunk: speakingResult.usedTargetChunk ?? true,
+      comprehensible: speakingResult.comprehensible ?? (safeScore >= 65),
+      ...speakingResult,
+    };
+    const updatedProg = saveSpeakingProgress(chunkId, safePayload);
+    onComplete(chunkId, safeScore >= 70, safeScore, updatedProg?.lastFeedback);
+    if (onToast) onToast('success', `Đã lưu kết quả luyện nói: ${safeScore} điểm!`);
   };
 
   // Sync draft states when chunk changes
