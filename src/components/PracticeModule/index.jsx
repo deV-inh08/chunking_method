@@ -373,7 +373,11 @@ function ExerciseCard({
             color: 'var(--text-primary)',
             lineHeight: 1.6, margin: 0,
           }}>
-            {exercise.vietnameseSentence}
+            {exercise.vietnameseSentence || exercise.context || exercise.prompt || (
+              <span style={{ color: 'var(--error-text)', fontSize: 13, fontWeight: 500 }}>
+                ⚠️ Chưa có nội dung câu tiếng Việt cho bài tập này.
+              </span>
+            )}
           </p>
 
           {/* Tense explanation */}
@@ -395,11 +399,8 @@ function ExerciseCard({
           )}
 
           {/* Vocab hints */}
-          <VocabHints hints={exercise.vocabHints} />
-          {exercise.vocabHints === undefined && (
-            <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 5, display: 'flex', alignItems: 'center', gap: 3 }}>
-              <RefreshCw size={10} /> Tái tạo để xem gợi ý từ vựng
-            </p>
+          {Array.isArray(exercise.vocabHints) && exercise.vocabHints.length > 0 && (
+            <VocabHints hints={exercise.vocabHints} />
           )}
         </div>
       </div>
@@ -462,6 +463,7 @@ function ExerciseCard({
 function WritingSession({
   chunk, exercises, progress, onComplete, onToast,
   onNavigatePrev, onNavigateNext, hasPrev, hasNext, currentIndex, totalChunks,
+  onRegenerate,
 }) {
   const [userInputs, setUserInputs] = useState(() => {
     return getPracticeDraft(chunk.id)?.inputs || {};
@@ -720,6 +722,23 @@ function WritingSession({
             </span>
           )}
 
+          {onRegenerate && (
+            <button
+              type="button"
+              className="btn btn-ghost btn-xs"
+              onClick={onRegenerate}
+              title="Soạn lại 3 câu bài tập mới cho chunk này với AI"
+              style={{
+                fontSize: 11, color: 'var(--text-muted)',
+                display: 'inline-flex', alignItems: 'center', gap: 4,
+                border: '1px solid var(--border-subtle)',
+                borderRadius: 'var(--radius-full)', padding: '2px 8px',
+                cursor: 'pointer',
+              }}
+            >
+              <RefreshCw size={11} /> Đổi bài tập mới
+            </button>
+          )}
 
         </div>
         <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
@@ -1000,7 +1019,7 @@ function PracticeOutline({
     <div className="flex flex-col gap-2">
       {groups.map((group, gIdx) => {
         const isCollapsed = Boolean(collapsedGroups[group.id]);
-        const completedCount = group.chunks.filter(c => allProgress[c.id]?.practiceCount > 0).length;
+        const completedCount = group.chunks.filter(c => allProgress[c.id]?.practiceCount > 0 && !isDueForReview(allProgress[c.id])).length;
         const hasActive = group.chunks.some(c => c.id === activeChunkId);
         const hasDue = group.chunks.some(c => isDueForReview(allProgress[c.id]));
 
@@ -1069,8 +1088,8 @@ function PracticeOutline({
                 {group.chunks.map((chunk, cIdx) => {
                   const prog = allProgress[chunk.id];
                   const isActive = activeChunkId === chunk.id;
-                  const isDone = prog && prog.practiceCount > 0;
                   const isDue = isDueForReview(prog);
+                  const isDone = prog && prog.practiceCount > 0 && !isDue;
 
                   return (
                     <button
@@ -1218,9 +1237,22 @@ export function PracticeModule({
     return activeChunk ? getSituations(activeChunk.id) : [];
   }, [activeChunk, situationsVersion]);
 
+  // Bài tập hợp lệ phải có ít nhất 1 câu và câu phải có nội dung tiếng Việt
+  const hasValidExercises = useMemo(() => {
+    if (!activeExercises || activeExercises.length === 0) return false;
+    return activeExercises.every(ex => {
+      const prompt = (ex.vietnameseSentence || ex.context || ex.prompt || '').trim();
+      return prompt.length > 0;
+    });
+  }, [activeExercises]);
+
   const chunksWithoutExercises = useMemo(() => {
     void situationsVersion;
-    return chunkList.filter(c => getSituations(c.id).length === 0);
+    return chunkList.filter(c => {
+      const situations = getSituations(c.id);
+      if (!situations || situations.length === 0) return true;
+      return !situations.every(ex => (ex.vietnameseSentence || ex.context || ex.prompt || '').trim().length > 0);
+    });
   }, [chunkList, situationsVersion]);
 
   const handleGenerateSingleChunk = useCallback(async (targetChunk) => {
@@ -1252,11 +1284,11 @@ export function PracticeModule({
     }
   }, [onToast]);
 
-  // Tự động kích hoạt tạo bài tập cho activeChunk nếu chưa có bài tập
+  // Tự động kích hoạt tạo bài tập cho activeChunk nếu chưa có bài tập hoặc bài tập bị rỗng nội dung tiếng Việt
   useEffect(() => {
     if (
       activeChunk &&
-      activeExercises.length === 0 &&
+      !hasValidExercises &&
       !autoGenerating &&
       !isGeneratingCurrent &&
       !isGeneratingAll &&
@@ -1265,7 +1297,7 @@ export function PracticeModule({
       autoAttemptedRef.current.add(activeChunk.id);
       handleGenerateSingleChunk(activeChunk);
     }
-  }, [activeChunk, activeExercises.length, autoGenerating, isGeneratingCurrent, isGeneratingAll, handleGenerateSingleChunk]);
+  }, [activeChunk, hasValidExercises, autoGenerating, isGeneratingCurrent, isGeneratingAll, handleGenerateSingleChunk]);
 
   const handleGenerateAllMissing = async () => {
     const apiKey = getApiKey();
@@ -1457,7 +1489,7 @@ export function PracticeModule({
 
         {/* Practice writing area */}
         <div style={{ minWidth: 0 }}>
-          {activeChunk && activeExercises.length > 0 ? (
+          {activeChunk && hasValidExercises ? (
             <WritingSession
               key={activeChunk.id}
               chunk={activeChunk}
@@ -1471,6 +1503,7 @@ export function PracticeModule({
               hasNext={activeChunkIndex < chunkList.length - 1}
               currentIndex={activeChunkIndex}
               totalChunks={chunkList.length}
+              onRegenerate={() => handleGenerateSingleChunk(activeChunk)}
             />
           ) : autoGenerating ? (
             <div className="card" style={{ padding: 40, textAlign: 'center' }}>

@@ -376,7 +376,16 @@ export async function syncFromSupabase() {
 
   if (cloudData.situations && Object.keys(cloudData.situations).length > 0) {
     const localS = get(KEYS.situations) || {};
-    set(KEYS.situations, { ...localS, ...cloudData.situations });
+    const mergedS = { ...localS };
+    Object.entries(cloudData.situations).forEach(([chunkId, cloudList]) => {
+      const localList = localS[chunkId] || [];
+      const localHasVi = localList.some(ex => (ex.vietnameseSentence || ex.context || ex.prompt)?.trim());
+      const cloudHasVi = (cloudList || []).some(ex => (ex.vietnameseSentence || ex.context || ex.prompt)?.trim());
+      if (!localHasVi || cloudHasVi) {
+        mergedS[chunkId] = cloudList;
+      }
+    });
+    set(KEYS.situations, mergedS);
   }
 
   if (cloudData.progress && Object.keys(cloudData.progress).length > 0) {

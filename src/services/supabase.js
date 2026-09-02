@@ -191,17 +191,29 @@ export async function dbSaveSituations(situations) {
   if (!client || !situations?.length) return;
   const userId = await getCurrentUserId();
 
-  const rows = situations.map(s => ({
-    id: s.id,
-    user_id: userId,
-    chunk_id: s.chunkId,
-    context: s.context || '',
-    example_sentence: s.exampleSentence || s.exampleResponse || '',
-    // Keep old fields for backward compat
-    prompt: s.prompt || '',
-    hint: s.hint || '',
-    example_response: s.exampleResponse || '',
-  }));
+  const rows = situations.map(s => {
+    const viSentence = s.vietnameseSentence || s.context || s.prompt || '';
+    const sampleTrans = s.sampleTranslation || s.exampleSentence || s.exampleResponse || '';
+    return {
+      id: s.id,
+      user_id: userId,
+      chunk_id: s.chunkId,
+      context: viSentence,
+      example_sentence: sampleTrans,
+      // Backward compat & rich fields
+      prompt: viSentence,
+      hint: s.tenseExplanation || s.hint || '',
+      example_response: sampleTrans,
+      level: s.level ?? 1,
+      level_label: s.levelLabel || '',
+      vietnamese_sentence: viSentence,
+      sample_translation: sampleTrans,
+      tense_used: s.tenseUsed || '',
+      tense_explanation: s.tenseExplanation || '',
+      vocab_hints: s.vocabHints ? (typeof s.vocabHints === 'string' ? s.vocabHints : JSON.stringify(s.vocabHints)) : '[]',
+      sentence_breakdown: s.sentenceBreakdown ? (typeof s.sentenceBreakdown === 'string' ? s.sentenceBreakdown : JSON.stringify(s.sentenceBreakdown)) : '[]',
+    };
+  });
 
   const { error } = await client.from('situations').upsert(rows);
   if (error) console.error('Supabase save situations error:', error);
@@ -285,13 +297,40 @@ export async function dbFetchAllData() {
     const situationsMap = {};
     (sRes.data || []).forEach(s => {
       if (!situationsMap[s.chunk_id]) situationsMap[s.chunk_id] = [];
+
+      let hints = [];
+      if (s.vocab_hints) {
+        try {
+          hints = typeof s.vocab_hints === 'string' ? JSON.parse(s.vocab_hints) : s.vocab_hints;
+        } catch { hints = []; }
+      }
+
+      let breakdown = [];
+      if (s.sentence_breakdown) {
+        try {
+          breakdown = typeof s.sentence_breakdown === 'string' ? JSON.parse(s.sentence_breakdown) : s.sentence_breakdown;
+        } catch { breakdown = []; }
+      }
+
+      const viSentence = s.vietnamese_sentence || s.vietnameseSentence || s.context || s.prompt || '';
+      const sampleTrans = s.sample_translation || s.sampleTranslation || s.example_sentence || s.example_response || '';
+
       situationsMap[s.chunk_id].push({
-        id: s.id, chunkId: s.chunk_id,
-        context: s.context || '',
-        exampleSentence: s.example_sentence || s.example_response || '',
-        // legacy
-        prompt: s.prompt || '', hint: s.hint || '',
-        exampleResponse: s.example_response || '',
+        id: s.id,
+        chunkId: s.chunk_id,
+        level: s.level ?? 1,
+        levelLabel: s.level_label || s.levelLabel || `Tình huống`,
+        vietnameseSentence: viSentence,
+        sampleTranslation: sampleTrans,
+        tenseUsed: s.tense_used || s.tenseUsed || '',
+        tenseExplanation: s.tense_explanation || s.tenseExplanation || s.hint || '',
+        vocabHints: Array.isArray(hints) ? hints : [],
+        sentenceBreakdown: Array.isArray(breakdown) ? breakdown : [],
+        context: viSentence,
+        exampleSentence: sampleTrans,
+        prompt: viSentence,
+        hint: s.hint || '',
+        exampleResponse: s.example_response || sampleTrans,
       });
     });
 
