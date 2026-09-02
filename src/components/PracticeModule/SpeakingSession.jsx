@@ -392,133 +392,25 @@ export function SpeakingSession({
           {(sessionState === 'WARMUP' || sessionState === 'SITUATION_INTRO' || sessionState === 'CONVERSATION' || sessionState === 'WRAP_UP') && (
             <div style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: 14 }}>
 
-              {/* ── 💡 GỢI Ý CỤM TỪ & CÂU MẪU (DÀNH CHO USER KHI CẦN NHÌN) ── */}
+              {/* ── 1. BIG INTERACTIVE MICROPHONE CONTROLLER (TRUNG TÂM) ── */}
               <div
                 className="card"
                 style={{
-                  padding: '12px 14px',
-                  background: 'rgba(99, 102, 241, 0.08)',
-                  borderColor: 'rgba(99, 102, 241, 0.25)',
-                  borderRadius: 'var(--radius-md)',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--accent-400)', display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <span>💡 Cụm từ & Câu gợi nhớ:</span>
-                    <strong style={{ color: '#fff', fontSize: 13 }}>{chunk.phrase}</strong>
-                    <span style={{ fontSize: 11.5, color: 'var(--text-secondary)' }}>({chunk.meaningVi})</span>
-                  </div>
-                  <button
-                    type="button"
-                    className="btn btn-ghost btn-xs"
-                    onClick={() => {
-                      if (liveSessionRef.current) {
-                        liveSessionRef.current.sendInitialGreetingTrigger();
-                        onToast('info', 'Đang yêu cầu AI chào lại...');
-                      }
-                    }}
-                    style={{ fontSize: 11, color: '#38bdf8', padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 4 }}
-                    title="Yêu cầu AI chào lại"
-                  >
-                    <RotateCcw size={12} /> AI chào lại
-                  </button>
-                </div>
-
-                {/* Danh sách 2-3 câu mẫu trực quan để liếc nhìn */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                  {/* Câu 1 */}
-                  <div
-                    style={{
-                      padding: '6px 10px',
-                      borderRadius: 'var(--radius-sm)',
-                      background: 'var(--bg-elevated)',
-                      border: '1px solid var(--border-subtle)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      gap: 8,
-                      fontSize: 12.5,
-                      color: '#fbbf24',
-                      fontWeight: 600,
-                    }}
-                  >
-                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      1. "{sentences.basic.userAnswer || sentences.basic.sampleTranslation}"
-                    </span>
-                    <button
-                      type="button"
-                      className="btn btn-secondary btn-xs"
-                      onClick={() => {
-                        const txt = sentences.basic.userAnswer || sentences.basic.sampleTranslation;
-                        if (liveSessionRef.current && txt) {
-                          liveSessionRef.current.sendUserTextMessage(txt);
-                          onToast('success', 'Đã gửi câu mẫu 1!');
-                        }
-                      }}
-                      style={{ flexShrink: 0, fontSize: 11, padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 3 }}
-                      title="Gửi câu này vào phòng"
-                    >
-                      <Send size={10} /> Gửi
-                    </button>
-                  </div>
-
-                  {/* Câu 2 */}
-                  <div
-                    style={{
-                      padding: '6px 10px',
-                      borderRadius: 'var(--radius-sm)',
-                      background: 'var(--bg-elevated)',
-                      border: '1px solid var(--border-subtle)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      gap: 8,
-                      fontSize: 12.5,
-                      color: 'var(--accent-200)',
-                      fontWeight: 600,
-                    }}
-                  >
-                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      2. "{sentences.intermediate.userAnswer || sentences.intermediate.sampleTranslation}"
-                    </span>
-                    <button
-                      type="button"
-                      className="btn btn-secondary btn-xs"
-                      onClick={() => {
-                        const txt = sentences.intermediate.userAnswer || sentences.intermediate.sampleTranslation;
-                        if (liveSessionRef.current && txt) {
-                          liveSessionRef.current.sendUserTextMessage(txt);
-                          onToast('success', 'Đã gửi câu mẫu 2!');
-                        }
-                      }}
-                      style={{ flexShrink: 0, fontSize: 11, padding: '2px 6px', display: 'flex', alignItems: 'center', gap: 3 }}
-                      title="Gửi câu này vào phòng"
-                    >
-                      <Send size={10} /> Gửi
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* ── BIG INTERACTIVE MICROPHONE CONTROLLER ── */}
-              <div
-                className="card"
-                style={{
-                  padding: '18px 16px',
+                  padding: '20px 16px',
                   textAlign: 'center',
                   background: 'var(--bg-elevated)',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: 12,
+                  gap: 14,
                   borderRadius: 'var(--radius-md)',
                   border: isAiSpeaking ? '1px solid rgba(56, 189, 248, 0.4)' : volume > 10 ? '1px solid rgba(34, 197, 94, 0.4)' : '1px solid var(--border-subtle)',
                 }}
               >
                 <AudioWaveVisualizer volume={volume} isAiSpeaking={isAiSpeaking} />
 
-                {/* Big Center Action Button */}
+                {/* Center Action Buttons */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
                   <button
                     type="button"
@@ -583,7 +475,7 @@ export function SpeakingSession({
                     onClick={() => {
                       if (liveSessionRef.current) {
                         liveSessionRef.current.sendInitialGreetingTrigger();
-                        onToast('info', 'Đang yêu cầu AI chào và bắt đầu lại...');
+                        onToast('info', 'Đang yêu cầu AI chào lại...');
                       }
                     }}
                     className="btn btn-secondary"
@@ -597,7 +489,7 @@ export function SpeakingSession({
                       justifyContent: 'center',
                       color: '#38bdf8',
                     }}
-                    title="Phát lại / Bắt đầu lại"
+                    title="Yêu cầu AI chào lại"
                   >
                     <RotateCcw size={16} />
                   </button>
@@ -607,7 +499,7 @@ export function SpeakingSession({
                 <div style={{ fontSize: 13, fontWeight: 700 }}>
                   {isAiSpeaking ? (
                     <span style={{ color: '#38bdf8', display: 'flex', alignItems: 'center', gap: 6 }}>
-                      🔊 AI đang nói... (Bạn có thể nói vào mic để ngắt lời)
+                      🔊 AI đang nói...
                     </span>
                   ) : isMuted ? (
                     <span style={{ color: 'var(--error-text)' }}>
@@ -619,62 +511,113 @@ export function SpeakingSession({
                     </span>
                   ) : (
                     <span style={{ color: 'var(--text-secondary)' }}>
-                      🎙️ Micro đang mở — Hãy nói hoặc đọc to câu trên vào micro
+                      🎙️ Micro đang mở — Hãy nói hoặc đọc to câu gợi ý bên dưới
                     </span>
                   )}
                 </div>
               </div>
 
-              {/* Chat dialogue stream */}
+              {/* ── 2. GỢI Ý CỤM TỪ & CÂU MẪU (ĐẶT Ở BÊN DƯỚI) ── */}
               <div
-                ref={chatScrollRef}
+                className="card"
                 style={{
-                  flex: 1,
-                  minHeight: 140,
-                  maxHeight: 200,
-                  overflowY: 'auto',
+                  padding: '12px 14px',
+                  background: 'rgba(99, 102, 241, 0.08)',
+                  borderColor: 'rgba(99, 102, 241, 0.25)',
+                  borderRadius: 'var(--radius-md)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 8,
-                  padding: '10px',
-                  background: 'rgba(0,0,0,0.2)',
-                  borderRadius: 'var(--radius-md)',
-                  border: '1px solid var(--border-subtle)',
                 }}
               >
-                {transcripts.length === 0 ? (
-                  <div style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: 12, margin: 'auto' }}>
-                    Cuộc trò chuyện sẽ xuất hiện ở đây theo thời gian thực…
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div style={{ fontSize: 12.5, fontWeight: 700, color: 'var(--accent-400)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <span>💡 Cụm từ & Câu gợi nhớ:</span>
+                    <strong style={{ color: '#fff', fontSize: 13 }}>{chunk.phrase}</strong>
+                    <span style={{ fontSize: 11.5, color: 'var(--text-secondary)' }}>({chunk.meaningVi})</span>
                   </div>
-                ) : (
-                  transcripts.map((t, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        alignSelf: t.role === 'user' ? 'flex-end' : 'flex-start',
-                        maxWidth: '85%',
-                        padding: '8px 12px',
-                        borderRadius: 'var(--radius-md)',
-                        background: t.role === 'user' ? 'rgba(99,102,241,0.25)' : 'rgba(255,255,255,0.06)',
-                        border: `1px solid ${t.role === 'user' ? 'rgba(99,102,241,0.4)' : 'rgba(255,255,255,0.1)'}`,
-                        fontSize: 13,
-                        lineHeight: 1.5,
-                        color: t.role === 'user' ? '#fff' : 'var(--text-primary)',
+                </div>
+
+                {/* Danh sách 2 câu mẫu trực quan để liếc nhìn */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  {/* Câu 1 */}
+                  <div
+                    style={{
+                      padding: '8px 10px',
+                      borderRadius: 'var(--radius-sm)',
+                      background: 'var(--bg-elevated)',
+                      border: '1px solid var(--border-subtle)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      gap: 8,
+                      fontSize: 12.5,
+                      color: '#fbbf24',
+                      fontWeight: 600,
+                    }}
+                  >
+                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      1. "{sentences.basic.userAnswer || sentences.basic.sampleTranslation}"
+                    </span>
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-xs"
+                      onClick={() => {
+                        const txt = sentences.basic.userAnswer || sentences.basic.sampleTranslation;
+                        if (liveSessionRef.current && txt) {
+                          liveSessionRef.current.sendUserTextMessage(txt);
+                          onToast('success', 'Đã gửi câu mẫu 1!');
+                        }
                       }}
+                      style={{ flexShrink: 0, fontSize: 11, padding: '3px 8px', display: 'flex', alignItems: 'center', gap: 3 }}
+                      title="Gửi câu này vào phòng"
                     >
-                      <div style={{ fontSize: 10, fontWeight: 700, color: t.role === 'user' ? 'var(--accent-300)' : '#38bdf8', marginBottom: 2 }}>
-                        {t.role === 'user' ? 'Bạn' : 'AI Partner'}
-                      </div>
-                      {t.text}
-                    </div>
-                  ))
-                )}
+                      <Send size={10} /> Gửi
+                    </button>
+                  </div>
+
+                  {/* Câu 2 */}
+                  <div
+                    style={{
+                      padding: '8px 10px',
+                      borderRadius: 'var(--radius-sm)',
+                      background: 'var(--bg-elevated)',
+                      border: '1px solid var(--border-subtle)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      gap: 8,
+                      fontSize: 12.5,
+                      color: 'var(--accent-200)',
+                      fontWeight: 600,
+                    }}
+                  >
+                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      2. "{sentences.intermediate.userAnswer || sentences.intermediate.sampleTranslation}"
+                    </span>
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-xs"
+                      onClick={() => {
+                        const txt = sentences.intermediate.userAnswer || sentences.intermediate.sampleTranslation;
+                        if (liveSessionRef.current && txt) {
+                          liveSessionRef.current.sendUserTextMessage(txt);
+                          onToast('success', 'Đã gửi câu mẫu 2!');
+                        }
+                      }}
+                      style={{ flexShrink: 0, fontSize: 11, padding: '3px 8px', display: 'flex', alignItems: 'center', gap: 3 }}
+                      title="Gửi câu này vào phòng"
+                    >
+                      <Send size={10} /> Gửi
+                    </button>
+                  </div>
+                </div>
               </div>
 
-              {/* Action bar during session */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 4 }}>
+              {/* ── 3. ACTION BAR DƯỚI CÙNG ── */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 2 }}>
                 <span style={{ fontSize: 11.5, color: 'var(--text-muted)' }}>
-                  Hội thoại tự nhiên 3–5 lượt. AI sẽ tự kết thúc khi đạt mục tiêu.
+                  Hội thoại tự nhiên 3–5 lượt. AI sẽ tự tổng kết.
                 </span>
 
                 <button
@@ -815,11 +758,11 @@ export function SpeakingSession({
               </div>
 
               {/* Footer action buttons */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, marginTop: 8 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 8 }}>
                 <button
                   className="btn btn-secondary"
                   onClick={startLiveSession}
-                  style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 600 }}
+                  style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, fontSize: 13, fontWeight: 600, padding: '10px 12px', whiteSpace: 'nowrap' }}
                 >
                   <RotateCcw size={14} /> Luyện nói lại
                 </button>
@@ -827,9 +770,9 @@ export function SpeakingSession({
                 <button
                   className="btn btn-primary"
                   onClick={onClose}
-                  style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 700, padding: '9px 22px' }}
+                  style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, fontSize: 13, fontWeight: 700, padding: '10px 12px', whiteSpace: 'nowrap' }}
                 >
-                  <CheckCircle size={15} /> Hoàn thành & Tiếp tục
+                  <CheckCircle size={15} /> Hoàn thành
                 </button>
               </div>
 

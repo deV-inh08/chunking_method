@@ -448,37 +448,42 @@ export class GeminiLiveSession {
       } catch {}
     }
 
-    // Voice Engine Fallback: Tạo phản hồi tiếp nối qua Gemini Flash API
+    // Voice Engine Fallback: Tạo phản hồi siêu tốc qua Gemini Flash Lite (Độ trễ < 200ms, không suy nghĩ nội tâm)
     try {
       this.isAiSpeaking = true;
       this.onAiSpeaking(true);
 
       const conversationHistory = this.transcriptHistory
-        .map(t => `${t.role === 'ai' ? 'AI Partner' : 'User'}: "${t.text}"`)
+        .map(t => `${t.role === 'ai' ? 'AI' : 'Learner'}: "${t.text}"`)
+        .slice(-4)
         .join('\n');
 
       const prompt = `${this.systemInstruction}
 
-CONVERSATION HISTORY SO FAR:
+CONVERSATION SO FAR:
 ${conversationHistory}
 
-Current turn count: ${this.turnCount} / ${SPEAKING_CONFIG.MAX_TURNS}
+Task: Output ONLY 1 short spoken conversational response (1-2 brief sentences, under 15 words).
+Direct speech ONLY. NO thinking, NO formatting, NO labels, NO prefixes.`;
 
-Generate the next response as the AI speaking partner.
-Keep it natural, concise (1-2 sentences in spoken English), and encourage the learner to talk.
-Do NOT output markdown, labels or explanations. Output ONLY the spoken response.`;
-
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(this.apiKey)}`, {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${encodeURIComponent(this.apiKey)}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { maxOutputTokens: 120, temperature: 0.7 },
+          generationConfig: {
+            maxOutputTokens: 50,
+            temperature: 0.6,
+            thinkingConfig: {
+              thinkingBudget: 0,
+            },
+          },
         }),
       });
 
       const data = await res.json();
-      const aiReply = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || "Great job! Let's continue.";
+      let aiReply = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || "Great job! Tell me more.";
+      aiReply = aiReply.replace(/\*\*.*?\*\*/g, '').replace(/Crafting.*/gi, '').trim();
 
       this.speakAiResponse(aiReply);
     } catch (err) {
