@@ -90,6 +90,8 @@ export function SpeakingSession({
   const [gradingResult, setGradingResult] = useState(null);
   const [showFullTranscript, setShowFullTranscript] = useState(false);
 
+  const liveSessionRef = useRef(null);
+  const chatScrollRef = useRef(null);
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
   const onToastRef = useRef(onToast);
