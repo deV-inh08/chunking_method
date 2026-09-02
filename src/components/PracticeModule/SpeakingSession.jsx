@@ -90,31 +90,32 @@ export function SpeakingSession({
   const [gradingResult, setGradingResult] = useState(null);
   const [showFullTranscript, setShowFullTranscript] = useState(false);
 
-  const liveSessionRef = useRef(null);
-  const chatScrollRef = useRef(null);
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
+  const onToastRef = useRef(onToast);
+  onToastRef.current = onToast;
 
-  // Lấy câu đã viết từ draft hoặc bài tập
-  const draft = useMemo(() => getPracticeDraft(chunk.id) || {}, [chunk.id]);
-  const userInputs = useMemo(() => draft.inputs || {}, [draft]);
-
+  // Lấy câu đã viết từ draft hoặc bài tập ổn định theo chunk.id
   const sentences = useMemo(() => {
+    const draftData = getPracticeDraft(chunk.id) || {};
+    const inputs = draftData.inputs || {};
     const basicEx = exercises.find(e => e.level === 1) || exercises[0] || {};
     const interEx = exercises.find(e => e.level === 2) || exercises[1] || {};
     return {
       basic: {
-        userAnswer: userInputs[0] || basicEx.sampleTranslation,
+        userAnswer: inputs[0] || basicEx.sampleTranslation,
         sampleTranslation: basicEx.sampleTranslation,
         vietnameseSentence: basicEx.vietnameseSentence,
-        score: draft.gradingResults?.[0]?.score ?? 80,
+        score: draftData.gradingResults?.[0]?.score ?? 80,
       },
       intermediate: {
-        userAnswer: userInputs[1] || interEx.sampleTranslation,
+        userAnswer: inputs[1] || interEx.sampleTranslation,
         sampleTranslation: interEx.sampleTranslation,
         vietnameseSentence: interEx.vietnameseSentence,
-        score: draft.gradingResults?.[1]?.score ?? 80,
+        score: draftData.gradingResults?.[1]?.score ?? 80,
       },
     };
-  }, [exercises, userInputs, draft]);
+  }, [chunk.id, exercises]);
 
   // Cuộn khung chat xuống cuối khi có transcript mới
   useEffect(() => {
@@ -154,13 +155,11 @@ export function SpeakingSession({
       setGradingResult(resultData);
       setSessionState('SUMMARY');
 
-      // Tự động lưu tiến độ Speaking & SRS
-      onComplete?.(chunk.id, resultData);
-      onToast('success', `✓ Đã hoàn thành luyện nói! Điểm phản xạ: ${resultData.score}đ`);
+      onCompleteRef.current?.(chunk.id, resultData);
+      onToastRef.current?.('success', `✓ Đã hoàn thành luyện nói! Điểm phản xạ: ${resultData.score}đ`);
     } catch (err) {
       console.error('Grading speaking session error:', err);
-      onToast('error', `Lỗi chấm bài nói: ${err.message}`);
-      // Fallback result
+      onToastRef.current?.('error', `Lỗi chấm bài nói: ${err.message}`);
       const fallbackData = {
         sessionId: `spk_${Date.now()}`,
         chunkId: chunk.id,
@@ -177,15 +176,19 @@ export function SpeakingSession({
       };
       setGradingResult(fallbackData);
       setSessionState('SUMMARY');
-      onComplete?.(chunk.id, fallbackData);
+      onCompleteRef.current?.(chunk.id, fallbackData);
     }
-  }, [chunk, onComplete, onToast]);
+  }, [chunk]);
 
   // Khởi chạy Live Session
   const startLiveSession = useCallback(async () => {
+    if (liveSessionRef.current) {
+      liveSessionRef.current.stop();
+    }
+
     const apiKey = getApiKey();
     if (!apiKey) {
-      onToast('error', 'Chưa có Gemini API Key. Vào Settings để nhập.');
+      onToastRef.current?.('error', 'Chưa có Gemini API Key. Vào Settings để nhập.');
       setErrorMessage('Chưa có API Key. Vui lòng cấu hình trong Cài đặt.');
       setSessionState('ERROR');
       return;
@@ -195,9 +198,9 @@ export function SpeakingSession({
     setGradingResult(null);
     setTranscripts([]);
     setTurnCount(1);
+    setIsMuted(false);
     setSessionState('CONNECTING');
 
-    // Tạo prompt
     const systemPrompt = buildSpeakingSystemPrompt(chunk, sentences, SPEAKING_CONFIG);
 
     const session = new GeminiLiveSession({
@@ -209,7 +212,6 @@ export function SpeakingSession({
           setTurnCount(session.turnCount || 1);
         }
         if (newState === 'WRAP_UP') {
-          // Tự động chuyển sang chấm điểm sau khi AI kết thúc
           setTimeout(() => {
             finishAndGradeSession();
           }, 3000);
@@ -236,9 +238,9 @@ export function SpeakingSession({
 
     liveSessionRef.current = session;
     await session.start();
-  }, [chunk, sentences, onToast, finishAndGradeSession]);
+  }, [chunk, sentences, finishAndGradeSession]);
 
-  // Bắt đầu ngay khi mount
+  // Bắt đầu 1 lần duy nhất khi mở modal (phụ thuộc chunk.id)
   useEffect(() => {
     startLiveSession();
     return () => {
@@ -246,7 +248,7 @@ export function SpeakingSession({
         liveSessionRef.current.stop();
       }
     };
-  }, [startLiveSession]);
+  }, [chunk.id]); // CHỈ phụ thuộc vào chunk.id!
 
   return (
     <div
