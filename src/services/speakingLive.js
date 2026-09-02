@@ -1,10 +1,10 @@
 // ─── Gemini Live API & Smart Voice Interactive Service ───────────────────
 
 export const LIVE_MODELS = [
-  'models/gemini-2.5-flash-native-audio-dialog',
   'models/gemini-2.5-flash-native-audio-preview-09-2025',
   'models/gemini-3-flash-live',
   'models/gemini-3.1-flash-live-preview',
+  'models/gemini-2.5-flash-native-audio-dialog',
   'models/gemini-2.5-flash',
 ];
 
@@ -17,7 +17,28 @@ export const SPEAKING_CONFIG = {
   GRADING_MODEL: 'gemini-2.5-flash-lite',
 };
 
-// ─── Audio Helpers (PCM 16kHz Mono Encoding & 24kHz Playback) ────────────
+// ─── Audio Helpers (Downsampling & PCM Encoding) ─────────────────────────
+
+function downsampleTo16k(inputBuffer, inputSampleRate) {
+  if (inputSampleRate === 16000) return inputBuffer;
+  const ratio = inputSampleRate / 16000;
+  const newLength = Math.round(inputBuffer.length / ratio);
+  const result = new Float32Array(newLength);
+  let offsetResult = 0;
+  let offsetBuffer = 0;
+  while (offsetResult < result.length) {
+    const nextOffsetBuffer = Math.round((offsetResult + 1) * ratio);
+    let accum = 0, count = 0;
+    for (let i = offsetBuffer; i < nextOffsetBuffer && i < inputBuffer.length; i++) {
+      accum += inputBuffer[i];
+      count++;
+    }
+    result[offsetResult] = count > 0 ? accum / count : 0;
+    offsetResult++;
+    offsetBuffer = nextOffsetBuffer;
+  }
+  return result;
+}
 
 function floatTo16BitPCM(input) {
   const output = new DataView(new ArrayBuffer(input.length * 2));
@@ -59,8 +80,9 @@ function base64ToFloat32Array(base64) {
  * Quản lý phát âm thanh mượt mà qua Web Audio Context
  */
 class AudioPlayer {
-  constructor(sampleRate = 24000) {
+  constructor(sampleRate = 24000, onPlaybackEnd = null) {
     this.sampleRate = sampleRate;
+    this.onPlaybackEnd = onPlaybackEnd;
     this.audioCtx = null;
     this.nextPlayTime = 0;
     this.activeSources = [];
@@ -99,6 +121,9 @@ class AudioPlayer {
     source.onended = () => {
       const idx = this.activeSources.indexOf(source);
       if (idx !== -1) this.activeSources.splice(idx, 1);
+      if (this.activeSources.length === 0 && this.onPlaybackEnd) {
+        this.onPlaybackEnd();
+      }
     };
   }
 
@@ -147,7 +172,10 @@ export class GeminiLiveSession {
     this.audioContext = null;
     this.mediaStream = null;
     this.scriptProcessor = null;
-    this.player = new AudioPlayer(24000);
+    this.player = new AudioPlayer(24000, () => {
+      this.isAiSpeaking = false;
+      this.onAiSpeaking(false);
+    });
     this.transcriptHistory = [];
     this.state = 'IDLE';
     this.turnCount = 0;
@@ -493,21 +521,18 @@ Direct speech ONLY. NO thinking, NO formatting, NO labels, NO prefixes.`;
   }
 
   /**
-   * Bắt đầu thu âm 16kHz PCM với bộ lọc tạp âm và chống ngắt tiếng AI
+   * Bắt đầu thu âm 16kHz PCM và stream liên tục để Gemini Server VAD nhận diện giọng nói
    */
   startAudioRecording() {
     if (!this.mediaStream) return;
     try {
       const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      this.audioContext = new AudioContextClass({ sampleRate: 16000 });
+      this.audioContext = new AudioContextClass(); // Để trình duyệt chạy ở sampleRate gốc của phần cứng
+      const inputSampleRate = this.audioContext.sampleRate || 44100;
       const source = this.audioContext.createMediaStreamSource(this.mediaStream);
 
-      // Bộ lọc cắt tần số thấp < 100Hz (loại bỏ tiếng gió, tiếng quạt, tiếng ù nền)
-      const highPassFilter = this.audioContext.createBiquadFilter();
-      highPassFilter.type = 'highpass';
-      highPassFilter.frequency.setValueAtTime(100, this.audioContext.currentTime);
-
-      this.scriptProcessor = this.audioContext.createScriptProcessor(2048, 1, 1);
+      // Buffer size 4096 cho kết nối mượt mà (~85ms một lần gửi)
+      this.scriptProcessor = this.audioContext.createScriptProcessor(4096, 1, 1);
 
       this.scriptProcessor.onaudioprocess = (e) => {
         if (!this.isConnected || this.ws?.readyState !== WebSocket.OPEN || this.isMuted) return;
@@ -523,18 +548,16 @@ Direct speech ONLY. NO thinking, NO formatting, NO labels, NO prefixes.`;
         const volume = Math.min(100, Math.round(rms * 280));
         this.onVolume(volume);
 
-        // 1. Chống ngắt lời AI: Khi AI đang nói, ngắt luồng mic lên server để loa ngoài không dội vào mic
+        // Khi AI đang nói, không stream âm thanh lên server để tránh tiếng loa ngoài dội lại làm ngắt AI
         if (this.isAiSpeaking) {
           return;
         }
 
-        // 2. Noise Gate: Tạp âm nhỏ (tiếng thở nhẹ, tiếng gió volume < 15) sẽ bị chặn
-        if (volume < 15) {
-          return;
-        }
+        // Downsample âm thanh từ sampleRate phần cứng về chuẩn 16,000Hz PCM
+        const downsampled16k = downsampleTo16k(inputData, inputSampleRate);
 
         // Convert Float32 -> 16-bit PCM -> Base64
-        const pcmBuffer = floatTo16BitPCM(inputData);
+        const pcmBuffer = floatTo16BitPCM(downsampled16k);
         const base64Data = arrayBufferToBase64(pcmBuffer);
 
         const clientChunk = {
@@ -553,8 +576,7 @@ Direct speech ONLY. NO thinking, NO formatting, NO labels, NO prefixes.`;
         } catch {}
       };
 
-      source.connect(highPassFilter);
-      highPassFilter.connect(this.scriptProcessor);
+      source.connect(this.scriptProcessor);
       this.scriptProcessor.connect(this.audioContext.destination);
     } catch (e) {
       console.error('Failed to start audio recording:', e);
