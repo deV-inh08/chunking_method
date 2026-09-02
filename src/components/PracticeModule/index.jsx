@@ -463,13 +463,18 @@ function WritingSession({
   chunk, exercises, progress, onComplete, onToast,
   onNavigatePrev, onNavigateNext, hasPrev, hasNext, currentIndex, totalChunks,
 }) {
+  const isDue = isDueForReview(progress);
+
   const [userInputs, setUserInputs] = useState(() => {
+    if (isDue) return {};
     return getPracticeDraft(chunk.id)?.inputs || {};
   });
   const [showSamples, setShowSamples] = useState(() => {
+    if (isDue) return {};
     return getPracticeDraft(chunk.id)?.showSamples || {};
   });
   const [gradingResults, setGradingResults] = useState(() => {
+    if (isDue) return {};
     return getPracticeDraft(chunk.id)?.gradingResults || {};
   });
   const [isGrading, setIsGrading] = useState(false);
@@ -495,11 +500,19 @@ function WritingSession({
 
   // Sync draft states when chunk changes
   useEffect(() => {
-    const draft = getPracticeDraft(chunk.id) || {};
-    setUserInputs(draft.inputs || {});
-    setShowSamples(draft.showSamples || {});
-    setGradingResults(draft.gradingResults || {});
-  }, [chunk.id]);
+    if (isDue) {
+      // Khi chunk đến hạn ôn tập, clear bản nháp cũ để người học làm mới từ đầu
+      clearPracticeDraft(chunk.id);
+      setUserInputs({});
+      setShowSamples({});
+      setGradingResults({});
+    } else {
+      const draft = getPracticeDraft(chunk.id) || {};
+      setUserInputs(draft.inputs || {});
+      setShowSamples(draft.showSamples || {});
+      setGradingResults(draft.gradingResults || {});
+    }
+  }, [chunk.id, isDue]);
 
   const handleUserInputChange = (index, val) => {
     setUserInputs(prev => {
