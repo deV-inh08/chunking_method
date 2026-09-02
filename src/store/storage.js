@@ -304,6 +304,7 @@ export function getSettings() {
     apiKey: s.apiKey || '',
     apiKey2: s.apiKey2 || '',
     language: s.language || 'vi-VN',
+    speakingVoice: s.speakingVoice || 'en-US-female', // 'en-US-female' | 'en-US-male' | 'en-GB-female' | 'en-GB-male' | 'en-AU-female'
     supabaseUrl: s.supabaseUrl || '',
     supabaseKey: s.supabaseKey || '',
     srsTrack: s.srsTrack || 'track_a', // 'track_a' | 'track_b'

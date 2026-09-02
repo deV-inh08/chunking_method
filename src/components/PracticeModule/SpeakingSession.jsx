@@ -3,8 +3,46 @@ import {
   Mic, Volume2, Send,
   CheckCircle, RotateCcw, ArrowLeft,
   Award, Play, AlertCircle, Square,
+  Settings, Check, X,
 } from 'lucide-react';
-import { getPracticeDraft } from '../../store/storage';
+import { getApiKey, getPracticeDraft, getSettings, saveSettings } from '../../store/storage';
+import { transcribeAudioWithGemini } from '../../services/ai';
+
+// ─── AI Voice Candidates ───────────────────────────────────────
+const AI_VOICES = [
+  { id: 'en-US-female', label: '👩 🇺🇸 Anh - Mỹ (Nữ)', lang: 'en-US', gender: 'female', sample: 'Hello, let\'s practice American English together.' },
+  { id: 'en-US-male', label: '👨 🇺🇸 Anh - Mỹ (Nam)', lang: 'en-US', gender: 'male', sample: 'Hi there, welcome to speaking practice.' },
+  { id: 'en-GB-female', label: '👩 🇬🇧 Anh - Anh (Nữ)', lang: 'en-GB', gender: 'female', sample: 'Good day! Let\'s practise British pronunciation.' },
+  { id: 'en-GB-male', label: '👨 🇬🇧 Anh - Anh (Nam)', lang: 'en-GB', gender: 'male', sample: 'Welcome! Ready to practice your English sentences?' },
+  { id: 'en-AU-female', label: '👩 🇦🇺 Anh - Úc (Nữ)', lang: 'en-AU', gender: 'female', sample: 'G\'day! Let\'s improve your speaking skills.' },
+];
+
+function findBestVoice(voiceConfig) {
+  if (typeof window === 'undefined' || !window.speechSynthesis) return null;
+  const voices = window.speechSynthesis.getVoices() || [];
+  if (voices.length === 0) return null;
+
+  const targetLang = (voiceConfig.lang || 'en-US').toLowerCase();
+  const targetGender = voiceConfig.gender || 'female';
+
+  const langVoices = voices.filter(v => v.lang.toLowerCase().replace('_', '-').startsWith(targetLang));
+
+  const maleKeywords = ['male', 'david', 'guy', 'george', 'james', 'daniel', 'richard', 'alex', 'fred', 'rishi', 'mark', 'tom'];
+  const femaleKeywords = ['female', 'zira', 'samantha', 'jenny', 'victoria', 'karen', 'susan', 'catherine', 'hazel', 'moira', 'tessa', 'ava', 'emma'];
+
+  const matchedByGender = (langVoices.length > 0 ? langVoices : voices).filter(v => {
+    const name = v.name.toLowerCase();
+    if (targetGender === 'male') {
+      return maleKeywords.some(k => name.includes(k)) || (!femaleKeywords.some(k => name.includes(k)) && name.includes('male'));
+    } else {
+      return femaleKeywords.some(k => name.includes(k)) || (!maleKeywords.some(k => name.includes(k)) && (name.includes('female') || name.includes('natural')));
+    }
+  });
+
+  if (matchedByGender.length > 0) return matchedByGender[0];
+  if (langVoices.length > 0) return langVoices[0];
+  return voices.find(v => v.lang.startsWith('en')) || voices[0];
+}
 
 // ─── ScoreRing Component ───────────────────────────────────────
 function ScoreRing({ score }) {
@@ -141,8 +179,15 @@ export function SpeakingSession({
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
+  const [isEvaluating, setIsEvaluating] = useState(false);
   const [volume, setVolume] = useState(0);
   const [liveSpokenText, setLiveSpokenText] = useState('');
+
+  // AI Voice Selection
+  const [selectedVoiceId, setSelectedVoiceId] = useState(() => {
+    return getSettings().speakingVoice || 'en-US-female';
+  });
+  const [showVoiceModal, setShowVoiceModal] = useState(false);
 
   // Result history of each sentence
   const [stepResults, setStepResults] = useState([null, null]);
@@ -151,6 +196,8 @@ export function SpeakingSession({
   const mediaStreamRef = useRef(null);
   const audioContextRef = useRef(null);
   const recognitionRef = useRef(null);
+  const mediaRecorderRef = useRef(null);
+  const audioChunksRef = useRef([]);
   const capturedSpeechRef = useRef('');
 
   // Lấy câu học ổn định
@@ -181,15 +228,23 @@ export function SpeakingSession({
   const currentSentence = sentenceList[currentStepIndex] || sentenceList[0];
 
   // Phát âm thanh mẫu của AI qua Web Speech Synthesis
-  const playAiVoice = useCallback((text, onEndCallback) => {
+  const playAiVoice = useCallback((text, onEndCallback, customVoiceId) => {
     if (typeof window === 'undefined' || !window.speechSynthesis) return;
     window.speechSynthesis.cancel();
 
     setIsAiSpeaking(true);
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US';
-    utterance.rate = 0.95;
-    utterance.pitch = 1.0;
+    const voiceId = customVoiceId || selectedVoiceId;
+    const selectedVoiceObj = AI_VOICES.find(v => v.id === voiceId) || AI_VOICES[0];
+    utterance.lang = selectedVoiceObj.lang;
+
+    const matchedVoice = findBestVoice(selectedVoiceObj);
+    if (matchedVoice) {
+      utterance.voice = matchedVoice;
+    }
+
+    utterance.rate = selectedVoiceObj.lang === 'en-GB' ? 0.92 : 0.95;
+    utterance.pitch = selectedVoiceObj.gender === 'male' ? 0.92 : 1.02;
 
     utterance.onend = () => {
       setIsAiSpeaking(false);
@@ -201,12 +256,31 @@ export function SpeakingSession({
     };
 
     window.speechSynthesis.speak(utterance);
-  }, []);
+  }, [selectedVoiceId]);
+
+  // Đổi giọng AI
+  const handleSelectVoice = (voiceId) => {
+    setSelectedVoiceId(voiceId);
+    saveSettings({ ...getSettings(), speakingVoice: voiceId });
+    const voiceObj = AI_VOICES.find(v => v.id === voiceId);
+    if (voiceObj) {
+      playAiVoice(voiceObj.sample, null, voiceId);
+    }
+  };
 
   // Đánh giá câu nói của user
   const handleEvaluateSpokenText = useCallback((spokenText) => {
+    setIsEvaluating(false);
+
     if (!spokenText || !spokenText.trim()) {
-      if (onToast) onToast('warning', 'Chưa thu được âm thanh. Hãy thử bấm nói lại nhé!');
+      if (onToast) onToast('warning', 'Chưa thu được giọng nói. Hãy đưa micro lại gần và đọc to câu tiếng Anh nhé!');
+      setCurrentAttempt({
+        targetText: currentSentence.sampleTranslation,
+        spokenText: '(Chưa nhận diện được giọng nói)',
+        words: currentSentence.sampleTranslation.split(/\s+/).map(w => ({ word: w, status: 'incorrect', note: 'Chưa nghe thấy' })),
+        accuracy: 0,
+        isPassed: false,
+      });
       return;
     }
 
@@ -246,6 +320,7 @@ export function SpeakingSession({
     capturedSpeechRef.current = '';
     setLiveSpokenText('');
     setCurrentAttempt(null);
+    audioChunksRef.current = [];
 
     try {
       if (!mediaStreamRef.current) {
@@ -276,7 +351,28 @@ export function SpeakingSession({
         checkVol();
       }
 
-      // Speech Recognition
+      // 1. MediaRecorder Capture (Fallback siêu mạnh & chuẩn xác)
+      try {
+        const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
+          ? 'audio/webm;codecs=opus'
+          : MediaRecorder.isTypeSupported('audio/mp4')
+          ? 'audio/mp4'
+          : 'audio/webm';
+
+        const recorder = new MediaRecorder(mediaStreamRef.current, { mimeType });
+        audioChunksRef.current = [];
+        recorder.ondataavailable = (e) => {
+          if (e.data && e.data.size > 0) {
+            audioChunksRef.current.push(e.data);
+          }
+        };
+        recorder.start(100);
+        mediaRecorderRef.current = recorder;
+      } catch (recErr) {
+        console.warn('MediaRecorder init warning:', recErr);
+      }
+
+      // 2. Speech Recognition (Real-time feedback)
       const SpeechRecognitionClass = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SpeechRecognitionClass) {
         if (recognitionRef.current) {
@@ -315,19 +411,32 @@ export function SpeakingSession({
       setIsRecording(true);
     } catch (err) {
       console.warn('Microphone access warning:', err);
-      if (onToast) onToast('warning', 'Không thể mở micro. Bạn có thể bấm gửi câu để kiểm tra.');
+      if (onToast) onToast('warning', 'Không thể mở micro. Bạn có thể bấm gửi câu đọc mẫu để kiểm tra.');
     }
   }, [isAiSpeaking, onToast]);
 
-  // Dừng thu âm & bắt đầu chấm điểm
-  const stopRecordingAndGrade = useCallback(() => {
+  // Dừng thu âm & bắt đầu chấm điểm (Kết hợp Web Speech API + Gemini Audio Fallback)
+  const stopRecordingAndGrade = useCallback(async () => {
     setIsRecording(false);
+    setIsEvaluating(true);
     setVolume(0);
 
     if (recognitionRef.current) {
       try { recognitionRef.current.stop(); } catch {}
       recognitionRef.current = null;
     }
+
+    // Lấy câu nhận diện từ Web Speech API trước
+    let spoken = capturedSpeechRef.current.trim() || liveSpokenText.trim();
+
+    // Dừng MediaRecorder và thu thập blob
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
+      await new Promise(resolve => {
+        mediaRecorderRef.current.onstop = resolve;
+        mediaRecorderRef.current.stop();
+      });
+    }
+
     if (mediaStreamRef.current) {
       mediaStreamRef.current.getTracks().forEach(t => {
         try { t.stop(); } catch {}
@@ -339,8 +448,35 @@ export function SpeakingSession({
       audioContextRef.current = null;
     }
 
-    // Chấm câu nói vừa thu được
-    const spoken = capturedSpeechRef.current.trim() || liveSpokenText.trim();
+    // NẾU Web Speech API chưa bắt được chữ (ví dụ trên Android Brave hoặc micro lag)
+    // Dùng Gemini Flash Audio Multimodal để chuyển giọng nói thành văn bản chính xác 100%!
+    if (!spoken && audioChunksRef.current.length > 0) {
+      try {
+        const audioBlob = new Blob(audioChunksRef.current, { type: mediaRecorderRef.current?.mimeType || 'audio/webm' });
+        if (audioBlob.size > 2000) {
+          const reader = new FileReader();
+          const base64Promise = new Promise(res => {
+            reader.onloadend = () => {
+              const base64 = reader.result.split(',')[1];
+              res(base64);
+            };
+          });
+          reader.readAsDataURL(audioBlob);
+          const base64Audio = await base64Promise;
+
+          const apiKey = getApiKey();
+          if (apiKey) {
+            const geminiTranscript = await transcribeAudioWithGemini(base64Audio, audioBlob.type, apiKey);
+            if (geminiTranscript) {
+              spoken = geminiTranscript;
+            }
+          }
+        }
+      } catch (err) {
+        console.error('Gemini audio transcribe fallback error:', err);
+      }
+    }
+
     handleEvaluateSpokenText(spoken);
   }, [handleEvaluateSpokenText, liveSpokenText]);
 
@@ -349,6 +485,9 @@ export function SpeakingSession({
     return () => {
       if (recognitionRef.current) {
         try { recognitionRef.current.stop(); } catch {}
+      }
+      if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
+        try { mediaRecorderRef.current.stop(); } catch {}
       }
       if (mediaStreamRef.current) {
         mediaStreamRef.current.getTracks().forEach(t => {
@@ -370,6 +509,10 @@ export function SpeakingSession({
     const s2 = stepResults[1]?.accuracy ?? 85;
     return Math.round((s1 + s2) / 2);
   }, [stepResults, currentAttempt]);
+
+  const currentVoiceObj = useMemo(() => {
+    return AI_VOICES.find(v => v.id === selectedVoiceId) || AI_VOICES[0];
+  }, [selectedVoiceId]);
 
   return (
     <div
@@ -401,7 +544,7 @@ export function SpeakingSession({
           zIndex: 20,
         }}
       >
-        {/* Top Row: Back button, Title & Chunk Badge */}
+        {/* Top Row: Back button, Title & Voice Selection */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, width: '100%' }}>
           <button
             onClick={() => {
@@ -429,20 +572,28 @@ export function SpeakingSession({
             <span style={{ fontSize: 14.5, fontWeight: 800, color: '#fff', whiteSpace: 'nowrap' }}>
               Luyện nói AI
             </span>
-            <span
+
+            {/* Nút Chọn Giọng AI */}
+            <button
+              type="button"
+              onClick={() => setShowVoiceModal(true)}
+              className="btn btn-secondary btn-xs"
               style={{
-                fontSize: 10.5,
-                fontWeight: 700,
-                padding: '2px 7px',
-                borderRadius: 4,
-                background: 'rgba(99, 102, 241, 0.2)',
-                color: '#818cf8',
-                border: '1px solid rgba(99, 102, 241, 0.4)',
-                whiteSpace: 'nowrap',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 5,
+                fontSize: 11,
+                padding: '3px 8px',
+                borderRadius: 6,
+                background: 'rgba(99, 102, 241, 0.18)',
+                color: '#a5b4fc',
+                border: '1px solid rgba(99, 102, 241, 0.35)',
               }}
+              title="Đổi giọng đọc AI (Anh-Mỹ, Anh-Anh, Nam/Nữ)"
             >
-              Speaking Mode
-            </span>
+              <Settings size={11} />
+              <span>{currentVoiceObj.label.split(' ')[0]} {currentVoiceObj.label.split(' ')[1]}</span>
+            </button>
           </div>
         </div>
 
@@ -601,7 +752,7 @@ export function SpeakingSession({
                     startRecording();
                   }
                 }}
-                disabled={isAiSpeaking}
+                disabled={isAiSpeaking || isEvaluating}
                 style={{
                   width: 84,
                   height: 84,
@@ -621,13 +772,15 @@ export function SpeakingSession({
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  cursor: isAiSpeaking ? 'not-allowed' : 'pointer',
+                  cursor: isAiSpeaking || isEvaluating ? 'not-allowed' : 'pointer',
                   transition: 'transform 0.15s ease, box-shadow 0.2s ease',
                   transform: isRecording && volume > 10 ? 'scale(1.08)' : 'scale(1)',
                 }}
                 title={isRecording ? 'Bấm để dừng & chấm bài' : 'Bấm để nói'}
               >
-                {isRecording ? (
+                {isEvaluating ? (
+                  <div className="animate-spin" style={{ width: 28, height: 28, border: '3px solid #fff', borderTopColor: 'transparent', borderRadius: '50%' }} />
+                ) : isRecording ? (
                   <Square size={32} fill="#fff" />
                 ) : isAiSpeaking ? (
                   <Volume2 size={34} className="animate-pulse" />
@@ -639,7 +792,9 @@ export function SpeakingSession({
               {/* Hướng dẫn thao tác rõ ràng */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
                 <div style={{ fontSize: 15, fontWeight: 800 }}>
-                  {isRecording ? (
+                  {isEvaluating ? (
+                    <span style={{ color: '#fbbf24' }}>⏳ Đang chấm phát âm câu của bạn…</span>
+                  ) : isRecording ? (
                     <span style={{ color: '#ef4444' }}>🔴 Đang thu âm... Bấm nút vuông để hoàn thành & chấm bài</span>
                   ) : isAiSpeaking ? (
                     <span style={{ color: '#38bdf8' }}>🔊 AI đang phát âm mẫu...</span>
@@ -648,7 +803,7 @@ export function SpeakingSession({
                   )}
                 </div>
                 <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
-                  {isRecording ? 'Hãy đọc to câu tiếng Anh trên' : 'Nhấn nút mic ➔ Nói câu tiếng Anh ➔ Nhấn lại để hoàn thành'}
+                  {isRecording ? 'Hãy đọc to câu tiếng Anh trên' : 'Nhấn nút mic ➔ Đọc câu tiếng Anh ➔ Nhấn lại nút vuông để chấm điểm'}
                 </div>
               </div>
 
@@ -985,6 +1140,111 @@ export function SpeakingSession({
         )}
 
       </main>
+
+      {/* ── 4. Modal Chọn Giọng AI ─────────────────────────────── */}
+      {showVoiceModal && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 10000,
+            background: 'rgba(0,0,0,0.7)',
+            backdropFilter: 'blur(8px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 16,
+          }}
+          onClick={() => setShowVoiceModal(false)}
+        >
+          <div
+            className="card animate-fade-in"
+            style={{
+              maxWidth: 440,
+              width: '100%',
+              background: 'var(--bg-surface)',
+              borderColor: 'rgba(99, 102, 241, 0.4)',
+              borderRadius: 'var(--radius-lg)',
+              padding: 20,
+              boxShadow: '0 20px 50px rgba(0,0,0,0.6)',
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+              <div style={{ fontSize: 16, fontWeight: 800, color: '#fff', display: 'flex', alignItems: 'center', gap: 6 }}>
+                <Volume2 size={18} color="#38bdf8" /> Chọn giọng đọc AI
+              </div>
+              <button
+                type="button"
+                className="btn btn-ghost btn-xs"
+                onClick={() => setShowVoiceModal(false)}
+                style={{ padding: 4, color: 'var(--text-muted)' }}
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            <p style={{ fontSize: 12.5, color: 'var(--text-secondary)', marginBottom: 14, lineHeight: 1.4 }}>
+              Chọn chất giọng phát âm bản xứ bạn muốn luyện nghe (Anh-Mỹ, Anh-Anh hoặc Anh-Úc):
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {AI_VOICES.map(voice => {
+                const isSelected = voice.id === selectedVoiceId;
+                return (
+                  <div
+                    key={voice.id}
+                    onClick={() => handleSelectVoice(voice.id)}
+                    style={{
+                      padding: '10px 14px',
+                      borderRadius: 'var(--radius-md)',
+                      background: isSelected ? 'rgba(99, 102, 241, 0.2)' : 'rgba(255,255,255,0.03)',
+                      border: `1px solid ${isSelected ? '#6366f1' : 'rgba(255,255,255,0.08)'}`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      cursor: 'pointer',
+                      transition: 'all 0.15s ease',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      {isSelected ? <Check size={16} color="#38bdf8" /> : <div style={{ width: 16 }} />}
+                      <span style={{ fontSize: 13.5, fontWeight: isSelected ? 700 : 500, color: isSelected ? '#fff' : 'var(--text-primary)' }}>
+                        {voice.label}
+                      </span>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        playAiVoice(voice.sample, null, voice.id);
+                      }}
+                      className="btn btn-ghost btn-xs"
+                      style={{ color: '#38bdf8', fontSize: 11.5, padding: '2px 6px' }}
+                      title="Nghe thử"
+                    >
+                      <Play size={12} /> Thử
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 16 }}>
+              <button
+                type="button"
+                className="btn btn-primary btn-sm"
+                onClick={() => setShowVoiceModal(false)}
+                style={{ fontWeight: 700, padding: '6px 16px' }}
+              >
+                Xong
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

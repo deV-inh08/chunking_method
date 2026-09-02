@@ -778,3 +778,52 @@ NGUYÊN TẮC PHÂN TÍCH:
     },
   });
 }
+
+/**
+ * Transcribe recorded audio with Gemini Flash Audio Multimodal
+ * Dùng làm fallback cực kỳ chuẩn xác nếu trình duyệt không hỗ trợ Web Speech API
+ */
+export async function transcribeAudioWithGemini(audioBase64, mimeType = 'audio/webm', apiKey) {
+  if (!apiKey || !audioBase64) return '';
+
+  const cleanMime = mimeType.split(';')[0] || 'audio/webm';
+  const url = `${BASE_URL}/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [
+          {
+            role: 'user',
+            parts: [
+              { text: 'Transcribe this spoken English audio exactly. Return ONLY the transcribed English text, no quotes, no markdown, no explanation.' },
+              {
+                inlineData: {
+                  mimeType: cleanMime,
+                  data: audioBase64,
+                },
+              },
+            ],
+          },
+        ],
+        generationConfig: {
+          temperature: 0.0,
+        },
+      }),
+    });
+
+    if (!response.ok) {
+      console.warn('Gemini audio transcribe response not ok:', response.status);
+      return '';
+    }
+
+    const data = await response.json();
+    const transcript = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
+    return transcript.replace(/["\n\r]/g, ' ').trim();
+  } catch (err) {
+    console.error('Gemini audio transcribe error:', err);
+    return '';
+  }
+}
