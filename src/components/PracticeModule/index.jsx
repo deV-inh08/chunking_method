@@ -463,23 +463,20 @@ function WritingSession({
   chunk, exercises, progress, onComplete, onToast,
   onNavigatePrev, onNavigateNext, hasPrev, hasNext, currentIndex, totalChunks,
 }) {
-  const isDue = isDueForReview(progress);
-
   const [userInputs, setUserInputs] = useState(() => {
-    if (isDue) return {};
     return getPracticeDraft(chunk.id)?.inputs || {};
   });
   const [showSamples, setShowSamples] = useState(() => {
-    if (isDue) return {};
     return getPracticeDraft(chunk.id)?.showSamples || {};
   });
   const [gradingResults, setGradingResults] = useState(() => {
-    if (isDue) return {};
     return getPracticeDraft(chunk.id)?.gradingResults || {};
   });
   const [isGrading, setIsGrading] = useState(false);
   const [showSpeakingModal, setShowSpeakingModal] = useState(false);
-  const [hasCompletedSpeaking, setHasCompletedSpeaking] = useState(false);
+  const [hasCompletedSpeaking, setHasCompletedSpeaking] = useState(() => {
+    return Boolean(getPracticeDraft(chunk.id)?.hasCompletedSpeaking);
+  });
   const [isAutoAdvancing, setIsAutoAdvancing] = useState(false);
   const autoAdvanceTimerRef = useRef(null);
 
@@ -495,17 +492,20 @@ function WritingSession({
       }
       autoAdvanceTimerRef.current = setTimeout(() => {
         setIsAutoAdvancing(false);
+        // Dọn sạch draft của chunk đã hoàn thành trước khi chuyển sang chunk mới
+        clearPracticeDraft(chunk.id);
         if (onNavigateNext) {
           onNavigateNext();
         }
       }, 1800);
     } else {
       setIsAutoAdvancing(false);
+      clearPracticeDraft(chunk.id);
       if (onToast) {
         onToast('success', '🎉 Chúc mừng bạn đã hoàn thành xuất sắc tất cả các chunk!');
       }
     }
-  }, [hasNext, onNavigateNext, onToast]);
+  }, [chunk.id, hasNext, onNavigateNext, onToast]);
 
   // Dọn dẹp timer khi unmount
   useEffect(() => {
@@ -544,6 +544,7 @@ function WritingSession({
     if (onToast) onToast('success', `Đã lưu kết quả luyện nói: ${safeScore} điểm!`);
 
     setHasCompletedSpeaking(true);
+    savePracticeDraft(chunkId, { hasCompletedSpeaking: true });
 
     // Nếu phần Writing đã hoàn thành (ít nhất 2 câu đã được chấm điểm) -> Tự động chuyển sang chunk tiếp theo
     const writingDone = Object.keys(gradingResults || {}).length >= Math.min(2, exercises.length);
@@ -559,21 +560,13 @@ function WritingSession({
       autoAdvanceTimerRef.current = null;
     }
     setIsAutoAdvancing(false);
-    setHasCompletedSpeaking(false);
 
-    if (isDue) {
-      // Khi chunk đến hạn ôn tập, clear bản nháp cũ để người học làm mới từ đầu
-      clearPracticeDraft(chunk.id);
-      setUserInputs({});
-      setShowSamples({});
-      setGradingResults({});
-    } else {
-      const draft = getPracticeDraft(chunk.id) || {};
-      setUserInputs(draft.inputs || {});
-      setShowSamples(draft.showSamples || {});
-      setGradingResults(draft.gradingResults || {});
-    }
-  }, [chunk.id, isDue]);
+    const draft = getPracticeDraft(chunk.id) || {};
+    setUserInputs(draft.inputs || {});
+    setShowSamples(draft.showSamples || {});
+    setGradingResults(draft.gradingResults || {});
+    setHasCompletedSpeaking(Boolean(draft.hasCompletedSpeaking));
+  }, [chunk.id]);
 
   const handleUserInputChange = (index, val) => {
     setUserInputs(prev => {
@@ -1173,14 +1166,39 @@ export function PracticeModule({
 }) {
   const chunkList = chunks.filter(c => selectedChunks.has(c.id));
 
-  const [activeChunkId, setActiveChunkId] = useState(null);
+  const [activeChunkId, setActiveChunkId] = useState(() => {
+    try {
+      return localStorage.getItem('toeic_active_chunk_id') || null;
+    } catch {
+      return null;
+    }
+  });
   const [showMobileOutline, setShowMobileOutline] = useState(false);
 
   useEffect(() => {
-    if (chunkList.length > 0 && (!activeChunkId || !chunkList.some(c => c.id === activeChunkId))) {
-      setActiveChunkId(chunkList[0].id);
+    if (chunkList.length > 0) {
+      if (!activeChunkId || !chunkList.some(c => c.id === activeChunkId)) {
+        try {
+          const saved = localStorage.getItem('toeic_active_chunk_id');
+          if (saved && chunkList.some(c => c.id === saved)) {
+            setActiveChunkId(saved);
+          } else {
+            setActiveChunkId(chunkList[0].id);
+          }
+        } catch {
+          setActiveChunkId(chunkList[0].id);
+        }
+      }
     }
   }, [chunkList, activeChunkId]);
+
+  useEffect(() => {
+    if (activeChunkId) {
+      try {
+        localStorage.setItem('toeic_active_chunk_id', activeChunkId);
+      } catch { /* ignore */ }
+    }
+  }, [activeChunkId]);
 
   const groups = useMemo(() => {
     return groupPracticeChunks(chunkList, transcripts);

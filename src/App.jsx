@@ -32,13 +32,71 @@ function useToast() {
 
 // ─── App ──────────────────────────────────────────────────────
 export default function App() {
-  const [page, setPage]                 = useState('transcripts');
+  const [page, setPage]                 = useState(() => {
+    try {
+      return localStorage.getItem('toeic_active_page') || 'transcripts';
+    } catch {
+      return 'transcripts';
+    }
+  });
   const [showSettings, setShowSettings] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [guestMode, setGuestMode]       = useState(false);
-  const [selectedTranscriptId, setSelectedTranscriptId] = useState(null);
-  const [selectedChunks, setSelectedChunks] = useState(new Set());
-  const [allChunks, setAllChunks]       = useState([]);
+  const [guestMode, setGuestMode]       = useState(() => {
+    try {
+      return localStorage.getItem('toeic_guest_mode') === 'true';
+    } catch {
+      return false;
+    }
+  });
+  const [selectedTranscriptId, setSelectedTranscriptId] = useState(() => {
+    try {
+      return localStorage.getItem('toeic_active_transcript_id') || null;
+    } catch {
+      return null;
+    }
+  });
+  const [selectedChunks, setSelectedChunks] = useState(() => {
+    try {
+      const raw = localStorage.getItem('toeic_selected_chunks');
+      if (raw) {
+        const arr = JSON.parse(raw);
+        if (Array.isArray(arr) && arr.length > 0) {
+          return new Set(arr);
+        }
+      }
+    } catch { /* ignore */ }
+    return new Set();
+  });
+  const [allChunks, setAllChunks]       = useState(() => storage.getAllChunks());
+
+  // Lưu active states vào localStorage để sống sót qua các lần F5
+  useEffect(() => {
+    try {
+      localStorage.setItem('toeic_active_page', page);
+    } catch { /* ignore */ }
+  }, [page]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('toeic_guest_mode', guestMode ? 'true' : 'false');
+    } catch { /* ignore */ }
+  }, [guestMode]);
+
+  useEffect(() => {
+    try {
+      if (selectedTranscriptId) {
+        localStorage.setItem('toeic_active_transcript_id', selectedTranscriptId);
+      } else {
+        localStorage.removeItem('toeic_active_transcript_id');
+      }
+    } catch { /* ignore */ }
+  }, [selectedTranscriptId]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('toeic_selected_chunks', JSON.stringify([...selectedChunks]));
+    } catch { /* ignore */ }
+  }, [selectedChunks]);
 
   // Auto-generate state
   const [autoGenerating, setAutoGenerating] = useState(false);
@@ -59,6 +117,9 @@ export default function App() {
   const handleSignOut = useCallback(async () => {
     await authSignOut();
     setGuestMode(false);
+    try {
+      localStorage.removeItem('toeic_guest_mode');
+    } catch { /* ignore */ }
     addToast('info', 'Đã đăng xuất.');
   }, [authSignOut, addToast]);
 
