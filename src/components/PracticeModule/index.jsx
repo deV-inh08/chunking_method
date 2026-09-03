@@ -462,24 +462,50 @@ function ExerciseCard({
   );
 }
 
+function getCleanDraft(chunkId, progress) {
+  const raw = getPracticeDraft(chunkId);
+  if (!raw) return {};
+
+  const isDue = isDueForReview(progress);
+
+  // Nếu chunk đang đến hạn ôn tập (isDueForReview):
+  // Các câu trả lời và kết quả chấm của đợt học trước là dữ liệu cũ -> Tự động dọn sạch để ôn tập mới
+  const isOldCompleted =
+    isDue && (
+      Boolean(raw.hasCompletedSpeaking) ||
+      Object.keys(raw.gradingResults || {}).length > 0 ||
+      (raw.updatedAt && progress?.lastPracticed && raw.updatedAt <= progress.lastPracticed) ||
+      (raw.updatedAt && progress?.nextReviewAt && raw.updatedAt < progress.nextReviewAt)
+    );
+
+  if (isOldCompleted) {
+    clearPracticeDraft(chunkId);
+    return {};
+  }
+
+  return raw;
+}
+
 function WritingSession({
   chunk, exercises, progress, onComplete, onToast,
   onNavigatePrev, onNavigateNext, hasPrev, hasNext, currentIndex, totalChunks,
   onRegenerate,
 }) {
+  const isDue = isDueForReview(progress);
+
   const [userInputs, setUserInputs] = useState(() => {
-    return getPracticeDraft(chunk.id)?.inputs || {};
+    return getCleanDraft(chunk.id, progress)?.inputs || {};
   });
   const [showSamples, setShowSamples] = useState(() => {
-    return getPracticeDraft(chunk.id)?.showSamples || {};
+    return getCleanDraft(chunk.id, progress)?.showSamples || {};
   });
   const [gradingResults, setGradingResults] = useState(() => {
-    return getPracticeDraft(chunk.id)?.gradingResults || {};
+    return getCleanDraft(chunk.id, progress)?.gradingResults || {};
   });
   const [isGrading, setIsGrading] = useState(false);
   const [showSpeakingModal, setShowSpeakingModal] = useState(false);
   const [hasCompletedSpeaking, setHasCompletedSpeaking] = useState(() => {
-    return Boolean(getPracticeDraft(chunk.id)?.hasCompletedSpeaking);
+    return Boolean(getCleanDraft(chunk.id, progress)?.hasCompletedSpeaking);
   });
   const [isAutoAdvancing, setIsAutoAdvancing] = useState(false);
   const autoAdvanceTimerRef = useRef(null);
@@ -548,7 +574,8 @@ function WritingSession({
     if (onToast) onToast('success', `Đã lưu kết quả luyện nói: ${safeScore} điểm!`);
 
     setHasCompletedSpeaking(true);
-    savePracticeDraft(chunkId, { hasCompletedSpeaking: true });
+    // Khi đã hoàn thành cả Viết và Nói của chunk này, dọn sạch bản nháp để chuẩn bị cho đợt ôn tập sau
+    clearPracticeDraft(chunkId);
 
     // Nếu phần Writing đã hoàn thành và chưa hoàn thành cả group -> Tự động chuyển sang chunk tiếp theo
     const writingDone = Object.keys(gradingResults || {}).length >= Math.min(2, exercises.length);
@@ -557,7 +584,7 @@ function WritingSession({
     }
   };
 
-  // Sync draft states when chunk changes
+  // Sync draft states when chunk changes or review status updates
   useEffect(() => {
     if (autoAdvanceTimerRef.current) {
       clearTimeout(autoAdvanceTimerRef.current);
@@ -565,12 +592,12 @@ function WritingSession({
     }
     setIsAutoAdvancing(false);
 
-    const draft = getPracticeDraft(chunk.id) || {};
+    const draft = getCleanDraft(chunk.id, progress) || {};
     setUserInputs(draft.inputs || {});
     setShowSamples(draft.showSamples || {});
     setGradingResults(draft.gradingResults || {});
     setHasCompletedSpeaking(Boolean(draft.hasCompletedSpeaking));
-  }, [chunk.id]);
+  }, [chunk.id, progress]);
 
   const handleUserInputChange = (index, val) => {
     setUserInputs(prev => {
@@ -742,12 +769,51 @@ function WritingSession({
             </button>
           )}
 
+          <button
+            type="button"
+            className="btn btn-ghost btn-xs"
+            onClick={handleReset}
+            title="Làm mới ô nhập và kết quả chấm để bắt đầu một lượt ôn tập mới"
+            style={{
+              fontSize: 11,
+              color: isDue ? '#f87171' : 'var(--text-muted)',
+              display: 'inline-flex', alignItems: 'center', gap: 4,
+              border: isDue ? '1px solid rgba(239, 68, 68, 0.4)' : '1px solid var(--border-subtle)',
+              background: isDue ? 'rgba(239, 68, 68, 0.08)' : 'transparent',
+              borderRadius: 'var(--radius-full)', padding: '2px 8px',
+              cursor: 'pointer',
+            }}
+          >
+            <RotateCcw size={11} /> Làm mới bài làm
+          </button>
+
         </div>
-        <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
+        <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: 0 }}>
           {chunk.meaningVi}
           {chunk.meaningEn && <span style={{ color: 'var(--text-muted)', marginLeft: 8 }}>· {chunk.meaningEn}</span>}
         </p>
-        <p style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 6 }}>
+
+        {isDue && (
+          <div style={{
+            marginTop: 8,
+            padding: '8px 12px',
+            background: 'rgba(239, 68, 68, 0.08)',
+            border: '1px solid rgba(239, 68, 68, 0.25)',
+            borderRadius: 'var(--radius-sm)',
+            fontSize: 12,
+            color: '#fca5a5',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+          }}>
+            <Flame size={14} color="#ef4444" style={{ flexShrink: 0 }} />
+            <span>
+              <strong>Lượt ôn tập Spaced Repetition (Lần {progress?.practiceCount ? progress.practiceCount + 1 : 1}):</strong> Dữ liệu đã được làm mới để bạn nhớ lại và tự dịch từ đầu!
+            </span>
+          </div>
+        )}
+
+        <p style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 6, marginBottom: 0 }}>
           📝 Hãy hoàn thành <strong>ít nhất 2 câu</strong> bên dưới rồi bấm <strong>"Chấm bài AI"</strong> (ôn tập theo câu mẫu đã học).
         </p>
       </div>
