@@ -5,6 +5,7 @@ import { generateWritingExercises } from '../../services/ai';
 import { getApiKey } from '../../store/storage';
 import { isDueForReview, formatTimeUntilReview } from '../../services/srs';
 import { TranscriptListeningModal } from '../TranscriptModule/TranscriptListeningModal';
+import { getChunkIPA, formatIPA } from '../../services/phonetics';
 
 const CHUNK_TYPE_LABELS = {
   collocation: 'Collocation',
@@ -25,6 +26,7 @@ function ChunkCard({ chunk, selected, onToggle, progress, generatingSit, onGener
   const [expanded, setExpanded] = useState(false);
   const isDue = isDueForReview(progress);
   const reviewTimeInfo = formatTimeUntilReview(progress?.nextReviewAt);
+  const chunkIpa = getChunkIPA(chunk);
 
   return (
     <div
@@ -58,6 +60,19 @@ function ChunkCard({ chunk, selected, onToggle, progress, generatingSit, onGener
             <span style={{ fontWeight: 700, fontSize: 15, color: 'var(--text-primary)' }}>
               {chunk.phrase}
             </span>
+            {chunkIpa && (
+              <span style={{
+                fontSize: 12,
+                color: '#38bdf8',
+                background: 'rgba(56, 189, 248, 0.1)',
+                border: '1px solid rgba(56, 189, 248, 0.25)',
+                padding: '1px 6px',
+                borderRadius: 4,
+                fontWeight: 600,
+              }}>
+                {formatIPA(chunkIpa)}
+              </span>
+            )}
             <Badge type={chunk.type}>{CHUNK_TYPE_LABELS[chunk.type] || chunk.type}</Badge>
             {chunk.formality && chunk.formality !== 'neutral' && (
               <Badge type="neutral">{chunk.formality}</Badge>

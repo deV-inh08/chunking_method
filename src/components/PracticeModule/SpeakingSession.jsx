@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { getPracticeDraft, getSettings, saveSettings } from '../../store/storage';
 import { transcribeAudioWithGemini } from '../../services/ai';
+import { getChunkIPA, getSentenceIPA, formatIPA } from '../../services/phonetics';
 
 // ─── AI Voice Candidates ───────────────────────────────────────
 const AI_VOICES = [
@@ -336,6 +337,7 @@ export function SpeakingSession({
         userScore: basicGrade?.score,
         vietnameseSentence: basicEx.vietnameseSentence || basicEx.context || basicEx.prompt || `Tôi muốn ${chunk.meaningVi}.`,
         sampleTranslation: basicSentenceToSpeak,
+        ipa: isBasicValid ? getSentenceIPA(basicSentenceToSpeak) : (basicEx.ipa || getSentenceIPA(basicSentenceToSpeak)),
       },
       {
         id: 's2',
@@ -345,10 +347,12 @@ export function SpeakingSession({
         userScore: interGrade?.score,
         vietnameseSentence: interEx.vietnameseSentence || interEx.context || interEx.prompt || `Công ty chúng tôi đã quyết định ${chunk.meaningVi} vào năm ngoái.`,
         sampleTranslation: interSentenceToSpeak,
+        ipa: isInterValid ? getSentenceIPA(interSentenceToSpeak) : (interEx.ipa || getSentenceIPA(interSentenceToSpeak)),
       },
     ];
   }, [chunk, exercises]);
 
+  const chunkIpa = useMemo(() => getChunkIPA(chunk), [chunk]);
   const currentSentence = sentenceList[currentStepIndex] || sentenceList[0];
 
   // Phát âm thanh mẫu của AI qua Web Speech Synthesis (Hỗ trợ Nam / Nữ rõ rệt)
@@ -762,8 +766,22 @@ export function SpeakingSession({
         </div>
 
         {/* Chunk details sub-row */}
-        <div style={{ fontSize: 12.5, color: 'var(--text-secondary)', lineHeight: 1.4 }}>
-          🎯 Chunk: <strong style={{ color: '#fbbf24' }}>{chunk.phrase}</strong> {chunk.meaningVi ? `(${chunk.meaningVi})` : ''}
+        <div style={{ fontSize: 12.5, color: 'var(--text-secondary)', lineHeight: 1.4, display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+          <span>🎯 Chunk: <strong style={{ color: '#fbbf24' }}>{chunk.phrase}</strong></span>
+          {chunkIpa && (
+            <span style={{
+              fontSize: 12,
+              color: '#38bdf8',
+              background: 'rgba(56, 189, 248, 0.12)',
+              border: '1px solid rgba(56, 189, 248, 0.28)',
+              padding: '1px 6px',
+              borderRadius: 4,
+              fontWeight: 600,
+            }}>
+              {formatIPA(chunkIpa)}
+            </span>
+          )}
+          {chunk.meaningVi && <span>({chunk.meaningVi})</span>}
         </div>
 
         {/* Stepper Progress Row: 3 equal pill segments */}
@@ -912,7 +930,54 @@ export function SpeakingSession({
                   whiteSpace: 'normal',
                 }}
               >
-                "{currentSentence.sampleTranslation}"
+                <div>"{currentSentence.sampleTranslation}"</div>
+
+                {/* Phiên âm IPA để user biết cách phát âm đúng */}
+                {(() => {
+                  const sentenceIpa = currentSentence.ipa || getSentenceIPA(currentSentence.sampleTranslation);
+                  if (!sentenceIpa) return null;
+                  return (
+                    <div
+                      style={{
+                        marginTop: 10,
+                        paddingTop: 10,
+                        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                        display: 'flex',
+                        alignItems: 'baseline',
+                        gap: 8,
+                        flexWrap: 'wrap',
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontSize: 10.5,
+                          fontWeight: 800,
+                          letterSpacing: '0.5px',
+                          color: '#38bdf8',
+                          background: 'rgba(56, 189, 248, 0.15)',
+                          border: '1px solid rgba(56, 189, 248, 0.3)',
+                          padding: '2px 7px',
+                          borderRadius: 4,
+                          flexShrink: 0,
+                        }}
+                      >
+                        PHIÊN ÂM IPA
+                      </span>
+                      <span
+                        style={{
+                          fontSize: 14.5,
+                          color: '#7dd3fc',
+                          fontWeight: 500,
+                          letterSpacing: '0.3px',
+                          lineHeight: 1.5,
+                          fontFamily: 'system-ui, -apple-system, sans-serif',
+                        }}
+                      >
+                        {formatIPA(sentenceIpa)}
+                      </span>
+                    </div>
+                  );
+                })()}
               </div>
             </div>
 
@@ -1321,6 +1386,12 @@ export function SpeakingSession({
 
                     <div style={{ fontSize: 12.5, color: 'var(--text-secondary)', fontStyle: 'italic' }}>
                       "{sentence.vietnameseSentence}"
+                    </div>
+
+                    {/* Phiên âm IPA */}
+                    <div style={{ fontSize: 12.5, color: '#7dd3fc', display: 'flex', alignItems: 'center', gap: 6, marginTop: 2 }}>
+                      <span style={{ fontSize: 9.5, fontWeight: 800, color: '#38bdf8', background: 'rgba(56, 189, 248, 0.15)', padding: '1px 5px', borderRadius: 3 }}>IPA</span>
+                      <span>{formatIPA(sentence.ipa || getSentenceIPA(sentence.sampleTranslation))}</span>
                     </div>
 
                     {/* Word tags */}

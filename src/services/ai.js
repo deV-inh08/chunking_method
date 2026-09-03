@@ -186,6 +186,7 @@ Trả về JSON theo đúng format sau:
       "chunks": [
         {
           "phrase": "cụm từ tiếng Anh chính xác như trong transcript",
+          "ipa": "phiên âm IPA chuẩn quốc tế của cụm từ (ví dụ: /ˈɡɪv ʌp/)",
           "meaningVi": "Nghĩa tiếng Việt đầy đủ, tự nhiên",
           "usageNote": "Giải thích ngắn bằng tiếng Việt: cách dùng, ngữ pháp, ngữ cảnh điển hình của cụm từ này (1-2 câu)",
           "originalSentence": "Câu gốc hoàn chỉnh trong transcript chứa chunk",
@@ -244,6 +245,7 @@ Trả về JSON:
       "levelLabel": "Cơ bản",
       "vietnameseSentence": "Câu TIẾNG VIỆT NGẮN (≤ 10 từ). 1 mệnh đề. Ngữ cảnh quen thuộc (mua sắm / ăn uống / hỏi thăm). Bắt buộc dùng chunk.",
       "sampleTranslation": "Câu tiếng Anh ngắn, đơn giản, có chunk mục tiêu.",
+      "ipa": "phiên âm IPA chuẩn của sampleTranslation (ví dụ: /aɪ wɑnt tu.../)",
       "tenseUsed": "Present Simple",
       "tenseExplanation": "Dùng thì này vì … (1 câu tiếng Việt, giải thích tình huống thực tế)",
       "vocabHints": [],
@@ -261,6 +263,7 @@ Trả về JSON:
       "levelLabel": "Trung cấp",
       "vietnameseSentence": "Câu TIẾNG VIỆT TRUNG BÌNH (10-15 từ). Có trạng ngữ thời gian / địa điểm. Bối cảnh thực tế (công việc / du lịch / học tập). Bắt buộc dùng chunk.",
       "sampleTranslation": "Câu tiếng Anh trung bình, tự nhiên, có chunk mục tiêu.",
+      "ipa": "phiên âm IPA chuẩn của sampleTranslation",
       "tenseUsed": "Past Simple",
       "tenseExplanation": "Dùng thì này vì … (1 câu tiếng Việt, giải thích logic thì)",
       "vocabHints": [
@@ -281,6 +284,7 @@ Trả về JSON:
       "levelLabel": "Nâng cao",
       "vietnameseSentence": "Câu TIẾNG VIỆT KHÓ (15-20 từ). Câu ghép hoặc có mệnh đề phụ (vì / mặc dù / sau khi). Ngữ cảnh phức tạp. Bắt buộc dùng chunk.",
       "sampleTranslation": "Câu tiếng Anh phức tạp, tự nhiên, có chunk mục tiêu.",
+      "ipa": "phiên âm IPA chuẩn của sampleTranslation",
       "tenseUsed": "Present Perfect",
       "tenseExplanation": "Dùng thì này vì … (1 câu tiếng Việt, giải thích logic trong câu ghép)",
       "vocabHints": [
@@ -341,6 +345,7 @@ Trả về JSON:
       "levelLabel": "Tại văn phòng",
       "vietnameseSentence": "Câu tiếng Việt có dấu đầy đủ, tự nhiên, bối cảnh văn phòng / công việc. Bắt buộc dùng chunk.",
       "sampleTranslation": "Câu tiếng Anh có chunk mục tiêu.",
+      "ipa": "phiên âm IPA chuẩn của sampleTranslation",
       "tenseUsed": "Present Simple",
       "tenseExplanation": "Dùng thì này vì … (1 câu tiếng Việt)",
       "vocabHints": [],
@@ -358,6 +363,7 @@ Trả về JSON:
       "levelLabel": "Khi đi du lịch",
       "vietnameseSentence": "Câu tiếng Việt bối cảnh du lịch / cuộc sống hàng ngày. Bắt buộc dùng chunk.",
       "sampleTranslation": "Câu tiếng Anh có chunk mục tiêu.",
+      "ipa": "phiên âm IPA chuẩn của sampleTranslation",
       "tenseUsed": "Past Simple",
       "tenseExplanation": "Dùng thì này vì …",
       "vocabHints": [{ "vi": "từ khó", "en": "English" }],
@@ -369,6 +375,7 @@ Trả về JSON:
       "levelLabel": "Trong cuộc trò chuyện",
       "vietnameseSentence": "Câu tiếng Việt bối cảnh xã hội / học tập / gia đình. Bắt buộc dùng chunk.",
       "sampleTranslation": "Câu tiếng Anh có chunk mục tiêu.",
+      "ipa": "phiên âm IPA chuẩn của sampleTranslation",
       "tenseUsed": "Present Perfect",
       "tenseExplanation": "Dùng thì này vì …",
       "vocabHints": [],
@@ -413,6 +420,7 @@ Trả về JSON:
   "chunks": [
     {
       "phrase": "cụm từ tiếng Anh thực tế (ví dụ: nếu word là 'run' thì 'run a meeting')",
+      "ipa": "phiên âm IPA chuẩn quốc tế của cụm từ này (ví dụ: /ˈrʌn ə ˈmitɪŋ/)",
       "meaningVi": "Nghĩa tiếng Việt đầy đủ của CỤM TỪ này (không phải của từ đơn)",
       "usageNote": "Giải thích ngắn bằng tiếng Việt: cách dùng, ngữ cảnh điển hình, điểm đặc biệt (1-2 câu)",
       "anotherExample": "Câu ví dụ hoàn chỉnh, tự nhiên, dùng chunk này trong 1 tình huống thực tế",
@@ -559,6 +567,7 @@ Trả về JSON:
       "chunks": [
         {
           "phrase": "cụm từ tiếng Anh thực tế (ví dụ: nếu word là 'run' thì 'run a meeting')",
+          "ipa": "phiên âm IPA chuẩn của cụm từ này",
           "meaningVi": "Nghĩa tiếng Việt của CỤM TỪ này (không phải của từ đơn)",
           "usageNote": "Cách dùng ngắn gọn (tối đa 15 từ tiếng Việt)",
           "anotherExample": "Câu ví dụ hoàn chỉnh tiếng Anh dùng chunk này",
@@ -615,6 +624,7 @@ Trả về JSON:
           "levelLabel": "Tại văn phòng",
           "vietnameseSentence": "Câu tiếng Việt có dấu, tự nhiên, bắt buộc dùng chunk.",
           "sampleTranslation": "Câu tiếng Anh có chunk mục tiêu.",
+          "ipa": "phiên âm IPA chuẩn của sampleTranslation",
           "tenseUsed": "Present Simple",
           "vocabHints": []
         },
@@ -624,6 +634,7 @@ Trả về JSON:
           "levelLabel": "Khi đi du lịch",
           "vietnameseSentence": "Câu tiếng Việt bối cảnh du lịch / cuộc sống hàng ngày. Bắt buộc dùng chunk.",
           "sampleTranslation": "Câu tiếng Anh có chunk mục tiêu.",
+          "ipa": "phiên âm IPA chuẩn của sampleTranslation",
           "tenseUsed": "Past Simple",
           "vocabHints": [{ "vi": "từ khó", "en": "English" }]
         },
@@ -633,6 +644,7 @@ Trả về JSON:
           "levelLabel": "Trong cuộc trò chuyện",
           "vietnameseSentence": "Câu tiếng Việt bối cảnh xã hội / học tập. Bắt buộc dùng chunk.",
           "sampleTranslation": "Câu tiếng Anh có chunk mục tiêu.",
+          "ipa": "phiên âm IPA chuẩn của sampleTranslation",
           "tenseUsed": "Present Perfect",
           "vocabHints": []
         }

@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ingglish/g2p": "^0.1.1",
+    "@ingglish/ipa": "^0.1.1",
+    "@ingglish/phonemes": "^0.1.1",
     "@supabase/supabase-js": "^2.112.4",
     "lucide-react": "^1.37.0",
     "react": "^19.2.8",

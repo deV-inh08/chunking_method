@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import {
   PenLine, ChevronRight, ChevronLeft, ChevronDown, ChevronUp, RotateCcw,
-  CheckCircle, XCircle, Sparkles, Loader, RefreshCw, Volume2, VolumeX,
+  CheckCircle, XCircle, Sparkles, Loader, Volume2, VolumeX,
   Flame, BookMarked, FileText, Layers, Mic, Headphones,
 } from 'lucide-react';
 import { EmptyState, Badge, Spinner, Modal } from '../ui';
@@ -14,6 +14,7 @@ import { formatTimeUntilReview, isDueForReview } from '../../services/srs';
 import { SpeakingSession } from './SpeakingSession';
 import { GroupCompletionModal } from './GroupCompletionModal';
 import { TranscriptListeningModal } from '../TranscriptModule/TranscriptListeningModal';
+import { getChunkIPA, getSentenceIPA, formatIPA } from '../../services/phonetics';
 
 
 const CHUNK_TYPE_LABELS = {
@@ -263,6 +264,14 @@ function SampleWithTTS({ text, id, breakdown }) {
         >
           "{text}"
         </p>
+
+        {/* IPA Pronunciation */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 4 }}>
+          <span style={{ fontSize: 9.5, fontWeight: 800, color: '#38bdf8', background: 'rgba(56, 189, 248, 0.12)', padding: '1px 5px', borderRadius: 3 }}>IPA</span>
+          <span style={{ fontSize: 12, color: '#7dd3fc', letterSpacing: '0.2px' }}>
+            {formatIPA(getSentenceIPA(text))}
+          </span>
+        </div>
       </div>
 
       {/* Sentence breakdown — always visible */}
@@ -718,15 +727,30 @@ function WritingSession({
   };
 
   const hasGraded = Object.keys(gradingResults).length > 0;
+  const chunkIpa = getChunkIPA(chunk);
 
   return (
     <div className="flex flex-col gap-4">
       {/* Header */}
       <div style={{ marginBottom: 4 }}>
         <div className="flex items-center gap-2 flex-wrap mb-1">
-          <span style={{ fontSize: 17, fontWeight: 800, color: 'var(--text-primary)' }}>
+          <span style={{ fontSize: 18, fontWeight: 800, color: 'var(--text-primary)' }}>
             {chunk.phrase}
           </span>
+          {chunkIpa && (
+            <span style={{
+              fontSize: 13,
+              color: '#38bdf8',
+              background: 'rgba(56, 189, 248, 0.12)',
+              border: '1px solid rgba(56, 189, 248, 0.28)',
+              padding: '2px 8px',
+              borderRadius: 'var(--radius-sm)',
+              fontWeight: 600,
+              letterSpacing: '0.3px',
+            }}>
+              {formatIPA(chunkIpa)}
+            </span>
+          )}
           <Badge type={chunk.type}>{CHUNK_TYPE_LABELS[chunk.type] || chunk.type}</Badge>
           {progress && (
             <Badge type="success">
@@ -749,24 +773,6 @@ function WritingSession({
                 : `Level ${progress.srsLevel || 1} · ${formatTimeUntilReview(progress.nextReviewAt)?.text || 'Đang học'}`
               }
             </span>
-          )}
-
-          {onRegenerate && (
-            <button
-              type="button"
-              className="btn btn-ghost btn-xs"
-              onClick={onRegenerate}
-              title="Soạn lại 3 câu bài tập mới cho chunk này với AI"
-              style={{
-                fontSize: 11, color: 'var(--text-muted)',
-                display: 'inline-flex', alignItems: 'center', gap: 4,
-                border: '1px solid var(--border-subtle)',
-                borderRadius: 'var(--radius-full)', padding: '2px 8px',
-                cursor: 'pointer',
-              }}
-            >
-              <RefreshCw size={11} /> Đổi bài tập mới
-            </button>
           )}
 
           <button
@@ -812,10 +818,6 @@ function WritingSession({
             </span>
           </div>
         )}
-
-        <p style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 6, marginBottom: 0 }}>
-          📝 Hãy hoàn thành <strong>ít nhất 2 câu</strong> bên dưới rồi bấm <strong>"Chấm bài AI"</strong> (ôn tập theo câu mẫu đã học).
-        </p>
       </div>
 
       {/* All exercises stacked */}

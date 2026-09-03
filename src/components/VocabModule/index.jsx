@@ -11,6 +11,7 @@ import {
   getLearnedVocab, markVocabLearned,
   saveTodaySession, getChunks,
 } from '../../store/storage';
+import { getChunkIPA, formatIPA } from '../../services/phonetics';
 
 // ── Tải vocab từ JSON tĩnh (không cần Supabase/script) ──────────
 import VOCAB_RAW from '../../../data/vocab_5000.json';
@@ -406,16 +407,24 @@ function WordLearningCard({
       {/* Chunk pills */}
       {isReady && (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 12 }}>
-          {chunks.map((c, ci) => (
-            <div key={ci} style={{
-              background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.2)',
-              borderRadius: 'var(--radius-sm)', padding: '4px 10px',
-              fontSize: 12,
-            }}>
-              <span style={{ fontWeight: 700, color: 'var(--accent-300)' }}>{c.phrase}</span>
-              <span style={{ color: 'var(--text-muted)', marginLeft: 6 }}>{c.meaningVi}</span>
-            </div>
-          ))}
+          {chunks.map((c, ci) => {
+            const chunkIpa = getChunkIPA(c);
+            return (
+              <div key={ci} style={{
+                background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.2)',
+                borderRadius: 'var(--radius-sm)', padding: '4px 10px',
+                fontSize: 12, display: 'inline-flex', alignItems: 'center', gap: 6, flexWrap: 'wrap',
+              }}>
+                <span style={{ fontWeight: 700, color: 'var(--accent-300)' }}>{c.phrase}</span>
+                {chunkIpa && (
+                  <span style={{ color: '#38bdf8', fontSize: 11, fontWeight: 600 }}>
+                    {formatIPA(chunkIpa)}
+                  </span>
+                )}
+                <span style={{ color: 'var(--text-muted)' }}>{c.meaningVi}</span>
+              </div>
+            );
+          })}
         </div>
       )}
 

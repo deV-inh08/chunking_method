@@ -157,6 +157,7 @@ Trả về JSON (mảng, mỗi phần tử cho 1 từ):
     "chunks": [
       {
         "phrase": "cụm từ tiếng Anh thực tế dùng word (ví dụ: nếu word là 'run' thì phrase có thể là 'run a meeting')",
+        "ipa": "phiên âm IPA chuẩn quốc tế của cụm từ này",
         "meaningVi": "Nghĩa tiếng Việt đầy đủ, tự nhiên của cụm từ này",
         "usageNote": "Giải thích ngắn bằng tiếng Việt: cách dùng, ngữ cảnh điển hình (1-2 câu)",
         "anotherExample": "Một câu ví dụ hoàn chỉnh, tự nhiên, dùng đúng chunk này",
@@ -203,6 +204,7 @@ Trả về JSON:
       "levelLabel": "Tại văn phòng",
       "vietnameseSentence": "Câu tiếng Việt có dấu đầy đủ, tự nhiên, bắt buộc dùng chunk. Bối cảnh: văn phòng/công việc.",
       "sampleTranslation": "Câu tiếng Anh có chunk mục tiêu.",
+      "ipa": "phiên âm IPA chuẩn của sampleTranslation",
       "tenseUsed": "Present Simple",
       "tenseExplanation": "Dùng thì này vì… (1 câu tiếng Việt)",
       "vocabHints": [{"vi": "từ khó", "en": "English"}],
@@ -216,6 +218,7 @@ Trả về JSON:
       "levelLabel": "Khi đi du lịch",
       "vietnameseSentence": "Câu tiếng Việt bối cảnh du lịch/cuộc sống hàng ngày.",
       "sampleTranslation": "Câu tiếng Anh có chunk mục tiêu.",
+      "ipa": "phiên âm IPA chuẩn của sampleTranslation",
       "tenseUsed": "Past Simple",
       "tenseExplanation": "Dùng thì này vì…",
       "vocabHints": [],
