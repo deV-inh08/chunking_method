@@ -210,6 +210,59 @@ export function SpeakingSession({
   const audioChunksRef = useRef([]);
   const capturedSpeechRef = useRef('');
 
+  // Audio player cho giọng đọc của user
+  const [playingAudioUrl, setPlayingAudioUrl] = useState(null);
+  const userAudioRef = useRef(null);
+
+  // Phát lại giọng nói của người học
+  const togglePlayUserAudio = useCallback((url) => {
+    if (!url) return;
+
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      setIsAiSpeaking(false);
+    }
+
+    if (playingAudioUrl === url && userAudioRef.current) {
+      try { userAudioRef.current.pause(); } catch {}
+      userAudioRef.current = null;
+      setPlayingAudioUrl(null);
+      return;
+    }
+
+    if (userAudioRef.current) {
+      try { userAudioRef.current.pause(); } catch {}
+      userAudioRef.current = null;
+    }
+
+    try {
+      const audio = new Audio(url);
+      userAudioRef.current = audio;
+      setPlayingAudioUrl(url);
+
+      audio.onended = () => {
+        setPlayingAudioUrl(null);
+        userAudioRef.current = null;
+      };
+      audio.onerror = (e) => {
+        console.warn('Playback error:', e);
+        setPlayingAudioUrl(null);
+        userAudioRef.current = null;
+        if (onToast) onToast('warning', 'Không thể phát lại bản ghi âm.');
+      };
+
+      audio.play().catch(err => {
+        console.warn('Audio play error:', err);
+        setPlayingAudioUrl(null);
+        userAudioRef.current = null;
+      });
+    } catch (err) {
+      console.warn('Audio instance error:', err);
+      setPlayingAudioUrl(null);
+      userAudioRef.current = null;
+    }
+  }, [playingAudioUrl, onToast]);
+
   // Load available system voices asynchronously
   useEffect(() => {
     const loadVoices = () => {
@@ -307,7 +360,7 @@ export function SpeakingSession({
   };
 
   // Đánh giá câu nói của user
-  const handleEvaluateSpokenText = useCallback((spokenText) => {
+  const handleEvaluateSpokenText = useCallback((spokenText, audioUrl = null) => {
     setIsEvaluating(false);
 
     if (!spokenText || !spokenText.trim()) {
@@ -318,12 +371,17 @@ export function SpeakingSession({
         words: currentSentence.sampleTranslation.split(/\s+/).map(w => ({ word: w, status: 'incorrect', note: 'Chưa nghe thấy' })),
         accuracy: 0,
         isPassed: false,
+        audioUrl,
       });
       return;
     }
 
     const targetText = currentSentence.sampleTranslation;
-    const result = analyzeSpokenSentence(targetText, spokenText, chunk.phrase);
+    const analysis = analyzeSpokenSentence(targetText, spokenText, chunk.phrase);
+    const result = {
+      ...analysis,
+      audioUrl,
+    };
     setCurrentAttempt(result);
 
     if (result.isPassed) {
@@ -335,17 +393,7 @@ export function SpeakingSession({
       });
 
       // AI khen ngợi
-      playAiVoice('Great job! Excellent pronunciation.', () => {
-        setTimeout(() => {
-          if (currentStepIndex === 0) {
-            setCurrentStepIndex(1);
-            setCurrentAttempt(null);
-            setLiveSpokenText('');
-          } else {
-            setCurrentStepIndex(2); // Summary
-          }
-        }, 600);
-      });
+      playAiVoice('Great job! Excellent pronunciation.');
     } else {
       // AI nhắc nhở đọc lại
       playAiVoice("Almost there! Let's try saying this sentence one more time.");
@@ -355,6 +403,11 @@ export function SpeakingSession({
   // Bắt đầu thu âm khi User NHẤN NÓI
   const startRecording = useCallback(async () => {
     if (isAiSpeaking) return;
+    if (userAudioRef.current) {
+      try { userAudioRef.current.pause(); } catch {}
+      userAudioRef.current = null;
+    }
+    setPlayingAudioUrl(null);
     capturedSpeechRef.current = '';
     setLiveSpokenText('');
     setCurrentAttempt(null);
@@ -484,6 +537,21 @@ export function SpeakingSession({
 
     let spoken = capturedSpeechRef.current.trim() || liveSpokenText.trim();
 
+    // Tạo blob và URL phát lại giọng đọc của user
+    let userAudioUrl = null;
+    let audioBlob = null;
+    const mime = mediaRecorderRef.current?.mimeType || 'audio/webm';
+    if (audioChunksRef.current.length > 0) {
+      try {
+        audioBlob = new Blob(audioChunksRef.current, { type: mime });
+        if (audioBlob.size > 100) {
+          userAudioUrl = URL.createObjectURL(audioBlob);
+        }
+      } catch (err) {
+        console.warn('Error creating audio blob:', err);
+      }
+    }
+
     if (recognitionRef.current) {
       try { recognitionRef.current.stop(); } catch {}
       recognitionRef.current = null;
@@ -502,31 +570,27 @@ export function SpeakingSession({
 
     // NẾU Web Speech API chưa bắt được chữ (đặc biệt trên Android Brave / Chrome Mobile)
     // Dùng Gemini Flash Audio Multimodal để chuyển giọng nói thành văn bản chính xác 100%!
-    if (!spoken && audioChunksRef.current.length > 0) {
+    if (!spoken && audioBlob && audioBlob.size > 200) {
       try {
-        const mime = mediaRecorderRef.current?.mimeType || 'audio/webm';
-        const audioBlob = new Blob(audioChunksRef.current, { type: mime });
-        if (audioBlob.size > 200) {
-          const reader = new FileReader();
-          const base64Promise = new Promise((res, rej) => {
-            reader.onloadend = () => {
-              if (reader.result) {
-                const base64 = reader.result.split(',')[1];
-                res(base64);
-              } else {
-                res('');
-              }
-            };
-            reader.onerror = rej;
-          });
-          reader.readAsDataURL(audioBlob);
-          const base64Audio = await base64Promise;
-
-          if (base64Audio) {
-            const geminiTranscript = await transcribeAudioWithGemini(base64Audio, audioBlob.type);
-            if (geminiTranscript) {
-              spoken = geminiTranscript;
+        const reader = new FileReader();
+        const base64Promise = new Promise((res, rej) => {
+          reader.onloadend = () => {
+            if (reader.result) {
+              const base64 = reader.result.split(',')[1];
+              res(base64);
+            } else {
+              res('');
             }
+          };
+          reader.onerror = rej;
+        });
+        reader.readAsDataURL(audioBlob);
+        const base64Audio = await base64Promise;
+
+        if (base64Audio) {
+          const geminiTranscript = await transcribeAudioWithGemini(base64Audio, audioBlob.type);
+          if (geminiTranscript) {
+            spoken = geminiTranscript;
           }
         }
       } catch (err) {
@@ -534,12 +598,16 @@ export function SpeakingSession({
       }
     }
 
-    handleEvaluateSpokenText(spoken);
+    handleEvaluateSpokenText(spoken, userAudioUrl);
   }, [handleEvaluateSpokenText, liveSpokenText]);
 
   // Cleanup khi unmount
   useEffect(() => {
     return () => {
+      if (userAudioRef.current) {
+        try { userAudioRef.current.pause(); } catch {}
+        userAudioRef.current = null;
+      }
       if (recognitionRef.current) {
         try { recognitionRef.current.stop(); } catch {}
       }
@@ -966,9 +1034,61 @@ export function SpeakingSession({
                   })}
                 </div>
 
-                {/* Câu user đã nói thực tế */}
-                <div style={{ marginTop: 8, fontSize: 12.5, color: 'var(--text-secondary)' }}>
-                  Micro thu được: <strong style={{ color: '#fff' }}>"{currentAttempt.spokenText}"</strong>
+                {/* Câu user đã nói thực tế & Nút bấm nghe lại giọng vừa đọc */}
+                <div style={{
+                  marginTop: 12,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: 12,
+                  flexWrap: 'wrap',
+                  padding: '10px 14px',
+                  borderRadius: 'var(--radius-md)',
+                  background: 'rgba(255, 255, 255, 0.04)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                }}>
+                  <div style={{ fontSize: 13, color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: 6, flex: 1, minWidth: 200 }}>
+                    <Mic size={14} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />
+                    <span>Micro thu được:</span>
+                    <strong style={{ color: '#fff' }}>&ldquo;{currentAttempt.spokenText}&rdquo;</strong>
+                  </div>
+
+                  {currentAttempt.audioUrl && (
+                    <button
+                      type="button"
+                      onClick={() => togglePlayUserAudio(currentAttempt.audioUrl)}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 7,
+                        padding: '6px 14px',
+                        borderRadius: 'var(--radius-full)',
+                        background: playingAudioUrl === currentAttempt.audioUrl
+                          ? 'linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(99, 102, 241, 0.25))'
+                          : 'rgba(255, 255, 255, 0.08)',
+                        border: playingAudioUrl === currentAttempt.audioUrl
+                          ? '1px solid #38bdf8'
+                          : '1px solid rgba(255, 255, 255, 0.15)',
+                        color: playingAudioUrl === currentAttempt.audioUrl ? '#38bdf8' : '#fff',
+                        fontWeight: 700,
+                        fontSize: 12.5,
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                      }}
+                      title="Bấm vào loa để nghe lại giọng của bạn"
+                    >
+                      <Volume2
+                        size={15}
+                        style={{
+                          color: playingAudioUrl === currentAttempt.audioUrl ? '#38bdf8' : '#60a5fa',
+                          animation: playingAudioUrl === currentAttempt.audioUrl ? 'pulse 1s infinite' : 'none',
+                        }}
+                      />
+                      <span>
+                        {playingAudioUrl === currentAttempt.audioUrl ? 'Đang phát giọng bạn…' : 'Nghe lại giọng bạn'}
+                      </span>
+                    </button>
+                  )}
                 </div>
 
                 {/* Nút hành động */}
@@ -1095,13 +1215,42 @@ export function SpeakingSession({
                       gap: 6,
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 6 }}>
                       <span style={{ fontSize: 12.5, fontWeight: 700, color: '#818cf8' }}>
                         {sentence.title}
                       </span>
-                      <span style={{ fontSize: 12, fontWeight: 700, color: '#22c55e' }}>
-                        Độ chính xác: {result.accuracy}%
-                      </span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                        <span style={{ fontSize: 12, fontWeight: 700, color: '#22c55e' }}>
+                          Độ chính xác: {result.accuracy}%
+                        </span>
+                        {result.audioUrl && (
+                          <button
+                            type="button"
+                            onClick={() => togglePlayUserAudio(result.audioUrl)}
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: 5,
+                              padding: '3px 10px',
+                              borderRadius: 'var(--radius-full)',
+                              background: playingAudioUrl === result.audioUrl
+                                ? 'rgba(56, 189, 248, 0.25)'
+                                : 'rgba(255, 255, 255, 0.08)',
+                              border: playingAudioUrl === result.audioUrl
+                                ? '1px solid #38bdf8'
+                                : '1px solid rgba(255, 255, 255, 0.15)',
+                              color: playingAudioUrl === result.audioUrl ? '#38bdf8' : '#fff',
+                              fontSize: 11.5,
+                              fontWeight: 700,
+                              cursor: 'pointer',
+                            }}
+                            title="Bấm để nghe lại giọng bạn đọc câu này"
+                          >
+                            <Volume2 size={13} style={{ color: playingAudioUrl === result.audioUrl ? '#38bdf8' : '#60a5fa' }} />
+                            <span>{playingAudioUrl === result.audioUrl ? 'Đang phát…' : 'Nghe lại'}</span>
+                          </button>
+                        )}
+                      </div>
                     </div>
 
                     <div style={{ fontSize: 12.5, color: 'var(--text-secondary)', fontStyle: 'italic' }}>
