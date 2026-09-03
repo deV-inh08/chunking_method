@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import {
-  Play, Pause, RotateCcw, Volume2, X,
+  Play, Pause, RotateCcw, RotateCw, Volume2, X,
   SkipBack, SkipForward, Repeat, Eye, EyeOff,
   ArrowLeft, PenLine, Headphones, CheckCircle, Sparkles
 } from 'lucide-react';
@@ -282,6 +282,10 @@ export function TranscriptListeningModal({
   const isLoopingLineRef = useRef(false);
   const playbackRateRef = useRef(1.0);
   const speakLineRef = useRef(null);
+  const speechStartTimeRef = useRef(0);
+  const [rewindAnimation, setRewindAnimation] = useState(null); // { side: 'left' | 'right', key: number }
+  const lastTapRef = useRef({ time: 0, x: 0, y: 0 });
+  const containerRef = useRef(null);
 
   useEffect(() => {
     isPlayingRef.current = isPlaying;
@@ -338,6 +342,7 @@ export function TranscriptListeningModal({
       return;
     }
 
+    speechStartTimeRef.current = Date.now();
     const utterance = new SpeechSynthesisUtterance(item.text);
     utterance.rate = playbackRateRef.current;
     utterance.pitch = item.gender === 'female' ? 1.1 : 0.95;
@@ -401,22 +406,95 @@ export function TranscriptListeningModal({
     }
   }, []);
 
-  // Keyboard shortcut: Escape to close, Space to toggle play/pause
+  // ─── Tua Lùi 3 Giây (Double click bên trái / Phím mũi tên trái / J) ───
+  const triggerRewind3s = useCallback(() => {
+    const elapsed = Date.now() - (speechStartTimeRef.current || 0);
+    setRewindAnimation({ side: 'left', key: Date.now() });
+
+    // Nếu câu đang phát được hơn 1.2s -> Phát lại câu này từ đầu (tương đương tua lại 2-3s)
+    if (elapsed > 1200 && isPlayingRef.current) {
+      speakLineRef.current?.(currentLineIndexRef.current);
+    } else {
+      // Nếu mới bắt đầu câu hoặc đang dừng -> Lùi về câu trước đó
+      const prevIdx = Math.max(0, currentLineIndexRef.current - 1);
+      setCurrentLineIndex(prevIdx);
+      speakLineRef.current?.(prevIdx);
+      setIsPlaying(true);
+    }
+  }, []);
+
+  // ─── Tua Tới 3 Giây (Double click bên phải / Phím mũi tên phải / L) ───
+  const triggerForward3s = useCallback(() => {
+    setRewindAnimation({ side: 'right', key: Date.now() });
+    const nextIdx = Math.min(lines.length - 1, currentLineIndexRef.current + 1);
+    setCurrentLineIndex(nextIdx);
+    speakLineRef.current?.(nextIdx);
+    setIsPlaying(true);
+  }, [lines.length]);
+
+  // Xử lý cử chỉ chạm đúp (Double tap / Double click) trên màn hình
+  const handleContainerPointerDown = useCallback((e) => {
+    // Không can thiệp nếu người dùng click vào nút bấm, ô input, textarea, text selection
+    if (e.target.closest('button, input, textarea, a, mark, select')) {
+      return;
+    }
+
+    const now = Date.now();
+    const clickX = e.clientX;
+    const clickY = e.clientY;
+    const width = window.innerWidth;
+
+    const timeDiff = now - lastTapRef.current.time;
+    const distDiff = Math.hypot(clickX - lastTapRef.current.x, clickY - lastTapRef.current.y);
+
+    // Phát hiện 2 lần chạm liên tiếp trong vòng 350ms tại cùng 1 vị trí
+    if (timeDiff < 350 && distDiff < 80) {
+      // Chạm đúp nửa bên trái màn hình (<= 45% chiều rộng) -> Tua lùi 3s
+      if (clickX <= width * 0.45) {
+        e.preventDefault();
+        triggerRewind3s();
+        lastTapRef.current = { time: 0, x: 0, y: 0 };
+        return;
+      }
+      // Chạm đúp nửa bên phải màn hình (>= 55% chiều rộng) -> Tua tới 3s
+      if (clickX >= width * 0.55) {
+        e.preventDefault();
+        triggerForward3s();
+        lastTapRef.current = { time: 0, x: 0, y: 0 };
+        return;
+      }
+    }
+
+    lastTapRef.current = { time: now, x: clickX, y: clickY };
+  }, [triggerRewind3s, triggerForward3s]);
+
+  // Keyboard shortcut: Escape to close, Space to play/pause, ArrowLeft/J to rewind 3s, ArrowRight/L to forward 3s
   useEffect(() => {
     const handleKeyDown = (e) => {
+      // Không bắt phím tắt khi đang gõ trong ô input/textarea
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        return;
+      }
+
       if (e.key === 'Escape') {
         if (typeof window !== 'undefined' && window.speechSynthesis) {
           window.speechSynthesis.cancel();
         }
         onClose();
-      } else if (e.code === 'Space' && e.target === document.body) {
+      } else if (e.code === 'Space') {
         e.preventDefault();
         handleTogglePlay();
+      } else if (e.key === 'ArrowLeft' || e.code === 'KeyJ') {
+        e.preventDefault();
+        triggerRewind3s();
+      } else if (e.key === 'ArrowRight' || e.code === 'KeyL') {
+        e.preventDefault();
+        triggerForward3s();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [handleTogglePlay, onClose]);
+  }, [handleTogglePlay, onClose, triggerRewind3s, triggerForward3s]);
 
   // Click on a specific line to select and play it
   const handleSelectLine = (index) => {
@@ -437,10 +515,6 @@ export function TranscriptListeningModal({
     if (isPlaying) speakLine(nextIdx);
   };
 
-  const handleReplayCurrentLine = () => {
-    setIsPlaying(true);
-    speakLine(currentLineIndex);
-  };
 
   // Toggle reveal for a line in blind mode
   const toggleRevealLine = (idx) => {
@@ -528,6 +602,8 @@ export function TranscriptListeningModal({
 
   return (
     <div
+      ref={containerRef}
+      onPointerDown={handleContainerPointerDown}
       className="animate-fade-in"
       style={{
         position: 'fixed',
@@ -687,12 +763,20 @@ export function TranscriptListeningModal({
             </button>
 
             <button
-              onClick={handleReplayCurrentLine}
-              className="btn btn-ghost btn-icon"
-              title="Nghe lại câu hiện tại"
-              style={{ color: '#f8fafc', padding: 6 }}
+              onClick={triggerRewind3s}
+              className="btn btn-ghost"
+              title="Tua lùi 3s (hoặc click 2 lần màn hình bên trái / Phím mũi tên trái)"
+              style={{
+                color: '#f8fafc',
+                padding: '4px 8px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 3,
+                borderRadius: 'var(--radius-sm)',
+              }}
             >
-              <RotateCcw size={15} />
+              <RotateCcw size={14} />
+              <span style={{ fontSize: 11, fontWeight: 800, fontFamily: 'monospace' }}>3s</span>
             </button>
 
             <button
@@ -1141,12 +1225,12 @@ export function TranscriptListeningModal({
           zIndex: 15,
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, overflow: 'hidden' }}>
           <span>💡</span>
-          <span>
+          <span style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
             {isDictationMode
-              ? 'Chế độ Dictation: Gõ các từ bạn nghe được, từ đúng sẽ tự hiện màu xanh!'
-              : 'Bấm vào câu bất kỳ để phát riêng câu đó. Các cụm màu tím là chunk trọng tâm.'}
+              ? 'Chế độ Dictation: Gõ các từ bạn nghe được, đúng sẽ hiện xanh. Chạm 2 lần bên trái để nghe lại 3s!'
+              : 'Chạm 2 lần bên trái màn hình (hoặc phím ← / J) để tua lùi 3s. Chạm 2 lần bên phải (hoặc phím → / L) để tua tới!'}
           </span>
         </div>
 
@@ -1163,6 +1247,92 @@ export function TranscriptListeningModal({
           Đóng
         </button>
       </footer>
+
+      {/* ── 4. YouTube-style Double Tap Animation Overlay ─────────── */}
+      {rewindAnimation && (
+        <div
+          key={rewindAnimation.key}
+          onAnimationEnd={() => setRewindAnimation(null)}
+          style={{
+            position: 'fixed',
+            top: '50%',
+            [rewindAnimation.side === 'left' ? 'left' : 'right']: '12%',
+            transform: 'translateY(-50%)',
+            zIndex: 99999,
+            pointerEvents: 'none',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            animation: 'doubleTapBubble 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+          }}
+        >
+          <div
+            style={{
+              width: 88,
+              height: 88,
+              borderRadius: '50%',
+              background: 'rgba(15, 23, 42, 0.88)',
+              border: '2px solid rgba(56, 189, 248, 0.5)',
+              backdropFilter: 'blur(12px)',
+              boxShadow: '0 0 35px rgba(56, 189, 248, 0.35)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#38bdf8',
+              gap: 2,
+            }}
+          >
+            {rewindAnimation.side === 'left' ? (
+              <>
+                <RotateCcw size={32} strokeWidth={2.6} />
+                <span style={{ fontSize: 13, fontWeight: 900, fontFamily: 'monospace' }}>3s</span>
+              </>
+            ) : (
+              <>
+                <RotateCw size={32} strokeWidth={2.6} />
+                <span style={{ fontSize: 13, fontWeight: 900, fontFamily: 'monospace' }}>3s</span>
+              </>
+            )}
+          </div>
+          <span style={{
+            marginTop: 8,
+            fontSize: 12,
+            fontWeight: 800,
+            color: '#f8fafc',
+            background: 'rgba(15, 23, 42, 0.85)',
+            border: '1px solid rgba(255, 255, 255, 0.15)',
+            padding: '3px 12px',
+            borderRadius: 'var(--radius-full)',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
+          }}>
+            {rewindAnimation.side === 'left' ? '⟲ Lùi 3s' : 'Tiến 3s ⟳'}
+          </span>
+        </div>
+      )}
+
+      {/* Global Keyframes for the double tap animation */}
+      <style>{`
+        @keyframes doubleTapBubble {
+          0% {
+            opacity: 0;
+            transform: translateY(-50%) scale(0.5);
+          }
+          25% {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+          }
+          60% {
+            opacity: 1;
+            transform: translateY(-50%) scale(1);
+          }
+          100% {
+            opacity: 0;
+            transform: translateY(-50%) scale(1.2);
+          }
+        }
+      `}</style>
     </div>
   );
 }
