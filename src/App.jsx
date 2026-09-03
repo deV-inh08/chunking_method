@@ -485,7 +485,18 @@ export default function App() {
                 onChunksExtracted={handleChunksExtracted}
                 onSelectTranscript={handleSelectTranscript}
                 chunkCounts={chunkCounts}
+                allProgress={allProgress}
                 onToast={addToast}
+                onStartPractice={(transcriptId) => {
+                  setSelectedTranscriptId(transcriptId);
+                  const tChunks = storage.getChunks(transcriptId);
+                  if (tChunks.length > 0) {
+                    setSelectedChunks(new Set(tChunks.map(c => c.id)));
+                    setPage('practice');
+                  } else {
+                    setPage('chunks');
+                  }
+                }}
               />
             )}
 
