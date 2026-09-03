@@ -285,27 +285,66 @@ export function SpeakingSession({
     };
   }, []);
 
-  // Lấy câu học ổn định
+  // Lấy câu học ổn định cho bài luyện nói (Chỉ lấy câu user nếu dịch đúng và đạt >= 80đ, ngược lại dùng câu mẫu chuẩn của AI)
   const sentenceList = useMemo(() => {
     const draftData = getPracticeDraft(chunk.id) || {};
     const inputs = draftData.inputs || {};
-    const basicEx = exercises.find(e => e.level === 1) || exercises[0] || {};
-    const interEx = exercises.find(e => e.level === 2) || exercises[1] || {};
+    const gradingResults = draftData.gradingResults || {};
+
+    const basicExIndex = exercises.findIndex(e => e.level === 1);
+    const basicIdx = basicExIndex >= 0 ? basicExIndex : 0;
+    const basicEx = exercises[basicIdx] || {};
+
+    const interExIndex = exercises.findIndex(e => e.level === 2);
+    const interIdx = interExIndex >= 0 ? interExIndex : (exercises.length > 1 ? 1 : 0);
+    const interEx = exercises[interIdx] || {};
+
+    // 1. Kiểm tra câu cơ bản (level 1): Chỉ lấy câu user nếu AI đã chấm đạt chuẩn
+    const basicInput = (inputs[basicIdx] || '').trim();
+    const basicGrade = gradingResults[basicIdx];
+    const isBasicValid = Boolean(
+      basicInput &&
+      basicGrade &&
+      basicGrade.correct === true &&
+      basicGrade.usedChunk === true &&
+      (basicGrade.score || 0) >= 80 &&
+      (!basicGrade.grammarErrors || basicGrade.grammarErrors.length === 0)
+    );
+    const basicStandard = basicEx.sampleTranslation || basicEx.exampleSentence || basicEx.exampleResponse || `I want to ${chunk.phrase}.`;
+    const basicSentenceToSpeak = isBasicValid ? basicInput : basicStandard;
+
+    // 2. Kiểm tra câu trung cấp (level 2): Chỉ lấy câu user nếu AI đã chấm đạt chuẩn
+    const interInput = (inputs[interIdx] || '').trim();
+    const interGrade = gradingResults[interIdx];
+    const isInterValid = Boolean(
+      interInput &&
+      interGrade &&
+      interGrade.correct === true &&
+      interGrade.usedChunk === true &&
+      (interGrade.score || 0) >= 80 &&
+      (!interGrade.grammarErrors || interGrade.grammarErrors.length === 0)
+    );
+    const interStandard = interEx.sampleTranslation || interEx.exampleSentence || interEx.exampleResponse || `Our company decided to ${chunk.phrase} last year.`;
+    const interSentenceToSpeak = isInterValid ? interInput : interStandard;
 
     return [
       {
         id: 's1',
         title: 'Câu 1: Cơ bản (Khởi động)',
         level: 'Cơ bản',
-        vietnameseSentence: basicEx.vietnameseSentence || `Tôi muốn ${chunk.meaningVi}.`,
-        sampleTranslation: inputs[0] || basicEx.sampleTranslation || `I want to ${chunk.phrase}.`,
+        isUserSentence: isBasicValid,
+        userScore: basicGrade?.score,
+        vietnameseSentence: basicEx.vietnameseSentence || basicEx.context || basicEx.prompt || `Tôi muốn ${chunk.meaningVi}.`,
+        sampleTranslation: basicSentenceToSpeak,
       },
       {
         id: 's2',
         title: 'Câu 2: Tình huống thực tế',
         level: 'Trung cấp',
-        vietnameseSentence: interEx.vietnameseSentence || `Công ty chúng tôi đã quyết định ${chunk.meaningVi} vào năm ngoái.`,
-        sampleTranslation: inputs[1] || interEx.sampleTranslation || `Our company decided to ${chunk.phrase} last year.`,
+        isUserSentence: isInterValid,
+        userScore: interGrade?.score,
+        vietnameseSentence: interEx.vietnameseSentence || interEx.context || interEx.prompt || `Công ty chúng tôi đã quyết định ${chunk.meaningVi} vào năm ngoái.`,
+        sampleTranslation: interSentenceToSpeak,
       },
     ];
   }, [chunk, exercises]);
@@ -800,20 +839,47 @@ export function SpeakingSession({
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10, flexWrap: 'wrap', gap: 6 }}>
-                <span
-                  style={{
-                    fontSize: 11.5,
-                    fontWeight: 700,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                    color: '#818cf8',
-                    background: 'rgba(99, 102, 241, 0.15)',
-                    padding: '3px 8px',
-                    borderRadius: 6,
-                  }}
-                >
-                  {currentSentence.title}
-                </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+                  <span
+                    style={{
+                      fontSize: 11.5,
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.5px',
+                      color: '#818cf8',
+                      background: 'rgba(99, 102, 241, 0.15)',
+                      padding: '3px 8px',
+                      borderRadius: 6,
+                    }}
+                  >
+                    {currentSentence.title}
+                  </span>
+                  {currentSentence.isUserSentence ? (
+                    <span style={{
+                      fontSize: 11,
+                      color: '#22c55e',
+                      background: 'rgba(34, 197, 94, 0.12)',
+                      border: '1px solid rgba(34, 197, 94, 0.25)',
+                      padding: '2px 7px',
+                      borderRadius: 4,
+                      fontWeight: 700,
+                    }}>
+                      ✨ Câu của bạn ({currentSentence.userScore}đ)
+                    </span>
+                  ) : (
+                    <span style={{
+                      fontSize: 11,
+                      color: '#38bdf8',
+                      background: 'rgba(56, 189, 248, 0.12)',
+                      border: '1px solid rgba(56, 189, 248, 0.25)',
+                      padding: '2px 7px',
+                      borderRadius: 4,
+                      fontWeight: 700,
+                    }}>
+                      📘 Câu mẫu chuẩn AI
+                    </span>
+                  )}
+                </div>
 
                 <button
                   type="button"
