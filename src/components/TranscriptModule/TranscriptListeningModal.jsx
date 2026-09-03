@@ -2,88 +2,94 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import {
   Play, Pause, RotateCcw, Volume2, X,
   SkipBack, SkipForward, Repeat, Eye, EyeOff,
-  Headphones
+  ArrowLeft, PenLine, Headphones, CheckCircle, Sparkles
 } from 'lucide-react';
 import { getChunks } from '../../store/storage';
 
 // ─── Voice Finder Utility ──────────────────────────────────────
 function findVoiceForSpeaker(speakerConfig, availableVoices = []) {
-  if (typeof window === 'undefined' || !window.speechSynthesis) return null;
-  const voices = availableVoices.length > 0 ? availableVoices : window.speechSynthesis.getVoices() || [];
-  if (voices.length === 0) return null;
+  if (!availableVoices || availableVoices.length === 0) return null;
 
-  const targetLang = (speakerConfig.lang || 'en-US').toLowerCase();
+  const targetLang = speakerConfig.lang || 'en-US';
   const targetGender = speakerConfig.gender || 'female';
 
-  // Lọc theo ngôn ngữ (en-US, en-GB, en-AU, etc.)
-  let langPool = voices.filter(v => {
-    const l = (v.lang || '').toLowerCase().replace('_', '-');
-    return l.startsWith(targetLang) || l.startsWith(targetLang.split('-')[0]);
-  });
-  if (langPool.length === 0) {
-    langPool = voices.filter(v => (v.lang || '').toLowerCase().startsWith('en'));
-  }
-  if (langPool.length === 0) langPool = voices;
+  // 1. Tìm chính xác cả accent + gender
+  const exactMatch = availableVoices.find(v => {
+    const nameLower = v.name.toLowerCase();
+    const langMatch = v.lang.replace('_', '-').toLowerCase().startsWith(targetLang.toLowerCase().slice(0, 5));
+    if (!langMatch) return false;
 
-  const maleKeywords = ['male', 'david', 'guy', 'george', 'james', 'daniel', 'richard', 'alex', 'fred', 'rishi', 'mark', 'tom', 'oliver'];
-  const femaleKeywords = ['female', 'zira', 'samantha', 'jenny', 'victoria', 'karen', 'susan', 'catherine', 'hazel', 'moira', 'tessa', 'ava', 'emma'];
-
-  const matched = langPool.filter(v => {
-    const name = (v.name || '').toLowerCase();
-    const uri = (v.voiceURI || '').toLowerCase();
-    if (targetGender === 'male') {
-      return maleKeywords.some(k => name.includes(k) || uri.includes(k));
+    if (targetGender === 'female') {
+      return nameLower.includes('female') || nameLower.includes('zira') || nameLower.includes('samantha') ||
+             nameLower.includes('karen') || nameLower.includes('catherine') || nameLower.includes('victoria');
     } else {
-      return femaleKeywords.some(k => name.includes(k) || uri.includes(k));
+      return nameLower.includes('male') || nameLower.includes('david') || nameLower.includes('george') ||
+             nameLower.includes('james') || nameLower.includes('daniel') || nameLower.includes('oliver');
     }
   });
+  if (exactMatch) return exactMatch;
 
-  if (matched.length > 0) return matched[0];
-  return langPool[0] || voices[0] || null;
+  // 2. Tìm theo accent (bất kỳ gender)
+  const langMatch = availableVoices.find(v =>
+    v.lang.replace('_', '-').toLowerCase().startsWith(targetLang.toLowerCase().slice(0, 5))
+  );
+  if (langMatch) return langMatch;
+
+  // 3. Fallback en-US hoặc tiếng Anh bất kỳ
+  const enMatch = availableVoices.find(v => v.lang.toLowerCase().startsWith('en'));
+  return enMatch || availableVoices[0] || null;
 }
 
-// ─── Script Parser ─────────────────────────────────────────────
-export function parseDialogueScript(rawText) {
+// ─── Parse Script into Turns / Lines ───────────────────────────
+function parseDialogueScript(rawText) {
   if (!rawText) return [];
-  const lines = rawText.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
 
+  const rawLines = rawText.split('\n').map(l => l.trim()).filter(Boolean);
   const parsed = [];
   let lastSpeaker = null;
 
-  lines.forEach((line, index) => {
-    // Nhận diện cú pháp TOEIC: "W-Am:", "M-Au:", "Woman:", "Man:", "Speaker 1:", "M:", "W:"
-    const match = line.match(/^([A-Za-z0-9\s\-_]{1,20})\s*:\s*(.+)$/s);
-    if (match) {
-      const speakerTag = match[1].trim();
-      const content = match[2].trim();
-      const tagLower = speakerTag.toLowerCase();
+  rawLines.forEach((line, index) => {
+    // Nhận diện speaker: "W-Am:", "M-Au:", "Woman:", "Man:", "Speaker 1:", v.v.
+    const match = line.match(/^([A-Za-z0-9\s-]+):\s*(.*)$/);
 
-      let gender = 'neutral';
-      if (tagLower.startsWith('w') || tagLower.includes('woman') || tagLower.includes('female')) {
-        gender = 'female';
-      } else if (tagLower.startsWith('m') || tagLower.includes('man') || tagLower.includes('male')) {
+    if (match) {
+      const tag = match[1].trim();
+      const content = match[2].trim();
+
+      const tagLower = tag.toLowerCase();
+      let gender = 'female';
+      let lang = 'en-US';
+      let accentLabel = 'Mỹ';
+
+      // Phân tích giới tính
+      if (tagLower.startsWith('m-') || tagLower.startsWith('m:') || tagLower.includes('man') || tagLower.includes('male')) {
         gender = 'male';
+      } else if (tagLower.startsWith('w-') || tagLower.startsWith('w:') || tagLower.includes('woman') || tagLower.includes('female')) {
+        gender = 'female';
       } else {
         gender = index % 2 === 0 ? 'female' : 'male';
       }
 
-      let lang = 'en-US';
-      let accentLabel = 'Mỹ';
-      if (tagLower.includes('-au') || tagLower.includes('au')) {
+      // Phân tích accent
+      if (tagLower.includes('au') || tagLower.includes('australia')) {
         lang = 'en-AU';
         accentLabel = 'Úc';
-      } else if (tagLower.includes('-br') || tagLower.includes('br') || tagLower.includes('uk')) {
+      } else if (tagLower.includes('br') || tagLower.includes('uk') || tagLower.includes('british')) {
         lang = 'en-GB';
         accentLabel = 'Anh';
-      } else if (tagLower.includes('-ca') || tagLower.includes('ca')) {
+      } else if (tagLower.includes('ca') || tagLower.includes('canada')) {
         lang = 'en-CA';
         accentLabel = 'Canada';
+      } else {
+        lang = 'en-US';
+        accentLabel = 'Mỹ';
       }
 
-      lastSpeaker = { tag: speakerTag, gender, lang, accentLabel };
+      lastSpeaker = { tag, gender, lang, accentLabel };
+
       parsed.push({
         id: index,
-        speaker: speakerTag,
+        speaker: tag,
         gender,
         lang,
         accentLabel,
@@ -91,7 +97,8 @@ export function parseDialogueScript(rawText) {
         raw: line,
       });
     } else {
-      const isHeader = /^(questions?\s+\d+|part\s+\d+|refer\s+to)/i.test(line);
+      // Dòng không có tiền tố speaker
+      const isHeader = line.toLowerCase().includes('questions') || line.toLowerCase().includes('refer to');
       parsed.push({
         id: index,
         speaker: isHeader ? 'Giới thiệu' : (lastSpeaker ? lastSpeaker.tag : 'Người đọc'),
@@ -112,7 +119,6 @@ export function parseDialogueScript(rawText) {
 function HighlightedText({ text, chunks = [] }) {
   if (!chunks || chunks.length === 0 || !text) return <span>{text}</span>;
 
-  // Lấy danh sách phrase cần highlight, sort theo độ dài giảm dần
   const phrases = chunks
     .map(c => ({
       phrase: (c.phrase || '').trim(),
@@ -123,7 +129,6 @@ function HighlightedText({ text, chunks = [] }) {
 
   if (phrases.length === 0) return <span>{text}</span>;
 
-  // Xây dựng regex an toàn
   const escapedPhrases = phrases.map(p => p.phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
   const regex = new RegExp(`(${escapedPhrases.join('|')})`, 'gi');
 
@@ -140,11 +145,11 @@ function HighlightedText({ text, chunks = [] }) {
               title={`Chunk: "${matched.phrase}" → ${matched.meaningVi || ''}`}
               style={{
                 backgroundColor: 'rgba(99, 102, 241, 0.28)',
-                color: '#818cf8',
-                padding: '1px 5px',
+                color: '#a5b4fc',
+                padding: '1px 6px',
                 borderRadius: '4px',
                 fontWeight: 700,
-                borderBottom: '2px solid var(--accent-400)',
+                borderBottom: '2px solid #818cf8',
                 cursor: 'help',
               }}
             >
@@ -158,31 +163,116 @@ function HighlightedText({ text, chunks = [] }) {
   );
 }
 
-// ─── Main TranscriptListeningModal ─────────────────────────────
+// ─── Dictation Text Component (Masked Dots & Green Revealed) ────
+function DictationText({ rawText, revealedSet = new Set() }) {
+  // Normalize em-dash to spaced dash so words don't glue together
+  const spacedText = (rawText || '').replace(/—/g, ' — ');
+  const tokens = spacedText.split(/\s+/).filter(Boolean);
+
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 7px', alignItems: 'center' }}>
+      {tokens.map((token, wIdx) => {
+        const clean = token.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const isPunctuationOnly = !clean;
+
+        if (isPunctuationOnly) {
+          return (
+            <span key={wIdx} style={{ color: 'rgba(255,255,255,0.7)', fontSize: 16 }}>
+              {token}
+            </span>
+          );
+        }
+
+        const isRevealed = revealedSet.has(wIdx);
+
+        if (isRevealed) {
+          // Điền đúng: Hiện từ lên + màu xanh
+          return (
+            <span
+              key={wIdx}
+              className="animate-scale-up"
+              style={{
+                color: '#22c55e',
+                fontWeight: 800,
+                fontSize: 16,
+                background: 'rgba(34, 197, 94, 0.15)',
+                borderBottom: '2px solid #22c55e',
+                padding: '1px 6px',
+                borderRadius: '4px',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              {token}
+            </span>
+          );
+        }
+
+        // Sai hoặc chưa điền: hiện số lượng dấu chấm tương ứng số chữ cái
+        // Ví dụ: 1 từ có 6 chữ thì có 6 dấu chấm (••••••)
+        const leadingPunct = token.match(/^[^a-zA-Z0-9]+/)?.[0] || '';
+        const trailingPunct = token.match(/[^a-zA-Z0-9]+$/)?.[0] || '';
+        const dots = '•'.repeat(clean.length);
+
+        return (
+          <span
+            key={wIdx}
+            title={`Từ có ${clean.length} chữ cái`}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              letterSpacing: '0.12em',
+              color: 'rgba(255, 255, 255, 0.45)',
+              fontSize: 16,
+              fontWeight: 800,
+              background: 'rgba(255, 255, 255, 0.05)',
+              padding: '2px 6px',
+              borderRadius: '4px',
+              borderBottom: '1.5px dashed rgba(255, 255, 255, 0.3)',
+              fontFamily: 'monospace',
+            }}
+          >
+            {leadingPunct}
+            <span>{dots}</span>
+            {trailingPunct}
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
+// ─── Main TranscriptListeningModal Component (Full-Screen Session) ──
 export function TranscriptListeningModal({
   transcript,
   chunks = [],
   onClose,
 }) {
-  const scriptText = transcript?.text || '';
-  const lines = useMemo(() => parseDialogueScript(scriptText), [scriptText]);
-
-  // Lấy danh sách chunk thuộc transcript này nếu chưa truyền vào
+  // Lấy các chunk nếu chưa có sẵn từ prop
   const effectiveChunks = useMemo(() => {
     if (chunks && chunks.length > 0) return chunks;
-    if (transcript?.id) {
-      return getChunks(transcript.id);
+    if (transcript && transcript.id) {
+      return getChunks(transcript.id) || [];
     }
     return [];
-  }, [chunks, transcript]);
+  }, [transcript, chunks]);
 
-  // Audio & Playback States
+  // Phân tích văn bản thành các dòng thoại
+  const lines = useMemo(() => {
+    return parseDialogueScript(transcript?.text || '');
+  }, [transcript?.text]);
+
+  // State audio player
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [playbackRate, setPlaybackRate] = useState(1.0);
   const [isLoopingLine, setIsLoopingLine] = useState(false);
   const [isBlindMode, setIsBlindMode] = useState(false);
   const [revealedLines, setRevealedLines] = useState({});
+
+  // ─── Dictation Mode States ───
+  const [isDictationMode, setIsDictationMode] = useState(false);
+  const [dictationInputs, setDictationInputs] = useState({}); // { [lineIndex]: string }
+  const [revealedWords, setRevealedWords] = useState({});     // { [lineIndex]: Set<number> }
 
   // Voices list from SpeechSynthesis
   const [systemVoices, setSystemVoices] = useState([]);
@@ -224,7 +314,7 @@ export function TranscriptListeningModal({
   useEffect(() => {
     const el = lineRefs.current[currentLineIndex];
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }, [currentLineIndex]);
 
@@ -262,8 +352,10 @@ export function TranscriptListeningModal({
     }
 
     utterance.onend = () => {
-      // Tự động mở che câu nếu đang ở Blind mode
-      setRevealedLines(prev => ({ ...prev, [lineIndex]: true }));
+      // Tự động mở che câu nếu đang ở Blind mode (không mở trong Dictation mode)
+      if (!isDictationMode) {
+        setRevealedLines(prev => ({ ...prev, [lineIndex]: true }));
+      }
 
       if (!isPlayingRef.current) return;
 
@@ -272,14 +364,14 @@ export function TranscriptListeningModal({
         setTimeout(() => {
           if (isPlayingRef.current) speakLineRef.current?.(lineIndex);
         }, 400);
-      } else if (lineIndex + 1 < lines.length) {
-        // Chuyển sang câu tiếp theo sau 500ms nghỉ tự nhiên
+      } else if (lineIndex + 1 < lines.length && !isDictationMode) {
+        // Trong chế độ nghe thường: chuyển sang câu tiếp theo
         setCurrentLineIndex(lineIndex + 1);
         setTimeout(() => {
           if (isPlayingRef.current) speakLineRef.current?.(lineIndex + 1);
         }, 500);
       } else {
-        // Đã hết bài thoại
+        // Hết bài thoại hoặc đang ở Dictation mode (dừng để người học gõ)
         setIsPlaying(false);
       }
     };
@@ -290,26 +382,43 @@ export function TranscriptListeningModal({
     };
 
     window.speechSynthesis.speak(utterance);
-  }, [lines, systemVoices]);
+  }, [lines, systemVoices, isDictationMode]);
 
   useEffect(() => {
     speakLineRef.current = speakLine;
   }, [speakLine]);
 
   // Play / Pause toggle
-  const handleTogglePlay = () => {
-    if (isPlaying) {
+  const handleTogglePlay = useCallback(() => {
+    if (isPlayingRef.current) {
       if (typeof window !== 'undefined' && window.speechSynthesis) {
         window.speechSynthesis.cancel();
       }
       setIsPlaying(false);
     } else {
       setIsPlaying(true);
-      speakLine(currentLineIndex);
+      speakLineRef.current?.(currentLineIndexRef.current);
     }
-  };
+  }, []);
 
-  // Click on a specific line to play it directly
+  // Keyboard shortcut: Escape to close, Space to toggle play/pause
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        if (typeof window !== 'undefined' && window.speechSynthesis) {
+          window.speechSynthesis.cancel();
+        }
+        onClose();
+      } else if (e.code === 'Space' && e.target === document.body) {
+        e.preventDefault();
+        handleTogglePlay();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleTogglePlay, onClose]);
+
+  // Click on a specific line to select and play it
   const handleSelectLine = (index) => {
     setCurrentLineIndex(index);
     setIsPlaying(true);
@@ -338,120 +447,232 @@ export function TranscriptListeningModal({
     setRevealedLines(prev => ({ ...prev, [idx]: !prev[idx] }));
   };
 
+  // ─── Dictation Matching Handlers ──────────────────────────────
+  const handleDictationInputChange = (lineIdx, inputVal) => {
+    setDictationInputs(prev => ({ ...prev, [lineIdx]: inputVal }));
+
+    const rawText = lines[lineIdx]?.text || '';
+    const spacedText = rawText.replace(/—/g, ' — ');
+    const tokens = spacedText.split(/\s+/).filter(Boolean);
+
+    // Tách các từ người dùng đã gõ (bỏ dấu câu, chuyển chữ thường)
+    const inputWords = inputVal
+      .toLowerCase()
+      .split(/[\s,.;!?]+/)
+      .map(w => w.replace(/[^a-z0-9]/g, ''))
+      .filter(Boolean);
+
+    if (inputWords.length === 0) return;
+
+    setRevealedWords(prev => {
+      const currentSet = new Set(prev[lineIdx] || []);
+
+      tokens.forEach((token, wIdx) => {
+        const clean = token.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (!clean) return;
+
+        // Nếu từ này xuất hiện trong những gì user đã gõ: Điền đúng -> hiện lên + màu xanh
+        if (inputWords.includes(clean)) {
+          currentSet.add(wIdx);
+        }
+      });
+
+      return { ...prev, [lineIdx]: currentSet };
+    });
+  };
+
+  // Gợi ý 1 từ tiếp theo trong câu
+  const handleHintWord = (lineIdx) => {
+    const rawText = lines[lineIdx]?.text || '';
+    const spacedText = rawText.replace(/—/g, ' — ');
+    const tokens = spacedText.split(/\s+/).filter(Boolean);
+
+    setRevealedWords(prev => {
+      const currentSet = new Set(prev[lineIdx] || []);
+
+      // Tìm từ đầu tiên chưa được mở
+      for (let i = 0; i < tokens.length; i++) {
+        const clean = tokens[i].toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (clean && !currentSet.has(i)) {
+          currentSet.add(i);
+          break;
+        }
+      }
+
+      return { ...prev, [lineIdx]: currentSet };
+    });
+  };
+
+  // Xem toàn bộ đáp án của câu
+  const handleRevealAllWords = (lineIdx) => {
+    const rawText = lines[lineIdx]?.text || '';
+    const spacedText = rawText.replace(/—/g, ' — ');
+    const tokens = spacedText.split(/\s+/).filter(Boolean);
+
+    setRevealedWords(prev => {
+      const fullSet = new Set();
+      tokens.forEach((_, i) => fullSet.add(i));
+      return { ...prev, [lineIdx]: fullSet };
+    });
+  };
+
+  // Xóa làm lại câu này trong dictation
+  const handleResetSentenceDictation = (lineIdx) => {
+    setDictationInputs(prev => ({ ...prev, [lineIdx]: '' }));
+    setRevealedWords(prev => {
+      const updated = { ...prev };
+      delete updated[lineIdx];
+      return updated;
+    });
+  };
+
   return (
     <div
-      className="modal-overlay animate-fade-in"
-      style={{ zIndex: 1050 }}
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      className="animate-fade-in"
+      style={{
+        position: 'fixed',
+        inset: 0,
+        width: '100vw',
+        height: '100vh',
+        zIndex: 9999,
+        background: 'linear-gradient(180deg, #090d16 0%, #0f172a 100%)',
+        color: '#f8fafc',
+        display: 'flex',
+        flexDirection: 'column',
+        overflowY: 'auto',
+      }}
     >
-      <div
-        className="modal-box"
+      {/* ── 1. Sticky Fullscreen Header & Controls ────────────────── */}
+      <header
         style={{
-          maxWidth: 680,
-          width: '94%',
-          maxHeight: '88vh',
+          padding: '12px 16px',
+          background: 'rgba(15, 23, 42, 0.95)',
+          backdropFilter: 'blur(16px)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
           display: 'flex',
           flexDirection: 'column',
-          padding: 0,
-          overflow: 'hidden',
-          borderRadius: 'var(--radius-lg)',
-          border: '1px solid rgba(99, 102, 241, 0.35)',
-          boxShadow: '0 20px 40px -10px rgba(0,0,0,0.7)',
+          gap: 10,
+          position: 'sticky',
+          top: 0,
+          zIndex: 20,
         }}
       >
-        {/* ── Header ── */}
-        <div style={{
-          padding: '16px 20px',
-          background: 'linear-gradient(135deg, rgba(30, 27, 75, 0.95), rgba(49, 46, 129, 0.85))',
-          borderBottom: '1px solid rgba(99, 102, 241, 0.25)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: 12,
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
-            <div style={{
-              width: 40, height: 40, borderRadius: 'var(--radius-full)',
-              background: 'linear-gradient(135deg, #6366f1, #a855f7)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              flexShrink: 0, boxShadow: '0 0 12px rgba(99,102,241,0.5)',
-            }}>
-              <Headphones size={20} color="#fff" />
-            </div>
-            <div style={{ minWidth: 0 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                <span style={{
-                  fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 'var(--radius-full)',
-                  background: 'rgba(255,255,255,0.12)', color: '#c7d2fe', textTransform: 'uppercase'
-                }}>
-                  {transcript?.part || 'TOEIC Listening'}
-                </span>
-                {effectiveChunks.length > 0 && (
-                  <span style={{ fontSize: 11, color: '#38bdf8', fontWeight: 600 }}>
-                    ✨ {effectiveChunks.length} chunks đã học
-                  </span>
-                )}
-              </div>
-              <h3 style={{
-                margin: '2px 0 0', fontSize: 15, fontWeight: 800, color: '#fff',
-                whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'
+        {/* Top Row: Back button, Title & Close */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, width: '100%' }}>
+          <button
+            onClick={() => {
+              if (typeof window !== 'undefined' && window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+              }
+              onClose();
+            }}
+            className="btn btn-ghost"
+            style={{
+              padding: '6px 12px',
+              borderRadius: 'var(--radius-md)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              color: 'var(--text-secondary)',
+              fontSize: 13,
+              flexShrink: 0,
+            }}
+            title="Quay lại"
+          >
+            <ArrowLeft size={18} />
+            <span style={{ fontWeight: 600 }}>Quay lại</span>
+          </button>
+
+          <div style={{ minWidth: 0, flex: 1, textAlign: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, flexWrap: 'wrap' }}>
+              <span style={{
+                fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 'var(--radius-full)',
+                background: 'rgba(99, 102, 241, 0.2)', color: '#a5b4fc', border: '1px solid rgba(99, 102, 241, 0.3)'
               }}>
-                {transcript?.themeVi || transcript?.theme || 'Luyện nghe đoạn hội thoại Script'}
-              </h3>
+                {transcript?.part || 'TOEIC Listening'}
+              </span>
+              {effectiveChunks.length > 0 && (
+                <span style={{ fontSize: 11, color: '#38bdf8', fontWeight: 600 }}>
+                  ✨ {effectiveChunks.length} chunks
+                </span>
+              )}
             </div>
+            <h2 style={{
+              margin: '3px 0 0', fontSize: 15, fontWeight: 800, color: '#f8fafc',
+              whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'
+            }}>
+              {transcript?.title || transcript?.themeVi || transcript?.theme || 'Luyện Nghe Script TOEIC'}
+            </h2>
           </div>
 
-          <button
-            onClick={onClose}
-            className="btn btn-ghost btn-icon"
-            style={{ color: 'rgba(255,255,255,0.7)', flexShrink: 0 }}
-            title="Đóng trình nghe"
-          >
-            <X size={20} />
-          </button>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', flexShrink: 0 }}>
+            <button
+              onClick={() => {
+                if (typeof window !== 'undefined' && window.speechSynthesis) {
+                  window.speechSynthesis.cancel();
+                }
+                onClose();
+              }}
+              className="btn btn-ghost btn-icon"
+              style={{ color: 'var(--text-secondary)' }}
+              title="Đóng"
+            >
+              <X size={18} />
+            </button>
+          </div>
         </div>
 
-        {/* ── Control Bar ── */}
+        {/* Player Controls Bar */}
         <div style={{
-          padding: '12px 18px',
-          background: 'var(--bg-elevated)',
-          borderBottom: '1px solid var(--border-subtle)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          flexWrap: 'wrap',
+          background: 'rgba(30, 41, 59, 0.75)',
+          backdropFilter: 'blur(12px)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          borderRadius: 'var(--radius-lg)',
+          padding: '8px 14px',
           gap: 10,
+          flexWrap: 'wrap',
         }}>
-          {/* Main Controls: Prev, Play/Pause, Next, Replay */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          {/* Main Controls: Prev, Play/Pause, Next, Replay, Loop */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <button
               onClick={handlePrevLine}
-              disabled={currentLineIndex === 0}
+              disabled={currentLineIndex <= 0}
               className="btn btn-ghost btn-icon"
               title="Câu trước"
-              style={{ opacity: currentLineIndex === 0 ? 0.4 : 1 }}
+              style={{ opacity: currentLineIndex <= 0 ? 0.35 : 1, color: '#f8fafc', padding: 6 }}
             >
               <SkipBack size={17} />
             </button>
 
             <button
               onClick={handleTogglePlay}
-              className="btn btn-primary"
               style={{
+                border: 'none',
+                cursor: 'pointer',
                 borderRadius: 'var(--radius-full)',
-                padding: '8px 18px',
+                padding: '7px 16px',
+                background: isPlaying
+                  ? 'linear-gradient(135deg, #ec4899, #f43f5e)'
+                  : isDictationMode
+                  ? 'linear-gradient(135deg, #10b981, #059669)'
+                  : 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                color: '#fff',
+                fontWeight: 800,
+                fontSize: 13,
                 display: 'flex',
                 alignItems: 'center',
-                gap: 8,
-                fontSize: 13.5,
-                fontWeight: 700,
-                boxShadow: isPlaying ? '0 0 16px rgba(99,102,241,0.5)' : 'none',
+                gap: 7,
+                boxShadow: isPlaying ? '0 0 16px rgba(236,72,153,0.5)' : '0 0 16px rgba(99,102,241,0.4)',
+                transition: 'all 0.2s ease',
               }}
             >
               {isPlaying ? (
-                <><Pause size={17} fill="#fff" /> Đang đọc ({currentLineIndex + 1}/{lines.length})</>
+                <><Pause size={15} /> <span>Đang đọc ({currentLineIndex + 1}/{lines.length})</span></>
               ) : (
-                <><Play size={17} fill="#fff" /> Nghe toàn bộ</>
+                <><Play size={15} /> <span>Phát câu ({currentLineIndex + 1}/{lines.length})</span></>
               )}
             </button>
 
@@ -460,7 +681,7 @@ export function TranscriptListeningModal({
               disabled={currentLineIndex >= lines.length - 1}
               className="btn btn-ghost btn-icon"
               title="Câu tiếp theo"
-              style={{ opacity: currentLineIndex >= lines.length - 1 ? 0.4 : 1 }}
+              style={{ opacity: currentLineIndex >= lines.length - 1 ? 0.35 : 1, color: '#f8fafc', padding: 6 }}
             >
               <SkipForward size={17} />
             </button>
@@ -469,28 +690,90 @@ export function TranscriptListeningModal({
               onClick={handleReplayCurrentLine}
               className="btn btn-ghost btn-icon"
               title="Nghe lại câu hiện tại"
+              style={{ color: '#f8fafc', padding: 6 }}
             >
-              <RotateCcw size={16} />
+              <RotateCcw size={15} />
             </button>
 
-            {/* Loop Sentence Toggle */}
             <button
               onClick={() => setIsLoopingLine(l => !l)}
               className="btn btn-ghost btn-icon"
               title={isLoopingLine ? 'Tắt lặp lại câu' : 'Bật lặp lại câu này (Shadowing)'}
               style={{
                 color: isLoopingLine ? '#818cf8' : 'var(--text-muted)',
-                background: isLoopingLine ? 'rgba(99, 102, 241, 0.2)' : 'transparent',
+                background: isLoopingLine ? 'rgba(99, 102, 241, 0.25)' : 'transparent',
+                borderRadius: 'var(--radius-sm)',
+                padding: 6,
               }}
             >
               <Repeat size={16} />
             </button>
           </div>
 
-          {/* Right Tools: Speed & Blind Mode */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          {/* Center/Right Tools: Mode Selector + Speed + Blind Mode */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+            {/* Mode Selector: Nghe Thường vs Dictation */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              background: 'rgba(15,23,42,0.85)',
+              borderRadius: 'var(--radius-md)',
+              padding: 2,
+              border: '1px solid rgba(255,255,255,0.1)',
+            }}>
+              <button
+                type="button"
+                onClick={() => setIsDictationMode(false)}
+                style={{
+                  border: 'none',
+                  background: !isDictationMode ? 'linear-gradient(135deg, #6366f1, #8b5cf6)' : 'transparent',
+                  color: !isDictationMode ? '#fff' : 'var(--text-muted)',
+                  fontSize: 11.5,
+                  fontWeight: 700,
+                  padding: '4px 10px',
+                  borderRadius: 'var(--radius-xs)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 4,
+                  transition: 'all 0.15s ease',
+                }}
+              >
+                <Headphones size={12} />
+                <span>Nghe</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsDictationMode(true);
+                  // Dừng phát tự động để user tập trung gõ
+                  if (typeof window !== 'undefined' && window.speechSynthesis) {
+                    window.speechSynthesis.cancel();
+                  }
+                  setIsPlaying(false);
+                }}
+                style={{
+                  border: 'none',
+                  background: isDictationMode ? 'linear-gradient(135deg, #10b981, #059669)' : 'transparent',
+                  color: isDictationMode ? '#fff' : 'var(--text-muted)',
+                  fontSize: 11.5,
+                  fontWeight: 700,
+                  padding: '4px 10px',
+                  borderRadius: 'var(--radius-xs)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 4,
+                  transition: 'all 0.15s ease',
+                }}
+              >
+                <PenLine size={12} />
+                <span>✍️ Dictation</span>
+              </button>
+            </div>
+
             {/* Speed selection */}
-            <div style={{ display: 'flex', alignItems: 'center', background: 'var(--bg-surface)', borderRadius: 'var(--radius-sm)', padding: 2, border: '1px solid var(--border-subtle)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', background: 'rgba(15,23,42,0.85)', borderRadius: 'var(--radius-sm)', padding: 2, border: '1px solid rgba(255,255,255,0.08)' }}>
               {[0.75, 0.9, 1.0, 1.2].map((rate) => (
                 <button
                   key={rate}
@@ -501,7 +784,7 @@ export function TranscriptListeningModal({
                     color: playbackRate === rate ? '#fff' : 'var(--text-muted)',
                     fontSize: 11,
                     fontWeight: 700,
-                    padding: '3px 7px',
+                    padding: '3px 8px',
                     borderRadius: 'var(--radius-xs)',
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
@@ -513,175 +796,376 @@ export function TranscriptListeningModal({
               ))}
             </div>
 
-            {/* Blind Mode Toggle */}
-            <button
-              onClick={() => setIsBlindMode(b => !b)}
-              className="btn btn-secondary btn-sm"
-              style={{
-                fontSize: 11.5,
-                fontWeight: 600,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 5,
-                padding: '4px 10px',
-                borderColor: isBlindMode ? '#a855f7' : undefined,
-                color: isBlindMode ? '#c084fc' : undefined,
-              }}
-              title="Che lời thoại để luyện nghe phản xạ (Blind Listening)"
-            >
-              {isBlindMode ? <><EyeOff size={13} /> Nghe chay</> : <><Eye size={13} /> Hiện chữ</>}
-            </button>
+            {/* Blind Mode Toggle (chỉ hiện khi ở chế độ Nghe thường) */}
+            {!isDictationMode && (
+              <button
+                onClick={() => setIsBlindMode(b => !b)}
+                className="btn btn-secondary btn-sm"
+                style={{
+                  fontSize: 11.5,
+                  fontWeight: 700,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 5,
+                  padding: '4px 10px',
+                  borderColor: isBlindMode ? '#a855f7' : 'rgba(255,255,255,0.15)',
+                  color: isBlindMode ? '#c084fc' : '#f8fafc',
+                  background: isBlindMode ? 'rgba(168, 85, 247, 0.15)' : 'rgba(255,255,255,0.05)',
+                }}
+                title="Che lời thoại để luyện nghe phản xạ (Blind Listening)"
+              >
+                {isBlindMode ? <><EyeOff size={13} /> Nghe chay</> : <><Eye size={13} /> Hiện chữ</>}
+              </button>
+            )}
           </div>
         </div>
+      </header>
 
-        {/* ── Dialogues Scroll Area ── */}
-        <div style={{
-          padding: '16px 20px',
-          overflowY: 'auto',
+      {/* ── 2. Dialogue Stream Body (Full-Width Responsive) ────────── */}
+      <main
+        style={{
           flex: 1,
+          padding: '24px 16px 80px',
+          maxWidth: 840,
+          width: '100%',
+          margin: '0 auto',
           display: 'flex',
           flexDirection: 'column',
-          gap: 12,
-          background: 'var(--bg-base)',
-        }}>
-          {lines.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '40px 0', color: 'var(--text-muted)' }}>
-              Không có nội dung transcript để phát âm thanh.
-            </div>
-          ) : (
-            lines.map((item, idx) => {
-              const isActive = currentLineIndex === idx;
-              const isRevealed = Boolean(revealedLines[idx]) || !isBlindMode;
-              const isFemale = item.gender === 'female';
+          gap: 14,
+        }}
+      >
+        {isDictationMode && (
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(5, 150, 105, 0.08))',
+            border: '1px solid rgba(16, 185, 129, 0.3)',
+            borderRadius: 'var(--radius-md)',
+            padding: '10px 16px',
+            fontSize: 13,
+            color: '#34d399',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
+          }}>
+            <PenLine size={16} style={{ flexShrink: 0 }} />
+            <span>
+              <strong>Chế độ Dictation:</strong> Các từ được che bằng dấu chấm (từ 6 chữ = 6 chấm). Nghe và gõ từ bạn nghe được, nếu điền đúng từ sẽ lập tức hiện lên màu xanh!
+            </span>
+          </div>
+        )}
 
-              return (
-                <div
-                  key={idx}
-                  ref={el => lineRefs.current[idx] = el}
-                  onClick={() => handleSelectLine(idx)}
-                  className="animate-fade-in"
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 6,
-                    padding: '12px 14px',
-                    borderRadius: 'var(--radius-md)',
-                    background: isActive
-                      ? 'linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(79, 70, 229, 0.1))'
-                      : 'var(--bg-surface)',
-                    border: isActive
-                      ? '1.5px solid var(--accent-400)'
-                      : '1px solid var(--border-subtle)',
-                    cursor: 'pointer',
-                    transition: 'all 0.15s ease',
-                    boxShadow: isActive ? '0 4px 16px rgba(99, 102, 241, 0.15)' : 'none',
-                  }}
-                >
-                  {/* Speaker Header */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+        {lines.length === 0 ? (
+          <div className="card text-center" style={{ padding: 40, textAlign: 'center' }}>
+            <p className="text-secondary">Không có nội dung lời thoại để hiển thị.</p>
+          </div>
+        ) : (
+          lines.map((item, idx) => {
+            const isActive = currentLineIndex === idx;
+            const isFemale = item.gender === 'female';
+            const isRevealed = !isBlindMode || revealedLines[idx];
+
+            // Dictation calculation for this sentence
+            const spacedText = (item.text || '').replace(/—/g, ' — ');
+            const tokens = spacedText.split(/\s+/).filter(Boolean);
+            const totalWordsInSentence = tokens.filter(t => t.replace(/[^a-zA-Z0-9]/g, '')).length;
+            const lineRevealedSet = revealedWords[idx] || new Set();
+            const revealedWordsCount = Array.from(lineRevealedSet).filter(i => {
+              const t = tokens[i];
+              return t && t.replace(/[^a-zA-Z0-9]/g, '');
+            }).length;
+            const isSentenceComplete = totalWordsInSentence > 0 && revealedWordsCount >= totalWordsInSentence;
+
+            return (
+              <div
+                key={idx}
+                ref={el => lineRefs.current[idx] = el}
+                onClick={() => handleSelectLine(idx)}
+                className="animate-fade-in"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 8,
+                  padding: '16px 18px',
+                  borderRadius: 'var(--radius-lg)',
+                  background: isActive
+                    ? isDictationMode
+                      ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(5, 150, 105, 0.1))'
+                      : 'linear-gradient(135deg, rgba(99, 102, 241, 0.16), rgba(49, 46, 129, 0.25))'
+                    : 'rgba(30, 41, 59, 0.45)',
+                  border: isActive
+                    ? isDictationMode ? '1.5px solid #10b981' : '1.5px solid #818cf8'
+                    : '1px solid rgba(255, 255, 255, 0.08)',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  boxShadow: isActive
+                    ? isDictationMode ? '0 0 24px rgba(16, 185, 129, 0.2)' : '0 0 24px rgba(99, 102, 241, 0.2)'
+                    : 'none',
+                }}
+              >
+                {/* Speaker Header */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                    <span style={{
+                      fontSize: 12,
+                      padding: '3px 10px',
+                      borderRadius: 'var(--radius-full)',
+                      fontWeight: 700,
+                      background: isFemale ? 'rgba(236, 72, 153, 0.18)' : 'rgba(56, 189, 248, 0.18)',
+                      color: isFemale ? '#f472b6' : '#38bdf8',
+                      border: `1px solid ${isFemale ? 'rgba(236, 72, 153, 0.35)' : 'rgba(56, 189, 248, 0.35)'}`,
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 5,
+                      whiteSpace: 'nowrap',
+                      flexShrink: 0,
+                    }}>
+                      {isFemale ? '👩' : '👨'} {item.speaker}
+                      {item.accentLabel && (
+                        <span style={{ opacity: 0.8, fontSize: 10.5 }}>({item.accentLabel})</span>
+                      )}
+                    </span>
+
+                    {isActive && isPlaying && (
                       <span style={{
-                        fontSize: 12,
-                        padding: '2px 8px',
-                        borderRadius: 'var(--radius-full)',
-                        fontWeight: 700,
-                        background: isFemale ? 'rgba(236, 72, 153, 0.15)' : 'rgba(56, 189, 248, 0.15)',
-                        color: isFemale ? '#f472b6' : '#38bdf8',
-                        border: `1px solid ${isFemale ? 'rgba(236, 72, 153, 0.3)' : 'rgba(56, 189, 248, 0.3)'}`,
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 4,
+                        fontSize: 11.5, fontWeight: 700, color: isDictationMode ? '#34d399' : 'var(--accent-300)',
+                        display: 'flex', alignItems: 'center', gap: 4,
                       }}>
-                        {isFemale ? '👩' : '👨'} {item.speaker}
-                        {item.accentLabel && (
-                          <span style={{ opacity: 0.75, fontSize: 10 }}>({item.accentLabel})</span>
-                        )}
+                        <Volume2 size={14} className="animate-pulse" /> Đang phát...
                       </span>
+                    )}
 
-                      {isActive && isPlaying && (
-                        <span style={{
-                          fontSize: 11, fontWeight: 700, color: 'var(--accent-300)',
-                          display: 'flex', alignItems: 'center', gap: 4,
-                        }}>
-                          <Volume2 size={13} className="animate-pulse" /> Đang phát...
-                        </span>
+                    {isDictationMode && totalWordsInSentence > 0 && (
+                      <span style={{
+                        fontSize: 11.5, fontWeight: 700,
+                        color: isSentenceComplete ? '#22c55e' : 'var(--text-muted)',
+                        padding: '1px 8px', borderRadius: 'var(--radius-full)',
+                        background: isSentenceComplete ? 'rgba(34, 197, 94, 0.15)' : 'rgba(255,255,255,0.06)',
+                      }}>
+                        {isSentenceComplete ? '✓ Hoàn thành' : `${revealedWordsCount}/${totalWordsInSentence} từ`}
+                      </span>
+                    )}
+                  </div>
+
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleSelectLine(idx);
+                    }}
+                    className="btn btn-ghost btn-xs"
+                    style={{
+                      color: isActive ? (isDictationMode ? '#34d399' : 'var(--accent-300)') : 'var(--text-muted)',
+                      padding: '3px 8px',
+                      fontSize: 11.5,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 4,
+                    }}
+                    title="Nghe câu này"
+                  >
+                    <Volume2 size={13} /> Nghe câu này
+                  </button>
+                </div>
+
+                {/* Sentence text / Dictation area */}
+                <div style={{
+                  fontSize: 15.5,
+                  lineHeight: 1.65,
+                  color: isActive ? '#fff' : 'rgba(241, 245, 249, 0.85)',
+                  fontWeight: isActive ? 600 : 400,
+                  paddingLeft: 2,
+                }}>
+                  {isDictationMode ? (
+                    // Dictation View: Dots for unrevealed, Green for correct words
+                    <DictationText
+                      rawText={item.text}
+                      revealedSet={revealedWords[idx] || new Set()}
+                      chunks={effectiveChunks}
+                    />
+                  ) : isRevealed ? (
+                    // Normal Listening View: Highlight chunks
+                    <HighlightedText text={item.text} chunks={effectiveChunks} />
+                  ) : (
+                    // Blind mode overlay
+                    <div
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleRevealLine(idx);
+                      }}
+                      style={{
+                        background: 'rgba(255,255,255,0.06)',
+                        border: '1px dashed rgba(255,255,255,0.18)',
+                        borderRadius: 'var(--radius-sm)',
+                        padding: '10px 14px',
+                        color: 'var(--text-muted)',
+                        fontSize: 13.5,
+                        fontStyle: 'italic',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                        userSelect: 'none',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <EyeOff size={14} /> 🙈 Đang che nội dung (Bấm để xem đáp án)
+                    </div>
+                  )}
+                </div>
+
+                {/* ── Dictation Interactive Input Panel (Only on active sentence) ── */}
+                {isDictationMode && isActive && (
+                  <div
+                    onClick={(e) => e.stopPropagation()}
+                    style={{
+                      marginTop: 10,
+                      padding: '14px 16px',
+                      background: 'rgba(15, 23, 42, 0.8)',
+                      borderRadius: 'var(--radius-md)',
+                      border: '1px solid rgba(16, 185, 129, 0.35)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 10,
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 6 }}>
+                      <div style={{ fontSize: 12.5, fontWeight: 700, color: '#34d399', display: 'flex', alignItems: 'center', gap: 6 }}>
+                        <PenLine size={14} />
+                        <span>Điền từ bạn nghe được ({revealedWordsCount}/{totalWordsInSentence} từ đúng)</span>
+                      </div>
+
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                        <button
+                          type="button"
+                          className="btn btn-ghost btn-xs"
+                          onClick={() => handleSelectLine(idx)}
+                          style={{ color: '#38bdf8', padding: '3px 8px', fontSize: 11.5, display: 'flex', alignItems: 'center', gap: 4 }}
+                          title="Nghe lại câu này"
+                        >
+                          <Volume2 size={13} /> Nghe lại
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-ghost btn-xs"
+                          onClick={() => handleHintWord(idx)}
+                          style={{ color: '#fbbf24', padding: '3px 8px', fontSize: 11.5, display: 'flex', alignItems: 'center', gap: 4 }}
+                          title="Gợi ý 1 từ tiếp theo"
+                        >
+                          <Sparkles size={13} /> Gợi ý 1 từ
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-ghost btn-xs"
+                          onClick={() => handleRevealAllWords(idx)}
+                          style={{ color: 'var(--text-muted)', padding: '3px 8px', fontSize: 11.5 }}
+                          title="Xem toàn bộ câu"
+                        >
+                          Đáp án
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Dictation Input Field */}
+                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                      <input
+                        type="text"
+                        className="input-field"
+                        value={dictationInputs[idx] || ''}
+                        onChange={(e) => handleDictationInputChange(idx, e.target.value)}
+                        placeholder="Gõ từ bạn nghe được (đúng sẽ tự hiện xanh)..."
+                        autoFocus
+                        style={{
+                          flex: 1,
+                          height: 42,
+                          fontSize: 14.5,
+                          borderColor: isSentenceComplete ? '#10b981' : 'rgba(255, 255, 255, 0.18)',
+                          background: 'rgba(0, 0, 0, 0.35)',
+                        }}
+                      />
+                      {dictationInputs[idx] && (
+                        <button
+                          type="button"
+                          className="btn btn-ghost btn-xs"
+                          onClick={() => handleResetSentenceDictation(idx)}
+                          style={{ padding: '6px 10px', color: 'var(--text-muted)' }}
+                          title="Xóa làm lại câu này"
+                        >
+                          <RotateCcw size={14} />
+                        </button>
                       )}
                     </div>
 
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleSelectLine(idx);
-                      }}
-                      className="btn btn-ghost btn-xs"
-                      style={{ color: isActive ? 'var(--accent-300)' : 'var(--text-muted)', padding: '2px 8px' }}
-                      title="Nghe riêng câu này"
-                    >
-                      <Volume2 size={13} /> Nghe câu này
-                    </button>
-                  </div>
-
-                  {/* Sentence Content */}
-                  <div style={{
-                    fontSize: 14.5,
-                    lineHeight: 1.6,
-                    color: isActive ? '#fff' : 'var(--text-primary)',
-                    fontWeight: isActive ? 600 : 400,
-                  }}>
-                    {isRevealed ? (
-                      <HighlightedText text={item.text} chunks={effectiveChunks} />
-                    ) : (
-                      <div
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleRevealLine(idx);
-                        }}
-                        style={{
-                          background: 'rgba(255,255,255,0.06)',
-                          border: '1px dashed var(--border-subtle)',
-                          borderRadius: 'var(--radius-sm)',
-                          padding: '8px 12px',
-                          color: 'var(--text-muted)',
-                          fontSize: 13,
-                          fontStyle: 'italic',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 6,
-                          userSelect: 'none',
-                        }}
-                      >
-                        <EyeOff size={13} /> 🙈 Đang che nội dung (Bấm để xem đáp án)
+                    {/* Success Message when all words are found */}
+                    {isSentenceComplete && (
+                      <div style={{
+                        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                        padding: '8px 12px', background: 'rgba(16, 185, 129, 0.15)',
+                        border: '1px solid rgba(16, 185, 129, 0.35)', borderRadius: 'var(--radius-sm)',
+                        color: '#34d399', fontSize: 13, fontWeight: 700, gap: 8,
+                      }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                          <CheckCircle size={16} />
+                          <span>Xuất sắc! Bạn đã điền đúng 100% câu này!</span>
+                        </div>
+                        {idx < lines.length - 1 && (
+                          <button
+                            type="button"
+                            className="btn btn-primary btn-xs"
+                            onClick={() => handleSelectLine(idx + 1)}
+                            style={{ fontSize: 12, padding: '4px 10px' }}
+                          >
+                            Câu tiếp theo →
+                          </button>
+                        )}
                       </div>
                     )}
                   </div>
-                </div>
-              );
-            })
-          )}
-        </div>
+                )}
+              </div>
+            );
+          })
+        )}
+      </main>
 
-        {/* ── Footer ── */}
-        <div style={{
+      {/* ── 3. Sticky Fullscreen Footer ───────────────────────────── */}
+      <footer
+        style={{
+          position: 'sticky',
+          bottom: 0,
+          background: 'rgba(15, 23, 42, 0.95)',
+          backdropFilter: 'blur(16px)',
+          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
           padding: '12px 20px',
-          background: 'var(--bg-elevated)',
-          borderTop: '1px solid var(--border-subtle)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          fontSize: 12,
+          fontSize: 12.5,
           color: 'var(--text-muted)',
-        }}>
-          <div>
-            💡 Bấm vào câu bất kỳ để phát riêng câu đó. Các cụm màu tím là chunk trọng tâm.
-          </div>
-          <button
-            className="btn btn-secondary btn-sm"
-            onClick={onClose}
-          >
-            Đóng
-          </button>
+          zIndex: 15,
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <span>💡</span>
+          <span>
+            {isDictationMode
+              ? 'Chế độ Dictation: Gõ các từ bạn nghe được, từ đúng sẽ tự hiện màu xanh!'
+              : 'Bấm vào câu bất kỳ để phát riêng câu đó. Các cụm màu tím là chunk trọng tâm.'}
+          </span>
         </div>
-      </div>
+
+        <button
+          className="btn btn-secondary btn-sm"
+          onClick={() => {
+            if (typeof window !== 'undefined' && window.speechSynthesis) {
+              window.speechSynthesis.cancel();
+            }
+            onClose();
+          }}
+          style={{ fontWeight: 700, flexShrink: 0 }}
+        >
+          Đóng
+        </button>
+      </footer>
     </div>
   );
 }
+
+// Also export alias for speaking/listening terminology consistency
+export const TranscriptListeningSession = TranscriptListeningModal;

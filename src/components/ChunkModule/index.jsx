@@ -264,33 +264,27 @@ export function ChunkModule({
           style={{
             background: 'linear-gradient(135deg, rgba(99,102,241,0.1), rgba(67,56,202,0.08))',
             borderColor: 'rgba(99,102,241,0.25)',
+            padding: '14px 16px',
           }}
         >
-          <div className="flex items-start gap-3">
-            <div style={{
-              width: 36, height: 36, borderRadius: 'var(--radius-md)',
-              background: 'linear-gradient(135deg, var(--accent-500), var(--accent-700))',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              flexShrink: 0,
-            }}>
-              <BookOpen size={16} color="white" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--text-primary)', marginBottom: 2 }}>
-                {transcript.themeVi || transcript.theme}
-                {transcript.theme && transcript.themeVi && (
-                  <span style={{ fontWeight: 400, color: 'var(--text-muted)', marginLeft: 6 }}>
-                    ({transcript.theme})
-                  </span>
-                )}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {/* Top Row: Icon + Badges + Action button */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                <div style={{
+                  width: 32, height: 32, borderRadius: 'var(--radius-md)',
+                  background: 'linear-gradient(135deg, var(--accent-500), var(--accent-700))',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  flexShrink: 0,
+                }}>
+                  <BookOpen size={16} color="white" />
+                </div>
+                <Badge type={transcript.part === 'Part 3' ? 'part3' : 'part4'}>
+                  {transcript.part}
+                </Badge>
+                <span className="badge badge-neutral">{chunks.length} chunks</span>
               </div>
-              {transcript.themeDescription && (
-                <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                  {transcript.themeDescription}
-                </p>
-              )}
-            </div>
-            <div className="flex items-center gap-2" style={{ flexShrink: 0 }}>
+
               <button
                 type="button"
                 className="btn btn-secondary btn-sm"
@@ -298,23 +292,37 @@ export function ChunkModule({
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: 5,
+                  gap: 6,
                   fontSize: 12,
                   fontWeight: 700,
                   color: '#38bdf8',
                   borderColor: 'rgba(56, 189, 248, 0.4)',
                   background: 'rgba(56, 189, 248, 0.12)',
-                  padding: '4px 10px',
+                  padding: '5px 12px',
+                  borderRadius: 'var(--radius-full)',
                 }}
                 title="Luyện nghe đoạn script này"
               >
                 <Headphones size={13} />
                 <span>Luyện Listening</span>
               </button>
-              <Badge type={transcript.part === 'Part 3' ? 'part3' : 'part4'}>
-                {transcript.part}
-              </Badge>
-              <span className="badge badge-neutral">{chunks.length} chunks</span>
+            </div>
+
+            {/* Bottom: Title & Description with full width */}
+            <div>
+              <div style={{ fontWeight: 700, fontSize: 14.5, color: 'var(--text-primary)', marginBottom: 4, lineHeight: 1.4 }}>
+                {transcript.themeVi || transcript.theme}
+                {transcript.theme && transcript.themeVi && (
+                  <span style={{ fontWeight: 400, color: 'var(--text-muted)', marginLeft: 6, fontSize: 13 }}>
+                    ({transcript.theme})
+                  </span>
+                )}
+              </div>
+              {transcript.themeDescription && (
+                <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
+                  {transcript.themeDescription}
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -322,35 +330,37 @@ export function ChunkModule({
 
       {/* Simple transcript info (no theme) */}
       {transcript && !transcript.themeVi && !transcript.theme && (
-        <div className="card mb-5" style={{ background: 'var(--bg-elevated)' }}>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+        <div className="card mb-5" style={{ background: 'var(--bg-elevated)', padding: '12px 16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0, flex: 1, flexWrap: 'wrap' }}>
               <Badge type={transcript.part === 'Part 3' ? 'part3' : 'part4'}>{transcript.part}</Badge>
-              <span className="text-secondary text-sm">{transcript.text.slice(0, 60)}…</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                className="btn btn-secondary btn-sm"
-                onClick={() => setListeningTranscript(transcript)}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 5,
-                  fontSize: 12,
-                  fontWeight: 700,
-                  color: '#38bdf8',
-                  borderColor: 'rgba(56, 189, 248, 0.4)',
-                  background: 'rgba(56, 189, 248, 0.12)',
-                  padding: '4px 10px',
-                }}
-                title="Luyện nghe đoạn script này"
-              >
-                <Headphones size={13} />
-                <span>Luyện Listening</span>
-              </button>
               <span className="badge badge-neutral">{chunks.length} chunks</span>
+              <span className="text-secondary text-sm" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {transcript.text.slice(0, 50)}…
+              </span>
             </div>
+            <button
+              type="button"
+              className="btn btn-secondary btn-sm"
+              onClick={() => setListeningTranscript(transcript)}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                fontSize: 12,
+                fontWeight: 700,
+                color: '#38bdf8',
+                borderColor: 'rgba(56, 189, 248, 0.4)',
+                background: 'rgba(56, 189, 248, 0.12)',
+                padding: '5px 12px',
+                borderRadius: 'var(--radius-full)',
+                flexShrink: 0,
+              }}
+              title="Luyện nghe đoạn script này"
+            >
+              <Headphones size={13} />
+              <span>Luyện Listening</span>
+            </button>
           </div>
         </div>
       )}
