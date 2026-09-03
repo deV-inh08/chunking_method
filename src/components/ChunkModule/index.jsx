@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, Layers, PenLine, CheckSquare, Square, BookOpen, EyeOff, Eye, Flame } from 'lucide-react';
+import { ChevronDown, ChevronUp, Layers, PenLine, CheckSquare, Square, BookOpen, EyeOff, Eye, Flame, Headphones } from 'lucide-react';
 import { EmptyState, Badge, SkeletonCard } from '../ui';
 import { generateWritingExercises } from '../../services/ai';
 import { getApiKey } from '../../store/storage';
 import { isDueForReview, formatTimeUntilReview } from '../../services/srs';
+import { TranscriptListeningModal } from '../TranscriptModule/TranscriptListeningModal';
 
 const CHUNK_TYPE_LABELS = {
   collocation: 'Collocation',
@@ -188,6 +189,7 @@ export function ChunkModule({
   const [filter, setFilter]           = useState('all');
   const [genId,  setGenId]            = useState(null);
   const [showPracticed, setShowPracticed] = useState(false);
+  const [listeningTranscript, setListeningTranscript] = useState(null);
 
   const transcript   = transcripts.find(t => t.id === selectedTranscriptId);
 
@@ -289,6 +291,26 @@ export function ChunkModule({
               )}
             </div>
             <div className="flex items-center gap-2" style={{ flexShrink: 0 }}>
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm"
+                onClick={() => setListeningTranscript(transcript)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 5,
+                  fontSize: 12,
+                  fontWeight: 700,
+                  color: '#38bdf8',
+                  borderColor: 'rgba(56, 189, 248, 0.4)',
+                  background: 'rgba(56, 189, 248, 0.12)',
+                  padding: '4px 10px',
+                }}
+                title="Luyện nghe đoạn script này"
+              >
+                <Headphones size={13} />
+                <span>Luyện Listening</span>
+              </button>
               <Badge type={transcript.part === 'Part 3' ? 'part3' : 'part4'}>
                 {transcript.part}
               </Badge>
@@ -306,7 +328,29 @@ export function ChunkModule({
               <Badge type={transcript.part === 'Part 3' ? 'part3' : 'part4'}>{transcript.part}</Badge>
               <span className="text-secondary text-sm">{transcript.text.slice(0, 60)}…</span>
             </div>
-            <span className="badge badge-neutral">{chunks.length} chunks</span>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm"
+                onClick={() => setListeningTranscript(transcript)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 5,
+                  fontSize: 12,
+                  fontWeight: 700,
+                  color: '#38bdf8',
+                  borderColor: 'rgba(56, 189, 248, 0.4)',
+                  background: 'rgba(56, 189, 248, 0.12)',
+                  padding: '4px 10px',
+                }}
+                title="Luyện nghe đoạn script này"
+              >
+                <Headphones size={13} />
+                <span>Luyện Listening</span>
+              </button>
+              <span className="badge badge-neutral">{chunks.length} chunks</span>
+            </div>
           </div>
         </div>
       )}
@@ -424,6 +468,14 @@ export function ChunkModule({
               ? `Tuyệt vời! ${practiced.length} chunk đã được luyện tập. Bấm "Đã luyện" để ôn lại.`
               : 'Thử chọn bộ lọc khác.'
           }
+        />
+      )}
+      {/* Transcript Listening Modal */}
+      {listeningTranscript && (
+        <TranscriptListeningModal
+          transcript={listeningTranscript}
+          chunks={chunks}
+          onClose={() => setListeningTranscript(null)}
         />
       )}
     </div>

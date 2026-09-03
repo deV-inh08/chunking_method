@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import {
   PenLine, ChevronRight, ChevronLeft, ChevronDown, ChevronUp, RotateCcw,
   CheckCircle, XCircle, Sparkles, Loader, RefreshCw, Volume2, VolumeX,
-  Flame, BookMarked, FileText, Layers, Mic,
+  Flame, BookMarked, FileText, Layers, Mic, Headphones,
 } from 'lucide-react';
 import { EmptyState, Badge, Spinner, Modal } from '../ui';
 import {
@@ -12,6 +12,8 @@ import {
 import { gradeWritingBatch, generateWritingExercises } from '../../services/ai';
 import { formatTimeUntilReview, isDueForReview } from '../../services/srs';
 import { SpeakingSession } from './SpeakingSession';
+import { GroupCompletionModal } from './GroupCompletionModal';
+import { TranscriptListeningModal } from '../TranscriptModule/TranscriptListeningModal';
 
 
 const CHUNK_TYPE_LABELS = {
@@ -542,15 +544,15 @@ function WritingSession({
       ...speakingResult,
     };
     const updatedProg = saveSpeakingProgress(chunkId, safePayload);
-    onComplete(chunkId, safeScore >= 70, safeScore, updatedProg?.lastFeedback);
+    const isGroupComplete = onComplete(chunkId, safeScore >= 70, safeScore, updatedProg?.lastFeedback);
     if (onToast) onToast('success', `Đã lưu kết quả luyện nói: ${safeScore} điểm!`);
 
     setHasCompletedSpeaking(true);
     savePracticeDraft(chunkId, { hasCompletedSpeaking: true });
 
-    // Nếu phần Writing đã hoàn thành (ít nhất 2 câu đã được chấm điểm) -> Tự động chuyển sang chunk tiếp theo
+    // Nếu phần Writing đã hoàn thành và chưa hoàn thành cả group -> Tự động chuyển sang chunk tiếp theo
     const writingDone = Object.keys(gradingResults || {}).length >= Math.min(2, exercises.length);
-    if (writingDone) {
+    if (writingDone && !isGroupComplete) {
       triggerAutoAdvance();
     }
   };
@@ -641,12 +643,12 @@ function WritingSession({
       const avgScore = Math.round(totalScore / resultsArr.length);
       const isSuccess = successSentences >= 2 || (successSentences >= 1 && resultsArr.length === 1);
 
-      onComplete(chunk.id, isSuccess, avgScore, res);
+      const isGroupComplete = onComplete(chunk.id, isSuccess, avgScore, res);
       onToast('success', `✓ Đã chấm xong ${resultsArr.length} câu! Điểm TB: ${avgScore}đ`);
 
-      // Nếu cả 2 phần (Writing vừa chấm xong & Speaking đã hoàn thành) -> Tự động chuyển sang chunk tiếp theo
+      // Nếu cả 2 phần (Writing vừa chấm xong & Speaking đã hoàn thành) và chưa hoàn thành cả group -> Tự động chuyển sang chunk tiếp theo
       const writingDone = Object.keys(newResultsMap).length >= Math.min(2, exercises.length);
-      if (writingDone && hasCompletedSpeaking) {
+      if (writingDone && hasCompletedSpeaking && !isGroupComplete) {
         triggerAutoAdvance();
       }
     } catch (err) {
@@ -1008,6 +1010,7 @@ function groupPracticeChunks(chunkList = [], transcripts = []) {
 // ─── PracticeOutline Accordion Component ───────────────────────────
 function PracticeOutline({
   groups, activeChunkId, onSelectChunk, allProgress, autoGenerating,
+  transcripts = [], onListenScript,
 }) {
   const [collapsedGroups, setCollapsedGroups] = useState({});
 
@@ -1022,6 +1025,10 @@ function PracticeOutline({
         const completedCount = group.chunks.filter(c => allProgress[c.id]?.practiceCount > 0 && !isDueForReview(allProgress[c.id])).length;
         const hasActive = group.chunks.some(c => c.id === activeChunkId);
         const hasDue = group.chunks.some(c => isDueForReview(allProgress[c.id]));
+        const isTranscript = group.type === 'transcript' || group.id?.startsWith('transcript_');
+        const relatedTranscript = isTranscript
+          ? (transcripts || []).find(t => t.id === group.chunks[0]?.transcriptId)
+          : null;
 
         return (
           <div
@@ -1077,8 +1084,37 @@ function PracticeOutline({
                 </div>
               </div>
 
-              <div style={{ color: 'var(--text-muted)', flexShrink: 0, marginLeft: 6 }}>
-                {isCollapsed ? <ChevronDown size={15} /> : <ChevronUp size={15} />}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, marginLeft: 6 }}>
+                {isTranscript && relatedTranscript && onListenScript && (
+                  <span
+                    role="button"
+                    tabIndex={0}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onListenScript(relatedTranscript);
+                    }}
+                    style={{
+                      padding: '2px 8px',
+                      fontSize: 11,
+                      fontWeight: 700,
+                      color: '#38bdf8',
+                      background: 'rgba(56, 189, 248, 0.12)',
+                      border: '1px solid rgba(56, 189, 248, 0.3)',
+                      borderRadius: 'var(--radius-full)',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 4,
+                      cursor: 'pointer',
+                    }}
+                    title="Nghe lại transcript của nhóm này để luyện Listening"
+                  >
+                    <Headphones size={11} />
+                    <span>Nghe</span>
+                  </span>
+                )}
+                <div style={{ color: 'var(--text-muted)' }}>
+                  {isCollapsed ? <ChevronDown size={15} /> : <ChevronUp size={15} />}
+                </div>
               </div>
             </button>
 
@@ -1224,6 +1260,8 @@ export function PracticeModule({
   const [isGeneratingAll, setIsGeneratingAll] = useState(false);
   const [genAllProgress, setGenAllProgress] = useState({ done: 0, total: 0 });
   const [genError, setGenError] = useState('');
+  const [completedGroupInfo, setCompletedGroupInfo] = useState(null);
+  const [listeningTranscript, setListeningTranscript] = useState(null);
   const autoAttemptedRef = useRef(new Set());
 
   const groups = useMemo(() => {
@@ -1354,6 +1392,12 @@ export function PracticeModule({
     return groups.find(g => g.chunks.some(c => c.id === activeChunk.id));
   }, [groups, activeChunk]);
 
+  const activeGroupTranscript = useMemo(() => {
+    if (!activeGroup || activeGroup.type !== 'transcript') return null;
+    const tId = activeGroup.chunks[0]?.transcriptId;
+    return (transcripts || []).find(t => t.id === tId) || null;
+  }, [activeGroup, transcripts]);
+
   const activeChunkInGroupIndex = useMemo(() => {
     if (!activeGroup || !activeChunk) return 0;
     return activeGroup.chunks.findIndex(c => c.id === activeChunk.id);
@@ -1361,6 +1405,42 @@ export function PracticeModule({
 
   const handleComplete = (chunkId, success, score, feedback) => {
     onProgressUpdate(chunkId, success, score, feedback);
+
+    if (success) {
+      const currentGroup = groups.find(g => g.chunks.some(c => c.id === chunkId));
+      if (currentGroup && currentGroup.chunks.length > 0) {
+        // Kiểm tra xem tất cả các chunk trong group này đã hoàn thành chưa
+        const allDone = currentGroup.chunks.every(c => {
+          if (c.id === chunkId) return true;
+          const prog = allProgress[c.id];
+          return prog && prog.practiceCount > 0 && !isDueForReview(prog);
+        });
+
+        if (allDone) {
+          const currentGroupIdx = groups.findIndex(g => g.id === currentGroup.id);
+          const nextGroup = (currentGroupIdx >= 0 && currentGroupIdx < groups.length - 1)
+            ? groups[currentGroupIdx + 1]
+            : null;
+
+          let relatedTranscript = null;
+          if (currentGroup.type === 'transcript') {
+            const tId = currentGroup.chunks[0]?.transcriptId;
+            if (tId) {
+              relatedTranscript = (transcripts || []).find(t => t.id === tId) || null;
+            }
+          }
+
+          setCompletedGroupInfo({
+            group: currentGroup,
+            hasNextGroup: Boolean(nextGroup && nextGroup.chunks.length > 0),
+            nextGroupChunkId: nextGroup?.chunks[0]?.id || null,
+            transcript: relatedTranscript,
+          });
+          return true; // Báo hiệu hoàn thành cả group
+        }
+      }
+    }
+    return false;
   };
 
   const handleSelectChunk = (chunkId) => {
@@ -1462,12 +1542,35 @@ export function PracticeModule({
           </div>
         </div>
 
-        <div
-          className="btn btn-secondary btn-sm"
-          style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, padding: '6px 10px', fontSize: 12, fontWeight: 600, pointerEvents: 'none' }}
-        >
-          <Layers size={14} color="var(--accent-400)" />
-          <span>Mục lục ({chunkList.length})</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
+          {activeGroupTranscript && (
+            <button
+              type="button"
+              className="btn btn-secondary btn-sm"
+              onClick={(e) => {
+                e.stopPropagation();
+                setListeningTranscript(activeGroupTranscript);
+              }}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 5,
+                padding: '6px 10px', fontSize: 11.5, fontWeight: 700,
+                color: '#38bdf8', borderColor: 'rgba(56, 189, 248, 0.4)',
+                background: 'rgba(56, 189, 248, 0.12)',
+              }}
+              title="Luyện nghe đoạn transcript này"
+            >
+              <Headphones size={13} />
+              <span>Nghe script</span>
+            </button>
+          )}
+
+          <div
+            className="btn btn-secondary btn-sm"
+            style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, padding: '6px 10px', fontSize: 12, fontWeight: 600, pointerEvents: 'none' }}
+          >
+            <Layers size={14} color="var(--accent-400)" />
+            <span>Mục lục ({chunkList.length})</span>
+          </div>
         </div>
       </div>
 
@@ -1484,6 +1587,8 @@ export function PracticeModule({
             onSelectChunk={handleSelectChunk}
             allProgress={allProgress}
             autoGenerating={autoGenerating}
+            transcripts={transcripts}
+            onListenScript={(tr) => setListeningTranscript(tr)}
           />
         </div>
 
@@ -1598,9 +1703,43 @@ export function PracticeModule({
               onSelectChunk={handleSelectChunk}
               allProgress={allProgress}
               autoGenerating={autoGenerating}
+              transcripts={transcripts}
+              onListenScript={(tr) => {
+                setShowMobileOutline(false);
+                setListeningTranscript(tr);
+              }}
             />
           </div>
         </Modal>
+      )}
+
+      {/* Group Completion Modal */}
+      {completedGroupInfo && (
+        <GroupCompletionModal
+          group={completedGroupInfo.group}
+          allProgress={allProgress}
+          hasNextGroup={completedGroupInfo.hasNextGroup}
+          onNextGroup={() => {
+            if (completedGroupInfo.nextGroupChunkId) {
+              setActiveChunkId(completedGroupInfo.nextGroupChunkId);
+            }
+            setCompletedGroupInfo(null);
+          }}
+          onListenScript={() => {
+            if (completedGroupInfo.transcript) {
+              setListeningTranscript(completedGroupInfo.transcript);
+            }
+          }}
+          onClose={() => setCompletedGroupInfo(null)}
+        />
+      )}
+
+      {/* Transcript Listening Modal */}
+      {listeningTranscript && (
+        <TranscriptListeningModal
+          transcript={listeningTranscript}
+          onClose={() => setListeningTranscript(null)}
+        />
       )}
     </div>
   );

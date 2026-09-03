@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { FileText, Plus, Trash2, ChevronRight, Calendar } from 'lucide-react';
+import { FileText, Plus, Trash2, ChevronRight, Calendar, Headphones } from 'lucide-react';
 import { EmptyState, Badge, SkeletonCard } from '../ui';
 import { analyzeTranscript } from '../../services/ai';
 import { getApiKey } from '../../store/storage';
+import { TranscriptListeningModal } from './TranscriptListeningModal';
 
 // ─── Helper ───────────────────────────────────────────────────
 function generateId() {
@@ -20,7 +21,7 @@ function truncateText(text, maxLen = 80) {
 }
 
 // ─── TranscriptInput ──────────────────────────────────────────
-function TranscriptInput({ onSave, onChunksExtracted, onToast }) {
+function TranscriptInput({ onSave, onChunksExtracted, onToast, onPreviewListen }) {
   const [text, setText]   = useState('');
   const [part, setPart]   = useState('Part 3');
   const [loading, setLoading] = useState(false);
@@ -134,21 +135,43 @@ function TranscriptInput({ onSave, onChunksExtracted, onToast }) {
         </div>
       </div>
 
-      <button
-        id="analyze-btn"
-        className="btn btn-primary btn-lg w-full"
-        onClick={handleAnalyze}
-        disabled={loading || !text.trim()}
-      >
-        {loading ? (
-          <>
-            <span className="animate-spin" style={{ display: 'inline-block' }}>⚙️</span>
-            Đang phân tích…
-          </>
-        ) : (
-          <>✨ Analyze &amp; Extract Chunks</>
+      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+        <button
+          id="analyze-btn"
+          className="btn btn-primary btn-lg"
+          style={{ flex: 1, minWidth: 200, justifyContent: 'center' }}
+          onClick={handleAnalyze}
+          disabled={loading || !text.trim()}
+        >
+          {loading ? (
+            <>
+              <span className="animate-spin" style={{ display: 'inline-block' }}>⚙️</span>
+              Đang phân tích…
+            </>
+          ) : (
+            <>✨ Analyze &amp; Extract Chunks</>
+          )}
+        </button>
+
+        {text.trim().length > 0 && onPreviewListen && (
+          <button
+            type="button"
+            className="btn btn-secondary btn-lg"
+            onClick={() => onPreviewListen({ text: text.trim(), part })}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              borderColor: 'rgba(56, 189, 248, 0.4)',
+              color: '#38bdf8',
+            }}
+            title="Luyện nghe đoạn script này với AI giọng đọc"
+          >
+            <Headphones size={18} />
+            <span>Nghe thử script</span>
+          </button>
         )}
-      </button>
+      </div>
 
       {loading && (
         <div className="mt-4">
@@ -165,7 +188,7 @@ function TranscriptInput({ onSave, onChunksExtracted, onToast }) {
 }
 
 // ─── TranscriptCard ───────────────────────────────────────────
-function TranscriptCard({ transcript, chunkCount, onSelect, onDelete }) {
+function TranscriptCard({ transcript, chunkCount, onSelect, onDelete, onListen }) {
   return (
     <div
       id={`transcript-card-${transcript.id}`}
@@ -194,11 +217,37 @@ function TranscriptCard({ transcript, chunkCount, onSelect, onDelete }) {
             <p className="text-secondary text-sm" style={{ lineHeight: 1.5 }}>
               {truncateText(transcript.text)}
             </p>
-            {chunkCount > 0 && (
-              <p className="text-accent text-xs mt-1 font-medium">
-                {chunkCount} chunks đã trích xuất
-              </p>
-            )}
+            <div className="flex items-center gap-3 mt-2 flex-wrap">
+              {chunkCount > 0 && (
+                <span className="text-accent text-xs font-medium">
+                  {chunkCount} chunks đã trích xuất
+                </span>
+              )}
+              {onListen && (
+                <button
+                  className="btn btn-secondary btn-xs"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onListen(transcript);
+                  }}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 5,
+                    fontSize: 11.5,
+                    fontWeight: 700,
+                    padding: '3px 10px',
+                    color: '#38bdf8',
+                    borderColor: 'rgba(56, 189, 248, 0.4)',
+                    background: 'rgba(56, 189, 248, 0.08)',
+                    borderRadius: 'var(--radius-full)',
+                  }}
+                  title="Nghe lại đoạn script này để luyện Listening"
+                >
+                  <Headphones size={12} /> Luyện Listening
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
@@ -219,9 +268,16 @@ function TranscriptCard({ transcript, chunkCount, onSelect, onDelete }) {
 
 // ─── TranscriptModule (main export) ──────────────────────────
 export function TranscriptModule({ transcripts, onSave, onDelete, onChunksExtracted, onSelectTranscript, chunkCounts, onToast }) {
+  const [listeningTranscript, setListeningTranscript] = useState(null);
+
   return (
     <div>
-      <TranscriptInput onSave={onSave} onChunksExtracted={onChunksExtracted} onToast={onToast} />
+      <TranscriptInput
+        onSave={onSave}
+        onChunksExtracted={onChunksExtracted}
+        onToast={onToast}
+        onPreviewListen={(previewData) => setListeningTranscript(previewData)}
+      />
 
       <div className="section-header">
         <div>
@@ -245,9 +301,17 @@ export function TranscriptModule({ transcripts, onSave, onDelete, onChunksExtrac
               chunkCount={chunkCounts[t.id] || 0}
               onSelect={onSelectTranscript}
               onDelete={onDelete}
+              onListen={(tr) => setListeningTranscript(tr)}
             />
           ))}
         </div>
+      )}
+
+      {listeningTranscript && (
+        <TranscriptListeningModal
+          transcript={listeningTranscript}
+          onClose={() => setListeningTranscript(null)}
+        />
       )}
     </div>
   );
