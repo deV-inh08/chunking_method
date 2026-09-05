@@ -93,12 +93,7 @@ function ChunkCard({ chunk, selected, onToggle, progress, generatingSit, onGener
                 border: `1px solid ${isDue ? 'rgba(239,68,68,0.3)' : 'rgba(99,102,241,0.25)'}`,
               }}>
                 <Flame size={10} color={isDue ? '#ef4444' : '#f59e0b'} />
-                {isDue
-                  ? 'Cần ôn ngay'
-                  : progress.status === 'mastered'
-                  ? '🧠 Mastered'
-                  : `Lv.${progress.srsLevel || 1} · ${reviewTimeInfo?.text || 'Đang học'}`
-                }
+                {progress.status === 'mastered' ? '🧠 ' : ''}Lv.{progress.srsLevel || 1} · {isDue ? 'Cần ôn ngay' : reviewTimeInfo?.text || 'Đang học'}
               </span>
             )}
           </div>

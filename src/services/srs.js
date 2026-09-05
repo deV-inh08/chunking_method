@@ -59,14 +59,45 @@ export const TRACK_CONFIGS = {
  * @param {string} [params.track='track_a'] - 'track_a' | 'track_b'
  * @returns {Object} Các trường SRS được cập nhật
  */
-export function calculateNextReview({
-  prevProgress = null,
-  score = 80,
-  success = true,
-  track = 'track_a',
-}) {
+export function calculateNextReview(optionsOrPrevProgress, maybeArg2, maybeArg3, maybeArg4) {
+  let prevProgress = null;
+  let score = 80;
+  let success = true;
+  let track = 'track_a';
+
+  if (
+    optionsOrPrevProgress &&
+    typeof optionsOrPrevProgress === 'object' &&
+    ('prevProgress' in optionsOrPrevProgress || 'score' in optionsOrPrevProgress || 'success' in optionsOrPrevProgress || 'track' in optionsOrPrevProgress)
+  ) {
+    // Gọi theo dạng Object: calculateNextReview({ prevProgress, score, success, track })
+    ({ prevProgress = null, score = 80, success = true, track = 'track_a' } = optionsOrPrevProgress);
+  } else {
+    // Gọi theo dạng tham số rời: calculateNextReview(prevProgress, isSuccess, score, track) hoặc (prevProgress, score, success, track)
+    prevProgress = optionsOrPrevProgress || null;
+    if (typeof maybeArg2 === 'boolean') {
+      success = maybeArg2;
+      score = typeof maybeArg3 === 'number' ? maybeArg3 : 80;
+      track = maybeArg4 || 'track_a';
+    } else {
+      score = typeof maybeArg2 === 'number' ? maybeArg2 : 80;
+      success = typeof maybeArg3 === 'boolean' ? maybeArg3 : true;
+      track = maybeArg4 || 'track_a';
+    }
+  }
+
   const trackCfg = TRACK_CONFIGS[track] || TRACK_CONFIGS.track_a;
-  const currentLevel = prevProgress?.srsLevel ?? 0;
+
+  // Lấy currentLevel, nếu bị null/undefined thì suy luận từ practiceCount / successCount
+  let currentLevel = prevProgress?.srsLevel;
+  if (currentLevel == null) {
+    if (prevProgress?.practiceCount) {
+      currentLevel = Math.max(0, Math.min(trackCfg.masteredLevel, (prevProgress.practiceCount || 1) - 1));
+    } else {
+      currentLevel = 0;
+    }
+  }
+
   let easeFactor = prevProgress?.easeFactor ?? trackCfg.defaultEaseFactor;
   let intervalMinutes = 0;
   let newLevel = currentLevel;
@@ -256,7 +287,12 @@ export function updateSRSAfterSpeaking(prevProgress, speakingResult, track = 'tr
   const score = speakingResult?.score || 0;
 
   // Tái sử dụng calculateNextReview với kết quả speaking
-  const srsUpdate = calculateNextReview(prevProgress, isSuccess, score, track);
+  const srsUpdate = calculateNextReview({
+    prevProgress,
+    success: isSuccess,
+    score,
+    track,
+  });
 
   return {
     ...srsUpdate,

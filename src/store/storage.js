@@ -274,26 +274,39 @@ export function getAllProgress() {
   return result;
 }
 
-/** Tự động bổ sung thông tin SRS nếu progress cũ hoặc đồng bộ từ cloud bị thiếu nextReviewAt */
+/** Tự động bổ sung thông tin SRS nếu progress cũ hoặc đồng bộ từ cloud bị thiếu nextReviewAt / sai srsLevel */
 function ensureSrsProgress(prog, track = 'track_a') {
   if (!prog || !prog.practiceCount) return prog;
-  if (prog.nextReviewAt) return prog;
+
+  const currentTrack = prog.srsTrack || track || 'track_a';
+  const isLevelCorrupted = prog.practiceCount >= 4 && (prog.srsLevel == null || prog.srsLevel <= 2);
+  const needsFix = !prog.nextReviewAt || prog.srsLevel == null || isLevelCorrupted;
+
+  if (!needsFix) return prog;
 
   const lastTime = prog.lastPracticed || Date.now();
+  const maxTrackLv = currentTrack === 'track_b' ? 8 : 10;
+  const estimatedLevel = (prog.srsLevel != null && !isLevelCorrupted)
+    ? prog.srsLevel
+    : Math.max(0, Math.min(maxTrackLv, (prog.practiceCount || 1) - 1));
+
   const srsUpdates = calculateNextReview({
     prevProgress: {
-      srsLevel: Math.max(0, (prog.practiceCount || 1) - 1),
-      easeFactor: prog.easeFactor || (track === 'track_b' ? 2.0 : 1.65),
+      ...prog,
+      srsLevel: estimatedLevel,
+      easeFactor: prog.easeFactor || (currentTrack === 'track_b' ? 2.0 : 1.65),
     },
     score: prog.lastScore != null ? prog.lastScore : (prog.lastResult ? 80 : 40),
-    success: Boolean(prog.lastResult),
-    track: prog.srsTrack || track,
+    success: Boolean(prog.lastResult ?? true),
+    track: currentTrack,
   });
 
   return {
     ...prog,
     ...srsUpdates,
-    nextReviewAt: lastTime + (srsUpdates.intervalMinutes * 60 * 1000),
+    nextReviewAt: (prog.nextReviewAt && !isLevelCorrupted)
+      ? prog.nextReviewAt
+      : lastTime + (srsUpdates.intervalMinutes * 60 * 1000),
   };
 }
 

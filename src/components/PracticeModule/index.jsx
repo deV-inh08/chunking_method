@@ -579,7 +579,7 @@ function WritingSession({
       ...speakingResult,
     };
     const updatedProg = saveSpeakingProgress(chunkId, safePayload);
-    const isGroupComplete = onComplete(chunkId, safeScore >= 70, safeScore, updatedProg?.lastFeedback);
+    const isGroupComplete = onComplete ? onComplete(chunkId, safeScore >= 70, safeScore, updatedProg?.lastFeedback, true) : false;
     if (onToast) onToast('success', `Đã lưu kết quả luyện nói: ${safeScore} điểm!`);
 
     setHasCompletedSpeaking(true);
@@ -760,17 +760,26 @@ function WritingSession({
           {progress && (
             <span style={{
               display: 'inline-flex', alignItems: 'center', gap: 4,
+              fontSize: 11.5, fontWeight: 700, padding: '2px 9px', borderRadius: 'var(--radius-full)',
+              background: progress.status === 'mastered' ? 'rgba(34, 197, 94, 0.15)' : 'rgba(99, 102, 241, 0.15)',
+              color: progress.status === 'mastered' ? '#4ade80' : 'var(--accent-300)',
+              border: `1px solid ${progress.status === 'mastered' ? 'rgba(34, 197, 94, 0.35)' : 'rgba(99, 102, 241, 0.35)'}`,
+            }}>
+              {progress.status === 'mastered' ? '🧠 ' : '⚡ '}Level {progress.srsLevel || 1}{progress.status === 'mastered' ? ' (Thành thạo)' : ''}
+            </span>
+          )}
+          {progress && (
+            <span style={{
+              display: 'inline-flex', alignItems: 'center', gap: 4,
               fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 'var(--radius-full)',
-              background: isDueForReview(progress) ? 'rgba(239,68,68,0.15)' : 'rgba(99,102,241,0.15)',
-              color: isDueForReview(progress) ? 'var(--error-text)' : 'var(--accent-300)',
-              border: `1px solid ${isDueForReview(progress) ? 'rgba(239,68,68,0.3)' : 'rgba(99,102,241,0.3)'}`,
+              background: isDueForReview(progress) ? 'rgba(239,68,68,0.15)' : 'rgba(245,158,11,0.12)',
+              color: isDueForReview(progress) ? 'var(--error-text)' : '#f59e0b',
+              border: `1px solid ${isDueForReview(progress) ? 'rgba(239,68,68,0.3)' : 'rgba(245,158,11,0.3)'}`,
             }}>
               <Flame size={11} color={isDueForReview(progress) ? '#ef4444' : '#f59e0b'} />
               {isDueForReview(progress)
                 ? '🔥 Đến hạn ôn tập'
-                : progress.status === 'mastered'
-                ? '🧠 Thành thạo'
-                : `Level ${progress.srsLevel || 1} · ${formatTimeUntilReview(progress.nextReviewAt)?.text || 'Đang học'}`
+                : formatTimeUntilReview(progress.nextReviewAt)?.text || 'Đang học'
               }
             </span>
           )}
@@ -814,7 +823,7 @@ function WritingSession({
           }}>
             <Flame size={14} color="#ef4444" style={{ flexShrink: 0 }} />
             <span>
-              <strong>Lượt ôn tập Spaced Repetition (Lần {progress?.practiceCount ? progress.practiceCount + 1 : 1}):</strong> Dữ liệu đã được làm mới để bạn nhớ lại và tự dịch từ đầu!
+              <strong>Lượt ôn tập Spaced Repetition (Level {progress?.srsLevel || 1} · Lần {progress?.practiceCount ? progress.practiceCount + 1 : 1}):</strong> Dữ liệu đã được làm mới để bạn nhớ lại và tự dịch từ đầu!
             </span>
           </div>
         )}
@@ -1243,6 +1252,18 @@ function PracticeOutline({
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', gap: 5, flexShrink: 0 }}>
+                        {prog?.practiceCount > 0 && (
+                          <span style={{
+                            fontSize: 10,
+                            fontWeight: 700,
+                            color: prog.status === 'mastered' ? '#4ade80' : 'var(--accent-300)',
+                            background: prog.status === 'mastered' ? 'rgba(34,197,94,0.12)' : 'rgba(99,102,241,0.12)',
+                            padding: '1px 5px',
+                            borderRadius: 4,
+                          }}>
+                            Lv.{prog.srsLevel || 1}
+                          </span>
+                        )}
                         {isDue ? (
                           <span style={{
                             fontSize: 10,
@@ -1282,7 +1303,7 @@ function PracticeOutline({
 // ─── PracticeModule (main export) ─────────────────────────────────
 export function PracticeModule({
   selectedChunks, chunks, allProgress, transcripts = [],
-  onProgressUpdate, onToast,
+  onProgressUpdate, onRefreshProgress, onToast,
   autoGenerating = false,
   autoGenProgress = { done: 0, total: 0 },
   onStartDueReview,
@@ -1471,8 +1492,12 @@ export function PracticeModule({
     return activeGroup.chunks.findIndex(c => c.id === activeChunk.id);
   }, [activeGroup, activeChunk]);
 
-  const handleComplete = (chunkId, success, score, feedback) => {
-    onProgressUpdate(chunkId, success, score, feedback);
+  const handleComplete = (chunkId, success, score, feedback, alreadySaved = false) => {
+    if (!alreadySaved) {
+      onProgressUpdate(chunkId, success, score, feedback);
+    } else if (onRefreshProgress) {
+      onRefreshProgress();
+    }
 
     if (success) {
       const currentGroup = groups.find(g => g.chunks.some(c => c.id === chunkId));

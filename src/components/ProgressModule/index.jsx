@@ -77,12 +77,7 @@ function ChunkProgressCard({ chunk, progress, onRepractice }) {
                 border: `1px solid ${isDue ? 'rgba(239,68,68,0.3)' : 'rgba(99,102,241,0.25)'}`,
               }}>
                 <Flame size={10} color={isDue ? '#ef4444' : '#f59e0b'} />
-                {isDue
-                  ? 'Đến hạn ôn'
-                  : progress.status === 'mastered'
-                  ? '🧠 Mastered'
-                  : `Level ${progress.srsLevel || 1} · ${reviewInfo?.text || 'Đang học'}`
-                }
+                {progress.status === 'mastered' ? '🧠 ' : ''}Level {progress.srsLevel || 1} · {isDue ? 'Đến hạn ôn' : reviewInfo?.text || 'Đang học'}
               </span>
             )}
           </div>

@@ -529,6 +529,7 @@ export default function App() {
                 allProgress={allProgress}
                 transcripts={transcripts}
                 onProgressUpdate={handleProgressUpdate}
+                onRefreshProgress={refreshProgress}
                 onToast={addToast}
                 autoGenerating={autoGenerating}
                 autoGenProgress={autoGenProgress}
