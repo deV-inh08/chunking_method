@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import {
   PenLine, ChevronRight, ChevronLeft, ChevronDown, ChevronUp, RotateCcw,
   CheckCircle, XCircle, Sparkles, Loader, Volume2, VolumeX,
-  Flame, BookMarked, FileText, Layers, Mic, Headphones,
+  Flame, BookMarked, FileText, Layers, Mic, Headphones, Trash2,
 } from 'lucide-react';
 import { EmptyState, Badge, Spinner, Modal } from '../ui';
 import {
@@ -1303,12 +1303,50 @@ function PracticeOutline({
 // ─── PracticeModule (main export) ─────────────────────────────────
 export function PracticeModule({
   selectedChunks, chunks, allProgress, transcripts = [],
-  onProgressUpdate, onRefreshProgress, onToast,
+  onProgressUpdate, onRefreshProgress, onRemoveChunksFromPractice, onToast,
   autoGenerating = false,
   autoGenProgress = { done: 0, total: 0 },
   onStartDueReview,
 }) {
   const chunkList = chunks.filter(c => selectedChunks.has(c.id));
+
+  // Kiểm tra chunk đã hoàn thành / ôn xong (đã luyện ít nhất 1 lần và không đến hạn ôn)
+  const isChunkCompleted = useCallback((cId) => {
+    const prog = allProgress[cId];
+    return Boolean(prog && prog.practiceCount > 0 && !isDueForReview(prog));
+  }, [allProgress]);
+
+  const completedChunks = useMemo(() => {
+    return chunkList.filter(c => isChunkCompleted(c.id));
+  }, [chunkList, isChunkCompleted]);
+
+  const pendingChunks = useMemo(() => {
+    return chunkList.filter(c => !isChunkCompleted(c.id));
+  }, [chunkList, isChunkCompleted]);
+
+  // Bộ lọc: 'pending' (Cần ôn & Chưa xong) | 'all' (Tất cả)
+  const [filterMode, setFilterMode] = useState(() => {
+    try {
+      const saved = localStorage.getItem('toeic_practice_filter_mode');
+      if (saved === 'all' || saved === 'pending') return saved;
+    } catch { /* ignore */ }
+    return 'pending';
+  });
+
+  const handleSetFilterMode = (mode) => {
+    setFilterMode(mode);
+    try {
+      localStorage.setItem('toeic_practice_filter_mode', mode);
+    } catch { /* ignore */ }
+  };
+
+  // Danh sách hiển thị tương ứng theo chế độ lọc
+  const displayedChunkList = useMemo(() => {
+    if (filterMode === 'pending') {
+      return pendingChunks;
+    }
+    return chunkList;
+  }, [filterMode, pendingChunks, chunkList]);
 
   const [activeChunkId, setActiveChunkId] = useState(() => {
     try {
@@ -1320,21 +1358,21 @@ export function PracticeModule({
   const [showMobileOutline, setShowMobileOutline] = useState(false);
 
   useEffect(() => {
-    if (chunkList.length > 0) {
-      if (!activeChunkId || !chunkList.some(c => c.id === activeChunkId)) {
+    if (displayedChunkList.length > 0) {
+      if (!activeChunkId || !displayedChunkList.some(c => c.id === activeChunkId)) {
         try {
           const saved = localStorage.getItem('toeic_active_chunk_id');
-          if (saved && chunkList.some(c => c.id === saved)) {
+          if (saved && displayedChunkList.some(c => c.id === saved)) {
             setActiveChunkId(saved);
           } else {
-            setActiveChunkId(chunkList[0].id);
+            setActiveChunkId(displayedChunkList[0].id);
           }
         } catch {
-          setActiveChunkId(chunkList[0].id);
+          setActiveChunkId(displayedChunkList[0].id);
         }
       }
     }
-  }, [chunkList, activeChunkId]);
+  }, [displayedChunkList, activeChunkId]);
 
   useEffect(() => {
     if (activeChunkId) {
@@ -1354,11 +1392,11 @@ export function PracticeModule({
   const autoAttemptedRef = useRef(new Set());
 
   const groups = useMemo(() => {
-    return groupPracticeChunks(chunkList, transcripts);
-  }, [chunkList, transcripts]);
+    return groupPracticeChunks(displayedChunkList, transcripts);
+  }, [displayedChunkList, transcripts]);
 
-  const activeChunkIndex = chunkList.findIndex(c => c.id === activeChunkId);
-  const activeChunk = activeChunkIndex >= 0 ? chunkList[activeChunkIndex] : null;
+  const activeChunkIndex = displayedChunkList.findIndex(c => c.id === activeChunkId);
+  const activeChunk = activeChunkIndex >= 0 ? displayedChunkList[activeChunkIndex] : null;
   const activeExercises = useMemo(() => {
     void situationsVersion;
     return activeChunk ? getSituations(activeChunk.id) : [];
@@ -1543,15 +1581,52 @@ export function PracticeModule({
 
   const handlePrevChunk = () => {
     if (activeChunkIndex > 0) {
-      setActiveChunkId(chunkList[activeChunkIndex - 1].id);
+      setActiveChunkId(displayedChunkList[activeChunkIndex - 1].id);
     }
   };
 
   const handleNextChunk = () => {
-    if (activeChunkIndex < chunkList.length - 1) {
-      setActiveChunkId(chunkList[activeChunkIndex + 1].id);
+    if (activeChunkIndex < displayedChunkList.length - 1) {
+      setActiveChunkId(displayedChunkList[activeChunkIndex + 1].id);
     }
   };
+
+  // Màn hình khi tất cả bài đã chọn đều đã hoàn thành và đang lọc 'pending'
+  if (displayedChunkList.length === 0 && chunkList.length > 0 && !autoGenerating) {
+    return (
+      <div className="card animate-fade-in" style={{ textAlign: 'center', padding: '40px 20px', maxWidth: 540, margin: '30px auto' }}>
+        <div style={{
+          width: 56, height: 56, borderRadius: 'var(--radius-full)',
+          background: 'rgba(34, 197, 94, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          margin: '0 auto 16px',
+        }}>
+          <CheckCircle size={32} color="var(--success-text)" />
+        </div>
+        <h3 style={{ fontSize: 18, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8 }}>
+          🎉 Đã ôn xong tất cả {chunkList.length} bài luyện!
+        </h3>
+        <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: 20 }}>
+          Tuyệt vời! Tất cả các bài bạn chọn đều đã được hoàn thành và chưa đến hạn ôn tập tiếp theo. Các bài đã hoàn thành được tự động ẩn đi để giao diện gọn gàng.
+        </p>
+        <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <button className="btn btn-primary" onClick={() => handleSetFilterMode('all')}>
+            👁️ Xem lại tất cả {chunkList.length} bài
+          </button>
+          {onRemoveChunksFromPractice && (
+            <button
+              className="btn btn-secondary"
+              onClick={() => {
+                const completedIds = completedChunks.map(c => c.id);
+                onRemoveChunksFromPractice(completedIds);
+              }}
+            >
+              🧹 Dọn dẹp danh sách (Bỏ {completedChunks.length} bài đã xong)
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   if (chunkList.length === 0 && !autoGenerating) {
     const dueCount = chunks.filter(c => isDueForReview(allProgress[c.id])).length;
@@ -1662,7 +1737,7 @@ export function PracticeModule({
             style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, padding: '6px 10px', fontSize: 12, fontWeight: 600, pointerEvents: 'none' }}
           >
             <Layers size={14} color="var(--accent-400)" />
-            <span>Mục lục ({chunkList.length})</span>
+            <span>Mục lục ({displayedChunkList.length})</span>
           </div>
         </div>
       </div>
@@ -1671,9 +1746,87 @@ export function PracticeModule({
       <div className="practice-layout">
         {/* Desktop Sidebar Course Outline Accordion */}
         <div className="desktop-only flex flex-col gap-2" style={{ maxHeight: 'calc(100vh - 120px)', overflowY: 'auto', paddingRight: 4 }}>
-          <div className="flex items-center justify-between mb-1">
-            <p className="label" style={{ margin: 0 }}>Mục lục ({groups.length} nhóm · {chunkList.length} bài)</p>
+          {/* Header & Filter Bar */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 4 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6 }}>
+              <p className="label" style={{ margin: 0, fontWeight: 700 }}>
+                Mục lục ({groups.length} nhóm · {displayedChunkList.length} bài)
+              </p>
+              {completedChunks.length > 0 && onRemoveChunksFromPractice && (
+                <button
+                  type="button"
+                  className="btn btn-ghost btn-xs"
+                  onClick={() => {
+                    const completedIds = completedChunks.map(c => c.id);
+                    onRemoveChunksFromPractice(completedIds);
+                  }}
+                  title="Dọn dẹp các bài đã ôn xong khỏi tab Practice"
+                  style={{ fontSize: 11, color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: 4, padding: '2px 6px' }}
+                >
+                  <Trash2 size={11} /> Bỏ bài đã xong ({completedChunks.length})
+                </button>
+              )}
+            </div>
+
+            {/* Filter Toggle Buttons: Cần ôn / Chưa xong vs Tất cả */}
+            {completedChunks.length > 0 && (
+              <div style={{
+                display: 'flex',
+                background: 'var(--bg-elevated)',
+                borderRadius: 'var(--radius-sm)',
+                padding: 2,
+                border: '1px solid var(--border-subtle)',
+                gap: 2,
+              }}>
+                <button
+                  type="button"
+                  onClick={() => handleSetFilterMode('pending')}
+                  style={{
+                    flex: 1,
+                    borderRadius: 'calc(var(--radius-sm) - 2px)',
+                    fontSize: 11,
+                    fontWeight: filterMode === 'pending' ? 700 : 500,
+                    background: filterMode === 'pending' ? 'var(--accent-500)' : 'transparent',
+                    color: filterMode === 'pending' ? '#fff' : 'var(--text-muted)',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 4,
+                    padding: '5px 4px',
+                    transition: 'all 0.15s ease',
+                  }}
+                >
+                  <Flame size={11} color={filterMode === 'pending' ? '#fff' : '#ef4444'} />
+                  <span>Cần ôn / Chưa xong ({pendingChunks.length})</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleSetFilterMode('all')}
+                  style={{
+                    flex: 1,
+                    borderRadius: 'calc(var(--radius-sm) - 2px)',
+                    fontSize: 11,
+                    fontWeight: filterMode === 'all' ? 700 : 500,
+                    background: filterMode === 'all' ? 'rgba(255,255,255,0.1)' : 'transparent',
+                    color: filterMode === 'all' ? '#fff' : 'var(--text-muted)',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 4,
+                    padding: '5px 4px',
+                    transition: 'all 0.15s ease',
+                  }}
+                >
+                  <span>Tất cả ({chunkList.length})</span>
+                </button>
+              </div>
+            )}
           </div>
+
           <PracticeOutline
             groups={groups}
             activeChunkId={activeChunkId}
@@ -1698,9 +1851,9 @@ export function PracticeModule({
               onNavigatePrev={handlePrevChunk}
               onNavigateNext={handleNextChunk}
               hasPrev={activeChunkIndex > 0}
-              hasNext={activeChunkIndex < chunkList.length - 1}
+              hasNext={activeChunkIndex < displayedChunkList.length - 1}
               currentIndex={activeChunkIndex}
-              totalChunks={chunkList.length}
+              totalChunks={displayedChunkList.length}
               onRegenerate={() => handleGenerateSingleChunk(activeChunk)}
             />
           ) : autoGenerating ? (
@@ -1786,10 +1939,54 @@ export function PracticeModule({
       {/* Mobile Course Outline Modal */}
       {showMobileOutline && (
         <Modal
-          title={`Mục lục bài luyện (${chunkList.length} chunks)`}
+          title={`Mục lục (${displayedChunkList.length}/${chunkList.length} bài)`}
           onClose={() => setShowMobileOutline(false)}
         >
           <div style={{ maxHeight: '70vh', overflowY: 'auto', paddingRight: 4 }}>
+            {completedChunks.length > 0 && (
+              <div style={{
+                display: 'flex',
+                background: 'var(--bg-elevated)',
+                borderRadius: 'var(--radius-sm)',
+                padding: 2,
+                border: '1px solid var(--border-subtle)',
+                gap: 2,
+                marginBottom: 10,
+              }}>
+                <button
+                  type="button"
+                  onClick={() => handleSetFilterMode('pending')}
+                  style={{
+                    flex: 1,
+                    borderRadius: 'calc(var(--radius-sm) - 2px)',
+                    fontSize: 11.5,
+                    fontWeight: filterMode === 'pending' ? 700 : 500,
+                    background: filterMode === 'pending' ? 'var(--accent-500)' : 'transparent',
+                    color: filterMode === 'pending' ? '#fff' : 'var(--text-muted)',
+                    border: 'none',
+                    padding: '6px 4px',
+                  }}
+                >
+                  🔥 Cần ôn ({pendingChunks.length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleSetFilterMode('all')}
+                  style={{
+                    flex: 1,
+                    borderRadius: 'calc(var(--radius-sm) - 2px)',
+                    fontSize: 11.5,
+                    fontWeight: filterMode === 'all' ? 700 : 500,
+                    background: filterMode === 'all' ? 'rgba(255,255,255,0.1)' : 'transparent',
+                    color: filterMode === 'all' ? '#fff' : 'var(--text-muted)',
+                    border: 'none',
+                    padding: '6px 4px',
+                  }}
+                >
+                  Tất cả ({chunkList.length})
+                </button>
+              </div>
+            )}
             <PracticeOutline
               groups={groups}
               activeChunkId={activeChunkId}

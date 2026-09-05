@@ -279,21 +279,27 @@ function ensureSrsProgress(prog, track = 'track_a') {
   if (!prog || !prog.practiceCount) return prog;
 
   const currentTrack = prog.srsTrack || track || 'track_a';
+  const maxTrackLv = currentTrack === 'track_b' ? 8 : 10;
   const isLevelCorrupted = prog.practiceCount >= 4 && (prog.srsLevel == null || prog.srsLevel <= 2);
-  const needsFix = !prog.nextReviewAt || prog.srsLevel == null || isLevelCorrupted;
+  const currentLv = (prog.srsLevel != null && !isLevelCorrupted)
+    ? prog.srsLevel
+    : Math.max(0, Math.min(maxTrackLv, (prog.practiceCount || 1) - 1));
+
+  // Kiểm tra nếu mốc ôn tập bị quá ngắn so với level thực tế (do bug reset 15 phút trước đó)
+  // Level >= 3 tối thiểu phải giãn cách 1 ngày (1440 phút), nếu interval < 60 phút thì chắc chắn bị bug cũ
+  const actualIntervalMs = (prog.nextReviewAt && prog.lastPracticed) ? (prog.nextReviewAt - prog.lastPracticed) : 0;
+  const isIntervalCorrupted = currentLv >= 3 && actualIntervalMs > 0 && actualIntervalMs < 60 * 60 * 1000;
+
+  const needsFix = !prog.nextReviewAt || prog.srsLevel == null || isLevelCorrupted || isIntervalCorrupted;
 
   if (!needsFix) return prog;
 
   const lastTime = prog.lastPracticed || Date.now();
-  const maxTrackLv = currentTrack === 'track_b' ? 8 : 10;
-  const estimatedLevel = (prog.srsLevel != null && !isLevelCorrupted)
-    ? prog.srsLevel
-    : Math.max(0, Math.min(maxTrackLv, (prog.practiceCount || 1) - 1));
 
   const srsUpdates = calculateNextReview({
     prevProgress: {
       ...prog,
-      srsLevel: estimatedLevel,
+      srsLevel: currentLv,
       easeFactor: prog.easeFactor || (currentTrack === 'track_b' ? 2.0 : 1.65),
     },
     score: prog.lastScore != null ? prog.lastScore : (prog.lastResult ? 80 : 40),
@@ -301,12 +307,14 @@ function ensureSrsProgress(prog, track = 'track_a') {
     track: currentTrack,
   });
 
+  const shouldRecalculateNextReview = !prog.nextReviewAt || isLevelCorrupted || isIntervalCorrupted;
+
   return {
     ...prog,
     ...srsUpdates,
-    nextReviewAt: (prog.nextReviewAt && !isLevelCorrupted)
-      ? prog.nextReviewAt
-      : lastTime + (srsUpdates.intervalMinutes * 60 * 1000),
+    nextReviewAt: shouldRecalculateNextReview
+      ? lastTime + (srsUpdates.intervalMinutes * 60 * 1000)
+      : prog.nextReviewAt,
   };
 }
 

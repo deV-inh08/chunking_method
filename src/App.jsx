@@ -345,6 +345,16 @@ export default function App() {
     }
   }, [updateProgress, addToast]);
 
+  const handleRemoveChunksFromPractice = useCallback((chunkIdsToRemove) => {
+    if (!chunkIdsToRemove || chunkIdsToRemove.length === 0) return;
+    setSelectedChunks(prev => {
+      const next = new Set(prev);
+      chunkIdsToRemove.forEach(id => next.delete(id));
+      return next;
+    });
+    addToast('info', `Đã dọn dẹp ${chunkIdsToRemove.length} bài đã ôn xong khỏi tab Practice.`);
+  }, [addToast]);
+
   // ── Nav badge counts ─────────────────────────────────────────
   const counts = {
     transcripts: transcripts.length,
@@ -530,6 +540,7 @@ export default function App() {
                 transcripts={transcripts}
                 onProgressUpdate={handleProgressUpdate}
                 onRefreshProgress={refreshProgress}
+                onRemoveChunksFromPractice={handleRemoveChunksFromPractice}
                 onToast={addToast}
                 autoGenerating={autoGenerating}
                 autoGenProgress={autoGenProgress}
