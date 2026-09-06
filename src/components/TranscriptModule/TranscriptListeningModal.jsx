@@ -6,38 +6,111 @@ import {
 } from 'lucide-react';
 import { getChunks } from '../../store/storage';
 
-// ─── Voice Finder Utility ──────────────────────────────────────
+// ─── Voice Finder Utility (Prioritizes Deep Learning Neural & Natural Voices) ─────
+function scoreVoice(voice, targetLang = 'en-US', targetGender = 'female') {
+  if (!voice) return -1000;
+  const name = (voice.name || '').toLowerCase();
+  const lang = (voice.lang || '').replace('_', '-').toLowerCase();
+  const targetL = targetLang.toLowerCase().slice(0, 5); // 'en-us', 'en-gb', 'en-au', 'en-ca'
+
+  // Loại bỏ các giọng không phải tiếng Anh
+  if (!lang.startsWith('en')) return -1000;
+
+  let score = 0;
+
+  // 1. Độ khớp ngữ điệu / vùng miền (US, UK, AU, CA)
+  if (lang.startsWith(targetL)) {
+    score += 120; // Khớp chuẩn xác accent của câu thoại
+  } else if (targetL === 'en-ca' && lang.startsWith('en-us')) {
+    score += 80; // Giọng Canada fallback sang Mỹ rất tự nhiên
+  } else {
+    score += 30; // Tiếng Anh khác
+  }
+
+  // 2. Độ khớp giới tính (Nam / Nữ)
+  const isMale = (
+    name.includes('male') || name.includes('guy') || name.includes('david') ||
+    name.includes('ryan') || name.includes('thomas') || name.includes('william') ||
+    name.includes('christopher') || name.includes('eric') || name.includes('steffan') ||
+    name.includes('liam') || name.includes('ken') || name.includes('george') ||
+    name.includes('daniel') || name.includes('james') || name.includes('oliver') ||
+    name.includes('richard') || name.includes('alex') || name.includes('fred') ||
+    name.includes('rishi') || name.includes('mark') || name.includes('tom') ||
+    name.includes('alfie') || name.includes('brian') || name.includes('andrew')
+  );
+  const isFemale = (
+    name.includes('female') || name.includes('jenny') || name.includes('zira') ||
+    name.includes('sonia') || name.includes('natasha') || name.includes('clara') ||
+    name.includes('aria') || name.includes('michelle') || name.includes('libby') ||
+    name.includes('samantha') || name.includes('karen') || name.includes('victoria') ||
+    name.includes('ava') || name.includes('emma') || name.includes('susan') ||
+    name.includes('catherine') || name.includes('hazel') || name.includes('moira') ||
+    name.includes('tessa') || name.includes('annette') || name.includes('maisie')
+  );
+
+  if (targetGender === 'male' && isMale && !name.includes('female')) {
+    score += 80;
+  } else if (targetGender === 'female' && isFemale && !name.includes('male')) {
+    score += 80;
+  } else if (!isMale && !isFemale) {
+    score += 30;
+  } else {
+    score -= 60; // Lệch giới tính
+  }
+
+  // 3. Phân cấp chất lượng: Cực kỳ ưu tiên giọng Natural / Neural / Studio của Microsoft & Google
+  const isNeuralNatural = (
+    name.includes('natural') || name.includes('neural') ||
+    name.includes('online (natural)') || name.includes('studio')
+  );
+  const isGoogleEnhanced = name.includes('google') || name.includes('enhanced') || name.includes('premium');
+  const isOldDesktopRobot = (
+    name.includes('desktop') || name.includes('microsoft david') ||
+    name.includes('microsoft zira') || name.includes('microsoft mark')
+  );
+
+  if (isNeuralNatural) {
+    score += 400; // Giọng AI cao cấp nhất (Edge / Azure / Chrome Neural)
+  } else if (isGoogleEnhanced) {
+    score += 250; // Giọng Google chất lượng cao
+  } else if (isOldDesktopRobot) {
+    score -= 200; // Phạt nặng giọng robot thế hệ cũ
+  }
+
+  // 4. Ưu tiên các persona giọng tự nhiên chuyên dụng cho bài thi TOEIC
+  const preferredPersonas = [
+    'jenny', 'guy', 'sonia', 'ryan', 'natasha', 'william', 'clara', 'liam',
+    'aria', 'christopher', 'libby', 'thomas', 'annette', 'ken', 'michelle', 'eric'
+  ];
+  if (preferredPersonas.some(p => name.includes(p))) {
+    score += 100;
+  }
+
+  return score;
+}
+
 function findVoiceForSpeaker(speakerConfig, availableVoices = []) {
-  if (!availableVoices || availableVoices.length === 0) return null;
+  let voices = availableVoices;
+  if ((!voices || voices.length === 0) && typeof window !== 'undefined' && window.speechSynthesis) {
+    voices = window.speechSynthesis.getVoices() || [];
+  }
+  if (!voices || voices.length === 0) return null;
 
   const targetLang = speakerConfig.lang || 'en-US';
   const targetGender = speakerConfig.gender || 'female';
 
-  // 1. Tìm chính xác cả accent + gender
-  const exactMatch = availableVoices.find(v => {
-    const nameLower = v.name.toLowerCase();
-    const langMatch = v.lang.replace('_', '-').toLowerCase().startsWith(targetLang.toLowerCase().slice(0, 5));
-    if (!langMatch) return false;
+  let bestVoice = null;
+  let highestScore = -9999;
 
-    if (targetGender === 'female') {
-      return nameLower.includes('female') || nameLower.includes('zira') || nameLower.includes('samantha') ||
-             nameLower.includes('karen') || nameLower.includes('catherine') || nameLower.includes('victoria');
-    } else {
-      return nameLower.includes('male') || nameLower.includes('david') || nameLower.includes('george') ||
-             nameLower.includes('james') || nameLower.includes('daniel') || nameLower.includes('oliver');
+  for (const voice of voices) {
+    const s = scoreVoice(voice, targetLang, targetGender);
+    if (s > highestScore) {
+      highestScore = s;
+      bestVoice = voice;
     }
-  });
-  if (exactMatch) return exactMatch;
+  }
 
-  // 2. Tìm theo accent (bất kỳ gender)
-  const langMatch = availableVoices.find(v =>
-    v.lang.replace('_', '-').toLowerCase().startsWith(targetLang.toLowerCase().slice(0, 5))
-  );
-  if (langMatch) return langMatch;
-
-  // 3. Fallback en-US hoặc tiếng Anh bất kỳ
-  const enMatch = availableVoices.find(v => v.lang.toLowerCase().startsWith('en'));
-  return enMatch || availableVoices[0] || null;
+  return bestVoice || voices[0] || null;
 }
 
 // ─── Parse Script into Turns / Lines ───────────────────────────
@@ -350,11 +423,18 @@ export function TranscriptListeningModal({
 
     speechStartTimeRef.current = Date.now();
     const utterance = new SpeechSynthesisUtterance(item.text);
-    utterance.rate = playbackRateRef.current;
-    utterance.pitch = item.gender === 'female' ? 1.1 : 0.95;
-
-    // Tìm voice phù hợp nhất cho speaker
+    // Tìm voice phù hợp nhất cho speaker (ưu tiên Neural/Natural)
     const bestVoice = findVoiceForSpeaker(item, systemVoices);
+    const isNeuralVoice = bestVoice && (
+      bestVoice.name.toLowerCase().includes('natural') ||
+      bestVoice.name.toLowerCase().includes('neural') ||
+      bestVoice.name.toLowerCase().includes('google') ||
+      bestVoice.name.toLowerCase().includes('online')
+    );
+
+    utterance.rate = playbackRateRef.current * 0.96; // Nhịp đọc tự nhiên chuẩn TOEIC Listening
+    utterance.pitch = isNeuralVoice ? 1.0 : (item.gender === 'female' ? 1.05 : 0.98);
+
     if (bestVoice) {
       utterance.voice = bestVoice;
       utterance.lang = bestVoice.lang;

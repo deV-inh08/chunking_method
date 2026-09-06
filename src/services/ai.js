@@ -852,3 +852,124 @@ export async function transcribeAudioWithGemini(audioBase64, mimeType = 'audio/w
 
   return '';
 }
+
+/**
+ * Chấm điểm phát âm từng từ cấp độ 2 bằng Gemini Flash Audio Multimodal
+ * Phân tích âm thanh trực tiếp, so sánh với câu mẫu, chấm điểm từng từ và chỉ ra lỗi ngữ âm
+ */
+export async function assessPronunciationWithGemini(
+  audioBase64,
+  mimeType = 'audio/webm',
+  targetSentence = '',
+  chunkPhrase = '',
+  customApiKey = null
+) {
+  if (!audioBase64 || !targetSentence) return null;
+
+  let allKeys = getApiKeys();
+  if (customApiKey && !allKeys.includes(customApiKey)) {
+    allKeys = [customApiKey, ...allKeys];
+  }
+  if (allKeys.length === 0) return null;
+
+  const cleanMime = mimeType ? mimeType.split(';')[0] : 'audio/webm';
+
+  const promptText = `You are an expert TOEIC Speaking Examiner and English Phonetics Specialist.
+Analyze the user's spoken audio recording and compare it with this target sentence:
+Target Sentence: "${targetSentence}"
+Key Target Chunk: "${chunkPhrase}"
+
+Perform an accurate word-by-word pronunciation assessment:
+1. Examine each word in the target sentence in order.
+2. For each word:
+   - "word": exact word from the target sentence
+   - "status":
+       - "correct": accurately pronounced, clear articulation (score 80-100)
+       - "almost": understandable but with minor issue (e.g. dropped/weak ending sound /s/, /t/, /d/, /ed/, slight vowel distortion, or minor stress misplaced) (score 50-79)
+       - "incorrect": mispronounced, wrong word, slurred, or omitted (score 0-49)
+   - "score": integer 0-100
+   - "feedback": concise note in Vietnamese describing the exact issue (e.g. "Thiếu âm đuôi /st/", "Nuốt âm /t/", "Nhấn sai trọng âm", "Phát âm chuẩn")
+   - "ipa": IPA phonetic transcription of this word
+3. Overall evaluation:
+   - "spokenTranscript": what the user actually said
+   - "accuracyScore": overall accuracy percentage (0-100)
+   - "fluencyScore": rhythm and naturalness (0-100)
+   - "isPassed": boolean (true if overall score >= 65)
+   - "feedbackVi": 1-2 encouraging sentences in Vietnamese summarizing strengths and giving practical tips.
+
+Return ONLY a JSON object matching this schema:
+{
+  "spokenTranscript": "string",
+  "accuracyScore": 85,
+  "fluencyScore": 80,
+  "isPassed": true,
+  "feedbackVi": "string",
+  "words": [
+    {
+      "word": "string",
+      "status": "correct",
+      "score": 95,
+      "feedback": "string",
+      "ipa": "string"
+    }
+  ]
+}`;
+
+  for (const apiKey of allKeys) {
+    try {
+      const model = await getModel(apiKey);
+      const url = `${BASE_URL}/models/${model}:generateContent?key=${apiKey}`;
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [
+            {
+              role: 'user',
+              parts: [
+                { text: promptText },
+                {
+                  inlineData: {
+                    mimeType: cleanMime,
+                    data: audioBase64,
+                  },
+                },
+              ],
+            },
+          ],
+          generationConfig: {
+            temperature: 0.1,
+            responseMimeType: 'application/json',
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        console.warn(`[Gemini Pronunciation] ${model} status ${response.status}`);
+        continue;
+      }
+
+      const data = await response.json();
+      const rawJson = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
+      if (rawJson) {
+        try {
+          const parsed = JSON.parse(rawJson);
+          if (parsed && Array.isArray(parsed.words) && parsed.words.length > 0) {
+            return parsed;
+          }
+        } catch (parseErr) {
+          const cleaned = rawJson.replace(/```json\s*/gi, '').replace(/```\s*$/gi, '').trim();
+          const parsed = JSON.parse(cleaned);
+          if (parsed && Array.isArray(parsed.words)) {
+            return parsed;
+          }
+        }
+      }
+    } catch (err) {
+      console.warn(`[Gemini Pronunciation] Error with key:`, err);
+    }
+  }
+
+  return null;
+}
