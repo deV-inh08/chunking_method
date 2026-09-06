@@ -283,6 +283,11 @@ export function TranscriptListeningModal({
   const playbackRateRef = useRef(1.0);
   const speakLineRef = useRef(null);
   const speechStartTimeRef = useRef(0);
+  const isDictationModeRef = useRef(false);
+  const handleHintWordRef = useRef(null);
+  const shiftPressedRef = useRef(false);
+  const shiftUsedWithOtherKeyRef = useRef(false);
+  const shiftTimerRef = useRef(null);
   const [rewindAnimation, setRewindAnimation] = useState(null); // { side: 'left' | 'right', key: number }
   const lastTapRef = useRef({ time: 0, x: 0, y: 0 });
   const containerRef = useRef(null);
@@ -292,7 +297,8 @@ export function TranscriptListeningModal({
     currentLineIndexRef.current = currentLineIndex;
     isLoopingLineRef.current = isLoopingLine;
     playbackRateRef.current = playbackRate;
-  }, [isPlaying, currentLineIndex, isLoopingLine, playbackRate]);
+    isDictationModeRef.current = isDictationMode;
+  }, [isPlaying, currentLineIndex, isLoopingLine, playbackRate, isDictationMode]);
 
   // Load browser voices
   useEffect(() => {
@@ -468,10 +474,49 @@ export function TranscriptListeningModal({
     lastTapRef.current = { time: now, x: clickX, y: clickY };
   }, [triggerRewind3s, triggerForward3s]);
 
-  // Keyboard shortcut: Escape to close, Space to play/pause, ArrowLeft/J to rewind 3s, ArrowRight/L to forward 3s
+  // Keyboard shortcut:
+  // - Ctrl: Tua lại 3s (ngay lập tức, kể cả khi đang gõ trong ô input dictation)
+  // - Shift: Gợi ý từ tiếp theo đang bị ẩn (kể cả khi đang gõ trong ô input dictation)
+  // - Escape: Đóng modal
+  // - Space: Play/Pause (khi không trong input)
+  // - ArrowLeft/J: Tua lùi 3s (khi không trong input)
+  // - ArrowRight/L: Tua tới 3s (khi không trong input)
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // Không bắt phím tắt khi đang gõ trong ô input/textarea
+      // 1. Phím Ctrl: Tua lùi 3s ngay lập tức (kể cả khi đang gõ trong ô input)
+      if (e.key === 'Control') {
+        if (!e.repeat) {
+          triggerRewind3s();
+        }
+        return;
+      }
+
+      // 2. Phím Shift: Chuẩn bị gợi ý từ đang ẩn (kể cả khi đang gõ trong ô input)
+      if (e.key === 'Shift') {
+        if (!e.repeat && !shiftPressedRef.current) {
+          shiftPressedRef.current = true;
+          shiftUsedWithOtherKeyRef.current = false;
+          if (shiftTimerRef.current) clearTimeout(shiftTimerRef.current);
+          shiftTimerRef.current = setTimeout(() => {
+            if (!shiftUsedWithOtherKeyRef.current && isDictationModeRef.current) {
+              handleHintWordRef.current?.(currentLineIndexRef.current);
+              shiftUsedWithOtherKeyRef.current = true;
+            }
+          }, 280);
+        }
+        return;
+      }
+
+      // Nếu đang giữ Shift mà bấm phím khác (như gõ chữ hoa Shift + [ký tự])
+      if (shiftPressedRef.current) {
+        shiftUsedWithOtherKeyRef.current = true;
+        if (shiftTimerRef.current) {
+          clearTimeout(shiftTimerRef.current);
+          shiftTimerRef.current = null;
+        }
+      }
+
+      // Không bắt các phím tắt điều hướng còn lại khi đang gõ trong ô input/textarea
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
         return;
       }
@@ -492,8 +537,31 @@ export function TranscriptListeningModal({
         triggerForward3s();
       }
     };
+
+    const handleKeyUp = (e) => {
+      if (e.key === 'Shift') {
+        if (shiftTimerRef.current) {
+          clearTimeout(shiftTimerRef.current);
+          shiftTimerRef.current = null;
+        }
+        // Nếu nhả phím Shift mà không bấm kèm phím ký tự nào -> Kích hoạt gợi ý 1 từ
+        if (shiftPressedRef.current && !shiftUsedWithOtherKeyRef.current) {
+          if (isDictationModeRef.current) {
+            handleHintWordRef.current?.(currentLineIndexRef.current);
+          }
+        }
+        shiftPressedRef.current = false;
+        shiftUsedWithOtherKeyRef.current = false;
+      }
+    };
+
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+      if (shiftTimerRef.current) clearTimeout(shiftTimerRef.current);
+    };
   }, [handleTogglePlay, onClose, triggerRewind3s, triggerForward3s]);
 
   // Click on a specific line to select and play it
@@ -556,7 +624,7 @@ export function TranscriptListeningModal({
   };
 
   // Gợi ý 1 từ tiếp theo trong câu
-  const handleHintWord = (lineIdx) => {
+  const handleHintWord = useCallback((lineIdx) => {
     const rawText = lines[lineIdx]?.text || '';
     const spacedText = rawText.replace(/—/g, ' — ');
     const tokens = spacedText.split(/\s+/).filter(Boolean);
@@ -575,7 +643,11 @@ export function TranscriptListeningModal({
 
       return { ...prev, [lineIdx]: currentSet };
     });
-  };
+  }, [lines]);
+
+  useEffect(() => {
+    handleHintWordRef.current = handleHintWord;
+  }, [handleHintWord]);
 
   // Xem toàn bộ đáp án của câu
   const handleRevealAllWords = (lineIdx) => {
@@ -1130,9 +1202,9 @@ export function TranscriptListeningModal({
                           className="btn btn-ghost btn-xs"
                           onClick={() => handleHintWord(idx)}
                           style={{ color: '#fbbf24', padding: '3px 8px', fontSize: 11.5, display: 'flex', alignItems: 'center', gap: 4 }}
-                          title="Gợi ý 1 từ tiếp theo"
+                          title="Gợi ý 1 từ tiếp theo (Bấm phím Shift)"
                         >
-                          <Sparkles size={13} /> Gợi ý 1 từ
+                          <Sparkles size={13} /> Gợi ý 1 từ <kbd style={{ marginLeft: 2, padding: '1px 5px', fontSize: 10, background: 'rgba(251, 191, 36, 0.15)', border: '1px solid rgba(251, 191, 36, 0.3)', borderRadius: 3, fontFamily: 'monospace' }}>Shift</kbd>
                         </button>
                         <button
                           type="button"
@@ -1225,14 +1297,24 @@ export function TranscriptListeningModal({
           zIndex: 15,
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, overflow: 'hidden' }}>
-          <span>💡</span>
-          <span style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
-            {isDictationMode
-              ? 'Chế độ Dictation: Gõ các từ bạn nghe được, đúng sẽ hiện xanh. Chạm 2 lần bên trái để nghe lại 3s!'
-              : 'Chạm 2 lần bên trái màn hình (hoặc phím ← / J) để tua lùi 3s. Chạm 2 lần bên phải (hoặc phím → / L) để tua tới!'}
-          </span>
-        </div>
+        {isDictationMode ? (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 12, color: 'var(--text-muted)' }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+              <kbd style={{ padding: '1px 6px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 4, fontSize: 11, fontFamily: 'monospace', color: '#38bdf8' }}>Ctrl</kbd> Tua lùi 3s
+            </span>
+            <span style={{ opacity: 0.4 }}>•</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+              <kbd style={{ padding: '1px 6px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 4, fontSize: 11, fontFamily: 'monospace', color: '#fbbf24' }}>Shift</kbd> Gợi ý từ
+            </span>
+          </div>
+        ) : (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, overflow: 'hidden' }}>
+            <span>💡</span>
+            <span style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
+              Chạm 2 lần bên trái màn hình (hoặc phím ← / J) để tua lùi 3s. Chạm 2 lần bên phải (hoặc phím → / L) để tua tới!
+            </span>
+          </div>
+        )}
 
         <button
           className="btn btn-secondary btn-sm"

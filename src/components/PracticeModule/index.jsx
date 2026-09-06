@@ -338,6 +338,25 @@ function ExerciseCard({
   const lvCfg = LEVEL_CONFIG[level] || LEVEL_CONFIG[1];
 
   const handleKeyDown = (e) => {
+    if (e.key === 'Tab') {
+      if (!e.shiftKey) {
+        const nextInput = document.getElementById(`ex-input-${chunk.id}-${index + 1}`);
+        if (nextInput) {
+          e.preventDefault();
+          nextInput.focus();
+          nextInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      } else {
+        const prevInput = document.getElementById(`ex-input-${chunk.id}-${index - 1}`);
+        if (prevInput) {
+          e.preventDefault();
+          prevInput.focus();
+          prevInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+      return;
+    }
+
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       setShowSample(s => !s);
