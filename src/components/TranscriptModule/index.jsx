@@ -1,9 +1,9 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import {
-  FileText, Plus, Minus, Trash2, ChevronRight, Calendar, Headphones,
+  FileText, Plus, Minus, Trash2, ChevronRight, ChevronLeft, Calendar, Headphones,
   Search, Edit3, X, Check, ArrowUpDown, Flame, CheckCircle, PenLine, Layers
 } from 'lucide-react';
-import { EmptyState, Badge, SkeletonCard, Modal } from '../ui';
+import { EmptyState, Badge, SkeletonCard, Modal, Pagination } from '../ui';
 import { analyzeTranscript } from '../../services/ai';
 import { getApiKey, getChunks } from '../../store/storage';
 import { isDueForReview } from '../../services/srs';
@@ -503,6 +503,16 @@ export function TranscriptModule({
   const [editingTranscript, setEditingTranscript] = useState(null);
   const [listeningTranscript, setListeningTranscript] = useState(null);
 
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const listTopRef = useRef(null);
+
+  // Reset về trang 1 khi thay đổi tìm kiếm, bộ lọc hoặc sắp xếp
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, activeFilter, sortBy, pageSize]);
+
   // Enriched transcripts with chunks and progress calculations
   const enrichedTranscripts = useMemo(() => {
     return transcripts.map(t => {
@@ -619,6 +629,32 @@ export function TranscriptModule({
 
     return result;
   }, [enrichedTranscripts, searchQuery, activeFilter, sortBy]);
+
+  // ─── Phân trang dữ liệu Transcript ──────────────────────────────
+  const totalItems = filteredTranscripts.length;
+  const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+  const validPage = Math.min(Math.max(1, currentPage), totalPages);
+  const startIndex = (validPage - 1) * pageSize;
+  const endIndex = Math.min(startIndex + pageSize, totalItems);
+
+  // Tự động điều chỉnh trang nếu tổng số trang giảm xuống (do xóa bài)
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(totalPages);
+    }
+  }, [totalPages, currentPage]);
+
+  const paginatedTranscripts = useMemo(() => {
+    return filteredTranscripts.slice(startIndex, endIndex);
+  }, [filteredTranscripts, startIndex, endIndex]);
+
+  const handlePageChange = (newPage) => {
+    const p = Math.min(Math.max(1, newPage), totalPages);
+    setCurrentPage(p);
+    if (listTopRef.current) {
+      listTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <div>
@@ -786,13 +822,46 @@ export function TranscriptModule({
       )}
 
       {/* Transcript History List */}
-      <div className="section-header">
+      <div ref={listTopRef} className="section-header">
         <div>
           <div className="section-title">Danh sách bài Script</div>
           <div className="section-subtitle">
-            {filteredTranscripts.length} / {transcripts.length} transcript hiển thị
+            {totalItems > 0 && totalPages > 1
+              ? `Hiển thị ${startIndex + 1}–${endIndex} trong ${totalItems} transcript (Trang ${validPage}/${totalPages})`
+              : `${filteredTranscripts.length} / ${transcripts.length} transcript hiển thị`}
           </div>
         </div>
+
+        {/* Quick page switcher in header if multiple pages */}
+        {totalPages > 1 && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>
+              Trang <strong style={{ color: 'var(--text-primary)' }}>{validPage}</strong>/{totalPages}
+            </span>
+            <div style={{ display: 'flex', gap: 4 }}>
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm"
+                disabled={validPage <= 1}
+                onClick={() => handlePageChange(validPage - 1)}
+                style={{ padding: '4px 8px', height: 28 }}
+                title="Trang trước"
+              >
+                <ChevronLeft size={14} />
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm"
+                disabled={validPage >= totalPages}
+                onClick={() => handlePageChange(validPage + 1)}
+                style={{ padding: '4px 8px', height: 28 }}
+                title="Trang sau"
+              >
+                <ChevronRight size={14} />
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       {transcripts.length === 0 ? (
@@ -819,19 +888,39 @@ export function TranscriptModule({
           </button>
         </div>
       ) : (
-        <div className="flex flex-col gap-3 stagger-children">
-          {filteredTranscripts.map((t) => (
-            <TranscriptCard
-              key={t.id}
-              item={t}
-              onSelect={onSelectTranscript}
-              onDelete={onDelete}
-              onListen={(tr) => setListeningTranscript(tr)}
-              onStartPractice={onStartPractice}
-              onEdit={(tr) => setEditingTranscript(tr)}
+        <>
+          <div className="flex flex-col gap-3 stagger-children">
+            {paginatedTranscripts.map((t) => (
+              <TranscriptCard
+                key={t.id}
+                item={t}
+                onSelect={onSelectTranscript}
+                onDelete={onDelete}
+                onListen={(tr) => setListeningTranscript(tr)}
+                onStartPractice={onStartPractice}
+                onEdit={(tr) => setEditingTranscript(tr)}
+              />
+            ))}
+          </div>
+
+          {/* Bottom Pagination Bar */}
+          {totalPages > 1 && (
+            <Pagination
+              currentPage={validPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+              pageSize={pageSize}
+              onPageSizeChange={(size) => {
+                setPageSize(size);
+                setCurrentPage(1);
+              }}
+              totalItems={totalItems}
+              startIndex={startIndex}
+              endIndex={endIndex}
+              itemLabel="transcript"
             />
-          ))}
-        </div>
+          )}
+        </>
       )}
 
       {/* Edit Title Modal */}

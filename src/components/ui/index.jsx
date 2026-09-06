@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useRef } from 'react';
-import { X, AlertTriangle, RotateCcw } from 'lucide-react';
+import { X, AlertTriangle, RotateCcw, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
 
 export class ErrorBoundary extends Component {
   constructor(props) {
@@ -142,6 +142,189 @@ export function Toast({ toasts, removeToast }) {
           <span>{t.message}</span>
         </div>
       ))}
+    </div>
+  );
+}
+
+export function Pagination({
+  currentPage = 1,
+  totalPages = 1,
+  onPageChange,
+  pageSize,
+  onPageSizeChange,
+  pageSizeOptions = [10, 20, 50],
+  totalItems,
+  startIndex,
+  endIndex,
+  itemLabel = 'mục',
+}) {
+  if (totalPages <= 1 && (!totalItems || totalItems <= (pageSizeOptions[0] || 10))) {
+    return null;
+  }
+
+  // Calculate pages to show
+  const getPages = () => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+    if (currentPage <= 4) {
+      return [1, 2, 3, 4, 5, '...', totalPages];
+    }
+    if (currentPage >= totalPages - 3) {
+      return [1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+    }
+    return [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages];
+  };
+
+  const pages = getPages();
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 12,
+        marginTop: 20,
+        paddingTop: 16,
+        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+      }}
+    >
+      {/* Left info & page size */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+        {totalItems != null && (
+          <span style={{ fontSize: 13, color: 'var(--text-muted)' }}>
+            Đang hiển thị{' '}
+            <strong style={{ color: 'var(--text-primary)' }}>
+              {startIndex != null && endIndex != null ? `${startIndex + 1}–${endIndex}` : totalItems}
+            </strong>{' '}
+            trong <strong style={{ color: 'var(--text-primary)' }}>{totalItems}</strong> {itemLabel}
+          </span>
+        )}
+
+        {onPageSizeChange && (
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--text-muted)' }}>
+            <span>Số lượng:</span>
+            <select
+              value={pageSize}
+              onChange={(e) => onPageSizeChange(Number(e.target.value))}
+              className="select-field"
+              style={{
+                height: 30,
+                padding: '2px 8px',
+                fontSize: 12,
+                borderRadius: 'var(--radius-sm)',
+                background: 'rgba(255, 255, 255, 0.05)',
+                color: 'var(--text-primary)',
+                borderColor: 'rgba(255, 255, 255, 0.15)',
+              }}
+            >
+              {pageSizeOptions.map(opt => (
+                <option key={opt} value={opt}>{opt} / trang</option>
+              ))}
+            </select>
+          </div>
+        )}
+      </div>
+
+      {/* Right navigation buttons */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+        {/* First page button */}
+        <button
+          type="button"
+          className="btn btn-secondary btn-sm"
+          disabled={currentPage <= 1}
+          onClick={() => onPageChange(1)}
+          style={{ padding: '5px 8px', height: 32, minWidth: 32 }}
+          title="Trang đầu"
+        >
+          <ChevronsLeft size={15} />
+        </button>
+
+        {/* Previous page button */}
+        <button
+          type="button"
+          className="btn btn-secondary btn-sm"
+          disabled={currentPage <= 1}
+          onClick={() => onPageChange(currentPage - 1)}
+          style={{ padding: '5px 10px', height: 32, display: 'inline-flex', alignItems: 'center', gap: 3 }}
+          title="Trang trước"
+        >
+          <ChevronLeft size={15} />
+          <span style={{ fontSize: 12 }}>Trước</span>
+        </button>
+
+        {/* Page numbers */}
+        {pages.map((p, idx) => {
+          if (p === '...') {
+            return (
+              <span
+                key={`ellipsis-${idx}`}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minWidth: 28,
+                  height: 32,
+                  color: 'var(--text-muted)',
+                  fontSize: 13,
+                }}
+              >
+                …
+              </span>
+            );
+          }
+
+          const isCurrent = p === currentPage;
+          return (
+            <button
+              key={p}
+              type="button"
+              className={isCurrent ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm'}
+              onClick={() => onPageChange(p)}
+              style={{
+                minWidth: 32,
+                height: 32,
+                padding: '0 6px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontWeight: isCurrent ? 800 : 500,
+                fontSize: 13,
+                borderRadius: 'var(--radius-sm)',
+              }}
+            >
+              {p}
+            </button>
+          );
+        })}
+
+        {/* Next page button */}
+        <button
+          type="button"
+          className="btn btn-secondary btn-sm"
+          disabled={currentPage >= totalPages}
+          onClick={() => onPageChange(currentPage + 1)}
+          style={{ padding: '5px 10px', height: 32, display: 'inline-flex', alignItems: 'center', gap: 3 }}
+          title="Trang sau"
+        >
+          <span style={{ fontSize: 12 }}>Sau</span>
+          <ChevronRight size={15} />
+        </button>
+
+        {/* Last page button */}
+        <button
+          type="button"
+          className="btn btn-secondary btn-sm"
+          disabled={currentPage >= totalPages}
+          onClick={() => onPageChange(totalPages)}
+          style={{ padding: '5px 8px', height: 32, minWidth: 32 }}
+          title="Trang cuối"
+        >
+          <ChevronsRight size={15} />
+        </button>
+      </div>
     </div>
   );
 }
