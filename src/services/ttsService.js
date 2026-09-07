@@ -88,12 +88,16 @@ export async function fetchAudioUrl(text, voice) {
 
   // 2. Fetch từ endpoint Edge TTS của server
   const endpoint = `/api/tts?text=${encodeURIComponent(cleanText)}&voice=${encodeURIComponent(voice)}`;
+  console.log('[TTS] Fetching:', endpoint);
   const res = await fetch(endpoint);
   if (!res.ok) {
+    const errText = await res.text().catch(() => '');
+    console.error('[TTS] Server error:', res.status, res.statusText, errText);
     throw new Error(`TTS server error: ${res.status} ${res.statusText}`);
   }
 
   const blob = await res.blob();
+  console.log('[TTS] Got blob:', blob.size, 'bytes, type:', blob.type);
   // Lưu vào IndexedDB để lần sau phát tức thì
   setCachedBlob(cacheKey, blob);
 

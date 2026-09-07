@@ -2,14 +2,9 @@
 
 /**
  * Vercel Serverless Function — /api/tts
- * Proxies text → Microsoft Edge Neural TTS → MP3 audio stream
- *
- * Query params:
- *   text  — the sentence/phrase to synthesize (URL-encoded)
- *   voice — Azure Neural voice name (default: en-US-JennyNeural)
+ * Buffer approach (more reliable than streaming on Vercel)
  */
 export default async function handler(req, res) {
-  // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -32,27 +27,30 @@ export default async function handler(req, res) {
   const safeText = String(text).trim().slice(0, 2000);
   const safeVoice = String(voice).trim();
 
-  console.log(`[TTS] "${safeText.slice(0, 60)}" voice=${safeVoice}`);
+  console.log(`[TTS] voice=${safeVoice} text="${safeText.slice(0, 60)}"`);
 
   try {
     const tts = new MsEdgeTTS();
     await tts.setMetadata(safeVoice, OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
     const { audioStream } = tts.toStream(safeText);
 
-    res.setHeader('Content-Type', 'audio/mpeg');
-    res.setHeader('Cache-Control', 'public, max-age=86400, immutable');
-    res.status(200);
-
-    audioStream.pipe(res);
-
-    audioStream.on('error', (err) => {
-      console.error('[TTS] Stream error:', err);
-      if (!res.headersSent) {
-        res.status(500).json({ error: 'TTS stream failed' });
-      }
+    // Buffer all chunks then send — more reliable on Vercel than pipe/streaming
+    const chunks = [];
+    await new Promise((resolve, reject) => {
+      audioStream.on('data', (chunk) => chunks.push(chunk));
+      audioStream.on('end', resolve);
+      audioStream.on('error', reject);
     });
+
+    const audioBuffer = Buffer.concat(chunks);
+    console.log(`[TTS] Generated ${audioBuffer.length} bytes`);
+
+    res.setHeader('Content-Type', 'audio/mpeg');
+    res.setHeader('Content-Length', audioBuffer.length);
+    res.setHeader('Cache-Control', 'public, max-age=86400, immutable');
+    res.status(200).end(audioBuffer);
   } catch (err) {
-    console.error('[TTS] Handler error:', err);
+    console.error('[TTS] Error:', err.message, err.stack);
     if (!res.headersSent) {
       res.status(500).json({ error: err.message || 'TTS synthesis failed' });
     }
