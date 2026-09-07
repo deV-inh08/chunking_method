@@ -605,6 +605,9 @@ export function TranscriptListeningModal({
   const speechStartTimeRef = useRef(0);
   const isDictationModeRef = useRef(false);
   const handleHintWordRef = useRef(null);
+  const handleCharInputRef = useRef(null);
+  const handleBackspaceRef = useRef(null);
+  const handleNavigateWordRef = useRef(null);
   const activeWordIndicesRef = useRef(activeWordIndices);
   const revealedWordsRef = useRef(revealedWords);
   const dictationCurrentTypedRef = useRef(dictationCurrentTyped);
@@ -879,9 +882,9 @@ export function TranscriptListeningModal({
         return;
       }
 
-      // 5. Phím mũi tên ← và →
+      // 5. Trong Dictation Mode: Các thao tác gõ phím trực tiếp
       if (isDictationModeRef.current) {
-        // Trong Dictation: Di chuyển sang từ trước / từ sau trong câu
+        // Di chuyển sang từ trước / từ sau trong câu
         if (e.key === 'ArrowLeft') {
           e.preventDefault();
           handleNavigateWordRef.current?.(currentLineIndexRef.current, 'prev');
@@ -890,6 +893,20 @@ export function TranscriptListeningModal({
         if (e.key === 'ArrowRight') {
           e.preventDefault();
           handleNavigateWordRef.current?.(currentLineIndexRef.current, 'next');
+          return;
+        }
+
+        // Xóa lùi ký tự vừa gõ
+        if (e.key === 'Backspace') {
+          e.preventDefault();
+          handleBackspaceRef.current?.(currentLineIndexRef.current);
+          return;
+        }
+
+        // Gõ ký tự chữ cái trực tiếp
+        if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+          e.preventDefault();
+          handleCharInputRef.current?.(currentLineIndexRef.current, e.key);
           return;
         }
       } else {
@@ -1027,6 +1044,14 @@ export function TranscriptListeningModal({
     }
   }, []);
 
+  useEffect(() => {
+    handleCharInputRef.current = handleCharInput;
+  }, [handleCharInput]);
+
+  useEffect(() => {
+    handleBackspaceRef.current = handleBackspace;
+  }, [handleBackspace]);
+
   // Di chuyển active word bằng phím ← và →
   const handleNavigateWord = useCallback((lineIdx, direction) => {
     const line = lines[lineIdx];
@@ -1061,7 +1086,6 @@ export function TranscriptListeningModal({
     }
   }, [lines]);
 
-  const handleNavigateWordRef = useRef(null);
   useEffect(() => {
     handleNavigateWordRef.current = handleNavigateWord;
   }, [handleNavigateWord]);
@@ -1734,110 +1758,119 @@ export function TranscriptListeningModal({
                   )}
                 </div>
 
-                {/* ── Dictation Interactive Input Panel (Only on active sentence) ── */}
+                {/* ── Dictation Action Bar (No bulky input box, direct interactive typing!) ── */}
                 {isDictationMode && isActive && (
                   <div
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      dictationInputRef.current?.focus();
+                    }}
                     style={{
-                      marginTop: 12,
-                      padding: '14px 16px',
-                      background: 'rgba(15, 23, 42, 0.85)',
+                      marginTop: 10,
+                      padding: '8px 14px',
+                      background: 'rgba(15, 23, 42, 0.75)',
                       borderRadius: 'var(--radius-md)',
-                      border: '1px solid rgba(16, 185, 129, 0.35)',
+                      border: '1px solid rgba(56, 189, 248, 0.25)',
                       display: 'flex',
-                      flexDirection: 'column',
-                      gap: 10,
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      flexWrap: 'wrap',
+                      gap: 8,
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 6 }}>
-                      <div style={{ fontSize: 12.5, fontWeight: 700, color: '#34d399', display: 'flex', alignItems: 'center', gap: 6 }}>
-                        <PenLine size={14} />
-                        <span>Điền từ bạn nghe được ({revealedWordsCount}/{totalWordsInSentence} từ đúng)</span>
-                      </div>
+                    {/* Hidden input for mobile keyboard support and IME */}
+                    <input
+                      ref={dictationInputRef}
+                      type="text"
+                      value=""
+                      onKeyDown={(e) => handleDictationKeyDown(idx, e)}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        if (val) {
+                          for (const ch of val) {
+                            handleCharInput(idx, ch);
+                          }
+                        }
+                      }}
+                      style={{
+                        position: 'absolute',
+                        opacity: 0,
+                        pointerEvents: 'none',
+                        width: 1,
+                        height: 1,
+                        zIndex: -1,
+                      }}
+                      aria-hidden="true"
+                    />
 
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                        {/* Bật/Tắt âm thanh game */}
-                        <button
-                          type="button"
-                          className="btn btn-ghost btn-xs"
-                          onClick={() => setSoundEnabled(s => !s)}
-                          style={{
-                            color: soundEnabled ? '#38bdf8' : 'var(--text-muted)',
-                            padding: '3px 8px',
-                            fontSize: 11.5,
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: 4
-                          }}
-                          title={soundEnabled ? "Tắt âm thanh game" : "Bật âm thanh game"}
-                        >
-                          {soundEnabled ? <Volume2 size={13} /> : <VolumeX size={13} />}
-                          <span>{soundEnabled ? 'Âm thanh' : 'Tắt tiếng'}</span>
-                        </button>
-
-                        <button
-                          type="button"
-                          className="btn btn-ghost btn-xs"
-                          onClick={() => handleSelectLine(idx)}
-                          style={{ color: '#38bdf8', padding: '3px 8px', fontSize: 11.5, display: 'flex', alignItems: 'center', gap: 4 }}
-                          title="Nghe lại câu này"
-                        >
-                          <Volume2 size={13} /> Nghe lại
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-ghost btn-xs"
-                          onClick={() => handleHintWord(idx)}
-                          style={{ color: '#fbbf24', padding: '3px 8px', fontSize: 11.5, display: 'flex', alignItems: 'center', gap: 4 }}
-                          title="Gợi ý 1 từ tiếp theo (Bấm phím Tab)"
-                        >
-                          <Sparkles size={13} /> Gợi ý 1 từ <kbd style={{ marginLeft: 2, padding: '1px 5px', fontSize: 10, background: 'rgba(251, 191, 36, 0.15)', border: '1px solid rgba(251, 191, 36, 0.3)', borderRadius: 3, fontFamily: 'monospace' }}>Tab</kbd>
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-ghost btn-xs"
-                          onClick={() => handleRevealAllWords(idx)}
-                          style={{ color: 'var(--text-muted)', padding: '3px 8px', fontSize: 11.5 }}
-                          title="Xem toàn bộ câu"
-                        >
-                          Đáp án
-                        </button>
-                      </div>
+                    {/* Left: Typing hint badge */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--text-muted)' }}>
+                      <span style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 5,
+                        color: '#38bdf8',
+                        fontWeight: 700,
+                        background: 'rgba(56, 189, 248, 0.12)',
+                        padding: '2px 9px',
+                        borderRadius: 'var(--radius-full)',
+                      }}>
+                        ⌨️ Gõ trực tiếp chữ cái
+                      </span>
+                      <span>•</span>
+                      <span>{revealedWordsCount}/{totalWordsInSentence} từ đúng</span>
                     </div>
 
-                    {/* Dictation Input Field */}
-                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                      <input
-                        ref={dictationInputRef}
-                        type="text"
-                        className="input-field"
-                        value={dictationCurrentTyped[idx] || ''}
-                        onKeyDown={(e) => handleDictationKeyDown(idx, e)}
-                        onChange={(e) => handleDictationInputChange(idx, e)}
-                        placeholder={isSentenceComplete ? "Đã hoàn thành 100% câu!" : "Gõ từng chữ cái của từ (Tab: Gợi ý 1 từ, Space: Dừng/Phát, ← / →: Đổi từ)..."}
-                        disabled={isSentenceComplete}
-                        autoFocus
+                    {/* Right: Quick buttons */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+                      <button
+                        type="button"
+                        className="btn btn-ghost btn-xs"
+                        onClick={() => setSoundEnabled(s => !s)}
                         style={{
-                          flex: 1,
-                          height: 42,
-                          fontSize: 15,
-                          fontFamily: 'monospace',
-                          letterSpacing: '0.08em',
-                          borderColor: isSentenceComplete ? '#10b981' : '#38bdf8',
-                          background: 'rgba(0, 0, 0, 0.35)',
-                          color: '#38bdf8',
-                          fontWeight: 700,
+                          color: soundEnabled ? '#38bdf8' : 'var(--text-muted)',
+                          padding: '3px 8px',
+                          fontSize: 11.5,
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 4,
                         }}
-                      />
+                        title={soundEnabled ? "Tắt âm thanh game" : "Bật âm thanh game"}
+                      >
+                        {soundEnabled ? <Volume2 size={13} /> : <VolumeX size={13} />}
+                        <span>{soundEnabled ? 'Âm thanh' : 'Tắt tiếng'}</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        className="btn btn-ghost btn-xs"
+                        onClick={() => handleHintWord(idx)}
+                        style={{ color: '#fbbf24', padding: '3px 8px', fontSize: 11.5, display: 'flex', alignItems: 'center', gap: 4 }}
+                        title="Gợi ý 1 từ đang chọn (Bấm phím Tab)"
+                      >
+                        <Sparkles size={13} /> Gợi ý 1 từ <kbd style={{ marginLeft: 2, padding: '1px 5px', fontSize: 10, background: 'rgba(251, 191, 36, 0.15)', border: '1px solid rgba(251, 191, 36, 0.3)', borderRadius: 3, fontFamily: 'monospace' }}>Tab</kbd>
+                      </button>
+
+                      <button
+                        type="button"
+                        className="btn btn-ghost btn-xs"
+                        onClick={() => handleRevealAllWords(idx)}
+                        style={{ color: 'var(--text-muted)', padding: '3px 8px', fontSize: 11.5 }}
+                        title="Xem toàn bộ đáp án của câu"
+                      >
+                        Đáp án
+                      </button>
+
                       {revealedWordsCount > 0 && (
                         <button
                           type="button"
                           className="btn btn-ghost btn-xs"
                           onClick={() => handleResetSentenceDictation(idx)}
-                          style={{ padding: '6px 10px', color: 'var(--text-muted)' }}
+                          style={{ padding: '3px 8px', color: 'var(--text-muted)', fontSize: 11.5, display: 'flex', alignItems: 'center', gap: 3 }}
                           title="Xóa làm lại câu này"
                         >
-                          <RotateCcw size={14} />
+                          <RotateCcw size={12} />
+                          <span>Làm lại</span>
                         </button>
                       )}
                     </div>
@@ -1845,10 +1878,11 @@ export function TranscriptListeningModal({
                     {/* Success Message when all words are found */}
                     {isSentenceComplete && (
                       <div style={{
+                        width: '100%',
                         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                         padding: '8px 12px', background: 'rgba(16, 185, 129, 0.15)',
                         border: '1px solid rgba(16, 185, 129, 0.35)', borderRadius: 'var(--radius-sm)',
-                        color: '#34d399', fontSize: 13, fontWeight: 700, gap: 8,
+                        color: '#34d399', fontSize: 13, fontWeight: 700, gap: 8, marginTop: 4,
                       }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                           <CheckCircle size={16} />
