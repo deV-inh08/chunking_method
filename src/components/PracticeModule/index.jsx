@@ -15,6 +15,7 @@ import { SpeakingSession } from './SpeakingSession';
 import { GroupCompletionModal } from './GroupCompletionModal';
 import { TranscriptListeningModal } from '../TranscriptModule/TranscriptListeningModal';
 import { getChunkIPA, getSentenceIPA, formatIPA } from '../../services/phonetics';
+import { playTextWithTts, stopAudio } from '../../services/ttsService';
 
 
 const CHUNK_TYPE_LABELS = {
@@ -197,20 +198,17 @@ function SampleWithTTS({ text, id, breakdown }) {
   const [speaking, setSpeaking] = useState(false);
 
   const handleSpeak = () => {
-    if (!window.speechSynthesis) return;
     if (speaking) {
-      window.speechSynthesis.cancel();
+      stopAudio();
       setSpeaking(false);
       return;
     }
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang  = 'en-US';
-    utter.rate  = 0.9;
-    utter.pitch = 1;
-    utter.onend   = () => setSpeaking(false);
-    utter.onerror = () => setSpeaking(false);
-    window.speechSynthesis.speak(utter);
     setSpeaking(true);
+    playTextWithTts(text, 'en-US-JennyNeural', 0.9, {
+      onStart: () => setSpeaking(true),
+      onEnd: () => setSpeaking(false),
+      onError: () => setSpeaking(false),
+    });
   };
 
   return (

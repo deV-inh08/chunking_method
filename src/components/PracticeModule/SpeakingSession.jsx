@@ -8,55 +8,17 @@ import {
 import { getPracticeDraft, getSettings, saveSettings } from '../../store/storage';
 import { transcribeAudioWithGemini, assessPronunciationWithGemini } from '../../services/ai';
 import { getChunkIPA, getSentenceIPA, formatIPA } from '../../services/phonetics';
+import { playTextWithTts, stopAudio, fetchAudioUrl } from '../../services/ttsService';
 
-// ─── AI Voice Candidates ───────────────────────────────────────
-const AI_VOICES = [
-  { id: 'en-US-female', label: '👩 🇺🇸 Anh - Mỹ (Nữ)', lang: 'en-US', gender: 'female', sample: 'Hello! Let\'s practice American English pronunciation.' },
-  { id: 'en-US-male', label: '👨 🇺🇸 Anh - Mỹ (Nam)', lang: 'en-US', gender: 'male', sample: 'Hi there! Welcome to American English speaking practice.' },
-  { id: 'en-GB-female', label: '👩 🇬🇧 Anh - Anh (Nữ)', lang: 'en-GB', gender: 'female', sample: 'Good day! Let\'s practise British English pronunciation.' },
-  { id: 'en-GB-male', label: '👨 🇬🇧 Anh - Anh (Nam)', lang: 'en-GB', gender: 'male', sample: 'Hello! Ready to practise your British accent?' },
-  { id: 'en-AU-female', label: '👩 🇦🇺 Anh - Úc (Nữ)', lang: 'en-AU', gender: 'female', sample: 'G\'day mate! Let\'s improve your English speaking skills.' },
+// ─── AI Voice Candidates (Microsoft Edge Neural Voices - Chuẩn người bản xứ 100%) ─────
+export const AI_VOICES = [
+  { id: 'en-US-female', label: '👩 🇺🇸 Anh - Mỹ (Nữ: Jenny)', neuralVoice: 'en-US-JennyNeural', lang: 'en-US', gender: 'female', sample: "Hello! Let's practice American English pronunciation." },
+  { id: 'en-US-male', label: '👨 🇺🇸 Anh - Mỹ (Nam: Guy)', neuralVoice: 'en-US-GuyNeural', lang: 'en-US', gender: 'male', sample: "Hi there! Welcome to American English speaking practice." },
+  { id: 'en-GB-female', label: '👩 🇬🇧 Anh - Anh (Nữ: Sonia)', neuralVoice: 'en-GB-SoniaNeural', lang: 'en-GB', gender: 'female', sample: "Good day! Let's practise British English pronunciation." },
+  { id: 'en-GB-male', label: '👨 🇬🇧 Anh - Anh (Nam: Ryan)', neuralVoice: 'en-GB-RyanNeural', lang: 'en-GB', gender: 'male', sample: "Hello! Ready to practise your British accent?" },
+  { id: 'en-AU-female', label: '👩 🇦🇺 Anh - Úc (Nữ: Natasha)', neuralVoice: 'en-AU-NatashaNeural', lang: 'en-AU', gender: 'female', sample: "G'day mate! Let's improve your English speaking skills." },
+  { id: 'en-AU-male', label: '👨 🇦🇺 Anh - Úc (Nam: William)', neuralVoice: 'en-AU-WilliamNeural', lang: 'en-AU', gender: 'male', sample: "G'day! Ready to improve your Australian pronunciation?" },
 ];
-
-function findBestVoice(voiceConfig, customVoices = []) {
-  if (typeof window === 'undefined' || !window.speechSynthesis) return null;
-  const voices = customVoices.length > 0 ? customVoices : window.speechSynthesis.getVoices() || [];
-  if (voices.length === 0) return null;
-
-  const targetLang = (voiceConfig.lang || 'en-US').toLowerCase();
-  const targetGender = voiceConfig.gender || 'female';
-
-  let bestVoice = null;
-  let highestScore = -9999;
-
-  for (const v of voices) {
-    const name = (v.name || '').toLowerCase();
-    const lang = (v.lang || '').replace('_', '-').toLowerCase();
-    if (!lang.startsWith('en')) continue;
-
-    let score = 0;
-    if (lang.startsWith(targetLang.slice(0, 5))) score += 100;
-    else score += 30;
-
-    const isMale = name.includes('male') || name.includes('guy') || name.includes('ryan') || name.includes('william') || name.includes('david');
-    const isFemale = name.includes('female') || name.includes('jenny') || name.includes('sonia') || name.includes('natasha') || name.includes('zira') || name.includes('aria');
-
-    if (targetGender === 'male' && isMale && !name.includes('female')) score += 60;
-    else if (targetGender === 'female' && isFemale && !name.includes('male')) score += 60;
-
-    // Quality bonus
-    if (name.includes('natural') || name.includes('neural') || name.includes('online')) score += 350;
-    else if (name.includes('google') || name.includes('enhanced')) score += 200;
-    else if (name.includes('desktop') || name.includes('microsoft david') || name.includes('microsoft zira')) score -= 200;
-
-    if (score > highestScore) {
-      highestScore = score;
-      bestVoice = v;
-    }
-  }
-
-  return bestVoice || voices[0] || null;
-}
 
 // ─── ScoreRing Component ───────────────────────────────────────
 function ScoreRing({ score }) {
@@ -244,9 +206,6 @@ export function SpeakingSession({
   const [volume, setVolume] = useState(0);
   const [liveSpokenText, setLiveSpokenText] = useState('');
 
-  // Voices list from SpeechSynthesis
-  const [systemVoices, setSystemVoices] = useState([]);
-
   // AI Voice Selection
   const [selectedVoiceId, setSelectedVoiceId] = useState(() => {
     return getSettings().speakingVoice || 'en-US-female';
@@ -273,10 +232,8 @@ export function SpeakingSession({
   const togglePlayUserAudio = useCallback((url) => {
     if (!url) return;
 
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      window.speechSynthesis.cancel();
-      setIsAiSpeaking(false);
-    }
+    stopAudio();
+    setIsAiSpeaking(false);
 
     if (playingAudioUrl === url && userAudioRef.current) {
       try { userAudioRef.current.pause(); } catch {}
@@ -317,28 +274,6 @@ export function SpeakingSession({
       userAudioRef.current = null;
     }
   }, [playingAudioUrl, onToast]);
-
-  // Load available system voices asynchronously
-  useEffect(() => {
-    const loadVoices = () => {
-      if (typeof window !== 'undefined' && window.speechSynthesis) {
-        const v = window.speechSynthesis.getVoices() || [];
-        if (v.length > 0) {
-          setSystemVoices(v);
-        }
-      }
-    };
-
-    loadVoices();
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      window.speechSynthesis.onvoiceschanged = loadVoices;
-    }
-    return () => {
-      if (typeof window !== 'undefined' && window.speechSynthesis) {
-        window.speechSynthesis.onvoiceschanged = null;
-      }
-    };
-  }, []);
 
   // Lấy câu học ổn định cho bài luyện nói (Chỉ lấy câu user nếu dịch đúng và đạt >= 80đ, ngược lại dùng câu mẫu chuẩn của AI)
   const sentenceList = useMemo(() => {
@@ -409,42 +344,40 @@ export function SpeakingSession({
   const chunkIpa = useMemo(() => getChunkIPA(chunk), [chunk]);
   const currentSentence = sentenceList[currentStepIndex] || sentenceList[0];
 
-  // Phát âm thanh mẫu của AI qua Web Speech Synthesis (Hỗ trợ Nam / Nữ rõ rệt)
-  const playAiVoice = useCallback((text, onEndCallback, customVoiceId) => {
-    if (typeof window === 'undefined' || !window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
+  // Tải trước audio câu mẫu của câu hiện tại vào IndexedDB (0ms delay khi bấm nghe)
+  useEffect(() => {
+    if (currentSentence?.sampleTranslation) {
+      const voiceObj = AI_VOICES.find(v => v.id === selectedVoiceId) || AI_VOICES[0];
+      fetchAudioUrl(currentSentence.sampleTranslation, voiceObj.neuralVoice || 'en-US-JennyNeural').catch(() => {});
+    }
+  }, [currentSentence, selectedVoiceId]);
 
+  // Phát âm thanh mẫu của AI bằng Microsoft Edge Neural Voice (chất lượng phòng thu 100%)
+  const playAiVoice = useCallback((text, onEndCallback, customVoiceId) => {
+    if (!text || !text.trim()) return;
+
+    stopAudio();
     setIsAiSpeaking(true);
-    const utterance = new SpeechSynthesisUtterance(text);
+
     const voiceId = customVoiceId || selectedVoiceId;
     const selectedVoiceObj = AI_VOICES.find(v => v.id === voiceId) || AI_VOICES[0];
-    utterance.lang = selectedVoiceObj.lang;
+    const neuralVoice = selectedVoiceObj.neuralVoice || 'en-US-JennyNeural';
 
-    const matchedVoice = findBestVoice(selectedVoiceObj, systemVoices);
-    if (matchedVoice) {
-      utterance.voice = matchedVoice;
-    }
-
-    // ĐIỀU CHỈNH PITCH & RATE ĐỂ PHÂN BIỆT RÕ RÀNG GIỌNG NAM (TRẦM) VÀ NỮ (THANH)
-    if (selectedVoiceObj.gender === 'male') {
-      utterance.pitch = 0.65; // Giọng nam trầm ấm, rõ rệt trên mọi thiết bị
-      utterance.rate = selectedVoiceObj.lang === 'en-GB' ? 0.86 : 0.88;
-    } else {
-      utterance.pitch = 1.18; // Giọng nữ tự nhiên, trong trẻo
-      utterance.rate = selectedVoiceObj.lang === 'en-GB' ? 0.92 : 0.95;
-    }
-
-    utterance.onend = () => {
-      setIsAiSpeaking(false);
-      if (onEndCallback) onEndCallback();
-    };
-    utterance.onerror = () => {
-      setIsAiSpeaking(false);
-      if (onEndCallback) onEndCallback();
-    };
-
-    window.speechSynthesis.speak(utterance);
-  }, [selectedVoiceId, systemVoices]);
+    playTextWithTts(text, neuralVoice, 0.92, {
+      onStart: () => {
+        setIsAiSpeaking(true);
+      },
+      onEnd: () => {
+        setIsAiSpeaking(false);
+        if (onEndCallback) onEndCallback();
+      },
+      onError: (err) => {
+        console.warn('[AI Voice Error]', err);
+        setIsAiSpeaking(false);
+        if (onEndCallback) onEndCallback();
+      },
+    });
+  }, [selectedVoiceId]);
 
   // Đổi giọng AI
   const handleSelectVoice = (voiceId) => {
@@ -499,7 +432,8 @@ export function SpeakingSession({
 
   // Bắt đầu thu âm khi User NHẤN NÓI
   const startRecording = useCallback(async () => {
-    if (isAiSpeaking) return;
+    stopAudio();
+    setIsAiSpeaking(false);
     if (userAudioRef.current) {
       try { userAudioRef.current.pause(); } catch {}
       userAudioRef.current = null;
@@ -781,9 +715,7 @@ export function SpeakingSession({
       if (audioContextRef.current) {
         try { audioContextRef.current.close(); } catch {}
       }
-      if (typeof window !== 'undefined' && window.speechSynthesis) {
-        window.speechSynthesis.cancel();
-      }
+      stopAudio();
     };
   }, []);
 
@@ -1017,12 +949,30 @@ export function SpeakingSession({
 
                 <button
                   type="button"
-                  onClick={() => playAiVoice(currentSentence.sampleTranslation)}
+                  onClick={() => {
+                    if (isAiSpeaking) {
+                      stopAudio();
+                      setIsAiSpeaking(false);
+                    } else {
+                      playAiVoice(currentSentence.sampleTranslation);
+                    }
+                  }}
                   className="btn btn-secondary btn-xs"
-                  style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 12, color: '#38bdf8', padding: '4px 10px' }}
-                  title="Nghe AI đọc mẫu câu này"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 5,
+                    fontSize: 12,
+                    color: isAiSpeaking ? '#fbbf24' : '#38bdf8',
+                    borderColor: isAiSpeaking ? 'rgba(251, 191, 36, 0.4)' : undefined,
+                    background: isAiSpeaking ? 'rgba(251, 191, 36, 0.1)' : undefined,
+                    padding: '4px 10px',
+                    transition: 'all 0.15s ease',
+                  }}
+                  title={isAiSpeaking ? 'Dừng đọc' : 'Nghe AI đọc mẫu câu này'}
                 >
-                  <Play size={12} /> Nghe AI đọc mẫu
+                  {isAiSpeaking ? <Square size={12} fill="currentColor" /> : <Play size={12} />}
+                  {isAiSpeaking ? 'Dừng phát' : 'Nghe AI đọc mẫu'}
                 </button>
               </div>
 

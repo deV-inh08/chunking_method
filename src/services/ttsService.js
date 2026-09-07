@@ -174,26 +174,22 @@ export function setAudioPlaybackRate(rate) {
 }
 
 /**
- * Phát 1 dòng thoại bằng giọng Microsoft Neural tự nhiên
- * @param {Object} lineItem - Thông tin câu: { text, gender, lang, speaker }
- * @param {number} playbackRate - Tốc độ đọc (0.75 - 1.5)
- * @param {Object} callbacks - { onStart, onEnd, onError }
+ * Phát trực tiếp văn bản với tên voice Neural cụ thể (ví dụ 'en-US-JennyNeural')
+ * Phục vụ cho bài SpeakingSession hoặc bất kỳ component nào muốn phát giọng mẫu
  */
-export async function playLine(lineItem, playbackRate = 1.0, callbacks = {}) {
+export async function playTextWithTts(text, voiceName = 'en-US-JennyNeural', playbackRate = 1.0, callbacks = {}) {
   stopAudio(); // increments currentSessionId — must capture sessionId AFTER this
   const sessionId = currentSessionId; // capture current value after stop
 
   const { onStart, onEnd, onError } = callbacks;
-  const text = (lineItem?.text || '').trim();
-  if (!text) {
+  const cleanText = (text || '').trim();
+  if (!cleanText) {
     onEnd?.();
     return;
   }
 
-  const voice = getNeuralVoiceForSpeaker(lineItem);
-
   try {
-    const audioData = await fetchAudioUrl(text, voice);
+    const audioData = await fetchAudioUrl(cleanText, voiceName);
     // Nếu trong lúc tải mạng người dùng đã chuyển câu hoặc bấm dừng -> hủy
     if (sessionId !== currentSessionId) return;
 
@@ -225,7 +221,7 @@ export async function playLine(lineItem, playbackRate = 1.0, callbacks = {}) {
       console.warn('[TTS Audio Error]', e);
       if (sessionId === currentSessionId) {
         if (activeAudio === audio) activeAudio = null;
-        fallbackSpeak(text, lineItem, playbackRate, callbacks);
+        fallbackSpeak(cleanText, { lang: voiceName.slice(0, 5) }, playbackRate, callbacks);
       }
     };
 
@@ -237,9 +233,21 @@ export async function playLine(lineItem, playbackRate = 1.0, callbacks = {}) {
     }
     console.warn('[TTS Service] Edge TTS failed, falling back to Web Speech API:', err.message);
     if (sessionId === currentSessionId) {
-      fallbackSpeak(text, lineItem, playbackRate, callbacks);
+      fallbackSpeak(cleanText, { lang: voiceName.slice(0, 5) }, playbackRate, callbacks);
     }
   }
+}
+
+/**
+ * Phát 1 dòng thoại bằng giọng Microsoft Neural tự nhiên
+ * @param {Object} lineItem - Thông tin câu: { text, gender, lang, speaker }
+ * @param {number} playbackRate - Tốc độ đọc (0.75 - 1.5)
+ * @param {Object} callbacks - { onStart, onEnd, onError }
+ */
+export async function playLine(lineItem, playbackRate = 1.0, callbacks = {}) {
+  const text = (lineItem?.text || '').trim();
+  const voice = getNeuralVoiceForSpeaker(lineItem);
+  return playTextWithTts(text, voice, playbackRate, callbacks);
 }
 
 /**
