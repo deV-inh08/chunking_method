@@ -834,15 +834,19 @@ export function TranscriptListeningModal({
   }, [triggerRewind3s, triggerForward3s]);
 
   // Keyboard shortcut:
-  // - Tab: Gợi ý 1 từ (kể cả khi đang trong ô input dictation, không mất focus)
+  // - Tab: Gợi ý 1 từ (kể cả khi đang trong ô input dictation, không mất focus, chỉ mở đúng 1 từ)
+  // - Space: Dừng hoặc phát audio (Play/Pause)
+  // - ArrowLeft / ArrowRight (← / →): Di chuyển sang từ trước / từ sau trong câu (ở Dictation mode)
   // - Ctrl: Tua lại 3s (ngay lập tức)
   // - Escape: Đóng modal
-  // - Space: Play/Pause (khi không trong input)
-  // - ArrowLeft/J: Tua lùi 3s (khi không trong input)
-  // - ArrowRight/L: Tua tới 3s (khi không trong input)
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // 1. Phím Ctrl: Tua lùi 3s ngay lập tức (kể cả khi đang gõ trong ô input)
+      // Nếu đang trong ô input hoặc textarea, mọi phím đã được xử lý chuẩn xác tại handleDictationKeyDown
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        return;
+      }
+
+      // 1. Phím Ctrl: Tua lùi 3s
       if (e.key === 'Control') {
         if (!e.repeat) {
           triggerRewind3s();
@@ -850,7 +854,7 @@ export function TranscriptListeningModal({
         return;
       }
 
-      // 2. Phím Tab: Gợi ý 1 từ khi đang ở chế độ Dictation (kể cả khi focus ngoài input)
+      // 2. Phím Tab: Gợi ý 1 từ khi đang ở chế độ Dictation (chỉ gọi 1 lần duy nhất)
       if (e.key === 'Tab') {
         if (isDictationModeRef.current) {
           e.preventDefault();
@@ -859,25 +863,47 @@ export function TranscriptListeningModal({
         }
       }
 
-      // Không bắt các phím tắt điều hướng còn lại khi đang gõ trong ô input/textarea
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+      // 3. Phím Space: Dừng hoặc phát audio
+      if (e.code === 'Space' || e.key === ' ') {
+        e.preventDefault();
+        handleTogglePlay();
         return;
       }
 
+      // 4. Phím Escape: Đóng modal
       if (e.key === 'Escape') {
         if (typeof window !== 'undefined' && window.speechSynthesis) {
           window.speechSynthesis.cancel();
         }
         onClose();
-      } else if (e.code === 'Space') {
-        e.preventDefault();
-        handleTogglePlay();
-      } else if (e.key === 'ArrowLeft' || e.code === 'KeyJ') {
-        e.preventDefault();
-        triggerRewind3s();
-      } else if (e.key === 'ArrowRight' || e.code === 'KeyL') {
-        e.preventDefault();
-        triggerForward3s();
+        return;
+      }
+
+      // 5. Phím mũi tên ← và →
+      if (isDictationModeRef.current) {
+        // Trong Dictation: Di chuyển sang từ trước / từ sau trong câu
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          handleNavigateWordRef.current?.(currentLineIndexRef.current, 'prev');
+          return;
+        }
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          handleNavigateWordRef.current?.(currentLineIndexRef.current, 'next');
+          return;
+        }
+      } else {
+        // Trong chế độ Nghe thường: Tua lùi / tới 3s
+        if (e.key === 'ArrowLeft' || e.code === 'KeyJ') {
+          e.preventDefault();
+          triggerRewind3s();
+          return;
+        }
+        if (e.key === 'ArrowRight' || e.code === 'KeyL') {
+          e.preventDefault();
+          triggerForward3s();
+          return;
+        }
       }
     };
 
@@ -1001,21 +1027,44 @@ export function TranscriptListeningModal({
     }
   }, []);
 
-  const handleSpace = useCallback((lineIdx) => {
-    const current = dictationCurrentTypedRef.current[lineIdx] || '';
-    if (current.length === 0) {
-      const line = lines[lineIdx];
-      if (!line) return;
-      const spacedText = (line.text || '').replace(/—/g, ' — ');
-      const tokens = spacedText.split(/\s+/).filter(Boolean);
-      const lineRevealed = revealedWordsRef.current[lineIdx] || new Set();
-      const activeIdx = activeWordIndicesRef.current[lineIdx] ?? 0;
-      const nextIdx = getNextUnrevealedWordIdx(tokens, lineRevealed, activeIdx + 1);
-      if (nextIdx !== -1) {
-        setActiveWordIndices(prev => ({ ...prev, [lineIdx]: nextIdx }));
+  // Di chuyển active word bằng phím ← và →
+  const handleNavigateWord = useCallback((lineIdx, direction) => {
+    const line = lines[lineIdx];
+    if (!line) return;
+
+    const spacedText = (line.text || '').replace(/—/g, ' — ');
+    const tokens = spacedText.split(/\s+/).filter(Boolean);
+    const currentIdx = activeWordIndicesRef.current[lineIdx] ?? 0;
+
+    let targetIdx = currentIdx;
+    if (direction === 'prev') {
+      // Tìm từ có chữ cái trước currentIdx
+      for (let i = currentIdx - 1; i >= 0; i--) {
+        if (tokens[i]?.replace(/[^a-zA-Z0-9]/g, '')) {
+          targetIdx = i;
+          break;
+        }
+      }
+    } else {
+      // Tìm từ có chữ cái sau currentIdx
+      for (let i = currentIdx + 1; i < tokens.length; i++) {
+        if (tokens[i]?.replace(/[^a-zA-Z0-9]/g, '')) {
+          targetIdx = i;
+          break;
+        }
       }
     }
+
+    if (targetIdx !== currentIdx) {
+      setActiveWordIndices(prev => ({ ...prev, [lineIdx]: targetIdx }));
+      setDictationCurrentTyped(prev => ({ ...prev, [lineIdx]: '' }));
+    }
   }, [lines]);
+
+  const handleNavigateWordRef = useRef(null);
+  useEffect(() => {
+    handleNavigateWordRef.current = handleNavigateWord;
+  }, [handleNavigateWord]);
 
   // Gợi ý 1 từ đang chọn trong câu (Phím Tab)
   const handleHintWord = useCallback((lineIdx) => {
@@ -1059,21 +1108,50 @@ export function TranscriptListeningModal({
 
   // Nhấn phím trong ô gõ dictation
   const handleDictationKeyDown = useCallback((lineIdx, e) => {
-    // 1. Phím Tab: Gợi ý 1 từ (chặn default để giữ nguyên focus trong ô gõ)
+    // 1. Phím Tab: Gợi ý đúng 1 từ (chặn default & stopPropagation để không bị gọi lần 2)
     if (e.key === 'Tab') {
       e.preventDefault();
+      e.stopPropagation();
       handleHintWord(lineIdx);
       return;
     }
 
-    // 2. Phím Ctrl: Tua lùi 3s
+    // 2. Phím Space: Dừng hoặc phát audio (theo yêu cầu của user)
+    if (e.code === 'Space' || e.key === ' ') {
+      e.preventDefault();
+      e.stopPropagation();
+      handleTogglePlay();
+      return;
+    }
+
+    // 3. Phím ArrowLeft (←): Di chuyển sang từ trước đó trong câu
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      e.stopPropagation();
+      handleNavigateWord(lineIdx, 'prev');
+      return;
+    }
+
+    // 4. Phím ArrowRight (→): Di chuyển sang từ tiếp theo trong câu
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      e.stopPropagation();
+      handleNavigateWord(lineIdx, 'next');
+      return;
+    }
+
+    // 5. Phím Ctrl: Tua lùi 3s
     if (e.key === 'Control') {
+      e.preventDefault();
+      e.stopPropagation();
       triggerRewind3s();
       return;
     }
 
-    // 3. Phím Escape: Đóng modal
+    // 6. Phím Escape: Đóng modal
     if (e.key === 'Escape') {
+      e.preventDefault();
+      e.stopPropagation();
       if (typeof window !== 'undefined' && window.speechSynthesis) {
         window.speechSynthesis.cancel();
       }
@@ -1081,27 +1159,22 @@ export function TranscriptListeningModal({
       return;
     }
 
-    // 4. Phím Backspace: Xóa lùi ký tự vừa gõ
+    // 7. Phím Backspace: Xóa lùi ký tự vừa gõ
     if (e.key === 'Backspace') {
       e.preventDefault();
+      e.stopPropagation();
       handleBackspace(lineIdx);
       return;
     }
 
-    // 5. Phím Space: Chuyển sang từ tiếp theo
-    if (e.key === ' ') {
-      e.preventDefault();
-      handleSpace(lineIdx);
-      return;
-    }
-
-    // 6. Nhập chữ cái thông thường
+    // 8. Nhập chữ cái thông thường
     if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
       e.preventDefault();
+      e.stopPropagation();
       handleCharInput(lineIdx, e.key);
       return;
     }
-  }, [handleHintWord, triggerRewind3s, onClose, handleBackspace, handleSpace, handleCharInput]);
+  }, [handleHintWord, handleTogglePlay, handleNavigateWord, triggerRewind3s, onClose, handleBackspace, handleCharInput]);
 
   const handleDictationInputChange = useCallback((lineIdx, e) => {
     const val = e.target.value;
@@ -1741,7 +1814,7 @@ export function TranscriptListeningModal({
                         value={dictationCurrentTyped[idx] || ''}
                         onKeyDown={(e) => handleDictationKeyDown(idx, e)}
                         onChange={(e) => handleDictationInputChange(idx, e)}
-                        placeholder={isSentenceComplete ? "Đã hoàn thành 100% câu!" : "Gõ từng chữ cái của từ đang chọn (Bấm Tab để gợi ý từ)..."}
+                        placeholder={isSentenceComplete ? "Đã hoàn thành 100% câu!" : "Gõ từng chữ cái của từ (Tab: Gợi ý 1 từ, Space: Dừng/Phát, ← / →: Đổi từ)..."}
                         disabled={isSentenceComplete}
                         autoFocus
                         style={{
@@ -1819,13 +1892,21 @@ export function TranscriptListeningModal({
         }}
       >
         {isDictationMode ? (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 12, color: 'var(--text-muted)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 12, color: 'var(--text-muted)', flexWrap: 'wrap' }}>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
-              <kbd style={{ padding: '1px 6px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 4, fontSize: 11, fontFamily: 'monospace', color: '#38bdf8' }}>Ctrl</kbd> Tua lùi 3s
+              <kbd style={{ padding: '1px 6px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 4, fontSize: 11, fontFamily: 'monospace', color: '#10b981' }}>Space</kbd> Dừng/Phát
+            </span>
+            <span style={{ opacity: 0.4 }}>•</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+              <kbd style={{ padding: '1px 6px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 4, fontSize: 11, fontFamily: 'monospace', color: '#38bdf8' }}>← / →</kbd> Chuyển từ
             </span>
             <span style={{ opacity: 0.4 }}>•</span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
               <kbd style={{ padding: '1px 6px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 4, fontSize: 11, fontFamily: 'monospace', color: '#fbbf24' }}>Tab</kbd> Gợi ý 1 từ
+            </span>
+            <span style={{ opacity: 0.4 }}>•</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+              <kbd style={{ padding: '1px 6px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 4, fontSize: 11, fontFamily: 'monospace', color: '#a5b4fc' }}>Ctrl</kbd> Tua lùi 3s
             </span>
           </div>
         ) : (
