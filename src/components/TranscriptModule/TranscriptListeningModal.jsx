@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import {
-  Play, Pause, RotateCcw, RotateCw, Volume2, X,
+  Play, Pause, RotateCcw, RotateCw, Volume2, VolumeX, X,
   SkipBack, SkipForward, Repeat, Eye, EyeOff,
   ArrowLeft, PenLine, Headphones, CheckCircle, Sparkles
 } from 'lucide-react';
@@ -236,76 +236,317 @@ function HighlightedText({ text, chunks = [] }) {
   );
 }
 
-// ─── Dictation Text Component (Masked Dots & Green Revealed) ────
-function DictationText({ rawText, revealedSet = new Set() }) {
-  // Normalize em-dash to spaced dash so words don't glue together
+// ─── Sound Effects (Web Audio API Synthesizer - Zero Dependency) ─────
+class SoundFX {
+  constructor() {
+    this.ctx = null;
+    this.enabled = true;
+  }
+
+  init() {
+    if (!this.ctx && typeof window !== 'undefined') {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) this.ctx = new AudioCtx();
+    }
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume().catch(() => {});
+    }
+  }
+
+  playCorrectLetter() {
+    if (!this.enabled) return;
+    this.init();
+    if (!this.ctx) return;
+    try {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(580, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(880, this.ctx.currentTime + 0.07);
+      gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.07);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.07);
+    } catch (e) {}
+  }
+
+  playWrongLetter() {
+    if (!this.enabled) return;
+    this.init();
+    if (!this.ctx) return;
+    try {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(190, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(130, this.ctx.currentTime + 0.12);
+      gain.gain.setValueAtTime(0.06, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.12);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.12);
+    } catch (e) {}
+  }
+
+  playWordComplete() {
+    if (!this.enabled) return;
+    this.init();
+    if (!this.ctx) return;
+    try {
+      const now = this.ctx.currentTime;
+      [523.25, 659.25, 783.99].forEach((freq, i) => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, now + i * 0.05);
+        gain.gain.setValueAtTime(0.09, now + i * 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.05 + 0.18);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now + i * 0.05);
+        osc.stop(now + i * 0.05 + 0.18);
+      });
+    } catch (e) {}
+  }
+
+  playHint() {
+    if (!this.enabled) return;
+    this.init();
+    if (!this.ctx) return;
+    try {
+      const now = this.ctx.currentTime;
+      [440, 554.37, 659.25].forEach((freq, i) => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + i * 0.05);
+        gain.gain.setValueAtTime(0.08, now + i * 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.05 + 0.16);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now + i * 0.05);
+        osc.stop(now + i * 0.05 + 0.16);
+      });
+    } catch (e) {}
+  }
+
+  playSentenceVictory() {
+    if (!this.enabled) return;
+    this.init();
+    if (!this.ctx) return;
+    try {
+      const notes = [523.25, 659.25, 783.99, 1046.5];
+      const now = this.ctx.currentTime;
+      notes.forEach((freq, i) => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, now + i * 0.08);
+        gain.gain.setValueAtTime(0.12, now + i * 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.3);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now + i * 0.08);
+        osc.stop(now + i * 0.08 + 0.3);
+      });
+    } catch (e) {}
+  }
+}
+
+const soundFX = new SoundFX();
+
+// ─── Helper: Get Next Unrevealed Word Index in Tokens ─────────
+function getNextUnrevealedWordIdx(tokens, revealedSet = new Set(), startIdx = 0) {
+  if (!tokens || tokens.length === 0) return -1;
+  for (let i = startIdx; i < tokens.length; i++) {
+    const clean = tokens[i].replace(/[^a-zA-Z0-9]/g, '');
+    if (clean && !revealedSet.has(i)) {
+      return i;
+    }
+  }
+  for (let i = 0; i < startIdx; i++) {
+    const clean = tokens[i].replace(/[^a-zA-Z0-9]/g, '');
+    if (clean && !revealedSet.has(i)) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+// ─── Dictation Text Component (Interactive Game-like Progressive Reveal) ───
+function DictationText({
+  rawText,
+  lineIdx,
+  revealedSet = new Set(),
+  activeWordIdx = -1,
+  currentTyped = '',
+  shakingWord = null,
+  celebratingWord = null,
+  hintedWord = null,
+  onWordClick,
+}) {
   const spacedText = (rawText || '').replace(/—/g, ' — ');
   const tokens = spacedText.split(/\s+/).filter(Boolean);
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 7px', alignItems: 'center' }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px 8px', alignItems: 'center' }}>
       {tokens.map((token, wIdx) => {
-        const clean = token.toLowerCase().replace(/[^a-z0-9]/g, '');
-        const isPunctuationOnly = !clean;
+        const match = token.match(/^([^a-zA-Z0-9]*)(.*?)([^a-zA-Z0-9]*)$/);
+        const leadingPunct = match ? match[1] : '';
+        const core = match ? match[2] : token;
+        const trailingPunct = match ? match[3] : '';
 
-        if (isPunctuationOnly) {
+        if (!core) {
           return (
-            <span key={wIdx} style={{ color: 'rgba(255,255,255,0.7)', fontSize: 16 }}>
+            <span key={wIdx} style={{ color: 'rgba(255,255,255,0.65)', fontSize: 16 }}>
               {token}
             </span>
           );
         }
 
         const isRevealed = revealedSet.has(wIdx);
+        const isActive = wIdx === activeWordIdx;
+        const isCelebrating = celebratingWord?.lineIdx === lineIdx && celebratingWord?.wordIdx === wIdx;
+        const isHinted = hintedWord?.lineIdx === lineIdx && hintedWord?.wordIdx === wIdx;
+        const isShaking = shakingWord?.lineIdx === lineIdx && shakingWord?.wordIdx === wIdx;
 
+        // 1. Từ đã điền đúng / được gợi ý xong
         if (isRevealed) {
-          // Điền đúng: Hiện từ lên + màu xanh
           return (
             <span
               key={wIdx}
-              className="animate-scale-up"
+              className={isCelebrating ? 'animate-word-celebrate' : isHinted ? 'animate-hint-sparkle' : 'animate-scale-up'}
               style={{
                 color: '#22c55e',
                 fontWeight: 800,
                 fontSize: 16,
                 background: 'rgba(34, 197, 94, 0.15)',
                 borderBottom: '2px solid #22c55e',
-                padding: '1px 6px',
-                borderRadius: '4px',
+                padding: '2px 7px',
+                borderRadius: '6px',
                 transition: 'all 0.2s ease',
+                display: 'inline-flex',
+                alignItems: 'center',
+                boxShadow: isCelebrating ? '0 0 16px rgba(34, 197, 94, 0.5)' : isHinted ? '0 0 16px rgba(251, 191, 36, 0.5)' : 'none',
               }}
             >
-              {token}
+              {leadingPunct}
+              <span>{core}</span>
+              {trailingPunct}
             </span>
           );
         }
 
-        // Sai hoặc chưa điền: hiện số lượng dấu chấm tương ứng số chữ cái
-        // Ví dụ: 1 từ có 6 chữ thì có 6 dấu chấm (••••••)
-        const leadingPunct = token.match(/^[^a-zA-Z0-9]+/)?.[0] || '';
-        const trailingPunct = token.match(/[^a-zA-Z0-9]+$/)?.[0] || '';
-        const dots = '•'.repeat(clean.length);
+        // 2. Từ đang chọn để gõ (Active Word: Gõ từng chữ cái thời gian thực)
+        if (isActive) {
+          return (
+            <span
+              key={wIdx}
+              className={isShaking ? 'animate-wrong-shake' : 'animate-active-pulse'}
+              onClick={() => onWordClick?.(wIdx)}
+              title="Từ đang chọn gõ (Bấm Tab để gợi ý)"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '2px 8px',
+                borderRadius: '6px',
+                background: isShaking ? 'rgba(239, 68, 68, 0.18)' : 'rgba(56, 189, 248, 0.12)',
+                border: isShaking ? '1.5px solid #ef4444' : '1.5px solid #38bdf8',
+                boxShadow: isShaking ? '0 0 14px rgba(239, 68, 68, 0.45)' : '0 0 14px rgba(56, 189, 248, 0.35)',
+                fontFamily: 'monospace',
+                fontSize: 16.5,
+                fontWeight: 800,
+                cursor: 'text',
+                transition: 'background 0.15s, border-color 0.15s, box-shadow 0.15s',
+              }}
+            >
+              {leadingPunct}
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '2px' }}>
+                {Array.from(core).map((origChar, charIdx) => {
+                  if (charIdx < currentTyped.length) {
+                    // Chữ cái đã gõ đúng -> Nảy lên và sáng màu cyan
+                    return (
+                      <span
+                        key={charIdx}
+                        className="animate-letter-pop"
+                        style={{
+                          color: '#38bdf8',
+                          fontWeight: 900,
+                          display: 'inline-block',
+                          textShadow: '0 0 8px rgba(56, 189, 248, 0.6)',
+                        }}
+                      >
+                        {origChar}
+                      </span>
+                    );
+                  } else if (charIdx === currentTyped.length) {
+                    // Vị trí con trỏ đang chờ gõ
+                    return (
+                      <span
+                        key={charIdx}
+                        className="animate-cursor-pulse"
+                        style={{
+                          color: '#facc15',
+                          fontWeight: 900,
+                          display: 'inline-block',
+                          minWidth: '10px',
+                          textAlign: 'center',
+                          borderBottom: '2px solid #facc15',
+                        }}
+                      >
+                        •
+                      </span>
+                    );
+                  } else {
+                    // Các chữ cái chưa tới lượt
+                    return (
+                      <span
+                        key={charIdx}
+                        style={{
+                          color: 'rgba(255, 255, 255, 0.35)',
+                          display: 'inline-block',
+                          minWidth: '8px',
+                          textAlign: 'center',
+                        }}
+                      >
+                        •
+                      </span>
+                    );
+                  }
+                })}
+              </span>
+              {trailingPunct}
+            </span>
+          );
+        }
 
+        // 3. Từ chưa tới lượt (chưa gõ & không active)
         return (
           <span
             key={wIdx}
-            title={`Từ có ${clean.length} chữ cái`}
+            onClick={() => onWordClick?.(wIdx)}
+            title={`Từ có ${core.length} chữ cái (Bấm để chọn gõ từ này)`}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              letterSpacing: '0.12em',
+              padding: '2px 7px',
+              borderRadius: '5px',
+              background: 'rgba(255, 255, 255, 0.05)',
+              borderBottom: '1.5px dashed rgba(255, 255, 255, 0.3)',
               color: 'rgba(255, 255, 255, 0.45)',
+              fontFamily: 'monospace',
               fontSize: 16,
               fontWeight: 800,
-              background: 'rgba(255, 255, 255, 0.05)',
-              padding: '2px 6px',
-              borderRadius: '4px',
-              borderBottom: '1.5px dashed rgba(255, 255, 255, 0.3)',
-              fontFamily: 'monospace',
+              letterSpacing: '0.12em',
+              cursor: 'pointer',
+              transition: 'all 0.15s ease',
             }}
           >
             {leadingPunct}
-            <span>{dots}</span>
+            <span>{'•'.repeat(core.length)}</span>
             {trailingPunct}
           </span>
         );
@@ -344,12 +585,18 @@ export function TranscriptListeningModal({
 
   // ─── Dictation Mode States ───
   const [isDictationMode, setIsDictationMode] = useState(false);
-  const [dictationInputs, setDictationInputs] = useState({}); // { [lineIndex]: string }
-  const [revealedWords, setRevealedWords] = useState({});     // { [lineIndex]: Set<number> }
+  const [revealedWords, setRevealedWords] = useState({});            // { [lineIndex]: Set<number> }
+  const [activeWordIndices, setActiveWordIndices] = useState({});    // { [lineIndex]: number }
+  const [dictationCurrentTyped, setDictationCurrentTyped] = useState({}); // { [lineIndex]: string }
+  const [shakingWord, setShakingWord] = useState(null);              // { lineIdx, wordIdx, key }
+  const [celebratingWord, setCelebratingWord] = useState(null);      // { lineIdx, wordIdx, key }
+  const [hintedWord, setHintedWord] = useState(null);                // { lineIdx, wordIdx, key }
+  const [soundEnabled, setSoundEnabled] = useState(true);
 
   // Voices list from SpeechSynthesis
   const [systemVoices, setSystemVoices] = useState([]);
   const lineRefs = useRef({});
+  const dictationInputRef = useRef(null);
   const isPlayingRef = useRef(false);
   const currentLineIndexRef = useRef(0);
   const isLoopingLineRef = useRef(false);
@@ -358,12 +605,16 @@ export function TranscriptListeningModal({
   const speechStartTimeRef = useRef(0);
   const isDictationModeRef = useRef(false);
   const handleHintWordRef = useRef(null);
-  const shiftPressedRef = useRef(false);
-  const shiftUsedWithOtherKeyRef = useRef(false);
-  const shiftTimerRef = useRef(null);
+  const activeWordIndicesRef = useRef(activeWordIndices);
+  const revealedWordsRef = useRef(revealedWords);
+  const dictationCurrentTypedRef = useRef(dictationCurrentTyped);
   const [rewindAnimation, setRewindAnimation] = useState(null); // { side: 'left' | 'right', key: number }
   const lastTapRef = useRef({ time: 0, x: 0, y: 0 });
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    soundFX.enabled = soundEnabled;
+  }, [soundEnabled]);
 
   useEffect(() => {
     isPlayingRef.current = isPlaying;
@@ -371,7 +622,35 @@ export function TranscriptListeningModal({
     isLoopingLineRef.current = isLoopingLine;
     playbackRateRef.current = playbackRate;
     isDictationModeRef.current = isDictationMode;
-  }, [isPlaying, currentLineIndex, isLoopingLine, playbackRate, isDictationMode]);
+    activeWordIndicesRef.current = activeWordIndices;
+    revealedWordsRef.current = revealedWords;
+    dictationCurrentTypedRef.current = dictationCurrentTyped;
+  }, [isPlaying, currentLineIndex, isLoopingLine, playbackRate, isDictationMode, activeWordIndices, revealedWords, dictationCurrentTyped]);
+
+  // Tự động khởi tạo activeWordIdx khi chuyển câu trong Dictation Mode
+  useEffect(() => {
+    if (!isDictationMode) return;
+    const line = lines[currentLineIndex];
+    if (!line) return;
+    const spacedText = (line.text || '').replace(/—/g, ' — ');
+    const tokens = spacedText.split(/\s+/).filter(Boolean);
+    const lineRevealed = revealedWords[currentLineIndex] || new Set();
+
+    setActiveWordIndices(prev => {
+      const current = prev[currentLineIndex];
+      if (current != null && !lineRevealed.has(current)) {
+        return prev;
+      }
+      const nextIdx = getNextUnrevealedWordIdx(tokens, lineRevealed, 0);
+      if (prev[currentLineIndex] === nextIdx) return prev;
+      return { ...prev, [currentLineIndex]: nextIdx };
+    });
+
+    const timer = setTimeout(() => {
+      dictationInputRef.current?.focus();
+    }, 80);
+    return () => clearTimeout(timer);
+  }, [currentLineIndex, isDictationMode, lines]);
 
   // Load browser voices
   useEffect(() => {
@@ -555,8 +834,8 @@ export function TranscriptListeningModal({
   }, [triggerRewind3s, triggerForward3s]);
 
   // Keyboard shortcut:
-  // - Ctrl: Tua lại 3s (ngay lập tức, kể cả khi đang gõ trong ô input dictation)
-  // - Shift: Gợi ý từ tiếp theo đang bị ẩn (kể cả khi đang gõ trong ô input dictation)
+  // - Tab: Gợi ý 1 từ (kể cả khi đang trong ô input dictation, không mất focus)
+  // - Ctrl: Tua lại 3s (ngay lập tức)
   // - Escape: Đóng modal
   // - Space: Play/Pause (khi không trong input)
   // - ArrowLeft/J: Tua lùi 3s (khi không trong input)
@@ -571,28 +850,12 @@ export function TranscriptListeningModal({
         return;
       }
 
-      // 2. Phím Shift: Chuẩn bị gợi ý từ đang ẩn (kể cả khi đang gõ trong ô input)
-      if (e.key === 'Shift') {
-        if (!e.repeat && !shiftPressedRef.current) {
-          shiftPressedRef.current = true;
-          shiftUsedWithOtherKeyRef.current = false;
-          if (shiftTimerRef.current) clearTimeout(shiftTimerRef.current);
-          shiftTimerRef.current = setTimeout(() => {
-            if (!shiftUsedWithOtherKeyRef.current && isDictationModeRef.current) {
-              handleHintWordRef.current?.(currentLineIndexRef.current);
-              shiftUsedWithOtherKeyRef.current = true;
-            }
-          }, 280);
-        }
-        return;
-      }
-
-      // Nếu đang giữ Shift mà bấm phím khác (như gõ chữ hoa Shift + [ký tự])
-      if (shiftPressedRef.current) {
-        shiftUsedWithOtherKeyRef.current = true;
-        if (shiftTimerRef.current) {
-          clearTimeout(shiftTimerRef.current);
-          shiftTimerRef.current = null;
+      // 2. Phím Tab: Gợi ý 1 từ khi đang ở chế độ Dictation (kể cả khi focus ngoài input)
+      if (e.key === 'Tab') {
+        if (isDictationModeRef.current) {
+          e.preventDefault();
+          handleHintWordRef.current?.(currentLineIndexRef.current);
+          return;
         }
       }
 
@@ -618,38 +881,21 @@ export function TranscriptListeningModal({
       }
     };
 
-    const handleKeyUp = (e) => {
-      if (e.key === 'Shift') {
-        if (shiftTimerRef.current) {
-          clearTimeout(shiftTimerRef.current);
-          shiftTimerRef.current = null;
-        }
-        // Nếu nhả phím Shift mà không bấm kèm phím ký tự nào -> Kích hoạt gợi ý 1 từ
-        if (shiftPressedRef.current && !shiftUsedWithOtherKeyRef.current) {
-          if (isDictationModeRef.current) {
-            handleHintWordRef.current?.(currentLineIndexRef.current);
-          }
-        }
-        shiftPressedRef.current = false;
-        shiftUsedWithOtherKeyRef.current = false;
-      }
-    };
-
     window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
-      if (shiftTimerRef.current) clearTimeout(shiftTimerRef.current);
     };
   }, [handleTogglePlay, onClose, triggerRewind3s, triggerForward3s]);
 
   // Click on a specific line to select and play it
-  const handleSelectLine = (index) => {
+  const handleSelectLine = useCallback((index) => {
     setCurrentLineIndex(index);
     setIsPlaying(true);
     speakLine(index);
-  };
+    setTimeout(() => {
+      dictationInputRef.current?.focus();
+    }, 60);
+  }, [speakLine]);
 
   const handlePrevLine = () => {
     const nextIdx = Math.max(0, currentLineIndex - 1);
@@ -663,71 +909,221 @@ export function TranscriptListeningModal({
     if (isPlaying) speakLine(nextIdx);
   };
 
-
   // Toggle reveal for a line in blind mode
   const toggleRevealLine = (idx) => {
     setRevealedLines(prev => ({ ...prev, [idx]: !prev[idx] }));
   };
 
-  // ─── Dictation Matching Handlers ──────────────────────────────
-  const handleDictationInputChange = (lineIdx, inputVal) => {
-    setDictationInputs(prev => ({ ...prev, [lineIdx]: inputVal }));
+  // ─── Progressive Typing & Dictation Handlers ──────────────────
+  // Gõ từng chữ cái của từ đang chọn (letter-by-letter matching)
+  const handleCharInput = useCallback((lineIdx, char) => {
+    const line = lines[lineIdx];
+    if (!line) return;
 
-    const rawText = lines[lineIdx]?.text || '';
-    const spacedText = rawText.replace(/—/g, ' — ');
+    const spacedText = (line.text || '').replace(/—/g, ' — ');
     const tokens = spacedText.split(/\s+/).filter(Boolean);
 
-    // Tách các từ người dùng đã gõ (bỏ dấu câu, chuyển chữ thường)
-    const inputWords = inputVal
-      .toLowerCase()
-      .split(/[\s,.;!?]+/)
-      .map(w => w.replace(/[^a-z0-9]/g, ''))
-      .filter(Boolean);
+    const lineRevealed = revealedWordsRef.current[lineIdx] || new Set();
+    let activeIdx = activeWordIndicesRef.current[lineIdx];
+    if (activeIdx == null || lineRevealed.has(activeIdx)) {
+      activeIdx = getNextUnrevealedWordIdx(tokens, lineRevealed, 0);
+      setActiveWordIndices(prev => ({ ...prev, [lineIdx]: activeIdx }));
+    }
 
-    if (inputWords.length === 0) return;
+    if (activeIdx < 0 || activeIdx >= tokens.length) return; // Đã xong toàn bộ câu
 
-    setRevealedWords(prev => {
-      const currentSet = new Set(prev[lineIdx] || []);
+    const token = tokens[activeIdx];
+    const match = token.match(/^([^a-zA-Z0-9]*)(.*?)([^a-zA-Z0-9]*)$/);
+    const core = match ? match[2] : token;
+    if (!core) return;
 
-      tokens.forEach((token, wIdx) => {
-        const clean = token.toLowerCase().replace(/[^a-z0-9]/g, '');
-        if (!clean) return;
+    const currentTyped = dictationCurrentTypedRef.current[lineIdx] || '';
+    let nextPos = currentTyped.length;
 
-        // Nếu từ này xuất hiện trong những gì user đã gõ: Điền đúng -> hiện lên + màu xanh
-        if (inputWords.includes(clean)) {
-          currentSet.add(wIdx);
-        }
-      });
+    let expectedChar = core[nextPos];
+    let autoSkippedPunct = '';
 
-      return { ...prev, [lineIdx]: currentSet };
-    });
-  };
-
-  // Gợi ý 1 từ tiếp theo trong câu
-  const handleHintWord = useCallback((lineIdx) => {
-    const rawText = lines[lineIdx]?.text || '';
-    const spacedText = rawText.replace(/—/g, ' — ');
-    const tokens = spacedText.split(/\s+/).filter(Boolean);
-
-    setRevealedWords(prev => {
-      const currentSet = new Set(prev[lineIdx] || []);
-
-      // Tìm từ đầu tiên chưa được mở
-      for (let i = 0; i < tokens.length; i++) {
-        const clean = tokens[i].toLowerCase().replace(/[^a-z0-9]/g, '');
-        if (clean && !currentSet.has(i)) {
-          currentSet.add(i);
-          break;
-        }
+    // Hỗ trợ từ có dấu nháy / gạch ngang như don't, it's, first-class
+    if (expectedChar === "'" || expectedChar === '-' || expectedChar === '’') {
+      if (char === expectedChar) {
+        // Gõ đúng dấu nháy
+        const nextTyped = currentTyped + expectedChar;
+        setDictationCurrentTyped(prev => ({ ...prev, [lineIdx]: nextTyped }));
+        soundFX.playCorrectLetter();
+        return;
+      } else {
+        // Gõ chữ cái tiếp theo -> tự động gộp dấu nháy vào
+        autoSkippedPunct = expectedChar;
+        nextPos++;
+        expectedChar = core[nextPos];
       }
+    }
 
-      return { ...prev, [lineIdx]: currentSet };
-    });
+    if (!expectedChar) return;
+
+    // So khớp ký tự không phân biệt hoa thường
+    if (char.toLowerCase() === expectedChar.toLowerCase()) {
+      // ĐÚNG CHỮ CÁI!
+      const updatedTyped = currentTyped + autoSkippedPunct + core[nextPos];
+      soundFX.playCorrectLetter();
+
+      if (updatedTyped.length >= core.length) {
+        // TỪ NÀY ĐÃ HOÀN THÀNH!
+        soundFX.playWordComplete();
+        setCelebratingWord({ lineIdx, wordIdx: activeIdx, key: Date.now() });
+
+        const newRevealed = new Set(lineRevealed);
+        newRevealed.add(activeIdx);
+        setRevealedWords(prev => ({ ...prev, [lineIdx]: newRevealed }));
+        setDictationCurrentTyped(prev => ({ ...prev, [lineIdx]: '' }));
+
+        const nextWordIdx = getNextUnrevealedWordIdx(tokens, newRevealed, activeIdx + 1);
+        setActiveWordIndices(prev => ({ ...prev, [lineIdx]: nextWordIdx }));
+
+        const totalWords = tokens.filter(t => t.replace(/[^a-zA-Z0-9]/g, '')).length;
+        if (newRevealed.size >= totalWords) {
+          soundFX.playSentenceVictory();
+        }
+      } else {
+        setDictationCurrentTyped(prev => ({ ...prev, [lineIdx]: updatedTyped }));
+      }
+    } else {
+      // SAI CHỮ CÁI!
+      soundFX.playWrongLetter();
+      setShakingWord({ lineIdx, wordIdx: activeIdx, key: Date.now() });
+    }
+  }, [lines]);
+
+  const handleBackspace = useCallback((lineIdx) => {
+    const current = dictationCurrentTypedRef.current[lineIdx] || '';
+    if (current.length > 0) {
+      setDictationCurrentTyped(prev => ({ ...prev, [lineIdx]: current.slice(0, -1) }));
+    }
+  }, []);
+
+  const handleSpace = useCallback((lineIdx) => {
+    const current = dictationCurrentTypedRef.current[lineIdx] || '';
+    if (current.length === 0) {
+      const line = lines[lineIdx];
+      if (!line) return;
+      const spacedText = (line.text || '').replace(/—/g, ' — ');
+      const tokens = spacedText.split(/\s+/).filter(Boolean);
+      const lineRevealed = revealedWordsRef.current[lineIdx] || new Set();
+      const activeIdx = activeWordIndicesRef.current[lineIdx] ?? 0;
+      const nextIdx = getNextUnrevealedWordIdx(tokens, lineRevealed, activeIdx + 1);
+      if (nextIdx !== -1) {
+        setActiveWordIndices(prev => ({ ...prev, [lineIdx]: nextIdx }));
+      }
+    }
+  }, [lines]);
+
+  // Gợi ý 1 từ đang chọn trong câu (Phím Tab)
+  const handleHintWord = useCallback((lineIdx) => {
+    const line = lines[lineIdx];
+    if (!line) return;
+
+    const spacedText = (line.text || '').replace(/—/g, ' — ');
+    const tokens = spacedText.split(/\s+/).filter(Boolean);
+    const lineRevealed = revealedWordsRef.current[lineIdx] || new Set();
+
+    let targetIdx = activeWordIndicesRef.current[lineIdx];
+    if (targetIdx == null || lineRevealed.has(targetIdx)) {
+      targetIdx = getNextUnrevealedWordIdx(tokens, lineRevealed, 0);
+    }
+
+    if (targetIdx < 0 || targetIdx >= tokens.length) return; // Đã mở hết tất cả từ
+
+    soundFX.playHint();
+    setHintedWord({ lineIdx, wordIdx: targetIdx, key: Date.now() });
+
+    const newRevealed = new Set(lineRevealed);
+    newRevealed.add(targetIdx);
+
+    setRevealedWords(prev => ({ ...prev, [lineIdx]: newRevealed }));
+    setDictationCurrentTyped(prev => ({ ...prev, [lineIdx]: '' }));
+
+    // Tự động chuyển tiêu điểm sang từ tiếp theo
+    const nextWordIdx = getNextUnrevealedWordIdx(tokens, newRevealed, targetIdx + 1);
+    setActiveWordIndices(prev => ({ ...prev, [lineIdx]: nextWordIdx }));
+
+    // Kiểm tra hoàn thành câu
+    const totalWords = tokens.filter(t => t.replace(/[^a-zA-Z0-9]/g, '')).length;
+    if (newRevealed.size >= totalWords) {
+      soundFX.playSentenceVictory();
+    }
   }, [lines]);
 
   useEffect(() => {
     handleHintWordRef.current = handleHintWord;
   }, [handleHintWord]);
+
+  // Nhấn phím trong ô gõ dictation
+  const handleDictationKeyDown = useCallback((lineIdx, e) => {
+    // 1. Phím Tab: Gợi ý 1 từ (chặn default để giữ nguyên focus trong ô gõ)
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      handleHintWord(lineIdx);
+      return;
+    }
+
+    // 2. Phím Ctrl: Tua lùi 3s
+    if (e.key === 'Control') {
+      triggerRewind3s();
+      return;
+    }
+
+    // 3. Phím Escape: Đóng modal
+    if (e.key === 'Escape') {
+      if (typeof window !== 'undefined' && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+      onClose();
+      return;
+    }
+
+    // 4. Phím Backspace: Xóa lùi ký tự vừa gõ
+    if (e.key === 'Backspace') {
+      e.preventDefault();
+      handleBackspace(lineIdx);
+      return;
+    }
+
+    // 5. Phím Space: Chuyển sang từ tiếp theo
+    if (e.key === ' ') {
+      e.preventDefault();
+      handleSpace(lineIdx);
+      return;
+    }
+
+    // 6. Nhập chữ cái thông thường
+    if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
+      e.preventDefault();
+      handleCharInput(lineIdx, e.key);
+      return;
+    }
+  }, [handleHintWord, triggerRewind3s, onClose, handleBackspace, handleSpace, handleCharInput]);
+
+  const handleDictationInputChange = useCallback((lineIdx, e) => {
+    const val = e.target.value;
+    const current = dictationCurrentTypedRef.current[lineIdx] || '';
+    if (val.length > current.length) {
+      const added = val.slice(current.length);
+      for (const ch of added) {
+        handleCharInput(lineIdx, ch);
+      }
+    } else if (val.length < current.length) {
+      handleBackspace(lineIdx);
+    }
+  }, [handleCharInput, handleBackspace]);
+
+  // Chọn từ bất kỳ trong câu để gõ
+  const handleSelectWord = useCallback((lineIdx, wIdx) => {
+    setActiveWordIndices(prev => ({ ...prev, [lineIdx]: wIdx }));
+    setDictationCurrentTyped(prev => ({ ...prev, [lineIdx]: '' }));
+    setTimeout(() => {
+      dictationInputRef.current?.focus();
+    }, 40);
+  }, []);
 
   // Xem toàn bộ đáp án của câu
   const handleRevealAllWords = (lineIdx) => {
@@ -737,19 +1133,32 @@ export function TranscriptListeningModal({
 
     setRevealedWords(prev => {
       const fullSet = new Set();
-      tokens.forEach((_, i) => fullSet.add(i));
+      tokens.forEach((t, i) => {
+        if (t.replace(/[^a-zA-Z0-9]/g, '')) {
+          fullSet.add(i);
+        }
+      });
       return { ...prev, [lineIdx]: fullSet };
     });
+    setDictationCurrentTyped(prev => ({ ...prev, [lineIdx]: '' }));
   };
 
   // Xóa làm lại câu này trong dictation
   const handleResetSentenceDictation = (lineIdx) => {
-    setDictationInputs(prev => ({ ...prev, [lineIdx]: '' }));
+    setDictationCurrentTyped(prev => ({ ...prev, [lineIdx]: '' }));
     setRevealedWords(prev => {
       const updated = { ...prev };
       delete updated[lineIdx];
       return updated;
     });
+    const line = lines[lineIdx];
+    const spacedText = (line?.text || '').replace(/—/g, ' — ');
+    const tokens = spacedText.split(/\s+/).filter(Boolean);
+    const firstIdx = getNextUnrevealedWordIdx(tokens, new Set(), 0);
+    setActiveWordIndices(prev => ({ ...prev, [lineIdx]: firstIdx }));
+    setTimeout(() => {
+      dictationInputRef.current?.focus();
+    }, 50);
   };
 
   return (
@@ -1210,11 +1619,17 @@ export function TranscriptListeningModal({
                   paddingLeft: 2,
                 }}>
                   {isDictationMode ? (
-                    // Dictation View: Dots for unrevealed, Green for correct words
+                    // Dictation View: Dots for unrevealed, Green for correct words, interactive progressive typing
                     <DictationText
                       rawText={item.text}
+                      lineIdx={idx}
                       revealedSet={revealedWords[idx] || new Set()}
-                      chunks={effectiveChunks}
+                      activeWordIdx={isActive ? (activeWordIndices[idx] ?? 0) : -1}
+                      currentTyped={isActive ? (dictationCurrentTyped[idx] || '') : ''}
+                      shakingWord={shakingWord}
+                      celebratingWord={celebratingWord}
+                      hintedWord={hintedWord}
+                      onWordClick={(wIdx) => handleSelectWord(idx, wIdx)}
                     />
                   ) : isRevealed ? (
                     // Normal Listening View: Highlight chunks
@@ -1251,9 +1666,9 @@ export function TranscriptListeningModal({
                   <div
                     onClick={(e) => e.stopPropagation()}
                     style={{
-                      marginTop: 10,
+                      marginTop: 12,
                       padding: '14px 16px',
-                      background: 'rgba(15, 23, 42, 0.8)',
+                      background: 'rgba(15, 23, 42, 0.85)',
                       borderRadius: 'var(--radius-md)',
                       border: '1px solid rgba(16, 185, 129, 0.35)',
                       display: 'flex',
@@ -1268,6 +1683,25 @@ export function TranscriptListeningModal({
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                        {/* Bật/Tắt âm thanh game */}
+                        <button
+                          type="button"
+                          className="btn btn-ghost btn-xs"
+                          onClick={() => setSoundEnabled(s => !s)}
+                          style={{
+                            color: soundEnabled ? '#38bdf8' : 'var(--text-muted)',
+                            padding: '3px 8px',
+                            fontSize: 11.5,
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 4
+                          }}
+                          title={soundEnabled ? "Tắt âm thanh game" : "Bật âm thanh game"}
+                        >
+                          {soundEnabled ? <Volume2 size={13} /> : <VolumeX size={13} />}
+                          <span>{soundEnabled ? 'Âm thanh' : 'Tắt tiếng'}</span>
+                        </button>
+
                         <button
                           type="button"
                           className="btn btn-ghost btn-xs"
@@ -1282,9 +1716,9 @@ export function TranscriptListeningModal({
                           className="btn btn-ghost btn-xs"
                           onClick={() => handleHintWord(idx)}
                           style={{ color: '#fbbf24', padding: '3px 8px', fontSize: 11.5, display: 'flex', alignItems: 'center', gap: 4 }}
-                          title="Gợi ý 1 từ tiếp theo (Bấm phím Shift)"
+                          title="Gợi ý 1 từ tiếp theo (Bấm phím Tab)"
                         >
-                          <Sparkles size={13} /> Gợi ý 1 từ <kbd style={{ marginLeft: 2, padding: '1px 5px', fontSize: 10, background: 'rgba(251, 191, 36, 0.15)', border: '1px solid rgba(251, 191, 36, 0.3)', borderRadius: 3, fontFamily: 'monospace' }}>Shift</kbd>
+                          <Sparkles size={13} /> Gợi ý 1 từ <kbd style={{ marginLeft: 2, padding: '1px 5px', fontSize: 10, background: 'rgba(251, 191, 36, 0.15)', border: '1px solid rgba(251, 191, 36, 0.3)', borderRadius: 3, fontFamily: 'monospace' }}>Tab</kbd>
                         </button>
                         <button
                           type="button"
@@ -1301,21 +1735,28 @@ export function TranscriptListeningModal({
                     {/* Dictation Input Field */}
                     <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                       <input
+                        ref={dictationInputRef}
                         type="text"
                         className="input-field"
-                        value={dictationInputs[idx] || ''}
-                        onChange={(e) => handleDictationInputChange(idx, e.target.value)}
-                        placeholder="Gõ từ bạn nghe được (đúng sẽ tự hiện xanh)..."
+                        value={dictationCurrentTyped[idx] || ''}
+                        onKeyDown={(e) => handleDictationKeyDown(idx, e)}
+                        onChange={(e) => handleDictationInputChange(idx, e)}
+                        placeholder={isSentenceComplete ? "Đã hoàn thành 100% câu!" : "Gõ từng chữ cái của từ đang chọn (Bấm Tab để gợi ý từ)..."}
+                        disabled={isSentenceComplete}
                         autoFocus
                         style={{
                           flex: 1,
                           height: 42,
-                          fontSize: 14.5,
-                          borderColor: isSentenceComplete ? '#10b981' : 'rgba(255, 255, 255, 0.18)',
+                          fontSize: 15,
+                          fontFamily: 'monospace',
+                          letterSpacing: '0.08em',
+                          borderColor: isSentenceComplete ? '#10b981' : '#38bdf8',
                           background: 'rgba(0, 0, 0, 0.35)',
+                          color: '#38bdf8',
+                          fontWeight: 700,
                         }}
                       />
-                      {dictationInputs[idx] && (
+                      {revealedWordsCount > 0 && (
                         <button
                           type="button"
                           className="btn btn-ghost btn-xs"
@@ -1338,7 +1779,7 @@ export function TranscriptListeningModal({
                       }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                           <CheckCircle size={16} />
-                          <span>Xuất sắc! Bạn đã điền đúng 100% câu này!</span>
+                          <span>Xuất sắc! Bạn đã điền đúng 100% câu này! 🎉</span>
                         </div>
                         {idx < lines.length - 1 && (
                           <button
@@ -1384,7 +1825,7 @@ export function TranscriptListeningModal({
             </span>
             <span style={{ opacity: 0.4 }}>•</span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
-              <kbd style={{ padding: '1px 6px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 4, fontSize: 11, fontFamily: 'monospace', color: '#fbbf24' }}>Shift</kbd> Gợi ý từ
+              <kbd style={{ padding: '1px 6px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 4, fontSize: 11, fontFamily: 'monospace', color: '#fbbf24' }}>Tab</kbd> Gợi ý 1 từ
             </span>
           </div>
         ) : (
@@ -1474,7 +1915,7 @@ export function TranscriptListeningModal({
         </div>
       )}
 
-      {/* Global Keyframes for the double tap animation */}
+      {/* Global Keyframes for Animations */}
       <style>{`
         @keyframes doubleTapBubble {
           0% {
@@ -1493,6 +1934,102 @@ export function TranscriptListeningModal({
             opacity: 0;
             transform: translateY(-50%) scale(1.2);
           }
+        }
+
+        @keyframes letterPopIn {
+          0% {
+            transform: scale(0.25) translateY(4px);
+            opacity: 0;
+          }
+          65% {
+            transform: scale(1.35) translateY(-2px);
+            opacity: 1;
+          }
+          100% {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+          }
+        }
+
+        @keyframes wordCelebration {
+          0% {
+            transform: scale(1);
+            box-shadow: 0 0 0 rgba(34, 197, 94, 0);
+          }
+          35% {
+            transform: scale(1.2);
+            box-shadow: 0 0 24px rgba(34, 197, 94, 0.7);
+          }
+          70% {
+            transform: scale(0.96);
+          }
+          100% {
+            transform: scale(1);
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.25);
+          }
+        }
+
+        @keyframes wrongShake {
+          0%, 100% { transform: translateX(0); }
+          20% { transform: translateX(-5px); }
+          40% { transform: translateX(5px); }
+          60% { transform: translateX(-4px); }
+          80% { transform: translateX(3px); }
+        }
+
+        @keyframes activeWordPulse {
+          0%, 100% {
+            border-color: rgba(56, 189, 248, 0.6);
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.25);
+          }
+          50% {
+            border-color: rgba(56, 189, 248, 1);
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.55);
+          }
+        }
+
+        @keyframes cursorBlink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.15; }
+        }
+
+        @keyframes hintSparkle {
+          0% {
+            transform: scale(0.9);
+            filter: brightness(1);
+          }
+          50% {
+            transform: scale(1.22);
+            filter: brightness(1.7) drop-shadow(0 0 14px #fbbf24);
+          }
+          100% {
+            transform: scale(1);
+            filter: brightness(1);
+          }
+        }
+
+        .animate-letter-pop {
+          animation: letterPopIn 0.24s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .animate-word-celebrate {
+          animation: wordCelebration 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .animate-wrong-shake {
+          animation: wrongShake 0.36s ease-in-out forwards;
+        }
+
+        .animate-active-pulse {
+          animation: activeWordPulse 2s infinite ease-in-out;
+        }
+
+        .animate-cursor-pulse {
+          animation: cursorBlink 0.9s infinite ease-in-out;
+        }
+
+        .animate-hint-sparkle {
+          animation: hintSparkle 0.55s ease-out forwards;
         }
       `}</style>
     </div>
