@@ -1,12 +1,13 @@
 ﻿{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "functions": {
     "api/tts.js": {
       "maxDuration": 30
     }
   },
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
