@@ -608,12 +608,23 @@ export function TranscriptListeningModal({
   const handleCharInputRef = useRef(null);
   const handleBackspaceRef = useRef(null);
   const handleNavigateWordRef = useRef(null);
+  const handleSelectLineRef = useRef(null);
+  const autoAdvanceTimerRef = useRef(null);
   const activeWordIndicesRef = useRef(activeWordIndices);
   const revealedWordsRef = useRef(revealedWords);
   const dictationCurrentTypedRef = useRef(dictationCurrentTyped);
   const [rewindAnimation, setRewindAnimation] = useState(null); // { side: 'left' | 'right', key: number }
   const lastTapRef = useRef({ time: 0, x: 0, y: 0 });
   const containerRef = useRef(null);
+
+  // Clear auto-advance timer on unmount
+  useEffect(() => {
+    return () => {
+      if (autoAdvanceTimerRef.current) {
+        clearTimeout(autoAdvanceTimerRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     soundFX.enabled = soundEnabled;
@@ -776,6 +787,10 @@ export function TranscriptListeningModal({
 
   // ─── Tua Lùi 3 Giây (Double click bên trái / Phím mũi tên trái / J) ───
   const triggerRewind3s = useCallback(() => {
+    if (autoAdvanceTimerRef.current) {
+      clearTimeout(autoAdvanceTimerRef.current);
+      autoAdvanceTimerRef.current = null;
+    }
     const elapsed = Date.now() - (speechStartTimeRef.current || 0);
     setRewindAnimation({ side: 'left', key: Date.now() });
 
@@ -793,6 +808,10 @@ export function TranscriptListeningModal({
 
   // ─── Tua Tới 3 Giây (Double click bên phải / Phím mũi tên phải / L) ───
   const triggerForward3s = useCallback(() => {
+    if (autoAdvanceTimerRef.current) {
+      clearTimeout(autoAdvanceTimerRef.current);
+      autoAdvanceTimerRef.current = null;
+    }
     setRewindAnimation({ side: 'right', key: Date.now() });
     const nextIdx = Math.min(lines.length - 1, currentLineIndexRef.current + 1);
     setCurrentLineIndex(nextIdx);
@@ -875,6 +894,10 @@ export function TranscriptListeningModal({
 
       // 4. Phím Escape: Đóng modal
       if (e.key === 'Escape') {
+        if (autoAdvanceTimerRef.current) {
+          clearTimeout(autoAdvanceTimerRef.current);
+          autoAdvanceTimerRef.current = null;
+        }
         if (typeof window !== 'undefined' && window.speechSynthesis) {
           window.speechSynthesis.cancel();
         }
@@ -884,29 +907,64 @@ export function TranscriptListeningModal({
 
       // 5. Trong Dictation Mode: Các thao tác gõ phím trực tiếp
       if (isDictationModeRef.current) {
+        const curIdx = currentLineIndexRef.current;
+        const curLine = lines[curIdx];
+        const curSpaced = (curLine?.text || '').replace(/—/g, ' — ');
+        const curTokens = curSpaced.split(/\s+/).filter(Boolean);
+        const curTotalWords = curTokens.filter(t => t.replace(/[^a-zA-Z0-9]/g, '')).length;
+        const curRevealed = revealedWordsRef.current[curIdx] || new Set();
+        const isCurComplete = curRevealed.size >= curTotalWords;
+
+        // Phím Enter: Sang ngay câu tiếp theo không cần nhấc tay khỏi phím
+        if (e.key === 'Enter') {
+          if (curIdx < lines.length - 1) {
+            e.preventDefault();
+            if (autoAdvanceTimerRef.current) {
+              clearTimeout(autoAdvanceTimerRef.current);
+              autoAdvanceTimerRef.current = null;
+            }
+            handleSelectLineRef.current?.(curIdx + 1);
+            return;
+          }
+        }
+
+        // Nếu câu đã hoàn tất 100% và người dùng gõ ký tự chữ cái của câu tiếp theo
+        if (isCurComplete && curIdx < lines.length - 1 && e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey && e.key !== ' ') {
+          e.preventDefault();
+          if (autoAdvanceTimerRef.current) {
+            clearTimeout(autoAdvanceTimerRef.current);
+            autoAdvanceTimerRef.current = null;
+          }
+          handleSelectLineRef.current?.(curIdx + 1);
+          setTimeout(() => {
+            handleCharInputRef.current?.(curIdx + 1, e.key);
+          }, 70);
+          return;
+        }
+
         // Di chuyển sang từ trước / từ sau trong câu
         if (e.key === 'ArrowLeft') {
           e.preventDefault();
-          handleNavigateWordRef.current?.(currentLineIndexRef.current, 'prev');
+          handleNavigateWordRef.current?.(curIdx, 'prev');
           return;
         }
         if (e.key === 'ArrowRight') {
           e.preventDefault();
-          handleNavigateWordRef.current?.(currentLineIndexRef.current, 'next');
+          handleNavigateWordRef.current?.(curIdx, 'next');
           return;
         }
 
         // Xóa lùi ký tự vừa gõ
         if (e.key === 'Backspace') {
           e.preventDefault();
-          handleBackspaceRef.current?.(currentLineIndexRef.current);
+          handleBackspaceRef.current?.(curIdx);
           return;
         }
 
         // Gõ ký tự chữ cái trực tiếp
         if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey) {
           e.preventDefault();
-          handleCharInputRef.current?.(currentLineIndexRef.current, e.key);
+          handleCharInputRef.current?.(curIdx, e.key);
           return;
         }
       } else {
@@ -928,10 +986,14 @@ export function TranscriptListeningModal({
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleTogglePlay, onClose, triggerRewind3s, triggerForward3s]);
+  }, [lines, handleTogglePlay, onClose, triggerRewind3s, triggerForward3s]);
 
   // Click on a specific line to select and play it
   const handleSelectLine = useCallback((index) => {
+    if (autoAdvanceTimerRef.current) {
+      clearTimeout(autoAdvanceTimerRef.current);
+      autoAdvanceTimerRef.current = null;
+    }
     setCurrentLineIndex(index);
     setIsPlaying(true);
     speakLine(index);
@@ -940,13 +1002,25 @@ export function TranscriptListeningModal({
     }, 60);
   }, [speakLine]);
 
+  useEffect(() => {
+    handleSelectLineRef.current = handleSelectLine;
+  }, [handleSelectLine]);
+
   const handlePrevLine = () => {
+    if (autoAdvanceTimerRef.current) {
+      clearTimeout(autoAdvanceTimerRef.current);
+      autoAdvanceTimerRef.current = null;
+    }
     const nextIdx = Math.max(0, currentLineIndex - 1);
     setCurrentLineIndex(nextIdx);
     if (isPlaying) speakLine(nextIdx);
   };
 
   const handleNextLine = () => {
+    if (autoAdvanceTimerRef.current) {
+      clearTimeout(autoAdvanceTimerRef.current);
+      autoAdvanceTimerRef.current = null;
+    }
     const nextIdx = Math.min(lines.length - 1, currentLineIndex + 1);
     setCurrentLineIndex(nextIdx);
     if (isPlaying) speakLine(nextIdx);
@@ -1026,6 +1100,13 @@ export function TranscriptListeningModal({
         const totalWords = tokens.filter(t => t.replace(/[^a-zA-Z0-9]/g, '')).length;
         if (newRevealed.size >= totalWords) {
           soundFX.playSentenceVictory();
+          // Tự động chuyển sang câu tiếp theo sau 750ms để người học duy trì liên tục mood gõ phím
+          if (lineIdx < lines.length - 1) {
+            if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
+            autoAdvanceTimerRef.current = setTimeout(() => {
+              handleSelectLineRef.current?.(lineIdx + 1);
+            }, 750);
+          }
         }
       } else {
         setDictationCurrentTyped(prev => ({ ...prev, [lineIdx]: updatedTyped }));
@@ -1123,6 +1204,13 @@ export function TranscriptListeningModal({
     const totalWords = tokens.filter(t => t.replace(/[^a-zA-Z0-9]/g, '')).length;
     if (newRevealed.size >= totalWords) {
       soundFX.playSentenceVictory();
+      // Tự động chuyển sang câu tiếp theo sau 750ms để người học duy trì liên tục mood gõ phím
+      if (lineIdx < lines.length - 1) {
+        if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
+        autoAdvanceTimerRef.current = setTimeout(() => {
+          handleSelectLineRef.current?.(lineIdx + 1);
+        }, 750);
+      }
     }
   }, [lines]);
 
@@ -1132,10 +1220,54 @@ export function TranscriptListeningModal({
 
   // Nhấn phím trong ô gõ dictation
   const handleDictationKeyDown = useCallback((lineIdx, e) => {
+    const line = lines[lineIdx];
+    const spacedText = (line?.text || '').replace(/—/g, ' — ');
+    const tokens = spacedText.split(/\s+/).filter(Boolean);
+    const totalWords = tokens.filter(t => t.replace(/[^a-zA-Z0-9]/g, '')).length;
+    const lineRevealed = revealedWordsRef.current[lineIdx] || new Set();
+    const isCompleted = lineRevealed.size >= totalWords;
+
+    // Phím Enter: Sang ngay câu tiếp theo không cần nhấc tay khỏi bàn phím
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      e.stopPropagation();
+      if (lineIdx < lines.length - 1) {
+        if (autoAdvanceTimerRef.current) {
+          clearTimeout(autoAdvanceTimerRef.current);
+          autoAdvanceTimerRef.current = null;
+        }
+        handleSelectLine(lineIdx + 1);
+      }
+      return;
+    }
+
+    // Nếu câu đã hoàn tất 100% và người dùng gõ ký tự chữ cái của câu tiếp theo
+    if (isCompleted && lineIdx < lines.length - 1 && e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey && e.key !== ' ') {
+      e.preventDefault();
+      e.stopPropagation();
+      if (autoAdvanceTimerRef.current) {
+        clearTimeout(autoAdvanceTimerRef.current);
+        autoAdvanceTimerRef.current = null;
+      }
+      handleSelectLine(lineIdx + 1);
+      setTimeout(() => {
+        handleCharInputRef.current?.(lineIdx + 1, e.key);
+      }, 70);
+      return;
+    }
+
     // 1. Phím Tab: Gợi ý đúng 1 từ (chặn default & stopPropagation để không bị gọi lần 2)
     if (e.key === 'Tab') {
       e.preventDefault();
       e.stopPropagation();
+      if (isCompleted && lineIdx < lines.length - 1) {
+        if (autoAdvanceTimerRef.current) {
+          clearTimeout(autoAdvanceTimerRef.current);
+          autoAdvanceTimerRef.current = null;
+        }
+        handleSelectLine(lineIdx + 1);
+        return;
+      }
       handleHintWord(lineIdx);
       return;
     }
@@ -1176,6 +1308,10 @@ export function TranscriptListeningModal({
     if (e.key === 'Escape') {
       e.preventDefault();
       e.stopPropagation();
+      if (autoAdvanceTimerRef.current) {
+        clearTimeout(autoAdvanceTimerRef.current);
+        autoAdvanceTimerRef.current = null;
+      }
       if (typeof window !== 'undefined' && window.speechSynthesis) {
         window.speechSynthesis.cancel();
       }
@@ -1198,7 +1334,7 @@ export function TranscriptListeningModal({
       handleCharInput(lineIdx, e.key);
       return;
     }
-  }, [handleHintWord, handleTogglePlay, handleNavigateWord, triggerRewind3s, onClose, handleBackspace, handleCharInput]);
+  }, [lines, handleHintWord, handleTogglePlay, handleNavigateWord, triggerRewind3s, onClose, handleBackspace, handleCharInput, handleSelectLine]);
 
   const handleDictationInputChange = useCallback((lineIdx, e) => {
     const val = e.target.value;
@@ -1224,6 +1360,10 @@ export function TranscriptListeningModal({
 
   // Xem toàn bộ đáp án của câu
   const handleRevealAllWords = (lineIdx) => {
+    if (autoAdvanceTimerRef.current) {
+      clearTimeout(autoAdvanceTimerRef.current);
+      autoAdvanceTimerRef.current = null;
+    }
     const rawText = lines[lineIdx]?.text || '';
     const spacedText = rawText.replace(/—/g, ' — ');
     const tokens = spacedText.split(/\s+/).filter(Boolean);
@@ -1242,6 +1382,10 @@ export function TranscriptListeningModal({
 
   // Xóa làm lại câu này trong dictation
   const handleResetSentenceDictation = (lineIdx) => {
+    if (autoAdvanceTimerRef.current) {
+      clearTimeout(autoAdvanceTimerRef.current);
+      autoAdvanceTimerRef.current = null;
+    }
     setDictationCurrentTyped(prev => ({ ...prev, [lineIdx]: '' }));
     setRevealedWords(prev => {
       const updated = { ...prev };
@@ -1886,16 +2030,27 @@ export function TranscriptListeningModal({
                       }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                           <CheckCircle size={16} />
-                          <span>Xuất sắc! Bạn đã điền đúng 100% câu này! 🎉</span>
+                          <span>
+                            {idx < lines.length - 1
+                              ? 'Xuất sắc! Đang tự động chuyển sang câu tiếp theo... 🎉'
+                              : '🎉 Chúc mừng bạn đã hoàn thành xuất sắc toàn bộ bài nghe!'}
+                          </span>
                         </div>
                         {idx < lines.length - 1 && (
                           <button
                             type="button"
                             className="btn btn-primary btn-xs"
-                            onClick={() => handleSelectLine(idx + 1)}
-                            style={{ fontSize: 12, padding: '4px 10px' }}
+                            onClick={() => {
+                              if (autoAdvanceTimerRef.current) {
+                                clearTimeout(autoAdvanceTimerRef.current);
+                                autoAdvanceTimerRef.current = null;
+                              }
+                              handleSelectLine(idx + 1);
+                            }}
+                            style={{ fontSize: 12, padding: '4px 10px', display: 'flex', alignItems: 'center', gap: 4 }}
                           >
-                            Câu tiếp theo →
+                            <span>Câu tiếp theo</span>
+                            <kbd style={{ padding: '1px 5px', fontSize: 10, background: 'rgba(255, 255, 255, 0.2)', borderRadius: 3 }}>Enter ↵</kbd>
                           </button>
                         )}
                       </div>
