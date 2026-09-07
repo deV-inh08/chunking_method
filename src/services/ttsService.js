@@ -180,8 +180,8 @@ export function setAudioPlaybackRate(rate) {
  * @param {Object} callbacks - { onStart, onEnd, onError }
  */
 export async function playLine(lineItem, playbackRate = 1.0, callbacks = {}) {
-  const sessionId = ++currentSessionId;
-  stopAudio();
+  stopAudio(); // increments currentSessionId — must capture sessionId AFTER this
+  const sessionId = currentSessionId; // capture current value after stop
 
   const { onStart, onEnd, onError } = callbacks;
   const text = (lineItem?.text || '').trim();
@@ -216,6 +216,7 @@ export async function playLine(lineItem, playbackRate = 1.0, callbacks = {}) {
 
     audio.onended = () => {
       if (sessionId === currentSessionId) {
+        if (activeAudio === audio) activeAudio = null;
         onEnd?.();
       }
     };
@@ -223,13 +224,17 @@ export async function playLine(lineItem, playbackRate = 1.0, callbacks = {}) {
     audio.onerror = (e) => {
       console.warn('[TTS Audio Error]', e);
       if (sessionId === currentSessionId) {
-        // Fallback sang Web Speech API nếu lỗi audio element
+        if (activeAudio === audio) activeAudio = null;
         fallbackSpeak(text, lineItem, playbackRate, callbacks);
       }
     };
 
     await audio.play();
   } catch (err) {
+    if (err.name === 'AbortError') {
+      // Bị dừng chủ động bởi người dùng hoặc chuyển câu
+      return;
+    }
     console.warn('[TTS Service] Edge TTS failed, falling back to Web Speech API:', err.message);
     if (sessionId === currentSessionId) {
       fallbackSpeak(text, lineItem, playbackRate, callbacks);
