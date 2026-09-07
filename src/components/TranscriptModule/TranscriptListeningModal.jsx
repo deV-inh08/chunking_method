@@ -5,6 +5,16 @@ import {
   ArrowLeft, PenLine, Headphones, CheckCircle, Sparkles
 } from 'lucide-react';
 import { getChunks } from '../../store/storage';
+import {
+  playLine as playLineWithTts,
+  stopAudio,
+  setAudioPlaybackRate,
+  preloadTranscript,
+} from '../../services/ttsService';
+import {
+  getNeuralVoiceForSpeaker,
+  getVoiceDisplayInfo,
+} from '../../services/ttsVoiceMap';
 
 // ─── Voice Finder Utility (Prioritizes Deep Learning Neural & Natural Voices) ─────
 function scoreVoice(voice, targetLang = 'en-US', targetGender = 'female') {
@@ -617,14 +627,36 @@ export function TranscriptListeningModal({
   const lastTapRef = useRef({ time: 0, x: 0, y: 0 });
   const containerRef = useRef(null);
 
-  // Clear auto-advance timer on unmount
+  // Clear auto-advance timer and stop audio on unmount
   useEffect(() => {
     return () => {
+      stopAudio();
       if (autoAdvanceTimerRef.current) {
         clearTimeout(autoAdvanceTimerRef.current);
       }
     };
   }, []);
+
+  const handleModalClose = useCallback(() => {
+    stopAudio();
+    if (autoAdvanceTimerRef.current) {
+      clearTimeout(autoAdvanceTimerRef.current);
+      autoAdvanceTimerRef.current = null;
+    }
+    onClose();
+  }, [onClose]);
+
+  // Preload audio into IndexedDB in background for instant 0ms playback
+  useEffect(() => {
+    if (lines && lines.length > 0) {
+      preloadTranscript(lines);
+    }
+  }, [lines]);
+
+  // Đồng bộ tốc độ đọc âm thanh
+  useEffect(() => {
+    setAudioPlaybackRate(playbackRate);
+  }, [playbackRate]);
 
   useEffect(() => {
     soundFX.enabled = soundEnabled;
@@ -694,15 +726,13 @@ export function TranscriptListeningModal({
     }
   }, [currentLineIndex]);
 
-  // Speak a specific line
+  // Speak a specific line with Microsoft Edge Neural Voice (natural human-like audio)
   const speakLine = useCallback((lineIndex) => {
-    if (typeof window === 'undefined' || !window.speechSynthesis) return;
     if (lineIndex < 0 || lineIndex >= lines.length) {
       setIsPlaying(false);
       return;
     }
 
-    window.speechSynthesis.cancel();
     const item = lines[lineIndex];
     if (!item || !item.text) {
       if (lineIndex + 1 < lines.length) {
@@ -715,58 +745,42 @@ export function TranscriptListeningModal({
     }
 
     speechStartTimeRef.current = Date.now();
-    const utterance = new SpeechSynthesisUtterance(item.text);
-    // Tìm voice phù hợp nhất cho speaker (ưu tiên Neural/Natural)
-    const bestVoice = findVoiceForSpeaker(item, systemVoices);
-    const isNeuralVoice = bestVoice && (
-      bestVoice.name.toLowerCase().includes('natural') ||
-      bestVoice.name.toLowerCase().includes('neural') ||
-      bestVoice.name.toLowerCase().includes('google') ||
-      bestVoice.name.toLowerCase().includes('online')
-    );
+    setIsPlaying(true);
 
-    utterance.rate = playbackRateRef.current * 0.96; // Nhịp đọc tự nhiên chuẩn TOEIC Listening
-    utterance.pitch = isNeuralVoice ? 1.0 : (item.gender === 'female' ? 1.05 : 0.98);
+    playLineWithTts(item, playbackRateRef.current, {
+      onStart: () => {
+        setIsPlaying(true);
+      },
+      onEnd: () => {
+        // Tự động mở che câu nếu đang ở Blind mode (không mở trong Dictation mode)
+        if (!isDictationMode) {
+          setRevealedLines(prev => ({ ...prev, [lineIndex]: true }));
+        }
 
-    if (bestVoice) {
-      utterance.voice = bestVoice;
-      utterance.lang = bestVoice.lang;
-    } else {
-      utterance.lang = item.lang || 'en-US';
-    }
+        if (!isPlayingRef.current) return;
 
-    utterance.onend = () => {
-      // Tự động mở che câu nếu đang ở Blind mode (không mở trong Dictation mode)
-      if (!isDictationMode) {
-        setRevealedLines(prev => ({ ...prev, [lineIndex]: true }));
-      }
-
-      if (!isPlayingRef.current) return;
-
-      if (isLoopingLineRef.current) {
-        // Lặp lại câu này sau 400ms nghỉ
-        setTimeout(() => {
-          if (isPlayingRef.current) speakLineRef.current?.(lineIndex);
-        }, 400);
-      } else if (lineIndex + 1 < lines.length && !isDictationMode) {
-        // Trong chế độ nghe thường: chuyển sang câu tiếp theo
-        setCurrentLineIndex(lineIndex + 1);
-        setTimeout(() => {
-          if (isPlayingRef.current) speakLineRef.current?.(lineIndex + 1);
-        }, 500);
-      } else {
-        // Hết bài thoại hoặc đang ở Dictation mode (dừng để người học gõ)
+        if (isLoopingLineRef.current) {
+          // Lặp lại câu này sau 400ms nghỉ
+          setTimeout(() => {
+            if (isPlayingRef.current) speakLineRef.current?.(lineIndex);
+          }, 400);
+        } else if (lineIndex + 1 < lines.length && !isDictationMode) {
+          // Trong chế độ nghe thường: chuyển sang câu tiếp theo
+          setCurrentLineIndex(lineIndex + 1);
+          setTimeout(() => {
+            if (isPlayingRef.current) speakLineRef.current?.(lineIndex + 1);
+          }, 500);
+        } else {
+          // Hết bài thoại hoặc đang ở Dictation mode (dừng để người học gõ)
+          setIsPlaying(false);
+        }
+      },
+      onError: (err) => {
+        console.warn('[TTS Playback Error]', err);
         setIsPlaying(false);
-      }
-    };
-
-    utterance.onerror = (e) => {
-      console.warn('SpeechSynthesis error:', e);
-      setIsPlaying(false);
-    };
-
-    window.speechSynthesis.speak(utterance);
-  }, [lines, systemVoices, isDictationMode]);
+      },
+    });
+  }, [lines, isDictationMode]);
 
   useEffect(() => {
     speakLineRef.current = speakLine;
@@ -775,9 +789,7 @@ export function TranscriptListeningModal({
   // Play / Pause toggle
   const handleTogglePlay = useCallback(() => {
     if (isPlayingRef.current) {
-      if (typeof window !== 'undefined' && window.speechSynthesis) {
-        window.speechSynthesis.cancel();
-      }
+      stopAudio();
       setIsPlaying(false);
     } else {
       setIsPlaying(true);
@@ -894,14 +906,7 @@ export function TranscriptListeningModal({
 
       // 4. Phím Escape: Đóng modal
       if (e.key === 'Escape') {
-        if (autoAdvanceTimerRef.current) {
-          clearTimeout(autoAdvanceTimerRef.current);
-          autoAdvanceTimerRef.current = null;
-        }
-        if (typeof window !== 'undefined' && window.speechSynthesis) {
-          window.speechSynthesis.cancel();
-        }
-        onClose();
+        handleModalClose();
         return;
       }
 
@@ -1308,14 +1313,7 @@ export function TranscriptListeningModal({
     if (e.key === 'Escape') {
       e.preventDefault();
       e.stopPropagation();
-      if (autoAdvanceTimerRef.current) {
-        clearTimeout(autoAdvanceTimerRef.current);
-        autoAdvanceTimerRef.current = null;
-      }
-      if (typeof window !== 'undefined' && window.speechSynthesis) {
-        window.speechSynthesis.cancel();
-      }
-      onClose();
+      handleModalClose();
       return;
     }
 
@@ -1438,12 +1436,7 @@ export function TranscriptListeningModal({
         {/* Top Row: Back button, Title & Close */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, width: '100%' }}>
           <button
-            onClick={() => {
-              if (typeof window !== 'undefined' && window.speechSynthesis) {
-                window.speechSynthesis.cancel();
-              }
-              onClose();
-            }}
+            onClick={handleModalClose}
             className="btn btn-ghost"
             style={{
               padding: '6px 12px',
@@ -1469,6 +1462,13 @@ export function TranscriptListeningModal({
               }}>
                 {transcript?.part || 'TOEIC Listening'}
               </span>
+              <span style={{
+                fontSize: 11, fontWeight: 700, padding: '2px 9px', borderRadius: 'var(--radius-full)',
+                background: 'rgba(16, 185, 129, 0.15)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.35)',
+                display: 'inline-flex', alignItems: 'center', gap: 4
+              }} title="Giọng đọc AI Microsoft Azure Neural chuẩn phòng thu">
+                🎙️ Studio Neural Voice
+              </span>
               {effectiveChunks.length > 0 && (
                 <span style={{ fontSize: 11, color: '#38bdf8', fontWeight: 600 }}>
                   ✨ {effectiveChunks.length} chunks
@@ -1485,12 +1485,7 @@ export function TranscriptListeningModal({
 
           <div style={{ display: 'flex', justifyContent: 'flex-end', flexShrink: 0 }}>
             <button
-              onClick={() => {
-                if (typeof window !== 'undefined' && window.speechSynthesis) {
-                  window.speechSynthesis.cancel();
-                }
-                onClose();
-              }}
+              onClick={handleModalClose}
               className="btn btn-ghost btn-icon"
               style={{ color: 'var(--text-secondary)' }}
               title="Đóng"
@@ -1759,6 +1754,8 @@ export function TranscriptListeningModal({
               return t && t.replace(/[^a-zA-Z0-9]/g, '');
             }).length;
             const isSentenceComplete = totalWordsInSentence > 0 && revealedWordsCount >= totalWordsInSentence;
+            const neuralVoice = getNeuralVoiceForSpeaker(item);
+            const voiceInfo = getVoiceDisplayInfo(neuralVoice);
 
             return (
               <div
@@ -1800,14 +1797,14 @@ export function TranscriptListeningModal({
                       border: `1px solid ${isFemale ? 'rgba(236, 72, 153, 0.35)' : 'rgba(56, 189, 248, 0.35)'}`,
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: 5,
+                      gap: 6,
                       whiteSpace: 'nowrap',
                       flexShrink: 0,
                     }}>
-                      {isFemale ? '👩' : '👨'} {item.speaker}
-                      {item.accentLabel && (
-                        <span style={{ opacity: 0.8, fontSize: 10.5 }}>({item.accentLabel})</span>
-                      )}
+                      <span>{isFemale ? '👩' : '👨'} {item.speaker}</span>
+                      <span style={{ opacity: 0.85, fontSize: 11, fontWeight: 600 }}>
+                        {voiceInfo.flag} {voiceInfo.name} ({voiceInfo.accent})
+                      </span>
                     </span>
 
                     {isActive && isPlaying && (
@@ -2109,12 +2106,7 @@ export function TranscriptListeningModal({
 
         <button
           className="btn btn-secondary btn-sm"
-          onClick={() => {
-            if (typeof window !== 'undefined' && window.speechSynthesis) {
-              window.speechSynthesis.cancel();
-            }
-            onClose();
-          }}
+          onClick={handleModalClose}
           style={{ fontWeight: 700, flexShrink: 0 }}
         >
           Đóng
