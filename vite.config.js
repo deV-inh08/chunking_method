@@ -1,6 +1,5 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
-import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
 
 function viteEdgeTtsPlugin() {
   const handler = async (req, res, next) => {
@@ -20,6 +19,8 @@ function viteEdgeTtsPlugin() {
     }
 
     try {
+      // Dynamic import so Vite's client bundler never resolves this Node.js-only package
+      const { MsEdgeTTS, OUTPUT_FORMAT } = await import('msedge-tts');
       const parsedUrl = new URL(req.url, 'http://localhost');
       const text = parsedUrl.searchParams.get('text');
       const voice = parsedUrl.searchParams.get('voice') || 'en-US-JennyNeural';
