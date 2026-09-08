@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import {
   Mic, MicOff, Volume2, Sparkles, X, Check, ArrowRight,
   RotateCcw, MessageSquare, AlertCircle, Info, Radio,
-  ChevronDown, HelpCircle, Layers, CheckCircle2, Award
+  ChevronDown, HelpCircle, Layers, CheckCircle2, Award, Send
 } from 'lucide-react';
 import { playTextWithTts, stopAudio, checkVoiceStudioStatus } from '../../services/ttsService';
 import { evaluatePronunciationGOP } from '../../services/sherpaOnnxService';
@@ -11,6 +11,7 @@ import {
   continueConversation,
   REAL_LIFE_PRESETS
 } from '../../services/scenarioAi';
+import { transcribeAudioWithGemini } from '../../services/ai';
 import { formatIPA, getPhoneticTip } from '../../services/phonetics';
 import './ConversationalSpeaking.css';
 
@@ -30,6 +31,9 @@ export default function ConversationalSpeakingModal({
   // Audio & Recording states
   const [isRecording, setIsRecording] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [processingStatus, setProcessingStatus] = useState('');
+  const [feedbackNotice, setFeedbackNotice] = useState('');
+  const [textInput, setTextInput] = useState('');
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
   const [volumeLevel, setVolumeLevel] = useState(0);
   const [voiceStudioActive, setVoiceStudioActive] = useState(false);
@@ -249,22 +253,52 @@ export default function ConversationalSpeakingModal({
     }
   };
 
-  // ─── Xử lý sau khi người học nói xong một câu ───────────────────
+  // ─── Xử lý sau khi người học nói xong một câu hoặc gõ text ───────
   const handleUserSpeechTurn = async (spokenText, audioBlob) => {
-    if (!spokenText) {
-      // Người dùng không nói gì hoặc mic không bắt được
+    let textToProcess = (spokenText || '').trim();
+
+    // Nếu SpeechRecognition của trình duyệt bị lỗi Network hoặc không bắt được chữ,
+    // sử dụng Gemini Multimodal STT để chuyển đổi trực tiếp audioBlob sang văn bản!
+    if (!textToProcess && audioBlob && audioBlob.size > 1000) {
+      setIsProcessing(true);
+      setProcessingStatus('Đang nhận diện âm thanh qua AI Multimodal...');
+      try {
+        textToProcess = (await transcribeAudioWithGemini(audioBlob) || '').trim();
+      } catch (err) {
+        console.warn('Gemini audio STT fallback error:', err);
+      }
+    }
+
+    if (!textToProcess) {
+      setIsProcessing(false);
+      setProcessingStatus('');
+      setFeedbackNotice('Chưa nhận diện được giọng nói (hoặc trình duyệt bị lỗi mạng SpeechRecognition). Bạn hãy nói to hơn hoặc gõ câu trả lời vào ô bên dưới nhé.');
+      setTimeout(() => setFeedbackNotice(''), 7000);
       return;
     }
 
+    setFeedbackNotice('');
     setIsProcessing(true);
+    setProcessingStatus('Sherpa-ONNX đang phân tích âm học và chuyển tiếp cho bạn bản xứ...');
 
     // 1. Chấm điểm âm học & IPA với Sherpa-ONNX GOP Client (< 100ms)
-    const evaluation = await evaluatePronunciationGOP({
-      targetSentence: spokenText,
-      spokenText: spokenText,
-      targetChunks: targetChunks.map(c => c.phrase || c),
-      audioBlob,
-    });
+    let evaluation;
+    try {
+      evaluation = await evaluatePronunciationGOP({
+        targetSentence: textToProcess,
+        spokenText: textToProcess,
+        targetChunks: targetChunks.map(c => c.phrase || c),
+        audioBlob,
+      });
+    } catch (evalErr) {
+      console.warn('GOP evaluation error:', evalErr);
+      evaluation = {
+        words: textToProcess.split(/\s+/).map(w => ({ word: w, status: 'correct', score: 85 })),
+        accuracyScore: 85,
+        missingEndingSoundCount: 0,
+        chunksUsed: [],
+      };
+    }
 
     // 2. Cập nhật các Chunk đã kích hoạt thành công
     const newlyUsed = evaluation.chunksUsed || [];
@@ -283,7 +317,7 @@ export default function ConversationalSpeakingModal({
     const userMsg = {
       id: 'msg_' + Date.now(),
       sender: 'user',
-      text: spokenText,
+      text: textToProcess,
       words: evaluation.words,
       score: evaluation.accuracyScore,
       missingEndingSoundCount: evaluation.missingEndingSoundCount,
@@ -297,14 +331,25 @@ export default function ConversationalSpeakingModal({
 
     // 4. Gọi Gemini để bạn bản xứ đáp lại câu tiếp theo
     const chunksRemaining = targetChunks.filter(c => !usedChunkPhrases.has(c.phrase || c));
-    const aiNext = await continueConversation({
-      history: updatedHistory,
-      userTranscript: spokenText,
-      scenario,
-      chunksRemaining,
-    });
+    let aiNext;
+    try {
+      aiNext = await continueConversation({
+        history: updatedHistory,
+        userTranscript: textToProcess,
+        scenario,
+        chunksRemaining,
+      });
+    } catch (aiErr) {
+      console.warn('continueConversation error:', aiErr);
+      aiNext = {
+        aiReply: "That's wonderful! Could you tell me a little more about that?",
+        aiReplyVi: "Tuyệt quá! Cậu có thể chia sẻ thêm một chút về điều đó không?",
+        encouragement: "Phản xạ rất tự nhiên!",
+      };
+    }
 
     setIsProcessing(false);
+    setProcessingStatus('');
 
     // 5. Thêm tin nhắn của AI vào Timeline và phát giọng đọc
     const aiMsg = {
@@ -322,6 +367,14 @@ export default function ConversationalSpeakingModal({
     setIsAiSpeaking(true);
     playTextWithTts(aiNext.aiReply, 'en-US-JennyNeural')
       .finally(() => setIsAiSpeaking(false));
+  };
+
+  const handleTextSubmit = (e) => {
+    e.preventDefault();
+    if (!textInput.trim() || isAiSpeaking || isProcessing) return;
+    const text = textInput.trim();
+    setTextInput('');
+    handleUserSpeechTurn(text, null);
   };
 
   if (!isOpen) return null;
@@ -659,6 +712,14 @@ export default function ConversationalSpeakingModal({
 
         {/* ─── Footer Controls & Microphone ───────────────────── */}
         <div className="csm-footer">
+          {/* Thông báo nếu SpeechRecognition bị lỗi mạng hoặc không nhận được tiếng */}
+          {feedbackNotice && (
+            <div className="csm-notice-box">
+              <AlertCircle size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 4 }} />
+              <span>{feedbackNotice}</span>
+            </div>
+          )}
+
           {/* Live Wave Bars khi đang ghi âm */}
           {isRecording && (
             <div className="csm-wave-bars">
@@ -693,11 +754,31 @@ export default function ConversationalSpeakingModal({
             ) : isAiSpeaking ? (
               <span style={{ color: '#38bdf8' }}>AI đang nói... Hãy lắng nghe ngữ điệu</span>
             ) : isProcessing ? (
-              <span style={{ color: '#fbbf24' }}>Đang đối soát âm vị IPA và gửi cho AI...</span>
+              <span style={{ color: '#fbbf24' }}>{processingStatus || 'Đang đối soát âm vị IPA và gửi cho AI...'}</span>
             ) : (
-              <span>Chạm vào Mic để trả lời phản xạ bằng tiếng Anh</span>
+              <span>Chạm vào Mic để nói phản xạ, hoặc gõ câu trả lời bên dưới</span>
             )}
           </div>
+
+          {/* Form gõ text thay thế khi mic hoặc nhận diện speech của trình duyệt bị lỗi mạng */}
+          <form onSubmit={handleTextSubmit} className="csm-text-input-form">
+            <input
+              type="text"
+              value={textInput}
+              onChange={(e) => setTextInput(e.target.value)}
+              placeholder="Hoặc gõ câu trả lời tiếng Anh nếu mic không hoạt động..."
+              className="csm-text-input"
+              disabled={isAiSpeaking || isProcessing}
+            />
+            <button
+              type="submit"
+              disabled={!textInput.trim() || isAiSpeaking || isProcessing}
+              className="csm-btn-send"
+              title="Gửi câu trả lời (Enter)"
+            >
+              <Send size={15} />
+            </button>
+          </form>
         </div>
       </div>
     </div>

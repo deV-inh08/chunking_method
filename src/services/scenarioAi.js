@@ -9,8 +9,7 @@
  */
 
 import { getApiKeys } from '../store/storage';
-
-const BASE_URL = 'https://generativelanguage.googleapis.com/v1beta';
+import { callGemini } from './ai';
 
 // ─── Danh sách Tình huống Đời Thực Phong Phú (Offline Presets) ───────────────
 export const REAL_LIFE_PRESETS = [
@@ -102,34 +101,16 @@ Return ONLY a valid JSON object matching this schema:
   ]
 }`;
 
-  for (const apiKey of allKeys) {
-    try {
-      const res = await fetch(`${BASE_URL}/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: {
-            temperature: 0.7,
-            responseMimeType: 'application/json',
-          },
-        }),
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        const rawJson = data.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (rawJson) {
-          const parsed = JSON.parse(rawJson);
-          return {
-            id: 'dynamic_' + Date.now(),
-            ...parsed,
-          };
-        }
-      }
-    } catch (e) {
-      console.warn('[Scenario AI] Gemini error, trying next:', e);
+  try {
+    const parsed = await callGemini(null, prompt, 'Generate the roleplay scenario in JSON format.', { temperature: 0.7 });
+    if (parsed && parsed.openingMessage) {
+      return {
+        id: 'dynamic_' + Date.now(),
+        ...parsed,
+      };
     }
+  } catch (e) {
+    console.warn('[Scenario AI] Gemini error, using fallback:', e);
   }
 
   // Fallback preset
@@ -190,30 +171,13 @@ Return ONLY a valid JSON object matching this schema:
   "isFinished": boolean (true if conversation has reached a natural conclusion after 4-6 turns, otherwise false)
 }`;
 
-  for (const apiKey of allKeys) {
-    try {
-      const res = await fetch(`${BASE_URL}/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: {
-            temperature: 0.65,
-            responseMimeType: 'application/json',
-          },
-        }),
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        const rawJson = data.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (rawJson) {
-          return JSON.parse(rawJson);
-        }
-      }
-    } catch (e) {
-      console.warn('[Conversation AI] Gemini error:', e);
+  try {
+    const parsed = await callGemini(null, prompt, 'Respond to the user in JSON format.', { temperature: 0.65 });
+    if (parsed && parsed.aiReply) {
+      return parsed;
     }
+  } catch (e) {
+    console.warn('[Conversation AI] Gemini error, using fallback:', e);
   }
 
   return {

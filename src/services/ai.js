@@ -73,7 +73,7 @@ const GEMINI_URL = (model, apiKey) =>
 // Rate-limit blacklist (model & key combined)
 const _rateLimitedKeys = new Set();
 
-async function callGemini(passedApiKey, systemPrompt, userMessage, opts = {}) {
+export async function callGemini(passedApiKey, systemPrompt, userMessage, opts = {}) {
   // Lấy danh sách tất cả API key khả dụng (Key 1, Key 2...)
   let allKeys = getApiKeys();
   if (passedApiKey && !allKeys.includes(passedApiKey)) {
@@ -159,9 +159,6 @@ async function callGemini(passedApiKey, systemPrompt, userMessage, opts = {}) {
 
   throw lastError || new Error('Tất cả API Key và Model đều bị rate limit. Vui lòng thử lại sau ít phút.');
 }
-
-
-
 
 // ─── Analyze transcript → extract chunks ──────────────────────
 export async function analyzeTranscript(text, part, apiKey) {
@@ -795,7 +792,25 @@ NGUYÊN TẮC PHÂN TÍCH:
  * Transcribe recorded audio with Gemini Flash Audio Multimodal
  * Dùng làm fallback cực kỳ chuẩn xác nếu trình duyệt không hỗ trợ Web Speech API
  */
-export async function transcribeAudioWithGemini(audioBase64, mimeType = 'audio/webm', customApiKey = null) {
+export async function transcribeAudioWithGemini(audioInput, mimeType = 'audio/webm', customApiKey = null) {
+  if (!audioInput) return '';
+
+  let audioBase64 = audioInput;
+  let cleanMime = mimeType ? mimeType.split(';')[0] : 'audio/webm';
+
+  if (typeof Blob !== 'undefined' && audioInput instanceof Blob) {
+    cleanMime = audioInput.type ? audioInput.type.split(';')[0] : cleanMime;
+    audioBase64 = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const b64 = (reader.result || '').split(',')[1];
+        resolve(b64);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(audioInput);
+    });
+  }
+
   if (!audioBase64) return '';
 
   let allKeys = getApiKeys();
@@ -803,8 +818,6 @@ export async function transcribeAudioWithGemini(audioBase64, mimeType = 'audio/w
     allKeys = [customApiKey, ...allKeys];
   }
   if (allKeys.length === 0) return '';
-
-  const cleanMime = mimeType ? mimeType.split(';')[0] : 'audio/webm';
 
   for (const apiKey of allKeys) {
     try {
