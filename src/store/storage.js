@@ -342,7 +342,18 @@ export function saveSettings(settings) {
 export function getApiKeys() {
   const keys = [];
 
-  // 1. Env keys (VITE_API_KEY phẩy phân cách hoặc VITE_API_KEY_2)
+  // 1. Settings keys (người dùng nhập trong modal Settings - ưu tiên cao nhất)
+  const settings = getSettings();
+  if (settings.apiKey && settings.apiKey.trim()) {
+    const trimmed = settings.apiKey.trim();
+    if (!keys.includes(trimmed)) keys.push(trimmed);
+  }
+  if (settings.apiKey2 && settings.apiKey2.trim()) {
+    const trimmed = settings.apiKey2.trim();
+    if (!keys.includes(trimmed)) keys.push(trimmed);
+  }
+
+  // 2. Env keys (VITE_API_KEY phẩy phân cách hoặc VITE_API_KEY_2)
   const envKey = import.meta.env.VITE_API_KEY || '';
   const envKey2 = import.meta.env.VITE_API_KEY_2 || '';
 
@@ -358,15 +369,6 @@ export function getApiKeys() {
       const trimmed = k.trim();
       if (trimmed && !keys.includes(trimmed)) keys.push(trimmed);
     });
-  }
-
-  // 2. Settings keys (người dùng nhập trong modal Settings)
-  const settings = getSettings();
-  if (settings.apiKey && !keys.includes(settings.apiKey)) {
-    keys.push(settings.apiKey);
-  }
-  if (settings.apiKey2 && !keys.includes(settings.apiKey2)) {
-    keys.push(settings.apiKey2);
   }
 
   return keys;

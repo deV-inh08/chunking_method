@@ -1,12 +1,11 @@
 import { getApiKeys } from '../store/storage';
 
-// Priority list — gemini-1.5-flash is the most stable and universally supported for generateContent & multimodal audio
+// Priority list — gemini-3.6-flash is Google's latest, fastest, and recommended multimodal model
 const MODEL_CANDIDATES = [
-  'gemini-1.5-flash',
-  'gemini-1.5-flash-8b',
-  'gemini-2.0-flash',
-  'gemini-2.0-flash-lite',
-  'gemini-1.5-pro',
+  'gemini-3.6-flash',
+  'gemini-3.5-flash',
+  'gemini-3.5-flash-lite',
+  'gemini-2.5-flash',
 ];
 
 const BASE_URL = 'https://generativelanguage.googleapis.com/v1beta';
@@ -43,8 +42,8 @@ async function resolveModel(apiKey) {
       if (testRes.ok) return model;
     } catch {}
   }
-  // Mặc định an toàn: gemini-1.5-flash
-  return 'gemini-1.5-flash';
+  // Mặc định an toàn: gemini-3.6-flash
+  return 'gemini-3.6-flash';
 }
 
 let _cachedModel = null;
@@ -516,14 +515,20 @@ Quy tắc chấm:
 
 // ─── Validate API key ──────────────────────────────────────────
 export async function testApiKey(apiKey) {
-  try {
-    _cachedModel = null; // reset cache so we re-probe models
-    const model = await resolveModel(apiKey);
-    _cachedModel = model;
-    return !!model;
-  } catch {
+  if (!apiKey || typeof apiKey !== 'string' || !apiKey.trim()) {
     return false;
   }
+  const cleanKey = apiKey.trim();
+  for (const model of MODEL_CANDIDATES) {
+    try {
+      const res = await fetch(`${BASE_URL}/models/${model}?key=${cleanKey}`);
+      if (res.ok) {
+        _cachedModel = model;
+        return true;
+      }
+    } catch {}
+  }
+  return false;
 }
 
 
@@ -769,7 +774,7 @@ NGUYÊN TẮC PHÂN TÍCH:
 - feedbackSummary: 1-2 câu nhận xét tổng kết ngắn gọn, thân thiện.`;
 
   return callGemini(apiKey, systemPrompt, userMessage, {
-    model: 'gemini-2.5-flash-lite',
+    model: 'gemini-3.6-flash',
     generationConfig: {
       temperature: 0.2,
     },

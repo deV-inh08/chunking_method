@@ -14,7 +14,7 @@ export const SPEAKING_CONFIG = {
   NUDGE_AT_TURN: 4,       // Nếu đến lượt này mà chưa dùng chunk → AI chủ động dẫn dắt
   SESSION_TIMEOUT_MS: 3 * 60 * 1000,
   MODEL: LIVE_MODELS[0],
-  GRADING_MODEL: 'gemini-2.5-flash-lite',
+  GRADING_MODEL: 'gemini-3.6-flash',
 };
 
 // ─── Audio Helpers (Downsampling & PCM Encoding) ─────────────────────────
@@ -494,7 +494,7 @@ ${conversationHistory}
 Task: Output ONLY 1 short spoken conversational response (1-2 brief sentences, under 15 words).
 Direct speech ONLY. NO thinking, NO formatting, NO labels, NO prefixes.`;
 
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${encodeURIComponent(this.apiKey)}`, {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${encodeURIComponent(this.apiKey)}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

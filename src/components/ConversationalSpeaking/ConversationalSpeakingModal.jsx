@@ -84,6 +84,7 @@ export default function ConversationalSpeakingModal({
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingStatus, setProcessingStatus] = useState('');
   const [feedbackNotice, setFeedbackNotice] = useState('');
+  const [liveSpokenText, setLiveSpokenText] = useState('');
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
   const [volumeLevel, setVolumeLevel] = useState(0);
   const [voiceStudioActive, setVoiceStudioActive] = useState(false);
@@ -248,14 +249,27 @@ export default function ConversationalSpeakingModal({
     if (isRecording || isAiSpeaking || isProcessing) return;
     stopAudio();
     transcriptBufferRef.current = '';
+    setLiveSpokenText('');
     audioChunksRef.current = [];
 
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
+      });
       startVolumeMonitor(stream);
 
-      // 1. MediaRecorder để lưu Audio Buffer cho Sherpa GOP
-      const mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm' });
+      // 1. MediaRecorder để lưu Audio Buffer cho Sherpa GOP & Gemini Multimodal
+      const preferredMime = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
+        ? 'audio/webm;codecs=opus'
+        : MediaRecorder.isTypeSupported('audio/webm')
+        ? 'audio/webm'
+        : MediaRecorder.isTypeSupported('audio/mp4')
+        ? 'audio/mp4'
+        : '';
+
+      const mediaRecorder = preferredMime
+        ? new MediaRecorder(stream, { mimeType: preferredMime })
+        : new MediaRecorder(stream);
       mediaRecorderRef.current = mediaRecorder;
 
       mediaRecorder.ondataavailable = (e) => {
@@ -277,16 +291,18 @@ export default function ConversationalSpeakingModal({
         recognition.onresult = (event) => {
           let interim = '';
           let finalTranscript = '';
-          for (let i = event.resultIndex; i < event.results.length; ++i) {
+          for (let i = 0; i < event.results.length; ++i) {
+            const transcript = event.results[i][0].transcript;
             if (event.results[i].isFinal) {
-              finalTranscript += event.results[i][0].transcript + ' ';
+              finalTranscript += transcript + ' ';
             } else {
-              interim += event.results[i][0].transcript;
+              interim += transcript;
             }
           }
           const combined = (finalTranscript + interim).trim();
           if (combined) {
             transcriptBufferRef.current = combined;
+            setLiveSpokenText(combined);
           }
         };
 
@@ -305,10 +321,13 @@ export default function ConversationalSpeakingModal({
     }
   };
 
-  const stopRecording = () => {
+  const stopRecording = async () => {
     if (!isRecording) return;
     setIsRecording(false);
     stopVolumeMonitor();
+
+    // Cho Web Speech API 250ms để flush nốt kết quả cuối cùng
+    await new Promise(r => setTimeout(r, 250));
 
     if (recognitionRef.current) {
       try { recognitionRef.current.stop(); } catch {}
@@ -317,12 +336,23 @@ export default function ConversationalSpeakingModal({
 
     if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
       mediaRecorderRef.current.onstop = async () => {
-        const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
-        const spokenText = transcriptBufferRef.current.trim();
+        const mime = mediaRecorderRef.current?.mimeType || 'audio/webm';
+        const audioBlob = new Blob(audioChunksRef.current, { type: mime });
+        const spokenText = transcriptBufferRef.current.trim() || liveSpokenText.trim();
         handleUserSpeechTurn(spokenText, audioBlob);
       };
-      mediaRecorderRef.current.stop();
-      mediaRecorderRef.current.stream?.getTracks().forEach(t => t.stop());
+      try {
+        mediaRecorderRef.current.requestData();
+        mediaRecorderRef.current.stop();
+      } catch {
+        const mime = mediaRecorderRef.current?.mimeType || 'audio/webm';
+        const audioBlob = new Blob(audioChunksRef.current, { type: mime });
+        const spokenText = transcriptBufferRef.current.trim() || liveSpokenText.trim();
+        handleUserSpeechTurn(spokenText, audioBlob);
+      }
+      mediaRecorderRef.current.stream?.getTracks().forEach(t => {
+        try { t.stop(); } catch {}
+      });
     }
   };
 
@@ -989,6 +1019,14 @@ export default function ConversationalSpeakingModal({
                       />
                     );
                   })}
+                </div>
+              )}
+
+              {/* Live Spoken Subtitle */}
+              {isRecording && liveSpokenText && (
+                <div className="csm-live-spoken-pill animate-fade-in">
+                  <span className="csm-live-dot" />
+                  <span>"{liveSpokenText}"</span>
                 </div>
               )}
 

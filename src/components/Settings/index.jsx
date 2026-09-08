@@ -2,10 +2,12 @@ import { useState } from 'react';
 import {
   Key, CheckCircle, AlertTriangle, Globe, BookOpen,
   User, LogIn, LogOut, Bell, Flame, Info, Send,
+  XCircle, ExternalLink,
 } from 'lucide-react';
 import { Modal, Spinner, Badge } from '../ui';
 import { isSpeechSupported } from '../../services/speech';
 import { authUpdatePassword } from '../../services/supabase';
+import { testApiKey } from '../../services/ai';
 import {
   getNotificationPermission,
   requestNotificationPermission,
@@ -15,6 +17,13 @@ import {
 import { TRACK_CONFIGS } from '../../services/srs';
 
 export function SettingsModal({ settings, onSave, onClose, user, onSignOut, onOpenAuth }) {
+  const [apiKey, setApiKey]             = useState(settings.apiKey || '');
+  const [apiKey2, setApiKey2]           = useState(settings.apiKey2 || '');
+  const [testingAi, setTestingAi]       = useState(false);
+  const [aiTestResult, setAiTestResult] = useState(null);
+  const [testingAi2, setTestingAi2]     = useState(false);
+  const [aiTestResult2, setAiTestResult2] = useState(null);
+
   const [srsTrack, setSrsTrack]         = useState(settings.srsTrack || 'track_a');
   const [notificationsEnabled, setNotificationsEnabled] = useState(Boolean(settings.notificationsEnabled));
 
@@ -93,9 +102,25 @@ export function SettingsModal({ settings, onSave, onClose, user, onSignOut, onOp
     }
   };
 
+  const handleTestAi = async (key, setTesting, setResult) => {
+    if (!key || !key.trim()) return;
+    setTesting(true);
+    setResult(null);
+    try {
+      const ok = await testApiKey(key.trim());
+      setResult(ok);
+    } catch {
+      setResult(false);
+    } finally {
+      setTesting(false);
+    }
+  };
+
   const handleSave = () => {
     onSave({
       ...settings,
+      apiKey: apiKey.trim(),
+      apiKey2: apiKey2.trim(),
       srsTrack,
       notificationsEnabled,
     });
@@ -236,6 +261,98 @@ export function SettingsModal({ settings, onSave, onClose, user, onSignOut, onOp
             </button>
           </div>
         )}
+      </div>
+
+      <div className="divider" />
+
+      {/* ─── Section: Google Gemini API Keys ─────────────────── */}
+      <div className="mb-5">
+        <label className="label" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <span>
+            <Key size={12} style={{ display: 'inline', marginRight: 4 }} />
+            Google Gemini API Key (Model: gemini-3.6-flash)
+          </span>
+          <a
+            href="https://aistudio.google.com/app/apikey"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontSize: 11.5, color: 'var(--accent-300)', display: 'inline-flex', alignItems: 'center', gap: 4, textDecoration: 'none' }}
+          >
+            Lấy key miễn phí tại AI Studio <ExternalLink size={11} />
+          </a>
+        </label>
+
+        {import.meta.env.VITE_API_KEY && (
+          <div style={{ fontSize: 11.5, color: 'var(--text-muted)', marginBottom: 8 }}>
+            Hệ thống đang nạp sẵn key từ biến môi trường. Bạn có thể nhập key riêng bên dưới để dùng tài khoản cá nhân.
+          </div>
+        )}
+
+        <div className="flex gap-2">
+          <input
+            type="password"
+            className="input-field flex-1"
+            placeholder={import.meta.env.VITE_API_KEY ? 'Đã có key từ hệ thống (hoặc dán key riêng...)' : 'Dán Gemini API Key (AQ... hoặc AIzaSy...)'}
+            value={apiKey}
+            onChange={(e) => { setApiKey(e.target.value); setAiTestResult(null); }}
+            autoComplete="off"
+          />
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={() => handleTestAi(apiKey || import.meta.env.VITE_API_KEY || '', setTestingAi, setAiTestResult)}
+            disabled={(!apiKey.trim() && !import.meta.env.VITE_API_KEY) || testingAi}
+            style={{ whiteSpace: 'nowrap' }}
+          >
+            {testingAi ? <Spinner size={14} /> : 'Kiểm tra'}
+          </button>
+        </div>
+
+        {aiTestResult === true && (
+          <div className="flex items-center gap-2 mt-2" style={{ color: 'var(--success-text)', fontSize: 12.5 }}>
+            <CheckCircle size={14} /> Kết nối Gemini thành công! Sẵn sàng đàm thoại và phân tích phát âm.
+          </div>
+        )}
+        {aiTestResult === false && (
+          <div className="flex items-center gap-2 mt-2" style={{ color: 'var(--error-text)', fontSize: 12.5 }}>
+            <XCircle size={14} /> Không thể kết nối tới Google Gemini. Vui lòng kiểm tra lại API Key.
+          </div>
+        )}
+
+        {/* Secondary API Key (Account 2 Failover) */}
+        <div style={{ marginTop: 12 }}>
+          <label className="label" style={{ fontSize: 11.5, color: 'var(--text-secondary)' }}>
+            Key dự phòng (Account 2 - Tùy chọn)
+          </label>
+          <div className="flex gap-2">
+            <input
+              type="password"
+              className="input-field flex-1"
+              placeholder="API Key dự phòng (Tự động chuyển khi hết quota)"
+              value={apiKey2}
+              onChange={(e) => { setApiKey2(e.target.value); setAiTestResult2(null); }}
+              autoComplete="off"
+            />
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => handleTestAi(apiKey2, setTestingAi2, setAiTestResult2)}
+              disabled={!apiKey2.trim() || testingAi2}
+            >
+              {testingAi2 ? <Spinner size={14} /> : 'Kiểm tra'}
+            </button>
+          </div>
+          {aiTestResult2 === true && (
+            <div className="flex items-center gap-2 mt-2" style={{ color: 'var(--success-text)', fontSize: 12.5 }}>
+              <CheckCircle size={14} /> Key dự phòng 2 hợp lệ!
+            </div>
+          )}
+          {aiTestResult2 === false && (
+            <div className="flex items-center gap-2 mt-2" style={{ color: 'var(--error-text)', fontSize: 12.5 }}>
+              <XCircle size={14} /> Key dự phòng 2 không hợp lệ.
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="divider" />

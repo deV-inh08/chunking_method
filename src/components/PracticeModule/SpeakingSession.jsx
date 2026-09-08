@@ -390,6 +390,8 @@ export function SpeakingSession({
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
   const capturedSpeechRef = useRef('');
+  const recordingStartTimeRef = useRef(0);
+  const voiceFramesRef = useRef(0);
 
   // Audio player cho giọng đọc của user
   const [playingAudioUrl, setPlayingAudioUrl] = useState(null);
@@ -664,6 +666,8 @@ export function SpeakingSession({
     setCurrentAttempt(null);
     setSelectedWordDetail(null);
     audioChunksRef.current = [];
+    recordingStartTimeRef.current = Date.now();
+    voiceFramesRef.current = 0;
 
     try {
       if (!mediaStreamRef.current) {
@@ -688,6 +692,7 @@ export function SpeakingSession({
           let sum = 0;
           for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
           const avg = sum / dataArray.length;
+          if (avg > 8) voiceFramesRef.current++;
           setVolume(Math.min(100, Math.round(avg * 2.5)));
           requestAnimationFrame(checkVol);
         };
@@ -840,6 +845,15 @@ export function SpeakingSession({
       } catch (acErr) {
         console.warn('Acoustic extraction warning:', acErr);
       }
+    }
+
+    const recDuration = (Date.now() - (recordingStartTimeRef.current || Date.now())) / 1000;
+    const hasVoiceActivity = voiceFramesRef.current > 3 || (audioBlob && audioBlob.size > 2000);
+    if ((!acoustic || !acoustic.duration) && hasVoiceActivity && recDuration > 0.5) {
+      acoustic = {
+        duration: recDuration,
+        hasSibilantEnergy: true,
+      };
     }
 
     // ─── CHẤM ĐIỂM CẤP ĐỘ 2: GỬI AUDIO LÊN GEMINI PHÂN TÍCH NGỮ ÂM TỪNG TỪ ───
