@@ -1,19 +1,17 @@
 import { getApiKeys } from '../store/storage';
 
-// Priority list — tries each in order until one works
+// Priority list — gemini-1.5-flash is the most stable and universally supported for generateContent & multimodal audio
 const MODEL_CANDIDATES = [
+  'gemini-1.5-flash',
+  'gemini-1.5-flash-8b',
   'gemini-2.0-flash',
   'gemini-2.0-flash-lite',
-  'gemini-1.5-flash',
-  'gemini-2.5-flash',
-  'gemini-2.5-flash-lite',
-  'gemini-3.5-flash-lite',
-  'gemini-3.1-flash-lite',
+  'gemini-1.5-pro',
 ];
 
 const BASE_URL = 'https://generativelanguage.googleapis.com/v1beta';
 
-// ─── Rate-limit blacklist (resets on page reload) ─────────────
+// ─── Rate-limit & 404 blacklist (resets on page reload) ─────────────
 const _rateLimitedModels = new Set();
 
 // ─── Throttle: delay giữa các lần gọi API ────────────────────
@@ -36,31 +34,24 @@ async function sleep(ms) {
 }
 
 async function resolveModel(apiKey) {
-  // Try each candidate; skip rate-limited ones; return first that the API accepts
   for (const model of MODEL_CANDIDATES) {
     if (_rateLimitedModels.has(model)) continue;
-    const testRes = await fetch(
-      `${BASE_URL}/models/${model}?key=${apiKey}`
-    );
-    if (testRes.ok) return model;
+    try {
+      const testRes = await fetch(
+        `${BASE_URL}/models/${model}?key=${apiKey}`
+      );
+      if (testRes.ok) return model;
+    } catch {}
   }
-  // Last resort: ask the API which models exist
-  const listRes = await fetch(`${BASE_URL}/models?key=${apiKey}`);
-  if (listRes.ok) {
-    const { models = [] } = await listRes.json();
-    const flash = models
-      .map(m => m.name.replace('models/', ''))
-      .filter(n => n.includes('flash') && !n.includes('preview') && !_rateLimitedModels.has(n))
-      .sort()
-      .reverse()[0]; // highest version first
-    if (flash) return flash;
-  }
-  throw new Error('Không tìm được model Gemini khả dụng. Vui lòng kiểm tra API key.');
+  // Mặc định an toàn: gemini-1.5-flash
+  return 'gemini-1.5-flash';
 }
 
 let _cachedModel = null;
 async function getModel(apiKey) {
-  if (!_cachedModel) _cachedModel = await resolveModel(apiKey);
+  if (!_cachedModel || _rateLimitedModels.has(_cachedModel)) {
+    _cachedModel = await resolveModel(apiKey);
+  }
   return _cachedModel;
 }
 
@@ -816,47 +807,66 @@ export async function transcribeAudioWithGemini(audioInput, mimeType = 'audio/we
   }
   if (allKeys.length === 0) return '';
 
+  const candidateModels = MODEL_CANDIDATES.filter(m => !_rateLimitedModels.has(m));
+  const modelsToTry = candidateModels.length > 0 ? candidateModels : MODEL_CANDIDATES;
+
   for (const apiKey of allKeys) {
-    try {
-      const model = await getModel(apiKey);
-      const url = `${BASE_URL}/models/${model}:generateContent?key=${apiKey}`;
+    for (const model of modelsToTry) {
+      if (_rateLimitedModels.has(model)) continue;
 
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [
-            {
-              role: 'user',
-              parts: [
-                { text: 'Transcribe this spoken English audio recording. Return ONLY the English words spoken, with no commentary, no markdown, and no quotation marks.' },
-                {
-                  inlineData: {
-                    mimeType: cleanMime,
-                    data: audioBase64,
+      try {
+        const url = `${BASE_URL}/models/${model}:generateContent?key=${apiKey}`;
+
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [
+              {
+                role: 'user',
+                parts: [
+                  { text: 'Transcribe this spoken English audio recording. Return ONLY the English words spoken, with no commentary, no markdown, and no quotation marks.' },
+                  {
+                    inlineData: {
+                      mimeType: cleanMime,
+                      data: audioBase64,
+                    },
                   },
-                },
-              ],
+                ],
+              },
+            ],
+            generationConfig: {
+              temperature: 0.0,
             },
-          ],
-          generationConfig: {
-            temperature: 0.0,
-          },
-        }),
-      });
+          }),
+        });
 
-      if (!response.ok) {
-        console.warn(`[Gemini Audio] ${model} status ${response.status}`);
-        continue;
-      }
+        if (response.status === 404 || response.status === 400) {
+          console.warn(`[Gemini Audio] ${model} status ${response.status}. Blacklisting model and trying next...`);
+          _rateLimitedModels.add(model);
+          if (_cachedModel === model) _cachedModel = null;
+          continue;
+        }
 
-      const data = await response.json();
-      const transcript = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
-      if (transcript) {
-        return transcript.replace(/["\n\r]/g, ' ').replace(/\s+/g, ' ').trim();
+        if (response.status === 429) {
+          _rateLimitedModels.add(model);
+          continue;
+        }
+
+        if (!response.ok) {
+          console.warn(`[Gemini Audio] ${model} status ${response.status}`);
+          continue;
+        }
+
+        const data = await response.json();
+        const transcript = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
+        if (transcript) {
+          _cachedModel = model;
+          return transcript.replace(/["\n\r]/g, ' ').replace(/\s+/g, ' ').trim();
+        }
+      } catch (err) {
+        console.warn(`[Gemini Audio] Error with ${model}:`, err);
       }
-    } catch (err) {
-      console.warn(`[Gemini Audio] Error with ${apiKey}:`, err);
     }
   }
 
@@ -931,63 +941,83 @@ Return ONLY a JSON object matching this schema:
   ]
 }`;
 
+  const candidateModels = MODEL_CANDIDATES.filter(m => !_rateLimitedModels.has(m));
+  const modelsToTry = candidateModels.length > 0 ? candidateModels : MODEL_CANDIDATES;
+
   for (const apiKey of allKeys) {
-    try {
-      const model = await getModel(apiKey);
-      const url = `${BASE_URL}/models/${model}:generateContent?key=${apiKey}`;
+    for (const model of modelsToTry) {
+      if (_rateLimitedModels.has(model)) continue;
 
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [
-            {
-              role: 'user',
-              parts: [
-                { text: promptText },
-                {
-                  inlineData: {
-                    mimeType: cleanMime,
-                    data: audioBase64,
+      try {
+        const url = `${BASE_URL}/models/${model}:generateContent?key=${apiKey}`;
+
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [
+              {
+                role: 'user',
+                parts: [
+                  { text: promptText },
+                  {
+                    inlineData: {
+                      mimeType: cleanMime,
+                      data: audioBase64,
+                    },
                   },
-                },
-              ],
+                ],
+              },
+            ],
+            generationConfig: {
+              temperature: 0.0,
+              responseMimeType: 'application/json',
             },
-          ],
-          generationConfig: {
-            temperature: 0.0,
-            responseMimeType: 'application/json',
-          },
-        }),
-      });
+          }),
+        });
 
-      if (!response.ok) {
-        console.warn(`[Gemini Pronunciation] ${model} status ${response.status}`);
-        continue;
-      }
-
-      const data = await response.json();
-      const rawJson = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
-      if (rawJson) {
-        let parsed = null;
-        try {
-          parsed = JSON.parse(rawJson);
-        } catch {
-          const cleaned = rawJson.replace(/```json\s*/gi, '').replace(/```\s*$/gi, '').trim();
-          parsed = JSON.parse(cleaned);
+        if (response.status === 404 || response.status === 400) {
+          console.warn(`[Gemini Pronunciation] ${model} status ${response.status}. Blacklisting model and trying next...`);
+          _rateLimitedModels.add(model);
+          if (_cachedModel === model) _cachedModel = null;
+          continue;
         }
 
-        if (parsed && Array.isArray(parsed.words) && parsed.words.length > 0) {
-          // Tính lại accuracyScore toán học chuẩn xác từ danh sách words
-          const totalScore = parsed.words.reduce((sum, w) => sum + (Number(w.score) || 0), 0);
-          const computedAccuracy = Math.round(totalScore / parsed.words.length);
-          parsed.accuracyScore = computedAccuracy;
-          parsed.isPassed = computedAccuracy >= 75 && !parsed.words.some(w => w.status === 'incorrect' && w.isChunk);
-          return parsed;
+        if (response.status === 429) {
+          console.warn(`[Gemini Pronunciation] ${model} hit 429 rate limit.`);
+          _rateLimitedModels.add(model);
+          continue;
         }
+
+        if (!response.ok) {
+          console.warn(`[Gemini Pronunciation] ${model} status ${response.status}`);
+          continue;
+        }
+
+        const data = await response.json();
+        const rawJson = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
+        if (rawJson) {
+          let parsed = null;
+          try {
+            parsed = JSON.parse(rawJson);
+          } catch {
+            const cleaned = rawJson.replace(/```json\s*/gi, '').replace(/```\s*$/gi, '').trim();
+            parsed = JSON.parse(cleaned);
+          }
+
+          if (parsed && Array.isArray(parsed.words) && parsed.words.length > 0) {
+            // Tính lại accuracyScore toán học chuẩn xác từ danh sách words
+            const totalScore = parsed.words.reduce((sum, w) => sum + (Number(w.score) || 0), 0);
+            const computedAccuracy = Math.round(totalScore / parsed.words.length);
+            parsed.accuracyScore = computedAccuracy;
+            parsed.isPassed = computedAccuracy >= 75 && !parsed.words.some(w => w.status === 'incorrect' && w.isChunk);
+            _cachedModel = model;
+            return parsed;
+          }
+        }
+      } catch (err) {
+        console.warn(`[Gemini Pronunciation] Error with ${model}:`, err);
       }
-    } catch (err) {
-      console.warn(`[Gemini Pronunciation] Error with key:`, err);
     }
   }
 
