@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import {
   Mic, MicOff, Volume2, Sparkles, X, Check, ArrowRight,
   RotateCcw, MessageSquare, AlertCircle, Info, Radio,
-  ChevronDown, ChevronLeft, ChevronRight, HelpCircle, Layers, CheckCircle2, Award, Plus
+  ChevronDown, ChevronUp, ChevronLeft, ChevronRight, HelpCircle, Layers, CheckCircle2, Award, Plus, Lightbulb
 } from 'lucide-react';
 import { playTextWithTts, stopAudio, checkVoiceStudioStatus } from '../../services/ttsService';
 import { evaluatePronunciationGOP } from '../../services/sherpaOnnxService';
@@ -17,6 +17,46 @@ import './ConversationalSpeaking.css';
 
 const TOPICS_PER_PAGE = 6;
 
+/**
+ * Helper tách chuỗi văn bản và tô sáng (green highlight) các cụm chunk mục tiêu
+ */
+function renderHighlightedChunks(text, targetChunks = []) {
+  if (!text) return null;
+  if (!targetChunks || targetChunks.length === 0) return text;
+
+  // Thu thập danh sách các cụm từ cần highlight kèm biến thể thì quá khứ thông dụng
+  const rawPhrases = [];
+  targetChunks.forEach(c => {
+    const p = (typeof c === 'string' ? c : c.phrase || '').trim();
+    if (p) {
+      rawPhrases.push(p);
+      if (p.includes('make a reservation')) rawPhrases.push(p.replace('make a reservation', 'made a reservation'));
+      if (p.includes('feel like')) rawPhrases.push(p.replace('feel like', 'felt like'));
+      if (p.includes('come down with')) rawPhrases.push(p.replace('come down with', 'came down with'));
+      if (p.includes('run out of')) rawPhrases.push(p.replace('run out of', 'ran out of'));
+    }
+  });
+
+  const phrases = Array.from(new Set(rawPhrases)).sort((a, b) => b.length - a.length);
+  if (phrases.length === 0) return text;
+
+  const escaped = phrases.map(p => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+  const regex = new RegExp(`(${escaped})`, 'gi');
+  const parts = text.split(regex);
+  const phraseSet = new Set(phrases.map(p => p.toLowerCase()));
+
+  return parts.map((part, idx) => {
+    if (phraseSet.has(part.toLowerCase())) {
+      return (
+        <span key={idx} className="csm-chunk-highlight">
+          {part}
+        </span>
+      );
+    }
+    return part;
+  });
+}
+
 export default function ConversationalSpeakingModal({
   isOpen,
   onClose,
@@ -30,11 +70,12 @@ export default function ConversationalSpeakingModal({
   const [topicPage, setTopicPage] = useState(1);
   const [customTopicInput, setCustomTopicInput] = useState('');
   const [showCustomTopicInput, setShowCustomTopicInput] = useState(false);
+  const [expandedHintId, setExpandedHintId] = useState(null); // ID tin nhắn đang mở gợi ý trả lời
 
   // ─── States ───────────────────────────────────────────────────
   const [scenario, setScenario] = useState(null);
   const [isLoadingScenario, setIsLoadingScenario] = useState(false);
-  const [history, setHistory] = useState([]); // [{ sender: 'ai'|'user', text, textVi, words: [], score: 0, audioBlob }]
+  const [history, setHistory] = useState([]); // [{ sender: 'ai'|'user', text, textVi, suggestedReply, words: [], score: 0, audioBlob }]
   const [targetChunks, setTargetChunks] = useState([]);
   const [usedChunkPhrases, setUsedChunkPhrases] = useState(new Set());
   
@@ -105,13 +146,13 @@ export default function ConversationalSpeakingModal({
     if (selectedPreset) {
       chosenScenario = {
         ...selectedPreset,
-        targetChunks: initialChunks.length > 0
-          ? initialChunks.map(c => typeof c === 'string' ? { phrase: c, meaningVi: '' } : c)
-          : selectedPreset.defaultChunks.map(p => ({ phrase: p, meaningVi: 'Cụm từ tự nhiên' })),
+        targetChunks: (selectedPreset.defaultChunks || []).map(p =>
+          typeof p === 'string' ? { phrase: p, meaningVi: 'Cụm từ tự nhiên', tip: '' } : p
+        ),
       };
     } else {
       chosenScenario = await generateSpeakingScenario({
-        targetChunks: initialChunks,
+        targetChunks: customTopic ? [] : initialChunks,
         customTopic,
       });
     }
@@ -127,6 +168,8 @@ export default function ConversationalSpeakingModal({
       sender: 'ai',
       text: chosenScenario.openingMessage,
       textVi: chosenScenario.openingMessageVi,
+      suggestedReply: chosenScenario.suggestedReply || chosenScenario.suggestedOpeningReply || '',
+      suggestedReplyVi: chosenScenario.suggestedReplyVi || chosenScenario.suggestedOpeningReplyVi || '',
       timestamp: Date.now(),
     };
     setHistory([openingMsg]);
@@ -331,7 +374,15 @@ export default function ConversationalSpeakingModal({
     }
 
     // 2. Cập nhật các Chunk đã kích hoạt thành công
-    const newlyUsed = evaluation.chunksUsed || [];
+    const newlyUsed = [...(evaluation.chunksUsed || [])];
+    const textLower = textToProcess.toLowerCase();
+    targetChunks.forEach(c => {
+      const phrase = (typeof c === 'string' ? c : c.phrase || '').trim().toLowerCase();
+      if (phrase && textLower.includes(phrase) && !newlyUsed.some(u => u.toLowerCase() === phrase)) {
+        newlyUsed.push(typeof c === 'string' ? c : c.phrase);
+      }
+    });
+
     if (newlyUsed.length > 0) {
       setUsedChunkPhrases(prev => {
         const nextSet = new Set(prev);
@@ -375,6 +426,8 @@ export default function ConversationalSpeakingModal({
         aiReply: "That's wonderful! Could you tell me a little more about that?",
         aiReplyVi: "Tuyệt quá! Cậu có thể chia sẻ thêm một chút về điều đó không?",
         encouragement: "Phản xạ rất tự nhiên!",
+        suggestedReply: chunksRemaining[0]?.phrase ? `To be honest, I want to say that ${chunksRemaining[0].phrase}.` : '',
+        suggestedReplyVi: "Thành thật mà nói, tôi muốn chia sẻ thêm.",
       };
     }
 
@@ -388,6 +441,8 @@ export default function ConversationalSpeakingModal({
       text: aiNext.aiReply,
       textVi: aiNext.aiReplyVi,
       encouragement: aiNext.encouragement,
+      suggestedReply: aiNext.suggestedReply || '',
+      suggestedReplyVi: aiNext.suggestedReplyVi || '',
       timestamp: Date.now(),
     };
 
@@ -547,11 +602,14 @@ export default function ConversationalSpeakingModal({
                       <span className="csm-role-tag ai">AI: {preset.aiRole}</span>
                     </div>
                     <div className="csm-topic-card-chunks">
-                      {preset.defaultChunks?.slice(0, 3).map((chunk, ci) => (
-                        <span key={ci} className="csm-topic-chunk-pill">
-                          {chunk}
-                        </span>
-                      ))}
+                      {preset.defaultChunks?.slice(0, 3).map((chunk, ci) => {
+                        const phrase = typeof chunk === 'string' ? chunk : chunk.phrase;
+                        return (
+                          <span key={ci} className="csm-topic-chunk-pill">
+                            {phrase}
+                          </span>
+                        );
+                      })}
                     </div>
                     <div className="csm-topic-card-action">
                       <span>Bắt đầu nói</span>
@@ -743,17 +801,34 @@ export default function ConversationalSpeakingModal({
                         {/* Metadata & Actions */}
                         <div className={`csm-msg-meta ${isAi ? 'ai' : 'user'}`}>
                           {isAi ? (
-                            <button
-                              onClick={() => {
-                                setIsAiSpeaking(true);
-                                playTextWithTts(msg.text, 'en-US-JennyNeural')
-                                  .finally(() => setIsAiSpeaking(false));
-                              }}
-                              className="csm-btn-replay"
-                            >
-                              <Volume2 size={13} />
-                              <span>Nghe lại</span>
-                            </button>
+                            <div className="csm-ai-actions-row">
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setIsAiSpeaking(true);
+                                  playTextWithTts(msg.text, 'en-US-JennyNeural')
+                                    .finally(() => setIsAiSpeaking(false));
+                                }}
+                                className="csm-btn-replay"
+                                title="Nghe lại câu nói của AI"
+                              >
+                                <Volume2 size={13} />
+                                <span>Nghe lại</span>
+                              </button>
+
+                              {msg.suggestedReply && (
+                                <button
+                                  type="button"
+                                  onClick={() => setExpandedHintId(prev => prev === msg.id ? null : msg.id)}
+                                  className={`csm-btn-hint ${expandedHintId === msg.id ? 'active' : ''}`}
+                                  title="Gợi ý câu trả lời phù hợp với tình huống"
+                                >
+                                  <Lightbulb size={13} />
+                                  <span>Gợi ý trả lời</span>
+                                  {expandedHintId === msg.id ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                                </button>
+                              )}
+                            </div>
                           ) : (
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                               <span
@@ -772,6 +847,46 @@ export default function ConversationalSpeakingModal({
                             </div>
                           )}
                         </div>
+
+                        {/* Hint Box: Gợi ý cách trả lời với Chunk được Highlight màu xanh */}
+                        {isAi && expandedHintId === msg.id && msg.suggestedReply && (
+                          <div className="csm-hint-card animate-fade-in">
+                            <div className="csm-hint-top-bar">
+                              <div className="csm-hint-title">
+                                <Lightbulb size={13} color="#f59e0b" />
+                                <span>Gợi ý cách trả lời</span>
+                              </div>
+                              <button
+                                type="button"
+                                className="csm-hint-listen-btn"
+                                onClick={() => {
+                                  setIsAiSpeaking(true);
+                                  playTextWithTts(msg.suggestedReply, 'en-US-JennyNeural')
+                                    .finally(() => setIsAiSpeaking(false));
+                                }}
+                                title="Nghe phát âm câu mẫu"
+                              >
+                                <Volume2 size={12} />
+                                <span>Nghe câu mẫu</span>
+                              </button>
+                            </div>
+
+                            <div className="csm-hint-en-text">
+                              {renderHighlightedChunks(msg.suggestedReply, targetChunks)}
+                            </div>
+
+                            {msg.suggestedReplyVi && (
+                              <div className="csm-hint-vi-text">
+                                {msg.suggestedReplyVi}
+                              </div>
+                            )}
+
+                            <div className="csm-hint-footer-tip">
+                              <Sparkles size={11} color="#34d399" />
+                              <span>Cụm màu xanh là chunk giúp phản xạ tự nhiên. Hãy bấm Mic và nói câu này!</span>
+                            </div>
+                          </div>
+                        )}
 
                         {/* Lời khen hoặc mẹo ngắn của AI */}
                         {isAi && msg.encouragement && (
@@ -896,9 +1011,7 @@ export default function ConversationalSpeakingModal({
                   <span style={{ color: '#38bdf8' }}>AI đang nói... Hãy lắng nghe phản xạ</span>
                 ) : isProcessing ? (
                   <span style={{ color: '#fbbf24' }}>{processingStatus || 'Đang đối soát âm vị IPA và gửi cho AI...'}</span>
-                ) : (
-                  <span>Chạm vào Mic để bắt đầu nói phản xạ bằng tiếng Anh</span>
-                )}
+                ) : null}
               </div>
             </div>
           </>
