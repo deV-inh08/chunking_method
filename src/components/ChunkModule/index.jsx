@@ -1,4 +1,4 @@
-﻿import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Layers, PenLine,
   CheckSquare, Square, BookOpen, EyeOff, Eye, Flame, Headphones,
@@ -39,21 +39,19 @@ function ChunkCard({
   return (
     <div
       id={`chunk-card-${chunk.id}`}
-      className="card animate-fade-in"
+      className="card cm-chunk-card animate-fade-in"
       style={{
         borderColor: selected ? 'rgba(99,102,241,0.5)' : isDue ? 'rgba(239,68,68,0.4)' : undefined,
         background:  selected ? 'rgba(99,102,241,0.07)' : isDue ? 'rgba(239,68,68,0.03)' : undefined,
-        padding: '12px 14px',
       }}
     >
-      {/* Header row */}
-      <div className="flex items-start gap-3">
+      <div className="cm-chunk-card-grid">
         {/* Checkbox */}
         <button
           id={`chunk-select-${chunk.id}`}
           onClick={() => onToggle(chunk.id)}
-          className="btn btn-ghost btn-icon"
-          style={{ marginTop: 2, flexShrink: 0 }}
+          className="btn btn-ghost btn-icon cm-chunk-checkbox"
+          style={{ marginTop: 2 }}
           title={selected ? 'Bỏ chọn' : 'Chọn để tạo hội thoại AI hoặc luyện tập'}
         >
           {selected
@@ -63,7 +61,7 @@ function ChunkCard({
         </button>
 
         {/* Content */}
-        <div className="flex-1 min-w-0">
+        <div className="cm-chunk-content">
           {/* Phrase + badges */}
           <div className="flex items-center gap-2 flex-wrap mb-1">
             <span style={{ fontWeight: 700, fontSize: 15, color: 'var(--text-primary)' }}>
@@ -116,25 +114,6 @@ function ChunkCard({
           <p style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 6 }}>
             {chunk.meaningVi}
           </p>
-
-          {/* Usage note */}
-          {chunk.usageNote && (
-            <div
-              style={{
-                fontSize: 12,
-                color: 'var(--text-muted)',
-                background: 'var(--bg-base)',
-                border: '1px solid var(--border-subtle)',
-                borderRadius: 'var(--radius-sm)',
-                padding: '5px 8px',
-                marginBottom: 6,
-                lineHeight: 1.5,
-              }}
-            >
-              <span style={{ fontWeight: 600, color: 'var(--accent-300)', marginRight: 4 }}>Cách dùng:</span>
-              {chunk.usageNote}
-            </div>
-          )}
 
           {/* Expandable: original sentence + another example */}
           <button
@@ -641,7 +620,7 @@ export function ChunkModule({
                 </div>
               )}
 
-              <div className="flex flex-col gap-2.5">
+              <div className="cm-chunk-list">
                 {group.chunks.map((chunk) => (
                   <ChunkCard
                     key={chunk.id}

@@ -1,4 +1,4 @@
-﻿/* ═════════════════════════════════════════════════════════════════════
+/* ═════════════════════════════════════════════════════════════════════
    CHUNK MODULE STYLES (Quản lý Chunk gọn gàng, Phân trang, Hội thoại AI)
 ═════════════════════════════════════════════════════════════════════ */
 
@@ -316,6 +316,34 @@
 }
 
 /* Chunk Card Enhancements */
+.cm-chunk-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cm-chunk-card {
+  padding: 13px 16px;
+  border-radius: var(--radius-lg);
+  transition: all 0.15s ease;
+}
+
+.cm-chunk-card-grid {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: 12px;
+}
+
+.cm-chunk-checkbox {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.cm-chunk-content {
+  min-width: 0;
+}
+
 .cm-card-actions {
   display: flex;
   align-items: center;
@@ -483,10 +511,44 @@
     font-size: 11.5px;
   }
 
+  .cm-chunk-list {
+    gap: 12px;
+  }
+
+  .cm-chunk-card {
+    padding: 12px 14px !important;
+  }
+
+  .cm-chunk-card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 6px 10px;
+  }
+
+  .cm-chunk-checkbox {
+    margin-top: 2px;
+  }
+
+  .cm-chunk-content {
+    flex: 1 1 calc(100% - 38px);
+    min-width: 0;
+  }
+
   .cm-card-actions {
     width: 100%;
+    display: flex;
     justify-content: flex-end;
-    margin-top: 6px;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .cm-btn-card-speak, .cm-btn-card-write {
+    padding: 5px 12px;
+    font-size: 11.5px;
   }
 
   .cm-pagination-bar {
