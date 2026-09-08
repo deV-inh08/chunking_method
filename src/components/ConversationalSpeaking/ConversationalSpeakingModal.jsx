@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import {
   Mic, MicOff, Volume2, Sparkles, X, Check, ArrowRight,
   RotateCcw, MessageSquare, AlertCircle, Info, Radio,
-  ChevronDown, HelpCircle, Layers, CheckCircle2, Award, Send
+  ChevronDown, ChevronLeft, ChevronRight, HelpCircle, Layers, CheckCircle2, Award
 } from 'lucide-react';
 import { playTextWithTts, stopAudio, checkVoiceStudioStatus } from '../../services/ttsService';
 import { evaluatePronunciationGOP } from '../../services/sherpaOnnxService';
@@ -15,15 +15,24 @@ import { transcribeAudioWithGemini } from '../../services/ai';
 import { formatIPA, getPhoneticTip } from '../../services/phonetics';
 import './ConversationalSpeaking.css';
 
+const TOPICS_PER_PAGE = 4;
+
 export default function ConversationalSpeakingModal({
   isOpen,
   onClose,
   initialChunks = [],
   onChunkMastered = null,
 }) {
+  // ─── Modes & Navigation ────────────────────────────────────────
+  // 'select_topic': màn hình chọn chủ đề / phân trang trước khi vào nói
+  // 'chat': màn hình đàm thoại luyện nói thực chiến với AI
+  const [viewMode, setViewMode] = useState('select_topic');
+  const [topicPage, setTopicPage] = useState(1);
+  const [customTopicInput, setCustomTopicInput] = useState('');
+
   // ─── States ───────────────────────────────────────────────────
   const [scenario, setScenario] = useState(null);
-  const [isLoadingScenario, setIsLoadingScenario] = useState(true);
+  const [isLoadingScenario, setIsLoadingScenario] = useState(false);
   const [history, setHistory] = useState([]); // [{ sender: 'ai'|'user', text, textVi, words: [], score: 0, audioBlob }]
   const [targetChunks, setTargetChunks] = useState([]);
   const [usedChunkPhrases, setUsedChunkPhrases] = useState(new Set());
@@ -33,7 +42,6 @@ export default function ConversationalSpeakingModal({
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingStatus, setProcessingStatus] = useState('');
   const [feedbackNotice, setFeedbackNotice] = useState('');
-  const [textInput, setTextInput] = useState('');
   const [isAiSpeaking, setIsAiSpeaking] = useState(false);
   const [volumeLevel, setVolumeLevel] = useState(0);
   const [voiceStudioActive, setVoiceStudioActive] = useState(false);
@@ -41,8 +49,6 @@ export default function ConversationalSpeakingModal({
   // Inspector states
   const [inspectingWord, setInspectingWord] = useState(null); // { word, status, score, targetIpa, spokenIpa, errorType, feedback, tip }
   const [showTranslations, setShowTranslations] = useState(true);
-  const [showScenarioPicker, setShowScenarioPicker] = useState(false);
-  const [customTopicInput, setCustomTopicInput] = useState('');
 
   // Refs
   const mediaRecorderRef = useRef(null);
@@ -60,13 +66,27 @@ export default function ConversationalSpeakingModal({
   };
 
   useEffect(() => {
-    scrollToBottom();
-  }, [history, isProcessing, isAiSpeaking]);
+    if (viewMode === 'chat') {
+      scrollToBottom();
+    }
+  }, [history, isProcessing, isAiSpeaking, viewMode]);
 
-  // Kiểm tra trạng thái VoiceStudio khi mở modal
+  // Kiểm tra trạng thái VoiceStudio khi mở modal và reset về màn hình chọn chủ đề
   useEffect(() => {
     if (isOpen) {
       checkVoiceStudioStatus().then(active => setVoiceStudioActive(active));
+      setViewMode('select_topic');
+      setTopicPage(1);
+      setScenario(null);
+      setHistory([]);
+      setUsedChunkPhrases(new Set());
+      setInspectingWord(null);
+      stopAudio();
+    } else {
+      stopAudio();
+      if (isRecording) {
+        stopRecording();
+      }
     }
   }, [isOpen]);
 
@@ -114,21 +134,27 @@ export default function ConversationalSpeakingModal({
       .finally(() => setIsAiSpeaking(false));
   }, [initialChunks]);
 
-  useEffect(() => {
-    if (isOpen && !scenario) {
-      initScenario();
-    }
-  }, [isOpen, scenario, initScenario]);
+  // Khi chọn một preset từ danh sách
+  const handleSelectPreset = (preset) => {
+    setViewMode('chat');
+    initScenario(preset);
+  };
 
-  // Dọn dẹp âm thanh khi đóng modal
-  useEffect(() => {
-    if (!isOpen) {
-      stopAudio();
-      if (isRecording) {
-        stopRecording();
-      }
-    }
-  }, [isOpen]);
+  // Khi người dùng gõ chủ đề tùy chọn
+  const handleSelectCustomTopic = () => {
+    if (!customTopicInput.trim()) return;
+    const topic = customTopicInput.trim();
+    setCustomTopicInput('');
+    setViewMode('chat');
+    initScenario(null, topic);
+  };
+
+  // Phân trang danh sách chủ đề (2 cột x 2 hàng = 4 chủ đề/trang)
+  const totalPages = Math.ceil(REAL_LIFE_PRESETS.length / TOPICS_PER_PAGE);
+  const currentPresets = useMemo(() => {
+    const start = (topicPage - 1) * TOPICS_PER_PAGE;
+    return REAL_LIFE_PRESETS.slice(start, start + TOPICS_PER_PAGE);
+  }, [topicPage]);
 
   // ─── Web Audio API Volume Monitor ─────────────────────────────
   const startVolumeMonitor = (stream) => {
@@ -272,7 +298,7 @@ export default function ConversationalSpeakingModal({
     if (!textToProcess) {
       setIsProcessing(false);
       setProcessingStatus('');
-      setFeedbackNotice('Chưa nhận diện được giọng nói (hoặc trình duyệt bị lỗi mạng SpeechRecognition). Bạn hãy nói to hơn hoặc gõ câu trả lời vào ô bên dưới nhé.');
+      setFeedbackNotice('Chưa nhận diện được giọng nói. Bạn hãy kiểm tra micro và thử nói to, rõ ràng hơn một chút nhé!');
       setTimeout(() => setFeedbackNotice(''), 7000);
       return;
     }
@@ -369,417 +395,485 @@ export default function ConversationalSpeakingModal({
       .finally(() => setIsAiSpeaking(false));
   };
 
-  const handleTextSubmit = (e) => {
-    e.preventDefault();
-    if (!textInput.trim() || isAiSpeaking || isProcessing) return;
-    const text = textInput.trim();
-    setTextInput('');
-    handleUserSpeechTurn(text, null);
-  };
-
   if (!isOpen) return null;
 
   return (
-    <div
-      className="csm-overlay animate-fade-in"
-      style={{
-        position: 'fixed',
-        inset: 0,
-        width: '100vw',
-        height: '100vh',
-        zIndex: 9999,
-        background: 'rgba(4, 7, 14, 0.85)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 16,
-      }}
-    >
-      <div
-        className="csm-dialog"
-        style={{
-          position: 'relative',
-          width: '100%',
-          maxWidth: 860,
-          height: '92vh',
-          maxHeight: 880,
-          display: 'flex',
-          flexDirection: 'column',
-          background: '#0d121f',
-          color: '#f1f5f9',
-          borderRadius: 20,
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          boxShadow: '0 30px 70px -10px rgba(0, 0, 0, 0.85)',
-          overflow: 'hidden',
-        }}
-      >
-        {/* ─── Header ─────────────────────────────────────────── */}
-        <div className="csm-header">
-          <div className="csm-header-left">
-            <div className="csm-header-icon">
-              <MessageSquare size={18} />
-            </div>
-            <div className="csm-header-titles">
-              <div className="csm-header-title-row">
-                <span className="csm-header-title">
-                  {scenario?.title || 'Phòng Luyện Nói Giao Tiếp AI'}
-                </span>
-                {voiceStudioActive && (
-                  <span className="csm-header-badge" title="Đang kết nối VoiceStudio Local API (Giọng Studio chân thực 100%)">
-                    <Radio size={9} className="animate-pulse" /> VoiceStudio
-                  </span>
-                )}
-              </div>
-              <p className="csm-header-subtitle">
-                Vai của bạn: <span style={{ color: '#38bdf8', fontWeight: 600 }}>{scenario?.userRole || 'Người học'}</span> • Đối tác: <span style={{ color: '#a5b4fc', fontWeight: 600 }}>{scenario?.aiRole || 'Bạn bản xứ'}</span>
-              </p>
-            </div>
-          </div>
-
-          <div className="csm-header-right">
-            <button
-              onClick={() => setShowScenarioPicker(!showScenarioPicker)}
-              className="csm-btn-action"
-              title="Đổi tình huống giao tiếp"
-            >
-              <Layers size={14} />
-              <span>Đổi bối cảnh</span>
-              <ChevronDown size={13} />
-            </button>
-            <button
-              onClick={onClose}
-              className="csm-btn-close"
-              title="Đóng (Esc)"
-            >
-              <X size={20} />
-            </button>
-          </div>
-        </div>
-
-        {/* ─── Scenario Picker Dropdown ───────────────────────── */}
-        {showScenarioPicker && (
-          <div className="csm-scenario-picker">
-            <div className="csm-picker-label">Chọn tình huống đàm thoại thực tế:</div>
-            <div className="csm-preset-grid">
-              {REAL_LIFE_PRESETS.map((p) => (
-                <button
-                  key={p.id}
-                  onClick={() => {
-                    initScenario(p);
-                    setShowScenarioPicker(false);
-                  }}
-                  className={`csm-preset-card ${scenario?.id === p.id ? 'active' : ''}`}
-                >
-                  <div className="csm-preset-title">{p.title}</div>
-                  <div className="csm-preset-desc">{p.description}</div>
-                </button>
-              ))}
-            </div>
-
-            {/* Tự gõ chủ đề bất kỳ */}
-            <div className="csm-custom-input-row">
-              <input
-                type="text"
-                value={customTopicInput}
-                onChange={(e) => setCustomTopicInput(e.target.value)}
-                placeholder="Hoặc tự gõ bối cảnh (ví dụ: Đi phỏng vấn, Hỏi thăm sức khỏe...)"
-                className="csm-custom-input"
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' && customTopicInput.trim()) {
-                    initScenario(null, customTopicInput.trim());
-                    setCustomTopicInput('');
-                    setShowScenarioPicker(false);
-                  }
-                }}
-              />
-              <button
-                onClick={() => {
-                  if (customTopicInput.trim()) {
-                    initScenario(null, customTopicInput.trim());
-                    setCustomTopicInput('');
-                    setShowScenarioPicker(false);
-                  }
-                }}
-                className="csm-btn-create-topic"
-              >
-                Tạo
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* ─── Target Chunks Bar ──────────────────────────────── */}
-        <div className="csm-chunks-bar">
-          <div className="csm-chunks-label">
-            <Sparkles size={13} color="#f59e0b" />
-            <span>Cụm từ cần dùng:</span>
-          </div>
-
-          <div className="csm-chunks-list">
-            {targetChunks.map((c, i) => {
-              const phrase = c.phrase || c;
-              const isUsed = usedChunkPhrases.has(phrase);
-              return (
-                <div
-                  key={i}
-                  className={`csm-chunk-tag ${isUsed ? 'used' : ''}`}
-                  title={c.meaningVi || 'Hãy sử dụng cụm từ này trong câu nói của bạn'}
-                >
-                  {isUsed ? <CheckCircle2 size={12} color="#34d399" /> : <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#64748b' }} />}
-                  <span>{phrase}</span>
+    <div className="csm-overlay animate-fade-in">
+      <div className="csm-dialog">
+        {viewMode === 'select_topic' ? (
+          // ══════════════════════════════════════════════════════════
+          // CHẾ ĐỘ 1: MÀN HÌNH CHỌN CHỦ ĐỀ LUYỆN NÓI (GRID 2 CỘT + PHÂN TRANG)
+          // ══════════════════════════════════════════════════════════
+          <>
+            <div className="csm-header">
+              <div className="csm-header-left">
+                <div className="csm-header-icon">
+                  <Sparkles size={18} />
                 </div>
-              );
-            })}
-          </div>
-
-          {targetChunks.length > 0 && (
-            <div className="csm-chunk-count">
-              Đã dùng: <span style={{ color: '#34d399' }}>{usedChunkPhrases.size}</span>/{targetChunks.length}
-            </div>
-          )}
-        </div>
-
-        {/* ─── Main Conversation Stream ───────────────────────── */}
-        <div className="csm-stream">
-          {isLoadingScenario ? (
-            <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#94a3b8', gap: 12 }}>
-              <div style={{ width: 32, height: 32, border: '3px solid rgba(56,189,248,0.2)', borderTopColor: '#38bdf8', borderRadius: '50%' }} className="animate-spin" />
-              <p style={{ fontSize: 13 }}>Đang khởi tạo bối cảnh giao tiếp tự nhiên...</p>
-            </div>
-          ) : (
-            history.map((msg) => {
-              const isAi = msg.sender === 'ai';
-              return (
-                <div
-                  key={msg.id}
-                  className={`csm-msg-row ${isAi ? 'ai' : 'user'}`}
+                <div className="csm-header-titles">
+                  <span className="csm-header-title">Chọn chủ đề luyện nói AI</span>
+                  <p className="csm-header-subtitle">
+                    Chọn tình huống thực tế để phản xạ 1-1 cùng AI
+                  </p>
+                </div>
+              </div>
+              <div className="csm-header-right">
+                <button
+                  onClick={onClose}
+                  className="csm-btn-close"
+                  title="Đóng (Esc)"
                 >
-                  {/* Avatar */}
-                  <div className={`csm-avatar ${isAi ? 'ai' : 'user'}`}>
-                    {isAi ? 'AI' : 'BẠN'}
+                  <X size={20} />
+                </button>
+              </div>
+            </div>
+
+            <div className="csm-topic-body">
+              {/* Nếu có initialChunks được chọn: Cho phép tạo tình huống theo bài học */}
+              {initialChunks.length > 0 && (
+                <div
+                  className="csm-custom-chunks-banner"
+                  onClick={() => handleSelectPreset(null)}
+                >
+                  <div className="csm-banner-content">
+                    <div className="csm-banner-badge">
+                      <Sparkles size={11} />
+                      <span>Theo bài học của bạn</span>
+                    </div>
+                    <div className="csm-banner-title">
+                      Luyện nói với {initialChunks.length} cụm từ bạn đang chọn
+                    </div>
+                    <div className="csm-banner-chunks">
+                      {initialChunks.slice(0, 4).map((c, i) => (
+                        <span key={i} className="csm-banner-chunk-pill">
+                          {typeof c === 'string' ? c : c.phrase}
+                        </span>
+                      ))}
+                      {initialChunks.length > 4 && (
+                        <span className="csm-banner-chunk-more">+{initialChunks.length - 4}</span>
+                      )}
+                    </div>
+                  </div>
+                  <button className="csm-banner-btn">
+                    <span>Bắt đầu</span>
+                    <ArrowRight size={14} />
+                  </button>
+                </div>
+              )}
+
+              {/* Tiêu đề mục chủ đề */}
+              <div className="csm-topic-section-header">
+                <span className="csm-topic-section-title">
+                  Tình huống đàm thoại thực tế ({REAL_LIFE_PRESETS.length} chủ đề)
+                </span>
+                <span className="csm-topic-page-hint">
+                  Trang {topicPage} / {totalPages}
+                </span>
+              </div>
+
+              {/* Grid 2 cột các chủ đề có sẵn */}
+              <div className="csm-topic-grid">
+                {currentPresets.map((preset) => (
+                  <div
+                    key={preset.id}
+                    onClick={() => handleSelectPreset(preset)}
+                    className="csm-topic-card"
+                  >
+                    <div className="csm-topic-card-title">
+                      {preset.title}
+                    </div>
+                    <p className="csm-topic-card-desc">
+                      {preset.description}
+                    </p>
+                    <div className="csm-topic-card-roles">
+                      <span className="csm-role-tag user">Bạn: {preset.userRole}</span>
+                      <span className="csm-role-tag ai">AI: {preset.aiRole}</span>
+                    </div>
+                    <div className="csm-topic-card-chunks">
+                      {preset.defaultChunks?.slice(0, 3).map((chunk, ci) => (
+                        <span key={ci} className="csm-topic-chunk-pill">
+                          {chunk}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="csm-topic-card-action">
+                      <span>Bắt đầu nói</span>
+                      <ArrowRight size={13} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Phân trang (Pagination) */}
+              {totalPages > 1 && (
+                <div className="csm-pagination">
+                  <button
+                    disabled={topicPage === 1}
+                    onClick={() => setTopicPage((p) => Math.max(1, p - 1))}
+                    className="csm-page-nav-btn"
+                  >
+                    <ChevronLeft size={15} />
+                    <span>Trước</span>
+                  </button>
+
+                  <div className="csm-page-numbers">
+                    {[...Array(totalPages)].map((_, idx) => {
+                      const pageNum = idx + 1;
+                      return (
+                        <button
+                          key={pageNum}
+                          onClick={() => setTopicPage(pageNum)}
+                          className={`csm-page-num-btn ${topicPage === pageNum ? 'active' : ''}`}
+                        >
+                          {pageNum}
+                        </button>
+                      );
+                    })}
                   </div>
 
-                  {/* Message Body */}
-                  <div className="csm-msg-body">
-                    <div className={`csm-bubble ${isAi ? 'ai' : 'user'}`}>
-                      {/* Nếu là câu nói của người dùng: hiển thị từng từ được tô màu */}
-                      {!isAi && msg.words && msg.words.length > 0 ? (
-                        <div className="csm-words-wrapper">
-                          {msg.words.map((w, wIdx) => {
-                            const isCorrect = w.status === 'correct';
-                            const isAlmost = w.status === 'almost';
-                            const chipClass = isCorrect ? 'correct' : isAlmost ? 'almost' : 'incorrect';
+                  <button
+                    disabled={topicPage === totalPages}
+                    onClick={() => setTopicPage((p) => Math.min(totalPages, p + 1))}
+                    className="csm-page-nav-btn"
+                  >
+                    <span>Sau</span>
+                    <ChevronRight size={15} />
+                  </button>
+                </div>
+              )}
 
-                            return (
-                              <button
-                                key={wIdx}
-                                onClick={() => setInspectingWord(w)}
-                                className={`csm-word-chip ${chipClass}`}
-                                title={w.feedback || 'Nhấp để xem phân tích âm vị IPA'}
-                              >
-                                <span>{w.word}</span>
-                                {w.errorType && w.errorType !== 'clean' && (
-                                  <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'currentColor' }} />
-                                )}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      ) : (
-                        <p style={{ margin: 0 }}>{msg.text}</p>
-                      )}
-
-                      {/* Bản dịch nghĩa tiếng Việt */}
-                      {isAi && showTranslations && msg.textVi && (
-                        <p className="csm-vi-translation">
-                          {msg.textVi}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Metadata & Actions */}
-                    <div className={`csm-msg-meta ${isAi ? 'ai' : 'user'}`}>
-                      {isAi ? (
-                        <button
-                          onClick={() => {
-                            setIsAiSpeaking(true);
-                            playTextWithTts(msg.text, 'en-US-JennyNeural')
-                              .finally(() => setIsAiSpeaking(false));
-                          }}
-                          className="csm-btn-replay"
-                        >
-                          <Volume2 size={13} />
-                          <span>Nghe lại</span>
-                        </button>
-                      ) : (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                          <span
-                            className="csm-score-text"
-                            style={{
-                              color: msg.score >= 80 ? '#34d399' : msg.score >= 60 ? '#fbbf24' : '#f87171'
-                            }}
-                          >
-                            Độ chuẩn âm: {msg.score}%
-                          </span>
-                          {msg.missingEndingSoundCount > 0 && (
-                            <span className="csm-ending-tag">
-                              Nuốt {msg.missingEndingSoundCount} âm đuôi
-                            </span>
-                          )}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Lời khen hoặc mẹo ngắn của AI */}
-                    {isAi && msg.encouragement && (
-                      <div className="csm-encouragement-card">
-                        <Award size={14} style={{ flexShrink: 0 }} />
-                        <span>{msg.encouragement}</span>
-                      </div>
+              {/* Tự tạo chủ đề bất kỳ */}
+              <div className="csm-custom-topic-box">
+                <div className="csm-custom-topic-label">
+                  <Sparkles size={13} color="#38bdf8" />
+                  <span>Hoặc tự tạo chủ đề bất kỳ theo ý bạn:</span>
+                </div>
+                <div className="csm-custom-topic-input-row">
+                  <input
+                    type="text"
+                    value={customTopicInput}
+                    onChange={(e) => setCustomTopicInput(e.target.value)}
+                    placeholder="Ví dụ: Phỏng vấn xin visa, Đi mua quà lưu niệm, Hỏi đường ở sân bay..."
+                    className="csm-custom-topic-input"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') handleSelectCustomTopic();
+                    }}
+                  />
+                  <button
+                    onClick={handleSelectCustomTopic}
+                    disabled={!customTopicInput.trim()}
+                    className="csm-btn-create-topic"
+                  >
+                    <span>Bắt đầu</span>
+                    <ArrowRight size={13} />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </>
+        ) : (
+          // ══════════════════════════════════════════════════════════
+          // CHẾ ĐỘ 2: PHÒNG LUYỆN NÓI GIAO TIẾP VỚI AI (VOICE-ONLY)
+          // ══════════════════════════════════════════════════════════
+          <>
+            {/* ─── Header ─────────────────────────────────────────── */}
+            <div className="csm-header">
+              <div className="csm-header-left">
+                <div className="csm-header-icon">
+                  <MessageSquare size={18} />
+                </div>
+                <div className="csm-header-titles">
+                  <div className="csm-header-title-row">
+                    <span className="csm-header-title">
+                      {scenario?.title || 'Phòng Luyện Nói Giao Tiếp AI'}
+                    </span>
+                    {voiceStudioActive && (
+                      <span className="csm-header-badge" title="Đang kết nối VoiceStudio Local API (Giọng Studio chân thực 100%)">
+                        <Radio size={9} className="animate-pulse" /> VoiceStudio
+                      </span>
                     )}
                   </div>
+                  <p className="csm-header-subtitle">
+                    Vai của bạn: <span style={{ color: '#38bdf8', fontWeight: 600 }}>{scenario?.userRole || 'Người học'}</span> • Đối tác: <span style={{ color: '#a5b4fc', fontWeight: 600 }}>{scenario?.aiRole || 'Bạn bản xứ'}</span>
+                  </p>
                 </div>
-              );
-            })
-          )}
+              </div>
 
-          {/* Indicator khi AI đang phản hồi hoặc đang chấm điểm */}
-          {isProcessing && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: '#94a3b8', padding: '4px 8px' }}>
-              <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#38bdf8' }} className="animate-pulse" />
-              <span>Sherpa-ONNX đang phân tích âm học và chuyển tiếp cho bạn bản xứ...</span>
-            </div>
-          )}
-
-          <div ref={messagesEndRef} />
-        </div>
-
-        {/* ─── Word Inspector Drawer / Popup ──────────────────── */}
-        {inspectingWord && (
-          <div className="csm-inspector">
-            <div className="csm-inspector-content">
-              <div className="csm-inspector-row1">
-                <span className="csm-inspector-word">{inspectingWord.word}</span>
-                <span className="csm-inspector-ipa">
-                  {formatIPA(inspectingWord.targetIpa)}
-                </span>
-                <span
-                  style={{
-                    fontSize: 11,
-                    padding: '2px 8px',
-                    borderRadius: 4,
-                    fontWeight: 700,
-                    color: inspectingWord.status === 'correct' ? '#34d399' : inspectingWord.status === 'almost' ? '#fbbf24' : '#f87171',
-                    background: inspectingWord.status === 'correct' ? 'rgba(16,185,129,0.15)' : inspectingWord.status === 'almost' ? 'rgba(245,158,11,0.15)' : 'rgba(239,68,68,0.15)',
+              <div className="csm-header-right">
+                <button
+                  onClick={() => {
+                    stopAudio();
+                    if (isRecording) stopRecording();
+                    setViewMode('select_topic');
                   }}
+                  className="csm-btn-action"
+                  title="Đổi chủ đề luyện nói"
                 >
-                  {inspectingWord.score}%
-                </span>
+                  <Layers size={14} />
+                  <span>Đổi chủ đề</span>
+                </button>
+                <button
+                  onClick={onClose}
+                  className="csm-btn-close"
+                  title="Đóng (Esc)"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+            </div>
+
+            {/* ─── Target Chunks Bar ──────────────────────────────── */}
+            <div className="csm-chunks-bar">
+              <div className="csm-chunks-label">
+                <Sparkles size={13} color="#f59e0b" />
+                <span>Cụm từ cần dùng:</span>
               </div>
 
-              <div className="csm-inspector-feedback">
-                <AlertCircle size={14} color="#f59e0b" style={{ flexShrink: 0 }} />
-                <span>{inspectingWord.feedback}</span>
+              <div className="csm-chunks-list">
+                {targetChunks.map((c, i) => {
+                  const phrase = c.phrase || c;
+                  const isUsed = usedChunkPhrases.has(phrase);
+                  return (
+                    <div
+                      key={i}
+                      className={`csm-chunk-tag ${isUsed ? 'used' : ''}`}
+                      title={c.meaningVi || 'Hãy sử dụng cụm từ này trong câu nói của bạn'}
+                    >
+                      {isUsed ? <CheckCircle2 size={12} color="#34d399" /> : <div className="csm-chunk-dot" />}
+                      <span>{phrase}</span>
+                    </div>
+                  );
+                })}
               </div>
 
-              {inspectingWord.tip && (
-                <div className="csm-inspector-tip">
-                  <span style={{ fontWeight: 600, color: '#f1f5f9' }}>{inspectingWord.tip.title}: </span>
-                  {inspectingWord.tip.tip}
+              {targetChunks.length > 0 && (
+                <div className="csm-chunk-count">
+                  Đã dùng: <span style={{ color: '#34d399' }}>{usedChunkPhrases.size}</span>/{targetChunks.length}
                 </div>
               )}
             </div>
 
-            <div className="csm-inspector-actions">
-              <button
-                onClick={() => playTextWithTts(inspectingWord.word, 'en-US-JennyNeural')}
-                className="csm-btn-action"
-              >
-                <Volume2 size={14} />
-                <span>Nghe mẫu</span>
-              </button>
-              <button
-                onClick={() => setInspectingWord(null)}
-                className="csm-btn-close"
-              >
-                <X size={16} />
-              </button>
+            {/* ─── Main Conversation Stream ───────────────────────── */}
+            <div className="csm-stream">
+              {isLoadingScenario ? (
+                <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#94a3b8', gap: 12 }}>
+                  <div style={{ width: 32, height: 32, border: '3px solid rgba(56,189,248,0.2)', borderTopColor: '#38bdf8', borderRadius: '50%' }} className="animate-spin" />
+                  <p style={{ fontSize: 13 }}>Đang khởi tạo bối cảnh giao tiếp tự nhiên...</p>
+                </div>
+              ) : (
+                history.map((msg) => {
+                  const isAi = msg.sender === 'ai';
+                  return (
+                    <div
+                      key={msg.id}
+                      className={`csm-msg-row ${isAi ? 'ai' : 'user'}`}
+                    >
+                      {/* Avatar */}
+                      <div className={`csm-avatar ${isAi ? 'ai' : 'user'}`}>
+                        {isAi ? 'AI' : 'BẠN'}
+                      </div>
+
+                      {/* Message Body */}
+                      <div className="csm-msg-body">
+                        <div className={`csm-bubble ${isAi ? 'ai' : 'user'}`}>
+                          {/* Nếu là câu nói của người dùng: hiển thị từng từ được tô màu */}
+                          {!isAi && msg.words && msg.words.length > 0 ? (
+                            <div className="csm-words-wrapper">
+                              {msg.words.map((w, wIdx) => {
+                                const isCorrect = w.status === 'correct';
+                                const isAlmost = w.status === 'almost';
+                                const chipClass = isCorrect ? 'correct' : isAlmost ? 'almost' : 'incorrect';
+
+                                return (
+                                  <button
+                                    key={wIdx}
+                                    onClick={() => setInspectingWord(w)}
+                                    className={`csm-word-chip ${chipClass}`}
+                                    title={w.feedback || 'Nhấp để xem phân tích âm vị IPA'}
+                                  >
+                                    <span>{w.word}</span>
+                                    {w.errorType && w.errorType !== 'clean' && (
+                                      <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'currentColor' }} />
+                                    )}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          ) : (
+                            <p style={{ margin: 0 }}>{msg.text}</p>
+                          )}
+
+                          {/* Bản dịch nghĩa tiếng Việt */}
+                          {isAi && showTranslations && msg.textVi && (
+                            <p className="csm-vi-translation">
+                              {msg.textVi}
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Metadata & Actions */}
+                        <div className={`csm-msg-meta ${isAi ? 'ai' : 'user'}`}>
+                          {isAi ? (
+                            <button
+                              onClick={() => {
+                                setIsAiSpeaking(true);
+                                playTextWithTts(msg.text, 'en-US-JennyNeural')
+                                  .finally(() => setIsAiSpeaking(false));
+                              }}
+                              className="csm-btn-replay"
+                            >
+                              <Volume2 size={13} />
+                              <span>Nghe lại</span>
+                            </button>
+                          ) : (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                              <span
+                                className="csm-score-text"
+                                style={{
+                                  color: msg.score >= 80 ? '#34d399' : msg.score >= 60 ? '#fbbf24' : '#f87171'
+                                }}
+                              >
+                                Độ chuẩn âm: {msg.score}%
+                              </span>
+                              {msg.missingEndingSoundCount > 0 && (
+                                <span className="csm-ending-tag">
+                                  Nuốt {msg.missingEndingSoundCount} âm đuôi
+                                </span>
+                              )}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Lời khen hoặc mẹo ngắn của AI */}
+                        {isAi && msg.encouragement && (
+                          <div className="csm-encouragement-card">
+                            <Award size={14} style={{ flexShrink: 0 }} />
+                            <span>{msg.encouragement}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })
+              )}
+
+              {/* Indicator khi AI đang phản hồi hoặc đang chấm điểm */}
+              {isProcessing && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: '#94a3b8', padding: '4px 8px' }}>
+                  <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#38bdf8' }} className="animate-pulse" />
+                  <span>{processingStatus || 'Sherpa-ONNX đang phân tích âm học và chuyển tiếp cho bạn bản xứ...'}</span>
+                </div>
+              )}
+
+              <div ref={messagesEndRef} />
             </div>
-          </div>
-        )}
 
-        {/* ─── Footer Controls & Microphone ───────────────────── */}
-        <div className="csm-footer">
-          {/* Thông báo nếu SpeechRecognition bị lỗi mạng hoặc không nhận được tiếng */}
-          {feedbackNotice && (
-            <div className="csm-notice-box">
-              <AlertCircle size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 4 }} />
-              <span>{feedbackNotice}</span>
-            </div>
-          )}
+            {/* ─── Word Inspector Drawer / Popup ──────────────────── */}
+            {inspectingWord && (
+              <div className="csm-inspector">
+                <div className="csm-inspector-content">
+                  <div className="csm-inspector-row1">
+                    <span className="csm-inspector-word">{inspectingWord.word}</span>
+                    <span className="csm-inspector-ipa">
+                      {formatIPA(inspectingWord.targetIpa)}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: 11,
+                        padding: '2px 8px',
+                        borderRadius: 4,
+                        fontWeight: 700,
+                        color: inspectingWord.status === 'correct' ? '#34d399' : inspectingWord.status === 'almost' ? '#fbbf24' : '#f87171',
+                        background: inspectingWord.status === 'correct' ? 'rgba(16,185,129,0.15)' : inspectingWord.status === 'almost' ? 'rgba(245,158,11,0.15)' : 'rgba(239,68,68,0.15)',
+                      }}
+                    >
+                      {inspectingWord.score}%
+                    </span>
+                  </div>
 
-          {/* Live Wave Bars khi đang ghi âm */}
-          {isRecording && (
-            <div className="csm-wave-bars">
-              {[...Array(12)].map((_, i) => {
-                const barH = Math.min(20, Math.max(4, Math.round((volumeLevel / 15) * (1 + Math.sin(i * 0.8)) * 10)));
-                return (
-                  <div
-                    key={i}
-                    style={{ height: `${barH}px` }}
-                    className="csm-wave-bar"
-                  />
-                );
-              })}
-            </div>
-          )}
+                  <div className="csm-inspector-feedback">
+                    <AlertCircle size={14} color="#f59e0b" style={{ flexShrink: 0 }} />
+                    <span>{inspectingWord.feedback}</span>
+                  </div>
 
-          {/* Main Action Button */}
-          <button
-            onClick={isRecording ? stopRecording : startRecording}
-            disabled={isAiSpeaking || isProcessing}
-            className={`csm-mic-btn ${isRecording ? 'recording' : isAiSpeaking || isProcessing ? 'disabled' : 'idle'}`}
-            title={isRecording ? 'Bấm để hoàn tất câu nói' : 'Bấm để bắt đầu nói phản xạ'}
-          >
-            {isRecording ? <MicOff size={28} /> : <Mic size={28} />}
-          </button>
+                  {inspectingWord.tip && (
+                    <div className="csm-inspector-tip">
+                      <span style={{ fontWeight: 600, color: '#f1f5f9' }}>{inspectingWord.tip.title}: </span>
+                      {inspectingWord.tip.tip}
+                    </div>
+                  )}
+                </div>
 
-          <div className="csm-footer-status">
-            {isRecording ? (
-              <span style={{ color: '#f87171', fontWeight: 600 }} className="animate-pulse">
-                Đang lắng nghe... Nói tự nhiên và bấm lại Mic khi xong câu
-              </span>
-            ) : isAiSpeaking ? (
-              <span style={{ color: '#38bdf8' }}>AI đang nói... Hãy lắng nghe ngữ điệu</span>
-            ) : isProcessing ? (
-              <span style={{ color: '#fbbf24' }}>{processingStatus || 'Đang đối soát âm vị IPA và gửi cho AI...'}</span>
-            ) : (
-              <span>Chạm vào Mic để nói phản xạ, hoặc gõ câu trả lời bên dưới</span>
+                <div className="csm-inspector-actions">
+                  <button
+                    onClick={() => playTextWithTts(inspectingWord.word, 'en-US-JennyNeural')}
+                    className="csm-btn-action"
+                  >
+                    <Volume2 size={14} />
+                    <span>Nghe mẫu</span>
+                  </button>
+                  <button
+                    onClick={() => setInspectingWord(null)}
+                    className="csm-btn-close"
+                  >
+                    <X size={16} />
+                  </button>
+                </div>
+              </div>
             )}
-          </div>
 
-          {/* Form gõ text thay thế khi mic hoặc nhận diện speech của trình duyệt bị lỗi mạng */}
-          <form onSubmit={handleTextSubmit} className="csm-text-input-form">
-            <input
-              type="text"
-              value={textInput}
-              onChange={(e) => setTextInput(e.target.value)}
-              placeholder="Hoặc gõ câu trả lời tiếng Anh nếu mic không hoạt động..."
-              className="csm-text-input"
-              disabled={isAiSpeaking || isProcessing}
-            />
-            <button
-              type="submit"
-              disabled={!textInput.trim() || isAiSpeaking || isProcessing}
-              className="csm-btn-send"
-              title="Gửi câu trả lời (Enter)"
-            >
-              <Send size={15} />
-            </button>
-          </form>
-        </div>
+            {/* ─── Footer Controls & Microphone (Voice-Only) ───────── */}
+            <div className="csm-footer">
+              {/* Thông báo nếu SpeechRecognition bị lỗi mạng hoặc không nhận được tiếng */}
+              {feedbackNotice && (
+                <div className="csm-notice-box">
+                  <AlertCircle size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 4 }} />
+                  <span>{feedbackNotice}</span>
+                </div>
+              )}
+
+              {/* Live Wave Bars khi đang ghi âm */}
+              {isRecording && (
+                <div className="csm-wave-bars">
+                  {[...Array(12)].map((_, i) => {
+                    const barH = Math.min(22, Math.max(4, Math.round((volumeLevel / 15) * (1 + Math.sin(i * 0.8)) * 10)));
+                    return (
+                      <div
+                        key={i}
+                        style={{ height: `${barH}px` }}
+                        className="csm-wave-bar"
+                      />
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Main Action Button (Mic) */}
+              <button
+                onClick={isRecording ? stopRecording : startRecording}
+                disabled={isAiSpeaking || isProcessing}
+                className={`csm-mic-btn ${isRecording ? 'recording' : isAiSpeaking || isProcessing ? 'disabled' : 'idle'}`}
+                title={isRecording ? 'Bấm để hoàn tất câu nói' : 'Bấm để bắt đầu nói phản xạ'}
+              >
+                {isRecording ? <MicOff size={28} /> : <Mic size={28} />}
+              </button>
+
+              <div className="csm-footer-status">
+                {isRecording ? (
+                  <span style={{ color: '#f87171', fontWeight: 600 }} className="animate-pulse">
+                    Đang lắng nghe... Nói tự nhiên và bấm lại Mic khi nói xong câu
+                  </span>
+                ) : isAiSpeaking ? (
+                  <span style={{ color: '#38bdf8' }}>AI đang nói... Hãy lắng nghe phản xạ</span>
+                ) : isProcessing ? (
+                  <span style={{ color: '#fbbf24' }}>{processingStatus || 'Đang đối soát âm vị IPA và gửi cho AI...'}</span>
+                ) : (
+                  <span>Chạm vào Mic để bắt đầu nói phản xạ bằng tiếng Anh</span>
+                )}
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
