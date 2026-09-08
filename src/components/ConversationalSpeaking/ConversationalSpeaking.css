@@ -147,6 +147,30 @@
   color: #ffffff !important;
 }
 
+.csm-btn-header-custom {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  padding: 6px 12px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  background: rgba(56, 189, 248, 0.12) !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  color: #38bdf8 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+.csm-btn-header-custom:hover,
+.csm-btn-header-custom.active {
+  background: #0284c7 !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+}
+
 .csm-btn-close {
   width: 32px !important;
   height: 32px !important;
@@ -461,16 +485,42 @@
   box-shadow: 0 0 12px rgba(2, 132, 199, 0.4) !important;
 }
 
-/* Custom Topic Box */
-.csm-custom-topic-box {
+/* Custom Topic Drawer (khi nhấn nút tạo ở header) */
+.csm-custom-topic-drawer {
   padding: 12px 14px !important;
   border-radius: 12px !important;
-  background: rgba(0, 0, 0, 0.25) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: rgba(2, 132, 199, 0.08) !important;
+  border: 1px solid rgba(56, 189, 248, 0.28) !important;
   display: flex !important;
   flex-direction: column !important;
   gap: 8px !important;
-  margin-top: 4px !important;
+  margin-bottom: 8px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+.csm-custom-drawer-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.csm-drawer-close-btn {
+  width: 22px !important;
+  height: 22px !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  border: none !important;
+  color: #94a3b8 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.csm-drawer-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
 }
 
 .csm-custom-topic-label {
@@ -1012,7 +1062,8 @@
     max-width: 180px !important;
   }
 
-  .csm-btn-action {
+  .csm-btn-action,
+  .csm-btn-header-custom {
     padding: 5px 8px !important;
     font-size: 11px !important;
     gap: 4px !important;
@@ -1099,7 +1150,7 @@
     font-size: 11px !important;
   }
 
-  .csm-custom-topic-box {
+  .csm-custom-topic-drawer {
     padding: 10px 10px !important;
   }
 

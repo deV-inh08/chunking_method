@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import {
   Mic, MicOff, Volume2, Sparkles, X, Check, ArrowRight,
   RotateCcw, MessageSquare, AlertCircle, Info, Radio,
-  ChevronDown, ChevronLeft, ChevronRight, HelpCircle, Layers, CheckCircle2, Award
+  ChevronDown, ChevronLeft, ChevronRight, HelpCircle, Layers, CheckCircle2, Award, Plus
 } from 'lucide-react';
 import { playTextWithTts, stopAudio, checkVoiceStudioStatus } from '../../services/ttsService';
 import { evaluatePronunciationGOP } from '../../services/sherpaOnnxService';
@@ -15,7 +15,7 @@ import { transcribeAudioWithGemini } from '../../services/ai';
 import { formatIPA, getPhoneticTip } from '../../services/phonetics';
 import './ConversationalSpeaking.css';
 
-const TOPICS_PER_PAGE = 4;
+const TOPICS_PER_PAGE = 6;
 
 export default function ConversationalSpeakingModal({
   isOpen,
@@ -29,6 +29,7 @@ export default function ConversationalSpeakingModal({
   const [viewMode, setViewMode] = useState('select_topic');
   const [topicPage, setTopicPage] = useState(1);
   const [customTopicInput, setCustomTopicInput] = useState('');
+  const [showCustomTopicInput, setShowCustomTopicInput] = useState(false);
 
   // ─── States ───────────────────────────────────────────────────
   const [scenario, setScenario] = useState(null);
@@ -77,6 +78,8 @@ export default function ConversationalSpeakingModal({
       checkVoiceStudioStatus().then(active => setVoiceStudioActive(active));
       setViewMode('select_topic');
       setTopicPage(1);
+      setShowCustomTopicInput(false);
+      setCustomTopicInput('');
       setScenario(null);
       setHistory([]);
       setUsedChunkPhrases(new Set());
@@ -145,11 +148,12 @@ export default function ConversationalSpeakingModal({
     if (!customTopicInput.trim()) return;
     const topic = customTopicInput.trim();
     setCustomTopicInput('');
+    setShowCustomTopicInput(false);
     setViewMode('chat');
     initScenario(null, topic);
   };
 
-  // Phân trang danh sách chủ đề (2 cột x 2 hàng = 4 chủ đề/trang)
+  // Phân trang danh sách chủ đề (2 cột x 3 hàng = 6 chủ đề/trang)
   const totalPages = Math.ceil(REAL_LIFE_PRESETS.length / TOPICS_PER_PAGE);
   const currentPresets = useMemo(() => {
     const start = (topicPage - 1) * TOPICS_PER_PAGE;
@@ -419,6 +423,15 @@ export default function ConversationalSpeakingModal({
               </div>
               <div className="csm-header-right">
                 <button
+                  type="button"
+                  onClick={() => setShowCustomTopicInput(prev => !prev)}
+                  className={`csm-btn-header-custom ${showCustomTopicInput ? 'active' : ''}`}
+                  title="Tự tạo tình huống luyện nói theo ý bạn"
+                >
+                  <Plus size={14} />
+                  <span>Tạo tình huống</span>
+                </button>
+                <button
                   onClick={onClose}
                   className="csm-btn-close"
                   title="Đóng (Esc)"
@@ -429,6 +442,50 @@ export default function ConversationalSpeakingModal({
             </div>
 
             <div className="csm-topic-body">
+              {/* Drawer nhập tình huống khi user nhấn button 'Tạo tình huống' trên header */}
+              {showCustomTopicInput && (
+                <div className="csm-custom-topic-drawer animate-fade-in">
+                  <div className="csm-custom-drawer-header">
+                    <div className="csm-custom-topic-label">
+                      <Sparkles size={13} color="#38bdf8" />
+                      <span>Nhập tình huống bạn muốn luyện tập cùng AI:</span>
+                    </div>
+                    <button
+                      type="button"
+                      className="csm-drawer-close-btn"
+                      onClick={() => {
+                        setShowCustomTopicInput(false);
+                        setCustomTopicInput('');
+                      }}
+                      title="Đóng"
+                    >
+                      <X size={14} />
+                    </button>
+                  </div>
+                  <div className="csm-custom-topic-input-row">
+                    <input
+                      type="text"
+                      autoFocus
+                      value={customTopicInput}
+                      onChange={(e) => setCustomTopicInput(e.target.value)}
+                      placeholder="Ví dụ: Phỏng vấn xin visa, Đi mua quà lưu niệm, Hỏi đường ở sân bay..."
+                      className="csm-custom-topic-input"
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') handleSelectCustomTopic();
+                      }}
+                    />
+                    <button
+                      type="button"
+                      onClick={handleSelectCustomTopic}
+                      disabled={!customTopicInput.trim()}
+                      className="csm-btn-create-topic"
+                    >
+                      <span>Bắt đầu nói</span>
+                      <ArrowRight size={13} />
+                    </button>
+                  </div>
+                </div>
+              )}
               {/* Nếu có initialChunks được chọn: Cho phép tạo tình huống theo bài học */}
               {initialChunks.length > 0 && (
                 <div
@@ -541,34 +598,6 @@ export default function ConversationalSpeakingModal({
                   </button>
                 </div>
               )}
-
-              {/* Tự tạo chủ đề bất kỳ */}
-              <div className="csm-custom-topic-box">
-                <div className="csm-custom-topic-label">
-                  <Sparkles size={13} color="#38bdf8" />
-                  <span>Hoặc tự tạo chủ đề bất kỳ theo ý bạn:</span>
-                </div>
-                <div className="csm-custom-topic-input-row">
-                  <input
-                    type="text"
-                    value={customTopicInput}
-                    onChange={(e) => setCustomTopicInput(e.target.value)}
-                    placeholder="Ví dụ: Phỏng vấn xin visa, Đi mua quà lưu niệm, Hỏi đường ở sân bay..."
-                    className="csm-custom-topic-input"
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') handleSelectCustomTopic();
-                    }}
-                  />
-                  <button
-                    onClick={handleSelectCustomTopic}
-                    disabled={!customTopicInput.trim()}
-                    className="csm-btn-create-topic"
-                  >
-                    <span>Bắt đầu</span>
-                    <ArrowRight size={13} />
-                  </button>
-                </div>
-              </div>
             </div>
           </>
         ) : (
