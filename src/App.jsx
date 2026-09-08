@@ -451,16 +451,8 @@ export default function App() {
           onSettingsClick={() => setShowSettings(true)}
           rightSlot={
             page === 'chunks' && allChunks.length > 0 && (
-              <div className="flex items-center gap-2">
-                {selectedTranscriptId && (
-                  <button
-                    className="btn btn-ghost btn-sm"
-                    onClick={() => setSelectedTranscriptId(null)}
-                  >
-                    Xem tất cả
-                  </button>
-                )}
-                <span className="badge badge-neutral">{displayChunks.length} chunks</span>
+              <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <span className="badge badge-neutral">{allChunks.length} chunks</span>
               </div>
             )
           }
@@ -522,14 +514,34 @@ export default function App() {
             {page === 'chunks' && (
               <ChunkModule
                 chunks={displayChunks}
+                allChunks={allChunks}
                 selectedTranscriptId={selectedTranscriptId}
+                onSelectTranscript={setSelectedTranscriptId}
                 transcripts={transcripts}
                 selectedChunks={selectedChunks}
                 onToggleChunk={handleToggleChunk}
+                onSelectMultipleChunks={(chunkIds, shouldSelect) => {
+                  setSelectedChunks(prev => {
+                    const next = new Set(prev);
+                    if (shouldSelect) {
+                      chunkIds.forEach(id => next.add(id));
+                    } else {
+                      chunkIds.forEach(id => next.delete(id));
+                    }
+                    return next;
+                  });
+                }}
+                onClearSelectedChunks={() => setSelectedChunks(new Set())}
                 onSituationsGenerated={handleSituationsGenerated}
                 allProgress={allProgress}
                 onToast={addToast}
                 onStartPractice={handleStartPractice}
+                onOpenAiSpeaking={(chunkIds = null) => {
+                  if (chunkIds && chunkIds.length > 0) {
+                    setSelectedChunks(new Set(chunkIds));
+                  }
+                  setShowAiSpeakingModal(true);
+                }}
               />
             )}
 
