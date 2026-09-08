@@ -68,7 +68,23 @@ let activeBlobUrl = null;
 let currentSessionId = 0;
 
 /**
- * Tải file âm thanh (kiểm tra IndexedDB trước, nếu chưa có thì fetch qua /api/tts)
+ * Kiểm tra xem VoiceStudio Local API có đang chạy trên máy không
+ */
+export async function checkVoiceStudioStatus(endpoint = 'http://localhost:8000') {
+  try {
+    const cleanUrl = endpoint.replace(/\/$/, '');
+    const ctrl = new AbortController();
+    const timeout = setTimeout(() => ctrl.abort(), 800);
+    const res = await fetch(`${cleanUrl}/v1/models`, { signal: ctrl.signal }).catch(() => null);
+    clearTimeout(timeout);
+    return Boolean(res && res.ok);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Tải file âm thanh (kiểm tra IndexedDB trước, nếu chưa có thì thử VoiceStudio Local API, sau đó fallback qua /api/tts)
  */
 export async function fetchAudioUrl(text, voice) {
   const cleanText = (text || '').trim();
@@ -86,18 +102,53 @@ export async function fetchAudioUrl(text, voice) {
     };
   }
 
-  // 2. Fetch từ endpoint Edge TTS của server
-  const endpoint = `/api/tts?text=${encodeURIComponent(cleanText)}&voice=${encodeURIComponent(voice)}`;
-  console.log('[TTS] Fetching:', endpoint);
-  const res = await fetch(endpoint);
-  if (!res.ok) {
-    const errText = await res.text().catch(() => '');
-    console.error('[TTS] Server error:', res.status, res.statusText, errText);
-    throw new Error(`TTS server error: ${res.status} ${res.statusText}`);
+  let blob = null;
+
+  // 2. Thử fetch từ VoiceStudio Local API nếu được cấu hình hoặc khả dụng
+  const vsUrl = typeof window !== 'undefined' ? (localStorage.getItem('toeic_voice_studio_url') || 'http://localhost:8000') : null;
+  const useVS = typeof window !== 'undefined' && localStorage.getItem('toeic_use_voice_studio') === 'true';
+
+  if (useVS && vsUrl) {
+    try {
+      const cleanUrl = vsUrl.replace(/\/$/, '');
+      const ctrl = new AbortController();
+      const timeout = setTimeout(() => ctrl.abort(), 2500);
+      const vsRes = await fetch(`${cleanUrl}/v1/audio/speech`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'tts-1',
+          input: cleanText,
+          voice: voice || 'en-US-JennyNeural',
+        }),
+        signal: ctrl.signal,
+      });
+      clearTimeout(timeout);
+
+      if (vsRes.ok) {
+        blob = await vsRes.blob();
+        console.log('[TTS] Successfully generated via VoiceStudio Local API');
+      }
+    } catch {
+      // VoiceStudio chưa bật, tự động fallback xuống Edge TTS bên dưới
+    }
   }
 
-  const blob = await res.blob();
-  console.log('[TTS] Got blob:', blob.size, 'bytes, type:', blob.type);
+  // 3. Fetch từ endpoint Edge TTS của server (Fallback)
+  if (!blob) {
+    const endpoint = `/api/tts?text=${encodeURIComponent(cleanText)}&voice=${encodeURIComponent(voice)}`;
+    console.log('[TTS] Fetching:', endpoint);
+    const res = await fetch(endpoint);
+    if (!res.ok) {
+      const errText = await res.text().catch(() => '');
+      console.error('[TTS] Server error:', res.status, res.statusText, errText);
+      throw new Error(`TTS server error: ${res.status} ${res.statusText}`);
+    }
+
+    blob = await res.blob();
+    console.log('[TTS] Got blob:', blob.size, 'bytes, type:', blob.type);
+  }
+
   // Lưu vào IndexedDB để lần sau phát tức thì
   setCachedBlob(cacheKey, blob);
 

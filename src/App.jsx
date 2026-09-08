@@ -7,6 +7,7 @@ import { PracticeModule } from './components/PracticeModule';
 import { ProgressModule } from './components/ProgressModule';
 import { SettingsModal } from './components/Settings';
 import { AuthScreen, ResetPasswordModal } from './components/Auth';
+import { ConversationalSpeakingModal } from './components/ConversationalSpeaking';
 import { Toast, Spinner, ErrorBoundary } from './components/ui';
 import { useTranscripts, useSettings, useProgress } from './hooks/useStorage';
 import { useAuth } from './hooks/useAuth';
@@ -41,6 +42,7 @@ export default function App() {
   });
   const [showSettings, setShowSettings] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showAiSpeakingModal, setShowAiSpeakingModal] = useState(false);
   const [guestMode, setGuestMode]       = useState(() => {
     try {
       return localStorage.getItem('toeic_guest_mode') === 'true';
@@ -422,7 +424,13 @@ export default function App() {
     <div className="app-shell">
       <Sidebar
         activePage={page}
-        onNavigate={setPage}
+        onNavigate={(p) => {
+          if (p === 'ai_speaking') {
+            setShowAiSpeakingModal(true);
+          } else {
+            setPage(p);
+          }
+        }}
         counts={counts}
         dueCount={dueChunks.length}
         user={user}
@@ -437,6 +445,7 @@ export default function App() {
           user={user}
           dueCount={dueChunks.length}
           onDueClick={handleStartDueReview}
+          onOpenAiSpeaking={() => setShowAiSpeakingModal(true)}
           onSignOut={handleSignOut}
           onLoginClick={() => setShowAuthModal(true)}
           onSettingsClick={() => setShowSettings(true)}
@@ -561,7 +570,18 @@ export default function App() {
       </div>
 
       {/* Mobile bottom navigation */}
-      <BottomNav activePage={page} onNavigate={setPage} counts={counts} dueCount={dueChunks.length} />
+      <BottomNav
+        activePage={page}
+        onNavigate={(p) => {
+          if (p === 'ai_speaking') {
+            setShowAiSpeakingModal(true);
+          } else {
+            setPage(p);
+          }
+        }}
+        counts={counts}
+        dueCount={dueChunks.length}
+      />
 
       {/* Modals */}
       {showSettings && (
@@ -572,6 +592,18 @@ export default function App() {
           user={user}
           onSignOut={handleSignOut}
           onOpenAuth={() => setShowAuthModal(true)}
+        />
+      )}
+
+      {/* AI Conversational Speaking Modal (Phòng Luyện Nói Giao Tiếp AI) */}
+      {showAiSpeakingModal && (
+        <ConversationalSpeakingModal
+          isOpen={showAiSpeakingModal}
+          onClose={() => setShowAiSpeakingModal(false)}
+          initialChunks={Array.from(selectedChunks).map(id => allChunks.find(c => c.id === id)).filter(Boolean)}
+          onChunkMastered={(chunkPhrase) => {
+            addToast('success', `🎉 Đã kích hoạt phản xạ tự nhiên: "${chunkPhrase}"!`);
+          }}
         />
       )}
 

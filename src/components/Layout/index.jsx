@@ -1,7 +1,7 @@
 import {
   FileText, Layers, Mic, BarChart2,
   Settings, ChevronRight, BookOpen, LogOut, LogIn, User, BookMarked,
-  Flame,
+  Flame, Sparkles,
 } from 'lucide-react';
 
 const NAV_ITEMS = [
@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { id: 'chunks',      label: 'Chunks',      icon: Layers     },
   { id: 'vocab',       label: 'Từ vựng',    icon: BookMarked },
   { id: 'practice',   label: 'Practice',    icon: Mic        },
+  { id: 'ai_speaking', label: 'Luyện Nói AI', icon: Sparkles, isNew: true },
   { id: 'progress',   label: 'Progress',    icon: BarChart2  },
 ];
 
@@ -17,6 +18,7 @@ const PAGE_TITLES = {
   chunks:      { title: 'Chunks',            subtitle: 'Danh sách cụm từ đã phân tích' },
   vocab:       { title: 'Từ vựng',          subtitle: 'Học 5000 từ theo chủ đề — phân tích chunk & luyện viết' },
   practice:    { title: 'Speaking Practice', subtitle: 'Luyện nói theo câu mẫu' },
+  ai_speaking: { title: 'Luyện Nói Giao Tiếp AI', subtitle: 'Phản xạ đời thực theo Chunk & Chấm chuẩn âm vị IPA với Sherpa-ONNX' },
   progress:    { title: 'Progress',          subtitle: 'Theo dõi tiến độ học tập' },
 };
 
@@ -35,7 +37,7 @@ export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick, 
       </div>
 
       <nav className="sidebar-nav">
-        {NAV_ITEMS.map(({ id, label, icon: Icon }) => (
+        {NAV_ITEMS.map(({ id, label, icon: Icon, isNew }) => (
           <button
             key={id}
             id={`nav-${id}`}
@@ -44,7 +46,11 @@ export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick, 
           >
             <Icon size={17} className="nav-icon" />
             <span className="nav-label">{label}</span>
-            {id === 'practice' && dueCount > 0 ? (
+            {isNew ? (
+              <span className="nav-badge" style={{ background: 'linear-gradient(135deg, #38bdf8, #818cf8)', color: '#fff', fontSize: 9, fontWeight: 800 }}>
+                MỚI
+              </span>
+            ) : id === 'practice' && dueCount > 0 ? (
               <span className="nav-badge" style={{ background: '#ef4444', color: '#fff', display: 'inline-flex', alignItems: 'center', gap: 2 }}>
                 <Flame size={10} /> {dueCount}
               </span>
@@ -110,14 +116,18 @@ export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick, 
 export function BottomNav({ activePage, onNavigate, counts = {}, dueCount = 0 }) {
   return (
     <nav className="bottom-nav">
-      {NAV_ITEMS.map(({ id, label, icon: Icon }) => (
+      {NAV_ITEMS.map(({ id, label, icon: Icon, isNew }) => (
         <button
           key={id}
           id={`bottom-nav-${id}`}
           className={`bottom-nav-item ${activePage === id ? 'active' : ''}`}
           onClick={() => onNavigate(id)}
         >
-          {id === 'practice' && dueCount > 0 ? (
+          {isNew ? (
+            <span className="bottom-nav-badge" style={{ background: 'linear-gradient(135deg, #38bdf8, #818cf8)', color: '#fff', fontSize: 8, padding: '1px 3px' }}>
+              NEW
+            </span>
+          ) : id === 'practice' && dueCount > 0 ? (
             <span className="bottom-nav-badge" style={{ background: '#ef4444', color: '#fff' }}>
               {dueCount}
             </span>
@@ -133,7 +143,7 @@ export function BottomNav({ activePage, onNavigate, counts = {}, dueCount = 0 })
 }
 
 // ─── Header ───────────────────────────────────────────────────
-export function Header({ page, rightSlot, onSettingsClick, user, onSignOut, onLoginClick, dueCount = 0, onDueClick }) {
+export function Header({ page, rightSlot, onSettingsClick, user, onSignOut, onLoginClick, dueCount = 0, onDueClick, onOpenAiSpeaking }) {
   const info = PAGE_TITLES[page] || {};
   return (
     <header className="main-header">
@@ -143,6 +153,32 @@ export function Header({ page, rightSlot, onSettingsClick, user, onSignOut, onLo
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
+        {/* Nút Luyện Nói AI Nhanh */}
+        {onOpenAiSpeaking && (
+          <button
+            id="header-ai-speaking-btn"
+            className="btn btn-primary btn-sm"
+            onClick={onOpenAiSpeaking}
+            style={{
+              background: 'linear-gradient(135deg, #0284c7, #6366f1)',
+              borderColor: 'transparent',
+              color: '#ffffff',
+              fontWeight: 700,
+              fontSize: 12,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 4,
+              padding: '4px 10px',
+              boxShadow: '0 2px 8px rgba(99, 102, 241, 0.25)',
+            }}
+            title="Luyện nói phản xạ giao tiếp với bạn bản xứ AI & Chấm chuẩn âm vị IPA"
+          >
+            <Sparkles size={13} color="#fef08a" />
+            <span className="desktop-only">Nói với AI</span>
+            <span className="mobile-only">AI</span>
+          </button>
+        )}
+
         {/* Due review quick button */}
         {dueCount > 0 && onDueClick && (
           <button
