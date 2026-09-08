@@ -1,17 +1,14 @@
 import { getApiKeys } from '../store/storage';
 
 // Priority list — tries each in order until one works
-// Lite models first: RPD 500/day (vs 20/day for standard Flash)
 const MODEL_CANDIDATES = [
-  'gemini-3.5-flash-lite',  // RPM 15, RPD 500 ← best free tier
-  'gemini-3.1-flash-lite',  // RPM 15, RPD 500 ← second best
-  'gemini-3.7-flash',       // RPM  5, RPD  20
-  'gemini-3.5-flash',       // RPM  5, RPD  20
-  'gemini-3.6-flash',       // RPM  5, RPD  20 (previously hit limit)
-  'gemini-3-flash',         // RPM  5, RPD  20
-  'gemini-2.5-flash',       // RPM  5, RPD  20
-  'gemini-2.5-flash-lite',  // RPM 10, RPD  20
-  'gemini-2.0-flash-lite',  // older stable fallback
+  'gemini-2.0-flash',
+  'gemini-2.0-flash-lite',
+  'gemini-1.5-flash',
+  'gemini-2.5-flash',
+  'gemini-2.5-flash-lite',
+  'gemini-3.5-flash-lite',
+  'gemini-3.1-flash-lite',
 ];
 
 const BASE_URL = 'https://generativelanguage.googleapis.com/v1beta';
@@ -887,34 +884,39 @@ export async function assessPronunciationWithGemini(
 
   const cleanMime = mimeType ? mimeType.split(';')[0] : 'audio/webm';
 
-  const promptText = `You are an expert TOEIC Speaking Examiner and English Phonetics Specialist.
-Analyze the user's spoken audio recording and compare it with this target sentence:
+  const promptText = `You are an expert, uncompromising English Pronunciation Examiner and Acoustic Phonetics Specialist (like ELSA Speak or an official Speaking Test Evaluator).
+Analyze the learner's actual voice recording against the target sentence:
 Target Sentence: "${targetSentence}"
 Key Target Chunk: "${chunkPhrase}"
 
-Perform an accurate word-by-word pronunciation assessment:
-1. Examine each word in the target sentence in order.
-2. For each word:
-   - "word": exact word from the target sentence
+CRITICAL ANTI-LENIENCY GUIDELINES:
+1. LISTEN STRICTLY TO WHAT WAS ACTUALLY SPOKEN WITHOUT BIAS. DO NOT ASSUME OR HALLUCINATE TARGET WORDS.
+   - Learners frequently mispronounce words, skip words, read completely different words, or speak gibberish/Vietnamese.
+   - If the audio is silent, background noise only, or unintelligible, set accuracyScore: 0, isPassed: false, and mark all words as "incorrect" (score 0).
+   - If the learner substituted a DIFFERENT word (e.g., said "banana" instead of "time", or "make" instead of "invest"), you MUST mark that word as "incorrect" (score 0-15) with feedback specifying the heard word.
+2. VERBATIM TRANSCRIPTION:
+   - In "spokenTranscript", write verbatim what the speaker ACTUALLY uttered in English/Vietnamese, preserving any mispronunciations or wrong words.
+3. WORD-BY-WORD STRICT EVALUATION (for each word in Target Sentence in order):
+   - "word": exact target word from Target Sentence
    - "status":
-       - "correct": accurately pronounced, clear articulation (score 80-100)
-       - "almost": understandable but with minor issue (e.g. dropped/weak ending sound /s/, /t/, /d/, /ed/, slight vowel distortion, or minor stress misplaced) (score 50-79)
-       - "incorrect": mispronounced, wrong word, slurred, or omitted (score 0-49)
-   - "score": integer 0-100
-   - "feedback": concise note in Vietnamese describing the exact issue (e.g. "Thiếu âm đuôi /st/", "Nuốt âm /t/", "Nhấn sai trọng âm", "Phát âm chuẩn")
-   - "ipa": IPA phonetic transcription of this word
-3. Overall evaluation:
-   - "spokenTranscript": what the user actually said
-   - "accuracyScore": overall accuracy percentage (0-100)
-   - "fluencyScore": rhythm and naturalness (0-100)
-   - "isPassed": boolean (true if overall score >= 65)
-   - "feedbackVi": 1-2 encouraging sentences in Vietnamese summarizing strengths and giving practical tips.
+       - "correct": Clearly and accurately articulated according to standard English (Score: 85-100).
+       - "almost": Word was attempted and recognizable, but had a noticeable phonetic flaw: e.g. dropped/weak ending sound (/s/, /z/, /t/, /d/, /-ed/), distorted vowel, or misplaced stress (Score: 50-70).
+       - "incorrect": Completely mispronounced, wrong word spoken, or omitted/skipped (Score: 0-35).
+   - "score": Integer 0-100.
+   - "feedback": Concise diagnostic explanation in Vietnamese (e.g., "Nuốt âm đuôi /t/", "Thiếu âm xì /s/", "Nói nhầm thành '...' ", "Phát âm chuẩn", "Chưa đọc từ này").
+   - "ipa": Standard IPA transcription of this word.
+   - "isChunk": boolean, true if the word is part of the Key Target Chunk "${chunkPhrase}".
+4. OVERALL EVALUATION:
+   - "accuracyScore": Computed mathematically as the exact average of all word scores.
+   - "fluencyScore": Integer 0-100 based on pacing and natural pauses.
+   - "isPassed": Boolean. Must be TRUE ONLY IF accuracyScore >= 75 AND all words in the chunk "${chunkPhrase}" have status "correct" or "almost". If the learner intentionally read wrong words, skipped words, or has accuracy < 75, isPassed MUST BE FALSE.
+   - "feedbackVi": 1-2 constructive, honest sentences in Vietnamese pointing out which specific sounds or words need fixing.
 
 Return ONLY a JSON object matching this schema:
 {
   "spokenTranscript": "string",
-  "accuracyScore": 85,
-  "fluencyScore": 80,
+  "accuracyScore": 75,
+  "fluencyScore": 70,
   "isPassed": true,
   "feedbackVi": "string",
   "words": [
@@ -923,7 +925,8 @@ Return ONLY a JSON object matching this schema:
       "status": "correct",
       "score": 95,
       "feedback": "string",
-      "ipa": "string"
+      "ipa": "string",
+      "isChunk": boolean
     }
   ]
 }`;
@@ -952,7 +955,7 @@ Return ONLY a JSON object matching this schema:
             },
           ],
           generationConfig: {
-            temperature: 0.1,
+            temperature: 0.0,
             responseMimeType: 'application/json',
           },
         }),
@@ -966,17 +969,21 @@ Return ONLY a JSON object matching this schema:
       const data = await response.json();
       const rawJson = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
       if (rawJson) {
+        let parsed = null;
         try {
-          const parsed = JSON.parse(rawJson);
-          if (parsed && Array.isArray(parsed.words) && parsed.words.length > 0) {
-            return parsed;
-          }
-        } catch (parseErr) {
+          parsed = JSON.parse(rawJson);
+        } catch {
           const cleaned = rawJson.replace(/```json\s*/gi, '').replace(/```\s*$/gi, '').trim();
-          const parsed = JSON.parse(cleaned);
-          if (parsed && Array.isArray(parsed.words)) {
-            return parsed;
-          }
+          parsed = JSON.parse(cleaned);
+        }
+
+        if (parsed && Array.isArray(parsed.words) && parsed.words.length > 0) {
+          // Tính lại accuracyScore toán học chuẩn xác từ danh sách words
+          const totalScore = parsed.words.reduce((sum, w) => sum + (Number(w.score) || 0), 0);
+          const computedAccuracy = Math.round(totalScore / parsed.words.length);
+          parsed.accuracyScore = computedAccuracy;
+          parsed.isPassed = computedAccuracy >= 75 && !parsed.words.some(w => w.status === 'incorrect' && w.isChunk);
+          return parsed;
         }
       }
     } catch (err) {

@@ -7,7 +7,8 @@ import {
 } from 'lucide-react';
 import { getPracticeDraft, getSettings, saveSettings } from '../../store/storage';
 import { transcribeAudioWithGemini, assessPronunciationWithGemini } from '../../services/ai';
-import { getChunkIPA, getSentenceIPA, formatIPA } from '../../services/phonetics';
+import { getChunkIPA, getSentenceIPA, formatIPA, wordToIPA, getPhoneticTip } from '../../services/phonetics';
+import { extractAcousticFeatures } from '../../services/sherpaOnnxService';
 import { playTextWithTts, stopAudio, fetchAudioUrl } from '../../services/ttsService';
 
 // ─── AI Voice Candidates (Microsoft Edge Neural Voices - Chuẩn người bản xứ 100%) ─────
@@ -87,18 +88,130 @@ function AudioWaveVisualizer({ volume = 0, isRecording = false, isAiSpeaking = f
   );
 }
 
-// ─── Word-by-Word Matching Algorithm (Fallback & Sequence Alignment) ────
-function analyzeSpokenSentence(targetText, spokenText, chunkPhrase = '') {
+// ─── Sequence Alignment & Acoustic-Phonetics Algorithm (Strict & Diagnostic) ────
+function levenshteinDistance(str1, str2) {
+  if (!str1) return str2 ? str2.length : 0;
+  if (!str2) return str1.length;
+  const a = str1.toLowerCase();
+  const b = str2.toLowerCase();
+  const m = a.length;
+  const n = b.length;
+  const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+  for (let i = 0; i <= m; i++) dp[i][0] = i;
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      dp[i][j] = a[i - 1] === b[j - 1]
+        ? dp[i - 1][j - 1]
+        : 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+    }
+  }
+  return dp[m][n];
+}
+
+function calculatePhoneticSimilarity(targetWord, spokenWord) {
+  if (!targetWord || !spokenWord) return -1;
+  const t = targetWord.toLowerCase().replace(/[^a-zA-Z0-9']/g, '');
+  const s = spokenWord.toLowerCase().replace(/[^a-zA-Z0-9']/g, '');
+  if (t === s) return 2.0;
+
+  // Ending sound variations
+  if ((t.endsWith('s') || t.endsWith('es')) && t.replace(/e?s$/, '') === s) return 0.8;
+  if (t.endsWith('ed') && t.slice(0, -2) === s) return 0.8;
+  if (t.endsWith('d') && t.slice(0, -1) === s) return 0.8;
+  if (t.endsWith('t') && t.slice(0, -1) === s) return 0.8;
+  if (t.endsWith('ing') && t.slice(0, -3) === s) return 0.8;
+  if (s.endsWith('s') && s.slice(0, -1) === t) return 0.7;
+
+  // IPA phonetic comparison
+  const tIpa = wordToIPA(t) || t;
+  const sIpa = wordToIPA(s) || s;
+  const dist = levenshteinDistance(tIpa, sIpa);
+  const maxLen = Math.max(tIpa.length, sIpa.length);
+  if (maxLen === 0) return -1;
+  const ratio = 1 - (dist / maxLen);
+
+  if (ratio >= 0.8) return 1.0;
+  if (ratio >= 0.6) return 0.4;
+  return -1.0;
+}
+
+function alignWords(targetWords, spokenWords) {
+  const n = targetWords.length;
+  const m = spokenWords.length;
+  if (n === 0) return [];
+  if (m === 0) return targetWords.map((_, idx) => ({ targetIdx: idx, spokenIdx: null }));
+
+  const normTarget = targetWords.map(w => w.replace(/[^a-zA-Z0-9']/g, '').toLowerCase());
+  const normSpoken = spokenWords.map(w => w.replace(/[^a-zA-Z0-9']/g, '').toLowerCase());
+
+  // Global Sequence Alignment (Needleman-Wunsch)
+  const dp = Array.from({ length: n + 1 }, () => Array(m + 1).fill(0));
+  for (let i = 0; i <= n; i++) dp[i][0] = i * -1;
+  for (let j = 0; j <= m; j++) dp[0][j] = j * -1;
+
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= m; j++) {
+      const sim = calculatePhoneticSimilarity(normTarget[i - 1], normSpoken[j - 1]);
+      dp[i][j] = Math.max(
+        dp[i - 1][j - 1] + sim,
+        dp[i - 1][j] - 1,
+        dp[i][j - 1] - 1
+      );
+    }
+  }
+
+  // Backtracking to find corresponding indices
+  let i = n, j = m;
+  const aligned = [];
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0) {
+      const sim = calculatePhoneticSimilarity(normTarget[i - 1], normSpoken[j - 1]);
+      if (Math.abs(dp[i][j] - (dp[i - 1][j - 1] + sim)) < 0.001) {
+        aligned.unshift({ targetIdx: i - 1, spokenIdx: j - 1 });
+        i--;
+        j--;
+        continue;
+      }
+    }
+    if (i > 0 && Math.abs(dp[i][j] - (dp[i - 1][j] - 1)) < 0.001) {
+      aligned.unshift({ targetIdx: i - 1, spokenIdx: null });
+      i--;
+    } else {
+      j--;
+    }
+  }
+  return aligned;
+}
+
+function analyzeSpokenSentence(targetText, spokenText, chunkPhrase = '', audioFeatures = null) {
   if (!targetText) return { words: [], accuracy: 0, isPassed: false, spokenText: '' };
 
   const cleanTarget = targetText.trim();
   const cleanSpoken = (spokenText || '').trim();
 
-  const targetWords = cleanTarget.split(/\s+/);
-  const spokenWordsNorm = cleanSpoken
-    .split(/\s+/)
-    .map(w => w.replace(/[^a-zA-Z0-9']/g, '').toLowerCase())
-    .filter(Boolean);
+  const targetWords = cleanTarget.split(/\s+/).filter(Boolean);
+  const sentenceIpaList = targetWords.map(w => wordToIPA(w.replace(/[^a-zA-Z0-9']/g, '')));
+
+  if (!cleanSpoken) {
+    return {
+      targetText,
+      spokenText: '(Chưa nhận diện được giọng nói)',
+      words: targetWords.map((w, idx) => ({
+        word: w,
+        status: 'incorrect',
+        score: 0,
+        feedback: 'Chưa phát hiện giọng nói',
+        ipa: sentenceIpaList[idx] || '',
+      })),
+      accuracy: 0,
+      fluencyScore: 0,
+      isPassed: false,
+      feedbackVi: 'Chưa thu được âm thanh. Hãy kiểm tra micro và đọc to câu tiếng Anh nhé!',
+    };
+  }
+
+  const spokenWords = cleanSpoken.split(/\s+/).filter(Boolean);
 
   const chunkWordsNorm = (chunkPhrase || '')
     .toLowerCase()
@@ -106,85 +219,139 @@ function analyzeSpokenSentence(targetText, spokenText, chunkPhrase = '') {
     .map(w => w.replace(/[^a-zA-Z0-9']/g, ''))
     .filter(Boolean);
 
-  // Tra cứu danh sách IPA cho từng từ trong câu
-  const sentenceIpaList = getSentenceIPA(cleanTarget) || [];
+  const alignments = alignWords(targetWords, spokenWords);
 
-  const pool = [...spokenWordsNorm];
-  let earnedScore = 0;
+  let totalScore = 0;
+  let correctCount = 0;
+  let wrongCount = 0;
 
-  const words = targetWords.map((originalWord, idx) => {
+  const hasSibilantAcoustic = audioFeatures ? audioFeatures.hasSibilantEnergy : null;
+
+  const words = targetWords.map((originalWord, tIdx) => {
     const norm = originalWord.replace(/[^a-zA-Z0-9']/g, '').toLowerCase();
     const isChunkPart = chunkWordsNorm.includes(norm);
-    const ipa = sentenceIpaList[idx]?.ipa || '';
+    const ipa = sentenceIpaList[tIdx] || '';
 
-    // 1. Khớp chính xác 100%
-    const exactIdx = pool.indexOf(norm);
-    if (exactIdx !== -1) {
-      earnedScore += 100;
-      pool.splice(exactIdx, 1);
+    const pair = alignments.find(a => a.targetIdx === tIdx);
+    const sIdx = pair ? pair.spokenIdx : null;
+
+    // 1. Từ bị bỏ sót hoàn toàn
+    if (sIdx === null || sIdx === undefined) {
+      wrongCount++;
+      return {
+        word: originalWord,
+        status: 'incorrect',
+        score: 0,
+        feedback: 'Bị bỏ sót, chưa đọc từ này',
+        ipa,
+        isChunk: isChunkPart,
+      };
+    }
+
+    const spokenRaw = spokenWords[sIdx] || '';
+    const spokenNorm = spokenRaw.replace(/[^a-zA-Z0-9']/g, '').toLowerCase();
+
+    // 2. Khớp chính xác
+    if (norm === spokenNorm) {
+      // Đối soát âm học với từ có âm đuôi xì /s, z, st/
+      const needsSibilant = /s|z|sh|ch|st|ts/.test(norm);
+      if (needsSibilant && hasSibilantAcoustic === false) {
+        totalScore += 65;
+        return {
+          word: originalWord,
+          status: 'almost',
+          score: 65,
+          feedback: 'Âm xì hoặc âm đuôi còn yếu/chưa bật rõ',
+          ipa,
+          isChunk: isChunkPart,
+          tip: getPhoneticTip(norm.slice(-1)),
+        };
+      }
+
+      totalScore += 95;
+      correctCount++;
       return {
         word: originalWord,
         status: isChunkPart ? 'chunk' : 'correct',
         score: 95,
-        feedback: isChunkPart ? 'Phát âm chuẩn chunk mục tiêu' : 'Phát âm chuẩn',
+        feedback: isChunkPart ? 'Phát âm chuẩn cụm từ mục tiêu' : 'Phát âm chuẩn xác',
         ipa,
+        isChunk: isChunkPart,
       };
     }
 
-    // 2. Gần đúng (thiếu / lệch âm đuôi -s, -es, -ed, -ing)
-    let almostIdx = -1;
-    let feedback = '';
-
-    for (let i = 0; i < pool.length; i++) {
-      const sp = pool[i];
-      if (!sp) continue;
-
-      if (norm.endsWith('ed') && norm.slice(0, -2) === sp) {
-        almostIdx = i; feedback = 'Thiếu âm đuôi -ed'; break;
-      } else if (norm.endsWith('s') && norm.slice(0, -1) === sp) {
-        almostIdx = i; feedback = 'Thiếu âm đuôi -s/es'; break;
-      } else if (sp.endsWith('s') && sp.slice(0, -1) === norm) {
-        almostIdx = i; feedback = 'Thừa âm đuôi -s'; break;
-      } else if (norm.endsWith('ing') && norm.slice(0, -3) === sp) {
-        almostIdx = i; feedback = 'Thiếu đuôi -ing'; break;
+    // 3. Khớp gần đúng (lệch âm đuôi / âm vị nhỏ)
+    const sim = calculatePhoneticSimilarity(norm, spokenNorm);
+    if (sim >= 0.7) {
+      let feedback = 'Phát âm chưa tròn vành rõ chữ';
+      let tipKey = null;
+      if (norm.endsWith('ed') && norm.slice(0, -2) === spokenNorm) {
+        feedback = 'Thiếu âm đuôi quá khứ -ed';
+        tipKey = 'ed';
+      } else if (norm.endsWith('s') && norm.slice(0, -1) === spokenNorm) {
+        feedback = 'Thiếu âm đuôi xì -s';
+        tipKey = 's';
+      } else if (norm.endsWith('t') && norm.slice(0, -1) === spokenNorm) {
+        feedback = 'Thiếu âm bật cuối /t/';
+        tipKey = 't';
+      } else if (norm.endsWith('d') && norm.slice(0, -1) === spokenNorm) {
+        feedback = 'Thiếu âm bật cuối /d/';
+        tipKey = 'd';
+      } else if (norm.endsWith('ing') && norm.slice(0, -3) === spokenNorm) {
+        feedback = 'Thiếu đuôi -ing';
+      } else if (spokenNorm.endsWith('s') && spokenNorm.slice(0, -1) === norm) {
+        feedback = 'Thừa âm đuôi -s';
+        tipKey = 's';
       }
-    }
 
-    if (almostIdx !== -1) {
-      earnedScore += 70;
-      pool.splice(almostIdx, 1);
+      totalScore += 65;
       return {
         word: originalWord,
         status: 'almost',
-        score: 70,
+        score: 65,
         feedback,
         ipa,
+        isChunk: isChunkPart,
+        tip: getPhoneticTip(tipKey || norm.slice(-1)),
       };
     }
 
-    // 3. Không khớp hoặc phát âm sai
+    // 4. Phát âm sai hẳn hoặc nói nhầm sang từ khác
+    wrongCount++;
+    totalScore += 15;
     return {
       word: originalWord,
       status: 'incorrect',
-      score: 20,
-      feedback: 'Chưa phát âm hoặc nói chưa chuẩn',
+      score: 15,
+      feedback: `Nói nhầm thành "${spokenRaw}" thay vì "${originalWord}"`,
       ipa,
+      isChunk: isChunkPart,
+      tip: getPhoneticTip(norm.slice(-1)),
     };
   });
 
-  const accuracy = targetWords.length > 0 ? Math.round(earnedScore / targetWords.length) : 0;
-  const isPassed = accuracy >= 65 && cleanSpoken.length > 0;
+  const accuracy = targetWords.length > 0 ? Math.round(totalScore / targetWords.length) : 0;
+  
+  // Điều kiện ĐẠT: Điểm trung bình >= 75 VÀ không có quá 1 từ sai hẳn
+  const isPassed = accuracy >= 75 && wrongCount <= 1;
 
-  const feedbackVi = isPassed
-    ? 'Phát âm khá tốt! Bạn đã phát âm chuẩn xác phần lớn các từ trong câu.'
-    : 'Cần chú ý phát âm rõ hơn các từ bị bôi vàng/đỏ, đặc biệt là các âm bật hơi đuôi (ending sounds).';
+  let feedbackVi = '';
+  if (accuracy >= 85 && isPassed) {
+    feedbackVi = 'Xuất sắc! Bạn đã phát âm rất chuẩn xác và rõ ràng các từ trong câu.';
+  } else if (isPassed) {
+    feedbackVi = 'Khá tốt! Bạn đã đạt yêu cầu. Chú ý các từ màu vàng để phát âm tự nhiên hơn nhé.';
+  } else if (wrongCount >= 3 || accuracy < 50) {
+    feedbackVi = 'Phát hiện nhiều từ phát âm sai hoặc nói chưa đúng câu mẫu. Bạn hãy nghe lại AI đọc mẫu và thử lại nhé!';
+  } else {
+    feedbackVi = 'Chưa đạt yêu cầu. Hãy chú ý các từ bị bôi đỏ/vàng, đặc biệt là bật rõ các âm đuôi (-t, -s, -ed).';
+  }
 
   return {
     targetText,
     spokenText: cleanSpoken,
     words,
     accuracy,
-    fluencyScore: isPassed ? 80 : 50,
+    fluencyScore: isPassed ? Math.min(95, accuracy + 5) : Math.max(30, accuracy - 10),
     isPassed,
     feedbackVi,
   };
@@ -390,7 +557,7 @@ export function SpeakingSession({
   };
 
   // Đánh giá câu nói của user
-  const handleEvaluateSpokenText = useCallback((spokenText, audioUrl = null) => {
+  const handleEvaluateSpokenText = useCallback((spokenText, audioUrl = null, audioFeatures = null) => {
     setIsEvaluating(false);
 
     if (!spokenText || !spokenText.trim()) {
@@ -398,7 +565,7 @@ export function SpeakingSession({
       setCurrentAttempt({
         targetText: currentSentence.sampleTranslation,
         spokenText: '(Chưa nhận diện được giọng nói)',
-        words: currentSentence.sampleTranslation.split(/\s+/).map(w => ({ word: w, status: 'incorrect', note: 'Chưa nghe thấy' })),
+        words: currentSentence.sampleTranslation.split(/\s+/).map(w => ({ word: w, status: 'incorrect', score: 0, feedback: 'Chưa nghe thấy', ipa: wordToIPA(w) })),
         accuracy: 0,
         isPassed: false,
         audioUrl,
@@ -407,7 +574,7 @@ export function SpeakingSession({
     }
 
     const targetText = currentSentence.sampleTranslation;
-    const analysis = analyzeSpokenSentence(targetText, spokenText, chunk.phrase);
+    const analysis = analyzeSpokenSentence(targetText, spokenText, chunk.phrase, audioFeatures);
     const result = {
       ...analysis,
       audioUrl,
@@ -610,6 +777,16 @@ export function SpeakingSession({
       audioContextRef.current = null;
     }
 
+    // ─── TRÍCH XUẤT ĐẶC TRƯNG ÂM HỌC VẬT LÝ TỪ BẢN GHI ÂM (ACOUSTIC FEATURES) ───
+    let acoustic = null;
+    if (audioBlob) {
+      try {
+        acoustic = await extractAcousticFeatures(audioBlob);
+      } catch (acErr) {
+        console.warn('Acoustic extraction warning:', acErr);
+      }
+    }
+
     // ─── CHẤM ĐIỂM CẤP ĐỘ 2: GỬI AUDIO LÊN GEMINI PHÂN TÍCH NGỮ ÂM TỪNG TỪ ───
     let geminiAssessment = null;
     if (audioBlob && audioBlob.size > 200) {
@@ -653,24 +830,44 @@ export function SpeakingSession({
       const words = geminiAssessment.words.map(w => {
         const norm = (w.word || '').replace(/[^a-zA-Z0-9']/g, '').toLowerCase();
         const isChunkPart = chunkWordsNorm.includes(norm);
+        const score = w.score != null ? Number(w.score) : (w.status === 'correct' ? 95 : w.status === 'almost' ? 65 : 20);
         return {
           word: w.word,
           status: (w.status === 'correct' && isChunkPart) ? 'chunk' : (w.status || 'correct'),
           isChunk: isChunkPart,
-          score: w.score != null ? w.score : (w.status === 'correct' ? 95 : w.status === 'almost' ? 70 : 20),
-          feedback: w.feedback || (w.status === 'correct' ? 'Phát âm chuẩn' : ''),
-          ipa: w.ipa || '',
+          score,
+          feedback: w.feedback || (w.status === 'correct' ? 'Phát âm chuẩn' : 'Cần chú ý phát âm rõ hơn'),
+          ipa: w.ipa || wordToIPA(norm),
+          tip: getPhoneticTip(norm.slice(-1)),
         };
       });
+
+      // Kiểm tra âm học: nếu câu có âm xì /s, z, st/ nhưng acoustic.hasSibilantEnergy === false
+      if (acoustic && !acoustic.hasSibilantEnergy) {
+        words.forEach(w => {
+          const norm = (w.word || '').replace(/[^a-zA-Z0-9']/g, '').toLowerCase();
+          if (/s|z|st|sh|ch/.test(norm) && (w.status === 'correct' || w.status === 'chunk')) {
+            w.status = 'almost';
+            w.score = Math.min(w.score, 65);
+            w.feedback = 'Âm xì hoặc âm đuôi còn yếu';
+            w.tip = getPhoneticTip('s');
+          }
+        });
+      }
+
+      const totalScore = words.reduce((sum, w) => sum + (w.score || 0), 0);
+      const computedAccuracy = words.length > 0 ? Math.round(totalScore / words.length) : 0;
+      const chunkPassed = words.filter(w => w.isChunk).every(w => w.status === 'chunk' || w.status === 'almost' || w.score >= 60);
+      const isPassed = computedAccuracy >= 75 && chunkPassed && !words.some(w => w.status === 'incorrect' && w.isChunk);
 
       const result = {
         targetText: currentSentence.sampleTranslation,
         spokenText: geminiAssessment.spokenTranscript || spoken || '(Đã chấm bằng AI Audio)',
         words,
-        accuracy: geminiAssessment.accuracyScore != null ? geminiAssessment.accuracyScore : 85,
-        fluencyScore: geminiAssessment.fluencyScore || 80,
-        isPassed: Boolean(geminiAssessment.isPassed),
-        feedbackVi: geminiAssessment.feedbackVi || '',
+        accuracy: computedAccuracy,
+        fluencyScore: geminiAssessment.fluencyScore || (isPassed ? 80 : 50),
+        isPassed,
+        feedbackVi: geminiAssessment.feedbackVi || (isPassed ? 'Phát âm khá tốt! Bạn đã phát âm chuẩn xác câu này.' : 'Chưa đạt yêu cầu. Chú ý các từ bị bôi đỏ/vàng để cải thiện nhé!'),
         audioUrl: userAudioUrl,
         isAiAssessed: true,
       };
@@ -690,8 +887,8 @@ export function SpeakingSession({
       return;
     }
 
-    // NẾU OFFLINE HOẶC GEMINI KHÔNG KHẢ DỤNG: DÙNG THUẬT TOÁN FALLBACK TỐI ƯU
-    handleEvaluateSpokenText(spoken, userAudioUrl);
+    // NẾU OFFLINE HOẶC GEMINI KHÔNG KHẢ DỤNG: DÙNG THUẬT TOÁN ĐỐI SOÁT NGỮ ÂM & ÂM HỌC
+    handleEvaluateSpokenText(spoken, userAudioUrl, acoustic);
   }, [currentSentence, chunk.phrase, currentStepIndex, playAiVoice, handleEvaluateSpokenText, liveSpokenText]);
 
   // Cleanup khi unmount
