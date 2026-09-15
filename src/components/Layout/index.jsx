@@ -5,23 +5,21 @@ import {
 } from 'lucide-react';
 
 const NAV_ITEMS = [
-  { id: 'transcripts',  label: 'Transcripts',    icon: FileText   },
-  { id: 'chunks',       label: 'Chunks',         icon: Layers     },
-  { id: 'vocab',        label: 'Từ vựng',       icon: BookMarked },
-  { id: 'practice',     label: 'Practice',       icon: Mic        },
-  { id: 'ai_listening', label: 'Luyện Nghe AI',  icon: Headphones, isNew: true },
-  { id: 'ai_speaking',  label: 'Luyện Nói AI',   icon: Sparkles,   isNew: true },
-  { id: 'progress',     label: 'Progress',       icon: BarChart2  },
+  { id: 'ai_listening', label: 'Luyện Nghe',   shortLabel: 'Nghe',    icon: Headphones },
+  { id: 'chunks',       label: 'Chunks',       shortLabel: 'Chunks',  icon: Layers     },
+  { id: 'vocab',        label: 'Từ vựng',     shortLabel: 'Từ vựng', icon: BookMarked },
+  { id: 'practice',     label: 'Practice',     shortLabel: 'Nói',     icon: Mic        },
+  { id: 'ai_speaking',  label: 'Luyện Nói AI', shortLabel: 'Nói AI',  icon: Sparkles,  isNew: true },
+  { id: 'progress',     label: 'Progress',     shortLabel: 'Tiến độ', icon: BarChart2  },
 ];
 
 const PAGE_TITLES = {
-  transcripts:  { title: 'Transcripts',          subtitle: 'Nhập transcript TOEIC và trích xuất chunk' },
-  chunks:       { title: 'Chunks',               subtitle: 'Danh sách cụm từ đã phân tích' },
-  vocab:        { title: 'Từ vựng',             subtitle: 'Học 5000 từ theo chủ đề — phân tích chunk & luyện viết' },
-  practice:     { title: 'Speaking Practice',    subtitle: 'Luyện nói theo câu mẫu' },
-  ai_listening: { title: 'Luyện Nghe với AI',    subtitle: 'Tạo bài nghe hội thoại TOEIC theo yêu cầu, luyện tai đa giọng bản xứ & trắc nghiệm' },
+  ai_listening: { title: 'Luyện Nghe',         subtitle: 'Tạo bài nghe AI, dán script đề thi ETS, luyện tai đa giọng bản xứ & trắc nghiệm' },
+  chunks:       { title: 'Chunks',            subtitle: 'Danh sách cụm từ đã phân tích' },
+  vocab:        { title: 'Từ vựng',          subtitle: 'Học 5000 từ theo chủ đề — phân tích chunk & luyện viết' },
+  practice:     { title: 'Speaking Practice', subtitle: 'Luyện nói theo câu mẫu' },
   ai_speaking:  { title: 'Luyện Nói Giao Tiếp AI', subtitle: 'Phản xạ đời thực theo Chunk & Chấm chuẩn âm vị IPA với Sherpa-ONNX' },
-  progress:     { title: 'Progress',             subtitle: 'Theo dõi tiến độ học tập' },
+  progress:     { title: 'Progress',          subtitle: 'Theo dõi tiến độ học tập' },
 };
 
 // ─── Desktop Sidebar ──────────────────────────────────────────
@@ -118,7 +116,7 @@ export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick, 
 export function BottomNav({ activePage, onNavigate, counts = {}, dueCount = 0 }) {
   return (
     <nav className="bottom-nav">
-      {NAV_ITEMS.map(({ id, label, icon: Icon, isNew }) => (
+      {NAV_ITEMS.map(({ id, label, shortLabel, icon: Icon, isNew }) => (
         <button
           key={id}
           id={`bottom-nav-${id}`}
@@ -136,8 +134,8 @@ export function BottomNav({ activePage, onNavigate, counts = {}, dueCount = 0 })
           ) : counts[id] > 0 ? (
             <span className="bottom-nav-badge">{counts[id]}</span>
           ) : null}
-          <Icon size={20} />
-          <span>{label}</span>
+          <Icon size={19} />
+          <span>{shortLabel || label}</span>
         </button>
       ))}
     </nav>

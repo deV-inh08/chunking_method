@@ -1,6 +1,5 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { Sidebar, Header, BottomNav } from './components/Layout';
-import { TranscriptModule } from './components/TranscriptModule';
 import { ListeningAiModule } from './components/ListeningAiModule';
 import { ChunkModule } from './components/ChunkModule';
 import { VocabModule } from './components/VocabModule';
@@ -36,9 +35,11 @@ function useToast() {
 export default function App() {
   const [page, setPage]                 = useState(() => {
     try {
-      return localStorage.getItem('toeic_active_page') || 'transcripts';
+      const p = localStorage.getItem('toeic_active_page');
+      if (p === 'transcripts') return 'ai_listening';
+      return p || 'ai_listening';
     } catch {
-      return 'transcripts';
+      return 'ai_listening';
     }
   });
   const [showSettings, setShowSettings] = useState(false);
@@ -359,15 +360,10 @@ export default function App() {
   }, [addToast]);
 
   // ── Nav badge counts ─────────────────────────────────────────
-  const aiListeningCount = useMemo(() => {
-    return transcripts.filter(t => t.isAiGenerated || (t.questions && t.questions.length > 0)).length;
-  }, [transcripts]);
-
   const counts = {
-    transcripts:  transcripts.length,
+    ai_listening: transcripts.length,
     chunks:       allChunks.length,
     practice:     selectedChunks.size,
-    ai_listening: aiListeningCount,
     progress:     Object.keys(allProgress).length,
   };
 
@@ -494,31 +490,7 @@ export default function App() {
 
         <main className="page-content">
           <ErrorBoundary>
-            {page === 'transcripts' && (
-              <TranscriptModule
-                transcripts={transcripts}
-                onSave={handleSaveTranscript}
-                onDelete={handleDeleteTranscript}
-                onChunksExtracted={handleChunksExtracted}
-                onSelectTranscript={handleSelectTranscript}
-                chunkCounts={chunkCounts}
-                allProgress={allProgress}
-                onToast={addToast}
-                onNavigateToAiListening={() => setPage('ai_listening')}
-                onStartPractice={(transcriptId) => {
-                  setSelectedTranscriptId(transcriptId);
-                  const tChunks = storage.getChunks(transcriptId);
-                  if (tChunks.length > 0) {
-                    setSelectedChunks(new Set(tChunks.map(c => c.id)));
-                    setPage('practice');
-                  } else {
-                    setPage('chunks');
-                  }
-                }}
-              />
-            )}
-
-            {page === 'ai_listening' && (
+            {(page === 'ai_listening' || page === 'transcripts') && (
               <ListeningAiModule
                 transcripts={transcripts}
                 onSave={handleSaveTranscript}

@@ -1083,17 +1083,19 @@ input, textarea {
 
   .bottom-nav-badge {
     position: absolute;
-    top: 4px;
+    top: 3px;
     right: calc(50% - 16px);
-    font-size: 9px;
-    font-weight: 700;
+    font-size: 8.5px;
+    font-weight: 800;
     background: var(--accent-600);
     color: white;
     border-radius: var(--radius-full);
     padding: 1px 4px;
-    min-width: 14px;
+    min-width: 13px;
     text-align: center;
-    line-height: 1.4;
+    line-height: 1.3;
+    pointer-events: none;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.5);
   }
 
   /* ── Settings button ───────────────────── */
