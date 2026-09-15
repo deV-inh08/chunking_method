@@ -1,0 +1,1389 @@
+{
+  "topicId": "verbs_tenses",
+  "topicName": "Thì của động từ",
+  "topicNameEn": "Verb Tenses",
+  "category": "grammar",
+  "description": "Các thì cơ bản và nâng cao trong TOEIC: hiện tại đơn, hiện tại tiếp diễn, hiện tại hoàn thành, quá khứ đơn, quá khứ hoàn thành, tương lai, thì hoàn thành tiếp diễn và các dấu hiệu nhận biết thì",
+  "questions": [
+    {
+      "id": "vt_std_001",
+      "level": "standard",
+      "question": "The marketing team ______ a new advertising campaign last month.",
+      "options": {
+        "A": "launches",
+        "B": "launched",
+        "C": "has launched",
+        "D": "is launching"
+      },
+      "correctAnswer": "B",
+      "clue": "Dấu hiệu 'last month' → thì quá khứ đơn (Past Simple)",
+      "explanationVi": "Cụm 'last month' chỉ thời gian xác định trong quá khứ, bắt buộc dùng Past Simple. 'launched' là dạng đúng. Các lựa chọn khác thuộc thì hiện tại hoặc hiện tại hoàn thành.",
+      "targetChunk": {
+        "phrase": "launched a new advertising campaign",
+        "meaningVi": "đã phát động chiến dịch quảng cáo mới"
+      },
+      "skeleton": {
+        "subject": "The marketing team",
+        "verb": "launched",
+        "object": "a new advertising campaign last month"
+      }
+    },
+    {
+      "id": "vt_std_002",
+      "level": "standard",
+      "question": "Ms. Park usually ______ to the office by subway.",
+      "options": {
+        "A": "goes",
+        "B": "is going",
+        "C": "went",
+        "D": "has gone"
+      },
+      "correctAnswer": "A",
+      "clue": "Trạng từ tần suất 'usually' + thói quen → Hiện tại đơn (Present Simple)",
+      "explanationVi": "Từ 'usually' biểu thị thói quen, dùng Present Simple. Chủ ngữ ngôi thứ 3 số ít nên thêm -s: goes.",
+      "targetChunk": {
+        "phrase": "usually goes to the office",
+        "meaningVi": "thường xuyên đi đến văn phòng"
+      },
+      "skeleton": {
+        "subject": "Ms. Park",
+        "verb": "goes",
+        "object": "to the office by subway"
+      }
+    },
+    {
+      "id": "vt_std_003",
+      "level": "standard",
+      "question": "The company ______ its annual report next Friday.",
+      "options": {
+        "A": "publishes",
+        "B": "published",
+        "C": "will publish",
+        "D": "has published"
+      },
+      "correctAnswer": "C",
+      "clue": "Dấu hiệu 'next Friday' → thì tương lai đơn (Future Simple)",
+      "explanationVi": "'next Friday' chỉ thời điểm trong tương lai, dùng will + V. Các thì khác không phù hợp với dấu hiệu thời gian tương lai.",
+      "targetChunk": {
+        "phrase": "will publish its annual report",
+        "meaningVi": "sẽ công bố báo cáo thường niên"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "will publish",
+        "object": "its annual report next Friday"
+      }
+    },
+    {
+      "id": "vt_std_004",
+      "level": "standard",
+      "question": "I ______ this report since 9 a.m. this morning.",
+      "options": {
+        "A": "write",
+        "B": "wrote",
+        "C": "have been writing",
+        "D": "am writing"
+      },
+      "correctAnswer": "C",
+      "clue": "Dấu hiệu 'since + mốc thời gian' + hành động kéo dài đến hiện tại → Hiện tại hoàn thành tiếp diễn",
+      "explanationVi": "Hành động bắt đầu từ 9 giờ sáng và vẫn đang tiếp diễn → have been writing. Present Perfect Continuous nhấn mạnh quá trình.",
+      "targetChunk": {
+        "phrase": "have been writing this report since",
+        "meaningVi": "đã viết báo cáo này từ"
+      },
+      "skeleton": {
+        "subject": "I",
+        "verb": "have been writing",
+        "object": "this report since 9 a.m. this morning"
+      }
+    },
+    {
+      "id": "vt_std_005",
+      "level": "standard",
+      "question": "By the time the manager arrived, the meeting ______ already.",
+      "options": {
+        "A": "starts",
+        "B": "started",
+        "C": "had started",
+        "D": "has started"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động xảy ra trước một hành động quá khứ khác → Past Perfect",
+      "explanationVi": "Cấu trúc 'By the time + Past Simple, Past Perfect'. Cuộc họp bắt đầu trước khi manager đến.",
+      "targetChunk": {
+        "phrase": "had started already",
+        "meaningVi": "đã bắt đầu rồi"
+      },
+      "skeleton": {
+        "subject": "the meeting",
+        "verb": "had started",
+        "object": "already"
+      }
+    },
+    {
+      "id": "vt_std_006",
+      "level": "standard",
+      "question": "Look! The CEO ______ into the conference room right now.",
+      "options": {
+        "A": "walks",
+        "B": "walked",
+        "C": "is walking",
+        "D": "has walked"
+      },
+      "correctAnswer": "C",
+      "clue": "Dấu hiệu 'Look!' + 'right now' → Hiện tại tiếp diễn",
+      "explanationVi": "Hành động đang xảy ra ngay lúc nói, dùng Present Continuous: is walking.",
+      "targetChunk": {
+        "phrase": "is walking into the conference room",
+        "meaningVi": "đang bước vào phòng họp"
+      },
+      "skeleton": {
+        "subject": "The CEO",
+        "verb": "is walking",
+        "object": "into the conference room right now"
+      }
+    },
+    {
+      "id": "vt_std_007",
+      "level": "standard",
+      "question": "She ______ in this company for five years.",
+      "options": {
+        "A": "works",
+        "B": "worked",
+        "C": "has worked",
+        "D": "is working"
+      },
+      "correctAnswer": "C",
+      "clue": "Dấu hiệu 'for + khoảng thời gian' + hành động kéo dài đến hiện tại → Present Perfect",
+      "explanationVi": "Hành động bắt đầu trong quá khứ và vẫn còn liên quan đến hiện tại → has worked.",
+      "targetChunk": {
+        "phrase": "has worked in this company for five years",
+        "meaningVi": "đã làm việc tại công ty này được năm năm"
+      },
+      "skeleton": {
+        "subject": "She",
+        "verb": "has worked",
+        "object": "in this company for five years"
+      }
+    },
+    {
+      "id": "vt_std_008",
+      "level": "standard",
+      "question": "The train ______ at 7:30 every morning.",
+      "options": {
+        "A": "leaves",
+        "B": "is leaving",
+        "C": "left",
+        "D": "has left"
+      },
+      "correctAnswer": "A",
+      "clue": "Thời gian biểu cố định + 'every morning' → Present Simple",
+      "explanationVi": "Lịch trình, thời gian biểu dùng Present Simple. Chủ ngữ số ít → leaves.",
+      "targetChunk": {
+        "phrase": "leaves at 7:30 every morning",
+        "meaningVi": "khởi hành lúc 7:30 mỗi sáng"
+      },
+      "skeleton": {
+        "subject": "The train",
+        "verb": "leaves",
+        "object": "at 7:30 every morning"
+      }
+    },
+    {
+      "id": "vt_std_009",
+      "level": "standard",
+      "question": "They ______ the project by the end of this month.",
+      "options": {
+        "A": "complete",
+        "B": "completed",
+        "C": "will have completed",
+        "D": "are completing"
+      },
+      "correctAnswer": "C",
+      "clue": "Dấu hiệu 'by the end of this month' → Future Perfect",
+      "explanationVi": "Hành động sẽ hoàn thành trước một mốc thời gian trong tương lai → will have completed.",
+      "targetChunk": {
+        "phrase": "will have completed the project by the end of this month",
+        "meaningVi": "sẽ hoàn thành dự án trước cuối tháng này"
+      },
+      "skeleton": {
+        "subject": "They",
+        "verb": "will have completed",
+        "object": "the project by the end of this month"
+      }
+    },
+    {
+      "id": "vt_std_010",
+      "level": "standard",
+      "question": "While I ______ the email, the phone rang.",
+      "options": {
+        "A": "write",
+        "B": "wrote",
+        "C": "was writing",
+        "D": "have written"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động đang diễn ra trong quá khứ bị cắt ngang → Past Continuous",
+      "explanationVi": "Cấu trúc While + Past Continuous, Past Simple. Hành động viết email đang diễn ra thì điện thoại reo.",
+      "targetChunk": {
+        "phrase": "was writing the email",
+        "meaningVi": "đang viết email"
+      },
+      "skeleton": {
+        "subject": "I",
+        "verb": "was writing",
+        "object": "the email"
+      }
+    },
+    {
+      "id": "vt_std_011",
+      "level": "standard",
+      "question": "The new software ______ available since last Monday.",
+      "options": {
+        "A": "is",
+        "B": "was",
+        "C": "has been",
+        "D": "will be"
+      },
+      "correctAnswer": "C",
+      "clue": "Dấu hiệu 'since + mốc thời gian' → Present Perfect",
+      "explanationVi": "Trạng thái bắt đầu từ thứ Hai tuần trước và vẫn còn → has been available.",
+      "targetChunk": {
+        "phrase": "has been available since last Monday",
+        "meaningVi": "đã có sẵn từ thứ Hai tuần trước"
+      },
+      "skeleton": {
+        "subject": "The new software",
+        "verb": "has been",
+        "object": "available since last Monday"
+      }
+    },
+    {
+      "id": "vt_std_012",
+      "level": "standard",
+      "question": "We ______ a meeting at 3 p.m. tomorrow.",
+      "options": {
+        "A": "have",
+        "B": "had",
+        "C": "are having",
+        "D": "have had"
+      },
+      "correctAnswer": "C",
+      "clue": "Kế hoạch đã sắp xếp trong tương lai gần → Present Continuous for future",
+      "explanationVi": "Dùng Present Continuous để nói về kế hoạch đã được sắp xếp: are having a meeting.",
+      "targetChunk": {
+        "phrase": "are having a meeting at 3 p.m. tomorrow",
+        "meaningVi": "sẽ có cuộc họp lúc 3 giờ chiều mai"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "are having",
+        "object": "a meeting at 3 p.m. tomorrow"
+      }
+    },
+    {
+      "id": "vt_std_013",
+      "level": "standard",
+      "question": "He ______ his keys and couldn't open the door.",
+      "options": {
+        "A": "loses",
+        "B": "lost",
+        "C": "has lost",
+        "D": "is losing"
+      },
+      "correctAnswer": "B",
+      "clue": "Hành động xảy ra và kết thúc trong quá khứ → Past Simple",
+      "explanationVi": "Hai hành động nối tiếp trong quá khứ: mất chìa khóa rồi không mở được cửa → lost.",
+      "targetChunk": {
+        "phrase": "lost his keys",
+        "meaningVi": "đã làm mất chìa khóa"
+      },
+      "skeleton": {
+        "subject": "He",
+        "verb": "lost",
+        "object": "his keys"
+      }
+    },
+    {
+      "id": "vt_std_014",
+      "level": "standard",
+      "question": "The conference ______ every year in Singapore.",
+      "options": {
+        "A": "holds",
+        "B": "is held",
+        "C": "held",
+        "D": "has held"
+      },
+      "correctAnswer": "B",
+      "clue": "Sự kiện lặp lại hàng năm + bị động → Present Simple Passive",
+      "explanationVi": "Hội nghị được tổ chức (không tự tổ chức) → is held. Dùng Present Simple vì thói quen/lịch trình.",
+      "targetChunk": {
+        "phrase": "is held every year in Singapore",
+        "meaningVi": "được tổ chức hàng năm tại Singapore"
+      },
+      "skeleton": {
+        "subject": "The conference",
+        "verb": "is held",
+        "object": "every year in Singapore"
+      }
+    },
+    {
+      "id": "vt_std_015",
+      "level": "standard",
+      "question": "I ______ never ______ such a complicated contract before.",
+      "options": {
+        "A": "have / seen",
+        "B": "had / seen",
+        "C": "am / seeing",
+        "D": "was / seeing"
+      },
+      "correctAnswer": "A",
+      "clue": "Dấu hiệu 'never ... before' → Present Perfect",
+      "explanationVi": "Trải nghiệm từ trước đến nay → have never seen.",
+      "targetChunk": {
+        "phrase": "have never seen such a complicated contract",
+        "meaningVi": "chưa từng thấy hợp đồng phức tạp như vậy"
+      },
+      "skeleton": {
+        "subject": "I",
+        "verb": "have never seen",
+        "object": "such a complicated contract before"
+      }
+    },
+    {
+      "id": "vt_std_016",
+      "level": "standard",
+      "question": "When the phone rang, she ______ dinner.",
+      "options": {
+        "A": "cooks",
+        "B": "cooked",
+        "C": "was cooking",
+        "D": "has cooked"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động đang diễn ra bị cắt ngang bởi hành động khác trong quá khứ → Past Continuous",
+      "explanationVi": "When + Past Simple, Past Continuous: cô ấy đang nấu ăn thì điện thoại reo.",
+      "targetChunk": {
+        "phrase": "was cooking dinner",
+        "meaningVi": "đang nấu bữa tối"
+      },
+      "skeleton": {
+        "subject": "she",
+        "verb": "was cooking",
+        "object": "dinner"
+      }
+    },
+    {
+      "id": "vt_std_017",
+      "level": "standard",
+      "question": "The price of oil ______ significantly over the past year.",
+      "options": {
+        "A": "increases",
+        "B": "increased",
+        "C": "has increased",
+        "D": "is increasing"
+      },
+      "correctAnswer": "C",
+      "clue": "Dấu hiệu 'over the past year' → Present Perfect",
+      "explanationVi": "Thay đổi từ quá khứ đến hiện tại → has increased.",
+      "targetChunk": {
+        "phrase": "has increased significantly over the past year",
+        "meaningVi": "đã tăng đáng kể trong năm qua"
+      },
+      "skeleton": {
+        "subject": "The price of oil",
+        "verb": "has increased",
+        "object": "significantly over the past year"
+      }
+    },
+    {
+      "id": "vt_std_018",
+      "level": "standard",
+      "question": "They ______ to the new office building next week.",
+      "options": {
+        "A": "move",
+        "B": "moved",
+        "C": "are moving",
+        "D": "have moved"
+      },
+      "correctAnswer": "C",
+      "clue": "Kế hoạch đã định trong tương lai gần → Present Continuous",
+      "explanationVi": "are moving thể hiện kế hoạch đã được sắp xếp cho tuần tới.",
+      "targetChunk": {
+        "phrase": "are moving to the new office building next week",
+        "meaningVi": "sẽ chuyển đến tòa nhà văn phòng mới vào tuần tới"
+      },
+      "skeleton": {
+        "subject": "They",
+        "verb": "are moving",
+        "object": "to the new office building next week"
+      }
+    },
+    {
+      "id": "vt_std_019",
+      "level": "standard",
+      "question": "The client ______ the proposal before the deadline.",
+      "options": {
+        "A": "submits",
+        "B": "submitted",
+        "C": "had submitted",
+        "D": "has submitted"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động hoàn thành trước một thời điểm quá khứ (deadline đã qua) → Past Perfect",
+      "explanationVi": "Nếu deadline đã qua và hành động nộp xảy ra trước đó → had submitted.",
+      "targetChunk": {
+        "phrase": "had submitted the proposal before the deadline",
+        "meaningVi": "đã nộp đề xuất trước hạn chót"
+      },
+      "skeleton": {
+        "subject": "The client",
+        "verb": "had submitted",
+        "object": "the proposal before the deadline"
+      }
+    },
+    {
+      "id": "vt_std_020",
+      "level": "standard",
+      "question": "Water ______ at 100 degrees Celsius.",
+      "options": {
+        "A": "boils",
+        "B": "is boiling",
+        "C": "boiled",
+        "D": "has boiled"
+      },
+      "correctAnswer": "A",
+      "clue": "Sự thật khoa học, chân lý → Present Simple",
+      "explanationVi": "Quy luật tự nhiên dùng Present Simple: boils.",
+      "targetChunk": {
+        "phrase": "boils at 100 degrees Celsius",
+        "meaningVi": "sôi ở 100 độ C"
+      },
+      "skeleton": {
+        "subject": "Water",
+        "verb": "boils",
+        "object": "at 100 degrees Celsius"
+      }
+    },
+    {
+      "id": "vt_std_021",
+      "level": "standard",
+      "question": "I ______ for the bus when it started to rain.",
+      "options": {
+        "A": "wait",
+        "B": "waited",
+        "C": "was waiting",
+        "D": "have waited"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động đang diễn ra trong quá khứ bị cắt ngang → Past Continuous",
+      "explanationVi": "was waiting khi trời bắt đầu mưa.",
+      "targetChunk": {
+        "phrase": "was waiting for the bus",
+        "meaningVi": "đang đợi xe buýt"
+      },
+      "skeleton": {
+        "subject": "I",
+        "verb": "was waiting",
+        "object": "for the bus"
+      }
+    },
+    {
+      "id": "vt_std_022",
+      "level": "standard",
+      "question": "The report ______ by the end of the day.",
+      "options": {
+        "A": "finishes",
+        "B": "finished",
+        "C": "will be finished",
+        "D": "has finished"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động sẽ được hoàn thành trong tương lai (bị động) → Future Simple Passive",
+      "explanationVi": "will be finished thể hiện báo cáo sẽ được hoàn thành trước cuối ngày.",
+      "targetChunk": {
+        "phrase": "will be finished by the end of the day",
+        "meaningVi": "sẽ được hoàn thành trước cuối ngày"
+      },
+      "skeleton": {
+        "subject": "The report",
+        "verb": "will be finished",
+        "object": "by the end of the day"
+      }
+    },
+    {
+      "id": "vt_std_023",
+      "level": "standard",
+      "question": "She ______ three languages fluently.",
+      "options": {
+        "A": "speaks",
+        "B": "is speaking",
+        "C": "spoke",
+        "D": "has spoken"
+      },
+      "correctAnswer": "A",
+      "clue": "Khả năng, sự thật hiện tại → Present Simple",
+      "explanationVi": "Khả năng nói ngôn ngữ dùng Present Simple: speaks.",
+      "targetChunk": {
+        "phrase": "speaks three languages fluently",
+        "meaningVi": "nói thành thạo ba ngôn ngữ"
+      },
+      "skeleton": {
+        "subject": "She",
+        "verb": "speaks",
+        "object": "three languages fluently"
+      }
+    },
+    {
+      "id": "vt_std_024",
+      "level": "standard",
+      "question": "They ______ the contract yesterday afternoon.",
+      "options": {
+        "A": "sign",
+        "B": "signed",
+        "C": "have signed",
+        "D": "are signing"
+      },
+      "correctAnswer": "B",
+      "clue": "Dấu hiệu 'yesterday afternoon' → Past Simple",
+      "explanationVi": "Thời gian xác định trong quá khứ → signed.",
+      "targetChunk": {
+        "phrase": "signed the contract yesterday afternoon",
+        "meaningVi": "đã ký hợp đồng chiều hôm qua"
+      },
+      "skeleton": {
+        "subject": "They",
+        "verb": "signed",
+        "object": "the contract yesterday afternoon"
+      }
+    },
+    {
+      "id": "vt_std_025",
+      "level": "standard",
+      "question": "How long ______ you ______ here?",
+      "options": {
+        "A": "do / work",
+        "B": "did / work",
+        "C": "have / been working",
+        "D": "are / working"
+      },
+      "correctAnswer": "C",
+      "clue": "Câu hỏi về thời gian kéo dài đến hiện tại → Present Perfect Continuous",
+      "explanationVi": "How long + have/has been + V-ing để hỏi về khoảng thời gian hành động kéo dài đến nay.",
+      "targetChunk": {
+        "phrase": "have been working here",
+        "meaningVi": "đã làm việc ở đây"
+      },
+      "skeleton": {
+        "subject": "you",
+        "verb": "have been working",
+        "object": "here"
+      }
+    },
+    {
+      "id": "vt_std_026",
+      "level": "standard",
+      "question": "The plane ______ off in twenty minutes.",
+      "options": {
+        "A": "takes",
+        "B": "took",
+        "C": "is taking",
+        "D": "has taken"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động sắp xảy ra theo lịch trình gần → Present Continuous",
+      "explanationVi": "is taking off thể hiện lịch trình sắp diễn ra trong 20 phút tới.",
+      "targetChunk": {
+        "phrase": "is taking off in twenty minutes",
+        "meaningVi": "sẽ cất cánh trong hai mươi phút nữa"
+      },
+      "skeleton": {
+        "subject": "The plane",
+        "verb": "is taking off",
+        "object": "in twenty minutes"
+      }
+    },
+    {
+      "id": "vt_std_027",
+      "level": "standard",
+      "question": "He ______ his homework before he went out.",
+      "options": {
+        "A": "finishes",
+        "B": "finished",
+        "C": "had finished",
+        "D": "has finished"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động hoàn thành trước hành động quá khứ khác → Past Perfect",
+      "explanationVi": "Làm bài tập xong trước khi đi ra ngoài → had finished.",
+      "targetChunk": {
+        "phrase": "had finished his homework before he went out",
+        "meaningVi": "đã làm xong bài tập trước khi ra ngoài"
+      },
+      "skeleton": {
+        "subject": "He",
+        "verb": "had finished",
+        "object": "his homework"
+      }
+    },
+    {
+      "id": "vt_std_028",
+      "level": "standard",
+      "question": "The store ______ at 9 a.m. every day.",
+      "options": {
+        "A": "opens",
+        "B": "is opening",
+        "C": "opened",
+        "D": "has opened"
+      },
+      "correctAnswer": "A",
+      "clue": "Lịch trình cố định hàng ngày → Present Simple",
+      "explanationVi": "opens thể hiện thời gian mở cửa thường xuyên.",
+      "targetChunk": {
+        "phrase": "opens at 9 a.m. every day",
+        "meaningVi": "mở cửa lúc 9 giờ sáng mỗi ngày"
+      },
+      "skeleton": {
+        "subject": "The store",
+        "verb": "opens",
+        "object": "at 9 a.m. every day"
+      }
+    },
+    {
+      "id": "vt_std_029",
+      "level": "standard",
+      "question": "I ______ this book for two weeks and still haven't finished it.",
+      "options": {
+        "A": "read",
+        "B": "am reading",
+        "C": "have been reading",
+        "D": "was reading"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động bắt đầu trong quá khứ, kéo dài đến hiện tại và vẫn chưa xong → Present Perfect Continuous",
+      "explanationVi": "have been reading nhấn mạnh quá trình đọc kéo dài.",
+      "targetChunk": {
+        "phrase": "have been reading this book for two weeks",
+        "meaningVi": "đã đọc cuốn sách này được hai tuần"
+      },
+      "skeleton": {
+        "subject": "I",
+        "verb": "have been reading",
+        "object": "this book for two weeks"
+      }
+    },
+    {
+      "id": "vt_std_030",
+      "level": "standard",
+      "question": "The package ______ delivered tomorrow morning.",
+      "options": {
+        "A": "is",
+        "B": "was",
+        "C": "will be",
+        "D": "has been"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động sẽ xảy ra trong tương lai (bị động) → Future Simple Passive",
+      "explanationVi": "will be delivered: gói hàng sẽ được giao vào sáng mai.",
+      "targetChunk": {
+        "phrase": "will be delivered tomorrow morning",
+        "meaningVi": "sẽ được giao vào sáng mai"
+      },
+      "skeleton": {
+        "subject": "The package",
+        "verb": "will be delivered",
+        "object": "tomorrow morning"
+      }
+    },
+    {
+      "id": "vt_adv_001",
+      "level": "advanced",
+      "question": "By next year, the company ______ its market share by 15 percent.",
+      "options": {
+        "A": "increases",
+        "B": "will increase",
+        "C": "will have increased",
+        "D": "has increased"
+      },
+      "correctAnswer": "C",
+      "clue": "Dấu hiệu 'By next year' → Future Perfect (hành động hoàn thành trước mốc tương lai)",
+      "explanationVi": "will have increased thể hiện thị phần sẽ tăng xong trước năm tới.",
+      "targetChunk": {
+        "phrase": "will have increased its market share by 15 percent",
+        "meaningVi": "sẽ đã tăng thị phần thêm 15 phần trăm"
+      },
+      "skeleton": {
+        "subject": "the company",
+        "verb": "will have increased",
+        "object": "its market share by 15 percent"
+      }
+    },
+    {
+      "id": "vt_adv_002",
+      "level": "advanced",
+      "question": "The engineers ______ the prototype for six months when the funding was cut.",
+      "options": {
+        "A": "developed",
+        "B": "have developed",
+        "C": "had been developing",
+        "D": "were developing"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động kéo dài đến một thời điểm quá khứ → Past Perfect Continuous",
+      "explanationVi": "had been developing nhấn mạnh quá trình phát triển kéo dài 6 tháng trước khi bị cắt kinh phí.",
+      "targetChunk": {
+        "phrase": "had been developing the prototype for six months",
+        "meaningVi": "đã phát triển nguyên mẫu được sáu tháng"
+      },
+      "skeleton": {
+        "subject": "The engineers",
+        "verb": "had been developing",
+        "object": "the prototype for six months"
+      }
+    },
+    {
+      "id": "vt_adv_003",
+      "level": "advanced",
+      "question": "This is the first time I ______ such advanced technology in a small firm.",
+      "options": {
+        "A": "see",
+        "B": "saw",
+        "C": "have seen",
+        "D": "had seen"
+      },
+      "correctAnswer": "C",
+      "clue": "Cấu trúc 'This is the first time + Present Perfect'",
+      "explanationVi": "This is the first time + S + have/has + V3. Trải nghiệm đến hiện tại.",
+      "targetChunk": {
+        "phrase": "have seen such advanced technology",
+        "meaningVi": "đã thấy công nghệ tiên tiến như vậy"
+      },
+      "skeleton": {
+        "subject": "I",
+        "verb": "have seen",
+        "object": "such advanced technology in a small firm"
+      }
+    },
+    {
+      "id": "vt_adv_004",
+      "level": "advanced",
+      "question": "The board ______ the decision until all the data had been reviewed.",
+      "options": {
+        "A": "doesn't finalize",
+        "B": "didn't finalize",
+        "C": "hadn't finalized",
+        "D": "hasn't finalized"
+      },
+      "correctAnswer": "B",
+      "clue": "Hành động quá khứ xảy ra sau hành động khác (Past Perfect) → Past Simple",
+      "explanationVi": "didn't finalize xảy ra sau khi dữ liệu đã được xem xét (had been reviewed).",
+      "targetChunk": {
+        "phrase": "didn't finalize the decision until all the data had been reviewed",
+        "meaningVi": "đã không chốt quyết định cho đến khi tất cả dữ liệu được xem xét"
+      },
+      "skeleton": {
+        "subject": "The board",
+        "verb": "didn't finalize",
+        "object": "the decision"
+      }
+    },
+    {
+      "id": "vt_adv_005",
+      "level": "advanced",
+      "question": "By the time we arrive, the presentation ______ for twenty minutes.",
+      "options": {
+        "A": "will start",
+        "B": "will be starting",
+        "C": "will have been starting",
+        "D": "will have been going on"
+      },
+      "correctAnswer": "D",
+      "clue": "Hành động bắt đầu trước và vẫn tiếp diễn đến mốc tương lai → Future Perfect Continuous",
+      "explanationVi": "will have been going on nhấn mạnh thời gian trình bày đã diễn ra 20 phút khi chúng ta đến.",
+      "targetChunk": {
+        "phrase": "will have been going on for twenty minutes",
+        "meaningVi": "sẽ đã diễn ra được hai mươi phút"
+      },
+      "skeleton": {
+        "subject": "the presentation",
+        "verb": "will have been going on",
+        "object": "for twenty minutes"
+      }
+    },
+    {
+      "id": "vt_adv_006",
+      "level": "advanced",
+      "question": "She ______ for the same firm since she graduated from university.",
+      "options": {
+        "A": "works",
+        "B": "worked",
+        "C": "has been working",
+        "D": "is working"
+      },
+      "correctAnswer": "C",
+      "clue": "Dấu hiệu 'since + mốc quá khứ' + hành động kéo dài → Present Perfect Continuous",
+      "explanationVi": "has been working nhấn mạnh sự liên tục từ khi tốt nghiệp đến nay.",
+      "targetChunk": {
+        "phrase": "has been working for the same firm since she graduated",
+        "meaningVi": "đã làm việc cho cùng một công ty kể từ khi tốt nghiệp"
+      },
+      "skeleton": {
+        "subject": "She",
+        "verb": "has been working",
+        "object": "for the same firm"
+      }
+    },
+    {
+      "id": "vt_adv_007",
+      "level": "advanced",
+      "question": "It was the first time the team ______ a project of this magnitude.",
+      "options": {
+        "A": "handles",
+        "B": "handled",
+        "C": "has handled",
+        "D": "had handled"
+      },
+      "correctAnswer": "D",
+      "clue": "Cấu trúc 'It was the first time + Past Perfect'",
+      "explanationVi": "It was the first time + S + had + V3. Trải nghiệm tính đến thời điểm quá khứ.",
+      "targetChunk": {
+        "phrase": "had handled a project of this magnitude",
+        "meaningVi": "đã xử lý một dự án quy mô lớn như vậy"
+      },
+      "skeleton": {
+        "subject": "the team",
+        "verb": "had handled",
+        "object": "a project of this magnitude"
+      }
+    },
+    {
+      "id": "vt_adv_008",
+      "level": "advanced",
+      "question": "The negotiators ______ for three hours when they finally reached an agreement.",
+      "options": {
+        "A": "talked",
+        "B": "have talked",
+        "C": "had been talking",
+        "D": "were talking"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động kéo dài đến một thời điểm quá khứ → Past Perfect Continuous",
+      "explanationVi": "had been talking nhấn mạnh cuộc đàm phán kéo dài 3 giờ trước khi đạt thỏa thuận.",
+      "targetChunk": {
+        "phrase": "had been talking for three hours",
+        "meaningVi": "đã nói chuyện được ba giờ"
+      },
+      "skeleton": {
+        "subject": "The negotiators",
+        "verb": "had been talking",
+        "object": "for three hours"
+      }
+    },
+    {
+      "id": "vt_adv_009",
+      "level": "advanced",
+      "question": "I ______ to contact the supplier several times, but there has been no response.",
+      "options": {
+        "A": "try",
+        "B": "tried",
+        "C": "have tried",
+        "D": "had tried"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động lặp lại từ quá khứ đến hiện tại, kết quả vẫn ảnh hưởng → Present Perfect",
+      "explanationVi": "have tried nhấn mạnh nhiều lần cố gắng và vẫn chưa có phản hồi.",
+      "targetChunk": {
+        "phrase": "have tried to contact the supplier several times",
+        "meaningVi": "đã cố gắng liên hệ nhà cung cấp nhiều lần"
+      },
+      "skeleton": {
+        "subject": "I",
+        "verb": "have tried",
+        "object": "to contact the supplier several times"
+      }
+    },
+    {
+      "id": "vt_adv_010",
+      "level": "advanced",
+      "question": "Hardly ______ the announcement been made when the stock price soared.",
+      "options": {
+        "A": "has",
+        "B": "had",
+        "C": "have",
+        "D": "was"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc đảo ngữ 'Hardly + had + S + V3 when...'",
+      "explanationVi": "Hardly had the announcement been made when... → vừa mới thông báo thì giá cổ phiếu tăng vọt.",
+      "targetChunk": {
+        "phrase": "Hardly had the announcement been made when",
+        "meaningVi": "Vừa mới thông báo thì"
+      },
+      "skeleton": {
+        "subject": "the announcement",
+        "verb": "had been made",
+        "object": ""
+      }
+    },
+    {
+      "id": "vt_adv_011",
+      "level": "advanced",
+      "question": "The research team ______ data for over a year before they published their findings.",
+      "options": {
+        "A": "collected",
+        "B": "have collected",
+        "C": "had been collecting",
+        "D": "were collecting"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động kéo dài đến một thời điểm quá khứ → Past Perfect Continuous",
+      "explanationVi": "had been collecting nhấn mạnh quá trình thu thập dữ liệu kéo dài hơn một năm trước khi công bố.",
+      "targetChunk": {
+        "phrase": "had been collecting data for over a year",
+        "meaningVi": "đã thu thập dữ liệu hơn một năm"
+      },
+      "skeleton": {
+        "subject": "The research team",
+        "verb": "had been collecting",
+        "object": "data for over a year"
+      }
+    },
+    {
+      "id": "vt_adv_012",
+      "level": "advanced",
+      "question": "No sooner ______ the contract signed than the client requested major changes.",
+      "options": {
+        "A": "was",
+        "B": "has",
+        "C": "had",
+        "D": "is"
+      },
+      "correctAnswer": "C",
+      "clue": "Cấu trúc đảo ngữ 'No sooner + had + S + V3 than...'",
+      "explanationVi": "No sooner had the contract been signed than... → vừa ký xong thì khách yêu cầu thay đổi lớn.",
+      "targetChunk": {
+        "phrase": "No sooner had the contract been signed than",
+        "meaningVi": "Vừa ký hợp đồng xong thì"
+      },
+      "skeleton": {
+        "subject": "the contract",
+        "verb": "had been signed",
+        "object": ""
+      }
+    },
+    {
+      "id": "vt_adv_013",
+      "level": "advanced",
+      "question": "By the end of this quarter, we ______ all the outstanding invoices.",
+      "options": {
+        "A": "process",
+        "B": "will process",
+        "C": "will have processed",
+        "D": "have processed"
+      },
+      "correctAnswer": "C",
+      "clue": "Dấu hiệu 'By the end of this quarter' → Future Perfect",
+      "explanationVi": "will have processed: sẽ xử lý xong tất cả hóa đơn chưa thanh toán trước cuối quý này.",
+      "targetChunk": {
+        "phrase": "will have processed all the outstanding invoices",
+        "meaningVi": "sẽ đã xử lý tất cả các hóa đơn còn tồn đọng"
+      },
+      "skeleton": {
+        "subject": "we",
+        "verb": "will have processed",
+        "object": "all the outstanding invoices"
+      }
+    },
+    {
+      "id": "vt_adv_014",
+      "level": "advanced",
+      "question": "The committee ______ the proposal for three weeks before finally rejecting it.",
+      "options": {
+        "A": "discussed",
+        "B": "has discussed",
+        "C": "had been discussing",
+        "D": "was discussing"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động kéo dài đến thời điểm quá khứ → Past Perfect Continuous",
+      "explanationVi": "had been discussing nhấn mạnh cuộc thảo luận kéo dài ba tuần trước khi bác bỏ.",
+      "targetChunk": {
+        "phrase": "had been discussing the proposal for three weeks",
+        "meaningVi": "đã thảo luận đề xuất được ba tuần"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "had been discussing",
+        "object": "the proposal for three weeks"
+      }
+    },
+    {
+      "id": "vt_adv_015",
+      "level": "advanced",
+      "question": "I wish I ______ more time to prepare for the presentation yesterday.",
+      "options": {
+        "A": "have",
+        "B": "had",
+        "C": "had had",
+        "D": "have had"
+      },
+      "correctAnswer": "C",
+      "clue": "Ước muốn trái với quá khứ → Past Perfect trong mệnh đề wish",
+      "explanationVi": "I wish + S + had + V3: ước đã có nhiều thời gian hơn (nhưng thực tế không).",
+      "targetChunk": {
+        "phrase": "I wish I had had more time",
+        "meaningVi": "Tôi ước gì mình đã có nhiều thời gian hơn"
+      },
+      "skeleton": {
+        "subject": "I",
+        "verb": "had had",
+        "object": "more time"
+      }
+    },
+    {
+      "id": "vt_adv_016",
+      "level": "advanced",
+      "question": "The moment the CEO ______ the room, everyone stood up.",
+      "options": {
+        "A": "enters",
+        "B": "entered",
+        "C": "has entered",
+        "D": "had entered"
+      },
+      "correctAnswer": "B",
+      "clue": "Hai hành động nối tiếp gần như đồng thời trong quá khứ → Past Simple",
+      "explanationVi": "The moment + Past Simple, Past Simple: vừa bước vào thì mọi người đứng dậy.",
+      "targetChunk": {
+        "phrase": "the moment the CEO entered the room",
+        "meaningVi": "ngay khi CEO bước vào phòng"
+      },
+      "skeleton": {
+        "subject": "the CEO",
+        "verb": "entered",
+        "object": "the room"
+      }
+    },
+    {
+      "id": "vt_adv_017",
+      "level": "advanced",
+      "question": "After the new policy ______, employee satisfaction scores improved dramatically.",
+      "options": {
+        "A": "implements",
+        "B": "implemented",
+        "C": "had been implemented",
+        "D": "has been implemented"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động bị động hoàn thành trước hành động quá khứ khác → Past Perfect Passive",
+      "explanationVi": "had been implemented: chính sách được áp dụng xong trước khi điểm hài lòng tăng.",
+      "targetChunk": {
+        "phrase": "had been implemented",
+        "meaningVi": "đã được áp dụng"
+      },
+      "skeleton": {
+        "subject": "the new policy",
+        "verb": "had been implemented",
+        "object": ""
+      }
+    },
+    {
+      "id": "vt_adv_018",
+      "level": "advanced",
+      "question": "We ______ the final draft by the time the client arrives tomorrow.",
+      "options": {
+        "A": "complete",
+        "B": "will complete",
+        "C": "will have completed",
+        "D": "have completed"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động hoàn thành trước một thời điểm tương lai → Future Perfect",
+      "explanationVi": "will have completed: sẽ hoàn thành bản thảo cuối trước khi khách đến.",
+      "targetChunk": {
+        "phrase": "will have completed the final draft by the time the client arrives",
+        "meaningVi": "sẽ đã hoàn thành bản thảo cuối cùng khi khách hàng đến"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "will have completed",
+        "object": "the final draft"
+      }
+    },
+    {
+      "id": "vt_adv_019",
+      "level": "advanced",
+      "question": "Scarcely ______ the meeting begun when the fire alarm went off.",
+      "options": {
+        "A": "has",
+        "B": "had",
+        "C": "have",
+        "D": "was"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc đảo ngữ 'Scarcely + had + S + V3 when...'",
+      "explanationVi": "Scarcely had the meeting begun when... → cuộc họp vừa bắt đầu thì chuông báo cháy reo.",
+      "targetChunk": {
+        "phrase": "Scarcely had the meeting begun when",
+        "meaningVi": "Cuộc họp vừa mới bắt đầu thì"
+      },
+      "skeleton": {
+        "subject": "the meeting",
+        "verb": "had begun",
+        "object": ""
+      }
+    },
+    {
+      "id": "vt_adv_020",
+      "level": "advanced",
+      "question": "If only the team ______ the deadline more carefully last quarter.",
+      "options": {
+        "A": "plans",
+        "B": "planned",
+        "C": "had planned",
+        "D": "has planned"
+      },
+      "correctAnswer": "C",
+      "clue": "Ước muốn trái với quá khứ → Past Perfect trong mệnh đề If only",
+      "explanationVi": "If only + S + had + V3: ước gì đã lên kế hoạch cẩn thận hơn (nhưng thực tế không).",
+      "targetChunk": {
+        "phrase": "If only the team had planned the deadline more carefully",
+        "meaningVi": "Giá như đội ngũ đã lên kế hoạch thời hạn cẩn thận hơn"
+      },
+      "skeleton": {
+        "subject": "the team",
+        "verb": "had planned",
+        "object": "the deadline more carefully"
+      }
+    },
+    {
+      "id": "vt_adv_021",
+      "level": "advanced",
+      "question": "The CEO announced that the company ______ a new branch in Vietnam the following year.",
+      "options": {
+        "A": "opens",
+        "B": "opened",
+        "C": "would open",
+        "D": "has opened"
+      },
+      "correctAnswer": "C",
+      "clue": "Tường thuật tương lai trong quá khứ → would + V",
+      "explanationVi": "Trong câu tường thuật, will → would. would open thể hiện kế hoạch trong tương lai tính từ thời điểm quá khứ.",
+      "targetChunk": {
+        "phrase": "would open a new branch in Vietnam the following year",
+        "meaningVi": "sẽ mở chi nhánh mới tại Việt Nam vào năm sau"
+      },
+      "skeleton": {
+        "subject": "the company",
+        "verb": "would open",
+        "object": "a new branch in Vietnam"
+      }
+    },
+    {
+      "id": "vt_adv_022",
+      "level": "advanced",
+      "question": "Never before ______ the firm experienced such rapid growth.",
+      "options": {
+        "A": "has",
+        "B": "had",
+        "C": "have",
+        "D": "was"
+      },
+      "correctAnswer": "B",
+      "clue": "Đảo ngữ với 'Never before + had + S + V3' (quá khứ)",
+      "explanationVi": "Never before had the firm experienced... → trước đây công ty chưa từng tăng trưởng nhanh như vậy.",
+      "targetChunk": {
+        "phrase": "Never before had the firm experienced such rapid growth",
+        "meaningVi": "Trước đây công ty chưa từng trải qua sự tăng trưởng nhanh như vậy"
+      },
+      "skeleton": {
+        "subject": "the firm",
+        "verb": "had experienced",
+        "object": "such rapid growth"
+      }
+    },
+    {
+      "id": "vt_adv_023",
+      "level": "advanced",
+      "question": "The project manager realized that the team ______ the wrong specifications from the beginning.",
+      "options": {
+        "A": "uses",
+        "B": "used",
+        "C": "had been using",
+        "D": "has been using"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động sai kéo dài đến thời điểm nhận ra trong quá khứ → Past Perfect Continuous",
+      "explanationVi": "had been using: đã sử dụng thông số sai từ đầu cho đến lúc nhận ra.",
+      "targetChunk": {
+        "phrase": "had been using the wrong specifications from the beginning",
+        "meaningVi": "đã sử dụng thông số kỹ thuật sai ngay từ đầu"
+      },
+      "skeleton": {
+        "subject": "the team",
+        "verb": "had been using",
+        "object": "the wrong specifications"
+      }
+    },
+    {
+      "id": "vt_adv_024",
+      "level": "advanced",
+      "question": "By next month, she ______ with the company for exactly ten years.",
+      "options": {
+        "A": "works",
+        "B": "will work",
+        "C": "will have been working",
+        "D": "has been working"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động kéo dài đến mốc tương lai → Future Perfect Continuous",
+      "explanationVi": "will have been working: đến tháng sau sẽ làm việc đủ đúng 10 năm.",
+      "targetChunk": {
+        "phrase": "will have been working with the company for exactly ten years",
+        "meaningVi": "sẽ đã làm việc với công ty đúng mười năm"
+      },
+      "skeleton": {
+        "subject": "she",
+        "verb": "will have been working",
+        "object": "with the company for exactly ten years"
+      }
+    },
+    {
+      "id": "vt_adv_025",
+      "level": "advanced",
+      "question": "Only after the audit ______ completed did the board approve the budget.",
+      "options": {
+        "A": "is",
+        "B": "was",
+        "C": "has been",
+        "D": "had been"
+      },
+      "correctAnswer": "D",
+      "clue": "Cấu trúc đảo ngữ 'Only after + Past Perfect + did + S + V'",
+      "explanationVi": "Only after the audit had been completed did the board... → chỉ sau khi kiểm toán xong thì hội đồng mới phê duyệt.",
+      "targetChunk": {
+        "phrase": "Only after the audit had been completed did the board approve",
+        "meaningVi": "Chỉ sau khi cuộc kiểm toán được hoàn tất thì hội đồng mới phê duyệt"
+      },
+      "skeleton": {
+        "subject": "the audit",
+        "verb": "had been completed",
+        "object": ""
+      }
+    },
+    {
+      "id": "vt_adv_026",
+      "level": "advanced",
+      "question": "The investors demanded to know why the company ______ profits for three consecutive quarters.",
+      "options": {
+        "A": "reports",
+        "B": "reported",
+        "C": "had reported",
+        "D": "has reported"
+      },
+      "correctAnswer": "C",
+      "clue": "Hành động xảy ra trước thời điểm đòi hỏi trong quá khứ → Past Perfect",
+      "explanationVi": "had reported: đã báo cáo lợi nhuận (hoặc lỗ) trước khi nhà đầu tư đòi hỏi giải thích.",
+      "targetChunk": {
+        "phrase": "had reported profits for three consecutive quarters",
+        "meaningVi": "đã báo cáo lợi nhuận trong ba quý liên tiếp"
+      },
+      "skeleton": {
+        "subject": "the company",
+        "verb": "had reported",
+        "object": "profits for three consecutive quarters"
+      }
+    },
+    {
+      "id": "vt_adv_027",
+      "level": "advanced",
+      "question": "It is high time the management ______ a decision on the restructuring plan.",
+      "options": {
+        "A": "makes",
+        "B": "made",
+        "C": "has made",
+        "D": "make"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc 'It is high time + S + Past Simple'",
+      "explanationVi": "It is high time + S + V2: đã đến lúc phải ra quyết định (nên làm từ lâu rồi).",
+      "targetChunk": {
+        "phrase": "It is high time the management made a decision",
+        "meaningVi": "Đã đến lúc ban quản lý phải đưa ra quyết định"
+      },
+      "skeleton": {
+        "subject": "the management",
+        "verb": "made",
+        "object": "a decision on the restructuring plan"
+      }
+    },
+    {
+      "id": "vt_adv_028",
+      "level": "advanced",
+      "question": "The analyst predicted that the market ______ recovering by the third quarter.",
+      "options": {
+        "A": "is",
+        "B": "was",
+        "C": "would be",
+        "D": "has been"
+      },
+      "correctAnswer": "C",
+      "clue": "Tường thuật tương lai trong quá khứ → would be + V-ing",
+      "explanationVi": "would be recovering: dự đoán thị trường sẽ đang phục hồi vào quý 3 (tính từ thời điểm quá khứ).",
+      "targetChunk": {
+        "phrase": "would be recovering by the third quarter",
+        "meaningVi": "sẽ đang phục hồi vào quý ba"
+      },
+      "skeleton": {
+        "subject": "the market",
+        "verb": "would be recovering",
+        "object": "by the third quarter"
+      }
+    },
+    {
+      "id": "vt_adv_029",
+      "level": "advanced",
+      "question": "Not until the results ______ published did the researchers celebrate.",
+      "options": {
+        "A": "are",
+        "B": "were",
+        "C": "have been",
+        "D": "had been"
+      },
+      "correctAnswer": "D",
+      "clue": "Cấu trúc đảo ngữ 'Not until + Past Perfect + did + S + V'",
+      "explanationVi": "Not until the results had been published did the researchers... → mãi đến khi kết quả được công bố thì các nhà nghiên cứu mới ăn mừng.",
+      "targetChunk": {
+        "phrase": "Not until the results had been published did the researchers celebrate",
+        "meaningVi": "Mãi đến khi kết quả được công bố thì các nhà nghiên cứu mới ăn mừng"
+      },
+      "skeleton": {
+        "subject": "the results",
+        "verb": "had been published",
+        "object": ""
+      }
+    },
+    {
+      "id": "vt_adv_030",
+      "level": "advanced",
+      "question": "The consultant recommended that the firm ______ its digital infrastructure immediately.",
+      "options": {
+        "A": "upgrades",
+        "B": "upgraded",
+        "C": "upgrade",
+        "D": "has upgraded"
+      },
+      "correctAnswer": "C",
+      "clue": "Cấu trúc giả định 'recommend that + S + bare infinitive (V nguyên mẫu)'",
+      "explanationVi": "recommend that + S + V (không chia): upgrade. Đây là dạng subjunctive mood trong tiếng Anh trang trọng.",
+      "targetChunk": {
+        "phrase": "recommended that the firm upgrade its digital infrastructure",
+        "meaningVi": "khuyến nghị rằng công ty nên nâng cấp cơ sở hạ tầng kỹ thuật số"
+      },
+      "skeleton": {
+        "subject": "the firm",
+        "verb": "upgrade",
+        "object": "its digital infrastructure immediately"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1389 @@
+{
+  "topicId": "adverbs",
+  "topicName": "Trạng từ",
+  "topicNameEn": "Adverbs",
+  "category": "word_forms",
+  "description": "Vị trí trạng từ, trạng từ bổ nghĩa động từ/tính từ/trạng từ khác, trạng từ chỉ tần suất, mức độ, cách thức, trạng từ so sánh",
+  "questions": [
+    {
+      "id": "adv_std_001",
+      "level": "standard",
+      "question": "The project was completed ______ ahead of schedule.",
+      "options": {
+        "A": "success",
+        "B": "successful",
+        "C": "successfully",
+        "D": "successes"
+      },
+      "correctAnswer": "C",
+      "clue": "Sau động từ bị động 'was completed' → cần Trạng từ bổ nghĩa động từ",
+      "explanationVi": "'successfully' là trạng từ. 'be completed successfully' nghĩa là được hoàn thành thành công.",
+      "targetChunk": {
+        "phrase": "be completed successfully",
+        "meaningVi": "được hoàn thành thành công"
+      },
+      "skeleton": {
+        "subject": "The project",
+        "verb": "was completed",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_002",
+      "level": "standard",
+      "question": "Please submit your application as ______ as possible.",
+      "options": {
+        "A": "quick",
+        "B": "quickly",
+        "C": "quickness",
+        "D": "quicker"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'as' + 'as possible' → cần Trạng từ",
+      "explanationVi": "'as quickly as possible' là cấu trúc cố định nghĩa là càng nhanh càng tốt.",
+      "targetChunk": {
+        "phrase": "as quickly as possible",
+        "meaningVi": "càng nhanh càng tốt"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "submit",
+        "object": "your application"
+      }
+    },
+    {
+      "id": "adv_std_003",
+      "level": "standard",
+      "question": "The manager ______ reviews the sales reports every Monday.",
+      "options": {
+        "A": "careful",
+        "B": "carefully",
+        "C": "carefulness",
+        "D": "care"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ 'reviews' → cần Trạng từ bổ nghĩa động từ",
+      "explanationVi": "'carefully' là trạng từ chỉ cách thức. Vị trí trước động từ chính.",
+      "targetChunk": {
+        "phrase": "carefully reviews",
+        "meaningVi": "xem xét cẩn thận"
+      },
+      "skeleton": {
+        "subject": "The manager",
+        "verb": "reviews",
+        "object": "the sales reports"
+      }
+    },
+    {
+      "id": "adv_std_004",
+      "level": "standard",
+      "question": "The new system operates more ______ than the previous one.",
+      "options": {
+        "A": "efficient",
+        "B": "efficiently",
+        "C": "efficiency",
+        "D": "efficiencies"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'more' + 'than' → cần Trạng từ so sánh hơn",
+      "explanationVi": "'more efficiently than' là so sánh hơn của trạng từ.",
+      "targetChunk": {
+        "phrase": "more efficiently than",
+        "meaningVi": "hiệu quả hơn"
+      },
+      "skeleton": {
+        "subject": "The new system",
+        "verb": "operates",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_005",
+      "level": "standard",
+      "question": "She speaks English ______ fluently after living abroad for five years.",
+      "options": {
+        "A": "quite",
+        "B": "quiet",
+        "C": "quietly",
+        "D": "quietness"
+      },
+      "correctAnswer": "A",
+      "clue": "Trước trạng từ 'fluently' → cần Trạng từ mức độ",
+      "explanationVi": "'quite fluently' nghĩa là khá lưu loát. 'quite' là trạng từ mức độ.",
+      "targetChunk": {
+        "phrase": "speak quite fluently",
+        "meaningVi": "nói khá lưu loát"
+      },
+      "skeleton": {
+        "subject": "She",
+        "verb": "speaks",
+        "object": "English"
+      }
+    },
+    {
+      "id": "adv_std_006",
+      "level": "standard",
+      "question": "The team worked ______ to meet the tight deadline.",
+      "options": {
+        "A": "hard",
+        "B": "hardly",
+        "C": "hardness",
+        "D": "harden"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau động từ 'worked' → cần Trạng từ",
+      "explanationVi": "'work hard' là cụm cố định. 'hardly' nghĩa là hầu như không – nghĩa khác hoàn toàn.",
+      "targetChunk": {
+        "phrase": "work hard to meet",
+        "meaningVi": "làm việc chăm chỉ để đáp ứng"
+      },
+      "skeleton": {
+        "subject": "The team",
+        "verb": "worked",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_007",
+      "level": "standard",
+      "question": "The documents must be filed ______ in the correct folder.",
+      "options": {
+        "A": "proper",
+        "B": "properly",
+        "C": "properness",
+        "D": "prop"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau động từ bị động 'be filed' → cần Trạng từ",
+      "explanationVi": "'properly' là trạng từ nghĩa là đúng cách.",
+      "targetChunk": {
+        "phrase": "be filed properly",
+        "meaningVi": "được lưu trữ đúng cách"
+      },
+      "skeleton": {
+        "subject": "The documents",
+        "verb": "must be filed",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_008",
+      "level": "standard",
+      "question": "He ______ finishes his work before leaving the office.",
+      "options": {
+        "A": "usual",
+        "B": "usually",
+        "C": "usualness",
+        "D": "use"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ 'finishes' → cần Trạng từ chỉ tần suất",
+      "explanationVi": "'usually' là trạng từ tần suất. Vị trí điển hình trước động từ chính.",
+      "targetChunk": {
+        "phrase": "usually finishes",
+        "meaningVi": "thường xuyên hoàn thành"
+      },
+      "skeleton": {
+        "subject": "He",
+        "verb": "finishes",
+        "object": "his work"
+      }
+    },
+    {
+      "id": "adv_std_009",
+      "level": "standard",
+      "question": "The company has grown ______ over the past decade.",
+      "options": {
+        "A": "rapid",
+        "B": "rapidly",
+        "C": "rapidity",
+        "D": "rapids"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau động từ 'has grown' → cần Trạng từ",
+      "explanationVi": "'grow rapidly' nghĩa là phát triển nhanh chóng.",
+      "targetChunk": {
+        "phrase": "grow rapidly",
+        "meaningVi": "phát triển nhanh chóng"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "has grown",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_010",
+      "level": "standard",
+      "question": "Please read the instructions ______ before operating the machine.",
+      "options": {
+        "A": "careful",
+        "B": "carefully",
+        "C": "carefulness",
+        "D": "care"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau động từ 'read' → cần Trạng từ",
+      "explanationVi": "'read carefully' nghĩa là đọc cẩn thận.",
+      "targetChunk": {
+        "phrase": "read the instructions carefully",
+        "meaningVi": "đọc hướng dẫn cẩn thận"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "read",
+        "object": "the instructions"
+      }
+    },
+    {
+      "id": "adv_std_011",
+      "level": "standard",
+      "question": "The meeting will begin ______ at 9 a.m.",
+      "options": {
+        "A": "prompt",
+        "B": "promptly",
+        "C": "promptness",
+        "D": "prompts"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau động từ 'will begin' → cần Trạng từ",
+      "explanationVi": "'begin promptly' nghĩa là bắt đầu đúng giờ.",
+      "targetChunk": {
+        "phrase": "begin promptly at",
+        "meaningVi": "bắt đầu đúng giờ lúc"
+      },
+      "skeleton": {
+        "subject": "The meeting",
+        "verb": "will begin",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_012",
+      "level": "standard",
+      "question": "She ______ checks her email first thing in the morning.",
+      "options": {
+        "A": "always",
+        "B": "all ways",
+        "C": "allway",
+        "D": "alway"
+      },
+      "correctAnswer": "A",
+      "clue": "Trước động từ 'checks' → cần Trạng từ tần suất",
+      "explanationVi": "'always' là trạng từ tần suất 100%.",
+      "targetChunk": {
+        "phrase": "always checks",
+        "meaningVi": "luôn luôn kiểm tra"
+      },
+      "skeleton": {
+        "subject": "She",
+        "verb": "checks",
+        "object": "her email"
+      }
+    },
+    {
+      "id": "adv_std_013",
+      "level": "standard",
+      "question": "The report was ______ written and easy to understand.",
+      "options": {
+        "A": "clear",
+        "B": "clearly",
+        "C": "clearness",
+        "D": "clearing"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ phân từ 'written' → cần Trạng từ",
+      "explanationVi": "'clearly written' nghĩa là được viết rõ ràng.",
+      "targetChunk": {
+        "phrase": "clearly written",
+        "meaningVi": "được viết rõ ràng"
+      },
+      "skeleton": {
+        "subject": "The report",
+        "verb": "was written",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_014",
+      "level": "standard",
+      "question": "The new policy will take effect ______ next month.",
+      "options": {
+        "A": "immediate",
+        "B": "immediately",
+        "C": "immediacy",
+        "D": "immediates"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau động từ 'will take effect' → cần Trạng từ",
+      "explanationVi": "'immediately' nghĩa là ngay lập tức. Cụm 'take effect immediately' phổ biến.",
+      "targetChunk": {
+        "phrase": "take effect immediately",
+        "meaningVi": "có hiệu lực ngay lập tức"
+      },
+      "skeleton": {
+        "subject": "The new policy",
+        "verb": "will take effect",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_015",
+      "level": "standard",
+      "question": "He answered the questions ______ and confidently.",
+      "options": {
+        "A": "accurate",
+        "B": "accurately",
+        "C": "accuracy",
+        "D": "accuracies"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau động từ 'answered' và song song với 'confidently' → cần Trạng từ",
+      "explanationVi": "'accurately and confidently' – hai trạng từ song song.",
+      "targetChunk": {
+        "phrase": "answer accurately and confidently",
+        "meaningVi": "trả lời chính xác và tự tin"
+      },
+      "skeleton": {
+        "subject": "He",
+        "verb": "answered",
+        "object": "the questions"
+      }
+    },
+    {
+      "id": "adv_std_016",
+      "level": "standard",
+      "question": "The system is updated ______ to ensure optimal performance.",
+      "options": {
+        "A": "regular",
+        "B": "regularly",
+        "C": "regularity",
+        "D": "regulate"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau động từ bị động 'is updated' → cần Trạng từ tần suất",
+      "explanationVi": "'be updated regularly' nghĩa là được cập nhật thường xuyên.",
+      "targetChunk": {
+        "phrase": "be updated regularly",
+        "meaningVi": "được cập nhật thường xuyên"
+      },
+      "skeleton": {
+        "subject": "The system",
+        "verb": "is updated",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_017",
+      "level": "standard",
+      "question": "The presentation was ______ received by the audience.",
+      "options": {
+        "A": "well",
+        "B": "good",
+        "C": "better",
+        "D": "best"
+      },
+      "correctAnswer": "A",
+      "clue": "Trước động từ phân từ 'received' → cần Trạng từ",
+      "explanationVi": "'well received' nghĩa là được đón nhận tốt. 'good' là tính từ.",
+      "targetChunk": {
+        "phrase": "be well received",
+        "meaningVi": "được đón nhận tốt"
+      },
+      "skeleton": {
+        "subject": "The presentation",
+        "verb": "was received",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_018",
+      "level": "standard",
+      "question": "Please arrive ______ for the orientation session.",
+      "options": {
+        "A": "early",
+        "B": "earlier",
+        "C": "earliest",
+        "D": "earliness"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau động từ 'arrive' → cần Trạng từ",
+      "explanationVi": "'arrive early' nghĩa là đến sớm. 'early' vừa là tính từ vừa là trạng từ.",
+      "targetChunk": {
+        "phrase": "arrive early for",
+        "meaningVi": "đến sớm cho"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "arrive",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_019",
+      "level": "standard",
+      "question": "The company performs ______ in the domestic market.",
+      "options": {
+        "A": "strong",
+        "B": "strongly",
+        "C": "strength",
+        "D": "strengthen"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau động từ 'performs' → cần Trạng từ",
+      "explanationVi": "'perform strongly' nghĩa là hoạt động mạnh mẽ.",
+      "targetChunk": {
+        "phrase": "perform strongly in",
+        "meaningVi": "hoạt động mạnh mẽ trong"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "performs",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_020",
+      "level": "standard",
+      "question": "She ______ forgets to lock the door when she leaves.",
+      "options": {
+        "A": "rare",
+        "B": "rarely",
+        "C": "rarity",
+        "D": "raring"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ 'forgets' → cần Trạng từ tần suất",
+      "explanationVi": "'rarely' nghĩa là hiếm khi. Trạng từ tần suất đứng trước động từ chính.",
+      "targetChunk": {
+        "phrase": "rarely forgets",
+        "meaningVi": "hiếm khi quên"
+      },
+      "skeleton": {
+        "subject": "She",
+        "verb": "forgets",
+        "object": "to lock the door"
+      }
+    },
+    {
+      "id": "adv_std_021",
+      "level": "standard",
+      "question": "The new software runs more ______ on the updated system.",
+      "options": {
+        "A": "smooth",
+        "B": "smoothly",
+        "C": "smoothness",
+        "D": "smoother"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'more' → cần Trạng từ so sánh hơn",
+      "explanationVi": "'more smoothly' là so sánh hơn của trạng từ 'smoothly'.",
+      "targetChunk": {
+        "phrase": "run more smoothly",
+        "meaningVi": "chạy mượt mà hơn"
+      },
+      "skeleton": {
+        "subject": "The new software",
+        "verb": "runs",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_022",
+      "level": "standard",
+      "question": "The results were ______ better than expected.",
+      "options": {
+        "A": "significant",
+        "B": "significantly",
+        "C": "significance",
+        "D": "signify"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước tính từ so sánh 'better' → cần Trạng từ mức độ",
+      "explanationVi": "'significantly better' nghĩa là tốt hơn đáng kể. Trạng từ bổ nghĩa tính từ so sánh.",
+      "targetChunk": {
+        "phrase": "significantly better than",
+        "meaningVi": "tốt hơn đáng kể so với"
+      },
+      "skeleton": {
+        "subject": "The results",
+        "verb": "were",
+        "object": "significantly better"
+      }
+    },
+    {
+      "id": "adv_std_023",
+      "level": "standard",
+      "question": "Please handle the fragile items ______.",
+      "options": {
+        "A": "careful",
+        "B": "carefully",
+        "C": "carefulness",
+        "D": "care"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau động từ 'handle' → cần Trạng từ",
+      "explanationVi": "'handle carefully' nghĩa là xử lý cẩn thận.",
+      "targetChunk": {
+        "phrase": "handle carefully",
+        "meaningVi": "xử lý cẩn thận"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "handle",
+        "object": "the fragile items"
+      }
+    },
+    {
+      "id": "adv_std_024",
+      "level": "standard",
+      "question": "The train arrives ______ on time every morning.",
+      "options": {
+        "A": "almost",
+        "B": "most",
+        "C": "mostly",
+        "D": "alms"
+      },
+      "correctAnswer": "A",
+      "clue": "Trước cụm 'on time' → cần Trạng từ mức độ",
+      "explanationVi": "'almost on time' nghĩa là gần như đúng giờ.",
+      "targetChunk": {
+        "phrase": "arrive almost on time",
+        "meaningVi": "đến gần như đúng giờ"
+      },
+      "skeleton": {
+        "subject": "The train",
+        "verb": "arrives",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_025",
+      "level": "standard",
+      "question": "The company responds ______ to customer inquiries.",
+      "options": {
+        "A": "quick",
+        "B": "quickly",
+        "C": "quickness",
+        "D": "quicker"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau động từ 'responds' → cần Trạng từ",
+      "explanationVi": "'respond quickly' nghĩa là phản hồi nhanh chóng.",
+      "targetChunk": {
+        "phrase": "respond quickly to",
+        "meaningVi": "phản hồi nhanh chóng đến"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "responds",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_026",
+      "level": "standard",
+      "question": "He ______ visits the main office once a month.",
+      "options": {
+        "A": "general",
+        "B": "generally",
+        "C": "generality",
+        "D": "generate"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ 'visits' → cần Trạng từ tần suất",
+      "explanationVi": "'generally' nghĩa là nói chung, thường xuyên.",
+      "targetChunk": {
+        "phrase": "generally visits",
+        "meaningVi": "thường xuyên đến thăm"
+      },
+      "skeleton": {
+        "subject": "He",
+        "verb": "visits",
+        "object": "the main office"
+      }
+    },
+    {
+      "id": "adv_std_027",
+      "level": "standard",
+      "question": "The software was ______ designed for ease of use.",
+      "options": {
+        "A": "specific",
+        "B": "specifically",
+        "C": "specificity",
+        "D": "specify"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ phân từ 'designed' → cần Trạng từ",
+      "explanationVi": "'specifically designed' nghĩa là được thiết kế đặc biệt.",
+      "targetChunk": {
+        "phrase": "be specifically designed for",
+        "meaningVi": "được thiết kế đặc biệt cho"
+      },
+      "skeleton": {
+        "subject": "The software",
+        "verb": "was designed",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_028",
+      "level": "standard",
+      "question": "The team completed the task ______ than expected.",
+      "options": {
+        "A": "fast",
+        "B": "faster",
+        "C": "fastest",
+        "D": "fastly"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau động từ + 'than' → cần Trạng từ so sánh hơn",
+      "explanationVi": "'faster than' là so sánh hơn của 'fast' (vừa là tính từ vừa là trạng từ).",
+      "targetChunk": {
+        "phrase": "complete faster than expected",
+        "meaningVi": "hoàn thành nhanh hơn dự kiến"
+      },
+      "skeleton": {
+        "subject": "The team",
+        "verb": "completed",
+        "object": "the task"
+      }
+    },
+    {
+      "id": "adv_std_029",
+      "level": "standard",
+      "question": "Please speak more ______ so that everyone can hear you.",
+      "options": {
+        "A": "loud",
+        "B": "loudly",
+        "C": "loudness",
+        "D": "louder"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'more' → cần Trạng từ so sánh hơn",
+      "explanationVi": "'more loudly' là so sánh hơn của trạng từ 'loudly'.",
+      "targetChunk": {
+        "phrase": "speak more loudly",
+        "meaningVi": "nói to hơn"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "speak",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_std_030",
+      "level": "standard",
+      "question": "The company has ______ expanded its operations overseas.",
+      "options": {
+        "A": "recent",
+        "B": "recently",
+        "C": "recency",
+        "D": "recentness"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ 'has expanded' → cần Trạng từ chỉ thời gian",
+      "explanationVi": "'recently' nghĩa là gần đây. Vị trí trước động từ hoàn thành.",
+      "targetChunk": {
+        "phrase": "has recently expanded",
+        "meaningVi": "gần đây đã mở rộng"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "has expanded",
+        "object": "its operations"
+      }
+    },
+    {
+      "id": "adv_adv_001",
+      "level": "advanced",
+      "question": "The results of the experiment were ______ consistent with the hypothesis.",
+      "options": {
+        "A": "remarkable",
+        "B": "remarkably",
+        "C": "remark",
+        "D": "remarks"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước tính từ 'consistent' → cần Trạng từ mức độ",
+      "explanationVi": "'remarkably consistent' nghĩa là nhất quán đáng kể. Trạng từ bổ nghĩa tính từ.",
+      "targetChunk": {
+        "phrase": "remarkably consistent with",
+        "meaningVi": "nhất quán đáng kể với"
+      },
+      "skeleton": {
+        "subject": "The results",
+        "verb": "were",
+        "object": "remarkably consistent"
+      }
+    },
+    {
+      "id": "adv_adv_002",
+      "level": "advanced",
+      "question": "The new regulations will be enforced more ______ starting next quarter.",
+      "options": {
+        "A": "strict",
+        "B": "strictly",
+        "C": "strictness",
+        "D": "stricter"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'more' → cần Trạng từ so sánh hơn",
+      "explanationVi": "'more strictly' là so sánh hơn của trạng từ 'strictly'.",
+      "targetChunk": {
+        "phrase": "be enforced more strictly",
+        "meaningVi": "được thực thi nghiêm ngặt hơn"
+      },
+      "skeleton": {
+        "subject": "The new regulations",
+        "verb": "will be enforced",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_003",
+      "level": "advanced",
+      "question": "The proposal was ______ rejected by the board due to budget constraints.",
+      "options": {
+        "A": "ultimate",
+        "B": "ultimately",
+        "C": "ultimatum",
+        "D": "ultimateness"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ phân từ 'rejected' → cần Trạng từ",
+      "explanationVi": "'ultimately rejected' nghĩa là cuối cùng bị từ chối. Từ advanced.",
+      "targetChunk": {
+        "phrase": "be ultimately rejected",
+        "meaningVi": "cuối cùng bị từ chối"
+      },
+      "skeleton": {
+        "subject": "The proposal",
+        "verb": "was rejected",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_004",
+      "level": "advanced",
+      "question": "The company has ______ improved its customer service ratings over the past year.",
+      "options": {
+        "A": "substantial",
+        "B": "substantially",
+        "C": "substance",
+        "D": "substantiate"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ 'has improved' → cần Trạng từ mức độ",
+      "explanationVi": "'substantially improved' nghĩa là cải thiện đáng kể.",
+      "targetChunk": {
+        "phrase": "has substantially improved",
+        "meaningVi": "đã cải thiện đáng kể"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "has improved",
+        "object": "its customer service ratings"
+      }
+    },
+    {
+      "id": "adv_adv_005",
+      "level": "advanced",
+      "question": "The data was ______ analyzed to identify key trends.",
+      "options": {
+        "A": "thorough",
+        "B": "thoroughly",
+        "C": "thoroughness",
+        "D": "through"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ phân từ 'analyzed' → cần Trạng từ",
+      "explanationVi": "'thoroughly analyzed' nghĩa là được phân tích kỹ lưỡng.",
+      "targetChunk": {
+        "phrase": "be thoroughly analyzed",
+        "meaningVi": "được phân tích kỹ lưỡng"
+      },
+      "skeleton": {
+        "subject": "The data",
+        "verb": "was analyzed",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_006",
+      "level": "advanced",
+      "question": "The new system performs ______ better under high-load conditions.",
+      "options": {
+        "A": "considerable",
+        "B": "considerably",
+        "C": "consideration",
+        "D": "consider"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước tính từ so sánh 'better' → cần Trạng từ mức độ",
+      "explanationVi": "'considerably better' nghĩa là tốt hơn đáng kể.",
+      "targetChunk": {
+        "phrase": "perform considerably better",
+        "meaningVi": "hoạt động tốt hơn đáng kể"
+      },
+      "skeleton": {
+        "subject": "The new system",
+        "verb": "performs",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_007",
+      "level": "advanced",
+      "question": "The findings were ______ unexpected given the previous research.",
+      "options": {
+        "A": "somewhat",
+        "B": "somewhere",
+        "C": "somehow",
+        "D": "some"
+      },
+      "correctAnswer": "A",
+      "clue": "Trước tính từ 'unexpected' → cần Trạng từ mức độ",
+      "explanationVi": "'somewhat unexpected' nghĩa là hơi bất ngờ. 'somewhat' là trạng từ mức độ.",
+      "targetChunk": {
+        "phrase": "somewhat unexpected",
+        "meaningVi": "hơi bất ngờ"
+      },
+      "skeleton": {
+        "subject": "The findings",
+        "verb": "were",
+        "object": "somewhat unexpected"
+      }
+    },
+    {
+      "id": "adv_adv_008",
+      "level": "advanced",
+      "question": "The company responded ______ to the market changes.",
+      "options": {
+        "A": "prompt",
+        "B": "promptly",
+        "C": "promptness",
+        "D": "prompts"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau động từ 'responded' → cần Trạng từ",
+      "explanationVi": "'respond promptly' nghĩa là phản ứng nhanh chóng.",
+      "targetChunk": {
+        "phrase": "respond promptly to",
+        "meaningVi": "phản ứng nhanh chóng với"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "responded",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_009",
+      "level": "advanced",
+      "question": "The report was ______ detailed and provided valuable insights.",
+      "options": {
+        "A": "exceptional",
+        "B": "exceptionally",
+        "C": "exception",
+        "D": "exceptions"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước tính từ 'detailed' → cần Trạng từ mức độ",
+      "explanationVi": "'exceptionally detailed' nghĩa là chi tiết một cách đặc biệt.",
+      "targetChunk": {
+        "phrase": "exceptionally detailed",
+        "meaningVi": "chi tiết một cách đặc biệt"
+      },
+      "skeleton": {
+        "subject": "The report",
+        "verb": "was",
+        "object": "exceptionally detailed"
+      }
+    },
+    {
+      "id": "adv_adv_010",
+      "level": "advanced",
+      "question": "The new guidelines are being implemented more ______ than anticipated.",
+      "options": {
+        "A": "swift",
+        "B": "swiftly",
+        "C": "swiftness",
+        "D": "swifter"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'more' → cần Trạng từ so sánh hơn",
+      "explanationVi": "'more swiftly' là so sánh hơn của trạng từ 'swiftly'.",
+      "targetChunk": {
+        "phrase": "be implemented more swiftly",
+        "meaningVi": "được triển khai nhanh hơn"
+      },
+      "skeleton": {
+        "subject": "The new guidelines",
+        "verb": "are being implemented",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_011",
+      "level": "advanced",
+      "question": "The team has ______ exceeded its sales targets this quarter.",
+      "options": {
+        "A": "consistent",
+        "B": "consistently",
+        "C": "consistency",
+        "D": "consist"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ 'has exceeded' → cần Trạng từ",
+      "explanationVi": "'consistently exceeded' nghĩa là liên tục vượt quá.",
+      "targetChunk": {
+        "phrase": "has consistently exceeded",
+        "meaningVi": "đã liên tục vượt quá"
+      },
+      "skeleton": {
+        "subject": "The team",
+        "verb": "has exceeded",
+        "object": "its sales targets"
+      }
+    },
+    {
+      "id": "adv_adv_012",
+      "level": "advanced",
+      "question": "The software was ______ tested before its official release.",
+      "options": {
+        "A": "rigorous",
+        "B": "rigorously",
+        "C": "rigor",
+        "D": "rigors"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ phân từ 'tested' → cần Trạng từ",
+      "explanationVi": "'rigorously tested' nghĩa là được kiểm tra nghiêm ngặt. Từ advanced.",
+      "targetChunk": {
+        "phrase": "be rigorously tested",
+        "meaningVi": "được kiểm tra nghiêm ngặt"
+      },
+      "skeleton": {
+        "subject": "The software",
+        "verb": "was tested",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_013",
+      "level": "advanced",
+      "question": "The company has performed ______ well in international markets.",
+      "options": {
+        "A": "exceptional",
+        "B": "exceptionally",
+        "C": "exception",
+        "D": "exceptions"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước trạng từ 'well' → cần Trạng từ mức độ",
+      "explanationVi": "'exceptionally well' nghĩa là xuất sắc một cách đặc biệt.",
+      "targetChunk": {
+        "phrase": "perform exceptionally well",
+        "meaningVi": "hoạt động xuất sắc"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "has performed",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_014",
+      "level": "advanced",
+      "question": "The changes will be introduced ______ over the next six months.",
+      "options": {
+        "A": "gradual",
+        "B": "gradually",
+        "C": "gradualness",
+        "D": "graduate"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau động từ bị động 'will be introduced' → cần Trạng từ",
+      "explanationVi": "'be introduced gradually' nghĩa là được giới thiệu dần dần.",
+      "targetChunk": {
+        "phrase": "be introduced gradually",
+        "meaningVi": "được giới thiệu dần dần"
+      },
+      "skeleton": {
+        "subject": "The changes",
+        "verb": "will be introduced",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_015",
+      "level": "advanced",
+      "question": "The results were ______ higher than the industry average.",
+      "options": {
+        "A": "noticeable",
+        "B": "noticeably",
+        "C": "notice",
+        "D": "notices"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước tính từ so sánh 'higher' → cần Trạng từ mức độ",
+      "explanationVi": "'noticeably higher' nghĩa là cao hơn rõ rệt.",
+      "targetChunk": {
+        "phrase": "noticeably higher than",
+        "meaningVi": "cao hơn rõ rệt so với"
+      },
+      "skeleton": {
+        "subject": "The results",
+        "verb": "were",
+        "object": "noticeably higher"
+      }
+    },
+    {
+      "id": "adv_adv_016",
+      "level": "advanced",
+      "question": "The new policy has been ______ effective in reducing costs.",
+      "options": {
+        "A": "high",
+        "B": "highly",
+        "C": "height",
+        "D": "heighten"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước tính từ 'effective' → cần Trạng từ mức độ",
+      "explanationVi": "'highly effective' nghĩa là rất hiệu quả. Cụm rất phổ biến.",
+      "targetChunk": {
+        "phrase": "be highly effective in",
+        "meaningVi": "rất hiệu quả trong việc"
+      },
+      "skeleton": {
+        "subject": "The new policy",
+        "verb": "has been",
+        "object": "highly effective"
+      }
+    },
+    {
+      "id": "adv_adv_017",
+      "level": "advanced",
+      "question": "The committee will review the proposal more ______ at the next meeting.",
+      "options": {
+        "A": "close",
+        "B": "closely",
+        "C": "closeness",
+        "D": "closer"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'more' → cần Trạng từ so sánh hơn",
+      "explanationVi": "'more closely' nghĩa là kỹ lưỡng hơn.",
+      "targetChunk": {
+        "phrase": "review more closely",
+        "meaningVi": "xem xét kỹ lưỡng hơn"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "will review",
+        "object": "the proposal"
+      }
+    },
+    {
+      "id": "adv_adv_018",
+      "level": "advanced",
+      "question": "The company has ______ maintained its position as market leader.",
+      "options": {
+        "A": "consistent",
+        "B": "consistently",
+        "C": "consistency",
+        "D": "consist"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ 'has maintained' → cần Trạng từ",
+      "explanationVi": "'consistently maintained' nghĩa là duy trì một cách nhất quán.",
+      "targetChunk": {
+        "phrase": "has consistently maintained",
+        "meaningVi": "đã duy trì một cách nhất quán"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "has maintained",
+        "object": "its position"
+      }
+    },
+    {
+      "id": "adv_adv_019",
+      "level": "advanced",
+      "question": "The findings were ______ significant to warrant further investigation.",
+      "options": {
+        "A": "sufficient",
+        "B": "sufficiently",
+        "C": "sufficiency",
+        "D": "suffice"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước tính từ 'significant' → cần Trạng từ mức độ",
+      "explanationVi": "'sufficiently significant' nghĩa là đủ quan trọng. Cấu trúc 'sufficiently + Adj + to'.",
+      "targetChunk": {
+        "phrase": "sufficiently significant to",
+        "meaningVi": "đủ quan trọng để"
+      },
+      "skeleton": {
+        "subject": "The findings",
+        "verb": "were",
+        "object": "sufficiently significant"
+      }
+    },
+    {
+      "id": "adv_adv_020",
+      "level": "advanced",
+      "question": "The new features have been ______ integrated into the existing platform.",
+      "options": {
+        "A": "seamless",
+        "B": "seamlessly",
+        "C": "seamlessness",
+        "D": "seam"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ phân từ 'integrated' → cần Trạng từ",
+      "explanationVi": "'seamlessly integrated' nghĩa là được tích hợp liền mạch. Từ advanced hay gặp.",
+      "targetChunk": {
+        "phrase": "be seamlessly integrated into",
+        "meaningVi": "được tích hợp liền mạch vào"
+      },
+      "skeleton": {
+        "subject": "The new features",
+        "verb": "have been integrated",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_021",
+      "level": "advanced",
+      "question": "The company responds ______ to changing market conditions.",
+      "options": {
+        "A": "adapt",
+        "B": "adaptive",
+        "C": "adaptively",
+        "D": "adaptation"
+      },
+      "correctAnswer": "C",
+      "clue": "Sau động từ 'responds' → cần Trạng từ",
+      "explanationVi": "'respond adaptively' nghĩa là phản ứng một cách thích ứng. Từ advanced.",
+      "targetChunk": {
+        "phrase": "respond adaptively to",
+        "meaningVi": "phản ứng một cách thích ứng với"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "responds",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_022",
+      "level": "advanced",
+      "question": "The data was ______ collected from multiple sources over a period of two years.",
+      "options": {
+        "A": "systematic",
+        "B": "systematically",
+        "C": "system",
+        "D": "systematize"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ phân từ 'collected' → cần Trạng từ",
+      "explanationVi": "'systematically collected' nghĩa là được thu thập một cách có hệ thống.",
+      "targetChunk": {
+        "phrase": "be systematically collected",
+        "meaningVi": "được thu thập một cách có hệ thống"
+      },
+      "skeleton": {
+        "subject": "The data",
+        "verb": "was collected",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_023",
+      "level": "advanced",
+      "question": "The new approach has proven ______ more effective than traditional methods.",
+      "options": {
+        "A": "significant",
+        "B": "significantly",
+        "C": "significance",
+        "D": "signify"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước 'more effective' → cần Trạng từ mức độ",
+      "explanationVi": "'significantly more effective' nghĩa là hiệu quả hơn đáng kể.",
+      "targetChunk": {
+        "phrase": "significantly more effective than",
+        "meaningVi": "hiệu quả hơn đáng kể so với"
+      },
+      "skeleton": {
+        "subject": "The new approach",
+        "verb": "has proven",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_024",
+      "level": "advanced",
+      "question": "The guidelines must be followed ______ to ensure compliance.",
+      "options": {
+        "A": "strict",
+        "B": "strictly",
+        "C": "strictness",
+        "D": "stricter"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau động từ bị động 'be followed' → cần Trạng từ",
+      "explanationVi": "'be followed strictly' nghĩa là được tuân thủ nghiêm ngặt.",
+      "targetChunk": {
+        "phrase": "be followed strictly",
+        "meaningVi": "được tuân thủ nghiêm ngặt"
+      },
+      "skeleton": {
+        "subject": "The guidelines",
+        "verb": "must be followed",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_025",
+      "level": "advanced",
+      "question": "The company has ______ invested in research and development.",
+      "options": {
+        "A": "heavy",
+        "B": "heavily",
+        "C": "heaviness",
+        "D": "heavier"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ 'has invested' → cần Trạng từ",
+      "explanationVi": "'heavily invested' nghĩa là đầu tư mạnh mẽ.",
+      "targetChunk": {
+        "phrase": "has heavily invested in",
+        "meaningVi": "đã đầu tư mạnh mẽ vào"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "has invested",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_026",
+      "level": "advanced",
+      "question": "The results were ______ different from those of the previous study.",
+      "options": {
+        "A": "dramatic",
+        "B": "dramatically",
+        "C": "drama",
+        "D": "dramatize"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước tính từ 'different' → cần Trạng từ mức độ",
+      "explanationVi": "'dramatically different' nghĩa là khác biệt rõ rệt, đáng kể.",
+      "targetChunk": {
+        "phrase": "dramatically different from",
+        "meaningVi": "khác biệt rõ rệt so với"
+      },
+      "skeleton": {
+        "subject": "The results",
+        "verb": "were",
+        "object": "dramatically different"
+      }
+    },
+    {
+      "id": "adv_adv_027",
+      "level": "advanced",
+      "question": "The new system allows users to process data more ______.",
+      "options": {
+        "A": "efficient",
+        "B": "efficiently",
+        "C": "efficiency",
+        "D": "efficiencies"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'more' → cần Trạng từ so sánh hơn",
+      "explanationVi": "'more efficiently' là so sánh hơn của trạng từ.",
+      "targetChunk": {
+        "phrase": "process data more efficiently",
+        "meaningVi": "xử lý dữ liệu hiệu quả hơn"
+      },
+      "skeleton": {
+        "subject": "The new system",
+        "verb": "allows",
+        "object": "users to process data"
+      }
+    },
+    {
+      "id": "adv_adv_028",
+      "level": "advanced",
+      "question": "The proposal was ______ approved by the majority of stakeholders.",
+      "options": {
+        "A": "unanimous",
+        "B": "unanimously",
+        "C": "unanimity",
+        "D": "unanimousness"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ phân từ 'approved' → cần Trạng từ",
+      "explanationVi": "'unanimously approved' nghĩa là được phê duyệt nhất trí. Từ advanced.",
+      "targetChunk": {
+        "phrase": "be unanimously approved",
+        "meaningVi": "được phê duyệt nhất trí"
+      },
+      "skeleton": {
+        "subject": "The proposal",
+        "verb": "was approved",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_029",
+      "level": "advanced",
+      "question": "The company has ______ adapted to the new regulatory environment.",
+      "options": {
+        "A": "success",
+        "B": "successful",
+        "C": "successfully",
+        "D": "successes"
+      },
+      "correctAnswer": "C",
+      "clue": "Trước động từ 'has adapted' → cần Trạng từ",
+      "explanationVi": "'successfully adapted' nghĩa là đã thích ứng thành công.",
+      "targetChunk": {
+        "phrase": "has successfully adapted to",
+        "meaningVi": "đã thích ứng thành công với"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "has adapted",
+        "object": null
+      }
+    },
+    {
+      "id": "adv_adv_030",
+      "level": "advanced",
+      "question": "The new methodology has been ______ adopted by industry leaders.",
+      "options": {
+        "A": "wide",
+        "B": "widely",
+        "C": "widen",
+        "D": "width"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước động từ phân từ 'adopted' → cần Trạng từ",
+      "explanationVi": "'widely adopted' nghĩa là được áp dụng rộng rãi. Cụm rất phổ biến trong TOEIC advanced.",
+      "targetChunk": {
+        "phrase": "be widely adopted by",
+        "meaningVi": "được áp dụng rộng rãi bởi"
+      },
+      "skeleton": {
+        "subject": "The new methodology",
+        "verb": "has been adopted",
+        "object": null
+      }
+    }
+  ]
+}

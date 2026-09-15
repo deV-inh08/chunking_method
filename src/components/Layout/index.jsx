@@ -6,6 +6,7 @@ import {
 
 const NAV_ITEMS = [
   { id: 'ai_listening', label: 'Luyện Nghe',   shortLabel: 'Nghe',    icon: Headphones },
+  { id: 'reading',      label: 'Luyện Đọc',    shortLabel: 'Đọc',     icon: BookOpen   },
   { id: 'chunks',       label: 'Chunks',       shortLabel: 'Chunks',  icon: Layers     },
   { id: 'vocab',        label: 'Từ vựng',     shortLabel: 'Từ vựng', icon: BookMarked },
   { id: 'practice',     label: 'Practice',     shortLabel: 'Nói',     icon: Mic        },
@@ -15,6 +16,7 @@ const NAV_ITEMS = [
 
 const PAGE_TITLES = {
   ai_listening: { title: 'Luyện Nghe',         subtitle: 'Tạo bài nghe AI, dán script đề thi ETS, luyện tai đa giọng bản xứ & trắc nghiệm' },
+  reading:      { title: 'Luyện Đọc & Ngữ Pháp TOEIC', subtitle: '24 Chuyên đề trọng tâm, bẫy 990, phản xạ 20s/câu & giải phẫu xương sống câu' },
   chunks:       { title: 'Chunks',            subtitle: 'Danh sách cụm từ đã phân tích' },
   vocab:        { title: 'Từ vựng',          subtitle: 'Học 5000 từ theo chủ đề — phân tích chunk & luyện viết' },
   practice:     { title: 'Speaking Practice', subtitle: 'Luyện nói theo câu mẫu' },

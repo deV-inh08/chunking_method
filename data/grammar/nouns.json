@@ -1,0 +1,1389 @@
+{
+  "topicId": "nouns",
+  "topicName": "Danh từ",
+  "topicNameEn": "Nouns",
+  "category": "word_forms",
+  "description": "Vị trí danh từ, danh từ ghép, đếm được/không đếm được, danh từ chỉ người vs vật, danh từ trừu tượng, danh từ số nhiều bất quy tắc",
+  "questions": [
+    {
+      "id": "noun_std_001",
+      "level": "standard",
+      "question": "The board of directors approved the proposed ______ for the new community center.",
+      "options": {
+        "A": "budgetary",
+        "B": "budget",
+        "C": "budgeted",
+        "D": "budgeting"
+      },
+      "correctAnswer": "B",
+      "clue": "Đứng sau tính từ 'proposed' và làm tân ngữ cho động từ 'approved' → bắt buộc là Danh từ (N)",
+      "explanationVi": "Chỗ trống cần một Danh từ chỉ vật. 'budget' (ngân sách) là danh từ chính xác. 'budgetary' là tính từ, 'budgeted' và 'budgeting' là dạng động từ/tính từ.",
+      "targetChunk": {
+        "phrase": "approve the proposed budget",
+        "meaningVi": "phê duyệt ngân sách đề xuất"
+      },
+      "skeleton": {
+        "subject": "The board of directors",
+        "verb": "approved",
+        "object": "the proposed budget"
+      }
+    },
+    {
+      "id": "noun_std_002",
+      "level": "standard",
+      "question": "Ms. Park will give a short ______ about the new safety procedures at the meeting.",
+      "options": {
+        "A": "present",
+        "B": "presentation",
+        "C": "presented",
+        "D": "presenting"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'a' + tính từ 'short' → cần Danh từ đếm được số ít",
+      "explanationVi": "'presentation' là danh từ nghĩa là bài thuyết trình. Các lựa chọn còn lại là động từ hoặc tính từ.",
+      "targetChunk": {
+        "phrase": "give a short presentation",
+        "meaningVi": "thuyết trình ngắn"
+      },
+      "skeleton": {
+        "subject": "Ms. Park",
+        "verb": "will give",
+        "object": "a short presentation"
+      }
+    },
+    {
+      "id": "noun_std_003",
+      "level": "standard",
+      "question": "The company is looking for candidates with strong ______ in project management.",
+      "options": {
+        "A": "experienced",
+        "B": "experience",
+        "C": "experiencing",
+        "D": "experiential"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ 'strong' và giới từ 'with' → cần Danh từ không đếm được",
+      "explanationVi": "'experience' (kinh nghiệm) là danh từ không đếm được phù hợp. Các từ còn lại là tính từ hoặc động từ.",
+      "targetChunk": {
+        "phrase": "strong experience in",
+        "meaningVi": "kinh nghiệm vững chắc về"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "is looking for",
+        "object": "candidates with strong experience"
+      }
+    },
+    {
+      "id": "noun_std_004",
+      "level": "standard",
+      "question": "Please submit your ______ form by Friday afternoon.",
+      "options": {
+        "A": "apply",
+        "B": "application",
+        "C": "applied",
+        "D": "applying"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ sở hữu 'your' → cần Danh từ",
+      "explanationVi": "'application form' là cụm danh từ cố định nghĩa là đơn xin việc/đăng ký.",
+      "targetChunk": {
+        "phrase": "submit your application form",
+        "meaningVi": "nộp đơn đăng ký"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "submit",
+        "object": "your application form"
+      }
+    },
+    {
+      "id": "noun_std_005",
+      "level": "standard",
+      "question": "The ______ of the new product will begin next month.",
+      "options": {
+        "A": "produce",
+        "B": "production",
+        "C": "productive",
+        "D": "produced"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' và trước giới từ 'of' → cần Danh từ",
+      "explanationVi": "'production' (sản xuất) là danh từ chính xác. Các lựa chọn khác là động từ hoặc tính từ.",
+      "targetChunk": {
+        "phrase": "the production of",
+        "meaningVi": "việc sản xuất (của)"
+      },
+      "skeleton": {
+        "subject": "The production",
+        "verb": "will begin",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_std_006",
+      "level": "standard",
+      "question": "All employees must attend the mandatory ______ on workplace safety.",
+      "options": {
+        "A": "train",
+        "B": "training",
+        "C": "trained",
+        "D": "trainer"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ 'mandatory' → cần Danh từ",
+      "explanationVi": "'training' (buổi đào tạo) là danh từ. 'trainer' là người huấn luyện, không phù hợp ngữ cảnh.",
+      "targetChunk": {
+        "phrase": "mandatory training",
+        "meaningVi": "đào tạo bắt buộc"
+      },
+      "skeleton": {
+        "subject": "All employees",
+        "verb": "must attend",
+        "object": "the mandatory training"
+      }
+    },
+    {
+      "id": "noun_std_007",
+      "level": "standard",
+      "question": "The manager asked for a detailed ______ of the sales figures.",
+      "options": {
+        "A": "analyze",
+        "B": "analysis",
+        "C": "analytical",
+        "D": "analyzed"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ 'detailed' → cần Danh từ",
+      "explanationVi": "'analysis' (phân tích) là danh từ. Các lựa chọn khác là động từ hoặc tính từ.",
+      "targetChunk": {
+        "phrase": "a detailed analysis of",
+        "meaningVi": "phân tích chi tiết về"
+      },
+      "skeleton": {
+        "subject": "The manager",
+        "verb": "asked for",
+        "object": "a detailed analysis"
+      }
+    },
+    {
+      "id": "noun_std_008",
+      "level": "standard",
+      "question": "There has been a significant ______ in customer satisfaction this quarter.",
+      "options": {
+        "A": "improve",
+        "B": "improvement",
+        "C": "improved",
+        "D": "improving"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'a' + tính từ 'significant' → cần Danh từ đếm được số ít",
+      "explanationVi": "'improvement' (sự cải thiện) là danh từ phù hợp.",
+      "targetChunk": {
+        "phrase": "a significant improvement in",
+        "meaningVi": "sự cải thiện đáng kể về"
+      },
+      "skeleton": {
+        "subject": "There",
+        "verb": "has been",
+        "object": "a significant improvement"
+      }
+    },
+    {
+      "id": "noun_std_009",
+      "level": "standard",
+      "question": "The ______ of the contract will be announced tomorrow.",
+      "options": {
+        "A": "sign",
+        "B": "signature",
+        "C": "signed",
+        "D": "signing"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'signature' (chữ ký) là danh từ. Trong ngữ cảnh hợp đồng, 'signature of the contract' nghĩa là việc ký kết.",
+      "targetChunk": {
+        "phrase": "the signature of the contract",
+        "meaningVi": "chữ ký / việc ký kết hợp đồng"
+      },
+      "skeleton": {
+        "subject": "The signature",
+        "verb": "will be announced",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_std_010",
+      "level": "standard",
+      "question": "We need more ______ about the new software before making a decision.",
+      "options": {
+        "A": "inform",
+        "B": "information",
+        "C": "informative",
+        "D": "informed"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'more' → cần Danh từ không đếm được",
+      "explanationVi": "'information' là danh từ không đếm được. Không dùng 'informations'.",
+      "targetChunk": {
+        "phrase": "more information about",
+        "meaningVi": "thêm thông tin về"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "need",
+        "object": "more information"
+      }
+    },
+    {
+      "id": "noun_std_011",
+      "level": "standard",
+      "question": "The hotel offers free ______ to the airport for all guests.",
+      "options": {
+        "A": "transport",
+        "B": "transportation",
+        "C": "transported",
+        "D": "transporting"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ 'free' → cần Danh từ",
+      "explanationVi": "'transportation' (phương tiện vận chuyển) là danh từ phổ biến trong TOEIC. 'transport' cũng là danh từ nhưng 'transportation' tự nhiên hơn.",
+      "targetChunk": {
+        "phrase": "free transportation to",
+        "meaningVi": "đưa đón miễn phí đến"
+      },
+      "skeleton": {
+        "subject": "The hotel",
+        "verb": "offers",
+        "object": "free transportation"
+      }
+    },
+    {
+      "id": "noun_std_012",
+      "level": "standard",
+      "question": "Please check the ______ of the meeting room before booking it.",
+      "options": {
+        "A": "available",
+        "B": "availability",
+        "C": "availably",
+        "D": "avail"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'availability' (tình trạng sẵn có) là danh từ. Các lựa chọn khác là tính từ/trạng từ/động từ.",
+      "targetChunk": {
+        "phrase": "check the availability of",
+        "meaningVi": "kiểm tra tình trạng trống của"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "check",
+        "object": "the availability"
+      }
+    },
+    {
+      "id": "noun_std_013",
+      "level": "standard",
+      "question": "The success of the project depends on the ______ of the entire team.",
+      "options": {
+        "A": "cooperate",
+        "B": "cooperation",
+        "C": "cooperative",
+        "D": "cooperated"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' và trước giới từ 'of' → cần Danh từ",
+      "explanationVi": "'cooperation' (sự hợp tác) là danh từ phù hợp.",
+      "targetChunk": {
+        "phrase": "the cooperation of the team",
+        "meaningVi": "sự hợp tác của đội ngũ"
+      },
+      "skeleton": {
+        "subject": "The success",
+        "verb": "depends on",
+        "object": "the cooperation"
+      }
+    },
+    {
+      "id": "noun_std_014",
+      "level": "standard",
+      "question": "There was a noticeable ______ in the quality of service after the training.",
+      "options": {
+        "A": "differ",
+        "B": "difference",
+        "C": "different",
+        "D": "differently"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'a' + tính từ 'noticeable' → cần Danh từ",
+      "explanationVi": "'difference' (sự khác biệt) là danh từ.",
+      "targetChunk": {
+        "phrase": "a noticeable difference in",
+        "meaningVi": "sự khác biệt rõ rệt về"
+      },
+      "skeleton": {
+        "subject": "There",
+        "verb": "was",
+        "object": "a noticeable difference"
+      }
+    },
+    {
+      "id": "noun_std_015",
+      "level": "standard",
+      "question": "The ______ for the position closes at the end of this month.",
+      "options": {
+        "A": "apply",
+        "B": "application",
+        "C": "applicant",
+        "D": "applied"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'application' (đơn ứng tuyển) là danh từ đúng. 'applicant' là người ứng tuyển.",
+      "targetChunk": {
+        "phrase": "the application for the position",
+        "meaningVi": "đơn ứng tuyển vị trí"
+      },
+      "skeleton": {
+        "subject": "The application",
+        "verb": "closes",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_std_016",
+      "level": "standard",
+      "question": "The company plans to expand its ______ into several Asian markets.",
+      "options": {
+        "A": "operate",
+        "B": "operation",
+        "C": "operational",
+        "D": "operated"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ sở hữu 'its' → cần Danh từ",
+      "explanationVi": "'operation' (hoạt động kinh doanh) là danh từ phù hợp.",
+      "targetChunk": {
+        "phrase": "expand its operation into",
+        "meaningVi": "mở rộng hoạt động sang"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "plans to expand",
+        "object": "its operation"
+      }
+    },
+    {
+      "id": "noun_std_017",
+      "level": "standard",
+      "question": "Please provide a brief ______ of your previous work experience.",
+      "options": {
+        "A": "describe",
+        "B": "description",
+        "C": "descriptive",
+        "D": "described"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ 'brief' → cần Danh từ",
+      "explanationVi": "'description' (mô tả) là danh từ.",
+      "targetChunk": {
+        "phrase": "a brief description of",
+        "meaningVi": "mô tả ngắn gọn về"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "provide",
+        "object": "a brief description"
+      }
+    },
+    {
+      "id": "noun_std_018",
+      "level": "standard",
+      "question": "The ______ of the new office building is scheduled for next spring.",
+      "options": {
+        "A": "complete",
+        "B": "completion",
+        "C": "completed",
+        "D": "completely"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'completion' (sự hoàn thành) là danh từ.",
+      "targetChunk": {
+        "phrase": "the completion of",
+        "meaningVi": "việc hoàn thành (của)"
+      },
+      "skeleton": {
+        "subject": "The completion",
+        "verb": "is scheduled",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_std_019",
+      "level": "standard",
+      "question": "All staff members received a ______ of the new company policy.",
+      "options": {
+        "A": "copy",
+        "B": "copied",
+        "C": "copying",
+        "D": "copier"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau mạo từ 'a' → cần Danh từ đếm được số ít",
+      "explanationVi": "'copy' (bản sao) là danh từ. 'copier' là máy photocopy.",
+      "targetChunk": {
+        "phrase": "receive a copy of",
+        "meaningVi": "nhận một bản sao của"
+      },
+      "skeleton": {
+        "subject": "All staff members",
+        "verb": "received",
+        "object": "a copy"
+      }
+    },
+    {
+      "id": "noun_std_020",
+      "level": "standard",
+      "question": "The ______ of the report must be submitted by 5 p.m. today.",
+      "options": {
+        "A": "final",
+        "B": "finalize",
+        "C": "finalization",
+        "D": "finally"
+      },
+      "correctAnswer": "C",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'finalization' (việc hoàn tất) là danh từ. 'final' là tính từ.",
+      "targetChunk": {
+        "phrase": "the finalization of the report",
+        "meaningVi": "việc hoàn tất báo cáo"
+      },
+      "skeleton": {
+        "subject": "The finalization",
+        "verb": "must be submitted",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_std_021",
+      "level": "standard",
+      "question": "There has been a steady ______ in online sales over the past year.",
+      "options": {
+        "A": "grow",
+        "B": "growth",
+        "C": "grown",
+        "D": "growing"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ 'steady' → cần Danh từ",
+      "explanationVi": "'growth' (sự tăng trưởng) là danh từ không đếm được.",
+      "targetChunk": {
+        "phrase": "a steady growth in",
+        "meaningVi": "sự tăng trưởng ổn định về"
+      },
+      "skeleton": {
+        "subject": "There",
+        "verb": "has been",
+        "object": "a steady growth"
+      }
+    },
+    {
+      "id": "noun_std_022",
+      "level": "standard",
+      "question": "The hotel provides complimentary ______ for guests staying more than three nights.",
+      "options": {
+        "A": "breakfast",
+        "B": "breakfasters",
+        "C": "breakfasting",
+        "D": "break"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau tính từ 'complimentary' → cần Danh từ",
+      "explanationVi": "'breakfast' (bữa sáng) là danh từ. Đây là cụm rất phổ biến trong TOEIC.",
+      "targetChunk": {
+        "phrase": "complimentary breakfast",
+        "meaningVi": "bữa sáng miễn phí"
+      },
+      "skeleton": {
+        "subject": "The hotel",
+        "verb": "provides",
+        "object": "complimentary breakfast"
+      }
+    },
+    {
+      "id": "noun_std_023",
+      "level": "standard",
+      "question": "Please review the ______ carefully before signing the agreement.",
+      "options": {
+        "A": "term",
+        "B": "terms",
+        "C": "termed",
+        "D": "terming"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ (thường dùng số nhiều với 'terms')",
+      "explanationVi": "'terms' (điều khoản) thường dùng số nhiều trong ngữ cảnh hợp đồng.",
+      "targetChunk": {
+        "phrase": "review the terms carefully",
+        "meaningVi": "xem xét kỹ các điều khoản"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "review",
+        "object": "the terms"
+      }
+    },
+    {
+      "id": "noun_std_024",
+      "level": "standard",
+      "question": "The ______ of the new branch will create many job opportunities.",
+      "options": {
+        "A": "open",
+        "B": "opening",
+        "C": "opened",
+        "D": "opener"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'opening' (việc khai trương) là danh từ. 'opener' là người/vật mở.",
+      "targetChunk": {
+        "phrase": "the opening of the new branch",
+        "meaningVi": "việc khai trương chi nhánh mới"
+      },
+      "skeleton": {
+        "subject": "The opening",
+        "verb": "will create",
+        "object": "many job opportunities"
+      }
+    },
+    {
+      "id": "noun_std_025",
+      "level": "standard",
+      "question": "We appreciate your ______ in this matter.",
+      "options": {
+        "A": "assist",
+        "B": "assistance",
+        "C": "assistant",
+        "D": "assisted"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ sở hữu 'your' → cần Danh từ",
+      "explanationVi": "'assistance' (sự hỗ trợ) là danh từ. 'assistant' là người trợ lý.",
+      "targetChunk": {
+        "phrase": "appreciate your assistance",
+        "meaningVi": "cảm kích sự hỗ trợ của bạn"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "appreciate",
+        "object": "your assistance"
+      }
+    },
+    {
+      "id": "noun_std_026",
+      "level": "standard",
+      "question": "The ______ of the equipment will take approximately two weeks.",
+      "options": {
+        "A": "install",
+        "B": "installation",
+        "C": "installed",
+        "D": "installing"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'installation' (việc lắp đặt) là danh từ.",
+      "targetChunk": {
+        "phrase": "the installation of the equipment",
+        "meaningVi": "việc lắp đặt thiết bị"
+      },
+      "skeleton": {
+        "subject": "The installation",
+        "verb": "will take",
+        "object": "approximately two weeks"
+      }
+    },
+    {
+      "id": "noun_std_027",
+      "level": "standard",
+      "question": "A high level of ______ is required for this technical position.",
+      "options": {
+        "A": "expert",
+        "B": "expertise",
+        "C": "expertly",
+        "D": "experting"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'a high level of' → cần Danh từ không đếm được",
+      "explanationVi": "'expertise' (chuyên môn) là danh từ không đếm được. 'expert' là người chuyên gia.",
+      "targetChunk": {
+        "phrase": "a high level of expertise",
+        "meaningVi": "mức độ chuyên môn cao"
+      },
+      "skeleton": {
+        "subject": "A high level of expertise",
+        "verb": "is required",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_std_028",
+      "level": "standard",
+      "question": "The ______ of the meeting has been changed to Thursday.",
+      "options": {
+        "A": "date",
+        "B": "dated",
+        "C": "dating",
+        "D": "dates"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau mạo từ 'the' → cần Danh từ số ít",
+      "explanationVi": "'date' (ngày) là danh từ. Đây là cấu trúc rất phổ biến.",
+      "targetChunk": {
+        "phrase": "the date of the meeting",
+        "meaningVi": "ngày họp"
+      },
+      "skeleton": {
+        "subject": "The date",
+        "verb": "has been changed",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_std_029",
+      "level": "standard",
+      "question": "Please make sure all the ______ are completed before the deadline.",
+      "options": {
+        "A": "require",
+        "B": "requirements",
+        "C": "required",
+        "D": "requiring"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'all the' → cần Danh từ số nhiều",
+      "explanationVi": "'requirements' (các yêu cầu) là danh từ số nhiều.",
+      "targetChunk": {
+        "phrase": "all the requirements are completed",
+        "meaningVi": "tất cả các yêu cầu được hoàn thành"
+      },
+      "skeleton": {
+        "subject": "all the requirements",
+        "verb": "are completed",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_std_030",
+      "level": "standard",
+      "question": "The company offers excellent ______ opportunities for its employees.",
+      "options": {
+        "A": "advance",
+        "B": "advancement",
+        "C": "advanced",
+        "D": "advancing"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ 'excellent' → cần Danh từ",
+      "explanationVi": "'advancement' (sự thăng tiến) là danh từ. 'advanced' là tính từ.",
+      "targetChunk": {
+        "phrase": "excellent advancement opportunities",
+        "meaningVi": "cơ hội thăng tiến tuyệt vời"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "offers",
+        "object": "excellent advancement opportunities"
+      }
+    },
+    {
+      "id": "noun_adv_001",
+      "level": "advanced",
+      "question": "The sudden ______ of the CEO took the entire staff by surprise.",
+      "options": {
+        "A": "resign",
+        "B": "resignation",
+        "C": "resigned",
+        "D": "resigning"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ 'sudden' → cần Danh từ",
+      "explanationVi": "'resignation' (sự từ chức) là danh từ. Đây là từ vựng advanced thường xuất hiện ở band 800+.",
+      "targetChunk": {
+        "phrase": "the sudden resignation of",
+        "meaningVi": "sự từ chức đột ngột của"
+      },
+      "skeleton": {
+        "subject": "The sudden resignation",
+        "verb": "took",
+        "object": "the entire staff by surprise"
+      }
+    },
+    {
+      "id": "noun_adv_002",
+      "level": "advanced",
+      "question": "Despite the ______ of funds, the research team managed to complete the project.",
+      "options": {
+        "A": "scarce",
+        "B": "scarcity",
+        "C": "scarcely",
+        "D": "scarcer"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' và trước giới từ 'of' → cần Danh từ",
+      "explanationVi": "'scarcity' (sự thiếu hụt) là danh từ trừu tượng advanced.",
+      "targetChunk": {
+        "phrase": "despite the scarcity of funds",
+        "meaningVi": "mặc dù thiếu hụt kinh phí"
+      },
+      "skeleton": {
+        "subject": "the research team",
+        "verb": "managed to complete",
+        "object": "the project"
+      }
+    },
+    {
+      "id": "noun_adv_003",
+      "level": "advanced",
+      "question": "The board expressed its ______ with the current marketing strategy.",
+      "options": {
+        "A": "dissatisfy",
+        "B": "dissatisfaction",
+        "C": "dissatisfied",
+        "D": "dissatisfying"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ sở hữu 'its' → cần Danh từ",
+      "explanationVi": "'dissatisfaction' (sự không hài lòng) là danh từ. Cấu trúc 'express one's dissatisfaction with' rất hay gặp.",
+      "targetChunk": {
+        "phrase": "express its dissatisfaction with",
+        "meaningVi": "bày tỏ sự không hài lòng với"
+      },
+      "skeleton": {
+        "subject": "The board",
+        "verb": "expressed",
+        "object": "its dissatisfaction"
+      }
+    },
+    {
+      "id": "noun_adv_004",
+      "level": "advanced",
+      "question": "The ______ of the new regulations will affect all departments equally.",
+      "options": {
+        "A": "implement",
+        "B": "implementation",
+        "C": "implemented",
+        "D": "implementing"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'implementation' (việc triển khai) là danh từ formal thường dùng trong văn bản công sở.",
+      "targetChunk": {
+        "phrase": "the implementation of the new regulations",
+        "meaningVi": "việc triển khai các quy định mới"
+      },
+      "skeleton": {
+        "subject": "The implementation",
+        "verb": "will affect",
+        "object": "all departments"
+      }
+    },
+    {
+      "id": "noun_adv_005",
+      "level": "advanced",
+      "question": "Her remarkable ______ to solve complex problems made her the ideal candidate.",
+      "options": {
+        "A": "able",
+        "B": "ability",
+        "C": "ably",
+        "D": "enabled"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ 'remarkable' → cần Danh từ",
+      "explanationVi": "'ability' (khả năng) là danh từ. 'to + V' theo sau 'ability'.",
+      "targetChunk": {
+        "phrase": "remarkable ability to solve",
+        "meaningVi": "khả năng đáng nể trong việc giải quyết"
+      },
+      "skeleton": {
+        "subject": "Her remarkable ability",
+        "verb": "made",
+        "object": "her the ideal candidate"
+      }
+    },
+    {
+      "id": "noun_adv_006",
+      "level": "advanced",
+      "question": "The ______ of accurate data is essential for making informed decisions.",
+      "options": {
+        "A": "available",
+        "B": "availability",
+        "C": "availably",
+        "D": "avail"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'availability' (sự sẵn có) là danh từ abstract.",
+      "targetChunk": {
+        "phrase": "the availability of accurate data",
+        "meaningVi": "sự sẵn có của dữ liệu chính xác"
+      },
+      "skeleton": {
+        "subject": "The availability",
+        "verb": "is",
+        "object": "essential"
+      }
+    },
+    {
+      "id": "noun_adv_007",
+      "level": "advanced",
+      "question": "The committee will discuss the ______ of outsourcing certain services.",
+      "options": {
+        "A": "feasible",
+        "B": "feasibility",
+        "C": "feasibly",
+        "D": "feasibleness"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'feasibility' (tính khả thi) là danh từ advanced rất hay ra ở band 850+.",
+      "targetChunk": {
+        "phrase": "the feasibility of outsourcing",
+        "meaningVi": "tính khả thi của việc thuê ngoài"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "will discuss",
+        "object": "the feasibility"
+      }
+    },
+    {
+      "id": "noun_adv_008",
+      "level": "advanced",
+      "question": "A thorough ______ of the market trends is required before launching the product.",
+      "options": {
+        "A": "assess",
+        "B": "assessment",
+        "C": "assessed",
+        "D": "assessing"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ 'thorough' → cần Danh từ",
+      "explanationVi": "'assessment' (đánh giá) là danh từ formal.",
+      "targetChunk": {
+        "phrase": "a thorough assessment of",
+        "meaningVi": "đánh giá toàn diện về"
+      },
+      "skeleton": {
+        "subject": "A thorough assessment",
+        "verb": "is required",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_adv_009",
+      "level": "advanced",
+      "question": "The company is seeking ______ for the newly created position of regional manager.",
+      "options": {
+        "A": "apply",
+        "B": "applicants",
+        "C": "application",
+        "D": "applicable"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau động từ 'seeking' → cần Danh từ số nhiều chỉ người",
+      "explanationVi": "'applicants' (ứng viên) là danh từ chỉ người số nhiều. 'application' là đơn.",
+      "targetChunk": {
+        "phrase": "seeking applicants for",
+        "meaningVi": "tìm kiếm ứng viên cho"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "is seeking",
+        "object": "applicants"
+      }
+    },
+    {
+      "id": "noun_adv_010",
+      "level": "advanced",
+      "question": "The ______ of the merger is expected to take several months to complete.",
+      "options": {
+        "A": "negotiate",
+        "B": "negotiation",
+        "C": "negotiated",
+        "D": "negotiating"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'negotiation' (cuộc đàm phán) là danh từ.",
+      "targetChunk": {
+        "phrase": "the negotiation of the merger",
+        "meaningVi": "cuộc đàm phán sáp nhập"
+      },
+      "skeleton": {
+        "subject": "The negotiation",
+        "verb": "is expected",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_adv_011",
+      "level": "advanced",
+      "question": "His ______ to detail has earned him a reputation for excellence.",
+      "options": {
+        "A": "attend",
+        "B": "attention",
+        "C": "attentive",
+        "D": "attentively"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ sở hữu 'His' → cần Danh từ",
+      "explanationVi": "'attention to detail' là cụm danh từ cố định rất phổ biến trong TOEIC advanced.",
+      "targetChunk": {
+        "phrase": "attention to detail",
+        "meaningVi": "sự chú ý đến chi tiết"
+      },
+      "skeleton": {
+        "subject": "His attention to detail",
+        "verb": "has earned",
+        "object": "him a reputation"
+      }
+    },
+    {
+      "id": "noun_adv_012",
+      "level": "advanced",
+      "question": "The ______ of the new policy will be monitored closely over the next quarter.",
+      "options": {
+        "A": "effective",
+        "B": "effectiveness",
+        "C": "effectively",
+        "D": "effect"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'effectiveness' (hiệu quả) là danh từ. 'effect' cũng là danh từ nhưng nghĩa khác (ảnh hưởng).",
+      "targetChunk": {
+        "phrase": "the effectiveness of the new policy",
+        "meaningVi": "hiệu quả của chính sách mới"
+      },
+      "skeleton": {
+        "subject": "The effectiveness",
+        "verb": "will be monitored",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_adv_013",
+      "level": "advanced",
+      "question": "We need to find a ______ to the current shortage of skilled workers.",
+      "options": {
+        "A": "solve",
+        "B": "solution",
+        "C": "solvable",
+        "D": "solving"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'a' → cần Danh từ",
+      "explanationVi": "'solution to' là cấu trúc cố định. 'solution' là danh từ.",
+      "targetChunk": {
+        "phrase": "a solution to the shortage",
+        "meaningVi": "giải pháp cho sự thiếu hụt"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "need to find",
+        "object": "a solution"
+      }
+    },
+    {
+      "id": "noun_adv_014",
+      "level": "advanced",
+      "question": "The ______ of confidential information is strictly prohibited.",
+      "options": {
+        "A": "disclose",
+        "B": "disclosure",
+        "C": "disclosed",
+        "D": "disclosing"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'disclosure' (sự tiết lộ) là danh từ formal.",
+      "targetChunk": {
+        "phrase": "the disclosure of confidential information",
+        "meaningVi": "sự tiết lộ thông tin mật"
+      },
+      "skeleton": {
+        "subject": "The disclosure",
+        "verb": "is prohibited",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_adv_015",
+      "level": "advanced",
+      "question": "The rapid ______ of technology has transformed the way businesses operate.",
+      "options": {
+        "A": "advance",
+        "B": "advancement",
+        "C": "advanced",
+        "D": "advancing"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ 'rapid' → cần Danh từ",
+      "explanationVi": "'advancement' (sự tiến bộ) là danh từ. 'advance' cũng có thể là danh từ nhưng 'advancement of technology' tự nhiên hơn.",
+      "targetChunk": {
+        "phrase": "the rapid advancement of technology",
+        "meaningVi": "sự tiến bộ nhanh chóng của công nghệ"
+      },
+      "skeleton": {
+        "subject": "The rapid advancement",
+        "verb": "has transformed",
+        "object": "the way businesses operate"
+      }
+    },
+    {
+      "id": "noun_adv_016",
+      "level": "advanced",
+      "question": "There is growing ______ about the long-term effects of the new drug.",
+      "options": {
+        "A": "concern",
+        "B": "concerned",
+        "C": "concerning",
+        "D": "concernedly"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau tính từ 'growing' → cần Danh từ",
+      "explanationVi": "'concern' (mối quan ngại) là danh từ. 'There is growing concern about...' là cấu trúc hay gặp.",
+      "targetChunk": {
+        "phrase": "growing concern about",
+        "meaningVi": "mối quan ngại ngày càng tăng về"
+      },
+      "skeleton": {
+        "subject": "There",
+        "verb": "is",
+        "object": "growing concern"
+      }
+    },
+    {
+      "id": "noun_adv_017",
+      "level": "advanced",
+      "question": "The ______ of the investigation will be published in next month's report.",
+      "options": {
+        "A": "find",
+        "B": "findings",
+        "C": "found",
+        "D": "finding"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ (thường dùng số nhiều)",
+      "explanationVi": "'findings' (kết quả nghiên cứu/điều tra) thường dùng số nhiều.",
+      "targetChunk": {
+        "phrase": "the findings of the investigation",
+        "meaningVi": "kết quả của cuộc điều tra"
+      },
+      "skeleton": {
+        "subject": "The findings",
+        "verb": "will be published",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_adv_018",
+      "level": "advanced",
+      "question": "Her ______ for the position was based on her extensive experience in the field.",
+      "options": {
+        "A": "qualify",
+        "B": "qualification",
+        "C": "qualified",
+        "D": "qualifying"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ sở hữu 'Her' → cần Danh từ",
+      "explanationVi": "'qualification' (bằng cấp/trình độ) là danh từ. Trong ngữ cảnh này nghĩa là sự đủ điều kiện.",
+      "targetChunk": {
+        "phrase": "her qualification for the position",
+        "meaningVi": "trình độ/điều kiện của cô ấy cho vị trí"
+      },
+      "skeleton": {
+        "subject": "Her qualification",
+        "verb": "was based on",
+        "object": "her extensive experience"
+      }
+    },
+    {
+      "id": "noun_adv_019",
+      "level": "advanced",
+      "question": "The ______ of the building was delayed due to unexpected weather conditions.",
+      "options": {
+        "A": "construct",
+        "B": "construction",
+        "C": "constructed",
+        "D": "constructing"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'construction' (việc xây dựng) là danh từ.",
+      "targetChunk": {
+        "phrase": "the construction of the building",
+        "meaningVi": "việc xây dựng tòa nhà"
+      },
+      "skeleton": {
+        "subject": "The construction",
+        "verb": "was delayed",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_adv_020",
+      "level": "advanced",
+      "question": "A detailed ______ of the proposal will be sent to all stakeholders.",
+      "options": {
+        "A": "summarize",
+        "B": "summary",
+        "C": "summarized",
+        "D": "summarizing"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ 'detailed' → cần Danh từ",
+      "explanationVi": "'summary' (bản tóm tắt) là danh từ.",
+      "targetChunk": {
+        "phrase": "a detailed summary of",
+        "meaningVi": "bản tóm tắt chi tiết về"
+      },
+      "skeleton": {
+        "subject": "A detailed summary",
+        "verb": "will be sent",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_adv_021",
+      "level": "advanced",
+      "question": "The ______ of the new software has significantly improved productivity.",
+      "options": {
+        "A": "adopt",
+        "B": "adoption",
+        "C": "adopted",
+        "D": "adopting"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'adoption' (việc áp dụng) là danh từ formal.",
+      "targetChunk": {
+        "phrase": "the adoption of the new software",
+        "meaningVi": "việc áp dụng phần mềm mới"
+      },
+      "skeleton": {
+        "subject": "The adoption",
+        "verb": "has improved",
+        "object": "productivity"
+      }
+    },
+    {
+      "id": "noun_adv_022",
+      "level": "advanced",
+      "question": "There is a growing ______ of qualified candidates for senior positions.",
+      "options": {
+        "A": "short",
+        "B": "shortage",
+        "C": "shorten",
+        "D": "shortly"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'a' + tính từ 'growing' → cần Danh từ",
+      "explanationVi": "'shortage' (sự thiếu hụt) là danh từ. Cấu trúc 'a shortage of' rất phổ biến.",
+      "targetChunk": {
+        "phrase": "a growing shortage of",
+        "meaningVi": "sự thiếu hụt ngày càng tăng của"
+      },
+      "skeleton": {
+        "subject": "There",
+        "verb": "is",
+        "object": "a growing shortage"
+      }
+    },
+    {
+      "id": "noun_adv_023",
+      "level": "advanced",
+      "question": "The ______ of the contract terms is currently under legal review.",
+      "options": {
+        "A": "revise",
+        "B": "revision",
+        "C": "revised",
+        "D": "revising"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'revision' (việc sửa đổi) là danh từ.",
+      "targetChunk": {
+        "phrase": "the revision of the contract terms",
+        "meaningVi": "việc sửa đổi các điều khoản hợp đồng"
+      },
+      "skeleton": {
+        "subject": "The revision",
+        "verb": "is",
+        "object": "under legal review"
+      }
+    },
+    {
+      "id": "noun_adv_024",
+      "level": "advanced",
+      "question": "His ______ in handling difficult clients has been highly praised.",
+      "options": {
+        "A": "skillful",
+        "B": "skill",
+        "C": "skillfully",
+        "D": "skilled"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ sở hữu 'His' → cần Danh từ",
+      "explanationVi": "'skill' (kỹ năng) là danh từ. 'skill in + V-ing' là cấu trúc chuẩn.",
+      "targetChunk": {
+        "phrase": "skill in handling",
+        "meaningVi": "kỹ năng trong việc xử lý"
+      },
+      "skeleton": {
+        "subject": "His skill",
+        "verb": "has been praised",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_adv_025",
+      "level": "advanced",
+      "question": "The ______ of the annual report will be presented at the shareholders' meeting.",
+      "options": {
+        "A": "highlight",
+        "B": "highlights",
+        "C": "highlighted",
+        "D": "highlighting"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ (thường dùng số nhiều)",
+      "explanationVi": "'highlights' (những điểm nổi bật) thường dùng số nhiều trong ngữ cảnh báo cáo.",
+      "targetChunk": {
+        "phrase": "the highlights of the annual report",
+        "meaningVi": "những điểm nổi bật của báo cáo thường niên"
+      },
+      "skeleton": {
+        "subject": "The highlights",
+        "verb": "will be presented",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_adv_026",
+      "level": "advanced",
+      "question": "A major ______ of the new system is its ability to process data more efficiently.",
+      "options": {
+        "A": "advantage",
+        "B": "advantageous",
+        "C": "advantageously",
+        "D": "advantaged"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau tính từ 'major' → cần Danh từ",
+      "explanationVi": "'advantage' (ưu điểm) là danh từ. 'A major advantage of...' là cấu trúc rất hay gặp.",
+      "targetChunk": {
+        "phrase": "a major advantage of",
+        "meaningVi": "một ưu điểm lớn của"
+      },
+      "skeleton": {
+        "subject": "A major advantage",
+        "verb": "is",
+        "object": "its ability"
+      }
+    },
+    {
+      "id": "noun_adv_027",
+      "level": "advanced",
+      "question": "The ______ of additional staff will help reduce the current workload.",
+      "options": {
+        "A": "hire",
+        "B": "hiring",
+        "C": "hired",
+        "D": "hires"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ (gerund dùng như danh từ)",
+      "explanationVi": "'hiring' (việc tuyển dụng) ở đây dùng như danh từ. 'hire' cũng có thể là danh từ nhưng 'hiring of staff' tự nhiên hơn.",
+      "targetChunk": {
+        "phrase": "the hiring of additional staff",
+        "meaningVi": "việc tuyển thêm nhân viên"
+      },
+      "skeleton": {
+        "subject": "The hiring",
+        "verb": "will help reduce",
+        "object": "the current workload"
+      }
+    },
+    {
+      "id": "noun_adv_028",
+      "level": "advanced",
+      "question": "The company is committed to the ______ of environmentally friendly practices.",
+      "options": {
+        "A": "promote",
+        "B": "promotion",
+        "C": "promoted",
+        "D": "promoting"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'promotion' (việc thúc đẩy) là danh từ. 'promotion of practices' là cụm formal.",
+      "targetChunk": {
+        "phrase": "the promotion of environmentally friendly practices",
+        "meaningVi": "việc thúc đẩy các thực hành thân thiện môi trường"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "is committed to",
+        "object": "the promotion"
+      }
+    },
+    {
+      "id": "noun_adv_029",
+      "level": "advanced",
+      "question": "Despite initial ______, the project was completed on schedule and within budget.",
+      "options": {
+        "A": "difficult",
+        "B": "difficulties",
+        "C": "difficulty",
+        "D": "difficultly"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ 'initial' → cần Danh từ (thường dùng số nhiều)",
+      "explanationVi": "'difficulties' (những khó khăn) thường dùng số nhiều khi nói về nhiều vấn đề.",
+      "targetChunk": {
+        "phrase": "despite initial difficulties",
+        "meaningVi": "mặc dù những khó khăn ban đầu"
+      },
+      "skeleton": {
+        "subject": "the project",
+        "verb": "was completed",
+        "object": null
+      }
+    },
+    {
+      "id": "noun_adv_030",
+      "level": "advanced",
+      "question": "The ______ of the new guidelines is intended to improve overall efficiency.",
+      "options": {
+        "A": "introduce",
+        "B": "introduction",
+        "C": "introduced",
+        "D": "introducing"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ 'the' → cần Danh từ",
+      "explanationVi": "'introduction' (việc giới thiệu/áp dụng) là danh từ.",
+      "targetChunk": {
+        "phrase": "the introduction of the new guidelines",
+        "meaningVi": "việc áp dụng các hướng dẫn mới"
+      },
+      "skeleton": {
+        "subject": "The introduction",
+        "verb": "is intended",
+        "object": null
+      }
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { Sidebar, Header, BottomNav } from './components/Layout';
 import { ListeningAiModule } from './components/ListeningAiModule';
+import { ReadingModule } from './components/ReadingModule';
 import { ChunkModule } from './components/ChunkModule';
 import { VocabModule } from './components/VocabModule';
 import { PracticeModule } from './components/PracticeModule';
@@ -271,6 +272,11 @@ export default function App() {
     });
   }, []);
 
+  // ── Grammar Reading: chunks được lưu từ câu hỏi ngữ pháp ──
+  const handleSaveGrammarChunk = useCallback(() => {
+    setAllChunks(storage.getAllChunks());
+  }, []);
+
   const handleSelectTranscript = useCallback((id) => {
     setSelectedTranscriptId(id);
     setPage('chunks');
@@ -508,6 +514,14 @@ export default function App() {
                     setPage('chunks');
                   }
                 }}
+              />
+            )}
+
+            {page === 'reading' && (
+              <ReadingModule
+                onSaveChunk={handleSaveGrammarChunk}
+                onNavigate={setPage}
+                addToast={addToast}
               />
             )}
 

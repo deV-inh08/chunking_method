@@ -1,0 +1,1389 @@
+{
+  "topicId": "subject_verb_agreement",
+  "topicName": "Hòa hợp chủ - vị",
+  "topicNameEn": "Subject-Verb Agreement",
+  "category": "grammar",
+  "description": "Quy tắc hòa hợp chủ ngữ - động từ: danh từ số ít/số nhiều, chủ ngữ ghép, each/every, either/neither, collective nouns, indefinite pronouns, phrases giữa chủ ngữ và động từ",
+  "questions": [
+    {
+      "id": "sva_std_001",
+      "level": "standard",
+      "question": "The list of candidates ______ on the notice board.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "Chủ ngữ chính là 'The list' (số ít) → động từ số ít",
+      "explanationVi": "Cụm 'of candidates' chỉ là bổ nghĩa. Chủ ngữ thật sự là 'list' → is.",
+      "targetChunk": {
+        "phrase": "The list of candidates is",
+        "meaningVi": "Danh sách ứng viên nằm"
+      },
+      "skeleton": {
+        "subject": "The list of candidates",
+        "verb": "is",
+        "object": "on the notice board"
+      }
+    },
+    {
+      "id": "sva_std_002",
+      "level": "standard",
+      "question": "Either the manager or the assistants ______ responsible for the error.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "Either A or B → động từ hòa hợp với B (gần động từ nhất)",
+      "explanationVi": "assistants (số nhiều) gần động từ → are.",
+      "targetChunk": {
+        "phrase": "Either the manager or the assistants are responsible",
+        "meaningVi": "Hoặc quản lý hoặc các trợ lý chịu trách nhiệm"
+      },
+      "skeleton": {
+        "subject": "Either the manager or the assistants",
+        "verb": "are",
+        "object": "responsible for the error"
+      }
+    },
+    {
+      "id": "sva_std_003",
+      "level": "standard",
+      "question": "Each of the employees ______ required to attend the training session.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have"
+      },
+      "correctAnswer": "B",
+      "clue": "Each of + N số nhiều → động từ số ít",
+      "explanationVi": "Each luôn đi với động từ số ít → is required.",
+      "targetChunk": {
+        "phrase": "Each of the employees is required",
+        "meaningVi": "Mỗi nhân viên đều được yêu cầu"
+      },
+      "skeleton": {
+        "subject": "Each of the employees",
+        "verb": "is",
+        "object": "required to attend the training session"
+      }
+    },
+    {
+      "id": "sva_std_004",
+      "level": "standard",
+      "question": "The news from the headquarters ______ encouraging.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "'News' là danh từ không đếm được → động từ số ít",
+      "explanationVi": "News luôn số ít → is encouraging.",
+      "targetChunk": {
+        "phrase": "The news from the headquarters is encouraging",
+        "meaningVi": "Tin tức từ trụ sở chính rất khích lệ"
+      },
+      "skeleton": {
+        "subject": "The news from the headquarters",
+        "verb": "is",
+        "object": "encouraging"
+      }
+    },
+    {
+      "id": "sva_std_005",
+      "level": "standard",
+      "question": "Neither the CEO nor the directors ______ available for comment.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "Neither A nor B → động từ hòa hợp với B",
+      "explanationVi": "directors (số nhiều) → are available.",
+      "targetChunk": {
+        "phrase": "Neither the CEO nor the directors are available",
+        "meaningVi": "Cả CEO lẫn các giám đốc đều không sẵn sàng"
+      },
+      "skeleton": {
+        "subject": "Neither the CEO nor the directors",
+        "verb": "are",
+        "object": "available for comment"
+      }
+    },
+    {
+      "id": "sva_std_006",
+      "level": "standard",
+      "question": "A number of applicants ______ already submitted their résumés.",
+      "options": {
+        "A": "has",
+        "B": "have",
+        "C": "is",
+        "D": "was"
+      },
+      "correctAnswer": "B",
+      "clue": "'A number of' + N số nhiều → động từ số nhiều",
+      "explanationVi": "A number of = nhiều → have submitted.",
+      "targetChunk": {
+        "phrase": "A number of applicants have already submitted",
+        "meaningVi": "Một số ứng viên đã nộp"
+      },
+      "skeleton": {
+        "subject": "A number of applicants",
+        "verb": "have submitted",
+        "object": "their résumés"
+      }
+    },
+    {
+      "id": "sva_std_007",
+      "level": "standard",
+      "question": "The number of participants ______ higher than expected.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "'The number of' + N số nhiều → động từ số ít",
+      "explanationVi": "The number = con số → is higher.",
+      "targetChunk": {
+        "phrase": "The number of participants is higher",
+        "meaningVi": "Số lượng người tham gia cao hơn"
+      },
+      "skeleton": {
+        "subject": "The number of participants",
+        "verb": "is",
+        "object": "higher than expected"
+      }
+    },
+    {
+      "id": "sva_std_008",
+      "level": "standard",
+      "question": "Everybody in the department ______ the new policy.",
+      "options": {
+        "A": "support",
+        "B": "supports",
+        "C": "are supporting",
+        "D": "have supported"
+      },
+      "correctAnswer": "B",
+      "clue": "Everybody/Everyone → động từ số ít",
+      "explanationVi": "Indefinite pronoun số ít → supports.",
+      "targetChunk": {
+        "phrase": "Everybody in the department supports the new policy",
+        "meaningVi": "Mọi người trong phòng ban đều ủng hộ chính sách mới"
+      },
+      "skeleton": {
+        "subject": "Everybody in the department",
+        "verb": "supports",
+        "object": "the new policy"
+      }
+    },
+    {
+      "id": "sva_std_009",
+      "level": "standard",
+      "question": "The committee ______ decided to postpone the vote.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "are",
+        "D": "were"
+      },
+      "correctAnswer": "B",
+      "clue": "Collective noun (committee) coi như một đơn vị → động từ số ít",
+      "explanationVi": "Khi committee hành động như một nhóm thống nhất → has decided.",
+      "targetChunk": {
+        "phrase": "The committee has decided to postpone the vote",
+        "meaningVi": "Ủy ban đã quyết định hoãn cuộc bỏ phiếu"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "has decided",
+        "object": "to postpone the vote"
+      }
+    },
+    {
+      "id": "sva_std_010",
+      "level": "standard",
+      "question": "There ______ several reasons for the delay.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "There + be hòa hợp với danh từ đứng sau (reasons số nhiều)",
+      "explanationVi": "several reasons → are.",
+      "targetChunk": {
+        "phrase": "There are several reasons for the delay",
+        "meaningVi": "Có một số lý do cho sự chậm trễ"
+      },
+      "skeleton": {
+        "subject": "several reasons",
+        "verb": "are",
+        "object": "for the delay"
+      }
+    },
+    {
+      "id": "sva_std_011",
+      "level": "standard",
+      "question": "One of the most effective strategies ______ customer loyalty programs.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "One of + N số nhiều → động từ số ít",
+      "explanationVi": "One là chủ ngữ → is.",
+      "targetChunk": {
+        "phrase": "One of the most effective strategies is customer loyalty programs",
+        "meaningVi": "Một trong những chiến lược hiệu quả nhất là chương trình khách hàng thân thiết"
+      },
+      "skeleton": {
+        "subject": "One of the most effective strategies",
+        "verb": "is",
+        "object": "customer loyalty programs"
+      }
+    },
+    {
+      "id": "sva_std_012",
+      "level": "standard",
+      "question": "The data ______ currently being analyzed by the research team.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "were",
+        "D": "have"
+      },
+      "correctAnswer": "A",
+      "clue": "Data trong tiếng Anh hiện đại thường được coi là số ít (không đếm được)",
+      "explanationVi": "Trong ngữ cảnh kinh doanh/TOEIC, data thường đi với is.",
+      "targetChunk": {
+        "phrase": "The data is currently being analyzed",
+        "meaningVi": "Dữ liệu hiện đang được phân tích"
+      },
+      "skeleton": {
+        "subject": "The data",
+        "verb": "is being analyzed",
+        "object": "by the research team"
+      }
+    },
+    {
+      "id": "sva_std_013",
+      "level": "standard",
+      "question": "Neither of the proposals ______ acceptable to the board.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "Neither of + N số nhiều → động từ số ít",
+      "explanationVi": "Neither = không cái nào → is acceptable.",
+      "targetChunk": {
+        "phrase": "Neither of the proposals is acceptable",
+        "meaningVi": "Không đề xuất nào được hội đồng chấp nhận"
+      },
+      "skeleton": {
+        "subject": "Neither of the proposals",
+        "verb": "is",
+        "object": "acceptable to the board"
+      }
+    },
+    {
+      "id": "sva_std_014",
+      "level": "standard",
+      "question": "The staff ______ working overtime this week to meet the deadline.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "Staff khi chỉ các thành viên riêng lẻ → động từ số nhiều",
+      "explanationVi": "Trong ngữ cảnh này staff = các nhân viên đang làm thêm → are working.",
+      "targetChunk": {
+        "phrase": "The staff are working overtime this week",
+        "meaningVi": "Nhân viên đang làm thêm giờ tuần này"
+      },
+      "skeleton": {
+        "subject": "The staff",
+        "verb": "are working",
+        "object": "overtime this week"
+      }
+    },
+    {
+      "id": "sva_std_015",
+      "level": "standard",
+      "question": "Every employee and manager ______ required to complete the survey.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have"
+      },
+      "correctAnswer": "B",
+      "clue": "Every A and B → động từ số ít",
+      "explanationVi": "Every làm cho chủ ngữ số ít → is required.",
+      "targetChunk": {
+        "phrase": "Every employee and manager is required",
+        "meaningVi": "Mỗi nhân viên và quản lý đều được yêu cầu"
+      },
+      "skeleton": {
+        "subject": "Every employee and manager",
+        "verb": "is required",
+        "object": "to complete the survey"
+      }
+    },
+    {
+      "id": "sva_std_016",
+      "level": "standard",
+      "question": "The pair of scissors ______ on the desk.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "A pair of + N → động từ số ít",
+      "explanationVi": "pair là chủ ngữ số ít → is.",
+      "targetChunk": {
+        "phrase": "The pair of scissors is on the desk",
+        "meaningVi": "Chiếc kéo nằm trên bàn"
+      },
+      "skeleton": {
+        "subject": "The pair of scissors",
+        "verb": "is",
+        "object": "on the desk"
+      }
+    },
+    {
+      "id": "sva_std_017",
+      "level": "standard",
+      "question": "Politics ______ a major topic in the upcoming election.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "Politics (môn học/lĩnh vực) → động từ số ít",
+      "explanationVi": "Politics khi chỉ lĩnh vực chính trị → is.",
+      "targetChunk": {
+        "phrase": "Politics is a major topic",
+        "meaningVi": "Chính trị là chủ đề chính"
+      },
+      "skeleton": {
+        "subject": "Politics",
+        "verb": "is",
+        "object": "a major topic in the upcoming election"
+      }
+    },
+    {
+      "id": "sva_std_018",
+      "level": "standard",
+      "question": "Both the design and the content ______ excellent.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "Both A and B → động từ số nhiều",
+      "explanationVi": "Both ... and ... luôn số nhiều → are excellent.",
+      "targetChunk": {
+        "phrase": "Both the design and the content are excellent",
+        "meaningVi": "Cả thiết kế lẫn nội dung đều xuất sắc"
+      },
+      "skeleton": {
+        "subject": "Both the design and the content",
+        "verb": "are",
+        "object": "excellent"
+      }
+    },
+    {
+      "id": "sva_std_019",
+      "level": "standard",
+      "question": "None of the information ______ accurate.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "None of + N không đếm được → động từ số ít",
+      "explanationVi": "information không đếm được → is accurate.",
+      "targetChunk": {
+        "phrase": "None of the information is accurate",
+        "meaningVi": "Không có thông tin nào chính xác"
+      },
+      "skeleton": {
+        "subject": "None of the information",
+        "verb": "is",
+        "object": "accurate"
+      }
+    },
+    {
+      "id": "sva_std_020",
+      "level": "standard",
+      "question": "The majority of the staff ______ in favor of the change.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "The majority of + N số nhiều → động từ số nhiều",
+      "explanationVi": "majority of staff = hầu hết nhân viên → are in favor.",
+      "targetChunk": {
+        "phrase": "The majority of the staff are in favor of the change",
+        "meaningVi": "Phần lớn nhân viên ủng hộ sự thay đổi"
+      },
+      "skeleton": {
+        "subject": "The majority of the staff",
+        "verb": "are",
+        "object": "in favor of the change"
+      }
+    },
+    {
+      "id": "sva_std_021",
+      "level": "standard",
+      "question": "Mathematics ______ my favorite subject in school.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "Tên môn học kết thúc bằng -s → động từ số ít",
+      "explanationVi": "Mathematics, physics, economics... luôn số ít → is.",
+      "targetChunk": {
+        "phrase": "Mathematics is my favorite subject",
+        "meaningVi": "Toán học là môn học yêu thích của tôi"
+      },
+      "skeleton": {
+        "subject": "Mathematics",
+        "verb": "is",
+        "object": "my favorite subject in school"
+      }
+    },
+    {
+      "id": "sva_std_022",
+      "level": "standard",
+      "question": "The criteria for selection ______ clearly stated in the guidelines.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "Criteria là số nhiều của criterion → động từ số nhiều",
+      "explanationVi": "criteria = tiêu chí (số nhiều) → are stated.",
+      "targetChunk": {
+        "phrase": "The criteria for selection are clearly stated",
+        "meaningVi": "Các tiêu chí lựa chọn được nêu rõ"
+      },
+      "skeleton": {
+        "subject": "The criteria for selection",
+        "verb": "are stated",
+        "object": "clearly in the guidelines"
+      }
+    },
+    {
+      "id": "sva_std_023",
+      "level": "standard",
+      "question": "Someone ______ left their laptop in the meeting room.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "are",
+        "D": "were"
+      },
+      "correctAnswer": "B",
+      "clue": "Someone/Somebody → động từ số ít",
+      "explanationVi": "Indefinite pronoun số ít → has left.",
+      "targetChunk": {
+        "phrase": "Someone has left their laptop",
+        "meaningVi": "Ai đó đã để lại laptop của họ"
+      },
+      "skeleton": {
+        "subject": "Someone",
+        "verb": "has left",
+        "object": "their laptop in the meeting room"
+      }
+    },
+    {
+      "id": "sva_std_024",
+      "level": "standard",
+      "question": "The series of workshops ______ scheduled for next month.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "The series of + N → động từ số ít",
+      "explanationVi": "series là chủ ngữ số ít → is scheduled.",
+      "targetChunk": {
+        "phrase": "The series of workshops is scheduled",
+        "meaningVi": "Chuỗi hội thảo được lên lịch"
+      },
+      "skeleton": {
+        "subject": "The series of workshops",
+        "verb": "is scheduled",
+        "object": "for next month"
+      }
+    },
+    {
+      "id": "sva_std_025",
+      "level": "standard",
+      "question": "All of the equipment ______ been inspected.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "are",
+        "D": "were"
+      },
+      "correctAnswer": "B",
+      "clue": "All of + N không đếm được → động từ số ít",
+      "explanationVi": "equipment không đếm được → has been inspected.",
+      "targetChunk": {
+        "phrase": "All of the equipment has been inspected",
+        "meaningVi": "Tất cả thiết bị đã được kiểm tra"
+      },
+      "skeleton": {
+        "subject": "All of the equipment",
+        "verb": "has been inspected",
+        "object": ""
+      }
+    },
+    {
+      "id": "sva_std_026",
+      "level": "standard",
+      "question": "The police ______ investigating the incident thoroughly.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "Police luôn đi với động từ số nhiều",
+      "explanationVi": "police = lực lượng cảnh sát (số nhiều) → are investigating.",
+      "targetChunk": {
+        "phrase": "The police are investigating the incident",
+        "meaningVi": "Cảnh sát đang điều tra vụ việc"
+      },
+      "skeleton": {
+        "subject": "The police",
+        "verb": "are investigating",
+        "object": "the incident thoroughly"
+      }
+    },
+    {
+      "id": "sva_std_027",
+      "level": "standard",
+      "question": "Ten thousand dollars ______ a large sum for a small business.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "Số tiền được coi là một tổng thể → động từ số ít",
+      "explanationVi": "Amounts of money → is.",
+      "targetChunk": {
+        "phrase": "Ten thousand dollars is a large sum",
+        "meaningVi": "Mười nghìn đô la là một khoản lớn"
+      },
+      "skeleton": {
+        "subject": "Ten thousand dollars",
+        "verb": "is",
+        "object": "a large sum for a small business"
+      }
+    },
+    {
+      "id": "sva_std_028",
+      "level": "standard",
+      "question": "The audience ______ applauding enthusiastically.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "Audience khi chỉ các cá nhân riêng lẻ đang vỗ tay → số nhiều",
+      "explanationVi": "Trong ngữ cảnh này audience = khán giả đang hành động riêng → are applauding.",
+      "targetChunk": {
+        "phrase": "The audience are applauding enthusiastically",
+        "meaningVi": "Khán giả đang vỗ tay nhiệt liệt"
+      },
+      "skeleton": {
+        "subject": "The audience",
+        "verb": "are applauding",
+        "object": "enthusiastically"
+      }
+    },
+    {
+      "id": "sva_std_029",
+      "level": "standard",
+      "question": "More than one employee ______ expressed concern about the new schedule.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "are",
+        "D": "were"
+      },
+      "correctAnswer": "B",
+      "clue": "More than one + N số ít → động từ số ít",
+      "explanationVi": "More than one employee → has expressed.",
+      "targetChunk": {
+        "phrase": "More than one employee has expressed concern",
+        "meaningVi": "Hơn một nhân viên đã bày tỏ lo ngại"
+      },
+      "skeleton": {
+        "subject": "More than one employee",
+        "verb": "has expressed",
+        "object": "concern about the new schedule"
+      }
+    },
+    {
+      "id": "sva_std_030",
+      "level": "standard",
+      "question": "The United States ______ a major trading partner of Vietnam.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "Tên quốc gia luôn đi với động từ số ít",
+      "explanationVi": "The United States = một quốc gia → is.",
+      "targetChunk": {
+        "phrase": "The United States is a major trading partner",
+        "meaningVi": "Hoa Kỳ là đối tác thương mại lớn"
+      },
+      "skeleton": {
+        "subject": "The United States",
+        "verb": "is",
+        "object": "a major trading partner of Vietnam"
+      }
+    },
+    {
+      "id": "sva_adv_001",
+      "level": "advanced",
+      "question": "Not only the managers but also the staff ______ dissatisfied with the new policy.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "Not only A but also B → động từ hòa hợp với B",
+      "explanationVi": "staff (số nhiều) gần động từ → are dissatisfied.",
+      "targetChunk": {
+        "phrase": "Not only the managers but also the staff are dissatisfied",
+        "meaningVi": "Không chỉ các quản lý mà cả nhân viên cũng không hài lòng"
+      },
+      "skeleton": {
+        "subject": "Not only the managers but also the staff",
+        "verb": "are",
+        "object": "dissatisfied with the new policy"
+      }
+    },
+    {
+      "id": "sva_adv_002",
+      "level": "advanced",
+      "question": "The percentage of employees who work remotely ______ increased dramatically.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "are",
+        "D": "were"
+      },
+      "correctAnswer": "B",
+      "clue": "The percentage of + N → động từ số ít",
+      "explanationVi": "percentage là chủ ngữ số ít → has increased.",
+      "targetChunk": {
+        "phrase": "The percentage of employees who work remotely has increased",
+        "meaningVi": "Tỷ lệ nhân viên làm việc từ xa đã tăng"
+      },
+      "skeleton": {
+        "subject": "The percentage of employees who work remotely",
+        "verb": "has increased",
+        "object": "dramatically"
+      }
+    },
+    {
+      "id": "sva_adv_003",
+      "level": "advanced",
+      "question": "Neither the original plan nor the subsequent revisions ______ been approved.",
+      "options": {
+        "A": "has",
+        "B": "have",
+        "C": "is",
+        "D": "was"
+      },
+      "correctAnswer": "B",
+      "clue": "Neither A nor B → động từ hòa hợp với B (revisions số nhiều)",
+      "explanationVi": "revisions gần động từ → have been approved.",
+      "targetChunk": {
+        "phrase": "Neither the original plan nor the subsequent revisions have been approved",
+        "meaningVi": "Cả kế hoạch gốc lẫn các bản sửa sau đều chưa được phê duyệt"
+      },
+      "skeleton": {
+        "subject": "Neither the original plan nor the subsequent revisions",
+        "verb": "have been approved",
+        "object": ""
+      }
+    },
+    {
+      "id": "sva_adv_004",
+      "level": "advanced",
+      "question": "A variety of factors ______ contributed to the project's success.",
+      "options": {
+        "A": "has",
+        "B": "have",
+        "C": "is",
+        "D": "was"
+      },
+      "correctAnswer": "B",
+      "clue": "A variety of + N số nhiều → động từ số nhiều",
+      "explanationVi": "A variety of = nhiều loại → have contributed.",
+      "targetChunk": {
+        "phrase": "A variety of factors have contributed",
+        "meaningVi": "Nhiều yếu tố đã đóng góp"
+      },
+      "skeleton": {
+        "subject": "A variety of factors",
+        "verb": "have contributed",
+        "object": "to the project's success"
+      }
+    },
+    {
+      "id": "sva_adv_005",
+      "level": "advanced",
+      "question": "The board of directors, along with the CEO, ______ the final decision.",
+      "options": {
+        "A": "make",
+        "B": "makes",
+        "C": "are making",
+        "D": "have made"
+      },
+      "correctAnswer": "B",
+      "clue": "Chủ ngữ chính + along with/together with → động từ hòa hợp với chủ ngữ chính",
+      "explanationVi": "The board of directors (số ít) là chủ ngữ → makes.",
+      "targetChunk": {
+        "phrase": "The board of directors, along with the CEO, makes the final decision",
+        "meaningVi": "Hội đồng quản trị, cùng với CEO, đưa ra quyết định cuối cùng"
+      },
+      "skeleton": {
+        "subject": "The board of directors",
+        "verb": "makes",
+        "object": "the final decision"
+      }
+    },
+    {
+      "id": "sva_adv_006",
+      "level": "advanced",
+      "question": "What the company needs most ______ reliable suppliers.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "What-clause làm chủ ngữ → động từ số ít",
+      "explanationVi": "What the company needs = điều công ty cần → is.",
+      "targetChunk": {
+        "phrase": "What the company needs most is reliable suppliers",
+        "meaningVi": "Điều công ty cần nhất là các nhà cung cấp đáng tin cậy"
+      },
+      "skeleton": {
+        "subject": "What the company needs most",
+        "verb": "is",
+        "object": "reliable suppliers"
+      }
+    },
+    {
+      "id": "sva_adv_007",
+      "level": "advanced",
+      "question": "The majority of the research ______ been completed on schedule.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "are",
+        "D": "were"
+      },
+      "correctAnswer": "B",
+      "clue": "The majority of + N không đếm được → động từ số ít",
+      "explanationVi": "research không đếm được → has been completed.",
+      "targetChunk": {
+        "phrase": "The majority of the research has been completed",
+        "meaningVi": "Phần lớn nghiên cứu đã được hoàn thành"
+      },
+      "skeleton": {
+        "subject": "The majority of the research",
+        "verb": "has been completed",
+        "object": "on schedule"
+      }
+    },
+    {
+      "id": "sva_adv_008",
+      "level": "advanced",
+      "question": "Either of the two candidates ______ qualified for the position.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "Either of + N số nhiều → động từ số ít",
+      "explanationVi": "Either = một trong hai → is qualified.",
+      "targetChunk": {
+        "phrase": "Either of the two candidates is qualified",
+        "meaningVi": "Một trong hai ứng viên đều đủ tiêu chuẩn"
+      },
+      "skeleton": {
+        "subject": "Either of the two candidates",
+        "verb": "is",
+        "object": "qualified for the position"
+      }
+    },
+    {
+      "id": "sva_adv_009",
+      "level": "advanced",
+      "question": "The statistics ______ that customer satisfaction has improved.",
+      "options": {
+        "A": "shows",
+        "B": "show",
+        "C": "is showing",
+        "D": "has shown"
+      },
+      "correctAnswer": "B",
+      "clue": "Statistics khi chỉ số liệu cụ thể → động từ số nhiều",
+      "explanationVi": "statistics = các số liệu → show.",
+      "targetChunk": {
+        "phrase": "The statistics show that customer satisfaction has improved",
+        "meaningVi": "Các số liệu cho thấy sự hài lòng của khách hàng đã cải thiện"
+      },
+      "skeleton": {
+        "subject": "The statistics",
+        "verb": "show",
+        "object": "that customer satisfaction has improved"
+      }
+    },
+    {
+      "id": "sva_adv_010",
+      "level": "advanced",
+      "question": "None of the applicants ______ the minimum requirements.",
+      "options": {
+        "A": "meets",
+        "B": "meet",
+        "C": "is meeting",
+        "D": "has met"
+      },
+      "correctAnswer": "B",
+      "clue": "None of + N số nhiều (trong ngữ cảnh này) → động từ số nhiều (cách dùng hiện đại)",
+      "explanationVi": "Trong TOEIC hiện đại, none of + plural noun thường dùng động từ số nhiều → meet.",
+      "targetChunk": {
+        "phrase": "None of the applicants meet the minimum requirements",
+        "meaningVi": "Không ứng viên nào đáp ứng yêu cầu tối thiểu"
+      },
+      "skeleton": {
+        "subject": "None of the applicants",
+        "verb": "meet",
+        "object": "the minimum requirements"
+      }
+    },
+    {
+      "id": "sva_adv_011",
+      "level": "advanced",
+      "question": "The remaining inventory, including the damaged items, ______ to be written off.",
+      "options": {
+        "A": "need",
+        "B": "needs",
+        "C": "are needing",
+        "D": "have needed"
+      },
+      "correctAnswer": "B",
+      "clue": "Chủ ngữ chính + including → động từ hòa hợp với chủ ngữ chính",
+      "explanationVi": "The remaining inventory (số ít) → needs.",
+      "targetChunk": {
+        "phrase": "The remaining inventory, including the damaged items, needs to be written off",
+        "meaningVi": "Hàng tồn kho còn lại, bao gồm các mặt hàng hư hỏng, cần được xóa sổ"
+      },
+      "skeleton": {
+        "subject": "The remaining inventory",
+        "verb": "needs",
+        "object": "to be written off"
+      }
+    },
+    {
+      "id": "sva_adv_012",
+      "level": "advanced",
+      "question": "How the company manages its resources ______ a key factor in its success.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "How-clause làm chủ ngữ → động từ số ít",
+      "explanationVi": "How the company manages... = cách công ty quản lý → is.",
+      "targetChunk": {
+        "phrase": "How the company manages its resources is a key factor",
+        "meaningVi": "Cách công ty quản lý nguồn lực là yếu tố then chốt"
+      },
+      "skeleton": {
+        "subject": "How the company manages its resources",
+        "verb": "is",
+        "object": "a key factor in its success"
+      }
+    },
+    {
+      "id": "sva_adv_013",
+      "level": "advanced",
+      "question": "A large proportion of the budget ______ allocated to research and development.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "A large proportion of + N → động từ số ít",
+      "explanationVi": "proportion là chủ ngữ số ít → is allocated.",
+      "targetChunk": {
+        "phrase": "A large proportion of the budget is allocated",
+        "meaningVi": "Một tỷ lệ lớn ngân sách được phân bổ"
+      },
+      "skeleton": {
+        "subject": "A large proportion of the budget",
+        "verb": "is allocated",
+        "object": "to research and development"
+      }
+    },
+    {
+      "id": "sva_adv_014",
+      "level": "advanced",
+      "question": "The media ______ often criticized for sensationalism.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "Media khi chỉ các phương tiện truyền thông → động từ số nhiều (cách dùng phổ biến)",
+      "explanationVi": "Trong tiếng Anh hiện đại, media thường được dùng số nhiều → are criticized.",
+      "targetChunk": {
+        "phrase": "The media are often criticized for sensationalism",
+        "meaningVi": "Truyền thông thường bị chỉ trích vì lối đưa tin giật gân"
+      },
+      "skeleton": {
+        "subject": "The media",
+        "verb": "are criticized",
+        "object": "for sensationalism"
+      }
+    },
+    {
+      "id": "sva_adv_015",
+      "level": "advanced",
+      "question": "Each and every one of the reports ______ carefully reviewed.",
+      "options": {
+        "A": "have been",
+        "B": "has been",
+        "C": "are",
+        "D": "were"
+      },
+      "correctAnswer": "B",
+      "clue": "Each and every → động từ số ít",
+      "explanationVi": "Each and every one → has been reviewed.",
+      "targetChunk": {
+        "phrase": "Each and every one of the reports has been carefully reviewed",
+        "meaningVi": "Từng báo cáo một đều đã được xem xét cẩn thận"
+      },
+      "skeleton": {
+        "subject": "Each and every one of the reports",
+        "verb": "has been reviewed",
+        "object": "carefully"
+      }
+    },
+    {
+      "id": "sva_adv_016",
+      "level": "advanced",
+      "question": "The criteria that the committee uses ______ strictly enforced.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "Criteria (số nhiều) là chủ ngữ → động từ số nhiều",
+      "explanationVi": "criteria → are enforced.",
+      "targetChunk": {
+        "phrase": "The criteria that the committee uses are strictly enforced",
+        "meaningVi": "Các tiêu chí mà ủy ban sử dụng được thực thi nghiêm ngặt"
+      },
+      "skeleton": {
+        "subject": "The criteria that the committee uses",
+        "verb": "are enforced",
+        "object": "strictly"
+      }
+    },
+    {
+      "id": "sva_adv_017",
+      "level": "advanced",
+      "question": "Whether the proposal will be accepted ______ still uncertain.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "Whether-clause làm chủ ngữ → động từ số ít",
+      "explanationVi": "Whether the proposal will be accepted = liệu đề xuất có được chấp nhận → is uncertain.",
+      "targetChunk": {
+        "phrase": "Whether the proposal will be accepted is still uncertain",
+        "meaningVi": "Liệu đề xuất có được chấp nhận hay không vẫn còn chưa chắc chắn"
+      },
+      "skeleton": {
+        "subject": "Whether the proposal will be accepted",
+        "verb": "is",
+        "object": "still uncertain"
+      }
+    },
+    {
+      "id": "sva_adv_018",
+      "level": "advanced",
+      "question": "A number of the recommendations made by the consultant ______ already been implemented.",
+      "options": {
+        "A": "has",
+        "B": "have",
+        "C": "is",
+        "D": "was"
+      },
+      "correctAnswer": "B",
+      "clue": "A number of + N số nhiều → động từ số nhiều",
+      "explanationVi": "A number of recommendations → have been implemented.",
+      "targetChunk": {
+        "phrase": "A number of the recommendations have already been implemented",
+        "meaningVi": "Một số khuyến nghị đã được thực hiện"
+      },
+      "skeleton": {
+        "subject": "A number of the recommendations made by the consultant",
+        "verb": "have been implemented",
+        "object": "already"
+      }
+    },
+    {
+      "id": "sva_adv_019",
+      "level": "advanced",
+      "question": "The number of complaints received last month ______ significantly lower than usual.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "The number of + N → động từ số ít",
+      "explanationVi": "The number → is lower.",
+      "targetChunk": {
+        "phrase": "The number of complaints received last month is significantly lower",
+        "meaningVi": "Số lượng khiếu nại nhận được tháng trước thấp hơn đáng kể"
+      },
+      "skeleton": {
+        "subject": "The number of complaints received last month",
+        "verb": "is",
+        "object": "significantly lower than usual"
+      }
+    },
+    {
+      "id": "sva_adv_020",
+      "level": "advanced",
+      "question": "All that remains ______ a few minor adjustments.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "All that + V → động từ số ít (all = everything)",
+      "explanationVi": "All that remains = tất cả những gì còn lại → is.",
+      "targetChunk": {
+        "phrase": "All that remains is a few minor adjustments",
+        "meaningVi": "Tất cả những gì còn lại chỉ là một vài điều chỉnh nhỏ"
+      },
+      "skeleton": {
+        "subject": "All that remains",
+        "verb": "is",
+        "object": "a few minor adjustments"
+      }
+    },
+    {
+      "id": "sva_adv_021",
+      "level": "advanced",
+      "question": "The jury ______ still deliberating on the verdict.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "Jury khi chỉ các thành viên đang thảo luận riêng → số nhiều",
+      "explanationVi": "Trong ngữ cảnh deliberating, jury được coi là nhiều cá nhân → are deliberating.",
+      "targetChunk": {
+        "phrase": "The jury are still deliberating on the verdict",
+        "meaningVi": "Bồi thẩm đoàn vẫn đang thảo luận về phán quyết"
+      },
+      "skeleton": {
+        "subject": "The jury",
+        "verb": "are deliberating",
+        "object": "on the verdict"
+      }
+    },
+    {
+      "id": "sva_adv_022",
+      "level": "advanced",
+      "question": "Three-quarters of the work ______ already been finished.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "are",
+        "D": "were"
+      },
+      "correctAnswer": "B",
+      "clue": "Phân số + N không đếm được → động từ số ít",
+      "explanationVi": "work không đếm được → has been finished.",
+      "targetChunk": {
+        "phrase": "Three-quarters of the work has already been finished",
+        "meaningVi": "Ba phần tư công việc đã được hoàn thành"
+      },
+      "skeleton": {
+        "subject": "Three-quarters of the work",
+        "verb": "has been finished",
+        "object": "already"
+      }
+    },
+    {
+      "id": "sva_adv_023",
+      "level": "advanced",
+      "question": "The species of birds found in the region ______ protected by law.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "Species có thể số ít hoặc số nhiều; ở đây chỉ nhiều loài → số nhiều",
+      "explanationVi": "The species of birds = các loài chim → are protected.",
+      "targetChunk": {
+        "phrase": "The species of birds found in the region are protected by law",
+        "meaningVi": "Các loài chim được tìm thấy trong khu vực được pháp luật bảo vệ"
+      },
+      "skeleton": {
+        "subject": "The species of birds found in the region",
+        "verb": "are protected",
+        "object": "by law"
+      }
+    },
+    {
+      "id": "sva_adv_024",
+      "level": "advanced",
+      "question": "Whoever is responsible for the error ______ to report to the supervisor immediately.",
+      "options": {
+        "A": "need",
+        "B": "needs",
+        "C": "are needing",
+        "D": "have needed"
+      },
+      "correctAnswer": "B",
+      "clue": "Whoever-clause làm chủ ngữ → động từ số ít",
+      "explanationVi": "Whoever is responsible = bất kỳ ai chịu trách nhiệm → needs.",
+      "targetChunk": {
+        "phrase": "Whoever is responsible for the error needs to report",
+        "meaningVi": "Bất kỳ ai chịu trách nhiệm về lỗi đều cần báo cáo"
+      },
+      "skeleton": {
+        "subject": "Whoever is responsible for the error",
+        "verb": "needs",
+        "object": "to report to the supervisor immediately"
+      }
+    },
+    {
+      "id": "sva_adv_025",
+      "level": "advanced",
+      "question": "The analyses of the market trends ______ been completed by the research department.",
+      "options": {
+        "A": "has",
+        "B": "have",
+        "C": "is",
+        "D": "was"
+      },
+      "correctAnswer": "B",
+      "clue": "Analyses (số nhiều của analysis) → động từ số nhiều",
+      "explanationVi": "analyses → have been completed.",
+      "targetChunk": {
+        "phrase": "The analyses of the market trends have been completed",
+        "meaningVi": "Các phân tích xu hướng thị trường đã được hoàn thành"
+      },
+      "skeleton": {
+        "subject": "The analyses of the market trends",
+        "verb": "have been completed",
+        "object": "by the research department"
+      }
+    },
+    {
+      "id": "sva_adv_026",
+      "level": "advanced",
+      "question": "Little of the information provided ______ relevant to the case.",
+      "options": {
+        "A": "are",
+        "B": "is",
+        "C": "were",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "Little of + N không đếm được → động từ số ít",
+      "explanationVi": "Little of the information → is relevant.",
+      "targetChunk": {
+        "phrase": "Little of the information provided is relevant",
+        "meaningVi": "Rất ít thông tin được cung cấp có liên quan"
+      },
+      "skeleton": {
+        "subject": "Little of the information provided",
+        "verb": "is",
+        "object": "relevant to the case"
+      }
+    },
+    {
+      "id": "sva_adv_027",
+      "level": "advanced",
+      "question": "The pair of glasses that was left on the table ______ belong to the visitor.",
+      "options": {
+        "A": "do",
+        "B": "does",
+        "C": "are",
+        "D": "were"
+      },
+      "correctAnswer": "B",
+      "clue": "The pair of + N → động từ số ít",
+      "explanationVi": "pair là chủ ngữ → does belong.",
+      "targetChunk": {
+        "phrase": "The pair of glasses does belong to the visitor",
+        "meaningVi": "Chiếc kính thuộc về vị khách"
+      },
+      "skeleton": {
+        "subject": "The pair of glasses that was left on the table",
+        "verb": "does belong",
+        "object": "to the visitor"
+      }
+    },
+    {
+      "id": "sva_adv_028",
+      "level": "advanced",
+      "question": "Many a student ______ struggled with the advanced grammar section.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "are",
+        "D": "were"
+      },
+      "correctAnswer": "B",
+      "clue": "Many a + N số ít → động từ số ít",
+      "explanationVi": "Many a student = nhiều sinh viên (nhưng cấu trúc số ít) → has struggled.",
+      "targetChunk": {
+        "phrase": "Many a student has struggled with the advanced grammar section",
+        "meaningVi": "Nhiều học viên đã gặp khó khăn với phần ngữ pháp nâng cao"
+      },
+      "skeleton": {
+        "subject": "Many a student",
+        "verb": "has struggled",
+        "object": "with the advanced grammar section"
+      }
+    },
+    {
+      "id": "sva_adv_029",
+      "level": "advanced",
+      "question": "The means of transportation available in the city ______ limited.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "Means (phương tiện) có thể số nhiều → động từ số nhiều",
+      "explanationVi": "The means of transportation = các phương tiện → are limited.",
+      "targetChunk": {
+        "phrase": "The means of transportation available in the city are limited",
+        "meaningVi": "Các phương tiện giao thông có sẵn trong thành phố bị hạn chế"
+      },
+      "skeleton": {
+        "subject": "The means of transportation available in the city",
+        "verb": "are",
+        "object": "limited"
+      }
+    },
+    {
+      "id": "sva_adv_030",
+      "level": "advanced",
+      "question": "What appear to be simple solutions ______ often the most effective.",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "was",
+        "D": "has been"
+      },
+      "correctAnswer": "B",
+      "clue": "What-clause với động từ số nhiều bên trong → động từ chính số nhiều",
+      "explanationVi": "What appear to be... → are often the most effective.",
+      "targetChunk": {
+        "phrase": "What appear to be simple solutions are often the most effective",
+        "meaningVi": "Những gì trông có vẻ là giải pháp đơn giản thường là hiệu quả nhất"
+      },
+      "skeleton": {
+        "subject": "What appear to be simple solutions",
+        "verb": "are",
+        "object": "often the most effective"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1389 @@
+{
+  "topicId": "adjectives",
+  "topicName": "Tính từ",
+  "topicNameEn": "Adjectives",
+  "category": "word_forms",
+  "description": "Vị trí tính từ, tính từ đuôi -ed/-ing, tính từ so sánh, tính từ bổ nghĩa danh từ, tính từ sở hữu",
+  "questions": [
+    {
+      "id": "adj_std_001",
+      "level": "standard",
+      "question": "The new software is more ______ than the previous version.",
+      "options": {
+        "A": "efficiency",
+        "B": "efficient",
+        "C": "efficiently",
+        "D": "efficiencies"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'more' và trước 'than' → cần Tính từ so sánh hơn",
+      "explanationVi": "'efficient' là tính từ. 'more efficient than' là cấu trúc so sánh hơn đúng.",
+      "targetChunk": {
+        "phrase": "more efficient than",
+        "meaningVi": "hiệu quả hơn"
+      },
+      "skeleton": {
+        "subject": "The new software",
+        "verb": "is",
+        "object": "more efficient"
+      }
+    },
+    {
+      "id": "adj_std_002",
+      "level": "standard",
+      "question": "All applicants must submit a ______ résumé by the deadline.",
+      "options": {
+        "A": "complete",
+        "B": "completely",
+        "C": "completion",
+        "D": "completing"
+      },
+      "correctAnswer": "A",
+      "clue": "Trước danh từ 'résumé' → cần Tính từ bổ nghĩa",
+      "explanationVi": "'complete' là tính từ nghĩa là đầy đủ. Các lựa chọn khác là trạng từ/danh từ/động từ.",
+      "targetChunk": {
+        "phrase": "a complete résumé",
+        "meaningVi": "một bản lý lịch đầy đủ"
+      },
+      "skeleton": {
+        "subject": "All applicants",
+        "verb": "must submit",
+        "object": "a complete résumé"
+      }
+    },
+    {
+      "id": "adj_std_003",
+      "level": "standard",
+      "question": "The manager was ______ with the results of the quarterly report.",
+      "options": {
+        "A": "satisfy",
+        "B": "satisfied",
+        "C": "satisfaction",
+        "D": "satisfying"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'was' + giới từ 'with' → cần Tính từ đuôi -ed (trạng thái)",
+      "explanationVi": "'satisfied' là tính từ -ed mô tả cảm xúc của người. 'satisfying' mô tả vật gây hài lòng.",
+      "targetChunk": {
+        "phrase": "be satisfied with",
+        "meaningVi": "hài lòng với"
+      },
+      "skeleton": {
+        "subject": "The manager",
+        "verb": "was",
+        "object": "satisfied"
+      }
+    },
+    {
+      "id": "adj_std_004",
+      "level": "standard",
+      "question": "Please keep the meeting room ______ after use.",
+      "options": {
+        "A": "clean",
+        "B": "cleanly",
+        "C": "cleanliness",
+        "D": "cleaning"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau động từ 'keep' + tân ngữ → cần Tính từ bổ ngữ",
+      "explanationVi": "'keep something + Adj' là cấu trúc phổ biến. 'clean' là tính từ.",
+      "targetChunk": {
+        "phrase": "keep the room clean",
+        "meaningVi": "giữ phòng sạch sẽ"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "keep",
+        "object": "the meeting room clean"
+      }
+    },
+    {
+      "id": "adj_std_005",
+      "level": "standard",
+      "question": "The presentation was both informative and ______.",
+      "options": {
+        "A": "engage",
+        "B": "engaging",
+        "C": "engagement",
+        "D": "engaged"
+      },
+      "correctAnswer": "B",
+      "clue": "Song song với tính từ 'informative' → cần Tính từ đuôi -ing",
+      "explanationVi": "'engaging' là tính từ -ing mô tả bản chất của bài thuyết trình.",
+      "targetChunk": {
+        "phrase": "informative and engaging",
+        "meaningVi": "hữu ích và hấp dẫn"
+      },
+      "skeleton": {
+        "subject": "The presentation",
+        "verb": "was",
+        "object": "informative and engaging"
+      }
+    },
+    {
+      "id": "adj_std_006",
+      "level": "standard",
+      "question": "We are looking for a ______ candidate with at least five years of experience.",
+      "options": {
+        "A": "qualify",
+        "B": "qualified",
+        "C": "qualification",
+        "D": "qualifying"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ 'candidate' → cần Tính từ",
+      "explanationVi": "'qualified' là tính từ nghĩa là đủ điều kiện, có trình độ.",
+      "targetChunk": {
+        "phrase": "a qualified candidate",
+        "meaningVi": "một ứng viên đủ điều kiện"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "are looking for",
+        "object": "a qualified candidate"
+      }
+    },
+    {
+      "id": "adj_std_007",
+      "level": "standard",
+      "question": "The new policy is ______ to all full-time employees.",
+      "options": {
+        "A": "apply",
+        "B": "applicable",
+        "C": "application",
+        "D": "applying"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'is' → cần Tính từ",
+      "explanationVi": "'applicable to' là cấu trúc cố định nghĩa là áp dụng cho.",
+      "targetChunk": {
+        "phrase": "be applicable to",
+        "meaningVi": "áp dụng cho"
+      },
+      "skeleton": {
+        "subject": "The new policy",
+        "verb": "is",
+        "object": "applicable"
+      }
+    },
+    {
+      "id": "adj_std_008",
+      "level": "standard",
+      "question": "The hotel offers ______ rates for guests who stay more than seven nights.",
+      "options": {
+        "A": "discount",
+        "B": "discounted",
+        "C": "discounting",
+        "D": "discounts"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ 'rates' → cần Tính từ",
+      "explanationVi": "'discounted rates' nghĩa là giá đã giảm. 'discounted' là tính từ.",
+      "targetChunk": {
+        "phrase": "discounted rates",
+        "meaningVi": "giá đã giảm"
+      },
+      "skeleton": {
+        "subject": "The hotel",
+        "verb": "offers",
+        "object": "discounted rates"
+      }
+    },
+    {
+      "id": "adj_std_009",
+      "level": "standard",
+      "question": "It is ______ to arrive at least fifteen minutes early for the interview.",
+      "options": {
+        "A": "advise",
+        "B": "advisable",
+        "C": "advice",
+        "D": "advising"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'It is' → cần Tính từ",
+      "explanationVi": "'It is advisable to + V' là cấu trúc phổ biến nghĩa là nên làm gì.",
+      "targetChunk": {
+        "phrase": "It is advisable to",
+        "meaningVi": "nên / khuyến khích"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "is",
+        "object": "advisable"
+      }
+    },
+    {
+      "id": "adj_std_010",
+      "level": "standard",
+      "question": "The company is committed to providing ______ customer service.",
+      "options": {
+        "A": "excellence",
+        "B": "excellent",
+        "C": "excel",
+        "D": "excellently"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ 'customer service' → cần Tính từ",
+      "explanationVi": "'excellent' là tính từ bổ nghĩa cho danh từ.",
+      "targetChunk": {
+        "phrase": "excellent customer service",
+        "meaningVi": "dịch vụ khách hàng xuất sắc"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "is committed to providing",
+        "object": "excellent customer service"
+      }
+    },
+    {
+      "id": "adj_std_011",
+      "level": "standard",
+      "question": "The results of the survey were ______ than expected.",
+      "options": {
+        "A": "good",
+        "B": "better",
+        "C": "best",
+        "D": "well"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'were' + 'than' → cần Tính từ so sánh hơn",
+      "explanationVi": "'better than' là so sánh hơn của 'good'.",
+      "targetChunk": {
+        "phrase": "better than expected",
+        "meaningVi": "tốt hơn dự kiến"
+      },
+      "skeleton": {
+        "subject": "The results",
+        "verb": "were",
+        "object": "better than expected"
+      }
+    },
+    {
+      "id": "adj_std_012",
+      "level": "standard",
+      "question": "Please make sure the documents are ______ before submitting them.",
+      "options": {
+        "A": "accuracy",
+        "B": "accurate",
+        "C": "accurately",
+        "D": "accuracies"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'are' → cần Tính từ",
+      "explanationVi": "'accurate' là tính từ. 'make sure + N + be + Adj'.",
+      "targetChunk": {
+        "phrase": "make sure the documents are accurate",
+        "meaningVi": "đảm bảo tài liệu chính xác"
+      },
+      "skeleton": {
+        "subject": "the documents",
+        "verb": "are",
+        "object": "accurate"
+      }
+    },
+    {
+      "id": "adj_std_013",
+      "level": "standard",
+      "question": "The training session was both practical and ______.",
+      "options": {
+        "A": "use",
+        "B": "useful",
+        "C": "usefulness",
+        "D": "using"
+      },
+      "correctAnswer": "B",
+      "clue": "Song song với tính từ 'practical' → cần Tính từ",
+      "explanationVi": "'useful' là tính từ. Cấu trúc 'both A and B' yêu cầu cùng từ loại.",
+      "targetChunk": {
+        "phrase": "practical and useful",
+        "meaningVi": "thực tế và hữu ích"
+      },
+      "skeleton": {
+        "subject": "The training session",
+        "verb": "was",
+        "object": "practical and useful"
+      }
+    },
+    {
+      "id": "adj_std_014",
+      "level": "standard",
+      "question": "The ______ deadline for the project is next Friday.",
+      "options": {
+        "A": "final",
+        "B": "finally",
+        "C": "finalize",
+        "D": "finalization"
+      },
+      "correctAnswer": "A",
+      "clue": "Trước danh từ 'deadline' → cần Tính từ",
+      "explanationVi": "'final deadline' là cụm phổ biến nghĩa là hạn chót cuối cùng.",
+      "targetChunk": {
+        "phrase": "the final deadline",
+        "meaningVi": "hạn chót cuối cùng"
+      },
+      "skeleton": {
+        "subject": "The final deadline",
+        "verb": "is",
+        "object": "next Friday"
+      }
+    },
+    {
+      "id": "adj_std_015",
+      "level": "standard",
+      "question": "The new system is much ______ to use than the old one.",
+      "options": {
+        "A": "easy",
+        "B": "easier",
+        "C": "easiest",
+        "D": "easily"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'much' + 'than' → cần Tính từ so sánh hơn",
+      "explanationVi": "'easier' là so sánh hơn của 'easy'. 'much easier than' là cấu trúc chuẩn.",
+      "targetChunk": {
+        "phrase": "much easier to use than",
+        "meaningVi": "dễ sử dụng hơn nhiều so với"
+      },
+      "skeleton": {
+        "subject": "The new system",
+        "verb": "is",
+        "object": "much easier"
+      }
+    },
+    {
+      "id": "adj_std_016",
+      "level": "standard",
+      "question": "All employees are required to wear ______ clothing in the laboratory.",
+      "options": {
+        "A": "protect",
+        "B": "protective",
+        "C": "protection",
+        "D": "protecting"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ 'clothing' → cần Tính từ",
+      "explanationVi": "'protective clothing' nghĩa là trang phục bảo hộ. 'protective' là tính từ.",
+      "targetChunk": {
+        "phrase": "protective clothing",
+        "meaningVi": "trang phục bảo hộ"
+      },
+      "skeleton": {
+        "subject": "All employees",
+        "verb": "are required to wear",
+        "object": "protective clothing"
+      }
+    },
+    {
+      "id": "adj_std_017",
+      "level": "standard",
+      "question": "The report contains ______ information about the market trends.",
+      "options": {
+        "A": "value",
+        "B": "valuable",
+        "C": "valuably",
+        "D": "valuation"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ 'information' → cần Tính từ",
+      "explanationVi": "'valuable information' nghĩa là thông tin có giá trị.",
+      "targetChunk": {
+        "phrase": "valuable information about",
+        "meaningVi": "thông tin có giá trị về"
+      },
+      "skeleton": {
+        "subject": "The report",
+        "verb": "contains",
+        "object": "valuable information"
+      }
+    },
+    {
+      "id": "adj_std_018",
+      "level": "standard",
+      "question": "The client was extremely ______ with the quality of the service.",
+      "options": {
+        "A": "please",
+        "B": "pleased",
+        "C": "pleasing",
+        "D": "pleasure"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'was' + trạng từ 'extremely' → cần Tính từ -ed",
+      "explanationVi": "'pleased with' là cấu trúc cố định. 'pleased' mô tả cảm xúc của người.",
+      "targetChunk": {
+        "phrase": "be pleased with",
+        "meaningVi": "hài lòng với"
+      },
+      "skeleton": {
+        "subject": "The client",
+        "verb": "was",
+        "object": "pleased"
+      }
+    },
+    {
+      "id": "adj_std_019",
+      "level": "standard",
+      "question": "It is ______ that all team members attend the weekly meeting.",
+      "options": {
+        "A": "necessity",
+        "B": "necessary",
+        "C": "necessarily",
+        "D": "necessitate"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'It is' → cần Tính từ",
+      "explanationVi": "'It is necessary that...' hoặc 'It is necessary to...' là cấu trúc phổ biến.",
+      "targetChunk": {
+        "phrase": "It is necessary that",
+        "meaningVi": "cần thiết rằng"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "is",
+        "object": "necessary"
+      }
+    },
+    {
+      "id": "adj_std_020",
+      "level": "standard",
+      "question": "The company provides ______ training for all new employees.",
+      "options": {
+        "A": "comprehend",
+        "B": "comprehensive",
+        "C": "comprehension",
+        "D": "comprehensively"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ 'training' → cần Tính từ",
+      "explanationVi": "'comprehensive training' nghĩa là đào tạo toàn diện.",
+      "targetChunk": {
+        "phrase": "comprehensive training",
+        "meaningVi": "đào tạo toàn diện"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "provides",
+        "object": "comprehensive training"
+      }
+    },
+    {
+      "id": "adj_std_021",
+      "level": "standard",
+      "question": "The new design is ______ than the original one.",
+      "options": {
+        "A": "attractive",
+        "B": "more attractive",
+        "C": "most attractive",
+        "D": "attractively"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'is' + 'than' → cần so sánh hơn của tính từ dài",
+      "explanationVi": "Tính từ dài 'attractive' dùng 'more + Adj + than'.",
+      "targetChunk": {
+        "phrase": "more attractive than",
+        "meaningVi": "hấp dẫn hơn"
+      },
+      "skeleton": {
+        "subject": "The new design",
+        "verb": "is",
+        "object": "more attractive"
+      }
+    },
+    {
+      "id": "adj_std_022",
+      "level": "standard",
+      "question": "Please ensure that all the information provided is ______.",
+      "options": {
+        "A": "correct",
+        "B": "correctly",
+        "C": "correction",
+        "D": "correcting"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau 'is' → cần Tính từ",
+      "explanationVi": "'correct' là tính từ. 'ensure that + S + be + Adj'.",
+      "targetChunk": {
+        "phrase": "ensure that the information is correct",
+        "meaningVi": "đảm bảo thông tin chính xác"
+      },
+      "skeleton": {
+        "subject": "all the information",
+        "verb": "is",
+        "object": "correct"
+      }
+    },
+    {
+      "id": "adj_std_023",
+      "level": "standard",
+      "question": "The factory has implemented ______ safety measures.",
+      "options": {
+        "A": "strict",
+        "B": "strictly",
+        "C": "strictness",
+        "D": "stricter"
+      },
+      "correctAnswer": "A",
+      "clue": "Trước danh từ 'safety measures' → cần Tính từ",
+      "explanationVi": "'strict safety measures' nghĩa là các biện pháp an toàn nghiêm ngặt.",
+      "targetChunk": {
+        "phrase": "strict safety measures",
+        "meaningVi": "biện pháp an toàn nghiêm ngặt"
+      },
+      "skeleton": {
+        "subject": "The factory",
+        "verb": "has implemented",
+        "object": "strict safety measures"
+      }
+    },
+    {
+      "id": "adj_std_024",
+      "level": "standard",
+      "question": "The weather conditions were ______ for outdoor activities.",
+      "options": {
+        "A": "suit",
+        "B": "suitable",
+        "C": "suitability",
+        "D": "suitably"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'were' → cần Tính từ",
+      "explanationVi": "'suitable for' là cấu trúc cố định nghĩa là phù hợp với.",
+      "targetChunk": {
+        "phrase": "be suitable for",
+        "meaningVi": "phù hợp với"
+      },
+      "skeleton": {
+        "subject": "The weather conditions",
+        "verb": "were",
+        "object": "suitable"
+      }
+    },
+    {
+      "id": "adj_std_025",
+      "level": "standard",
+      "question": "The ______ version of the software includes several new features.",
+      "options": {
+        "A": "late",
+        "B": "latest",
+        "C": "later",
+        "D": "lately"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ 'version' → cần Tính từ (thường dùng so sánh nhất)",
+      "explanationVi": "'the latest version' nghĩa là phiên bản mới nhất. Rất phổ biến trong TOEIC.",
+      "targetChunk": {
+        "phrase": "the latest version",
+        "meaningVi": "phiên bản mới nhất"
+      },
+      "skeleton": {
+        "subject": "The latest version",
+        "verb": "includes",
+        "object": "several new features"
+      }
+    },
+    {
+      "id": "adj_std_026",
+      "level": "standard",
+      "question": "The team members were ______ about the upcoming project.",
+      "options": {
+        "A": "enthusiasm",
+        "B": "enthusiastic",
+        "C": "enthusiastically",
+        "D": "enthusiast"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'were' → cần Tính từ",
+      "explanationVi": "'enthusiastic about' là cấu trúc cố định nghĩa là nhiệt tình với.",
+      "targetChunk": {
+        "phrase": "be enthusiastic about",
+        "meaningVi": "nhiệt tình với"
+      },
+      "skeleton": {
+        "subject": "The team members",
+        "verb": "were",
+        "object": "enthusiastic"
+      }
+    },
+    {
+      "id": "adj_std_027",
+      "level": "standard",
+      "question": "A ______ approach is needed to solve this complex problem.",
+      "options": {
+        "A": "create",
+        "B": "creative",
+        "C": "creativity",
+        "D": "creatively"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ 'approach' → cần Tính từ",
+      "explanationVi": "'creative approach' nghĩa là cách tiếp cận sáng tạo.",
+      "targetChunk": {
+        "phrase": "a creative approach",
+        "meaningVi": "cách tiếp cận sáng tạo"
+      },
+      "skeleton": {
+        "subject": "A creative approach",
+        "verb": "is needed",
+        "object": null
+      }
+    },
+    {
+      "id": "adj_std_028",
+      "level": "standard",
+      "question": "The product is ______ available in all major retail stores.",
+      "options": {
+        "A": "wide",
+        "B": "widely",
+        "C": "widen",
+        "D": "width"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước tính từ 'available' → cần Trạng từ (nhưng đây là bẫy; câu hỏi về tính từ nhưng đáp án đúng là trạng từ bổ nghĩa tính từ)",
+      "explanationVi": "Lưu ý: 'widely available' – 'widely' là trạng từ bổ nghĩa cho tính từ 'available'. Đây là bẫy phổ biến trong TOEIC.",
+      "targetChunk": {
+        "phrase": "widely available",
+        "meaningVi": "có sẵn rộng rãi"
+      },
+      "skeleton": {
+        "subject": "The product",
+        "verb": "is",
+        "object": "widely available"
+      }
+    },
+    {
+      "id": "adj_std_029",
+      "level": "standard",
+      "question": "The ______ instructions are printed on the back of the package.",
+      "options": {
+        "A": "detail",
+        "B": "detailed",
+        "C": "detailing",
+        "D": "details"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ 'instructions' → cần Tính từ",
+      "explanationVi": "'detailed instructions' nghĩa là hướng dẫn chi tiết.",
+      "targetChunk": {
+        "phrase": "detailed instructions",
+        "meaningVi": "hướng dẫn chi tiết"
+      },
+      "skeleton": {
+        "subject": "The detailed instructions",
+        "verb": "are printed",
+        "object": null
+      }
+    },
+    {
+      "id": "adj_std_030",
+      "level": "standard",
+      "question": "The new office is more ______ than the previous one.",
+      "options": {
+        "A": "space",
+        "B": "spacious",
+        "C": "spaciously",
+        "D": "spaces"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'more' + 'than' → cần Tính từ so sánh hơn",
+      "explanationVi": "'spacious' là tính từ nghĩa là rộng rãi. 'more spacious than' là cấu trúc đúng.",
+      "targetChunk": {
+        "phrase": "more spacious than",
+        "meaningVi": "rộng rãi hơn"
+      },
+      "skeleton": {
+        "subject": "The new office",
+        "verb": "is",
+        "object": "more spacious"
+      }
+    },
+    {
+      "id": "adj_adv_001",
+      "level": "advanced",
+      "question": "The findings of the study are ______ with previous research in the field.",
+      "options": {
+        "A": "consist",
+        "B": "consistent",
+        "C": "consistency",
+        "D": "consistently"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'are' → cần Tính từ",
+      "explanationVi": "'consistent with' là cấu trúc formal nghĩa là phù hợp/nhất quán với.",
+      "targetChunk": {
+        "phrase": "be consistent with",
+        "meaningVi": "nhất quán với / phù hợp với"
+      },
+      "skeleton": {
+        "subject": "The findings",
+        "verb": "are",
+        "object": "consistent"
+      }
+    },
+    {
+      "id": "adj_adv_002",
+      "level": "advanced",
+      "question": "The proposal was rejected because it was not financially ______.",
+      "options": {
+        "A": "viable",
+        "B": "viability",
+        "C": "viably",
+        "D": "viabilities"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau 'was not' + trạng từ 'financially' → cần Tính từ",
+      "explanationVi": "'financially viable' nghĩa là khả thi về mặt tài chính. Đây là cụm advanced hay gặp.",
+      "targetChunk": {
+        "phrase": "financially viable",
+        "meaningVi": "khả thi về tài chính"
+      },
+      "skeleton": {
+        "subject": "The proposal",
+        "verb": "was",
+        "object": "not financially viable"
+      }
+    },
+    {
+      "id": "adj_adv_003",
+      "level": "advanced",
+      "question": "The company is seeking a highly ______ individual for the senior management role.",
+      "options": {
+        "A": "motivate",
+        "B": "motivated",
+        "C": "motivation",
+        "D": "motivating"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ 'individual' → cần Tính từ -ed",
+      "explanationVi": "'highly motivated' mô tả người có động lực cao. Rất phổ biến trong quảng cáo tuyển dụng TOEIC.",
+      "targetChunk": {
+        "phrase": "a highly motivated individual",
+        "meaningVi": "một cá nhân có động lực cao"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "is seeking",
+        "object": "a highly motivated individual"
+      }
+    },
+    {
+      "id": "adj_adv_004",
+      "level": "advanced",
+      "question": "The new regulations are ______ to ensure greater transparency in financial reporting.",
+      "options": {
+        "A": "design",
+        "B": "designed",
+        "C": "designing",
+        "D": "designation"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'are' → cần Tính từ/Quá khứ phân từ (bị động)",
+      "explanationVi": "'be designed to + V' nghĩa là được thiết kế để. Đây là cấu trúc passive phổ biến.",
+      "targetChunk": {
+        "phrase": "be designed to ensure",
+        "meaningVi": "được thiết kế để đảm bảo"
+      },
+      "skeleton": {
+        "subject": "The new regulations",
+        "verb": "are designed",
+        "object": null
+      }
+    },
+    {
+      "id": "adj_adv_005",
+      "level": "advanced",
+      "question": "The results were ______ different from what the researchers had anticipated.",
+      "options": {
+        "A": "significant",
+        "B": "significantly",
+        "C": "significance",
+        "D": "significances"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước tính từ 'different' → cần Trạng từ (bẫy word form)",
+      "explanationVi": "'significantly different' – trạng từ bổ nghĩa tính từ. Đây là bẫy rất hay ra ở advanced.",
+      "targetChunk": {
+        "phrase": "significantly different from",
+        "meaningVi": "khác biệt đáng kể so với"
+      },
+      "skeleton": {
+        "subject": "The results",
+        "verb": "were",
+        "object": "significantly different"
+      }
+    },
+    {
+      "id": "adj_adv_006",
+      "level": "advanced",
+      "question": "The board considered the plan to be both innovative and ______.",
+      "options": {
+        "A": "feasibility",
+        "B": "feasible",
+        "C": "feasibly",
+        "D": "feasibleness"
+      },
+      "correctAnswer": "B",
+      "clue": "Song song với tính từ 'innovative' → cần Tính từ",
+      "explanationVi": "'feasible' nghĩa là khả thi. Cấu trúc 'both A and B' yêu cầu cùng từ loại.",
+      "targetChunk": {
+        "phrase": "innovative and feasible",
+        "meaningVi": "đổi mới và khả thi"
+      },
+      "skeleton": {
+        "subject": "The board",
+        "verb": "considered",
+        "object": "the plan to be innovative and feasible"
+      }
+    },
+    {
+      "id": "adj_adv_007",
+      "level": "advanced",
+      "question": "The software is ______ with most operating systems currently in use.",
+      "options": {
+        "A": "compatible",
+        "B": "compatibility",
+        "C": "compatibly",
+        "D": "compatibilities"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau 'is' → cần Tính từ",
+      "explanationVi": "'compatible with' là cấu trúc cố định nghĩa là tương thích với.",
+      "targetChunk": {
+        "phrase": "be compatible with",
+        "meaningVi": "tương thích với"
+      },
+      "skeleton": {
+        "subject": "The software",
+        "verb": "is",
+        "object": "compatible"
+      }
+    },
+    {
+      "id": "adj_adv_008",
+      "level": "advanced",
+      "question": "The committee remains ______ about the potential benefits of the merger.",
+      "options": {
+        "A": "skeptic",
+        "B": "skeptical",
+        "C": "skepticism",
+        "D": "skeptically"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'remains' → cần Tính từ",
+      "explanationVi": "'skeptical about' nghĩa là hoài nghi về. Từ vựng advanced.",
+      "targetChunk": {
+        "phrase": "remain skeptical about",
+        "meaningVi": "vẫn hoài nghi về"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "remains",
+        "object": "skeptical"
+      }
+    },
+    {
+      "id": "adj_adv_009",
+      "level": "advanced",
+      "question": "The new guidelines are ______ stricter than those previously in place.",
+      "options": {
+        "A": "considerable",
+        "B": "considerably",
+        "C": "consideration",
+        "D": "consider"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước tính từ so sánh 'stricter' → cần Trạng từ",
+      "explanationVi": "'considerably stricter' – trạng từ bổ nghĩa cho tính từ so sánh. Bẫy word form advanced.",
+      "targetChunk": {
+        "phrase": "considerably stricter than",
+        "meaningVi": "nghiêm ngặt hơn đáng kể so với"
+      },
+      "skeleton": {
+        "subject": "The new guidelines",
+        "verb": "are",
+        "object": "considerably stricter"
+      }
+    },
+    {
+      "id": "adj_adv_010",
+      "level": "advanced",
+      "question": "The company is known for its ______ approach to environmental sustainability.",
+      "options": {
+        "A": "proactive",
+        "B": "proactively",
+        "C": "proactivity",
+        "D": "proactiveness"
+      },
+      "correctAnswer": "A",
+      "clue": "Trước danh từ 'approach' → cần Tính từ",
+      "explanationVi": "'proactive approach' nghĩa là cách tiếp cận chủ động. Từ vựng hay gặp ở band 850+.",
+      "targetChunk": {
+        "phrase": "a proactive approach to",
+        "meaningVi": "cách tiếp cận chủ động đối với"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "is known for",
+        "object": "its proactive approach"
+      }
+    },
+    {
+      "id": "adj_adv_011",
+      "level": "advanced",
+      "question": "The data collected was not ______ enough to draw definitive conclusions.",
+      "options": {
+        "A": "reliably",
+        "B": "reliable",
+        "C": "reliability",
+        "D": "rely"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'was not' + 'enough' → cần Tính từ",
+      "explanationVi": "'reliable enough' nghĩa là đủ đáng tin cậy. Cấu trúc 'Adj + enough to'.",
+      "targetChunk": {
+        "phrase": "not reliable enough to",
+        "meaningVi": "không đủ đáng tin cậy để"
+      },
+      "skeleton": {
+        "subject": "The data",
+        "verb": "was",
+        "object": "not reliable enough"
+      }
+    },
+    {
+      "id": "adj_adv_012",
+      "level": "advanced",
+      "question": "The new system is designed to be more ______ and user-friendly.",
+      "options": {
+        "A": "intuit",
+        "B": "intuitive",
+        "C": "intuition",
+        "D": "intuitively"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'more' và song song với 'user-friendly' → cần Tính từ",
+      "explanationVi": "'intuitive' nghĩa là trực quan, dễ hiểu theo bản năng. Từ advanced phổ biến.",
+      "targetChunk": {
+        "phrase": "more intuitive and user-friendly",
+        "meaningVi": "trực quan và thân thiện người dùng hơn"
+      },
+      "skeleton": {
+        "subject": "The new system",
+        "verb": "is designed to be",
+        "object": "more intuitive"
+      }
+    },
+    {
+      "id": "adj_adv_013",
+      "level": "advanced",
+      "question": "The board was ______ impressed by the candidate's qualifications.",
+      "options": {
+        "A": "favor",
+        "B": "favorable",
+        "C": "favorably",
+        "D": "favoritism"
+      },
+      "correctAnswer": "C",
+      "clue": "Trước động từ phân từ 'impressed' → cần Trạng từ",
+      "explanationVi": "'favorably impressed' – trạng từ bổ nghĩa động từ. Bẫy word form.",
+      "targetChunk": {
+        "phrase": "be favorably impressed by",
+        "meaningVi": "có ấn tượng tốt về"
+      },
+      "skeleton": {
+        "subject": "The board",
+        "verb": "was impressed",
+        "object": null
+      }
+    },
+    {
+      "id": "adj_adv_014",
+      "level": "advanced",
+      "question": "The company has established a ______ reputation for quality and reliability.",
+      "options": {
+        "A": "solid",
+        "B": "solidly",
+        "C": "solidity",
+        "D": "solidify"
+      },
+      "correctAnswer": "A",
+      "clue": "Trước danh từ 'reputation' → cần Tính từ",
+      "explanationVi": "'a solid reputation' nghĩa là danh tiếng vững chắc. Cụm rất hay gặp.",
+      "targetChunk": {
+        "phrase": "a solid reputation for",
+        "meaningVi": "danh tiếng vững chắc về"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "has established",
+        "object": "a solid reputation"
+      }
+    },
+    {
+      "id": "adj_adv_015",
+      "level": "advanced",
+      "question": "The proposed changes are ______ to improve operational efficiency.",
+      "options": {
+        "A": "intend",
+        "B": "intended",
+        "C": "intention",
+        "D": "intending"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'are' → cần Tính từ/Quá khứ phân từ",
+      "explanationVi": "'be intended to + V' nghĩa là nhằm mục đích. Cấu trúc passive phổ biến.",
+      "targetChunk": {
+        "phrase": "be intended to improve",
+        "meaningVi": "nhằm mục đích cải thiện"
+      },
+      "skeleton": {
+        "subject": "The proposed changes",
+        "verb": "are intended",
+        "object": null
+      }
+    },
+    {
+      "id": "adj_adv_016",
+      "level": "advanced",
+      "question": "The research team remains ______ that the new treatment will prove effective.",
+      "options": {
+        "A": "optimism",
+        "B": "optimistic",
+        "C": "optimistically",
+        "D": "optimist"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'remains' → cần Tính từ",
+      "explanationVi": "'optimistic that' nghĩa là lạc quan rằng. Cấu trúc 'remain + Adj'.",
+      "targetChunk": {
+        "phrase": "remain optimistic that",
+        "meaningVi": "vẫn lạc quan rằng"
+      },
+      "skeleton": {
+        "subject": "The research team",
+        "verb": "remains",
+        "object": "optimistic"
+      }
+    },
+    {
+      "id": "adj_adv_017",
+      "level": "advanced",
+      "question": "The new policy is ______ stricter than the previous one regarding data protection.",
+      "options": {
+        "A": "substantial",
+        "B": "substantially",
+        "C": "substance",
+        "D": "substantiate"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước tính từ so sánh 'stricter' → cần Trạng từ",
+      "explanationVi": "'substantially stricter' – trạng từ bổ nghĩa tính từ so sánh. Bẫy advanced.",
+      "targetChunk": {
+        "phrase": "substantially stricter than",
+        "meaningVi": "nghiêm ngặt hơn đáng kể so với"
+      },
+      "skeleton": {
+        "subject": "The new policy",
+        "verb": "is",
+        "object": "substantially stricter"
+      }
+    },
+    {
+      "id": "adj_adv_018",
+      "level": "advanced",
+      "question": "The company takes a ______ approach to risk management.",
+      "options": {
+        "A": "caution",
+        "B": "cautious",
+        "C": "cautiously",
+        "D": "cautiousness"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ 'approach' → cần Tính từ",
+      "explanationVi": "'a cautious approach' nghĩa là cách tiếp cận thận trọng.",
+      "targetChunk": {
+        "phrase": "a cautious approach to",
+        "meaningVi": "cách tiếp cận thận trọng đối với"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "takes",
+        "object": "a cautious approach"
+      }
+    },
+    {
+      "id": "adj_adv_019",
+      "level": "advanced",
+      "question": "The evidence presented was not ______ to support the claim.",
+      "options": {
+        "A": "suffice",
+        "B": "sufficient",
+        "C": "sufficiently",
+        "D": "sufficiency"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'was not' → cần Tính từ",
+      "explanationVi": "'sufficient to + V' nghĩa là đủ để. Cấu trúc 'Adj + to V'.",
+      "targetChunk": {
+        "phrase": "not sufficient to support",
+        "meaningVi": "không đủ để hỗ trợ"
+      },
+      "skeleton": {
+        "subject": "The evidence",
+        "verb": "was",
+        "object": "not sufficient"
+      }
+    },
+    {
+      "id": "adj_adv_020",
+      "level": "advanced",
+      "question": "The new facility is equipped with the most ______ technology available.",
+      "options": {
+        "A": "advance",
+        "B": "advanced",
+        "C": "advancement",
+        "D": "advancing"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ 'technology' → cần Tính từ",
+      "explanationVi": "'the most advanced technology' nghĩa là công nghệ tiên tiến nhất.",
+      "targetChunk": {
+        "phrase": "the most advanced technology",
+        "meaningVi": "công nghệ tiên tiến nhất"
+      },
+      "skeleton": {
+        "subject": "The new facility",
+        "verb": "is equipped with",
+        "object": "the most advanced technology"
+      }
+    },
+    {
+      "id": "adj_adv_021",
+      "level": "advanced",
+      "question": "The committee found the proposal to be ______ and well-researched.",
+      "options": {
+        "A": "compelling",
+        "B": "compel",
+        "C": "compulsion",
+        "D": "compelled"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau 'to be' và song song với 'well-researched' → cần Tính từ -ing",
+      "explanationVi": "'compelling' nghĩa là thuyết phục, hấp dẫn. Từ advanced hay gặp.",
+      "targetChunk": {
+        "phrase": "compelling and well-researched",
+        "meaningVi": "thuyết phục và được nghiên cứu kỹ"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "found",
+        "object": "the proposal to be compelling"
+      }
+    },
+    {
+      "id": "adj_adv_022",
+      "level": "advanced",
+      "question": "The company is committed to maintaining the ______ standards of quality.",
+      "options": {
+        "A": "high",
+        "B": "highest",
+        "C": "higher",
+        "D": "highly"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ 'standards' → cần Tính từ so sánh nhất",
+      "explanationVi": "'the highest standards' nghĩa là tiêu chuẩn cao nhất. Cấu trúc rất phổ biến.",
+      "targetChunk": {
+        "phrase": "the highest standards of quality",
+        "meaningVi": "tiêu chuẩn chất lượng cao nhất"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "is committed to maintaining",
+        "object": "the highest standards"
+      }
+    },
+    {
+      "id": "adj_adv_023",
+      "level": "advanced",
+      "question": "The results of the experiment were ______ inconclusive.",
+      "options": {
+        "A": "large",
+        "B": "largely",
+        "C": "largeness",
+        "D": "enlarge"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước tính từ 'inconclusive' → cần Trạng từ",
+      "explanationVi": "'largely inconclusive' – trạng từ bổ nghĩa tính từ. Bẫy word form advanced.",
+      "targetChunk": {
+        "phrase": "largely inconclusive",
+        "meaningVi": "phần lớn không có kết luận"
+      },
+      "skeleton": {
+        "subject": "The results",
+        "verb": "were",
+        "object": "largely inconclusive"
+      }
+    },
+    {
+      "id": "adj_adv_024",
+      "level": "advanced",
+      "question": "The new regulations impose ______ requirements on all financial institutions.",
+      "options": {
+        "A": "stringent",
+        "B": "stringently",
+        "C": "stringency",
+        "D": "string"
+      },
+      "correctAnswer": "A",
+      "clue": "Trước danh từ 'requirements' → cần Tính từ",
+      "explanationVi": "'stringent requirements' nghĩa là các yêu cầu nghiêm ngặt. Từ vựng advanced.",
+      "targetChunk": {
+        "phrase": "stringent requirements on",
+        "meaningVi": "các yêu cầu nghiêm ngặt đối với"
+      },
+      "skeleton": {
+        "subject": "The new regulations",
+        "verb": "impose",
+        "object": "stringent requirements"
+      }
+    },
+    {
+      "id": "adj_adv_025",
+      "level": "advanced",
+      "question": "The company has a ______ policy regarding employee confidentiality.",
+      "options": {
+        "A": "strict",
+        "B": "strictly",
+        "C": "strictness",
+        "D": "stricter"
+      },
+      "correctAnswer": "A",
+      "clue": "Trước danh từ 'policy' → cần Tính từ",
+      "explanationVi": "'a strict policy' nghĩa là chính sách nghiêm ngặt.",
+      "targetChunk": {
+        "phrase": "a strict policy regarding",
+        "meaningVi": "chính sách nghiêm ngặt về"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "has",
+        "object": "a strict policy"
+      }
+    },
+    {
+      "id": "adj_adv_026",
+      "level": "advanced",
+      "question": "The proposal was considered ______ by the majority of the board members.",
+      "options": {
+        "A": "accept",
+        "B": "acceptable",
+        "C": "acceptance",
+        "D": "acceptably"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'was considered' → cần Tính từ",
+      "explanationVi": "'be considered + Adj' nghĩa là được coi là. 'acceptable' là tính từ.",
+      "targetChunk": {
+        "phrase": "be considered acceptable",
+        "meaningVi": "được coi là chấp nhận được"
+      },
+      "skeleton": {
+        "subject": "The proposal",
+        "verb": "was considered",
+        "object": "acceptable"
+      }
+    },
+    {
+      "id": "adj_adv_027",
+      "level": "advanced",
+      "question": "The new marketing campaign has been ______ successful in increasing brand awareness.",
+      "options": {
+        "A": "remark",
+        "B": "remarkable",
+        "C": "remarkably",
+        "D": "remarkableness"
+      },
+      "correctAnswer": "C",
+      "clue": "Trước tính từ 'successful' → cần Trạng từ",
+      "explanationVi": "'remarkably successful' – trạng từ bổ nghĩa tính từ. Bẫy word form.",
+      "targetChunk": {
+        "phrase": "remarkably successful in",
+        "meaningVi": "thành công đáng kể trong việc"
+      },
+      "skeleton": {
+        "subject": "The new marketing campaign",
+        "verb": "has been",
+        "object": "remarkably successful"
+      }
+    },
+    {
+      "id": "adj_adv_028",
+      "level": "advanced",
+      "question": "The company is looking for candidates with ______ experience in international trade.",
+      "options": {
+        "A": "extensive",
+        "B": "extensively",
+        "C": "extension",
+        "D": "extend"
+      },
+      "correctAnswer": "A",
+      "clue": "Trước danh từ 'experience' → cần Tính từ",
+      "explanationVi": "'extensive experience' nghĩa là kinh nghiệm sâu rộng. Cụm rất phổ biến trong TOEIC.",
+      "targetChunk": {
+        "phrase": "extensive experience in",
+        "meaningVi": "kinh nghiệm sâu rộng về"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "is looking for",
+        "object": "candidates with extensive experience"
+      }
+    },
+    {
+      "id": "adj_adv_029",
+      "level": "advanced",
+      "question": "The findings were ______ consistent across all three studies.",
+      "options": {
+        "A": "remarkable",
+        "B": "remarkably",
+        "C": "remark",
+        "D": "remarks"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước tính từ 'consistent' → cần Trạng từ",
+      "explanationVi": "'remarkably consistent' – trạng từ bổ nghĩa tính từ. Bẫy advanced.",
+      "targetChunk": {
+        "phrase": "remarkably consistent across",
+        "meaningVi": "nhất quán đáng kể trên khắp"
+      },
+      "skeleton": {
+        "subject": "The findings",
+        "verb": "were",
+        "object": "remarkably consistent"
+      }
+    },
+    {
+      "id": "adj_adv_030",
+      "level": "advanced",
+      "question": "The new procedure is designed to make the process more ______ and efficient.",
+      "options": {
+        "A": "streamline",
+        "B": "streamlined",
+        "C": "streamlining",
+        "D": "streamlines"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau 'more' và song song với 'efficient' → cần Tính từ",
+      "explanationVi": "'streamlined' nghĩa là được tinh gọn, tối ưu hóa. Từ advanced hay gặp trong ngữ cảnh quy trình.",
+      "targetChunk": {
+        "phrase": "more streamlined and efficient",
+        "meaningVi": "tinh gọn và hiệu quả hơn"
+      },
+      "skeleton": {
+        "subject": "The new procedure",
+        "verb": "is designed to make",
+        "object": "the process more streamlined"
+      }
+    }
+  ]
+}
