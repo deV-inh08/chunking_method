@@ -455,10 +455,18 @@ export async function continueConversation({
   userTranscript = '',
   scenario = {},
   chunksRemaining = [],
+  isAllChunksUsed = false,
 }) {
   const allKeys = getApiKeys();
+  const isTargetComplete = isAllChunksUsed || chunksRemaining.length === 0;
   const chunksRemainingStr = chunksRemaining
     .map(c => (typeof c === 'string' ? c : c.phrase || '')).filter(Boolean).join(', ');
+
+  const goalInstruction = isTargetComplete
+    ? `MISSION ACCOMPLISHED: The learner has successfully and naturally used ALL target chunks in this conversation!
+Your task NOW: Give a warm, satisfying, in-character concluding wrap-up reply to end this roleplay encounter (e.g. handing them their coffee/order, providing the requested wifi password, confirming the plan, or bidding a friendly farewell).
+DO NOT ask any new questions. Set "isFinished": true, "suggestedReply": "", "suggestedReplyVi": "".`
+    : `Remaining chunks the user is encouraged to practice: [${chunksRemainingStr || 'feel like, to be honest, would like to'}]. Keep the conversation flowing naturally, ending with an engaging question.`;
 
   const prompt = `You are roleplaying as "${scenario.aiRole || 'a friendly native English speaker'}" talking to "${scenario.userRole || 'a friend'}" in this scenario: "${scenario.title || 'Casual Chat'}".
 Context: "${scenario.description || ''}"
@@ -467,22 +475,24 @@ Goal: Keep the conversation flowing naturally, friendly, and supportive. Use nat
 Current conversation history:
 ${history.map(h => `${h.sender === 'ai' ? 'AI' : 'User'}: ${h.text}`).join('\n')}
 User just said: "${userTranscript}"
-Remaining chunks the user is encouraged to practice: [${chunksRemainingStr || 'feel like, to be honest, would like to'}]
+
+${goalInstruction}
 
 Return ONLY a valid JSON object matching this schema:
 {
-  "aiReply": "Your natural in-character reply (1-2 conversational sentences, ending with an engaging question to keep the chat going)",
+  "aiReply": "Your natural in-character reply",
   "aiReplyVi": "Bản dịch tiếng Việt của câu trả lời",
   "encouragement": "1 concise sentence in Vietnamese praising what the user expressed well or gently noting a smoother way to phrase it",
-  "suggestedReply": "A natural conversational reply in English that the learner can say next to answer your aiReply. If applicable, naturally include at least one remaining chunk from [${chunksRemainingStr}]",
-  "suggestedReplyVi": "Bản dịch tiếng Việt của câu gợi ý trả lời",
-  "isFinished": boolean (true if conversation has reached a natural conclusion after 4-6 turns, otherwise false)
+  "suggestedReply": "${isTargetComplete ? '' : 'A natural conversational reply in English that the learner can say next to answer your aiReply.'}",
+  "suggestedReplyVi": "${isTargetComplete ? '' : 'Bản dịch tiếng Việt của câu gợi ý trả lời'}",
+  "isFinished": ${isTargetComplete ? 'true' : 'boolean (true if conversation has reached a natural conclusion, otherwise false)'}
 }`;
 
   if (allKeys.length > 0) {
     try {
       const parsed = await callGemini(null, prompt, 'Respond to the user in JSON format.', { temperature: 0.65 });
       if (parsed && parsed.aiReply) {
+        if (isTargetComplete) parsed.isFinished = true;
         return parsed;
       }
     } catch (e) {
@@ -491,6 +501,17 @@ Return ONLY a valid JSON object matching this schema:
   }
 
   // Fallback phong phú ngữ cảnh khi offline hoặc Gemini gặp lỗi
+  if (isTargetComplete) {
+    return {
+      aiReply: `Awesome! Everything you requested is all set for you. It was truly a pleasure chatting with you, and have a wonderful day ahead!`,
+      aiReplyVi: `Tuyệt vời! Mọi thứ bạn yêu cầu đã được chuẩn bị xong. Rất vui được trò chuyện cùng bạn, chúc bạn một ngày thật tuyệt vời nhé!`,
+      encouragement: "Xuất sắc! Bạn đã vận dụng thành thạo toàn bộ các cụm từ mục tiêu vào phản xạ giao tiếp tự nhiên!",
+      suggestedReply: "",
+      suggestedReplyVi: "",
+      isFinished: true,
+    };
+  }
+
   const targetRemaining = chunksRemaining[0] 
     ? (typeof chunksRemaining[0] === 'string' ? chunksRemaining[0] : chunksRemaining[0].phrase)
     : 'would like to';

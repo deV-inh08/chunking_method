@@ -290,6 +290,97 @@ export function getPhoneticTip(soundKey) {
   return PHONETIC_MOUTH_TIPS[key] || null;
 }
 
+// ─── Regex nhận diện từng âm vị (Phoneme) trong chuỗi IPA tiếng Anh ───
+export const PHONEME_REGEX = /(tʃ|dʒ|aɪ|aʊ|eɪ|oʊ|əʊ|ɔɪ|ɪə|eə|ʊə|ɑː|ɔː|ɜː|iː|uː|θ|ð|ʃ|ʒ|ŋ|[a-zɡɪiæɛʌʊɒəɑɔɜ])/gi;
+
+/**
+ * Tách một chuỗi IPA thành danh sách các ký hiệu âm vị (phonemes) đơn lẻ
+ */
+export function splitIpaToPhonemes(ipaString) {
+  if (!ipaString) return [];
+  const clean = ipaString.replace(/[\/\[\]ˈˌ.]/g, '').trim();
+  const matches = clean.match(PHONEME_REGEX);
+  return matches || (clean ? clean.split('') : []);
+}
+
+/**
+ * Trả về danh sách phonemes chuẩn hóa cho một từ kèm điểm số và trạng thái màu 3 cấp độ:
+ * - 🟢 Tốt (score >= 80): 'correct'
+ * - 🟡 Trung bình (score 60 - 79): 'almost'
+ * - 🔴 Cần sửa (score < 60): 'incorrect'
+ */
+export function getWordPhonemes(wordItem) {
+  if (!wordItem) return [];
+
+  // 1. Nếu đã có sẵn phonemes từ AI Multimodal
+  if (Array.isArray(wordItem.phonemes) && wordItem.phonemes.length > 0) {
+    return wordItem.phonemes.map(p => {
+      const score = Math.max(0, Math.min(100, Math.round(Number(p.score) || 0)));
+      const status = score >= 80 ? 'correct' : score >= 60 ? 'almost' : 'incorrect';
+      return {
+        sound: p.sound || '',
+        score,
+        status,
+        feedback: p.feedback || '',
+        tip: getPhoneticTip(p.sound),
+      };
+    });
+  }
+
+  // 2. Fallback: Tự tách từ chuỗi IPA của từ
+  const ipa = wordItem.ipa || wordItem.targetIpa || wordToIPA(wordItem.word || '');
+  const sounds = splitIpaToPhonemes(ipa);
+  if (sounds.length === 0) return [];
+
+  const wordScore = Math.max(0, Math.min(100, Math.round(Number(wordItem.score) || 0)));
+  const wordStatus = wordScore >= 80 ? 'correct' : wordScore >= 60 ? 'almost' : 'incorrect';
+
+  if (wordStatus === 'correct') {
+    return sounds.map(s => ({
+      sound: s,
+      score: Math.max(85, wordScore),
+      status: 'correct',
+      feedback: 'Phát âm chuẩn',
+      tip: getPhoneticTip(s),
+    }));
+  }
+
+  if (wordStatus === 'almost') {
+    // Thường là âm đuôi cuối cùng chưa rõ
+    return sounds.map((s, idx) => {
+      const isEnding = idx === sounds.length - 1;
+      if (isEnding) {
+        return {
+          sound: s,
+          score: 55,
+          status: 'almost',
+          feedback: wordItem.feedback || 'Âm đuôi chưa bật rõ hoặc bị nuốt',
+          tip: getPhoneticTip(s),
+        };
+      }
+      return {
+        sound: s,
+        score: 85,
+        status: 'correct',
+        feedback: 'Phát âm tốt',
+        tip: getPhoneticTip(s),
+      };
+    });
+  }
+
+  // wordStatus === 'incorrect'
+  return sounds.map((s, idx) => {
+    const isEnding = idx === sounds.length - 1;
+    return {
+      sound: s,
+      score: Math.min(wordScore, 40),
+      status: 'incorrect',
+      feedback: isEnding ? (wordItem.feedback || 'Chưa nhận diện được âm') : '',
+      tip: getPhoneticTip(s),
+    };
+  });
+}
+
 /**
  * Phân tích đối soát ngữ âm giữa câu mẫu và câu người học đã nói
  * Bắt chính xác lỗi nuốt âm đuôi, lệch nguyên âm và gắn thẻ trạng thái
@@ -461,8 +552,13 @@ export function analyzeSpokenPhonetics(targetSentence = '', spokenSentence = '',
     summaryFeedback = 'Bạn hãy nói chậm lại một chút và mở rộng khẩu hình để âm bật rõ hơn.';
   }
 
+  const formattedWords = words.map(w => ({
+    ...w,
+    phonemes: getWordPhonemes(w),
+  }));
+
   return {
-    words,
+    words: formattedWords,
     accuracyScore: avgAccuracy,
     isPassed,
     chunksUsed,

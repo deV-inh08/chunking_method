@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import {
   Play, Pause, RotateCcw, RotateCw, Volume2, VolumeX, X,
   SkipBack, SkipForward, Repeat, Eye, EyeOff,
-  ArrowLeft, PenLine, Headphones, CheckCircle, Sparkles
+  ArrowLeft, PenLine, Headphones, CheckCircle, Sparkles,
+  HelpCircle, Save
 } from 'lucide-react';
 import { getChunks } from '../../store/storage';
 import {
@@ -570,6 +571,7 @@ export function TranscriptListeningModal({
   transcript,
   chunks = [],
   onClose,
+  onSaveGenerated = null,
 }) {
   // Lấy các chunk nếu chưa có sẵn từ prop
   const effectiveChunks = useMemo(() => {
@@ -579,6 +581,11 @@ export function TranscriptListeningModal({
     }
     return [];
   }, [transcript, chunks]);
+
+  // Bộ câu hỏi trắc nghiệm nếu có
+  const questions = useMemo(() => {
+    return transcript?.questions || [];
+  }, [transcript?.questions]);
 
   // Phân tích văn bản thành các dòng thoại
   const lines = useMemo(() => {
@@ -593,8 +600,12 @@ export function TranscriptListeningModal({
   const [isBlindMode, setIsBlindMode] = useState(false);
   const [revealedLines, setRevealedLines] = useState({});
 
-  // ─── Dictation Mode States ───
+  // ─── Dictation & Quiz Mode States ───
   const [isDictationMode, setIsDictationMode] = useState(false);
+  const [isQuizMode, setIsQuizMode] = useState(false);
+  const [selectedAnswers, setSelectedAnswers] = useState({}); // { [qIndex]: optIdx }
+  const [isSaved, setIsSaved] = useState(() => !transcript?.isAiGenerated);
+
   const [revealedWords, setRevealedWords] = useState({});            // { [lineIndex]: Set<number> }
   const [activeWordIndices, setActiveWordIndices] = useState({});    // { [lineIndex]: number }
   const [dictationCurrentTyped, setDictationCurrentTyped] = useState({}); // { [lineIndex]: string }
@@ -1483,7 +1494,36 @@ export function TranscriptListeningModal({
             </h2>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'flex-end', flexShrink: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 8, flexShrink: 0 }}>
+            {onSaveGenerated && (
+              <button
+                type="button"
+                onClick={() => {
+                  if (!isSaved) {
+                    onSaveGenerated(transcript);
+                    setIsSaved(true);
+                  }
+                }}
+                className={isSaved ? "btn btn-secondary btn-xs" : "btn btn-primary btn-xs"}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 5,
+                  fontSize: 11.5,
+                  fontWeight: 700,
+                  background: isSaved ? 'rgba(16, 185, 129, 0.18)' : 'linear-gradient(135deg, #10b981, #059669)',
+                  borderColor: isSaved ? '#10b981' : 'transparent',
+                  color: isSaved ? '#34d399' : '#fff',
+                  cursor: isSaved ? 'default' : 'pointer',
+                  padding: '5px 10px',
+                }}
+                title={isSaved ? "Bài nghe đã được lưu vào kho của bạn" : "Bấm để lưu kịch bản này vào kho bài nghe"}
+              >
+                {isSaved ? <CheckCircle size={13} /> : <Save size={13} />}
+                <span>{isSaved ? 'Đã lưu' : 'Lưu bài'}</span>
+              </button>
+            )}
+
             <button
               onClick={handleModalClose}
               className="btn btn-ghost btn-icon"
@@ -1593,7 +1633,7 @@ export function TranscriptListeningModal({
 
           {/* Center/Right Tools: Mode Selector + Speed + Blind Mode */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-            {/* Mode Selector: Nghe Thường vs Dictation */}
+            {/* Mode Selector: Nghe Thường vs Dictation vs Trắc nghiệm */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
@@ -1604,11 +1644,14 @@ export function TranscriptListeningModal({
             }}>
               <button
                 type="button"
-                onClick={() => setIsDictationMode(false)}
+                onClick={() => {
+                  setIsDictationMode(false);
+                  setIsQuizMode(false);
+                }}
                 style={{
                   border: 'none',
-                  background: !isDictationMode ? 'linear-gradient(135deg, #6366f1, #8b5cf6)' : 'transparent',
-                  color: !isDictationMode ? '#fff' : 'var(--text-muted)',
+                  background: (!isDictationMode && !isQuizMode) ? 'linear-gradient(135deg, #6366f1, #8b5cf6)' : 'transparent',
+                  color: (!isDictationMode && !isQuizMode) ? '#fff' : 'var(--text-muted)',
                   fontSize: 11.5,
                   fontWeight: 700,
                   padding: '4px 10px',
@@ -1627,6 +1670,7 @@ export function TranscriptListeningModal({
                 type="button"
                 onClick={() => {
                   setIsDictationMode(true);
+                  setIsQuizMode(false);
                   // Dừng phát tự động để user tập trung gõ
                   if (typeof window !== 'undefined' && window.speechSynthesis) {
                     window.speechSynthesis.cancel();
@@ -1651,6 +1695,34 @@ export function TranscriptListeningModal({
                 <PenLine size={12} />
                 <span>✍️ Dictation</span>
               </button>
+
+              {questions.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsQuizMode(true);
+                    setIsDictationMode(false);
+                  }}
+                  style={{
+                    border: 'none',
+                    background: isQuizMode ? 'linear-gradient(135deg, #f59e0b, #d97706)' : 'transparent',
+                    color: isQuizMode ? '#fff' : 'var(--text-muted)',
+                    fontSize: 11.5,
+                    fontWeight: 700,
+                    padding: '4px 10px',
+                    borderRadius: 'var(--radius-xs)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 4,
+                    transition: 'all 0.15s ease',
+                  }}
+                  title="3 câu hỏi trắc nghiệm kiểm tra độ hiểu bài"
+                >
+                  <HelpCircle size={12} />
+                  <span>📝 Trắc nghiệm ({questions.length})</span>
+                </button>
+              )}
             </div>
 
             {/* Speed selection */}
@@ -1715,24 +1787,192 @@ export function TranscriptListeningModal({
           gap: 14,
         }}
       >
-        {isDictationMode && (
-          <div style={{
-            background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(5, 150, 105, 0.08))',
-            border: '1px solid rgba(16, 185, 129, 0.3)',
-            borderRadius: 'var(--radius-md)',
-            padding: '10px 16px',
-            fontSize: 13,
-            color: '#34d399',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 8,
-          }}>
-            <PenLine size={16} style={{ flexShrink: 0 }} />
-            <span>
-              <strong>Chế độ Dictation:</strong> Các từ được che bằng dấu chấm (từ 6 chữ = 6 chấm). Nghe và gõ từ bạn nghe được, nếu điền đúng từ sẽ lập tức hiện lên màu xanh!
-            </span>
+        {isQuizMode ? (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            {/* Quiz Banner */}
+            <div style={{
+              background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(217, 119, 6, 0.08))',
+              border: '1px solid rgba(245, 158, 11, 0.3)',
+              borderRadius: 'var(--radius-md)',
+              padding: '12px 18px',
+              fontSize: 13,
+              color: '#fbbf24',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: 8,
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <HelpCircle size={18} style={{ flexShrink: 0 }} />
+                <span>
+                  <strong>Bộ 3 Câu Hỏi Trắc Nghiệm TOEIC:</strong> Chọn đáp án dựa trên nội dung bạn vừa nghe được.
+                </span>
+              </div>
+              <div style={{ fontWeight: 800, fontSize: 13 }}>
+                Đã trả lời: {Object.keys(selectedAnswers).length}/{questions.length} câu
+              </div>
+            </div>
+
+            {/* Questions List */}
+            {questions.map((q, qIdx) => {
+              const selected = selectedAnswers[qIdx];
+              const isAnswered = selected !== undefined;
+              const isCorrect = isAnswered && selected === q.correctAnswer;
+
+              return (
+                <div
+                  key={q.id || qIdx}
+                  className="card"
+                  style={{
+                    padding: '18px 20px',
+                    background: 'rgba(30, 41, 59, 0.55)',
+                    border: isAnswered
+                      ? isCorrect
+                        ? '1.5px solid rgba(34, 197, 94, 0.5)'
+                        : '1.5px solid rgba(239, 68, 68, 0.5)'
+                      : '1px solid rgba(255, 255, 255, 0.08)',
+                    borderRadius: 'var(--radius-lg)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 14,
+                  }}
+                >
+                  {/* Question Title */}
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                    <span style={{
+                      fontSize: 12,
+                      fontWeight: 800,
+                      padding: '2px 8px',
+                      borderRadius: 'var(--radius-sm)',
+                      background: 'rgba(99, 102, 241, 0.2)',
+                      color: '#a5b4fc',
+                      border: '1px solid rgba(99, 102, 241, 0.3)',
+                      flexShrink: 0,
+                    }}>
+                      Câu {qIdx + 1}
+                    </span>
+                    <div style={{ fontSize: 14.5, fontWeight: 700, color: '#f8fafc', flex: 1, lineHeight: 1.4 }}>
+                      {q.question}
+                    </div>
+                  </div>
+
+                  {/* 4 Options Grid */}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 10 }}>
+                    {(q.options || []).map((opt, optIdx) => {
+                      const isThisSelected = selected === optIdx;
+                      const isThisCorrect = q.correctAnswer === optIdx;
+
+                      let btnBg = 'rgba(255, 255, 255, 0.04)';
+                      let btnBorder = '1px solid rgba(255, 255, 255, 0.1)';
+                      let btnColor = 'var(--text-secondary)';
+
+                      if (isAnswered) {
+                        if (isThisCorrect) {
+                          btnBg = 'rgba(34, 197, 94, 0.18)';
+                          btnBorder = '1.5px solid #22c55e';
+                          btnColor = '#4ade80';
+                        } else if (isThisSelected) {
+                          btnBg = 'rgba(239, 68, 68, 0.18)';
+                          btnBorder = '1.5px solid #ef4444';
+                          btnColor = '#f87171';
+                        }
+                      } else if (isThisSelected) {
+                        btnBg = 'rgba(99, 102, 241, 0.25)';
+                        btnBorder = '1.5px solid #818cf8';
+                        btnColor = '#fff';
+                      }
+
+                      return (
+                        <button
+                          key={optIdx}
+                          type="button"
+                          onClick={() => {
+                            setSelectedAnswers(prev => ({ ...prev, [qIdx]: optIdx }));
+                          }}
+                          style={{
+                            padding: '10px 14px',
+                            borderRadius: 'var(--radius-md)',
+                            background: btnBg,
+                            border: btnBorder,
+                            color: btnColor,
+                            fontSize: 13,
+                            fontWeight: isThisSelected || (isAnswered && isThisCorrect) ? 700 : 500,
+                            textAlign: 'left',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 8,
+                            transition: 'all 0.15s ease',
+                          }}
+                        >
+                          <span style={{
+                            width: 22, height: 22, borderRadius: 'var(--radius-full)',
+                            background: isAnswered && isThisCorrect
+                              ? '#22c55e'
+                              : isAnswered && isThisSelected
+                              ? '#ef4444'
+                              : 'rgba(255,255,255,0.08)',
+                            color: isAnswered && (isThisCorrect || isThisSelected) ? '#fff' : 'var(--text-muted)',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontSize: 11,
+                            fontWeight: 800,
+                            flexShrink: 0,
+                          }}>
+                            {String.fromCharCode(65 + optIdx)}
+                          </span>
+                          <span style={{ flex: 1 }}>{opt.replace(/^[A-D]\.\s*/, '')}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Explanation Box */}
+                  {isAnswered && q.explanationVi && (
+                    <div style={{
+                      background: 'rgba(15, 23, 42, 0.65)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      borderRadius: 'var(--radius-md)',
+                      padding: '10px 14px',
+                      fontSize: 12.5,
+                      lineHeight: 1.5,
+                      color: isCorrect ? '#86efac' : 'var(--text-secondary)',
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: 8,
+                    }}>
+                      <span style={{ fontSize: 14 }}>💡</span>
+                      <div>
+                        <strong>Giải thích:</strong> {q.explanationVi}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
-        )}
+        ) : (
+          <>
+            {isDictationMode && (
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(5, 150, 105, 0.08))',
+                border: '1px solid rgba(16, 185, 129, 0.3)',
+                borderRadius: 'var(--radius-md)',
+                padding: '10px 16px',
+                fontSize: 13,
+                color: '#34d399',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+              }}>
+                <PenLine size={16} style={{ flexShrink: 0 }} />
+                <span>
+                  <strong>Chế độ Dictation:</strong> Các từ được che bằng dấu chấm (từ 6 chữ = 6 chấm). Nghe và gõ từ bạn nghe được, nếu điền đúng từ sẽ lập tức hiện lên màu xanh!
+                </span>
+              </div>
+            )}
 
         {lines.length === 0 ? (
           <div className="card text-center" style={{ padding: 40, textAlign: 'center' }}>
@@ -2057,6 +2297,8 @@ export function TranscriptListeningModal({
               </div>
             );
           })
+        )}
+          </>
         )}
       </main>
 

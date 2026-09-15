@@ -612,6 +612,10 @@ export default function App() {
         <ConversationalSpeakingModal
           isOpen={showAiSpeakingModal}
           onClose={() => setShowAiSpeakingModal(false)}
+          onNavigateToProgress={() => {
+            setShowAiSpeakingModal(false);
+            setPage('progress');
+          }}
           initialChunks={Array.from(selectedChunks).map(id => allChunks.find(c => c.id === id)).filter(Boolean)}
           onChunkMastered={(chunkPhrase) => {
             addToast('success', `🎉 Đã kích hoạt phản xạ tự nhiên: "${chunkPhrase}"!`);

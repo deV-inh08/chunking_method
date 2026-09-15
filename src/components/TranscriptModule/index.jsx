@@ -1,13 +1,14 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import {
   FileText, Plus, Minus, Trash2, ChevronRight, ChevronLeft, Calendar, Headphones,
-  Search, Edit3, X, Check, ArrowUpDown, Flame, CheckCircle, PenLine, Layers
+  Search, Edit3, X, Check, ArrowUpDown, Flame, CheckCircle, PenLine, Layers, Sparkles
 } from 'lucide-react';
 import { EmptyState, Badge, SkeletonCard, Modal, Pagination } from '../ui';
 import { analyzeTranscript } from '../../services/ai';
 import { getApiKey, getChunks } from '../../store/storage';
 import { isDueForReview } from '../../services/srs';
 import { TranscriptListeningModal } from './TranscriptListeningModal';
+import GenerateListeningModal from './GenerateListeningModal';
 
 // ─── Helpers ───────────────────────────────────────────────────
 function generateId() {
@@ -502,6 +503,37 @@ export function TranscriptModule({
 
   const [editingTranscript, setEditingTranscript] = useState(null);
   const [listeningTranscript, setListeningTranscript] = useState(null);
+  const [isGenerateModalOpen, setIsGenerateModalOpen] = useState(false);
+
+  // Xử lý khi AI hoàn tất sinh bài luyện nghe mới
+  const handleAiGeneratedScenario = (scenario) => {
+    const id = generateId();
+    const ts = Date.now();
+    const chunks = (scenario.targetChunks || []).map((c, ci) => ({
+      ...c,
+      id: `chunk_${id}_0_${ci}_${ts}`,
+      groupId: `group_${id}_0`,
+      groupName: scenario.title,
+      transcriptId: id,
+    }));
+
+    const newTr = {
+      id,
+      text: scenario.rawText || scenario.text,
+      title: scenario.title,
+      part: scenario.part || 'Part 3',
+      createdAt: Date.now(),
+      theme: scenario.theme || '',
+      themeVi: scenario.themeVi || '',
+      themeDescription: scenario.themeVi || '',
+      questions: scenario.questions || [],
+      isAiGenerated: true,
+      chunks,
+    };
+
+    // Mở trực tiếp phòng luyện nghe với kịch bản vừa tạo
+    setListeningTranscript(newTr);
+  };
 
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
@@ -704,24 +736,43 @@ export function TranscriptModule({
             </div>
           </div>
 
-          <button
-            type="button"
-            className={showInput ? 'btn btn-secondary btn-sm' : 'btn btn-primary btn-sm'}
-            onClick={() => setShowInput(s => !s)}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 6,
-              fontSize: 13,
-              fontWeight: 700,
-            }}
-          >
-            {showInput ? (
-              <><Minus size={14} /> Thu gọn ô nhập</>
-            ) : (
-              <><Plus size={14} /> + Thêm Script Mới</>
-            )}
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+            <button
+              type="button"
+              className="btn btn-primary btn-sm"
+              onClick={() => setIsGenerateModalOpen(true)}
+              style={{
+                background: 'linear-gradient(135deg, var(--accent-600), #7c3aed)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                fontSize: 13,
+                fontWeight: 700,
+                boxShadow: '0 2px 10px rgba(99, 102, 241, 0.35)',
+              }}
+            >
+              <Sparkles size={14} /> ✨ Tạo bài nghe bằng AI
+            </button>
+
+            <button
+              type="button"
+              className={showInput ? 'btn btn-secondary btn-sm' : 'btn btn-secondary btn-sm'}
+              onClick={() => setShowInput(s => !s)}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                fontSize: 13,
+                fontWeight: 700,
+              }}
+            >
+              {showInput ? (
+                <><Minus size={14} /> Thu gọn ô nhập</>
+              ) : (
+                <><Plus size={14} /> Dán Script</>
+              )}
+            </button>
+          </div>
         </div>
       )}
 
@@ -865,11 +916,46 @@ export function TranscriptModule({
       </div>
 
       {transcripts.length === 0 ? (
-        <EmptyState
-          icon={<FileText size={24} />}
-          title="Chưa có transcript nào"
-          description="Paste transcript TOEIC Part 3 hoặc Part 4 vào ô phía trên để bắt đầu trích xuất chunks và luyện tập."
-        />
+        <div className="card text-center" style={{ padding: '40px 24px', textAlign: 'center' }}>
+          <div style={{
+            width: 56, height: 56, borderRadius: 'var(--radius-full)',
+            background: 'linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2))',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            margin: '0 auto 16px', color: 'var(--accent-400)',
+          }}>
+            <Sparkles size={28} />
+          </div>
+          <h3 style={{ fontSize: 16, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8 }}>
+            Chưa có bài luyện nghe nào
+          </h3>
+          <p style={{ fontSize: 13, color: 'var(--text-muted)', maxWidth: 460, margin: '0 auto 20px', lineHeight: 1.5 }}>
+            Bạn có thể dùng AI tự động tạo bài nghe đàm thoại Part 3/4 theo giọng đọc bản xứ (US, UK, AU, CA) hoặc dán transcript đề thi để trích xuất chunks.
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 10, flexWrap: 'wrap' }}>
+            <button
+              type="button"
+              className="btn btn-primary btn-sm"
+              onClick={() => setIsGenerateModalOpen(true)}
+              style={{
+                background: 'linear-gradient(135deg, var(--accent-600), #7c3aed)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                fontWeight: 700,
+                boxShadow: '0 4px 14px rgba(99, 102, 241, 0.4)',
+              }}
+            >
+              <Sparkles size={14} /> ✨ Tạo bài nghe bằng AI ngay
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary btn-sm"
+              onClick={() => setShowInput(true)}
+            >
+              + Dán script thủ công
+            </button>
+          </div>
+        </div>
       ) : filteredTranscripts.length === 0 ? (
         <div className="card text-center" style={{ padding: '36px 20px', textAlign: 'center' }}>
           <Search size={28} style={{ color: 'var(--text-muted)', margin: '0 auto 12px' }} />
@@ -941,8 +1027,23 @@ export function TranscriptModule({
           transcript={listeningTranscript}
           chunks={listeningTranscript.chunks}
           onClose={() => setListeningTranscript(null)}
+          onSaveGenerated={(tr) => {
+            onSave(tr);
+            if (tr.chunks && tr.chunks.length > 0) {
+              onChunksExtracted(tr.id, tr.chunks);
+            }
+            if (onToast) onToast('success', `Đã lưu "${tr.title}" vào kho bài nghe của bạn!`);
+          }}
         />
       )}
+
+      {/* AI Scenario Generator Modal */}
+      <GenerateListeningModal
+        isOpen={isGenerateModalOpen}
+        onClose={() => setIsGenerateModalOpen(false)}
+        onGenerated={handleAiGeneratedScenario}
+        onToast={onToast}
+      />
     </div>
   );
 }

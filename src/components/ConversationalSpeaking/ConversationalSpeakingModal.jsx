@@ -13,6 +13,7 @@ import {
 } from '../../services/scenarioAi';
 import { transcribeAudioWithGemini } from '../../services/ai';
 import { formatIPA, getPhoneticTip } from '../../services/phonetics';
+import { saveMasteredChunksFromConversation } from '../../store/storage';
 import './ConversationalSpeaking.css';
 
 const TOPICS_PER_PAGE = 6;
@@ -62,6 +63,7 @@ export default function ConversationalSpeakingModal({
   onClose,
   initialChunks = [],
   onChunkMastered = null,
+  onNavigateToProgress = null,
 }) {
   // ─── Modes & Navigation ────────────────────────────────────────
   // 'select_topic': màn hình chọn chủ đề / phân trang trước khi vào nói
@@ -78,6 +80,8 @@ export default function ConversationalSpeakingModal({
   const [history, setHistory] = useState([]); // [{ sender: 'ai'|'user', text, textVi, suggestedReply, words: [], score: 0, audioBlob }]
   const [targetChunks, setTargetChunks] = useState([]);
   const [usedChunkPhrases, setUsedChunkPhrases] = useState(new Set());
+  const [isConversationCompleted, setIsConversationCompleted] = useState(false);
+  const [showCompletionModal, setShowCompletionModal] = useState(false);
   
   // Audio & Recording states
   const [isRecording, setIsRecording] = useState(false);
@@ -125,6 +129,8 @@ export default function ConversationalSpeakingModal({
       setScenario(null);
       setHistory([]);
       setUsedChunkPhrases(new Set());
+      setIsConversationCompleted(false);
+      setShowCompletionModal(false);
       setInspectingWord(null);
       stopAudio();
     } else {
@@ -141,6 +147,8 @@ export default function ConversationalSpeakingModal({
     stopAudio();
     setHistory([]);
     setUsedChunkPhrases(new Set());
+    setIsConversationCompleted(false);
+    setShowCompletionModal(false);
     setInspectingWord(null);
 
     let chosenScenario;
@@ -413,15 +421,28 @@ export default function ConversationalSpeakingModal({
       }
     });
 
+    // 2. Cập nhật các Chunk đã kích hoạt thành công (Tính toán đồng bộ)
+    const updatedUsedSet = new Set(usedChunkPhrases);
     if (newlyUsed.length > 0) {
-      setUsedChunkPhrases(prev => {
-        const nextSet = new Set(prev);
-        newlyUsed.forEach(p => {
-          nextSet.add(p);
-          onChunkMastered?.(p);
-        });
-        return nextSet;
+      newlyUsed.forEach(p => {
+        updatedUsedSet.add(p);
+        onChunkMastered?.(p);
       });
+      setUsedChunkPhrases(updatedUsedSet);
+    }
+
+    // Kiểm tra xem người học đã dùng hết toàn bộ chunks mục tiêu (ví dụ 3/3) chưa
+    const chunksRemaining = targetChunks.filter(c => !updatedUsedSet.has(c.phrase || c));
+    const isGoalReached = targetChunks.length > 0 && chunksRemaining.length === 0;
+
+    if (isGoalReached && !isConversationCompleted) {
+      setIsConversationCompleted(true);
+      // Tự động lưu toàn bộ các chunks đã thành thạo vào SRS & Tiến trình học tập
+      try {
+        saveMasteredChunksFromConversation(targetChunks, scenario?.title);
+      } catch (saveErr) {
+        console.warn('saveMasteredChunksFromConversation error:', saveErr);
+      }
     }
 
     // 3. Thêm tin nhắn của User vào Timeline
@@ -441,7 +462,6 @@ export default function ConversationalSpeakingModal({
     setHistory(updatedHistory);
 
     // 4. Gọi Gemini để bạn bản xứ đáp lại câu tiếp theo
-    const chunksRemaining = targetChunks.filter(c => !usedChunkPhrases.has(c.phrase || c));
     let aiNext;
     try {
       aiNext = await continueConversation({
@@ -449,16 +469,27 @@ export default function ConversationalSpeakingModal({
         userTranscript: textToProcess,
         scenario,
         chunksRemaining,
+        isAllChunksUsed: isGoalReached,
       });
     } catch (aiErr) {
       console.warn('continueConversation error:', aiErr);
-      aiNext = {
-        aiReply: "That's wonderful! Could you tell me a little more about that?",
-        aiReplyVi: "Tuyệt quá! Cậu có thể chia sẻ thêm một chút về điều đó không?",
-        encouragement: "Phản xạ rất tự nhiên!",
-        suggestedReply: chunksRemaining[0]?.phrase ? `To be honest, I want to say that ${chunksRemaining[0].phrase}.` : '',
-        suggestedReplyVi: "Thành thật mà nói, tôi muốn chia sẻ thêm.",
-      };
+      aiNext = isGoalReached
+        ? {
+            aiReply: "Awesome! Everything you requested is all set for you. It was truly a pleasure chatting with you, and have a wonderful day ahead!",
+            aiReplyVi: "Tuyệt vời! Mọi thứ bạn yêu cầu đã được chuẩn bị xong. Rất vui được trò chuyện cùng bạn, chúc bạn một ngày thật tuyệt vời nhé!",
+            encouragement: "Xuất sắc! Bạn đã vận dụng thành thạo toàn bộ các cụm từ mục tiêu vào phản xạ giao tiếp tự nhiên!",
+            suggestedReply: "",
+            suggestedReplyVi: "",
+            isFinished: true,
+          }
+        : {
+            aiReply: "That's wonderful! Could you tell me a little more about that?",
+            aiReplyVi: "Tuyệt quá! Cậu có thể chia sẻ thêm một chút về điều đó không?",
+            encouragement: "Phản xạ rất tự nhiên!",
+            suggestedReply: chunksRemaining[0]?.phrase ? `To be honest, I want to say that ${chunksRemaining[0].phrase}.` : '',
+            suggestedReplyVi: "Thành thật mà nói, tôi muốn chia sẻ thêm.",
+            isFinished: false,
+          };
     }
 
     setIsProcessing(false);
@@ -473,15 +504,23 @@ export default function ConversationalSpeakingModal({
       encouragement: aiNext.encouragement,
       suggestedReply: aiNext.suggestedReply || '',
       suggestedReplyVi: aiNext.suggestedReplyVi || '',
+      isFinished: Boolean(aiNext.isFinished || isGoalReached),
       timestamp: Date.now(),
     };
 
     setHistory(prev => [...prev, aiMsg]);
 
-    // Phát âm thanh AI
+    // Phát âm thanh AI và sau khi nói xong câu kết thì hiển thị popup Hoàn thành
     setIsAiSpeaking(true);
     playTextWithTts(aiNext.aiReply, 'en-US-JennyNeural')
-      .finally(() => setIsAiSpeaking(false));
+      .finally(() => {
+        setIsAiSpeaking(false);
+        if (isGoalReached || aiNext.isFinished) {
+          setTimeout(() => {
+            setShowCompletionModal(true);
+          }, 350);
+        }
+      });
   };
 
   if (!isOpen) return null;
@@ -765,7 +804,19 @@ export default function ConversationalSpeakingModal({
 
               {targetChunks.length > 0 && (
                 <div className="csm-chunk-count">
-                  Đã dùng: <span style={{ color: '#34d399' }}>{usedChunkPhrases.size}</span>/{targetChunks.length}
+                  {isConversationCompleted ? (
+                    <button
+                      type="button"
+                      className="csm-btn-completed-badge animate-fade-in"
+                      onClick={() => setShowCompletionModal(true)}
+                      title="Bấm để xem tổng kết hoàn thành và lịch ôn tập"
+                    >
+                      <Award size={13} color="#fbbf24" />
+                      <span>🎉 Hoàn thành ({usedChunkPhrases.size}/{targetChunks.length})</span>
+                    </button>
+                  ) : (
+                    <>Đã dùng: <span style={{ color: '#34d399' }}>{usedChunkPhrases.size}</span>/{targetChunks.length}</>
+                  )}
                 </div>
               )}
             </div>
@@ -1049,10 +1100,141 @@ export default function ConversationalSpeakingModal({
                   <span style={{ color: '#38bdf8' }}>AI đang nói... Hãy lắng nghe phản xạ</span>
                 ) : isProcessing ? (
                   <span style={{ color: '#fbbf24' }}>{processingStatus || 'Đang đối soát âm vị IPA và gửi cho AI...'}</span>
+                ) : isConversationCompleted ? (
+                  <span style={{ color: '#34d399', fontWeight: 600 }}>
+                    🎉 Đã hoàn thành 3/3 cụm từ! Cuộc trò chuyện đã kết thúc thành công.
+                  </span>
                 ) : null}
               </div>
             </div>
           </>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════
+            POPUP HOÀN THÀNH CUỘC HỘI THOẠI & LƯU TIẾN TRÌNH SRS
+            ══════════════════════════════════════════════════════════ */}
+        {showCompletionModal && (
+          <div className="csm-completion-overlay animate-fade-in">
+            <div className="csm-completion-card animate-slide-up">
+              <button
+                type="button"
+                className="csm-completion-close-btn"
+                onClick={() => setShowCompletionModal(false)}
+                title="Đóng popup (Xem lại đoạn hội thoại)"
+              >
+                <X size={18} />
+              </button>
+
+              <div className="csm-completion-badge-icon">
+                <Award size={36} color="#fbbf24" />
+              </div>
+
+              <h3 className="csm-completion-title">
+                🎉 Hoàn thành xuất sắc!
+              </h3>
+              <p className="csm-completion-subtitle">
+                Bạn đã vận dụng thành thạo và tự nhiên cả <strong style={{ color: '#38bdf8' }}>{targetChunks.length}/{targetChunks.length} cụm từ mục tiêu</strong> vào tình huống thực tế cùng AI.
+              </p>
+
+              {/* Danh sách các cụm từ vừa thành thạo */}
+              <div className="csm-completion-chunks-box">
+                <div className="csm-completion-chunks-header">
+                  <Sparkles size={14} color="#34d399" />
+                  <span>Cụm từ bạn đã chinh phục:</span>
+                </div>
+                <div className="csm-completion-chunks-list">
+                  {targetChunks.map((c, i) => {
+                    const phrase = typeof c === 'string' ? c : c.phrase;
+                    const meaning = typeof c === 'object' && c.meaningVi ? c.meaningVi : 'Cụm từ giao tiếp tự nhiên';
+                    return (
+                      <div key={i} className="csm-completion-chunk-item">
+                        <div className="csm-completion-chunk-left">
+                          <CheckCircle2 size={16} color="#34d399" style={{ flexShrink: 0 }} />
+                          <div>
+                            <div className="csm-completion-chunk-phrase">{phrase}</div>
+                            <div className="csm-completion-chunk-meaning">{meaning}</div>
+                          </div>
+                        </div>
+                        <span className="csm-completion-srs-tag">
+                          ✓ Đã lưu SRS
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Thông số tổng kết */}
+              <div className="csm-completion-stat-banner">
+                <div className="csm-stat-pill">
+                  <span className="csm-stat-num">{history.filter(h => h.sender === 'user').length}</span>
+                  <span className="csm-stat-lbl">Lượt đối thoại</span>
+                </div>
+                <div className="csm-stat-divider" />
+                <div className="csm-stat-pill">
+                  <span className="csm-stat-num" style={{ color: '#38bdf8' }}>+{targetChunks.length} Chunks</span>
+                  <span className="csm-stat-lbl">Tiến trình đã lưu</span>
+                </div>
+                <div className="csm-stat-divider" />
+                <div className="csm-stat-pill">
+                  <span className="csm-stat-num" style={{ color: '#34d399' }}>Spaced Repetition</span>
+                  <span className="csm-stat-lbl">Tự động lên lịch ôn</span>
+                </div>
+              </div>
+
+              {/* Nhóm nút hành động */}
+              <div className="csm-completion-actions">
+                <button
+                  type="button"
+                  className="csm-btn-primary-action"
+                  onClick={() => {
+                    stopAudio();
+                    setShowCompletionModal(false);
+                    setViewMode('select_topic');
+                  }}
+                >
+                  <Layers size={15} />
+                  <span>Luyện tình huống khác</span>
+                </button>
+
+                {onNavigateToProgress ? (
+                  <button
+                    type="button"
+                    className="csm-btn-secondary-action"
+                    onClick={() => {
+                      stopAudio();
+                      setShowCompletionModal(false);
+                      onNavigateToProgress();
+                    }}
+                  >
+                    <Sparkles size={15} />
+                    <span>Xem tiến trình & Ôn tập</span>
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="csm-btn-secondary-action"
+                    onClick={() => {
+                      stopAudio();
+                      setShowCompletionModal(false);
+                      initScenario(scenario);
+                    }}
+                  >
+                    <RotateCcw size={15} />
+                    <span>Luyện lại tình huống này</span>
+                  </button>
+                )}
+
+                <button
+                  type="button"
+                  className="csm-btn-outline-action"
+                  onClick={() => setShowCompletionModal(false)}
+                >
+                  <span>Xem lại đoạn hội thoại</span>
+                </button>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>

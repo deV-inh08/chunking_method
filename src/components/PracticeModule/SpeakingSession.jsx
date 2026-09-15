@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import { getPracticeDraft, getSettings, saveSettings } from '../../store/storage';
 import { transcribeAudioWithGemini, assessPronunciationWithGemini } from '../../services/ai';
-import { getChunkIPA, getSentenceIPA, formatIPA, wordToIPA, getPhoneticTip } from '../../services/phonetics';
+import { getChunkIPA, getSentenceIPA, formatIPA, wordToIPA, getPhoneticTip, getWordPhonemes, splitIpaToPhonemes } from '../../services/phonetics';
 import { extractAcousticFeatures } from '../../services/sherpaOnnxService';
 import { playTextWithTts, stopAudio, fetchAudioUrl } from '../../services/ttsService';
 
@@ -229,7 +229,6 @@ function analyzeSpokenSentence(targetText, spokenText, chunkPhrase = '', audioFe
 
   const words = targetWords.map((originalWord, tIdx) => {
     const norm = originalWord.replace(/[^a-zA-Z0-9']/g, '').toLowerCase();
-    const isChunkPart = chunkWordsNorm.includes(norm);
     const ipa = sentenceIpaList[tIdx] || '';
 
     const pair = alignments.find(a => a.targetIdx === tIdx);
@@ -238,14 +237,15 @@ function analyzeSpokenSentence(targetText, spokenText, chunkPhrase = '', audioFe
     // 1. Từ bị bỏ sót hoàn toàn
     if (sIdx === null || sIdx === undefined) {
       wrongCount++;
-      return {
+      const item = {
         word: originalWord,
         status: 'incorrect',
         score: 0,
         feedback: 'Bị bỏ sót, chưa đọc từ này',
         ipa,
-        isChunk: isChunkPart,
       };
+      item.phonemes = getWordPhonemes(item);
+      return item;
     }
 
     const spokenRaw = spokenWords[sIdx] || '';
@@ -257,27 +257,29 @@ function analyzeSpokenSentence(targetText, spokenText, chunkPhrase = '', audioFe
       const needsSibilant = /s|z|sh|ch|st|ts/.test(norm);
       if (needsSibilant && hasSibilantAcoustic === false) {
         totalScore += 65;
-        return {
+        const item = {
           word: originalWord,
           status: 'almost',
           score: 65,
           feedback: 'Âm xì hoặc âm đuôi còn yếu/chưa bật rõ',
           ipa,
-          isChunk: isChunkPart,
           tip: getPhoneticTip(norm.slice(-1)),
         };
+        item.phonemes = getWordPhonemes(item);
+        return item;
       }
 
       totalScore += 95;
       correctCount++;
-      return {
+      const item = {
         word: originalWord,
-        status: isChunkPart ? 'chunk' : 'correct',
+        status: 'correct',
         score: 95,
-        feedback: isChunkPart ? 'Phát âm chuẩn cụm từ mục tiêu' : 'Phát âm chuẩn xác',
+        feedback: 'Phát âm chuẩn xác',
         ipa,
-        isChunk: isChunkPart,
       };
+      item.phonemes = getWordPhonemes(item);
+      return item;
     }
 
     // 3. Khớp gần đúng (lệch âm đuôi / âm vị nhỏ)
@@ -305,29 +307,31 @@ function analyzeSpokenSentence(targetText, spokenText, chunkPhrase = '', audioFe
       }
 
       totalScore += 65;
-      return {
+      const item = {
         word: originalWord,
         status: 'almost',
         score: 65,
         feedback,
         ipa,
-        isChunk: isChunkPart,
         tip: getPhoneticTip(tipKey || norm.slice(-1)),
       };
+      item.phonemes = getWordPhonemes(item);
+      return item;
     }
 
     // 4. Phát âm sai hẳn hoặc nói nhầm sang từ khác
     wrongCount++;
     totalScore += 15;
-    return {
+    const item = {
       word: originalWord,
       status: 'incorrect',
       score: 15,
       feedback: `Nói nhầm thành "${spokenRaw}" thay vì "${originalWord}"`,
       ipa,
-      isChunk: isChunkPart,
       tip: getPhoneticTip(norm.slice(-1)),
     };
+    item.phonemes = getWordPhonemes(item);
+    return item;
   });
 
   const accuracy = targetWords.length > 0 ? Math.round(totalScore / targetWords.length) : 0;
@@ -574,24 +578,28 @@ export function SpeakingSession({
           const norm = w.word.toLowerCase();
           const needsSibilant = /s|z|st|sh|ch/.test(norm);
           if (needsSibilant && audioFeatures && !audioFeatures.hasSibilantEnergy) {
-            return {
+            const item = {
               ...w,
               status: 'almost',
               score: 65,
               feedback: 'Âm đuôi hoặc âm xì chưa rõ',
             };
+            item.phonemes = getWordPhonemes(item);
+            return item;
           }
-          return {
+          const item = {
             ...w,
-            status: w.isChunk ? 'chunk' : 'correct',
+            status: 'correct',
             score: 85,
             feedback: 'Đã nhận diện âm học tốt',
           };
+          item.phonemes = getWordPhonemes(item);
+          return item;
         });
 
         const totalScore = words.reduce((sum, w) => sum + w.score, 0);
         const accuracy = Math.round(totalScore / words.length);
-        const isPassed = accuracy >= 75;
+        const isPassed = accuracy >= 70;
         const result = {
           targetText,
           spokenText: `(Đã thu âm: ${(audioFeatures.duration).toFixed(1)}s)`,
@@ -620,7 +628,11 @@ export function SpeakingSession({
       setCurrentAttempt({
         targetText: currentSentence.sampleTranslation,
         spokenText: '(Chưa nhận diện được giọng nói)',
-        words: currentSentence.sampleTranslation.split(/\s+/).map(w => ({ word: w, status: 'incorrect', score: 0, feedback: 'Chưa nghe thấy', ipa: wordToIPA(w) })),
+        words: currentSentence.sampleTranslation.split(/\s+/).map(w => {
+          const item = { word: w, status: 'incorrect', score: 0, feedback: 'Chưa nghe thấy', ipa: wordToIPA(w) };
+          item.phonemes = getWordPhonemes(item);
+          return item;
+        }),
         accuracy: 0,
         isPassed: false,
         audioUrl,
@@ -900,46 +912,53 @@ export function SpeakingSession({
       }
     }
 
-    // NẾU GEMINI TRẢ VỀ KẾT QUẢ CHẤM CHUYÊN SÂU TỪNG TỪ
+    // NẾU GEMINI TRẢ VỀ KẾT QUẢ CHẤM CHUYÊN SÂU TỪNG TỪ & TỪNG ÂM VỊ
     if (geminiAssessment && Array.isArray(geminiAssessment.words) && geminiAssessment.words.length > 0) {
-      const chunkWordsNorm = (chunk.phrase || '')
-        .toLowerCase()
-        .split(/\s+/)
-        .map(w => w.replace(/[^a-zA-Z0-9']/g, ''))
-        .filter(Boolean);
-
       const words = geminiAssessment.words.map(w => {
         const norm = (w.word || '').replace(/[^a-zA-Z0-9']/g, '').toLowerCase();
-        const isChunkPart = chunkWordsNorm.includes(norm);
-        const score = w.score != null ? Number(w.score) : (w.status === 'correct' ? 95 : w.status === 'almost' ? 65 : 20);
-        return {
+        const score = Math.max(0, Math.min(100, Math.round(Number(w.score) || (w.status === 'correct' ? 95 : w.status === 'almost' ? 65 : 20))));
+        const status = score >= 80 ? 'correct' : score >= 60 ? 'almost' : 'incorrect';
+        const rawPhonemes = Array.isArray(w.phonemes) && w.phonemes.length > 0 ? w.phonemes : null;
+        const ipa = w.ipa || wordToIPA(norm);
+
+        const wordItem = {
           word: w.word,
-          status: (w.status === 'correct' && isChunkPart) ? 'chunk' : (w.status || 'correct'),
-          isChunk: isChunkPart,
+          status,
           score,
-          feedback: w.feedback || (w.status === 'correct' ? 'Phát âm chuẩn' : 'Cần chú ý phát âm rõ hơn'),
-          ipa: w.ipa || wordToIPA(norm),
+          feedback: w.feedback || (status === 'correct' ? 'Phát âm chuẩn' : status === 'almost' ? 'Cần chú ý phát âm rõ hơn' : 'Cần sửa phát âm'),
+          ipa,
           tip: getPhoneticTip(norm.slice(-1)),
+          phonemes: rawPhonemes,
         };
+
+        wordItem.phonemes = getWordPhonemes(wordItem);
+        return wordItem;
       });
 
       // Kiểm tra âm học: nếu câu có âm xì /s, z, st/ nhưng acoustic.hasSibilantEnergy === false
       if (acoustic && !acoustic.hasSibilantEnergy) {
         words.forEach(w => {
           const norm = (w.word || '').replace(/[^a-zA-Z0-9']/g, '').toLowerCase();
-          if (/s|z|st|sh|ch/.test(norm) && (w.status === 'correct' || w.status === 'chunk')) {
+          if (/s|z|st|sh|ch/.test(norm) && w.status === 'correct') {
             w.status = 'almost';
             w.score = Math.min(w.score, 65);
             w.feedback = 'Âm xì hoặc âm đuôi còn yếu';
             w.tip = getPhoneticTip('s');
+            if (Array.isArray(w.phonemes) && w.phonemes.length > 0) {
+              const lastP = w.phonemes[w.phonemes.length - 1];
+              if (lastP) {
+                lastP.score = 55;
+                lastP.status = 'almost';
+                lastP.feedback = 'Âm xì còn yếu';
+              }
+            }
           }
         });
       }
 
       const totalScore = words.reduce((sum, w) => sum + (w.score || 0), 0);
       const computedAccuracy = words.length > 0 ? Math.round(totalScore / words.length) : 0;
-      const chunkPassed = words.filter(w => w.isChunk).every(w => w.status === 'chunk' || w.status === 'almost' || w.score >= 60);
-      const isPassed = computedAccuracy >= 75 && chunkPassed && !words.some(w => w.status === 'incorrect' && w.isChunk);
+      const isPassed = computedAccuracy >= 70;
 
       const result = {
         targetText: currentSentence.sampleTranslation,
@@ -1449,24 +1468,21 @@ export function SpeakingSession({
                     )}
                   </div>
 
-                  {/* Chú thích màu sắc 3 cấp độ */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 11, flexWrap: 'wrap' }}>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: 4, color: '#22c55e', fontWeight: 700 }}>
-                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e' }} /> Đúng chuẩn
+                  {/* Chú thích màu sắc 3 cấp độ (Không còn phân biệt Chunk) */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 11.5, flexWrap: 'wrap' }}>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: 5, color: '#22c55e', fontWeight: 700 }}>
+                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e' }} /> 🟢 Tốt (≥ 80đ)
                     </span>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: 4, color: '#f59e0b', fontWeight: 700 }}>
-                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#f59e0b' }} /> Cần chú ý
+                    <span style={{ display: 'flex', alignItems: 'center', gap: 5, color: '#f59e0b', fontWeight: 700 }}>
+                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#f59e0b' }} /> 🟡 Trung bình (60 - 79đ)
                     </span>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: 4, color: '#ef4444', fontWeight: 700 }}>
-                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#ef4444' }} /> Cần sửa
-                    </span>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: 4, color: '#fbbf24', fontWeight: 700 }}>
-                      <span>★</span> Chunk
+                    <span style={{ display: 'flex', alignItems: 'center', gap: 5, color: '#ef4444', fontWeight: 700 }}>
+                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#ef4444' }} /> 🔴 Cần sửa (&lt; 60đ)
                     </span>
                   </div>
                 </div>
 
-                {/* Hiển thị câu đối chiếu với từng từ được tô màu */}
+                {/* Hiển thị câu đối chiếu với từng từ & từng âm vị được tô màu */}
                 <div
                   style={{
                     padding: '12px 14px',
@@ -1476,9 +1492,9 @@ export function SpeakingSession({
                     fontSize: 15,
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8, flexWrap: 'wrap', gap: 4 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10, flexWrap: 'wrap', gap: 4 }}>
                     <div style={{ fontSize: 11.5, color: 'var(--text-muted)', fontWeight: 600 }}>
-                      KẾT QUẢ ĐỐI CHIẾU PHÁT ÂM (Bấm từng từ để xem IPA & chi tiết lỗi):
+                      KẾT QUẢ CHẤM TỪNG ÂM VỊ (Bấm vào từ để xem bảng phân tích chi tiết):
                     </div>
                     {selectedWordDetail && (
                       <button
@@ -1486,125 +1502,160 @@ export function SpeakingSession({
                         onClick={() => setSelectedWordDetail(null)}
                         style={{ fontSize: 11, color: '#38bdf8', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}
                       >
-                        Đóng chi tiết từ
+                        Đóng chi tiết
                       </button>
                     )}
                   </div>
 
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px 4px', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 8px', alignItems: 'flex-start' }}>
                     {currentAttempt.words.map((item, idx) => {
                       const isCorrect = item.status === 'correct';
                       const isAlmost = item.status === 'almost';
-                      const isIncorrect = item.status === 'incorrect';
-                      const isChunk = item.isChunk || item.status === 'chunk';
                       const isSelected = selectedWordDetail?.word === item.word && selectedWordDetail?.idx === idx;
 
-                      const textColor = isChunk && isCorrect
-                        ? '#fbbf24'
-                        : isCorrect
+                      const textColor = isCorrect
                         ? '#22c55e'
                         : isAlmost
                         ? '#f59e0b'
                         : '#ef4444';
 
-                      const bgColor = isChunk && isCorrect
-                        ? 'rgba(251, 191, 36, 0.16)'
-                        : isCorrect
-                        ? 'rgba(34, 197, 94, 0.15)'
+                      const bgColor = isCorrect
+                        ? 'rgba(34, 197, 94, 0.12)'
                         : isAlmost
-                        ? 'rgba(245, 158, 11, 0.16)'
-                        : 'rgba(239, 68, 68, 0.18)';
+                        ? 'rgba(245, 158, 11, 0.12)'
+                        : 'rgba(239, 68, 68, 0.14)';
 
-                      const borderColor = isChunk && isCorrect
-                        ? 'rgba(251, 191, 36, 0.5)'
-                        : isCorrect
+                      const borderColor = isCorrect
                         ? 'rgba(34, 197, 94, 0.35)'
                         : isAlmost
                         ? 'rgba(245, 158, 11, 0.45)'
                         : 'rgba(239, 68, 68, 0.5)';
 
+                      const phonemes = item.phonemes || getWordPhonemes(item);
+
                       return (
                         <button
                           key={idx}
                           type="button"
-                          onClick={() => setSelectedWordDetail(isSelected ? null : { ...item, idx })}
-                          title={item.feedback || item.note || `Bấm để xem phát âm từ "${item.word}"`}
+                          onClick={() => setSelectedWordDetail(isSelected ? null : { ...item, phonemes, idx })}
+                          title={item.feedback || `Bấm để xem chi tiết từng âm của từ "${item.word}"`}
                           style={{
                             display: 'inline-flex',
+                            flexDirection: 'column',
                             alignItems: 'center',
-                            gap: 4,
-                            padding: '3px 8px',
-                            borderRadius: 6,
-                            fontWeight: 700,
-                            fontSize: 14.5,
-                            color: textColor,
+                            gap: 3,
+                            padding: '6px 10px',
+                            borderRadius: 8,
                             background: bgColor,
                             border: `1px solid ${borderColor}`,
                             outline: isSelected ? '2px solid #38bdf8' : 'none',
                             outlineOffset: isSelected ? '2px' : '0px',
                             cursor: 'pointer',
                             transition: 'all 0.15s ease',
+                            textAlign: 'center',
                           }}
                         >
-                          <span>{item.word}</span>
-                          {isChunk && <span style={{ fontSize: 10, color: '#fbbf24' }}>★</span>}
-                          {item.score !== undefined && (
-                            <span style={{
-                              fontSize: 9.5,
-                              opacity: 0.85,
-                              padding: '1px 4px',
-                              borderRadius: 3,
+                          {/* Hàng 1: Từ tiếng Anh & Điểm số của từ */}
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                            <span style={{ fontWeight: 700, fontSize: 14.5, color: textColor }}>{item.word}</span>
+                            {item.score !== undefined && (
+                              <span style={{
+                                fontSize: 9.5,
+                                fontWeight: 800,
+                                padding: '1px 5px',
+                                borderRadius: 3,
+                                background: 'rgba(0,0,0,0.35)',
+                                color: textColor,
+                                lineHeight: 1.2,
+                              }}>
+                                {item.score}
+                              </span>
+                            )}
+                          </div>
+
+                          {/* Hàng 2: Chuỗi âm vị (Phonemes) được tô màu từng âm */}
+                          {phonemes && phonemes.length > 0 && (
+                            <div style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 1,
+                              fontSize: 12,
+                              fontFamily: 'monospace',
+                              lineHeight: 1,
+                              padding: '2px 4px',
                               background: 'rgba(0,0,0,0.25)',
-                              lineHeight: 1.2,
+                              borderRadius: 4,
                             }}>
-                              {item.score}
-                            </span>
+                              <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10 }}>/</span>
+                              {phonemes.map((p, pIdx) => {
+                                const pColor = p.status === 'correct' || p.score >= 80
+                                  ? '#22c55e'
+                                  : p.status === 'almost' || p.score >= 60
+                                  ? '#f59e0b'
+                                  : '#ef4444';
+                                return (
+                                  <span
+                                    key={pIdx}
+                                    style={{
+                                      color: pColor,
+                                      fontWeight: 700,
+                                      padding: '0 1px',
+                                    }}
+                                    title={`${p.sound}: ${p.score}đ`}
+                                  >
+                                    {p.sound}
+                                  </span>
+                                );
+                              })}
+                              <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10 }}>/</span>
+                            </div>
                           )}
                         </button>
                       );
                     })}
                   </div>
 
-                  {/* Panel chi tiết từ được chọn */}
+                  {/* Panel chi tiết từ & Chấm điểm từng âm vị (Phoneme Breakdown) */}
                   {selectedWordDetail && (
                     <div
                       style={{
-                        marginTop: 10,
-                        padding: '10px 12px',
-                        background: 'rgba(15, 23, 42, 0.85)',
-                        border: '1px solid rgba(56, 189, 248, 0.35)',
+                        marginTop: 12,
+                        padding: '12px 14px',
+                        background: 'rgba(15, 23, 42, 0.95)',
+                        border: '1px solid rgba(56, 189, 248, 0.4)',
                         borderRadius: 'var(--radius-md)',
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: 7,
+                        gap: 10,
                       }}
                     >
+                      {/* Tiêu đề từ, IPA và nút nghe mẫu */}
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 6 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                          <strong style={{ fontSize: 16, color: '#fff' }}>{selectedWordDetail.word}</strong>
+                          <strong style={{ fontSize: 17, color: '#fff' }}>{selectedWordDetail.word}</strong>
                           {selectedWordDetail.ipa && (
-                            <span style={{ fontSize: 13, color: '#38bdf8', fontFamily: 'monospace' }}>
+                            <span style={{ fontSize: 13.5, color: '#38bdf8', fontFamily: 'monospace' }}>
                               [{formatIPA(selectedWordDetail.ipa)}]
                             </span>
                           )}
                           <span
                             style={{
-                              fontSize: 11,
+                              fontSize: 11.5,
                               fontWeight: 700,
-                              padding: '2px 7px',
+                              padding: '2px 8px',
                               borderRadius: 4,
-                              background: selectedWordDetail.status === 'correct' || selectedWordDetail.status === 'chunk'
+                              background: selectedWordDetail.status === 'correct'
                                 ? 'rgba(34, 197, 94, 0.2)'
                                 : selectedWordDetail.status === 'almost'
                                 ? 'rgba(245, 158, 11, 0.2)'
                                 : 'rgba(239, 68, 68, 0.2)',
-                              color: selectedWordDetail.status === 'correct' || selectedWordDetail.status === 'chunk'
+                              color: selectedWordDetail.status === 'correct'
                                 ? '#22c55e'
                                 : selectedWordDetail.status === 'almost'
                                 ? '#f59e0b'
                                 : '#ef4444',
                               border: `1px solid ${
-                                (selectedWordDetail.status === 'correct' || selectedWordDetail.status === 'chunk')
+                                selectedWordDetail.status === 'correct'
                                   ? 'rgba(34, 197, 94, 0.4)'
                                   : selectedWordDetail.status === 'almost'
                                   ? 'rgba(245, 158, 11, 0.4)'
@@ -1612,12 +1663,12 @@ export function SpeakingSession({
                               }`,
                             }}
                           >
-                            {selectedWordDetail.score
-                              ? `Điểm: ${selectedWordDetail.score}/100`
-                              : (selectedWordDetail.status === 'correct' || selectedWordDetail.status === 'chunk')
-                              ? 'Đúng chuẩn'
+                            {selectedWordDetail.score !== undefined
+                              ? `Điểm từ: ${selectedWordDetail.score}/100`
+                              : selectedWordDetail.status === 'correct'
+                              ? 'Đúng chuẩn (Tốt)'
                               : selectedWordDetail.status === 'almost'
-                              ? 'Cần chú ý'
+                              ? 'Trung bình'
                               : 'Cần sửa'}
                           </span>
                         </div>
@@ -1641,7 +1692,7 @@ export function SpeakingSession({
                               color: 'var(--text-muted)',
                               cursor: 'pointer',
                               padding: '2px 6px',
-                              fontSize: 13,
+                              fontSize: 14,
                             }}
                           >
                             ✕
@@ -1649,19 +1700,103 @@ export function SpeakingSession({
                         </div>
                       </div>
 
+                      {/* BẢNG CHẤM TỪNG ÂM VỊ (PHONEMES BREAKDOWN) */}
+                      {Array.isArray(selectedWordDetail.phonemes) && selectedWordDetail.phonemes.length > 0 && (
+                        <div>
+                          <div style={{ fontSize: 11.5, color: '#94a3b8', fontWeight: 600, marginBottom: 7, display: 'flex', alignItems: 'center', gap: 5 }}>
+                            <span>🎯</span> Chấm điểm từng âm vị (Phonemes):
+                          </div>
+                          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
+                            {selectedWordDetail.phonemes.map((p, pIdx) => {
+                              const isGood = p.status === 'correct' || p.score >= 80;
+                              const isMid = p.status === 'almost' || (p.score >= 60 && p.score < 80);
+                              const pColor = isGood ? '#22c55e' : isMid ? '#f59e0b' : '#ef4444';
+                              const pBg = isGood
+                                ? 'rgba(34, 197, 94, 0.12)'
+                                : isMid
+                                ? 'rgba(245, 158, 11, 0.12)'
+                                : 'rgba(239, 68, 68, 0.15)';
+                              const pBorder = isGood
+                                ? 'rgba(34, 197, 94, 0.35)'
+                                : isMid
+                                ? 'rgba(245, 158, 11, 0.45)'
+                                : 'rgba(239, 68, 68, 0.5)';
+                              const label = isGood ? 'Tốt' : isMid ? 'Trung bình' : 'Cần sửa';
+
+                              return (
+                                <div
+                                  key={pIdx}
+                                  style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    padding: '7px 11px',
+                                    borderRadius: 7,
+                                    background: pBg,
+                                    border: `1px solid ${pBorder}`,
+                                    minWidth: 58,
+                                  }}
+                                >
+                                  <span style={{ fontSize: 16, fontWeight: 800, fontFamily: 'monospace', color: pColor }}>
+                                    /{p.sound}/
+                                  </span>
+                                  <span style={{ fontSize: 11, fontWeight: 700, color: pColor, marginTop: 2 }}>
+                                    {p.score}đ
+                                  </span>
+                                  <span style={{
+                                    fontSize: 9,
+                                    fontWeight: 600,
+                                    marginTop: 3,
+                                    padding: '1px 5px',
+                                    borderRadius: 3,
+                                    background: 'rgba(0,0,0,0.3)',
+                                    color: pColor,
+                                  }}>
+                                    {label}
+                                  </span>
+                                  {p.feedback && (
+                                    <span style={{ fontSize: 9.5, color: '#fca5a5', marginTop: 4, textAlign: 'center', maxWidth: 95 }}>
+                                      {p.feedback}
+                                    </span>
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Chi tiết phản hồi */}
                       {(selectedWordDetail.feedback || selectedWordDetail.note) && (
                         <div
                           style={{
                             fontSize: 12,
                             color: '#fef08a',
                             background: 'rgba(234, 179, 8, 0.1)',
-                            padding: '6px 10px',
+                            padding: '7px 10px',
                             borderRadius: 5,
                             border: '1px solid rgba(234, 179, 8, 0.25)',
                             lineHeight: 1.4,
                           }}
                         >
-                          💡 <strong>Chi tiết:</strong> {selectedWordDetail.feedback || selectedWordDetail.note}
+                          💡 <strong>Nhận xét:</strong> {selectedWordDetail.feedback || selectedWordDetail.note}
+                        </div>
+                      )}
+
+                      {/* Hướng dẫn khẩu hình nếu có */}
+                      {selectedWordDetail.tip && (
+                        <div
+                          style={{
+                            fontSize: 12,
+                            color: '#93c5fd',
+                            background: 'rgba(59, 130, 246, 0.1)',
+                            padding: '7px 10px',
+                            borderRadius: 5,
+                            border: '1px solid rgba(59, 130, 246, 0.25)',
+                            lineHeight: 1.4,
+                          }}
+                        >
+                          👅 <strong>Mẹo phát âm ({selectedWordDetail.tip.title}):</strong> {selectedWordDetail.tip.tip}
                         </div>
                       )}
                     </div>
@@ -1919,54 +2054,70 @@ export function SpeakingSession({
                       <span>{formatIPA(sentence.ipa || getSentenceIPA(sentence.sampleTranslation))}</span>
                     </div>
 
-                    {/* Word tags */}
-                    <div style={{ lineHeight: 1.8, fontSize: 14.5, marginTop: 4 }}>
+                    {/* Word tags with phonemes */}
+                    <div style={{ lineHeight: 1.8, fontSize: 14.5, marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                       {result.words.map((item, wIdx) => {
                         const isCorrect = item.status === 'correct';
                         const isAlmost = item.status === 'almost';
-                        const isChunk = item.isChunk || item.status === 'chunk';
 
-                        const color = isChunk && isCorrect
-                          ? '#fbbf24'
-                          : isCorrect
+                        const color = isCorrect
                           ? '#22c55e'
                           : isAlmost
                           ? '#f59e0b'
                           : '#ef4444';
 
-                        const bg = isChunk && isCorrect
-                          ? 'rgba(251, 191, 36, 0.15)'
-                          : isCorrect
-                          ? 'rgba(34, 197, 94, 0.15)'
+                        const bg = isCorrect
+                          ? 'rgba(34, 197, 94, 0.12)'
                           : isAlmost
-                          ? 'rgba(245, 158, 11, 0.16)'
-                          : 'rgba(239, 68, 68, 0.18)';
+                          ? 'rgba(245, 158, 11, 0.12)'
+                          : 'rgba(239, 68, 68, 0.14)';
 
-                        const border = isChunk && isCorrect
-                          ? '1px solid rgba(251, 191, 36, 0.4)'
-                          : isCorrect
-                          ? '1px solid rgba(34, 197, 94, 0.3)'
+                        const border = isCorrect
+                          ? '1px solid rgba(34, 197, 94, 0.35)'
                           : isAlmost
                           ? '1px solid rgba(245, 158, 11, 0.45)'
                           : '1px dashed rgba(239, 68, 68, 0.5)';
 
+                        const phonemes = item.phonemes || getWordPhonemes(item);
+
                         return (
-                          <span
+                          <div
                             key={wIdx}
                             title={item.feedback || item.note || ''}
                             style={{
-                              display: 'inline-block',
-                              padding: '2px 7px',
-                              margin: '0 3px 3px 0',
-                              borderRadius: 5,
-                              fontWeight: 700,
-                              color,
+                              display: 'inline-flex',
+                              flexDirection: 'column',
+                              alignItems: 'center',
+                              padding: '3px 8px',
+                              borderRadius: 6,
                               background: bg,
                               border,
+                              gap: 2,
                             }}
                           >
-                            {item.word}
-                          </span>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                              <span style={{ fontWeight: 700, fontSize: 13.5, color }}>{item.word}</span>
+                              {item.score !== undefined && (
+                                <span style={{ fontSize: 9.5, opacity: 0.85, color }}>{item.score}</span>
+                              )}
+                            </div>
+                            {phonemes && phonemes.length > 0 && (
+                              <div style={{ display: 'flex', gap: 1, fontSize: 10, fontFamily: 'monospace', lineHeight: 1 }}>
+                                {phonemes.map((p, pIdx) => {
+                                  const pColor = p.status === 'correct' || p.score >= 80
+                                    ? '#22c55e'
+                                    : p.status === 'almost' || p.score >= 60
+                                    ? '#f59e0b'
+                                    : '#ef4444';
+                                  return (
+                                    <span key={pIdx} style={{ color: pColor, fontWeight: 700 }}>
+                                      {p.sound}
+                                    </span>
+                                  );
+                                })}
+                              </div>
+                            )}
+                          </div>
                         );
                       })}
                     </div>

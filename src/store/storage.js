@@ -218,6 +218,67 @@ export function saveSpeakingProgress(chunkId, speakingResult) {
   return updated;
 }
 
+/**
+ * Lưu các cụm từ (chunks) đã hoàn thành trong phòng luyện nói giao tiếp AI
+ * - Đảm bảo chunk tồn tại trong danh sách Chunks
+ * - Cập nhật tiến trình học (Progress) & Lịch ôn tập Spaced Repetition (SRS)
+ */
+export function saveMasteredChunksFromConversation(chunks, scenarioTitle = 'Giao tiếp AI') {
+  if (!Array.isArray(chunks) || chunks.length === 0) return [];
+
+  const allExistingChunks = getAllChunks();
+  const allChunksMap = get(KEYS.chunks) || {};
+  const convTranscriptId = 'conversation_mastered';
+  const convChunksList = allChunksMap[convTranscriptId] || [];
+
+  const savedChunkRecords = [];
+
+  chunks.forEach((c, idx) => {
+    const phrase = (typeof c === 'string' ? c : (c.phrase || '')).trim();
+    if (!phrase) return;
+    const cleanLower = phrase.toLowerCase();
+
+    // Tìm xem chunk đã có sẵn trong kho hay chưa
+    let existing = allExistingChunks.find(ec => ec.phrase && ec.phrase.trim().toLowerCase() === cleanLower);
+
+    let targetChunkObj;
+    if (existing) {
+      targetChunkObj = existing;
+    } else {
+      const slug = cleanLower.replace(/[^a-z0-9]+/g, '_').slice(0, 40);
+      const newId = `c_conv_${slug}_${Date.now()}_${idx}`;
+      targetChunkObj = {
+        id: newId,
+        transcriptId: convTranscriptId,
+        phrase,
+        meaningVi: (typeof c === 'object' && c.meaningVi) ? c.meaningVi : 'Cụm từ giao tiếp tự nhiên',
+        ipa: (typeof c === 'object' && c.ipa) ? c.ipa : '',
+        topic: scenarioTitle,
+        createdAt: Date.now(),
+      };
+      convChunksList.push(targetChunkObj);
+    }
+
+    savedChunkRecords.push(targetChunkObj);
+
+    // Cập nhật tiến trình & Lịch ôn tập Spaced Repetition (SRS)
+    updateProgress(targetChunkObj.id, true, 95, {
+      source: 'conversation_speaking',
+      scenarioTitle,
+      masteredAt: Date.now(),
+      note: 'Đã vận dụng thành thạo trong phòng luyện giao tiếp AI',
+    });
+  });
+
+  if (convChunksList.length > 0) {
+    allChunksMap[convTranscriptId] = convChunksList;
+    set(KEYS.chunks, allChunksMap);
+    dbSaveChunks(convChunksList).catch(err => console.error('Cloud sync error:', err));
+  }
+
+  return savedChunkRecords;
+}
+
 /** Tự động trích xuất wordId và đánh dấu đã học cho vocab chunk */
 function autoMarkVocabLearnedFromChunk(chunkId) {
   const allChunks = getAllChunks();

@@ -899,49 +899,29 @@ export async function assessPronunciationWithGemini(
 
   const cleanMime = mimeType ? mimeType.split(';')[0] : 'audio/webm';
 
-  const promptText = `You are an expert, uncompromising English Pronunciation Examiner and Acoustic Phonetics Specialist (like ELSA Speak or an official Speaking Test Evaluator).
-Analyze the learner's actual voice recording against the target sentence:
+  const promptText = `Pronunciation Examiner (ELSA Speak standard):
 Target Sentence: "${targetSentence}"
-Key Target Chunk: "${chunkPhrase}"
+Evaluate the learner's voice recording against each target word and individual IPA phonemes.
 
-CRITICAL ANTI-LENIENCY GUIDELINES:
-1. LISTEN STRICTLY TO WHAT WAS ACTUALLY SPOKEN WITHOUT BIAS. DO NOT ASSUME OR HALLUCINATE TARGET WORDS.
-   - Learners frequently mispronounce words, skip words, read completely different words, or speak gibberish/Vietnamese.
-   - If the audio is silent, background noise only, or unintelligible, set accuracyScore: 0, isPassed: false, and mark all words as "incorrect" (score 0).
-   - If the learner substituted a DIFFERENT word (e.g., said "banana" instead of "time", or "make" instead of "invest"), you MUST mark that word as "incorrect" (score 0-15) with feedback specifying the heard word.
-2. VERBATIM TRANSCRIPTION:
-   - In "spokenTranscript", write verbatim what the speaker ACTUALLY uttered in English/Vietnamese, preserving any mispronunciations or wrong words.
-3. WORD-BY-WORD STRICT EVALUATION (for each word in Target Sentence in order):
-   - "word": exact target word from Target Sentence
-   - "status":
-       - "correct": Clearly and accurately articulated according to standard English (Score: 85-100).
-       - "almost": Word was attempted and recognizable, but had a noticeable phonetic flaw: e.g. dropped/weak ending sound (/s/, /z/, /t/, /d/, /-ed/), distorted vowel, or misplaced stress (Score: 50-70).
-       - "incorrect": Completely mispronounced, wrong word spoken, or omitted/skipped (Score: 0-35).
-   - "score": Integer 0-100.
-   - "feedback": Concise diagnostic explanation in Vietnamese (e.g., "Nuốt âm đuôi /t/", "Thiếu âm xì /s/", "Nói nhầm thành '...' ", "Phát âm chuẩn", "Chưa đọc từ này").
-   - "ipa": Standard IPA transcription of this word.
-   - "isChunk": boolean, true if the word is part of the Key Target Chunk "${chunkPhrase}".
-4. OVERALL EVALUATION:
-   - "accuracyScore": Computed mathematically as the exact average of all word scores.
-   - "fluencyScore": Integer 0-100 based on pacing and natural pauses.
-   - "isPassed": Boolean. Must be TRUE ONLY IF accuracyScore >= 75 AND all words in the chunk "${chunkPhrase}" have status "correct" or "almost". If the learner intentionally read wrong words, skipped words, or has accuracy < 75, isPassed MUST BE FALSE.
-   - "feedbackVi": 1-2 constructive, honest sentences in Vietnamese pointing out which specific sounds or words need fixing.
+Rules:
+1. Listen strictly to what was uttered. Transcribe verbatim in "transcript".
+2. For each word in target sentence, score 0-100.
+3. In "phones", list [sound, score] pairs for all phonemes (0-100) e.g. [["ɔː", 90], ["l", 85], ["w", 85], ["eɪ", 90], ["z", 35]].
+4. "feedback": ONLY if word score < 80, give concise Vietnamese tip (e.g. "Nuốt âm đuôi /z/"). If >= 80, set "".
+5. "feedbackVi": 1 concise sentence summarizing overall pronunciation in Vietnamese.
 
-Return ONLY a JSON object matching this schema:
+Return compact JSON:
 {
-  "spokenTranscript": "string",
-  "accuracyScore": 75,
-  "fluencyScore": 70,
-  "isPassed": true,
+  "transcript": "string",
+  "accuracy": 82,
+  "fluency": 80,
   "feedbackVi": "string",
   "words": [
     {
-      "word": "string",
-      "status": "correct",
-      "score": 95,
-      "feedback": "string",
-      "ipa": "string",
-      "isChunk": boolean
+      "word": "always",
+      "score": 75,
+      "feedback": "Nuốt âm /z/",
+      "phones": [["ɔː", 90], ["l", 85], ["w", 85], ["eɪ", 80], ["z", 40]]
     }
   ]
 }`;
@@ -953,11 +933,15 @@ Return ONLY a JSON object matching this schema:
     for (const model of modelsToTry) {
       if (_rateLimitedModels.has(model)) continue;
 
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout bảo vệ
+
       try {
         const url = `${BASE_URL}/models/${model}:generateContent?key=${apiKey}`;
 
         const response = await fetch(url, {
           method: 'POST',
+          signal: controller.signal,
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             contents: [
@@ -980,6 +964,8 @@ Return ONLY a JSON object matching this schema:
             },
           }),
         });
+
+        clearTimeout(timeoutId);
 
         if (response.status === 404 || response.status === 400) {
           console.warn(`[Gemini Pronunciation] ${model} status ${response.status}. Blacklisting model and trying next...`);
@@ -1011,16 +997,59 @@ Return ONLY a JSON object matching this schema:
           }
 
           if (parsed && Array.isArray(parsed.words) && parsed.words.length > 0) {
+            // Chuẩn hóa words và phonemes 3 màu chuẩn: Xanh (>=80), Vàng (60-79), Đỏ (<60)
+            parsed.words = parsed.words.map(w => {
+              const score = Math.max(0, Math.min(100, Math.round(Number(w.score) || 0)));
+              const status = score >= 80 ? 'correct' : score >= 60 ? 'almost' : 'incorrect';
+              
+              // Hỗ trợ cả định dạng rút gọn phones: [["sound", score]] lẫn phonemes: [{sound, score}]
+              const rawPhonemes = Array.isArray(w.phones)
+                ? w.phones
+                : (Array.isArray(w.phonemes) ? w.phonemes : []);
+
+              const phonemes = rawPhonemes.map(p => {
+                const sound = Array.isArray(p) ? (p[0] || '') : (p.sound || '');
+                const rawScore = Array.isArray(p) ? p[1] : p.score;
+                const pScore = Math.max(0, Math.min(100, Math.round(Number(rawScore != null ? rawScore : score))));
+                const pStatus = pScore >= 80 ? 'correct' : pScore >= 60 ? 'almost' : 'incorrect';
+                const pFeedback = Array.isArray(p)
+                  ? (p[2] || (pScore < 80 ? w.feedback : ''))
+                  : (p.feedback || (pScore < 80 ? w.feedback : ''));
+
+                return {
+                  sound,
+                  score: pScore,
+                  status: pStatus,
+                  feedback: pFeedback || '',
+                };
+              });
+
+              return {
+                word: w.word || '',
+                score,
+                status,
+                feedback: w.feedback || (status === 'correct' ? 'Phát âm chuẩn' : 'Cần chú ý phát âm rõ hơn'),
+                ipa: w.ipa || '',
+                phonemes,
+              };
+            });
+
+            // Gán các trường chuẩn hóa cấp cao
+            parsed.spokenTranscript = parsed.transcript || parsed.spokenTranscript || '';
+            parsed.feedbackVi = parsed.feedbackVi || parsed.feedback || (parsed.accuracy >= 75 ? 'Phát âm khá tốt!' : 'Cần chú ý các âm bị bôi đỏ/vàng để hoàn thiện nhé!');
+            parsed.fluencyScore = parsed.fluency || parsed.fluencyScore || 80;
+
             // Tính lại accuracyScore toán học chuẩn xác từ danh sách words
             const totalScore = parsed.words.reduce((sum, w) => sum + (Number(w.score) || 0), 0);
             const computedAccuracy = Math.round(totalScore / parsed.words.length);
             parsed.accuracyScore = computedAccuracy;
-            parsed.isPassed = computedAccuracy >= 75 && !parsed.words.some(w => w.status === 'incorrect' && w.isChunk);
+            parsed.isPassed = computedAccuracy >= 70;
             _cachedModel = model;
             return parsed;
           }
         }
       } catch (err) {
+        clearTimeout(timeoutId);
         console.warn(`[Gemini Pronunciation] Error with ${model}:`, err);
       }
     }
