@@ -1,11 +1,11 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import {
   Headphones, Sparkles, Plus, Minus, Search, Trash2,
   PenLine, HelpCircle, CheckCircle, Flame, Layers, Globe,
   Calendar, ChevronRight, Filter, BookOpen, Volume2, Edit3,
   Check, X, FileText, Shuffle
 } from 'lucide-react';
-import { Modal, Spinner } from '../ui';
+import { Modal, Spinner, Pagination } from '../ui';
 import { analyzeTranscript } from '../../services/ai';
 import { getApiKey, getChunks } from '../../store/storage';
 import { PRESET_LISTENING_TOPICS } from '../../services/listeningAi';
@@ -373,6 +373,42 @@ export function ListeningAiModule({
     });
   }, [transcripts, filterType, searchQuery]);
 
+  // Pagination states (Mặc định 10 bài / trang)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const listTopRef = useRef(null);
+
+  // Reset về trang 1 khi thay đổi tìm kiếm, bộ lọc hoặc pageSize
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, filterType, pageSize]);
+
+  // Phân trang danh sách bài nghe
+  const totalItems = filteredList.length;
+  const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+  const validPage = Math.min(Math.max(1, currentPage), totalPages);
+  const startIndex = (validPage - 1) * pageSize;
+  const endIndex = Math.min(startIndex + pageSize, totalItems);
+
+  // Tự động điều chỉnh trang nếu tổng số trang giảm xuống (do xóa bài)
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(totalPages);
+    }
+  }, [totalPages, currentPage]);
+
+  const paginatedList = useMemo(() => {
+    return filteredList.slice(startIndex, endIndex);
+  }, [filteredList, startIndex, endIndex]);
+
+  const handlePageChange = (newPage) => {
+    const p = Math.min(Math.max(1, newPage), totalPages);
+    setCurrentPage(p);
+    if (listTopRef.current) {
+      listTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   // Thống kê nhanh
   const stats = useMemo(() => {
     let part3 = 0;
@@ -619,12 +655,17 @@ export function ListeningAiModule({
       </div>
 
       {/* ─── Library Header & Filters ────────────────────────────── */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', marginBottom: 14 }}>
+      <div ref={listTopRef} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', marginBottom: 14 }}>
         <div>
           <h3 style={{ fontSize: 15, fontWeight: 800, color: 'var(--text-primary)', margin: 0, display: 'flex', alignItems: 'center', gap: 6 }}>
             <span>Kho bài nghe của bạn</span>
-            <span className="badge badge-neutral" style={{ fontSize: 11 }}>{filteredList.length}</span>
+            <span className="badge badge-neutral" style={{ fontSize: 11 }}>{totalItems}</span>
           </h3>
+          {totalItems > 0 && totalPages > 1 && (
+            <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 2 }}>
+              Hiển thị {startIndex + 1}–{endIndex} trong {totalItems} bài nghe (Trang {validPage}/{totalPages})
+            </div>
+          )}
         </div>
 
         {/* Toolbar: Search + Filter Tabs */}
@@ -736,8 +777,9 @@ export function ListeningAiModule({
           </div>
         </div>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {filteredList.map((item) => {
+        <>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {paginatedList.map((item) => {
             const accents = extractSpeakerAccents(item.text);
             const questionCount = item.questions?.length || 0;
             const tChunks = getChunks(item.id) || item.chunks || [];
@@ -1014,6 +1056,26 @@ export function ListeningAiModule({
             );
           })}
         </div>
+
+        {/* Bottom Pagination Bar */}
+        {totalPages > 1 && (
+          <Pagination
+            currentPage={validPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+            pageSize={pageSize}
+            onPageSizeChange={(size) => {
+              setPageSize(size);
+              setCurrentPage(1);
+            }}
+            pageSizeOptions={[10, 20, 50]}
+            totalItems={totalItems}
+            startIndex={startIndex}
+            endIndex={endIndex}
+            itemLabel="bài nghe"
+          />
+        )}
+      </>
       )}
 
       {/* ─── Modals ──────────────────────────────────────────────── */}
