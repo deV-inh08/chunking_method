@@ -1,0 +1,1292 @@
+[
+  {
+    "word": "attire",
+    "meaningVi": "quần áo, cách ăn mặc",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "code",
+    "meaningVi": "quy định, điều lệ, mật mã",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "concern",
+    "meaningVi": "sự lo lắng, mối quan ngại; lo lắng, bận tâm; ảnh hưởng; liên quan, dính líu tới",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "concerning",
+    "meaningVi": "liên quan đến ai/cái gì",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "concerned",
+    "meaningVi": "có liên quan; đáng lo ngại",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "matter",
+    "meaningVi": "vấn đề, việc",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "worry",
+    "meaningVi": "lo lắng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "involve",
+    "meaningVi": "ảnh hưởng, liên quan tới",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "policy",
+    "meaningVi": "quy chế, chính sách",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "comply",
+    "meaningVi": "tuân thủ, tuân theo",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "compliance",
+    "meaningVi": "sự làm theo, sự phục tùng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "observe",
+    "meaningVi": "tuân thủ (quy tắc), quan sát",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "obey",
+    "meaningVi": "làm theo chỉ thị, nghe lời, phục tùng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fulfill",
+    "meaningVi": "đáp ứng, thỏa mãn (điều kiện)",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "regulation",
+    "meaningVi": "quy định, quy tắc, điều lệ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "regulate",
+    "meaningVi": "điều chỉnh, kiểm soát",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "exception",
+    "meaningVi": "ngoại lệ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "exceptional",
+    "meaningVi": "đặc biệt, hiếm có",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "exceptionally",
+    "meaningVi": "cá biệt, khác thường",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "except",
+    "meaningVi": "ngoại trừ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "adhere",
+    "meaningVi": "bám sát, tuân thủ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "adherence",
+    "meaningVi": "sự trung thành",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "severely",
+    "meaningVi": "nghiêm khắc, khắt khe; gay go, dữ dội",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "severe",
+    "meaningVi": "khắt khe, gay gắt",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "sternly",
+    "meaningVi": "nghiêm khắc",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "leniently",
+    "meaningVi": "nhân hậu, khoan dung",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "refrain",
+    "meaningVi": "kiểm chế, hạn chế",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "permission",
+    "meaningVi": "sự cho phép",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "permit",
+    "meaningVi": "cho phép",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "access",
+    "meaningVi": "quyền truy cập, sự lui tới, đường vào; truy cập",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "accessible",
+    "meaningVi": "có thể truy cập, có thể tới được",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "accessibility",
+    "meaningVi": "khả năng tiếp cận được",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "approach",
+    "meaningVi": "cách tiếp cận, phương pháp xử lý; tiếp cận",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "thoroughly",
+    "meaningVi": "một cách kỹ lưỡng; hoàn toàn, triệt để",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "thorough",
+    "meaningVi": "tỉ mỉ, cẩn thận",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "revise",
+    "meaningVi": "sửa đổi, thay đổi (ý kiến, kế hoạch)",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "revision",
+    "meaningVi": "sự sửa lại, sự thay đổi",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "approval",
+    "meaningVi": "sự chấp thuận, sự phê duyệt",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "approve",
+    "meaningVi": "chấp thuận",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "form",
+    "meaningVi": "kiểu, loại, hình thức; tạo thành, định hình",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "formal",
+    "meaningVi": "trang trọng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "formation",
+    "meaningVi": "sự hình thành, sự thành lập",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "immediately",
+    "meaningVi": "ngay lập tức",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "immediate",
+    "meaningVi": "lập tức, tức thì",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "inspection",
+    "meaningVi": "sự kiểm tra, sự thanh tra",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inspect",
+    "meaningVi": "xem xét, kiểm tra",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "arrangement",
+    "meaningVi": "sự sắp xếp, sự sắp đặt, sự chuẩn bị",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "arrange",
+    "meaningVi": "sắp xếp, sắp đặt",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "procedure",
+    "meaningVi": "thủ tục",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "proceed",
+    "meaningVi": "tiến hành, tiếp diễn",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "procedural",
+    "meaningVi": "theo thủ tục",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "negative",
+    "meaningVi": "tiêu cực, bi quan",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "mandate",
+    "meaningVi": "ra lệnh, ủy quyền, ủy thác; lệnh, trát, sự ủy thác",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "effect",
+    "meaningVi": "hiệu ứng, hiệu quả, hiệu lực; thực hiện, đem lại",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "effective",
+    "meaningVi": "hiệu quả",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "effectively",
+    "meaningVi": "một cách hiệu quả",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "drastically",
+    "meaningVi": "một cách mạnh mẽ, quyết liệt, triệt để",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "drastic",
+    "meaningVi": "mạnh mẽ, quyết liệt",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "according to",
+    "meaningVi": "theo",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "enable",
+    "meaningVi": "làm cho có thể, cho phép",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "standard",
+    "meaningVi": "tiêu chuẩn, chuẩn, trình độ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "standardize",
+    "meaningVi": "tiêu chuẩn hóa",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "constant",
+    "meaningVi": "liên tục, không ngớt, không dứt",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "constantly",
+    "meaningVi": "một cách liên tục",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "act",
+    "meaningVi": "việc, hành động; đạo luật; hành động, đưa ra quyết định",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "compensation",
+    "meaningVi": "sự đền bù, sự bồi thường",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "compensate",
+    "meaningVi": "đền bù, bồi thường",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "ban",
+    "meaningVi": "lệnh cấm, sự cấm đoán; cấm",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "obligation",
+    "meaningVi": "nghĩa vụ, trách nhiệm",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "authorize",
+    "meaningVi": "ủy quyền, cho phép",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "authorized",
+    "meaningVi": "được cho phép, được ủy quyền",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "authorization",
+    "meaningVi": "sự cho phép, sự cấp phép",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "authority",
+    "meaningVi": "quyền lực, quyền thế",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prohibit",
+    "meaningVi": "ngăn cấm, ngăn chặn, không cho phép",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "prohibition",
+    "meaningVi": "sự cấm",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "forbid",
+    "meaningVi": "cấm",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "abolish",
+    "meaningVi": "thủ tiêu, bãi bỏ, hủy bỏ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "abolition",
+    "meaningVi": "sự bãi bỏ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "enforce",
+    "meaningVi": "làm cho có hiệu lực, thúc ép, thi hành",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "enforcement",
+    "meaningVi": "sự thúc ép, sự bắt buộc",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "habit",
+    "meaningVi": "thói quen, tập quán",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "habitual",
+    "meaningVi": "thường lệ, quen thuộc",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "convention",
+    "meaningVi": "tập quán, thói quen",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "legislation",
+    "meaningVi": "sự làm luật, pháp luật, pháp chế",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "legislate",
+    "meaningVi": "lập pháp, làm luật",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "legislator",
+    "meaningVi": "nhà lập pháp",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "restrict",
+    "meaningVi": "giới hạn, hạn chế",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "restriction",
+    "meaningVi": "sự hạn chế",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "restrictive",
+    "meaningVi": "hạn chế, giới hạn",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "limit",
+    "meaningVi": "hạn chế, giới hạn",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bend over",
+    "meaningVi": "cúi xuống",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "by oneself",
+    "meaningVi": "tự mình",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "date",
+    "meaningVi": "ngày",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "get used to",
+    "meaningVi": "quen với",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "if it's okay with you",
+    "meaningVi": "nếu bạn thấy nó ổn",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "in case of",
+    "meaningVi": "trong trường hợp, nếu như vậy",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "in rows",
+    "meaningVi": "xếp hàng, thành nhiều hàng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "item",
+    "meaningVi": "món, mục, mặt hàng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "legal",
+    "meaningVi": "hợp pháp",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "let go",
+    "meaningVi": "buông bỏ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "ruler",
+    "meaningVi": "người cai trị, bá chủ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stop",
+    "meaningVi": "dừng, ngừng lại",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "busy",
+    "meaningVi": "bận rộn",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "curriculum",
+    "meaningVi": "chương trình giảng dạy",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dress",
+    "meaningVi": "váy, đầm; mặc quần áo",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "enough",
+    "meaningVi": "đủ; sự đủ dùng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "finish",
+    "meaningVi": "kết thúc, hoàn thành",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "have a problem (in) -ing",
+    "meaningVi": "có vấn đề trong việc...",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "large",
+    "meaningVi": "lớn, rộng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "law firm",
+    "meaningVi": "công ty luật",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "loudly",
+    "meaningVi": "lớn tiếng, ồn ào",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "plus",
+    "meaningVi": "cộng, cả, cùng với",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "protect",
+    "meaningVi": "bảo vệ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "seldom",
+    "meaningVi": "hiếm khi, ít khi",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "theft",
+    "meaningVi": "kẻ trộm",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "try",
+    "meaningVi": "cố gắng, thử",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "witness",
+    "meaningVi": "nhân chứng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "write",
+    "meaningVi": "viết",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "against the law",
+    "meaningVi": "chống lại luật",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "by all means",
+    "meaningVi": "bằng mọi cách",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "by mistake",
+    "meaningVi": "do sơ suất",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "come to an end",
+    "meaningVi": "chấm dứt",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "company regulations",
+    "meaningVi": "nội quy công ty",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "give directions",
+    "meaningVi": "đưa ra hướng dẫn",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "hold up",
+    "meaningVi": "duy trì, chống đỡ, giữ lại",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "if I'm not mistaken",
+    "meaningVi": "nếu tôi không nhầm",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "in progress",
+    "meaningVi": "đang trong tiến trình",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "keep in mind",
+    "meaningVi": "ghi nhớ, lưu ý rằng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "legal counsel",
+    "meaningVi": "tư vấn pháp lý",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "self-defense",
+    "meaningVi": "sự tự vệ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "suspect",
+    "meaningVi": "sự nghi ngờ; nghi ngờ, hoài nghi",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "take one's advice",
+    "meaningVi": "làm theo lời khuyên của ai đó",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "to one's advantage",
+    "meaningVi": "thành lợi thế của ai",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "under control",
+    "meaningVi": "trong tầm kiểm soát",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "under the supervision of",
+    "meaningVi": "dưới sự giám sát của",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "abuse",
+    "meaningVi": "sự lạm dụng; lạm dụng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "alert",
+    "meaningVi": "cảnh báo; cảnh giác",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "assessment",
+    "meaningVi": "sự đánh giá",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "at all times",
+    "meaningVi": "mọi lúc",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "authorization",
+    "meaningVi": "sự cho phép, sự ủy quyền",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "concerning",
+    "meaningVi": "liên quan đến",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "consideration",
+    "meaningVi": "sự cân nhắc, suy xét",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "declaration",
+    "meaningVi": "lời tuyên bố, tuyên ngôn",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "defensive",
+    "meaningVi": "có tính chất phòng thủ, bảo vệ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "depiction",
+    "meaningVi": "sự miêu tả",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "disobedient",
+    "meaningVi": "nổi loạn, không tuân lệnh",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "endure",
+    "meaningVi": "chịu đựng, kéo dài",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "exemplary",
+    "meaningVi": "gương mẫu, mẫu mực",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "ignore",
+    "meaningVi": "lờ đi",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "illegal",
+    "meaningVi": "bất hợp pháp",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "in accordance with",
+    "meaningVi": "phù hợp với",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "indecisive",
+    "meaningVi": "không quyết đoán, thiếu dứt khoát",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "observance",
+    "meaningVi": "sự tuân thủ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "on-site",
+    "meaningVi": "tại chỗ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "penalty",
+    "meaningVi": "hình phạt",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pointed",
+    "meaningVi": "sắc bén, được nhắm vào, được nhấn mạnh",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "precious",
+    "meaningVi": "quý giá, quý báu",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "principle",
+    "meaningVi": "nguyên tắc",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "punishment",
+    "meaningVi": "sự trừng phạt",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "restricted area",
+    "meaningVi": "khu vực giới hạn",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "safety inspection",
+    "meaningVi": "kiểm tra an toàn",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "suppress",
+    "meaningVi": "cấm, chặn, ngăn cản",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "tensely",
+    "meaningVi": "căng thẳng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "unauthorized",
+    "meaningVi": "không được phép",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "with respect to",
+    "meaningVi": "liên quan đến, trong mối quan hệ với",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "accuse",
+    "meaningVi": "cáo buộc, buộc tội",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "assess",
+    "meaningVi": "đánh giá",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "attorney",
+    "meaningVi": "luật sư, người được ủy quyền",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be absent from",
+    "meaningVi": "vắng mặt",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be allowed to do",
+    "meaningVi": "được phép làm...",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "by way of",
+    "meaningVi": "bằng cách, như là một cách",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "distrust",
+    "meaningVi": "nghi ngờ; sự nghi ngờ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "from this day onward",
+    "meaningVi": "từ hôm nay",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "have permission to do",
+    "meaningVi": "được phép làm...",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "in a strict way",
+    "meaningVi": "một cách nghiêm khắc",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "make clear",
+    "meaningVi": "làm sáng tỏ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "ministry",
+    "meaningVi": "thủ tướng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "newly established",
+    "meaningVi": "mới được thành lập",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "put into effect",
+    "meaningVi": "thực hiện, làm cho xảy ra",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "registration confirmation",
+    "meaningVi": "sự xác nhận đăng ký",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stand over",
+    "meaningVi": "đứng kèm bên cạnh",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "warn",
+    "meaningVi": "cảnh báo",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "without respect to",
+    "meaningVi": "không quan tâm, không tính đến",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "commonplace",
+    "meaningVi": "điều bình thường, chuyện thường; tầm thường, cũ rích",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "protective smock",
+    "meaningVi": "áo bảo vệ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "testimony",
+    "meaningVi": "sự chứng nhận, bằng chứng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "accordance",
+    "meaningVi": "sự phù hợp",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "compel",
+    "meaningVi": "bắt buộc, thúc ép",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "crucial",
+    "meaningVi": "cốt yếu, chủ yếu",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "effortlessly",
+    "meaningVi": "dễ dàng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "in observance of",
+    "meaningVi": "tuân theo (quy tắc, luật lệ)",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "inadvertently",
+    "meaningVi": "tình cờ, không cố ý",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "judicial",
+    "meaningVi": "thuộc tòa án, do tòa xét xử",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "keenly",
+    "meaningVi": "sắc sảo, hăng hái",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "lawsuit",
+    "meaningVi": "việc kiện cáo, vụ kiện",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "observant",
+    "meaningVi": "tinh mắt; phục tùng, dễ dãi",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "off-limits",
+    "meaningVi": "bị cấm không được lui tới",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "ordinance",
+    "meaningVi": "sắc lệnh, quy định",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pulled",
+    "meaningVi": "bị rút lại",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "punctuality",
+    "meaningVi": "sự đúng giờ",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reprimand",
+    "meaningVi": "khiển trách, quở trách",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "resolution",
+    "meaningVi": "nghị quyết, sự quyết tâm",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stiff",
+    "meaningVi": "cứng nhắc, không linh động",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "substantiate",
+    "meaningVi": "chứng minh",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "trespass",
+    "meaningVi": "xâm phạm, xâm lấn",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "violate",
+    "meaningVi": "vi phạm, xâm phạm",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "at the discretion of",
+    "meaningVi": "theo quyết định của",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "bound",
+    "meaningVi": "bắt buộc, buộc phải",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "circumscribe",
+    "meaningVi": "giới hạn, hạn chế",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "enactment",
+    "meaningVi": "sự ban hành",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "impeccable",
+    "meaningVi": "hoàn hảo, không tì vết",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "infringement",
+    "meaningVi": "sự vi phạm, xâm phạm",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "legitimate",
+    "meaningVi": "hợp pháp, chính đáng",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "petition",
+    "meaningVi": "lời thỉnh cầu, kiến nghị",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "when it comes to",
+    "meaningVi": "khi nói đến, khi xem xét đến",
+    "topic": "Phép tắc - Quy định",
+    "partOfSpeech": "preposition"
+  }
+]

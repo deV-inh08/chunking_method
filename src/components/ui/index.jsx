@@ -44,7 +44,7 @@ export class ErrorBoundary extends Component {
   }
 }
 
-export function Modal({ title, description, children, footer, onClose }) {
+export function Modal({ title, description, children, footer, onClose, maxWidth, style }) {
   const overlayRef = useRef(null);
 
   useEffect(() => {
@@ -59,18 +59,30 @@ export function Modal({ title, description, children, footer, onClose }) {
       className="modal-overlay"
       onClick={(e) => { if (e.target === overlayRef.current) onClose?.(); }}
     >
-      <div className="modal-box">
-        <div className="flex items-center justify-between mb-2">
-          <h2 className="modal-title">{title}</h2>
+      <div
+        className="modal-box"
+        style={{
+          ...(maxWidth ? { maxWidth } : {}),
+          ...style,
+        }}
+      >
+        <div className="flex items-center justify-between mb-2" style={{ flexShrink: 0 }}>
+          <h2 className="modal-title" style={{ margin: 0 }}>{title}</h2>
           {onClose && (
             <button className="btn btn-ghost btn-icon" onClick={onClose} aria-label="Close">
               <X size={18} />
             </button>
           )}
         </div>
-        {description && <p className="modal-description">{description}</p>}
-        {children}
-        {footer && <div className="modal-footer">{footer}</div>}
+        {description && <p className="modal-description" style={{ flexShrink: 0 }}>{description}</p>}
+        <div style={{ flex: '1 1 auto', overflowY: 'auto', minHeight: 0, paddingRight: 4 }}>
+          {children}
+        </div>
+        {footer && (
+          <div className="modal-footer" style={{ flexShrink: 0, borderTop: '1px solid var(--border-subtle)', paddingTop: 14, marginTop: 14 }}>
+            {footer}
+          </div>
+        )}
       </div>
     </div>
   );

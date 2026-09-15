@@ -615,18 +615,23 @@ input, textarea {
   justify-content: center;
   z-index: 1000;
   animation: fadeIn var(--transition-fast);
-  padding: var(--space-6);
+  padding: var(--space-4);
+  overflow-y: auto;
 }
 
 .modal-box {
   background: var(--bg-elevated);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-xl);
-  padding: var(--space-8);
+  padding: var(--space-6) var(--space-7);
   width: 100%;
   max-width: 480px;
+  max-height: min(90vh, 760px);
+  display: flex;
+  flex-direction: column;
   box-shadow: var(--shadow-lg);
   animation: slideUp var(--transition-base);
+  margin: auto;
 }
 
 .modal-title {

@@ -162,8 +162,49 @@ export default function GenerateListeningModal({
   };
 
   return (
-    <Modal title="✨ Tạo Bài Luyện Nghe TOEIC Bằng AI" onClose={isLoading ? null : onClose}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+    <Modal
+      title="✨ Tạo Bài Luyện Nghe TOEIC Bằng AI"
+      onClose={isLoading ? null : onClose}
+      maxWidth="620px"
+      footer={
+        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, width: '100%' }}>
+          <button
+            type="button"
+            className="btn btn-secondary btn-sm"
+            onClick={onClose}
+            disabled={isLoading}
+          >
+            Hủy
+          </button>
+          <button
+            type="button"
+            className="btn btn-primary btn-sm"
+            onClick={handleGenerate}
+            disabled={isLoading}
+            style={{
+              background: 'linear-gradient(135deg, var(--accent-600), #7c3aed)',
+              padding: '8px 18px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              fontWeight: 700,
+              boxShadow: '0 2px 10px rgba(99, 102, 241, 0.35)',
+            }}
+          >
+            {isLoading ? (
+              <>
+                <Spinner size={14} /> Đang tạo...
+              </>
+            ) : (
+              <>
+                <Sparkles size={14} color="#fef08a" /> Tạo bài luyện nghe ngay
+              </>
+            )}
+          </button>
+        </div>
+      }
+    >
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
 
         {/* 1. Chọn Part 3 vs Part 4 */}
         <div>
@@ -206,8 +247,8 @@ export default function GenerateListeningModal({
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(170px, 1fr))',
-            gap: 8,
-            maxHeight: 180,
+            gap: 6,
+            maxHeight: 130,
             overflowY: 'auto',
             padding: 4,
             border: '1px solid var(--border-color)',
@@ -449,41 +490,6 @@ export default function GenerateListeningModal({
             </div>
           </div>
         )}
-
-        {/* Footer Actions */}
-        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, marginTop: 8 }}>
-          <button
-            type="button"
-            className="btn btn-secondary btn-sm"
-            onClick={onClose}
-            disabled={isLoading}
-          >
-            Hủy
-          </button>
-          <button
-            type="button"
-            className="btn btn-primary btn-sm"
-            onClick={handleGenerate}
-            disabled={isLoading}
-            style={{
-              background: 'linear-gradient(135deg, var(--accent-600), #7c3aed)',
-              padding: '8px 18px',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 6,
-            }}
-          >
-            {isLoading ? (
-              <>
-                <Spinner size={14} /> Đang tạo...
-              </>
-            ) : (
-              <>
-                <Sparkles size={14} /> Tạo bài luyện nghe ngay
-              </>
-            )}
-          </button>
-        </div>
 
       </div>
     </Modal>
