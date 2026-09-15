@@ -30,11 +30,13 @@ export default function GenerateListeningModal({
   onClose,
   onGenerated,
   onToast,
+  initialTopicId = null,
+  initialPart = 'Part 3',
 }) {
   if (!isOpen) return null;
 
-  const [part, setPart] = useState('Part 3'); // 'Part 3' | 'Part 4'
-  const [selectedTopicId, setSelectedTopicId] = useState(PRESET_LISTENING_TOPICS[0].id);
+  const [part, setPart] = useState(initialPart || 'Part 3'); // 'Part 3' | 'Part 4'
+  const [selectedTopicId, setSelectedTopicId] = useState(initialTopicId || PRESET_LISTENING_TOPICS[0].id);
   const [customTopic, setCustomTopic] = useState('');
   const [level, setLevel] = useState('standard'); // 'standard' | 'advanced'
   const [embedChunksEnabled, setEmbedChunksEnabled] = useState(true);

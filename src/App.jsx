@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { Sidebar, Header, BottomNav } from './components/Layout';
 import { TranscriptModule } from './components/TranscriptModule';
+import { ListeningAiModule } from './components/ListeningAiModule';
 import { ChunkModule } from './components/ChunkModule';
 import { VocabModule } from './components/VocabModule';
 import { PracticeModule } from './components/PracticeModule';
@@ -358,11 +359,16 @@ export default function App() {
   }, [addToast]);
 
   // ── Nav badge counts ─────────────────────────────────────────
+  const aiListeningCount = useMemo(() => {
+    return transcripts.filter(t => t.isAiGenerated || (t.questions && t.questions.length > 0)).length;
+  }, [transcripts]);
+
   const counts = {
-    transcripts: transcripts.length,
-    chunks:      allChunks.length,
-    practice:    selectedChunks.size,
-    progress:    Object.keys(allProgress).length,
+    transcripts:  transcripts.length,
+    chunks:       allChunks.length,
+    practice:     selectedChunks.size,
+    ai_listening: aiListeningCount,
+    progress:     Object.keys(allProgress).length,
   };
 
   const chunkCounts = {};
@@ -496,6 +502,28 @@ export default function App() {
                 onChunksExtracted={handleChunksExtracted}
                 onSelectTranscript={handleSelectTranscript}
                 chunkCounts={chunkCounts}
+                allProgress={allProgress}
+                onToast={addToast}
+                onNavigateToAiListening={() => setPage('ai_listening')}
+                onStartPractice={(transcriptId) => {
+                  setSelectedTranscriptId(transcriptId);
+                  const tChunks = storage.getChunks(transcriptId);
+                  if (tChunks.length > 0) {
+                    setSelectedChunks(new Set(tChunks.map(c => c.id)));
+                    setPage('practice');
+                  } else {
+                    setPage('chunks');
+                  }
+                }}
+              />
+            )}
+
+            {page === 'ai_listening' && (
+              <ListeningAiModule
+                transcripts={transcripts}
+                onSave={handleSaveTranscript}
+                onDelete={handleDeleteTranscript}
+                onChunksExtracted={handleChunksExtracted}
                 allProgress={allProgress}
                 onToast={addToast}
                 onStartPractice={(transcriptId) => {

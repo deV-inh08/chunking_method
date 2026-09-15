@@ -572,6 +572,7 @@ export function TranscriptListeningModal({
   chunks = [],
   onClose,
   onSaveGenerated = null,
+  initialMode = 'listen', // 'listen' | 'dictation' | 'quiz'
 }) {
   // Lấy các chunk nếu chưa có sẵn từ prop
   const effectiveChunks = useMemo(() => {
@@ -601,8 +602,8 @@ export function TranscriptListeningModal({
   const [revealedLines, setRevealedLines] = useState({});
 
   // ─── Dictation & Quiz Mode States ───
-  const [isDictationMode, setIsDictationMode] = useState(false);
-  const [isQuizMode, setIsQuizMode] = useState(false);
+  const [isDictationMode, setIsDictationMode] = useState(() => initialMode === 'dictation');
+  const [isQuizMode, setIsQuizMode] = useState(() => initialMode === 'quiz');
   const [selectedAnswers, setSelectedAnswers] = useState({}); // { [qIndex]: optIdx }
   const [isSaved, setIsSaved] = useState(() => !transcript?.isAiGenerated);
 

@@ -495,6 +495,7 @@ export function TranscriptModule({
   allProgress = {},
   onToast,
   onStartPractice,
+  onNavigateToAiListening,
 }) {
   const [showInput, setShowInput] = useState(() => transcripts.length === 0);
   const [searchQuery, setSearchQuery] = useState('');
@@ -737,22 +738,41 @@ export function TranscriptModule({
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-            <button
-              type="button"
-              className="btn btn-primary btn-sm"
-              onClick={() => setIsGenerateModalOpen(true)}
-              style={{
-                background: 'linear-gradient(135deg, var(--accent-600), #7c3aed)',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 6,
-                fontSize: 13,
-                fontWeight: 700,
-                boxShadow: '0 2px 10px rgba(99, 102, 241, 0.35)',
-              }}
-            >
-              <Sparkles size={14} /> ✨ Tạo bài nghe bằng AI
-            </button>
+            {onNavigateToAiListening ? (
+              <button
+                type="button"
+                className="btn btn-primary btn-sm"
+                onClick={onNavigateToAiListening}
+                style={{
+                  background: 'linear-gradient(135deg, var(--accent-600), #7c3aed)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  fontSize: 13,
+                  fontWeight: 700,
+                  boxShadow: '0 2px 10px rgba(99, 102, 241, 0.35)',
+                }}
+              >
+                <Headphones size={14} /> 🎧 Sang Tab Luyện Nghe AI
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="btn btn-primary btn-sm"
+                onClick={() => setIsGenerateModalOpen(true)}
+                style={{
+                  background: 'linear-gradient(135deg, var(--accent-600), #7c3aed)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  fontSize: 13,
+                  fontWeight: 700,
+                  boxShadow: '0 2px 10px rgba(99, 102, 241, 0.35)',
+                }}
+              >
+                <Sparkles size={14} /> ✨ Tạo bài nghe bằng AI
+              </button>
+            )}
 
             <button
               type="button"

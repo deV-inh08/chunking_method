@@ -1,0 +1,1274 @@
+[
+  {
+    "word": "résumé",
+    "meaningVi": "sơ yếu lý lịch",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "opening",
+    "meaningVi": "vị trí trống, sự mở cửa, lễ khai trương",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "vacancy",
+    "meaningVi": "khoảng trống, vị trí trống",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "applicant",
+    "meaningVi": "ứng viên, người xin việc",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "apply",
+    "meaningVi": "áp dụng, ứng tuyển",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "application",
+    "meaningVi": "đơn ứng tuyển, sự ứng dụng",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "appliance",
+    "meaningVi": "thiết bị, dụng cụ",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "requirement",
+    "meaningVi": "điều kiện cần thiết, yêu cầu",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "require",
+    "meaningVi": "yêu cầu",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "prerequisite",
+    "meaningVi": "điều kiện tiên quyết",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "meet",
+    "meaningVi": "thỏa mãn, đáp ứng (yêu cầu, điều kiện)",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "satisfy",
+    "meaningVi": "thỏa mãn, đáp ứng",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fulfill",
+    "meaningVi": "thỏa mãn, đáp ứng",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "qualified",
+    "meaningVi": "đủ khả năng, trình độ, điều kiện",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "qualify",
+    "meaningVi": "đủ điều kiện, phù hợp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "qualification",
+    "meaningVi": "phẩm chất, năng lực",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "qualifier",
+    "meaningVi": "người đủ điều kiện",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "certified",
+    "meaningVi": "được chứng nhận",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "candidate",
+    "meaningVi": "thí sinh, ứng viên",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "confidence",
+    "meaningVi": "sự tự tin, sự tin tưởng, lòng tin",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "confident",
+    "meaningVi": "tự tin, tin tưởng",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "highly",
+    "meaningVi": "rất, hết sức",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "professional",
+    "meaningVi": "có tính chuyên môn, chuyên nghiệp, lành nghề; chuyên gia",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "profession",
+    "meaningVi": "nghề nghiệp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "professionally",
+    "meaningVi": "thành thạo, chuyên nghiệp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "interview",
+    "meaningVi": "cuộc phỏng vấn; phỏng vấn",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "hire",
+    "meaningVi": "thuê mướn, tuyển dụng",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "training",
+    "meaningVi": "sự đào tạo, huấn luyện",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reference",
+    "meaningVi": "sự giới thiệu, sự tham khảo",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "refer",
+    "meaningVi": "tham khảo, xem",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "position",
+    "meaningVi": "chức vụ, vị trí",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "achievement",
+    "meaningVi": "thành tựu, thành tích, sự đạt được",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "achiever",
+    "meaningVi": "người đạt thành tích",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "impressed",
+    "meaningVi": "có ấn tượng, cảm phục",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "impressive",
+    "meaningVi": "gây xúc động, gợi cảm",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "excellent",
+    "meaningVi": "xuất sắc, vượt trội, ưu tú",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "eligible",
+    "meaningVi": "có đủ tư cách, thích hợp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "eligibility",
+    "meaningVi": "sự thích hợp, việc đủ tư cách",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ineligible",
+    "meaningVi": "không đủ tư cách",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "identify",
+    "meaningVi": "nhận diện, nhận ra",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "identification",
+    "meaningVi": "sự nhận diện, giấy tờ chứng minh/chứng minh thư",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "associate",
+    "meaningVi": "liên kết, kết giao; đồng minh, cộng sự; cùng cộng tác, liên đới",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "association",
+    "meaningVi": "sự hợp tác, liên minh",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "condition",
+    "meaningVi": "điều kiện",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "employment",
+    "meaningVi": "việc làm",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "employ",
+    "meaningVi": "tuyển dụng, thuê",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "employee",
+    "meaningVi": "nhân viên",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "employer",
+    "meaningVi": "người tuyển dụng",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unemployment",
+    "meaningVi": "thất nghiệp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lack",
+    "meaningVi": "thiếu, không có; sự thiếu hụt",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "managerial",
+    "meaningVi": "thuộc về quản lý",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "manage",
+    "meaningVi": "quản lý, điều khiển",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "supervisory",
+    "meaningVi": "giám sát, giám thị",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "diligent",
+    "meaningVi": "siêng năng, cần cù",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "diligence",
+    "meaningVi": "sự cần cù, siêng năng",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "diligently",
+    "meaningVi": "một cách chăm chỉ, miệt mài",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "familiar",
+    "meaningVi": "quen thuộc, thuần thục",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "familiarize",
+    "meaningVi": "(làm) quen, phổ biến",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "unfamiliar",
+    "meaningVi": "không quen thuộc, không biết",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "proficiency",
+    "meaningVi": "sự thông thạo, sự thành thạo",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "proficient",
+    "meaningVi": "thuần thục, điêu luyện",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "prospective",
+    "meaningVi": "có triển vọng, có tiềm năng, có tương lai",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "prospect",
+    "meaningVi": "triển vọng, viễn cảnh",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "appeal",
+    "meaningVi": "kêu gọi, lôi cuốn, hấp dẫn",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "attract",
+    "meaningVi": "thu hút, hấp dẫn",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "specialize",
+    "meaningVi": "chuyên làm về, học chuyên về",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "apprehensive",
+    "meaningVi": "lo lắng, e sợ",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "concerned",
+    "meaningVi": "lo lắng",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "consultant",
+    "meaningVi": "người tư vấn, cố vấn",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "consult",
+    "meaningVi": "hỏi/tham khảo ý kiến",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "consultation",
+    "meaningVi": "sự hỏi ý kiến (với chuyên gia)",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "entitle",
+    "meaningVi": "cho quyền (làm gì)",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "degree",
+    "meaningVi": "trình độ, bằng cấp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "payroll",
+    "meaningVi": "bảng lương, tổng quỹ lương",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "recruit",
+    "meaningVi": "tuyển dụng; nhân viên mới",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "recruitment",
+    "meaningVi": "sự tuyển dụng",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "recruiter",
+    "meaningVi": "người tuyển dụng",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "certification",
+    "meaningVi": "sự chứng nhận, giấy chứng nhận",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "certify",
+    "meaningVi": "chứng nhận",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "certificate",
+    "meaningVi": "giấy chứng nhận, chứng chỉ",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "occupation",
+    "meaningVi": "nghề nghiệp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "occupy",
+    "meaningVi": "giữ, chiếm (vị trí)",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "occupational",
+    "meaningVi": "(thuộc) nghề nghiệp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "occupant",
+    "meaningVi": "người sở hữu, người sử dụng",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "job",
+    "meaningVi": "nghề nghiệp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "vocation",
+    "meaningVi": "nghề nghiệp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "wage",
+    "meaningVi": "tiền lương, tiền công",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "salary",
+    "meaningVi": "tiền lương",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "compensation",
+    "meaningVi": "tiền bồi thường, tiền công",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "application form",
+    "meaningVi": "mẫu đơn xin việc",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "career",
+    "meaningVi": "sự nghiệp, nghề nghiệp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "completion",
+    "meaningVi": "sự hoàn thành",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fair",
+    "meaningVi": "công bằng, hợp lý",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "graduation",
+    "meaningVi": "sự tốt nghiệp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "in fact",
+    "meaningVi": "trong thực tế",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "job fair",
+    "meaningVi": "hội chợ việc làm",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "job offer",
+    "meaningVi": "lời mời làm việc",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "list",
+    "meaningVi": "danh sách; liệt kê",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "newcomer",
+    "meaningVi": "người mới đến, nhân viên mới",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "part-time",
+    "meaningVi": "bán thời gian",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "previous job",
+    "meaningVi": "công việc trước đây",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "secretary",
+    "meaningVi": "thư ký",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "send in",
+    "meaningVi": "nộp, giao",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "tidy",
+    "meaningVi": "gọn gàng, ngăn nắp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "trainee",
+    "meaningVi": "thực tập sinh, người được đào tạo",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "apply for",
+    "meaningVi": "ứng tuyển vào",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "aptitude",
+    "meaningVi": "năng khiếu, năng lực",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be admitted to",
+    "meaningVi": "được nhận vào",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be advised to do",
+    "meaningVi": "được khuyên làm",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "criteria",
+    "meaningVi": "tiêu chuẩn (dạng số nhiều của criterion)",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "decade",
+    "meaningVi": "thập kỷ",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "insufficient",
+    "meaningVi": "không đủ, thiếu",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "minimum",
+    "meaningVi": "mức tối thiểu; tối thiểu",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "party",
+    "meaningVi": "bữa tiệc, nhóm, tổ chức",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "plentiful",
+    "meaningVi": "dồi dào",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "achieve one's goal",
+    "meaningVi": "đạt mục tiêu của ai đó",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "apprentice",
+    "meaningVi": "người học việc, người tập sự",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dress formally",
+    "meaningVi": "ăn mặc trang trọng",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dressed in suit",
+    "meaningVi": "mặc vest, com lê",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "figure out",
+    "meaningVi": "tìm ra, phát hiện ra",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "full time work",
+    "meaningVi": "công việc toàn thời gian",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "job opportunity",
+    "meaningVi": "cơ hội việc làm",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "job search",
+    "meaningVi": "sự tìm việc làm",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "job seeker",
+    "meaningVi": "người tìm việc",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lay out",
+    "meaningVi": "đặt ra, bày ra",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "letter of recommendation",
+    "meaningVi": "thư giới thiệu",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pay raise",
+    "meaningVi": "sự tăng lương",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "practical experience",
+    "meaningVi": "kinh nghiệm thực tế",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "proof of employment",
+    "meaningVi": "bằng chứng công việc",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reapply",
+    "meaningVi": "ứng tuyển lại, áp dụng lại",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "recommendation letter",
+    "meaningVi": "thư giới thiệu, thư tiến cử",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reference letter",
+    "meaningVi": "thư giới thiệu, thư xác nhận",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "send off to",
+    "meaningVi": "gửi (thư) tới",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "set up an interview",
+    "meaningVi": "sắp xếp một cuộc phỏng vấn",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take an examination",
+    "meaningVi": "làm một bài kiểm tra",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "training center",
+    "meaningVi": "trung tâm đào tạo",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "waiting room",
+    "meaningVi": "phòng chờ",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "well-educated",
+    "meaningVi": "có học thức, được giáo dục tốt",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "workstation",
+    "meaningVi": "chỗ ngồi (để làm việc)",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "zealous",
+    "meaningVi": "hăng hái, nhiệt huyết",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "cover letter",
+    "meaningVi": "đơn xin việc",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "devoted",
+    "meaningVi": "hết lòng, tận tâm",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "energetic",
+    "meaningVi": "tràn đầy năng lượng, năng động",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "enthusiastic",
+    "meaningVi": "nhiệt tình",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "excel",
+    "meaningVi": "trội hơn, xuất sắc hơn",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "exclude",
+    "meaningVi": "ngoại trừ, không bao gồm",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fluently",
+    "meaningVi": "một cách trôi chảy",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "get through",
+    "meaningVi": "vượt qua, đỗ",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "match",
+    "meaningVi": "hợp với, xứng với",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "necessity",
+    "meaningVi": "sự cần thiết, điều bắt buộc",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "relevant",
+    "meaningVi": "có liên quan, thích hợp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "sign up for",
+    "meaningVi": "đăng ký",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "talented",
+    "meaningVi": "có tài",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "visiting",
+    "meaningVi": "sự thăm viếng; thăm viếng, tham quan",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "workforce",
+    "meaningVi": "lực lượng lao động",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "address the audience",
+    "meaningVi": "giao lưu với khán giả",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be influenced by appearance",
+    "meaningVi": "bị chi phối bởi vẻ ngoài",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bilingual",
+    "meaningVi": "song ngữ",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "curriculum vitae",
+    "meaningVi": "sơ yếu lý lịch",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "diploma",
+    "meaningVi": "bằng tốt nghiệp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "endurance",
+    "meaningVi": "sự chịu đựng, khả năng chịu đựng",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "external",
+    "meaningVi": "bên ngoài",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fluency",
+    "meaningVi": "sự lưu loát, trôi chảy",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fluent in",
+    "meaningVi": "thành thạo về",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "human resources",
+    "meaningVi": "quản lý nhân lực, nhân sự",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "improperly",
+    "meaningVi": "không đúng cách, không thích hợp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "in a positive manner",
+    "meaningVi": "theo một cách tích cực",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "in the field of",
+    "meaningVi": "trong lĩnh vực",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "inexperience",
+    "meaningVi": "sự thiếu kinh nghiệm",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lack confidence",
+    "meaningVi": "thiếu sự tự tin",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make A a regular habit",
+    "meaningVi": "biến A thành thói quen thường xuyên",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make a commitment to",
+    "meaningVi": "đưa ra cam kết, gắn bó với",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make a point of -ing",
+    "meaningVi": "quan tâm, tận tâm với (việc gì)",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "manpower",
+    "meaningVi": "nhân lực",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "master's degree",
+    "meaningVi": "bằng thạc sĩ",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "novice",
+    "meaningVi": "người học việc, tập sự",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "paycheck",
+    "meaningVi": "tiền lương, tiền công",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "self-motivation",
+    "meaningVi": "sự tự tạo động lực cho bản thân",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "send a notification",
+    "meaningVi": "gửi thông báo",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "wanted",
+    "meaningVi": "được cần đến, được yêu cầu",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "work history",
+    "meaningVi": "lịch sử làm việc, kinh nghiệm làm việc",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "credential",
+    "meaningVi": "thông tin xác thực, giấy chứng nhận",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "firsthand",
+    "meaningVi": "trực tiếp, mắt thấy tai nghe",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "hiring committee",
+    "meaningVi": "ủy ban tuyển dụng",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "not to mention",
+    "meaningVi": "không đề cập đến",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "conjunction"
+  },
+  {
+    "word": "on occasion",
+    "meaningVi": "nhân dịp",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "overqualified",
+    "meaningVi": "có thừa năng lực, trình độ",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "screening",
+    "meaningVi": "sự sàng lọc, sự phân loại",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lag",
+    "meaningVi": "chậm trễ",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "on the waiting list",
+    "meaningVi": "trong danh sách chờ",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "oriented",
+    "meaningVi": "được định hướng",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "pertaining to",
+    "meaningVi": "gắn liền, đi đôi với",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "questionably",
+    "meaningVi": "đáng ngờ, có vấn đề",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "regularity",
+    "meaningVi": "sự đều đặn, thường xuyên",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "replenish",
+    "meaningVi": "cấp thêm, bổ sung",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "simplicity",
+    "meaningVi": "sự đơn giản",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stellar",
+    "meaningVi": "xuất sắc, ưu tú",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "versatile",
+    "meaningVi": "nhiều tài, linh hoạt",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "adept",
+    "meaningVi": "thành thạo, tinh thông",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "against all odds",
+    "meaningVi": "bất chấp sự chống đối mạnh mẽ/mọi điều kiện bất lợi",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "command",
+    "meaningVi": "lệnh, sự điều khiển, sự chỉ huy",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "commensurate",
+    "meaningVi": "tỷ lệ thuận, xứng với",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "computer literate",
+    "meaningVi": "biết sử dụng máy tính",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "eagerness",
+    "meaningVi": "sự say mê, sự háo hức",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "familiarize oneself with",
+    "meaningVi": "tự tìm hiểu, tự làm quen với",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "increment",
+    "meaningVi": "sự tăng dần",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "interpersonal skills",
+    "meaningVi": "khả năng kết nối, kỹ năng mềm",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "mindful",
+    "meaningVi": "lưu tâm, quan tâm",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "preeminent",
+    "meaningVi": "xuất sắc, ưu việt, vượt trội",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "preliminary",
+    "meaningVi": "sơ bộ, mở đầu",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "probationer",
+    "meaningVi": "nhân viên tập sự, người bị quản chế",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sternly",
+    "meaningVi": "nghiêm khắc, cứng rắn",
+    "topic": "Tuyển dụng",
+    "partOfSpeech": "adverb"
+  }
+]
