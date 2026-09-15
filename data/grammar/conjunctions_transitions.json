@@ -1,0 +1,1389 @@
+{
+    "topicId": "conjunctions_transitions",
+    "topicName": "Liên từ & Từ nối",
+    "topicNameEn": "Conjunctions & Transitions",
+    "category": "grammar",
+    "description": "Liên từ kết hợp (FANBOYS), liên từ tương quan, liên từ phụ thuộc và phó từ liên kết trong bài thi TOEIC.",
+    "questions": [
+        {
+            "id": "conj_std_001",
+            "level": "standard",
+            "question": "The shipment arrived on time, ______ several delicate components were damaged in transit.",
+            "options": {
+                "A": "but",
+                "B": "so",
+                "C": "or",
+                "D": "for"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng giữa hai mệnh đề độc lập ngăn cách bởi dấu phẩy, thể hiện mối quan hệ tương phản đối lập.",
+            "explanationVi": "'but' là liên từ kết hợp diễn tả quan hệ đối lập (hàng đến đúng giờ nhưng một số linh kiện bị hỏng). 'so' chỉ kết quả, 'or' chỉ lựa chọn.",
+            "targetChunk": {
+                "phrase": "damaged in transit",
+                "meaningVi": "bị hư hại trong quá trình vận chuyển"
+            },
+            "skeleton": {
+                "subject": "The shipment",
+                "verb": "arrived",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_std_002",
+            "level": "standard",
+            "question": "______ Mr. Tanaka was delayed by heavy traffic, he managed to arrive before the presentation began.",
+            "options": {
+                "A": "Although",
+                "B": "Despite",
+                "C": "Because",
+                "D": "In spite of"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng đầu mệnh đề hoàn chỉnh (S + V) chỉ sự nhượng bộ, đối lập.",
+            "explanationVi": "'Although' là liên từ phụ thuộc đi với mệnh đề (S + V). 'Despite' và 'In spite of' là giới từ chỉ đi với danh từ/cụm danh từ hoặc V-ing.",
+            "targetChunk": {
+                "phrase": "delayed by heavy traffic",
+                "meaningVi": "bị hoãn lại do tắc đường nặng"
+            },
+            "skeleton": {
+                "subject": "he",
+                "verb": "managed to arrive",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_std_003",
+            "level": "standard",
+            "question": "Neither the head accountant ______ the internal auditor could locate the discrepancy in the ledger.",
+            "options": {
+                "A": "nor",
+                "B": "or",
+                "C": "and",
+                "D": "but"
+            },
+            "correctAnswer": "A",
+            "clue": "Cặp liên từ tương quan đi cùng với 'Neither': Neither... nor...",
+            "explanationVi": "Cấu trúc tương quan cố định 'neither... nor...' mang nghĩa cả hai đều không. 'either' mới đi với 'or'.",
+            "targetChunk": {
+                "phrase": "locate the discrepancy in the ledger",
+                "meaningVi": "xác định sự sai lệch trong sổ cái kế toán"
+            },
+            "skeleton": {
+                "subject": "Neither the head accountant nor the internal auditor",
+                "verb": "could locate",
+                "object": "the discrepancy"
+            }
+        },
+        {
+            "id": "conj_std_004",
+            "level": "standard",
+            "question": "The production line was temporarily suspended ______ routine maintenance could be performed.",
+            "options": {
+                "A": "so that",
+                "B": "in order to",
+                "C": "due to",
+                "D": "because of"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng trước mệnh đề hoàn chỉnh (S + V) có động từ khiếm khuyết 'could' chỉ mục đích.",
+            "explanationVi": "'so that + S + modal verb' là liên từ chỉ mục đích. 'in order to' phải đi với V nguyên mẫu. 'due to' và 'because of' là giới từ.",
+            "targetChunk": {
+                "phrase": "so that maintenance could be performed",
+                "meaningVi": "để việc bảo trì có thể được thực hiện"
+            },
+            "skeleton": {
+                "subject": "The production line",
+                "verb": "was suspended",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_std_005",
+            "level": "standard",
+            "question": "Please verify your travel dates carefully ______ you submit the expense reimbursement claim.",
+            "options": {
+                "A": "before",
+                "B": "prior to",
+                "C": "ahead",
+                "D": "during"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng trước mệnh đề (S + V) chỉ trình tự thời gian.",
+            "explanationVi": "'before' đóng vai trò liên từ chỉ thời gian đứng trước mệnh đề 'you submit...'. 'prior to' là giới từ, bắt buộc đi với N/V-ing.",
+            "targetChunk": {
+                "phrase": "before you submit the claim",
+                "meaningVi": "trước khi bạn nộp yêu cầu bồi hoàn"
+            },
+            "skeleton": {
+                "subject": "(You - implied)",
+                "verb": "verify",
+                "object": "your travel dates"
+            }
+        },
+        {
+            "id": "conj_std_006",
+            "level": "standard",
+            "question": "The candidate possesses ______ excellent technical expertise and exceptional leadership skills.",
+            "options": {
+                "A": "both",
+                "B": "either",
+                "C": "neither",
+                "D": "not only"
+            },
+            "correctAnswer": "A",
+            "clue": "Cặp liên từ tương quan kết hợp với 'and': both... and...",
+            "explanationVi": "Cấu trúc tương quan 'both A and B' diễn tả cả A lẫn B. 'either' đi với 'or', 'not only' đi với 'but also'.",
+            "targetChunk": {
+                "phrase": "both technical expertise and leadership skills",
+                "meaningVi": "cả chuyên môn kỹ thuật lẫn kỹ năng lãnh đạo"
+            },
+            "skeleton": {
+                "subject": "The candidate",
+                "verb": "possesses",
+                "object": "both expertise and skills"
+            }
+        },
+        {
+            "id": "conj_std_007",
+            "level": "standard",
+            "question": "______ the workshop begins at 9:00 A.M., attendees are asked to arrive fifteen minutes early.",
+            "options": {
+                "A": "Since",
+                "B": "Unless",
+                "C": "Although",
+                "D": "Whereas"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng đầu mệnh đề nguyên nhân dẫn tới yêu cầu ở mệnh đề chính: Since = Because/As.",
+            "explanationVi": "'Since' là liên từ chỉ nguyên nhân (Vì hội thảo bắt đầu lúc 9h nên người tham gia được yêu cầu đến sớm).",
+            "targetChunk": {
+                "phrase": "since the workshop begins",
+                "meaningVi": "bởi vì hội thảo bắt đầu"
+            },
+            "skeleton": {
+                "subject": "attendees",
+                "verb": "are asked to arrive",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_std_008",
+            "level": "standard",
+            "question": "The company will not release the quarterly software update ______ all critical bugs are resolved.",
+            "options": {
+                "A": "until",
+                "B": "by",
+                "C": "since",
+                "D": "during"
+            },
+            "correctAnswer": "A",
+            "clue": "Cấu trúc phủ định đi với mệnh đề điều kiện mốc thời gian: not... until + S + V.",
+            "explanationVi": "'until' vừa là giới từ vừa là liên từ chỉ sự việc kéo dài tới một thời điểm (sẽ không phát hành cho đến khi mọi lỗi được khắc phục).",
+            "targetChunk": {
+                "phrase": "not release the update until",
+                "meaningVi": "không phát hành bản cập nhật cho đến khi"
+            },
+            "skeleton": {
+                "subject": "The company",
+                "verb": "will not release",
+                "object": "the quarterly software update"
+            }
+        },
+        {
+            "id": "conj_std_009",
+            "level": "standard",
+            "question": "You can either download the application online ______ request a physical installation disc.",
+            "options": {
+                "A": "or",
+                "B": "nor",
+                "C": "and",
+                "D": "also"
+            },
+            "correctAnswer": "A",
+            "clue": "Cặp liên từ tương quan đi kèm với 'either': either... or...",
+            "explanationVi": "'either A or B' biểu thị sự lựa chọn giữa một trong hai phương án.",
+            "targetChunk": {
+                "phrase": "either download online or request",
+                "meaningVi": "hoặc tải trực tuyến hoặc yêu cầu"
+            },
+            "skeleton": {
+                "subject": "You",
+                "verb": "can download or request",
+                "object": "the application / disc"
+            }
+        },
+        {
+            "id": "conj_std_010",
+            "level": "standard",
+            "question": "The warranty will become void ______ repairs are performed by an unauthorized service center.",
+            "options": {
+                "A": "if",
+                "B": "whether",
+                "C": "despite",
+                "D": "even"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng trước mệnh đề điều kiện loại 1 (Hiện tại đơn) dẫn đến hệ quả 'will become void'.",
+            "explanationVi": "'if' là liên từ điều kiện cơ bản. 'whether' dùng cho cấu trúc phân vân/chọn lựa. 'despite' là giới từ.",
+            "targetChunk": {
+                "phrase": "warranty will become void if",
+                "meaningVi": "bảo hành sẽ bị vô hiệu nếu"
+            },
+            "skeleton": {
+                "subject": "The warranty",
+                "verb": "will become",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_std_011",
+            "level": "standard",
+            "question": "The marketing strategy was revised ______ customer feedback indicated a decline in interest.",
+            "options": {
+                "A": "because",
+                "B": "because of",
+                "C": "owing to",
+                "D": "as a result of"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng trước mệnh đề hoàn chỉnh có S ('customer feedback') + V ('indicated').",
+            "explanationVi": "'because' là liên từ đi với S + V. Ba phương án còn lại đều kết thúc bằng giới từ ('of', 'to') nên chỉ đi với cụm danh từ.",
+            "targetChunk": {
+                "phrase": "revised because customer feedback indicated",
+                "meaningVi": "được chỉnh sửa vì phản hồi khách hàng cho thấy"
+            },
+            "skeleton": {
+                "subject": "The marketing strategy",
+                "verb": "was revised",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_std_012",
+            "level": "standard",
+            "question": "The committee will determine ______ to construct a new warehouse or renovate the existing building.",
+            "options": {
+                "A": "whether",
+                "B": "if",
+                "C": "either",
+                "D": "that"
+            },
+            "correctAnswer": "A",
+            "clue": "Cấu trúc lựa chọn đi với to-infinitive và 'or': whether to do sth or...",
+            "explanationVi": "Chỉ 'whether' mới kết hợp trực tiếp với động từ nguyên mẫu có 'to' ('whether to construct or renovate'). 'if' không dùng với to-V.",
+            "targetChunk": {
+                "phrase": "determine whether to construct",
+                "meaningVi": "xác định xem có nên xây dựng hay không"
+            },
+            "skeleton": {
+                "subject": "The committee",
+                "verb": "will determine",
+                "object": "whether clause"
+            }
+        },
+        {
+            "id": "conj_std_013",
+            "level": "standard",
+            "question": "The hotel was fully booked; ______, the management arranged rooms at a nearby partner lodge.",
+            "options": {
+                "A": "therefore",
+                "B": "so",
+                "C": "but",
+                "D": "because"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng sau dấu chấm phẩy (;) và trước dấu phẩy (,) nối hai mệnh đề độc lập.",
+            "explanationVi": "'therefore' là phó từ liên kết (conjunctive adverb) có dấu chấm phẩy phía trước và dấu phẩy phía sau, mang nghĩa 'vì vậy/do đó'. 'so' là liên từ kết hợp chỉ đi sau dấu phẩy đơn.",
+            "targetChunk": {
+                "phrase": "arranged rooms at a nearby lodge",
+                "meaningVi": "sắp xếp phòng tại khu nhà nghỉ đối tác gần đó"
+            },
+            "skeleton": {
+                "subject": "the management",
+                "verb": "arranged",
+                "object": "rooms"
+            }
+        },
+        {
+            "id": "conj_std_014",
+            "level": "standard",
+            "question": "Mr. Clark will not sign the lease agreement ______ the property owner agrees to lower the security deposit.",
+            "options": {
+                "A": "unless",
+                "B": "without",
+                "C": "except",
+                "D": "if"
+            },
+            "correctAnswer": "A",
+            "clue": "Liên từ điều kiện mang nghĩa phủ định: unless = if not (trừ khi).",
+            "explanationVi": "Đứng trước mệnh đề hoàn chỉnh 'the property owner agrees...'. 'unless' tạo nghĩa phủ định hợp lý (sẽ không ký trừ khi chủ nhà đồng ý giảm cọc). 'without' là giới từ.",
+            "targetChunk": {
+                "phrase": "sign the lease agreement unless",
+                "meaningVi": "ký hợp đồng thuê trừ khi"
+            },
+            "skeleton": {
+                "subject": "Mr. Clark",
+                "verb": "will not sign",
+                "object": "the lease agreement"
+            }
+        },
+        {
+            "id": "conj_std_015",
+            "level": "standard",
+            "question": "The supervisor reviewed the spreadsheet carefully, ______ she still missed two calculation errors.",
+            "options": {
+                "A": "yet",
+                "B": "so",
+                "C": "or",
+                "D": "and"
+            },
+            "correctAnswer": "A",
+            "clue": "Liên từ kết hợp đứng sau dấu phẩy mang nghĩa đối lập bất ngờ tương tự 'but'.",
+            "explanationVi": "'yet' đóng vai trò liên từ kết hợp mang nghĩa 'thế nhưng/vậy mà' chỉ sự tương phản.",
+            "targetChunk": {
+                "phrase": "missed calculation errors",
+                "meaningVi": "bỏ sót các lỗi tính toán"
+            },
+            "skeleton": {
+                "subject": "The supervisor",
+                "verb": "reviewed",
+                "object": "the spreadsheet"
+            }
+        },
+        {
+            "id": "conj_std_016",
+            "level": "standard",
+            "question": "The keynote speaker spoke clearly ______ enthusiastically throughout the entire two-hour session.",
+            "options": {
+                "A": "and",
+                "B": "also",
+                "C": "as well",
+                "D": "too"
+            },
+            "correctAnswer": "A",
+            "clue": "Nối hai trạng từ đồng đẳng chỉ cách thức: clearly ______ enthusiastically.",
+            "explanationVi": "Liên từ kết hợp 'and' dùng nối hai thành phần ngữ pháp song hành (ở đây là 2 phó từ).",
+            "targetChunk": {
+                "phrase": "spoke clearly and enthusiastically",
+                "meaningVi": "nói một cách rõ ràng và đầy nhiệt huyết"
+            },
+            "skeleton": {
+                "subject": "The keynote speaker",
+                "verb": "spoke",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_std_017",
+            "level": "standard",
+            "question": "The store offers discounts to customers ______ they make payments with a corporate credit card.",
+            "options": {
+                "A": "whenever",
+                "B": "whatever",
+                "C": "whichever",
+                "D": "whoever"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng trước mệnh đề chỉ thời gian/điều kiện lặp đi lặp lại: whenever = every time that.",
+            "explanationVi": "'whenever' (bất cứ khi nào) nối mệnh đề chỉ điều kiện diễn ra nhiều lần. 'whatever/whichever' không đứng làm liên từ nối thời gian ở đây.",
+            "targetChunk": {
+                "phrase": "offers discounts whenever they make payments",
+                "meaningVi": "giảm giá bất kỳ khi nào họ thanh toán"
+            },
+            "skeleton": {
+                "subject": "The store",
+                "verb": "offers",
+                "object": "discounts"
+            }
+        },
+        {
+            "id": "conj_std_018",
+            "level": "standard",
+            "question": "The campaign was not successful; ______, the marketing team learned valuable lessons from it.",
+            "options": {
+                "A": "however",
+                "B": "although",
+                "C": "despite",
+                "D": "whereas"
+            },
+            "correctAnswer": "A",
+            "clue": "Trạng từ liên kết đứng sau dấu chấm phẩy (;) và có dấu phẩy (,) phía sau diễn tả sự tương phản.",
+            "explanationVi": "'however' là phó từ liên kết nối hai ý trái ngược. 'although/whereas' là liên từ phụ thuộc không đứng độc lập sau dấu chấm phẩy theo cấu trúc này.",
+            "targetChunk": {
+                "phrase": "learned valuable lessons from it",
+                "meaningVi": "rút ra những bài học quý giá từ nó"
+            },
+            "skeleton": {
+                "subject": "the marketing team",
+                "verb": "learned",
+                "object": "valuable lessons"
+            }
+        },
+        {
+            "id": "conj_std_019",
+            "level": "standard",
+            "question": "The system will notify you by email ______ your order is dispatched from our distribution facility.",
+            "options": {
+                "A": "as soon as",
+                "B": "as long",
+                "C": "soon",
+                "D": "promptly"
+            },
+            "correctAnswer": "A",
+            "clue": "Liên từ chỉ thời gian nối hai hành động xảy ra liền kề nhau: as soon as + S + V.",
+            "explanationVi": "'as soon as' (ngay khi) đóng vai trò liên từ nối mệnh đề 'your order is dispatched'. 'soon' là phó từ không nối mệnh đề.",
+            "targetChunk": {
+                "phrase": "notify you as soon as the order is dispatched",
+                "meaningVi": "thông báo cho bạn ngay khi đơn hàng được gửi đi"
+            },
+            "skeleton": {
+                "subject": "The system",
+                "verb": "will notify",
+                "object": "you"
+            }
+        },
+        {
+            "id": "conj_std_020",
+            "level": "standard",
+            "question": "Not only did the sales division exceed its monthly quota, ______ it also set a new annual record.",
+            "options": {
+                "A": "but",
+                "B": "and",
+                "C": "so",
+                "D": "or"
+            },
+            "correctAnswer": "A",
+            "clue": "Cặp liên từ tương quan đảo ngữ: Not only... but also...",
+            "explanationVi": "Cấu trúc tương quan 'not only... but (also)...'. Ở vế sau có sẵn 'also' nên vị trí nối bắt buộc là 'but'.",
+            "targetChunk": {
+                "phrase": "exceed its monthly quota",
+                "meaningVi": "vượt định mức chỉ tiêu hàng tháng"
+            },
+            "skeleton": {
+                "subject": "the sales division",
+                "verb": "did exceed",
+                "object": "its monthly quota"
+            }
+        },
+        {
+            "id": "conj_std_021",
+            "level": "standard",
+            "question": "The regional office will remain open ______ all pending customer inquiries have been addressed.",
+            "options": {
+                "A": "until",
+                "B": "by",
+                "C": "during",
+                "D": "prior to"
+            },
+            "correctAnswer": "A",
+            "clue": "Liên từ chỉ sự việc kéo dài liên tục cho tới một mốc: until + S + V.",
+            "explanationVi": "Theo sau là mệnh đề hoàn chỉnh (S: 'all pending inquiries', V: 'have been addressed'). Chỉ 'until' làm liên từ trong nhóm từ này.",
+            "targetChunk": {
+                "phrase": "remain open until inquiries are addressed",
+                "meaningVi": "tiếp tục mở cửa cho đến khi các thắc mắc được giải quyết"
+            },
+            "skeleton": {
+                "subject": "The regional office",
+                "verb": "will remain",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_std_022",
+            "level": "standard",
+            "question": "The software is user-friendly; ______, it comes with twenty-four-hour technical customer assistance.",
+            "options": {
+                "A": "furthermore",
+                "B": "in spite of",
+                "C": "even though",
+                "D": "nevertheless"
+            },
+            "correctAnswer": "A",
+            "clue": "Trạng từ liên kết chỉ sự bổ sung thông tin tích cực (; furthermore,).",
+            "explanationVi": "'furthermore' (hơn nữa/thêm vào đó) là phó từ liên kết dùng bổ sung thông tin cùng chiều hướng. 'nevertheless' mang nghĩa đối lập.",
+            "targetChunk": {
+                "phrase": "user-friendly; furthermore, it comes with",
+                "meaningVi": "thân thiện với người dùng; hơn thế nữa, nó đi kèm"
+            },
+            "skeleton": {
+                "subject": "it",
+                "verb": "comes",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_std_023",
+            "level": "standard",
+            "question": "The client requested ______ expedited shipping or an immediate full refund for the delayed order.",
+            "options": {
+                "A": "either",
+                "B": "neither",
+                "C": "both",
+                "D": "not only"
+            },
+            "correctAnswer": "A",
+            "clue": "Nhìn thấy liên từ 'or' ở vế sau, suy ra liên từ tương quan đi trước là 'either'.",
+            "explanationVi": "Cấu trúc song song 'either A or B'. Cả hai vế nối đều là cụm danh từ ('expedited shipping' vs 'an immediate full refund').",
+            "targetChunk": {
+                "phrase": "either expedited shipping or a refund",
+                "meaningVi": "hoặc giao hàng hỏa tốc hoặc hoàn tiền"
+            },
+            "skeleton": {
+                "subject": "The client",
+                "verb": "requested",
+                "object": "shipping or refund"
+            }
+        },
+        {
+            "id": "conj_std_024",
+            "level": "standard",
+            "question": "______ Ms. Kim was initially nervous about the presentation, she spoke with great confidence.",
+            "options": {
+                "A": "Even though",
+                "B": "Despite",
+                "C": "In spite",
+                "D": "Regardless"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng trước mệnh đề hoàn chỉnh (S + V) diễn tả sự nhượng bộ đối lập.",
+            "explanationVi": "'Even though' là liên từ phụ thuộc đi với S + V ('Ms. Kim was...'). 'Despite' là giới từ, 'In spite' thiếu 'of'.",
+            "targetChunk": {
+                "phrase": "spoke with great confidence",
+                "meaningVi": "nói với sự tự tin lớn"
+            },
+            "skeleton": {
+                "subject": "she",
+                "verb": "spoke",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_std_025",
+            "level": "standard",
+            "question": "The project was completed within budget ______ the engineering team encountered unexpected equipment delays.",
+            "options": {
+                "A": "even though",
+                "B": "because",
+                "C": "since",
+                "D": "so that"
+            },
+            "correctAnswer": "A",
+            "clue": "Nối hai mệnh đề có ý nghĩa trái ngược nhau (hoàn thành trong ngân sách vs gặp trục trặc chậm trễ).",
+            "explanationVi": "'even though' (mặc dù) mang tính đối lập phù hợp ngữ cảnh. 'because/since' chỉ lý do nguyên nhân là sai logic nghĩa.",
+            "targetChunk": {
+                "phrase": "completed within budget even though",
+                "meaningVi": "hoàn thành trong ngân sách mặc dù"
+            },
+            "skeleton": {
+                "subject": "The project",
+                "verb": "was completed",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_std_026",
+            "level": "standard",
+            "question": "Employees may work remotely, ______ they maintain their regular daily productivity targets.",
+            "options": {
+                "A": "as long as",
+                "B": "as much as",
+                "C": "as well as",
+                "D": "as soon as"
+            },
+            "correctAnswer": "A",
+            "clue": "Liên từ mang ý nghĩa điều kiện 'miễn là': as long as = provided that.",
+            "explanationVi": "'as long as' (miễn là) là liên từ điều kiện nối mệnh đề 'they maintain...'. 'as well as' là cụm từ nối mang nghĩa cũng như.",
+            "targetChunk": {
+                "phrase": "as long as they maintain productivity",
+                "meaningVi": "miễn là họ duy trì được năng suất"
+            },
+            "skeleton": {
+                "subject": "Employees",
+                "verb": "may work",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_std_027",
+            "level": "standard",
+            "question": "The executive board approved the construction plan, ______ the legal department raised minor liability concerns.",
+            "options": {
+                "A": "although",
+                "B": "despite",
+                "C": "because",
+                "D": "in order that"
+            },
+            "correctAnswer": "A",
+            "clue": "Nối mệnh đề thứ hai mang ý nghĩa nhượng bộ, đối lập với việc đã được phê duyệt.",
+            "explanationVi": "'although' là liên từ đi với S + V ('the legal department raised...'). 'despite' chỉ đi với cụm danh từ.",
+            "targetChunk": {
+                "phrase": "approved the construction plan although",
+                "meaningVi": "phê duyệt kế hoạch xây dựng mặc dù"
+            },
+            "skeleton": {
+                "subject": "The executive board",
+                "verb": "approved",
+                "object": "the construction plan"
+            }
+        },
+        {
+            "id": "conj_std_028",
+            "level": "standard",
+            "question": "The flight was delayed due to mechanical difficulties, ______ passengers received complimentary meal vouchers.",
+            "options": {
+                "A": "so",
+                "B": "yet",
+                "C": "but",
+                "D": "or"
+            },
+            "correctAnswer": "A",
+            "clue": "Liên từ kết hợp đứng sau dấu phẩy chỉ hệ quả logic của sự việc trước.",
+            "explanationVi": "'so' (vì vậy/cho nên) là liên từ kết hợp thể hiện kết quả tất yếu (chuyến bay bị hoãn, vì vậy hành khách được phát phiếu ăn miễn phí).",
+            "targetChunk": {
+                "phrase": "received complimentary meal vouchers",
+                "meaningVi": "nhận phiếu ăn miễn phí"
+            },
+            "skeleton": {
+                "subject": "The flight",
+                "verb": "was delayed",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_std_029",
+            "level": "standard",
+            "question": "Please turn off all computer workstations ______ leaving the corporate office for the weekend.",
+            "options": {
+                "A": "before",
+                "B": "during",
+                "C": "ahead",
+                "D": "between"
+            },
+            "correctAnswer": "A",
+            "clue": "Từ vừa là giới từ vừa là liên từ rút gọn kết hợp trực tiếp với V-ing ('leaving').",
+            "explanationVi": "'before + V-ing' là cấu trúc rút gọn đồng chủ ngữ chỉ thời gian. 'during' không đi với V-ing trong văn phong chuẩn.",
+            "targetChunk": {
+                "phrase": "turn off workstations before leaving",
+                "meaningVi": "tắt máy trạm trước khi rời đi"
+            },
+            "skeleton": {
+                "subject": "(You - implied)",
+                "verb": "turn off",
+                "object": "all computer workstations"
+            }
+        },
+        {
+            "id": "conj_std_030",
+            "level": "standard",
+            "question": "The factory operated at full capacity; ______, output still fell short of monthly customer demand.",
+            "options": {
+                "A": "nonetheless",
+                "B": "in addition",
+                "C": "consequently",
+                "D": "similarly"
+            },
+            "correctAnswer": "A",
+            "clue": "Phó từ liên kết diễn tả sự tương phản sâu sắc nằm giữa cấu trúc '; ______,'.",
+            "explanationVi": "'nonetheless' (dẫu vậy/tuy nhiên) mang nghĩa đối lập giữa năng suất tối đa nhưng vẫn không đủ cầu. 'consequently' chỉ kết quả thuận, 'in addition' là bổ sung.",
+            "targetChunk": {
+                "phrase": "fell short of customer demand",
+                "meaningVi": "không đạt được chỉ tiêu nhu cầu của khách hàng"
+            },
+            "skeleton": {
+                "subject": "output",
+                "verb": "fell short of",
+                "object": "monthly customer demand"
+            }
+        },
+        {
+            "id": "conj_adv_001",
+            "level": "advanced",
+            "question": "______ that all contractual prerequisites are satisfied, the multinational conglomerate will finalize the acquisition.",
+            "options": {
+                "A": "Provided",
+                "B": "Regarding",
+                "C": "Concerning",
+                "D": "Unless"
+            },
+            "correctAnswer": "A",
+            "clue": "Liên từ giả định điều kiện kết hợp với 'that': Provided that = As long as = If.",
+            "explanationVi": "'Provided that + S + V' tạo thành mệnh đề phụ điều kiện (Miễn là tất cả các điều kiện tiên quyết trong hợp đồng được thỏa mãn). 'Regarding/Concerning' là giới từ.",
+            "targetChunk": {
+                "phrase": "provided that prerequisites are satisfied",
+                "meaningVi": "với điều kiện là các điều kiện tiên quyết được thỏa mãn"
+            },
+            "skeleton": {
+                "subject": "the multinational conglomerate",
+                "verb": "will finalize",
+                "object": "the acquisition"
+            }
+        },
+        {
+            "id": "conj_adv_002",
+            "level": "advanced",
+            "question": "The manufacturing line was running smoothly, ______ occasional brief interruptions for recalibration.",
+            "options": {
+                "A": "save for",
+                "B": "inasmuch as",
+                "C": "whereas",
+                "D": "as though"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm giới từ/từ nối cao cấp mang nghĩa 'ngoại trừ': save for = except for.",
+            "explanationVi": "'save for + N' (ngoại trừ những gián đoạn ngắn) loại trừ một chi tiết nhỏ khỏi bức tranh tổng thể. Các phương án còn lại là liên từ phụ thuộc cần mệnh đề S + V.",
+            "targetChunk": {
+                "phrase": "save for occasional interruptions",
+                "meaningVi": "ngoại trừ những gián đoạn thi thoảng"
+            },
+            "skeleton": {
+                "subject": "The manufacturing line",
+                "verb": "was running",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_adv_003",
+            "level": "advanced",
+            "question": "Domestic retail sales plummeted; ______, the enterprise expanded export shipments to compensate for the deficit.",
+            "options": {
+                "A": "accordingly",
+                "B": "whereas",
+                "C": "notwithstanding",
+                "D": "although"
+            },
+            "correctAnswer": "A",
+            "clue": "Trạng từ liên kết đứng sau dấu chấm phẩy và trước dấu phẩy mang nghĩa 'do đó/phù hợp với tình hình': accordingly = therefore.",
+            "explanationVi": "'accordingly' (do vậy/theo đó) là phó từ liên kết chỉ hành động ứng phó phù hợp với kết quả trước. 'notwithstanding' là giới từ/phó từ nhượng bộ, không chỉ nhân quả.",
+            "targetChunk": {
+                "phrase": "expanded shipments to compensate for",
+                "meaningVi": "mở rộng các lô hàng để bù đắp cho"
+            },
+            "skeleton": {
+                "subject": "the enterprise",
+                "verb": "expanded",
+                "object": "export shipments"
+            }
+        },
+        {
+            "id": "conj_adv_004",
+            "level": "advanced",
+            "question": "______ the laboratory findings were inconclusive, the pharmaceutical director mandated a second phase of clinical testing.",
+            "options": {
+                "A": "Inasmuch as",
+                "B": "In spite of",
+                "C": "Regardless",
+                "D": "Even"
+            },
+            "correctAnswer": "A",
+            "clue": "Liên từ trang trọng mang nghĩa nguyên nhân: Inasmuch as = Since / Because.",
+            "explanationVi": "'Inasmuch as + S + V' là liên từ văn phong trang trọng chỉ căn cứ/lý do (Xét thấy/Bởi vì kết quả thí nghiệm chưa thuyết phục). 'In spite of' là giới từ.",
+            "targetChunk": {
+                "phrase": "mandated a second phase of clinical testing",
+                "meaningVi": "yêu cầu giai đoạn thứ hai của thử nghiệm lâm sàng"
+            },
+            "skeleton": {
+                "subject": "the pharmaceutical director",
+                "verb": "mandated",
+                "object": "a second phase of clinical testing"
+            }
+        },
+        {
+            "id": "conj_adv_005",
+            "level": "advanced",
+            "question": "The senior partners debated ______ they should accept the hostile takeover bid or proceed with counter-litigation.",
+            "options": {
+                "A": "whether",
+                "B": "if",
+                "C": "whatever",
+                "D": "unless"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng sau động từ tranh luận/thảo luận 'debated' và đi cùng tương quan 'or'.",
+            "explanationVi": "Sau các động từ như 'debate', 'discuss', 'consider' thì danh từ hóa mệnh đề dùng 'whether... or...' thay vì 'if' trong ngữ cảnh trang trọng.",
+            "targetChunk": {
+                "phrase": "debated whether they should accept",
+                "meaningVi": "tranh luận xem liệu họ có nên chấp thuận"
+            },
+            "skeleton": {
+                "subject": "The senior partners",
+                "verb": "debated",
+                "object": "whether clause"
+            }
+        },
+        {
+            "id": "conj_adv_006",
+            "level": "advanced",
+            "question": "The merger will proceed across all European markets ______ regulatory antitrust authorities intervene.",
+            "options": {
+                "A": "lest",
+                "B": "unless",
+                "C": "excepting",
+                "D": "without"
+            },
+            "correctAnswer": "B",
+            "clue": "Liên từ phủ định điều kiện nối mệnh đề S + V ('authorities intervene').",
+            "explanationVi": "'unless' (trừ khi) nối mệnh đề chỉ điều kiện đảo ngược. 'lest' nghĩa là e sợ rằng (đi kèm should/V-bare), 'excepting' và 'without' là giới từ.",
+            "targetChunk": {
+                "phrase": "proceed across all markets unless",
+                "meaningVi": "tiến hành trên toàn bộ các thị trường trừ khi"
+            },
+            "skeleton": {
+                "subject": "The merger",
+                "verb": "will proceed",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_adv_007",
+            "level": "advanced",
+            "question": "The flagship smartphone boasts cutting-edge battery efficiency, ______ the budget variant relies on older technology.",
+            "options": {
+                "A": "whereas",
+                "B": "despite",
+                "C": "likewise",
+                "D": "moreover"
+            },
+            "correctAnswer": "A",
+            "clue": "Liên từ so sánh tương phản song song giữa hai chủ thể khác nhau: whereas = while.",
+            "explanationVi": "'whereas' nối hai mệnh đề đối chiếu hai tính chất đối nghịch của hai chủ thể (dòng cao cấp vs dòng giá rẻ).",
+            "targetChunk": {
+                "phrase": "whereas the budget variant relies on",
+                "meaningVi": "trong khi biến thể giá rẻ lại dựa vào"
+            },
+            "skeleton": {
+                "subject": "The flagship smartphone",
+                "verb": "boasts",
+                "object": "cutting-edge battery efficiency"
+            }
+        },
+        {
+            "id": "conj_adv_008",
+            "level": "advanced",
+            "question": "The executive committee updated the corporate charter ______ avoid potential regulatory liabilities down the road.",
+            "options": {
+                "A": "so as to",
+                "B": "in order that",
+                "C": "so that",
+                "D": "with a view"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm chỉ mục đích đứng trước động từ nguyên mẫu V-bare ('avoid'): so as to + V.",
+            "explanationVi": "'so as to + V' chỉ mục đích. 'in order that' và 'so that' bắt buộc phải đi với mệnh đề (S + V). 'with a view' cần 'to + V-ing'.",
+            "targetChunk": {
+                "phrase": "so as to avoid potential liabilities",
+                "meaningVi": "cốt để tránh các trách nhiệm pháp lý tiềm ẩn"
+            },
+            "skeleton": {
+                "subject": "The executive committee",
+                "verb": "updated",
+                "object": "the corporate charter"
+            }
+        },
+        {
+            "id": "conj_adv_009",
+            "level": "advanced",
+            "question": "The chief financial officer presented the risk analysis in detail ______ the board members could make an informed decision.",
+            "options": {
+                "A": "in order that",
+                "B": "so as to",
+                "C": "in order to",
+                "D": "because of"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng trước mệnh đề hoàn chỉnh (S + modal verb: 'the board members could make') chỉ mục đích.",
+            "explanationVi": "'in order that' tương đương với 'so that', theo sau là mệnh đề có động từ khiếm khuyết 'could'. Các phương án 'so as to' hay 'in order to' phải đi trực tiếp với động từ nguyên mẫu.",
+            "targetChunk": {
+                "phrase": "in order that members could make an informed decision",
+                "meaningVi": "để các thành viên có thể đưa ra quyết định sáng suốt"
+            },
+            "skeleton": {
+                "subject": "The chief financial officer",
+                "verb": "presented",
+                "object": "the risk analysis"
+            }
+        },
+        {
+            "id": "conj_adv_010",
+            "level": "advanced",
+            "question": "The restructuring plan is undeniably complex; ______, its long-term benefits to operational agility are clear.",
+            "options": {
+                "A": "nonetheless",
+                "B": "furthermore",
+                "C": "consequently",
+                "D": "namely"
+            },
+            "correctAnswer": "A",
+            "clue": "Cấu trúc liên kết '; [Phó từ], ' chỉ sự nhượng bộ thừa nhận khó khăn nhưng khẳng định tính tích cực.",
+            "explanationVi": "'nonetheless' (tuy nhiên/dẫu vậy) dùng để nối ý khi thừa nhận khó khăn ở vế trước nhưng nhấn mạnh kết quả tích cực ở vế sau.",
+            "targetChunk": {
+                "phrase": "complex; nonetheless, its long-term benefits",
+                "meaningVi": "phức tạp; dẫu vậy, những lợi ích lâu dài của nó"
+            },
+            "skeleton": {
+                "subject": "its long-term benefits",
+                "verb": "are",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_adv_011",
+            "level": "advanced",
+            "question": "Hardly had the chairman concluded his remarks ______ the shareholders began raising contentious questions.",
+            "options": {
+                "A": "when",
+                "B": "than",
+                "C": "then",
+                "D": "as"
+            },
+            "correctAnswer": "A",
+            "clue": "Cấu trúc đảo ngữ thời gian tương quan cố định: Hardly / Scarcely + had + S + V3 + when + S + V2.",
+            "explanationVi": "Cặp liên từ cố định: 'Hardly... when...' (Vừa mới... thì...). 'No sooner' mới đi với 'than'.",
+            "targetChunk": {
+                "phrase": "hardly had the chairman concluded when",
+                "meaningVi": "chủ tịch vừa mới kết thúc phát biểu thì"
+            },
+            "skeleton": {
+                "subject": "the shareholders",
+                "verb": "began raising",
+                "object": "contentious questions"
+            }
+        },
+        {
+            "id": "conj_adv_012",
+            "level": "advanced",
+            "question": "No sooner had the factory installed the automated machinery ______ overall assembly output doubled.",
+            "options": {
+                "A": "than",
+                "B": "when",
+                "C": "that",
+                "D": "as"
+            },
+            "correctAnswer": "A",
+            "clue": "Cấu trúc đảo ngữ thời gian tương quan cố định: No sooner + had + S + V3 + than + S + V2.",
+            "explanationVi": "Cặp tương quan bắt buộc: 'No sooner... than...' (Ngay khi... thì...).",
+            "targetChunk": {
+                "phrase": "no sooner had installed than output doubled",
+                "meaningVi": "vừa mới lắp đặt xong thì sản lượng đã tăng gấp đôi"
+            },
+            "skeleton": {
+                "subject": "overall assembly output",
+                "verb": "doubled",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_adv_013",
+            "level": "advanced",
+            "question": "All proprietary algorithms must remain secured ______ unauthorized competitors replicate the technology.",
+            "options": {
+                "A": "lest",
+                "B": "unless",
+                "C": "in case of",
+                "D": "supposing"
+            },
+            "correctAnswer": "A",
+            "clue": "Liên từ cổ điển/trang trọng mang nghĩa cảnh báo tiêu cực: lest + S + (should) + V-bare.",
+            "explanationVi": "'lest' (vì sợ rằng / để không xảy ra việc...) đi cùng mệnh đề giả định với động từ nguyên mẫu không chia ('replicate').",
+            "targetChunk": {
+                "phrase": "secured lest competitors replicate",
+                "meaningVi": "được bảo mật vì e sợ đối thủ sao chép"
+            },
+            "skeleton": {
+                "subject": "All proprietary algorithms",
+                "verb": "must remain",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_adv_014",
+            "level": "advanced",
+            "question": "The contractor guarantees delivery by October, ______ adverse weather does not compromise transit routes.",
+            "options": {
+                "A": "assuming",
+                "B": "as for",
+                "C": "excepting",
+                "D": "regardless"
+            },
+            "correctAnswer": "A",
+            "clue": "Dạng phân từ làm liên từ điều kiện giả định: Assuming (that) + S + V.",
+            "explanationVi": "'Assuming (that)' (Giả định rằng / Trong điều kiện là) đứng làm liên từ nối mệnh đề điều kiện. Các từ khác là giới từ.",
+            "targetChunk": {
+                "phrase": "assuming adverse weather does not compromise",
+                "meaningVi": "giả định rằng thời tiết bất lợi không làm ảnh hưởng"
+            },
+            "skeleton": {
+                "subject": "The contractor",
+                "verb": "guarantees",
+                "object": "delivery"
+            }
+        },
+        {
+            "id": "conj_adv_015",
+            "level": "advanced",
+            "question": "The enterprise will recruit three overseas liaisons, the primary role of ______ will be client relationship management.",
+            "options": {
+                "A": "whom",
+                "B": "which",
+                "C": "them",
+                "D": "who"
+            },
+            "correctAnswer": "A",
+            "clue": "Cấu trúc lượng từ/danh từ + giới từ + đại từ quan hệ nối hai mệnh đề: 'the role of whom'.",
+            "explanationVi": "Vì đứng sau giới từ 'of' và đại diện cho người ('liaisons' - nhân viên liên lạc), bắt buộc dùng 'whom' để nối hai mệnh đề.",
+            "targetChunk": {
+                "phrase": "the primary role of whom will be",
+                "meaningVi": "vai trò chính của những người này sẽ là"
+            },
+            "skeleton": {
+                "subject": "The enterprise",
+                "verb": "will recruit",
+                "object": "three overseas liaisons"
+            }
+        },
+        {
+            "id": "conj_adv_016",
+            "level": "advanced",
+            "question": "The warehouse inventory system experienced a breakdown; ______, all scheduled dispatches had to be deferred.",
+            "options": {
+                "A": "as a consequence",
+                "B": "on the other hand",
+                "C": "even so",
+                "D": "in spite of this"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm phó từ liên kết (; as a consequence,) chỉ kết quả logic trực tiếp.",
+            "explanationVi": "'as a consequence' (hệ quả là) nối hai mệnh đề độc lập để nêu kết quả tất yếu phát sinh từ sự cố kỹ thuật.",
+            "targetChunk": {
+                "phrase": "had to be deferred",
+                "meaningVi": "đã phải bị hoãn lại"
+            },
+            "skeleton": {
+                "subject": "all scheduled dispatches",
+                "verb": "had to be deferred",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_adv_017",
+            "level": "advanced",
+            "question": "The company decided to hire a forensic accounting team, ______ uncovering several systemic invoicing irregularities.",
+            "options": {
+                "A": "thereby",
+                "B": "inasmuch",
+                "C": "whereas",
+                "D": "provided"
+            },
+            "correctAnswer": "A",
+            "clue": "Phó từ chỉ kết quả kết hợp mệnh đề phân từ hiện tại: thereby + V-ing.",
+            "explanationVi": "'thereby + V-ing' mang nghĩa 'bằng cách đó / do đó dẫn đến việc...', dùng rất phổ biến trong đề thi TOEIC phân hóa 900+.",
+            "targetChunk": {
+                "phrase": "thereby uncovering several irregularities",
+                "meaningVi": "qua đó phát hiện ra hàng loạt sự bất thường"
+            },
+            "skeleton": {
+                "subject": "The company",
+                "verb": "decided to hire",
+                "object": "a forensic accounting team"
+            }
+        },
+        {
+            "id": "conj_adv_018",
+            "level": "advanced",
+            "question": "The auditor expressed strong reservations about the report, ______ indicating that significant adjustments were required.",
+            "options": {
+                "A": "thus",
+                "B": "because",
+                "C": "so that",
+                "D": "unless"
+            },
+            "correctAnswer": "A",
+            "clue": "Phó từ rút gọn kết hợp hiện tại phân từ V-ing: thus + V-ing.",
+            "explanationVi": "'thus + V-ing' diễn giải kết quả hoặc kết luận tất yếu từ hành động vế trước (do đó chỉ ra rằng...). 'because' hay 'unless' cần mệnh đề có S + V.",
+            "targetChunk": {
+                "phrase": "thus indicating that adjustments were required",
+                "meaningVi": "do đó ngụ ý rằng các điều chỉnh là bắt buộc"
+            },
+            "skeleton": {
+                "subject": "The auditor",
+                "verb": "expressed",
+                "object": "strong reservations"
+            }
+        },
+        {
+            "id": "conj_adv_019",
+            "level": "advanced",
+            "question": "The senior engineer was offered a higher salary elsewhere, ______ she elected to stay with the consulting firm.",
+            "options": {
+                "A": "yet",
+                "B": "for",
+                "C": "so",
+                "D": "nor"
+            },
+            "correctAnswer": "A",
+            "clue": "Liên từ kết hợp đứng sau dấu phẩy mang tính nhượng bộ bất ngờ: nhận được lương cao hơn nhưng vẫn ở lại.",
+            "explanationVi": "'yet' (vậy mà/thế nhưng) đóng vai trò liên từ chỉ sự tương phản đối lập sâu sắc trong quyết định.",
+            "targetChunk": {
+                "phrase": "elected to stay with the firm",
+                "meaningVi": "đã quyết định tiếp tục ở lại với công ty"
+            },
+            "skeleton": {
+                "subject": "The senior engineer",
+                "verb": "was offered",
+                "object": "a higher salary"
+            }
+        },
+        {
+            "id": "conj_adv_020",
+            "level": "advanced",
+            "question": "The merger will proceed as scheduled, ______ the regulatory commission decides to issue an immediate injunction.",
+            "options": {
+                "A": "unless",
+                "B": "despite",
+                "C": "in case of",
+                "D": "without"
+            },
+            "correctAnswer": "A",
+            "clue": "Phân biệt liên từ và giới từ: đứng trước mệnh đề hoàn chỉnh S + V ('the commission decides').",
+            "explanationVi": "'unless' là liên từ đi với S + V. Các từ 'despite', 'in case of', 'without' đều là giới từ chỉ đi với danh từ/V-ing.",
+            "targetChunk": {
+                "phrase": "issue an immediate injunction",
+                "meaningVi": "ban hành lệnh cấm ngay lập tức"
+            },
+            "skeleton": {
+                "subject": "The merger",
+                "verb": "will proceed",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_adv_021",
+            "level": "advanced",
+            "question": "______ had the new compliance software been deployed than numerous security flaws were detected.",
+            "options": {
+                "A": "No sooner",
+                "B": "Hardly",
+                "C": "Scarcely",
+                "D": "Barely"
+            },
+            "correctAnswer": "A",
+            "clue": "Nhìn thấy từ nối 'than' ở mệnh đề sau suy ra cấu trúc bắt buộc 'No sooner... than...'.",
+            "explanationVi": "Chỉ có 'No sooner' mới đi kèm với 'than'. Các trạng từ 'Hardly', 'Scarcely', 'Barely' bắt buộc phải đi với 'when'.",
+            "targetChunk": {
+                "phrase": "numerous security flaws were detected",
+                "meaningVi": "nhiều lỗ hổng bảo mật đã bị phát hiện"
+            },
+            "skeleton": {
+                "subject": "the new compliance software",
+                "verb": "had been deployed",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_adv_022",
+            "level": "advanced",
+            "question": "The plant manager insisted on personal inspections ______ verify adherence to environmental protocols.",
+            "options": {
+                "A": "so as to",
+                "B": "in order that",
+                "C": "with a view to",
+                "D": "as well as"
+            },
+            "correctAnswer": "A",
+            "clue": "Chỉ mục đích kết hợp động từ nguyên mẫu: so as to + V-bare ('verify').",
+            "explanationVi": "'so as to verify' (cốt để xác minh). 'in order that' cần mệnh đề S+V, 'with a view to' cần V-ing.",
+            "targetChunk": {
+                "phrase": "verify adherence to protocols",
+                "meaningVi": "xác minh sự tuân thủ các quy chuẩn"
+            },
+            "skeleton": {
+                "subject": "The plant manager",
+                "verb": "insisted on",
+                "object": "personal inspections"
+            }
+        },
+        {
+            "id": "conj_adv_023",
+            "level": "advanced",
+            "question": "The commercial real estate market experienced a sudden downturn; ______, retail rents climbed steadily.",
+            "options": {
+                "A": "even so",
+                "B": "furthermore",
+                "C": "hence",
+                "D": "as a result"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm phó từ liên kết tương phản nhượng bộ (; even so, = dù vậy / tuy nhiên).",
+            "explanationVi": "'even so' (dù là như thế) chỉ sự đối nghịch kỳ lạ giữa thị trường bất động sản đi xuống nhưng giá thuê mặt bằng bán lẻ vẫn tăng.",
+            "targetChunk": {
+                "phrase": "retail rents climbed steadily",
+                "meaningVi": "giá thuê mặt bằng bán lẻ vẫn tăng đều"
+            },
+            "skeleton": {
+                "subject": "retail rents",
+                "verb": "climbed",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_adv_024",
+            "level": "advanced",
+            "question": "The legal department drafted the contract clauses meticulously ______ any ambiguity should lead to costly litigation.",
+            "options": {
+                "A": "lest",
+                "B": "unless",
+                "C": "provided",
+                "D": "in case of"
+            },
+            "correctAnswer": "A",
+            "clue": "Mệnh đề giả định phòng ngừa tiêu cực có trợ động từ 'should': lest + S + should + V.",
+            "explanationVi": "'lest... should...' (phòng ngừa kẻo lại...). Cấu trúc văn phong pháp lý cao cấp cực kỳ đặc trưng của Part 5 TOEIC 900+.",
+            "targetChunk": {
+                "phrase": "drafted the contract meticulously lest",
+                "meaningVi": "soạn thảo hợp đồng tỉ mỉ kẻo lại"
+            },
+            "skeleton": {
+                "subject": "The legal department",
+                "verb": "drafted",
+                "object": "the contract clauses"
+            }
+        },
+        {
+            "id": "conj_adv_025",
+            "level": "advanced",
+            "question": "The international trade summit will proceed as scheduled ______ unexpected diplomatic complications arise.",
+            "options": {
+                "A": "barring the event that",
+                "B": "in light of",
+                "C": "owing to",
+                "D": "as a consequence of"
+            },
+            "correctAnswer": "A",
+            "clue": "Liên từ phức chỉ điều kiện loại trừ tương đương 'unless': barring the event that + S + V.",
+            "explanationVi": "'barring the event that' hoạt động như một liên từ điều kiện nối mệnh đề 'unexpected diplomatic complications arise'. Các lựa chọn khác là giới từ.",
+            "targetChunk": {
+                "phrase": "barring the event that complications arise",
+                "meaningVi": "ngoại trừ trường hợp nảy sinh những biến chứng"
+            },
+            "skeleton": {
+                "subject": "The international trade summit",
+                "verb": "will proceed",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_adv_026",
+            "level": "advanced",
+            "question": "The venture capital group withheld funding ______ the startup founders could furnish audited accounts.",
+            "options": {
+                "A": "until such time as",
+                "B": "prior to",
+                "C": "in advance of",
+                "D": "subsequent to"
+            },
+            "correctAnswer": "A",
+            "clue": "Liên từ ghép trang trọng tương đương với 'until': until such time as + S + V.",
+            "explanationVi": "'until such time as' là liên từ thời gian văn phong thương mại cao cấp mang nghĩa 'cho đến khi nào...'. Ba phương án còn lại là giới từ chỉ đi với danh từ/V-ing.",
+            "targetChunk": {
+                "phrase": "withheld funding until such time as",
+                "meaningVi": "giữ lại nguồn vốn cho đến khi nào"
+            },
+            "skeleton": {
+                "subject": "The venture capital group",
+                "verb": "withheld",
+                "object": "funding"
+            }
+        },
+        {
+            "id": "conj_adv_027",
+            "level": "advanced",
+            "question": "The quarterly financial report was accurate, ______ omitting certain minor non-operating expenses.",
+            "options": {
+                "A": "albeit",
+                "B": "despite",
+                "C": "whereas",
+                "D": "in spite"
+            },
+            "correctAnswer": "A",
+            "clue": "Liên từ nhượng bộ rút gọn đứng trước cụm phân từ/tính từ: albeit + V-ing/Adj = although.",
+            "explanationVi": "'albeit' (mặc dù/dẫu rằng) là liên từ chuyển tiếp cao cấp có thể đi trực tiếp với cụm phân từ hoặc tính từ mà không cần mệnh đề hoàn chỉnh.",
+            "targetChunk": {
+                "phrase": "accurate, albeit omitting minor expenses",
+                "meaningVi": "chính xác, dẫu cho có bỏ sót một số chi phí phụ"
+            },
+            "skeleton": {
+                "subject": "The quarterly financial report",
+                "verb": "was",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_adv_028",
+            "level": "advanced",
+            "question": "The executive director is personally liable for all fiscal statements, ______ negligent conduct occurred deliberately or inadvertently.",
+            "options": {
+                "A": "whether",
+                "B": "if",
+                "C": "whatever",
+                "D": "supposing"
+            },
+            "correctAnswer": "A",
+            "clue": "Cặp tương quan 'whether... or...' làm mệnh đề trạng ngữ chỉ sự nhượng bộ (bất kể là do cố ý hay vô tình).",
+            "explanationVi": "'whether A or B' được dùng độc lập như trạng từ phân bua bất kể khả năng nào xảy ra thì kết quả vế chính vẫn không đổi.",
+            "targetChunk": {
+                "phrase": "personally liable whether deliberately or inadvertently",
+                "meaningVi": "chịu trách nhiệm cá nhân bất kể là cố ý hay vô tình"
+            },
+            "skeleton": {
+                "subject": "The executive director",
+                "verb": "is",
+                "object": null
+            }
+        },
+        {
+            "id": "conj_adv_029",
+            "level": "advanced",
+            "question": "The manufacturer expanded cleanroom facilities, ______ achieving complete compliance with international sterilization standards.",
+            "options": {
+                "A": "thereby",
+                "B": "whereas",
+                "C": "inasmuch",
+                "D": "provided"
+            },
+            "correctAnswer": "A",
+            "clue": "Trạng từ liên kết đứng trước cụm V-ing chỉ kết quả tức thời: thereby + V-ing.",
+            "explanationVi": "'thereby achieving' (nhờ đó đạt được) chỉ phương thức và kết quả phát sinh trực tiếp từ việc mở rộng cơ sở phòng sạch.",
+            "targetChunk": {
+                "phrase": "thereby achieving complete compliance",
+                "meaningVi": "nhờ đó đạt được sự tuân thủ tuyệt đối"
+            },
+            "skeleton": {
+                "subject": "The manufacturer",
+                "verb": "expanded",
+                "object": "cleanroom facilities"
+            }
+        },
+        {
+            "id": "conj_adv_030",
+            "level": "advanced",
+            "question": "The audit found no major financial discrepancies, ______ minor procedural nonconformities were highlighted.",
+            "options": {
+                "A": "though",
+                "B": "despite",
+                "C": "in spite of",
+                "D": "instead of"
+            },
+            "correctAnswer": "A",
+            "clue": "Nối mệnh đề thứ hai mang tính nhượng bộ đối lập đứng sau dấu phẩy.",
+            "explanationVi": "'though' hoạt động như một liên từ phụ thuộc đứng trước mệnh đề S + V ('minor procedural nonconformities were highlighted'). Các từ còn lại đều là giới từ.",
+            "targetChunk": {
+                "phrase": "found no major discrepancies though",
+                "meaningVi": "không tìm thấy sai lệch lớn nào dẫu rằng"
+            },
+            "skeleton": {
+                "subject": "The audit",
+                "verb": "found",
+                "object": "no major financial discrepancies"
+            }
+        }
+    ]
+}

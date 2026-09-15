@@ -1,0 +1,1389 @@
+{
+  "topicId": "noun_clauses",
+  "titleVi": "Mệnh đề Danh ngữ & Câu chẻ",
+  "totalQuestions": 60,
+  "standardCount": 30,
+  "advancedCount": 30,
+  "questions": [
+    {
+      "id": "nouncl_std_001",
+      "level": "standard",
+      "question": "The spokesperson announced ______ the merger had been successfully finalized.",
+      "options": {
+        "A": "that",
+        "B": "what",
+        "C": "which",
+        "D": "whatever"
+      },
+      "correctAnswer": "A",
+      "clue": "Phía sau là một mệnh đề hoàn chỉnh đầy đủ S-V-O mang nghĩa sự việc rằng → Chọn that.",
+      "explanationVi": "'that' mở đầu mệnh đề danh ngữ làm tân ngữ cho động từ 'announced', theo sau là một mệnh đề hoàn chỉnh 'the merger had been successfully finalized'. 'what' yêu cầu mệnh đề phía sau khuyết S hoặc O.",
+      "targetChunk": {
+        "phrase": "announced that the merger had been finalized",
+        "meaningVi": "đã thông báo rằng vụ sáp nhập đã được hoàn tất"
+      },
+      "skeleton": {
+        "subject": "The spokesperson",
+        "verb": "announced",
+        "object": "that-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_002",
+      "level": "standard",
+      "question": "Management needs to decide ______ to approve the overseas expansion proposal.",
+      "options": {
+        "A": "whether",
+        "B": "if",
+        "C": "that",
+        "D": "what"
+      },
+      "correctAnswer": "A",
+      "clue": "Đứng trước To-V (decide whether to do sth) → Chỉ có whether đi được với To-V, \"if\" không dùng được.",
+      "explanationVi": "Cấu trúc danh ngữ rút gọn: 'whether + To-infinitive' (liệu có nên làm gì hay không). 'if' tuyệt đối không đi trực tiếp với To-infinitive (không có 'if to approve').",
+      "targetChunk": {
+        "phrase": "decide whether to approve the proposal",
+        "meaningVi": "quyết định xem liệu có nên phê duyệt đề xuất"
+      },
+      "skeleton": {
+        "subject": "Management",
+        "verb": "needs to decide",
+        "object": "whether to approve"
+      }
+    },
+    {
+      "id": "nouncl_std_003",
+      "level": "standard",
+      "question": "______ the client requested during yesterday's phone call has already been shipped.",
+      "options": {
+        "A": "What",
+        "B": "That",
+        "C": "Which",
+        "D": "Where"
+      },
+      "correctAnswer": "A",
+      "clue": "Vế sau 'the client requested' bị khuyết tân ngữ (requested cái gì?) → Cần đại từ nghi vấn: What.",
+      "explanationVi": "'What' đóng vai trò tân ngữ cho 'requested' và toàn bộ cụm 'What the client requested...' đóng vai trò làm chủ ngữ cho động từ 'has been shipped'. 'That' chỉ đi với mệnh đề đã trọn vẹn thành phần.",
+      "targetChunk": {
+        "phrase": "What the client requested has already been shipped",
+        "meaningVi": "những gì khách hàng yêu cầu đã được giao đi"
+      },
+      "skeleton": {
+        "subject": "What the client requested",
+        "verb": "has been shipped",
+        "object": null
+      }
+    },
+    {
+      "id": "nouncl_std_004",
+      "level": "standard",
+      "question": "The committee debated ______ the proposed tax incentive would attract foreign investment.",
+      "options": {
+        "A": "whether",
+        "B": "that",
+        "C": "what",
+        "D": "which"
+      },
+      "correctAnswer": "A",
+      "clue": "Tranh luận về việc liệu sự việc có xảy ra hay không (thể hiện sự hoài nghi/cân nhắc) → Chọn whether.",
+      "explanationVi": "'whether' mở đầu mệnh đề danh ngữ mang nghĩa 'liệu có... hay không' theo sau các động từ biểu thị sự tranh luận, thảo luận (debate, discuss, consider).",
+      "targetChunk": {
+        "phrase": "debated whether the incentive would attract",
+        "meaningVi": "đã tranh luận liệu ưu đãi thuế có thu hút được hay không"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "debated",
+        "object": "whether-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_005",
+      "level": "standard",
+      "question": "The user manual explains ______ to calibrate the optical sensors correctly.",
+      "options": {
+        "A": "how",
+        "B": "what",
+        "C": "which",
+        "D": "that"
+      },
+      "correctAnswer": "A",
+      "clue": "Giải thích cách thức làm điều gì: how to do sth → Chọn how.",
+      "explanationVi": "Cấu trúc danh ngữ rút gọn: 'how to + V-bare' = cách thức thực hiện hành động (how to calibrate = cách hiệu chuẩn). 'what' cần tân ngữ cho calibrate.",
+      "targetChunk": {
+        "phrase": "explains how to calibrate the optical sensors",
+        "meaningVi": "hướng dẫn cách hiệu chuẩn các cảm biến quang học"
+      },
+      "skeleton": {
+        "subject": "manual",
+        "verb": "explains",
+        "object": "how to calibrate"
+      }
+    },
+    {
+      "id": "nouncl_std_006",
+      "level": "standard",
+      "question": "Please submit your quarterly sales forecast to ______ is in charge of budgeting.",
+      "options": {
+        "A": "whoever",
+        "B": "whomever",
+        "C": "anyone",
+        "D": "which"
+      },
+      "correctAnswer": "A",
+      "clue": "Làm chủ ngữ cho động từ 'is' trong mệnh đề danh ngữ sau giới từ to → Chọn whoever.",
+      "explanationVi": "'whoever' (= anyone who) làm chủ ngữ cho mệnh đề 'is in charge of budgeting'. Toàn bộ mệnh đề danh ngữ này làm tân ngữ cho giới từ 'to'. Không dùng 'whomever' vì ở đây cần chủ ngữ cho 'is'.",
+      "targetChunk": {
+        "phrase": "to whoever is in charge of budgeting",
+        "meaningVi": "cho bất kỳ ai phụ trách ngân sách"
+      },
+      "skeleton": {
+        "subject": "You (implied)",
+        "verb": "submit",
+        "object": "sales forecast"
+      }
+    },
+    {
+      "id": "nouncl_std_007",
+      "level": "standard",
+      "question": "______ the corporate revenue declined by 15 percent was unexpected news to investors.",
+      "options": {
+        "A": "That",
+        "B": "What",
+        "C": "Whether",
+        "D": "Which"
+      },
+      "correctAnswer": "A",
+      "clue": "Đứng đầu câu làm chủ ngữ cho mệnh đề hoàn chỉnh trọn vẹn mang nghĩa \"Sự việc rằng...\" → Chọn That.",
+      "explanationVi": "'That + S + V + O' đứng đầu câu làm mệnh đề danh ngữ đóng vai trò chủ ngữ số ít cho động từ 'was'. Mệnh đề phía sau 'the corporate revenue declined by 15 percent' đã hoàn chỉnh ngữ pháp.",
+      "targetChunk": {
+        "phrase": "That the corporate revenue declined was unexpected",
+        "meaningVi": "việc doanh thu công ty sụt giảm là điều bất ngờ"
+      },
+      "skeleton": {
+        "subject": "That-clause",
+        "verb": "was",
+        "object": "unexpected news"
+      }
+    },
+    {
+      "id": "nouncl_std_008",
+      "level": "standard",
+      "question": "The financial director was unsure of ______ the auditors would request additional documentation.",
+      "options": {
+        "A": "whether",
+        "B": "if",
+        "C": "that",
+        "D": "which"
+      },
+      "correctAnswer": "A",
+      "clue": "Đứng sau giới từ 'of': chỉ có 'whether' được đứng sau giới từ, 'if' không đứng sau giới từ được.",
+      "explanationVi": "Quy tắc cốt lõi trong TOEIC: Sau giới từ (of, about, in...) chỉ được dùng 'whether', KHÔNG BAO GIỜ dùng 'if'. (unsure of whether...).",
+      "targetChunk": {
+        "phrase": "unsure of whether the auditors would request",
+        "meaningVi": "không chắc chắn liệu kiểm toán viên có yêu cầu hay không"
+      },
+      "skeleton": {
+        "subject": "The director",
+        "verb": "was",
+        "object": "unsure of whether-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_009",
+      "level": "standard",
+      "question": "Employees may choose ______ of the three optional training modules they wish to complete.",
+      "options": {
+        "A": "whichever",
+        "B": "whatever",
+        "C": "wherever",
+        "D": "whoever"
+      },
+      "correctAnswer": "A",
+      "clue": "Lựa chọn trong một số lượng giới hạn xác định ('of the three modules') → Chọn whichever.",
+      "explanationVi": "'whichever' dùng khi có sự lựa chọn trong một danh sách có giới hạn xác định ('whichever of the three modules' = bất cứ học phần nào trong ba học phần). 'whatever' dùng cho sự lựa chọn mở không giới hạn.",
+      "targetChunk": {
+        "phrase": "choose whichever of the three training modules",
+        "meaningVi": "chọn bất kỳ học phần đào tạo nào trong ba học phần"
+      },
+      "skeleton": {
+        "subject": "Employees",
+        "verb": "may choose",
+        "object": "whichever-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_010",
+      "level": "standard",
+      "question": "The technician explained ______ the system crash occurred during the scheduled backup.",
+      "options": {
+        "A": "why",
+        "B": "what",
+        "C": "which",
+        "D": "whom"
+      },
+      "correctAnswer": "A",
+      "clue": "Giải thích lý do tại sao sự cố xảy ra (mệnh đề sau đã có S-V hoàn chỉnh) → Chọn why.",
+      "explanationVi": "'why' mở đầu mệnh đề danh ngữ chỉ lý do nguyên nhân (explained why the system crash occurred). 'what' và 'which' đòi hỏi câu khuyết S hoặc O.",
+      "targetChunk": {
+        "phrase": "explained why the system crash occurred",
+        "meaningVi": "giải thích lý do tại sao sự cố sập hệ thống lại xảy ra"
+      },
+      "skeleton": {
+        "subject": "The technician",
+        "verb": "explained",
+        "object": "why-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_011",
+      "level": "standard",
+      "question": "Mr. Henderson asked ______ the new project milestones would be finalized by Friday.",
+      "options": {
+        "A": "if",
+        "B": "what",
+        "C": "which",
+        "D": "that"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau động từ 'asked' (hỏi xem liệu... hay không) → Chọn if.",
+      "explanationVi": "'if' mở đầu mệnh đề danh ngữ làm tân ngữ trực tiếp cho các động từ như ask, wonder, know mang nghĩa 'liệu có... hay không'.",
+      "targetChunk": {
+        "phrase": "asked if the new milestones would be finalized",
+        "meaningVi": "đã hỏi liệu các mốc tiến độ mới có được chốt hay không"
+      },
+      "skeleton": {
+        "subject": "Mr. Henderson",
+        "verb": "asked",
+        "object": "if-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_012",
+      "level": "standard",
+      "question": "______ is responsible for the inventory deficit will be held accountable by the board.",
+      "options": {
+        "A": "Whoever",
+        "B": "Whomever",
+        "C": "Anyone",
+        "D": "Everyone"
+      },
+      "correctAnswer": "A",
+      "clue": "Làm chủ ngữ cho mệnh đề danh ngữ đứng đầu câu 'is responsible...' → Chọn Whoever.",
+      "explanationVi": "'Whoever' đứng đầu mệnh đề danh ngữ đóng vai trò chủ ngữ cho 'is responsible'. 'Anyone' cần có đại từ quan hệ đi kèm (Anyone who is responsible...).",
+      "targetChunk": {
+        "phrase": "Whoever is responsible for the deficit",
+        "meaningVi": "bất kỳ ai chịu trách nhiệm cho khoản thâm hụt"
+      },
+      "skeleton": {
+        "subject": "Whoever is responsible",
+        "verb": "will be held",
+        "object": "accountable"
+      }
+    },
+    {
+      "id": "nouncl_std_013",
+      "level": "standard",
+      "question": "The executive committee discussed ______ the annual conference should be held in Chicago or Dallas.",
+      "options": {
+        "A": "whether",
+        "B": "if",
+        "C": "that",
+        "D": "what"
+      },
+      "correctAnswer": "A",
+      "clue": "Đi kèm với cặp lựa chọn 'or' phía sau: whether ... or → Chọn whether.",
+      "explanationVi": "Cấu trúc 'whether A or B' (liệu A hay B). Trong văn phong trang trọng của TOEIC, khi có 'or' đi kèm phía sau thì 'whether' là chuẩn mực tuyệt đối.",
+      "targetChunk": {
+        "phrase": "discussed whether the conference should be held in Chicago or Dallas",
+        "meaningVi": "đã thảo luận xem hội nghị nên tổ chức ở Chicago hay Dallas"
+      },
+      "skeleton": {
+        "subject": "committee",
+        "verb": "discussed",
+        "object": "whether-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_014",
+      "level": "standard",
+      "question": "We were amazed by ______ quickly the development team patched the security vulnerability.",
+      "options": {
+        "A": "how",
+        "B": "what",
+        "C": "which",
+        "D": "that"
+      },
+      "correctAnswer": "A",
+      "clue": "Đứng trước phó từ 'quickly' để tạo mệnh đề cảm thán/danh ngữ đo lường: how quickly → Chọn how.",
+      "explanationVi": "'how + adj/adv + S + V' tạo thành mệnh đề danh ngữ chỉ mức độ (how quickly the team patched = nhóm đã vá lỗ hổng nhanh đến mức nào).",
+      "targetChunk": {
+        "phrase": "amazed by how quickly the team patched",
+        "meaningVi": "kinh ngạc trước việc nhóm đã vá nhanh như thế nào"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "were amazed by",
+        "object": "how quickly-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_015",
+      "level": "standard",
+      "question": "The research report details ______ regional consumer preferences have shifted over the decade.",
+      "options": {
+        "A": "how",
+        "B": "what",
+        "C": "which",
+        "D": "whom"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau 'details' cần từ nối chỉ cách thức sự việc diễn biến: how S + V → Chọn how.",
+      "explanationVi": "'how regional preferences have shifted' = cách thức mà thị hiếu người tiêu dùng đã thay đổi. 'shift' ở đây là nội động từ nên câu đã đủ thành phần, không dùng 'what'.",
+      "targetChunk": {
+        "phrase": "details how regional consumer preferences have shifted",
+        "meaningVi": "trình bày chi tiết cách thức mà thị hiếu tiêu dùng khu vực đã chuyển dịch"
+      },
+      "skeleton": {
+        "subject": "report",
+        "verb": "details",
+        "object": "how-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_016",
+      "level": "standard",
+      "question": "I have no idea ______ car is parked in the reserved visitor space.",
+      "options": {
+        "A": "whose",
+        "B": "who",
+        "C": "whom",
+        "D": "which of"
+      },
+      "correctAnswer": "A",
+      "clue": "Đứng trước danh từ 'car' để hỏi về quyền sở hữu: whose car → Chọn whose.",
+      "explanationVi": "'whose' là từ nghi vấn chỉ sở hữu đứng trước danh từ trong mệnh đề danh ngữ (whose car is parked = xe của ai đang đỗ).",
+      "targetChunk": {
+        "phrase": "no idea whose car is parked in",
+        "meaningVi": "không biết xe của ai đang đỗ ở"
+      },
+      "skeleton": {
+        "subject": "I",
+        "verb": "have",
+        "object": "no idea whose car is parked"
+      }
+    },
+    {
+      "id": "nouncl_std_017",
+      "level": "standard",
+      "question": "The survey results will reveal ______ factors influence customer loyalty the most.",
+      "options": {
+        "A": "which",
+        "B": "that",
+        "C": "whom",
+        "D": "whether"
+      },
+      "correctAnswer": "A",
+      "clue": "Đứng trước danh từ 'factors' để hỏi 'những yếu tố nào': which factors → Chọn which.",
+      "explanationVi": "'which' đóng vai trò từ hạn định nghi vấn đứng trước danh từ số nhiều 'factors' làm chủ ngữ cho 'influence' (which factors influence customer loyalty = những yếu tố nào ảnh hưởng đến lòng trung thành của khách hàng).",
+      "targetChunk": {
+        "phrase": "reveal which factors influence customer loyalty",
+        "meaningVi": "tiết lộ những yếu tố nào ảnh hưởng đến lòng trung thành của khách hàng nhất"
+      },
+      "skeleton": {
+        "subject": "results",
+        "verb": "will reveal",
+        "object": "which factors-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_018",
+      "level": "standard",
+      "question": "It remains unclear ______ the regional sales targets will be achieved by year-end.",
+      "options": {
+        "A": "whether",
+        "B": "that",
+        "C": "what",
+        "D": "which"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau tính từ 'unclear' (chưa rõ ràng, còn bỏ ngỏ khả năng) → Chọn whether.",
+      "explanationVi": "'It remains unclear whether...' = Vẫn chưa rõ liệu... hay không. Tính từ 'unclear' thể hiện sự chưa chắc chắn nên đi với 'whether'.",
+      "targetChunk": {
+        "phrase": "remains unclear whether the targets will be achieved",
+        "meaningVi": "vẫn chưa rõ liệu các mục tiêu có đạt được hay không"
+      },
+      "skeleton": {
+        "subject": "It (dummy)",
+        "verb": "remains",
+        "object": "unclear whether-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_019",
+      "level": "standard",
+      "question": "The legal consultant reminded the board ______ compliance is mandatory for all branches.",
+      "options": {
+        "A": "that",
+        "B": "what",
+        "C": "which",
+        "D": "whether"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc nhắc nhở một sự thật/chân lý: remind sb that S + V → Chọn that.",
+      "explanationVi": "'remind sb that + clause' (nhắc nhở ai rằng điều gì là bắt buộc). Mệnh đề phía sau 'compliance is mandatory...' là một khẳng định hoàn chỉnh.",
+      "targetChunk": {
+        "phrase": "reminded the board that compliance is mandatory",
+        "meaningVi": "đã nhắc nhở hội đồng rằng việc tuân thủ là bắt buộc"
+      },
+      "skeleton": {
+        "subject": "consultant",
+        "verb": "reminded",
+        "object": "the board that-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_020",
+      "level": "standard",
+      "question": "Please let us know ______ date would be most convenient for your product demo.",
+      "options": {
+        "A": "which",
+        "B": "how",
+        "C": "that",
+        "D": "where"
+      },
+      "correctAnswer": "A",
+      "clue": "Đứng trước danh từ đếm được số ít 'date' để hỏi sự lựa chọn ngày nào: which date → Chọn which.",
+      "explanationVi": "'which date' = ngày nào (lựa chọn thời gian thích hợp). 'which' làm từ hạn định bổ nghĩa cho 'date'.",
+      "targetChunk": {
+        "phrase": "let us know which date would be most convenient",
+        "meaningVi": "cho chúng tôi biết ngày nào sẽ tiện nhất"
+      },
+      "skeleton": {
+        "subject": "You (implied)",
+        "verb": "let",
+        "object": "us know"
+      }
+    },
+    {
+      "id": "nouncl_std_021",
+      "level": "standard",
+      "question": "The human resources director explained ______ new hires should report on their first day.",
+      "options": {
+        "A": "where",
+        "B": "what",
+        "C": "which",
+        "D": "that"
+      },
+      "correctAnswer": "A",
+      "clue": "Báo cáo có mặt ở địa điểm nào trong ngày đầu tiên: report ở đâu → Chọn where.",
+      "explanationVi": "'where new hires should report' = nơi mà nhân viên mới nên đến trình diện vào ngày đầu tiên. Mệnh đề chỉ địa điểm làm tân ngữ cho 'explained'.",
+      "targetChunk": {
+        "phrase": "explained where new hires should report",
+        "meaningVi": "đã giải thích nơi nhân viên mới nên đến trình diện"
+      },
+      "skeleton": {
+        "subject": "director",
+        "verb": "explained",
+        "object": "where-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_022",
+      "level": "standard",
+      "question": "______ the keynote speaker will address during the afternoon seminar has not yet been announced.",
+      "options": {
+        "A": "What",
+        "B": "That",
+        "C": "Which",
+        "D": "Whether"
+      },
+      "correctAnswer": "A",
+      "clue": "Động từ 'address' (thuyết trình/đề cập) phía sau bị thiếu tân ngữ → Cần What.",
+      "explanationVi": "'What the keynote speaker will address' = Những gì diễn giả chính sẽ đề cập đến. 'What' làm tân ngữ cho 'address', và toàn bộ mệnh đề làm chủ ngữ cho 'has not yet been announced'.",
+      "targetChunk": {
+        "phrase": "What the keynote speaker will address has not been announced",
+        "meaningVi": "những gì diễn giả chính sẽ thuyết trình vẫn chưa được công bố"
+      },
+      "skeleton": {
+        "subject": "What-clause",
+        "verb": "has not yet been announced",
+        "object": null
+      }
+    },
+    {
+      "id": "nouncl_std_023",
+      "level": "standard",
+      "question": "The IT helpdesk inquired ______ the computer error occurred before or after the software update.",
+      "options": {
+        "A": "whether",
+        "B": "that",
+        "C": "what",
+        "D": "which"
+      },
+      "correctAnswer": "A",
+      "clue": "Có cấu trúc lựa chọn 'before or after' → whether ... or → Chọn whether.",
+      "explanationVi": "'whether... or...' trong mệnh đề danh ngữ biểu thị câu hỏi gián tiếp có 2 khả năng đối lập (xảy ra trước hay sau bản cập nhật).",
+      "targetChunk": {
+        "phrase": "inquired whether the error occurred before or after",
+        "meaningVi": "đã hỏi xem lỗi xảy ra trước hay sau khi cập nhật"
+      },
+      "skeleton": {
+        "subject": "helpdesk",
+        "verb": "inquired",
+        "object": "whether-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_024",
+      "level": "standard",
+      "question": "The accountant demonstrated ______ the discrepancies in the audit were resolved.",
+      "options": {
+        "A": "that",
+        "B": "what",
+        "C": "which",
+        "D": "whatever"
+      },
+      "correctAnswer": "A",
+      "clue": "Chứng minh một sự việc rằng: demonstrate that S + V → Chọn that.",
+      "explanationVi": "'that' dẫn dắt một mệnh đề danh ngữ trọn vẹn nghĩa (chứng minh rằng các điểm sai lệch đã được giải quyết). 'were resolved' là nội động từ ở thể bị động, câu hoàn chỉnh.",
+      "targetChunk": {
+        "phrase": "demonstrated that the discrepancies were resolved",
+        "meaningVi": "đã chứng minh rằng các sai lệch đã được xử lý"
+      },
+      "skeleton": {
+        "subject": "accountant",
+        "verb": "demonstrated",
+        "object": "that-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_025",
+      "level": "standard",
+      "question": "Candidates will be judged on ______ well they present their innovative project ideas.",
+      "options": {
+        "A": "how",
+        "B": "what",
+        "C": "that",
+        "D": "which"
+      },
+      "correctAnswer": "A",
+      "clue": "Đứng trước trạng từ 'well': how well (thể hiện tốt đến mức nào) → Chọn how.",
+      "explanationVi": "'how well they present' = mức độ hay/tốt mà họ trình bày. Mệnh đề danh ngữ đứng sau giới từ 'on'.",
+      "targetChunk": {
+        "phrase": "judged on how well they present their ideas",
+        "meaningVi": "được đánh giá dựa trên mức độ thuyết trình tốt các ý tưởng"
+      },
+      "skeleton": {
+        "subject": "Candidates",
+        "verb": "will be judged on",
+        "object": "how well-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_026",
+      "level": "standard",
+      "question": "The committee has not reached a consensus on ______ to assign to the lead architect role.",
+      "options": {
+        "A": "whom",
+        "B": "whose",
+        "C": "which",
+        "D": "what"
+      },
+      "correctAnswer": "A",
+      "clue": "Chỉ người làm tân ngữ cho động từ 'assign' (phân công ai vào vai trò kiến trúc sư trưởng) → Chọn whom.",
+      "explanationVi": "'whom to assign' = phân công ai (whom là đại từ tân ngữ chỉ người đi với to-infinitive). 'who' cũng có thể chấp nhận trong văn nói nhưng 'whom' là dạng trang trọng nhất sau giới từ/làm tân ngữ.",
+      "targetChunk": {
+        "phrase": "consensus on whom to assign to the role",
+        "meaningVi": "sự đồng thuận về việc sẽ phân công ai vào vai trò"
+      },
+      "skeleton": {
+        "subject": "committee",
+        "verb": "has not reached",
+        "object": "a consensus"
+      }
+    },
+    {
+      "id": "nouncl_std_027",
+      "level": "standard",
+      "question": "The fact ______ corporate profits increased during a recession impressed financial analysts.",
+      "options": {
+        "A": "that",
+        "B": "which",
+        "C": "what",
+        "D": "whether"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm từ danh ngữ đồng vị: 'The fact that + S + V' (Thực tế rằng...) → Chọn that.",
+      "explanationVi": "'The fact that + clause' là cấu trúc đồng vị ngữ kinh điển trong văn phong học thuật TOEIC. 'that' giải thích chi tiết cho danh từ 'The fact'.",
+      "targetChunk": {
+        "phrase": "The fact that corporate profits increased",
+        "meaningVi": "thực tế là lợi nhuận doanh nghiệp đã tăng"
+      },
+      "skeleton": {
+        "subject": "The fact that profits increased",
+        "verb": "impressed",
+        "object": "analysts"
+      }
+    },
+    {
+      "id": "nouncl_std_028",
+      "level": "standard",
+      "question": "Participants are free to attend ______ workshops they find most relevant to their careers.",
+      "options": {
+        "A": "whichever",
+        "B": "whoever",
+        "C": "however",
+        "D": "whenever"
+      },
+      "correctAnswer": "A",
+      "clue": "Đứng trước danh từ số nhiều 'workshops' mang nghĩa 'bất cứ hội thảo nào': whichever workshops → Chọn whichever.",
+      "explanationVi": "'whichever' có thể làm từ hạn định đứng trước danh từ (whichever workshops = bất cứ hội thảo nào mà họ thấy phù hợp). 'whoever' chỉ người; 'however' là trạng từ.",
+      "targetChunk": {
+        "phrase": "attend whichever workshops they find relevant",
+        "meaningVi": "tham dự bất kỳ buổi hội thảo nào họ thấy phù hợp"
+      },
+      "skeleton": {
+        "subject": "Participants",
+        "verb": "are free to attend",
+        "object": "whichever workshops"
+      }
+    },
+    {
+      "id": "nouncl_std_029",
+      "level": "standard",
+      "question": "Management is currently investigating ______ caused the sudden fluctuation in inventory counts.",
+      "options": {
+        "A": "what",
+        "B": "that",
+        "C": "which of",
+        "D": "where"
+      },
+      "correctAnswer": "A",
+      "clue": "Làm chủ ngữ cho động từ 'caused' trong mệnh đề danh ngữ (cái gì đã gây ra...) → Chọn what.",
+      "explanationVi": "'what caused the sudden fluctuation' = điều gì đã gây ra sự biến động bất ngờ. 'what' đóng vai trò chủ ngữ trong mệnh đề danh ngữ làm tân ngữ cho 'investigating'.",
+      "targetChunk": {
+        "phrase": "investigating what caused the sudden fluctuation",
+        "meaningVi": "điều tra điều gì đã gây ra sự biến động đột ngột"
+      },
+      "skeleton": {
+        "subject": "Management",
+        "verb": "is investigating",
+        "object": "what-clause"
+      }
+    },
+    {
+      "id": "nouncl_std_030",
+      "level": "standard",
+      "question": "The software tutorial demonstrates ______ easy it is to generate comprehensive financial reports.",
+      "options": {
+        "A": "how",
+        "B": "what",
+        "C": "that",
+        "D": "so"
+      },
+      "correctAnswer": "A",
+      "clue": "Đứng trước tính từ 'easy' trong mệnh đề cảm thán/danh ngữ: how easy it is → Chọn how.",
+      "explanationVi": "Cấu trúc: 'how + adjective + S + V' (how easy it is = dễ dàng biết bao khi làm điều gì). Không dùng 'what easy' (phải là what an easy task).",
+      "targetChunk": {
+        "phrase": "demonstrates how easy it is to generate",
+        "meaningVi": "minh họa việc tạo báo cáo tài chính dễ dàng như thế nào"
+      },
+      "skeleton": {
+        "subject": "tutorial",
+        "verb": "demonstrates",
+        "object": "how easy-clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_001",
+      "level": "advanced",
+      "question": "It was Ms. Albright ______ successfully negotiated the multi-million-dollar international licensing agreement.",
+      "options": {
+        "A": "who",
+        "B": "whom",
+        "C": "which",
+        "D": "whose"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc câu chẻ nhấn mạnh người làm chủ ngữ: It was [Person] who/that + V → Chọn who.",
+      "explanationVi": "Cấu trúc câu chẻ (Cleft Sentence): 'It is/was + Tân ngữ được nhấn mạnh + WHO / THAT + V...'. Ở đây nhấn mạnh Ms. Albright là người thực hiện hành động 'negotiated' nên dùng 'who'.",
+      "targetChunk": {
+        "phrase": "It was Ms. Albright who successfully negotiated",
+        "meaningVi": "chính bà Albright là người đã đàm phán thành công"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "was Ms. Albright who negotiated",
+        "object": "licensing agreement"
+      }
+    },
+    {
+      "id": "nouncl_adv_002",
+      "level": "advanced",
+      "question": "It was during the third-quarter earnings call ______ the CEO first hinted at a potential merger.",
+      "options": {
+        "A": "that",
+        "B": "which",
+        "C": "when",
+        "D": "where"
+      },
+      "correctAnswer": "A",
+      "clue": "Câu chẻ nhấn mạnh trạng ngữ thời gian: It was [trạng ngữ] THAT S + V → Chọn that.",
+      "explanationVi": "Trong câu chẻ (Cleft sentence) nhấn mạnh cụm trạng từ chỉ thời gian, nơi chốn hoặc phương thức, từ nối bắt buộc phải là 'THAT' (It was during... THAT the CEO hinted...).",
+      "targetChunk": {
+        "phrase": "It was during the call that the CEO hinted",
+        "meaningVi": "chính trong cuộc gọi báo cáo thu nhập mà vị CEO lần đầu gợi mở"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "was during the call that",
+        "object": null
+      }
+    },
+    {
+      "id": "nouncl_adv_003",
+      "level": "advanced",
+      "question": "______ makes our logistics software unique is its ability to recalculate shipping routes in real time.",
+      "options": {
+        "A": "What",
+        "B": "That",
+        "C": "Which",
+        "D": "Whatever"
+      },
+      "correctAnswer": "A",
+      "clue": "Câu chẻ giả (Pseudo-cleft sentence) làm chủ ngữ cho 'is': What makes X unique is... → Chọn What.",
+      "explanationVi": "Cấu trúc Pseudo-cleft: 'What + S/V... is/are...'. 'What' làm chủ ngữ cho 'makes' trong mệnh đề danh ngữ, và toàn bộ mệnh đề 'What makes our software unique' làm chủ ngữ cho 'is'.",
+      "targetChunk": {
+        "phrase": "What makes our logistics software unique is",
+        "meaningVi": "điều làm cho phần mềm hậu cần của chúng tôi độc đáo chính là"
+      },
+      "skeleton": {
+        "subject": "What makes software unique",
+        "verb": "is",
+        "object": "its ability"
+      }
+    },
+    {
+      "id": "nouncl_adv_004",
+      "level": "advanced",
+      "question": "The executive committee expresses serious doubts ______ the proposed timeline can be met.",
+      "options": {
+        "A": "whether",
+        "B": "that",
+        "C": "what",
+        "D": "which"
+      },
+      "correctAnswer": "A",
+      "clue": "Bẫy 990: Sau danh từ biểu thị sự hoài nghi (doubts, skepticism) → Dùng whether.",
+      "explanationVi": "Khi bày tỏ sự hoài nghi (doubt/doubts), ta dùng 'whether' để mở đầu mệnh đề danh ngữ thay vì 'that' (express doubts whether the timeline can be met = bày tỏ nghi ngờ liệu tiến độ có đạt được hay không).",
+      "targetChunk": {
+        "phrase": "expresses serious doubts whether the proposed timeline",
+        "meaningVi": "bày tỏ những hoài nghi nghiêm túc về việc liệu tiến độ đề xuất"
+      },
+      "skeleton": {
+        "subject": "committee",
+        "verb": "expresses",
+        "object": "doubts whether-clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_005",
+      "level": "advanced",
+      "question": "Our success will depend largely on ______ we can adapt quickly to changing market regulations.",
+      "options": {
+        "A": "whether",
+        "B": "if",
+        "C": "that",
+        "D": "what"
+      },
+      "correctAnswer": "A",
+      "clue": "Đứng sau giới từ 'on': depend on whether... (KHÔNG BAO GIỜ dùng \"if\" sau giới từ) → Chọn whether.",
+      "explanationVi": "Quy tắc ngữ pháp chuẩn mực trong TOEIC 990: Giới từ + whether (depend on whether we can adapt). Tuyệt đối không dùng 'depend on if'.",
+      "targetChunk": {
+        "phrase": "depend largely on whether we can adapt",
+        "meaningVi": "phụ thuộc phần lớn vào việc liệu chúng ta có thể thích ứng"
+      },
+      "skeleton": {
+        "subject": "Our success",
+        "verb": "will depend on",
+        "object": "whether-clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_006",
+      "level": "advanced",
+      "question": "The company is distinct from its rivals ______ it offers 24/7 dedicated account management.",
+      "options": {
+        "A": "in that",
+        "B": "except that",
+        "C": "so that",
+        "D": "provided that"
+      },
+      "correctAnswer": "A",
+      "clue": "Mệnh đề danh ngữ đi với giới từ: 'in that' mang nghĩa 'ở chỗ / xét về mặt' → Chọn in that.",
+      "explanationVi": "'in that + clause' = ở chỗ, bởi vì, xét trên phương diện (The company is distinct in that it offers... = Công ty khác biệt ở chỗ công ty cung cấp...). Đây là cấu trúc liên từ/danh ngữ cấp độ 900+.",
+      "targetChunk": {
+        "phrase": "distinct from its rivals in that it offers",
+        "meaningVi": "khác biệt với các đối thủ ở chỗ công ty cung cấp"
+      },
+      "skeleton": {
+        "subject": "company",
+        "verb": "is distinct in that",
+        "object": "clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_007",
+      "level": "advanced",
+      "question": "The contract terms are acceptable ______ the delivery penalty clause must be modified.",
+      "options": {
+        "A": "except that",
+        "B": "in that",
+        "C": "now that",
+        "D": "so that"
+      },
+      "correctAnswer": "A",
+      "clue": "Các điều khoản đều chấp nhận được \"ngoại trừ việc rằng\" điều khoản phạt phải sửa đổi → Chọn except that.",
+      "explanationVi": "'except that + clause' = ngoại trừ một điều là / chỉ trừ việc rằng. Cấu trúc giới từ 'except' đi kèm mệnh đề danh ngữ 'that'.",
+      "targetChunk": {
+        "phrase": "acceptable except that the penalty clause must be modified",
+        "meaningVi": "có thể chấp thuận ngoại trừ việc điều khoản phạt phải được sửa đổi"
+      },
+      "skeleton": {
+        "subject": "terms",
+        "verb": "are acceptable except that",
+        "object": "clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_008",
+      "level": "advanced",
+      "question": "______ of the candidates is chosen for the post will need to relocate to the London office.",
+      "options": {
+        "A": "Whichever",
+        "B": "Whoever",
+        "C": "Whatever",
+        "D": "Anyone"
+      },
+      "correctAnswer": "A",
+      "clue": "Đứng trước 'of the candidates' (trong số các ứng viên xác định) làm chủ ngữ số ít: Whichever of the + N → Chọn Whichever.",
+      "explanationVi": "'Whichever of the candidates' = Bất kỳ ai trong số các ứng viên. 'whichever' đi được với cụm 'of the + N số nhiều' để biểu thị sự lựa chọn từ danh sách hạn định. 'Whoever' không đi trực tiếp với 'of the'.",
+      "targetChunk": {
+        "phrase": "Whichever of the candidates is chosen",
+        "meaningVi": "bất kỳ ai trong số các ứng viên được chọn"
+      },
+      "skeleton": {
+        "subject": "Whichever of the candidates is chosen",
+        "verb": "will need to relocate",
+        "object": null
+      }
+    },
+    {
+      "id": "nouncl_adv_009",
+      "level": "advanced",
+      "question": "The CFO demanded that the internal auditor ______ a full account of the missing transaction records.",
+      "options": {
+        "A": "provide",
+        "B": "provides",
+        "C": "provided",
+        "D": "providing"
+      },
+      "correctAnswer": "A",
+      "clue": "Thức giả định sau động từ yêu cầu: demand that S + (should) + V-bare → Chọn provide.",
+      "explanationVi": "Trong mệnh đề danh ngữ sau động từ đòi hỏi (demand, require, insist, recommend, suggest), động từ luôn ở dạng nguyên thể không chia (V-bare: 'provide'), dù chủ ngữ là 'the internal auditor' số ít.",
+      "targetChunk": {
+        "phrase": "demanded that the auditor provide a full account",
+        "meaningVi": "yêu cầu kiểm toán viên nội bộ phải cung cấp giải trình đầy đủ"
+      },
+      "skeleton": {
+        "subject": "The CFO",
+        "verb": "demanded",
+        "object": "that-clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_010",
+      "level": "advanced",
+      "question": "The committee was divided over the question of ______ the new factory should be built domestically.",
+      "options": {
+        "A": "whether",
+        "B": "if",
+        "C": "that",
+        "D": "which"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau giới từ 'of' (the question of whether...) → Chỉ có whether.",
+      "explanationVi": "Sau giới từ 'of', ta bắt buộc phải dùng 'whether', không dùng 'if' (the question of whether = câu hỏi về việc liệu...).",
+      "targetChunk": {
+        "phrase": "divided over the question of whether the factory should",
+        "meaningVi": "bất đồng quan điểm xung quanh câu hỏi liệu nhà máy có nên"
+      },
+      "skeleton": {
+        "subject": "committee",
+        "verb": "was divided over",
+        "object": "the question of whether"
+      }
+    },
+    {
+      "id": "nouncl_adv_011",
+      "level": "advanced",
+      "question": "______ seems clear from the audit findings is that security policies were routinely ignored.",
+      "options": {
+        "A": "What",
+        "B": "That",
+        "C": "Which",
+        "D": "It"
+      },
+      "correctAnswer": "A",
+      "clue": "Mệnh đề danh ngữ làm chủ ngữ: '______ seems clear... is that...' → Chọn What.",
+      "explanationVi": "'What seems clear... is that...' (Điều dường như rõ ràng từ kết quả kiểm toán chính là...). 'What' đóng vai trò chủ ngữ cho 'seems', và cả mệnh đề làm chủ ngữ cho 'is'. 'It' sẽ làm câu thừa hai động từ liên tiếp không có từ nối.",
+      "targetChunk": {
+        "phrase": "What seems clear from the audit findings is that",
+        "meaningVi": "điều có vẻ rõ ràng từ các kết luận kiểm toán chính là"
+      },
+      "skeleton": {
+        "subject": "What seems clear",
+        "verb": "is",
+        "object": "that-clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_012",
+      "level": "advanced",
+      "question": "The management has made ______ clear that no unapproved overtime will be compensated.",
+      "options": {
+        "A": "it",
+        "B": "this",
+        "C": "that",
+        "D": "what"
+      },
+      "correctAnswer": "A",
+      "clue": "Chủ ngữ/tân ngữ giả kinh điển: make IT clear that + S + V → Chọn it.",
+      "explanationVi": "Cấu trúc: 'make it clear that...' (làm rõ rằng...). 'it' là tân ngữ giả đại diện cho mệnh đề danh ngữ 'that no unapproved overtime will be compensated' ở phía sau. Không dùng this hay that.",
+      "targetChunk": {
+        "phrase": "made it clear that no unapproved overtime",
+        "meaningVi": "đã nêu rõ ràng rằng không có giờ làm thêm chưa phê duyệt nào"
+      },
+      "skeleton": {
+        "subject": "management",
+        "verb": "has made",
+        "object": "it clear that-clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_013",
+      "level": "advanced",
+      "question": "The analyst attributed the firm's resilience to the fact ______ it had zero long-term debt.",
+      "options": {
+        "A": "that",
+        "B": "which",
+        "C": "what",
+        "D": "how"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc đồng vị ngữ sau 'the fact': the fact that + clause → Chọn that.",
+      "explanationVi": "'to the fact that + S + V' (vào thực tế rằng...). Mệnh đề phía sau 'it had zero long-term debt' là một câu hoàn chỉnh, nên dùng 'that' làm từ nối đồng vị.",
+      "targetChunk": {
+        "phrase": "attributed resilience to the fact that it had",
+        "meaningVi": "quy khả năng chống chịu cho thực tế rằng công ty không có nợ dài hạn"
+      },
+      "skeleton": {
+        "subject": "analyst",
+        "verb": "attributed",
+        "object": "resilience"
+      }
+    },
+    {
+      "id": "nouncl_adv_014",
+      "level": "advanced",
+      "question": "The research lab is investigating the degree ______ remote work affects creative collaboration.",
+      "options": {
+        "A": "to which",
+        "B": "which",
+        "C": "that",
+        "D": "what"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm danh từ đo lường: the degree to which + S + V (mức độ mà...) → Chọn to which.",
+      "explanationVi": "'the degree to which + clause' = mức độ mà điều gì xảy ra (bắt nguồn từ to a degree). Cụm này đóng vai trò bổ nghĩa hoàn chỉnh cho 'degree'.",
+      "targetChunk": {
+        "phrase": "the degree to which remote work affects collaboration",
+        "meaningVi": "mức độ mà làm việc từ xa ảnh hưởng tới sự hợp tác sáng tạo"
+      },
+      "skeleton": {
+        "subject": "lab",
+        "verb": "is investigating",
+        "object": "the degree to which-clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_015",
+      "level": "advanced",
+      "question": "The marketing team is free to implement ______ strategy yields the highest return on investment.",
+      "options": {
+        "A": "whatever",
+        "B": "whoever",
+        "C": "whenever",
+        "D": "wherever"
+      },
+      "correctAnswer": "A",
+      "clue": "Bổ nghĩa cho danh từ 'strategy' làm tân ngữ mệnh đề: whatever strategy yields... → Chọn whatever.",
+      "explanationVi": "'whatever strategy yields...' = bất kỳ chiến lược nào đem lại lợi nhuận cao nhất. 'whatever' đóng vai trò từ hạn định cho 'strategy'.",
+      "targetChunk": {
+        "phrase": "implement whatever strategy yields the highest return",
+        "meaningVi": "triển khai bất kỳ chiến lược nào mang lại lợi nhuận cao nhất"
+      },
+      "skeleton": {
+        "subject": "team",
+        "verb": "is free to implement",
+        "object": "whatever strategy"
+      }
+    },
+    {
+      "id": "nouncl_adv_016",
+      "level": "advanced",
+      "question": "It is essential ______ every member of the audit committee inspect the books independently.",
+      "options": {
+        "A": "that",
+        "B": "whether",
+        "C": "if",
+        "D": "what"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc giả định với tính từ quan trọng: It is essential that S + (should) + V-bare → Chọn that.",
+      "explanationVi": "Cấu trúc: 'It is essential / crucial / vital that + S + V-bare'. Chú ý động từ 'inspect' giữ nguyên thể dù chủ ngữ 'every member' là số ít.",
+      "targetChunk": {
+        "phrase": "essential that every member inspect the books",
+        "meaningVi": "cần thiết rằng mỗi thành viên phải kiểm tra sổ sách"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "is essential that",
+        "object": "clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_017",
+      "level": "advanced",
+      "question": "The CEO was uncertain as to ______ the shareholder resolution would pass at the annual meeting.",
+      "options": {
+        "A": "whether",
+        "B": "if",
+        "C": "that",
+        "D": "what"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau cụm giới từ 'as to' (về việc liệu... hay không) → Chọn whether.",
+      "explanationVi": "'as to whether + clause' = về việc liệu rằng... Sau giới từ 'as to' không bao giờ được dùng 'if'.",
+      "targetChunk": {
+        "phrase": "uncertain as to whether the resolution would pass",
+        "meaningVi": "không chắc chắn về việc liệu nghị quyết có được thông qua hay không"
+      },
+      "skeleton": {
+        "subject": "The CEO",
+        "verb": "was uncertain as to",
+        "object": "whether-clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_018",
+      "level": "advanced",
+      "question": "______ surprised the board most was the rapid recovery of the hospitality sector.",
+      "options": {
+        "A": "What",
+        "B": "That",
+        "C": "Which",
+        "D": "It"
+      },
+      "correctAnswer": "A",
+      "clue": "Làm chủ ngữ cho động từ 'surprised' trong mệnh đề danh ngữ: What surprised the board was... → Chọn What.",
+      "explanationVi": "'What surprised the board most' = Điều làm ban giám đốc ngạc nhiên nhất. 'What' là đại từ nghi vấn làm chủ ngữ của mệnh đề danh ngữ, và cả mệnh đề này làm chủ ngữ cho 'was'.",
+      "targetChunk": {
+        "phrase": "What surprised the board most was the rapid recovery",
+        "meaningVi": "điều làm ban giám đốc bất ngờ nhất chính là sự hồi phục nhanh chóng"
+      },
+      "skeleton": {
+        "subject": "What surprised the board",
+        "verb": "was",
+        "object": "the rapid recovery"
+      }
+    },
+    {
+      "id": "nouncl_adv_019",
+      "level": "advanced",
+      "question": "It remains a mystery ______ the sensitive trade documents were leaked to the media.",
+      "options": {
+        "A": "how",
+        "B": "what",
+        "C": "which",
+        "D": "that"
+      },
+      "correctAnswer": "A",
+      "clue": "Câu hoàn chỉnh nghĩa: việc các tài liệu bị rò rỉ \"bằng cách nào / như thế nào\" vẫn là một bí ẩn → Chọn how.",
+      "explanationVi": "'It remains a mystery how...' = Vẫn là một bí ẩn việc bằng cách nào mà tài liệu bảo mật lại bị rò rỉ. Mệnh đề phía sau 'documents were leaked' đã đủ thành phần ngữ pháp nên chọn trạng từ nghi vấn 'how'.",
+      "targetChunk": {
+        "phrase": "remains a mystery how the documents were leaked",
+        "meaningVi": "vẫn là một điều bí ẩn việc tài liệu đã bị rò rỉ như thế nào"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "remains",
+        "object": "a mystery how-clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_020",
+      "level": "advanced",
+      "question": "The contract provides that ______ party breaches the confidentiality clause must pay damages.",
+      "options": {
+        "A": "whichever",
+        "B": "whoever",
+        "C": "whatever",
+        "D": "wherever"
+      },
+      "correctAnswer": "A",
+      "clue": "Đứng trước danh từ 'party' (trong số 2 bên ký hợp đồng): whichever party breaches... → Chọn whichever.",
+      "explanationVi": "'whichever party' = bất kỳ bên nào (trong số các bên tham gia hợp đồng). 'whichever' làm từ hạn định trước danh từ 'party'. 'whoever' không đi kèm trực tiếp danh từ như vậy.",
+      "targetChunk": {
+        "phrase": "whichever party breaches the confidentiality clause",
+        "meaningVi": "bất kỳ bên nào vi phạm điều khoản bảo mật"
+      },
+      "skeleton": {
+        "subject": "whichever party breaches",
+        "verb": "must pay",
+        "object": "damages"
+      }
+    },
+    {
+      "id": "nouncl_adv_021",
+      "level": "advanced",
+      "question": "The department head gave instructions ______ how the client feedback should be compiled.",
+      "options": {
+        "A": "as to",
+        "B": "such as",
+        "C": "so as",
+        "D": "in order"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ kết hợp với từ để hỏi: instructions as to how... (chỉ dẫn về việc làm thế nào) → Chọn as to.",
+      "explanationVi": "'instructions as to how / regarding how' = những chỉ dẫn về cách thức... 'as to' là cụm giới từ mang nghĩa 'liên quan tới / về việc'.",
+      "targetChunk": {
+        "phrase": "instructions as to how client feedback should be compiled",
+        "meaningVi": "chỉ dẫn về việc ý kiến khách hàng nên được tổng hợp ra sao"
+      },
+      "skeleton": {
+        "subject": "head",
+        "verb": "gave",
+        "object": "instructions"
+      }
+    },
+    {
+      "id": "nouncl_adv_022",
+      "level": "advanced",
+      "question": "Investors are primarily concerned with ______ the company can sustain its current growth trajectory.",
+      "options": {
+        "A": "whether",
+        "B": "if",
+        "C": "that",
+        "D": "what"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau giới từ 'with': concerned with whether... (KHÔNG dùng 'if' sau giới từ) → Chọn whether.",
+      "explanationVi": "Cấu trúc: 'be concerned with whether + clause' = bận tâm về việc liệu công ty có duy trì được đà tăng trưởng hay không. Sau giới từ 'with', chỉ 'whether' là chính xác.",
+      "targetChunk": {
+        "phrase": "concerned with whether the company can sustain growth",
+        "meaningVi": "quan ngại về việc liệu công ty có duy trì được đà tăng trưởng"
+      },
+      "skeleton": {
+        "subject": "Investors",
+        "verb": "are concerned with",
+        "object": "whether-clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_023",
+      "level": "advanced",
+      "question": "It was not until the financial audit was concluded ______ the discrepancies came to light.",
+      "options": {
+        "A": "that",
+        "B": "when",
+        "C": "then",
+        "D": "which"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc nhấn mạnh thời gian: It was not until ... THAT + S + V → Chọn that.",
+      "explanationVi": "Cấu trúc câu chẻ cố định: 'It was not until + time/clause + THAT + S + V' (Mãi cho đến khi... thì...). Bắt buộc dùng 'that', không dùng when hay then.",
+      "targetChunk": {
+        "phrase": "It was not until the audit was concluded that",
+        "meaningVi": "mãi cho đến khi cuộc kiểm toán hoàn tất thì"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "was not until... that",
+        "object": "discrepancies came to light"
+      }
+    },
+    {
+      "id": "nouncl_adv_024",
+      "level": "advanced",
+      "question": "We must acknowledge the reality ______ clean energy transitions require massive capital expenditure.",
+      "options": {
+        "A": "that",
+        "B": "which",
+        "C": "what",
+        "D": "whether"
+      },
+      "correctAnswer": "A",
+      "clue": "Mệnh đề danh ngữ đồng vị sau danh từ trừu tượng 'the reality': the reality that + S + V → Chọn that.",
+      "explanationVi": "'the reality that + clause' (thực tế rằng...). Mệnh đề phía sau 'clean energy transitions require capital' là mệnh đề độc lập hoàn chỉnh, giải thích nội dung cho 'the reality'.",
+      "targetChunk": {
+        "phrase": "acknowledge the reality that transitions require",
+        "meaningVi": "thừa nhận thực tế rằng quá trình chuyển đổi đòi hỏi"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "must acknowledge",
+        "object": "the reality that-clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_025",
+      "level": "advanced",
+      "question": "The CFO made inquiries regarding ______ of the overseas subsidiaries generated the highest profit margin.",
+      "options": {
+        "A": "which",
+        "B": "what",
+        "C": "whose",
+        "D": "who"
+      },
+      "correctAnswer": "A",
+      "clue": "Lựa chọn trong một nhóm hữu hạn: 'which of the + N số nhiều' → Chọn which.",
+      "explanationVi": "'which of the overseas subsidiaries' = công ty con nào trong số các công ty con ở nước ngoài. 'which' dùng cho sự lựa chọn trong tập hợp có sẵn.",
+      "targetChunk": {
+        "phrase": "regarding which of the overseas subsidiaries generated",
+        "meaningVi": "liên quan tới việc công ty con nào ở nước ngoài đã tạo ra"
+      },
+      "skeleton": {
+        "subject": "The CFO",
+        "verb": "made inquiries regarding",
+        "object": "which of-clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_026",
+      "level": "advanced",
+      "question": "The board took into account the proposal ______ the research lab be relocated closer to the tech hub.",
+      "options": {
+        "A": "that",
+        "B": "which",
+        "C": "what",
+        "D": "whether"
+      },
+      "correctAnswer": "A",
+      "clue": "Mệnh đề danh ngữ giả định giải thích cho danh từ đề xuất 'proposal that S + (should) + V-bare' → Chọn that.",
+      "explanationVi": "'the proposal that + S + V-bare' (đề xuất rằng phòng thí nghiệm nên được chuyển...). Động từ 'be relocated' là giả định thể nguyên mẫu, từ nối là 'that'.",
+      "targetChunk": {
+        "phrase": "the proposal that the lab be relocated",
+        "meaningVi": "đề xuất rằng phòng nghiên cứu nên được di dời"
+      },
+      "skeleton": {
+        "subject": "The board",
+        "verb": "took into account",
+        "object": "the proposal that-clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_027",
+      "level": "advanced",
+      "question": "The legal team questioned ______ the digital signatures on the document were legally binding.",
+      "options": {
+        "A": "whether",
+        "B": "that",
+        "C": "what",
+        "D": "which"
+      },
+      "correctAnswer": "A",
+      "clue": "Động từ 'question' (chất vấn, đặt nghi vấn xem liệu có... hay không) → Chọn whether.",
+      "explanationVi": "'question whether + clause' = đặt câu hỏi/nghi vấn về việc liệu rằng... Sau động từ biểu thị sự nghi vấn 'question', dùng 'whether'.",
+      "targetChunk": {
+        "phrase": "questioned whether the digital signatures were legally binding",
+        "meaningVi": "đặt nghi vấn liệu chữ ký số có giá trị ràng buộc pháp lý hay không"
+      },
+      "skeleton": {
+        "subject": "team",
+        "verb": "questioned",
+        "object": "whether-clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_028",
+      "level": "advanced",
+      "question": "The spokesperson declined to comment on ______ the chief executive intended to resign.",
+      "options": {
+        "A": "whether",
+        "B": "if",
+        "C": "that",
+        "D": "what"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau giới từ 'on': comment on whether... (KHÔNG dùng 'if' sau giới từ) → Chọn whether.",
+      "explanationVi": "Quy tắc TOEIC: 'comment on whether + clause' (bình luận về việc liệu...). Giới từ 'on' đi kèm 'whether', không đi kèm 'if'.",
+      "targetChunk": {
+        "phrase": "declined to comment on whether the executive intended to resign",
+        "meaningVi": "từ chối bình luận về việc liệu vị giám đốc điều hành có ý định từ chức"
+      },
+      "skeleton": {
+        "subject": "spokesperson",
+        "verb": "declined to comment on",
+        "object": "whether-clause"
+      }
+    },
+    {
+      "id": "nouncl_adv_029",
+      "level": "advanced",
+      "question": "______ the research division needs right now is additional funding for high-performance computing.",
+      "options": {
+        "A": "What",
+        "B": "That",
+        "C": "Which",
+        "D": "All what"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc câu chẻ giả: What S + needs is... (Những gì ... cần là ...) → Chọn What.",
+      "explanationVi": "'What the research division needs right now is...' (Những gì bộ phận nghiên cứu cần lúc này là...). 'What' làm tân ngữ cho 'needs' và mệnh đề đóng vai trò chủ ngữ cho 'is'.",
+      "targetChunk": {
+        "phrase": "What the research division needs right now is",
+        "meaningVi": "những gì phòng nghiên cứu cần lúc này chính là"
+      },
+      "skeleton": {
+        "subject": "What the division needs",
+        "verb": "is",
+        "object": "funding"
+      }
+    },
+    {
+      "id": "nouncl_adv_030",
+      "level": "advanced",
+      "question": "Under the new company policy, ______ employee hits their quarterly sales target receives a cash bonus.",
+      "options": {
+        "A": "whichever",
+        "B": "whoever",
+        "C": "whatever",
+        "D": "any"
+      },
+      "correctAnswer": "A",
+      "clue": "Bổ nghĩa cho danh từ số ít 'employee' trong mệnh đề danh ngữ làm chủ ngữ: whichever employee hits... → Chọn whichever.",
+      "explanationVi": "'whichever employee hits...' = bất kỳ nhân viên nào đạt được chỉ tiêu... 'whichever' làm từ hạn định đi với danh từ số ít chỉ người hoặc vật trong mệnh đề danh ngữ. 'whoever' không đi kèm danh từ 'employee'.",
+      "targetChunk": {
+        "phrase": "whichever employee hits their quarterly target receives",
+        "meaningVi": "bất kỳ nhân viên nào đạt chỉ tiêu quý đều nhận được"
+      },
+      "skeleton": {
+        "subject": "whichever employee hits target",
+        "verb": "receives",
+        "object": "bonus"
+      }
+    }
+  ]
+}

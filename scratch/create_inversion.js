@@ -1,0 +1,684 @@
+import fs from 'fs';
+
+const topic = {
+  topicId: "inversion",
+  topicName: "Đảo ngữ & Nhấn mạnh",
+  topicNameEn: "Inversion & Emphasis",
+  category: "advanced_traps",
+  description: "Đảo ngữ với trạng từ phủ định (Hardly, Seldom, Rarely, Never, At no time, Under no circumstances), Only after/when/by, đảo ngữ địa điểm (Attached is / Enclosed is), So/Such đứng đầu câu, và câu chẻ nhấn mạnh (It is... that).",
+  questions: []
+};
+
+// 30 Standard Questions (inv_std_001 -> inv_std_030)
+const standardQuestions = [
+  {
+    id: "inv_std_001",
+    level: "standard",
+    question: "Seldom ______ such a remarkable surge in international quarterly subscriptions.",
+    options: { A: "we have witnessed", B: "have we witnessed", C: "we witnessed", D: "did we witnessed" },
+    correctAnswer: "B",
+    clue: "TRẠNG TỪ PHỦ ĐỊNH ĐẦU CÂU (Seldom): Đảo Trợ động từ lên trước Chủ ngữ: Seldom have we witnessed.",
+    explanationVi: "Khi trạng từ bán phủ định 'Seldom' (hiếm khi) đứng đầu câu, trật tự từ bị đảo: Trợ ĐT (have) + S (we) + V3 (witnessed).",
+    targetChunk: { phrase: "Seldom have we witnessed", meaningVi: "Hiếm khi chúng tôi chứng kiến" },
+    skeleton: { subject: "we", verb: "have witnessed", object: "such a surge in subscriptions" }
+  },
+  {
+    id: "inv_std_002",
+    level: "standard",
+    question: "Under no circumstances ______ confidential client records be removed from the archives.",
+    options: { A: "should", B: "they should", C: "should they", D: "ought" },
+    correctAnswer: "A",
+    clue: "CỤM PHỦ ĐỊNH ĐẦU CÂU: 'Under no circumstances + Modal + S + V'. Chủ ngữ là 'confidential client records' nên trợ từ là 'should'.",
+    explanationVi: "Cụm 'Under no circumstances' (Dưới bất kỳ tình huống nào cũng không) bắt buộc đảo trợ động từ 'should' lên trước chủ ngữ.",
+    targetChunk: { phrase: "Under no circumstances should records be removed", meaningVi: "Trong bất kỳ hoàn cảnh nào cũng không được mang hồ sơ đi" },
+    skeleton: { subject: "records", verb: "should be removed", object: null }
+  },
+  {
+    id: "inv_std_003",
+    level: "standard",
+    question: "Hardly had the conference begun ______ a sudden power outage disrupted the presentation.",
+    options: { A: "when", B: "than", C: "then", D: "after" },
+    correctAnswer: "A",
+    clue: "CẤU TRÚC KINH ĐIỂN: 'Hardly had + S + V3 WHEN S + V quá khứ' (Vừa mới... thì...).",
+    explanationVi: "'Hardly / Scarcely' luôn đi kèm với liên từ 'when'. (Khác với 'No sooner' đi với 'than').",
+    targetChunk: { phrase: "Hardly had the conference begun when", meaningVi: "Hội nghị vừa mới bắt đầu thì" },
+    skeleton: { subject: "a power outage", verb: "disrupted", object: "the presentation" }
+  },
+  {
+    id: "inv_std_004",
+    level: "standard",
+    question: "No sooner had the marketing campaign launched ______ orders began flooding into the sales portal.",
+    options: { A: "than", B: "when", C: "then", D: "as" },
+    correctAnswer: "A",
+    clue: "CẤU TRÚC: 'No sooner had + S + V3 THAN S + V quá khứ' (Vừa mới... thì ngay lập tức...).",
+    explanationVi: "'No sooner' chứa dạng so sánh hơn (-er) nên luôn đi kèm liên từ 'than'.",
+    targetChunk: { phrase: "No sooner had campaign launched than", meaningVi: "Chiến dịch vừa mới ra mắt thì ngay lập tức" },
+    skeleton: { subject: "orders", verb: "began flooding", object: "into the portal" }
+  },
+  {
+    id: "inv_std_005",
+    level: "standard",
+    question: "Only after verifying the invoice ______ the accounts payable department disburse the funds.",
+    options: { A: "did", B: "does", C: "was", D: "is" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ VỚI ONLY AFTER: 'Only after + V-ing + Trợ động từ (did) + S + V-bare'.",
+    explanationVi: "'Only after' đứng đầu câu đảo trợ động từ quá khứ 'did' lên trước chủ ngữ 'the department'.",
+    targetChunk: { phrase: "Only after verifying did the department disburse", meaningVi: "Chỉ sau khi xác thực thì phòng ban mới chi trả" },
+    skeleton: { subject: "department", verb: "did disburse", object: "the funds" }
+  },
+  {
+    id: "inv_std_006",
+    level: "standard",
+    question: "At no time ______ the company's executive officers aware of the financial impropriety.",
+    options: { A: "were", B: "was", C: "are", D: "have" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ: 'At no time + were + S (officers số nhiều) + aware of...'.",
+    explanationVi: "Cụm phủ định 'At no time' (không một lúc nào) đứng đầu câu, to be 'were' đảo lên trước chủ ngữ số nhiều 'officers'.",
+    targetChunk: { phrase: "At no time were officers aware of", meaningVi: "Không có một thời điểm nào các giám đốc nhận biết được" },
+    skeleton: { subject: "officers", verb: "were aware of", object: "impropriety" }
+  },
+  {
+    id: "inv_std_007",
+    level: "standard",
+    question: "Rarely ______ an overseas expansion proposal been approved with such unanimous consensus.",
+    options: { A: "has", B: "have", C: "is", D: "was" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ VỚI RARELY: 'Rarely + Trợ ĐT (has) + S (proposal số ít) + been + V3/ed'.",
+    explanationVi: "Chủ ngữ là danh từ số ít 'proposal', thì hiện tại hoàn thành bị động đảo 'has' lên trước.",
+    targetChunk: { phrase: "Rarely has a proposal been approved", meaningVi: "Hiếm khi một đề xuất được thông qua" },
+    skeleton: { subject: "a proposal", verb: "has been approved", object: null }
+  },
+  {
+    id: "inv_std_008",
+    level: "standard",
+    question: "Attached to this promotional correspondence ______ the comprehensive schedule of expo sessions.",
+    options: { A: "is", B: "are", C: "being", D: "be" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ ĐỊA ĐIỂM / TÍNH TỪ: 'Attached to this... + IS + S (the schedule số ít)'.",
+    explanationVi: "Chủ ngữ thực sự của câu là 'the comprehensive schedule' (số ít) nằm ở phía sau, do đó to be chia là 'is'.",
+    targetChunk: { phrase: "Attached to this correspondence is the schedule", meaningVi: "Đính kèm thư từ này là lịch trình chi tiết" },
+    skeleton: { subject: "the schedule", verb: "is", object: "attached to this correspondence" }
+  },
+  {
+    id: "inv_std_009",
+    level: "standard",
+    question: "Never before ______ our regional logistics center handled such a massive volume of freight.",
+    options: { A: "has", B: "have", C: "is", D: "did" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ VỚI NEVER BEFORE: 'Never before + has + S (center số ít) + handled...'.",
+    explanationVi: "'Never before' đứng đầu câu đảo trợ động từ 'has' lên trước chủ ngữ số ít 'our logistics center'.",
+    targetChunk: { phrase: "Never before has our center handled", meaningVi: "Chưa bao giờ trung tâm của chúng tôi xử lý" },
+    skeleton: { subject: "our center", verb: "has handled", object: "such a volume of freight" }
+  },
+  {
+    id: "inv_std_010",
+    level: "standard",
+    question: "Only by implementing stringent quality controls ______ the defect rate be reduced to zero.",
+    options: { A: "can", B: "it can", C: "will it", D: "could it" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ VỚI ONLY BY: 'Only by + V-ing + Modal (can) + S (the defect rate) + be + V3/ed'.",
+    explanationVi: "Sau 'Only by...', đảo động từ khuyết thiếu 'can' lên trước chủ ngữ 'the defect rate'.",
+    targetChunk: { phrase: "Only by implementing controls can the rate be reduced", meaningVi: "Chỉ bằng cách áp dụng kiểm soát thì tỷ lệ lỗi mới có thể giảm" },
+    skeleton: { subject: "the defect rate", verb: "can be reduced", object: null }
+  },
+  {
+    id: "inv_std_011",
+    level: "standard",
+    question: "On no account ______ laboratory personnel enter the radiation enclosure without protective gear.",
+    options: { A: "may", B: "they may", C: "may they", D: "can they" },
+    correctAnswer: "A",
+    clue: "CỤM PHỦ ĐỊNH ĐẦU CÂU: 'On no account + Modal (may) + S (personnel) + V-bare'.",
+    explanationVi: "'On no account' (Dù với bất kỳ lý do gì cũng không) đảo trợ động từ 'may' lên trước chủ ngữ.",
+    targetChunk: { phrase: "On no account may personnel enter", meaningVi: "Dù vì lý do gì nhân sự cũng không được phép vào" },
+    skeleton: { subject: "personnel", verb: "may enter", object: "the enclosure" }
+  },
+  {
+    id: "inv_std_012",
+    level: "standard",
+    question: "Enclosed with this official notice ______ the revised contract guidelines for your perusal.",
+    options: { A: "are", B: "is", C: "be", D: "being" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ ĐỊA ĐIỂM: 'Enclosed with... + ARE + S (guidelines số nhiều)'.",
+    explanationVi: "Chủ ngữ thực sự là danh từ số nhiều 'the revised contract guidelines' đứng phía sau, do đó to be chia là 'are'.",
+    targetChunk: { phrase: "Enclosed with this notice are the guidelines", meaningVi: "Đính kèm thông báo này là các bản hướng dẫn" },
+    skeleton: { subject: "the guidelines", verb: "are", object: "enclosed with this notice" }
+  },
+  {
+    id: "inv_std_013",
+    level: "standard",
+    question: "Little ______ the auditing committee know that the executive had fabricated the expense receipts.",
+    options: { A: "did", B: "does", C: "was", D: "has" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ VỚI LITTLE: 'Little did + S + know' (Hầu như ủy ban không hề hay biết rằng...).",
+    explanationVi: "'Little' mang nghĩa phủ định (hầu như không), đảo trợ động từ quá khứ 'did' lên trước chủ ngữ 'committee'.",
+    targetChunk: { phrase: "Little did the committee know that", meaningVi: "Ủy ban hầu như không hề hay biết rằng" },
+    skeleton: { subject: "the committee", verb: "did know", object: "that executive fabricated receipts" }
+  },
+  {
+    id: "inv_std_014",
+    level: "standard",
+    question: "It was Ms. Sterling ______ orchestrated the successful restructuring of the overseas logistics arm.",
+    options: { A: "who", B: "which", C: "whom", D: "whose" },
+    correctAnswer: "A",
+    clue: "CÂU CHẺ NHẤN MẠNH (Cleft Sentence): 'It was + Người (Ms. Sterling) + WHO/THAT + V'.",
+    explanationVi: "Câu chẻ nhấn mạnh chủ ngữ chỉ người 'Ms. Sterling' dùng đại từ 'who' hoặc 'that'.",
+    targetChunk: { phrase: "It was Ms. Sterling who orchestrated", meaningVi: "Chính bà Sterling là người đã dàn xếp" },
+    skeleton: { subject: "It", verb: "was Ms. Sterling", object: "who orchestrated restructuring" }
+  },
+  {
+    id: "inv_std_015",
+    level: "standard",
+    question: "In no way ______ the management team responsible for the delays caused by the severe typhoon.",
+    options: { A: "is", B: "are", C: "being", D: "be" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ: 'In no way + IS + S (team số ít) + responsible for...'.",
+    explanationVi: "Cụm phủ định 'In no way' (Chẳng có cách nào / Hoàn toàn không) đảo to be 'is' lên trước chủ ngữ số ít 'the management team'.",
+    targetChunk: { phrase: "In no way is the team responsible", meaningVi: "Ban quản lý hoàn toàn không phải chịu trách nhiệm" },
+    skeleton: { subject: "the team", verb: "is", object: "responsible for delays" }
+  },
+  {
+    id: "inv_std_016",
+    level: "standard",
+    question: "Only when the final environmental clearance was obtained ______ construction on the refinery commence.",
+    options: { A: "did", B: "does", C: "was", D: "is" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ VỚI ONLY WHEN: 'Only when S + V quá khứ, DID + S + V-bare (commence)'.",
+    explanationVi: "Đảo trợ động từ 'did' lên trước chủ ngữ 'construction'.",
+    targetChunk: { phrase: "Only when clearance was obtained did construction commence", meaningVi: "Chỉ khi có giấy phép môi trường thì việc xây dựng mới bắt đầu" },
+    skeleton: { subject: "construction", verb: "did commence", object: null }
+  },
+  {
+    id: "inv_std_017",
+    level: "standard",
+    question: "Not only ______ the new software improve accounting accuracy, but it also reduced labor costs.",
+    options: { A: "did", B: "does", C: "was", D: "has" },
+    correctAnswer: "A",
+    clue: "CẤU TRÚC ĐẢO NGỮ: 'Not only + Trợ ĐT (did) + S + V-bare, but it also + V quá khứ (reduced)'.",
+    explanationVi: "Vế sau có 'reduced' (quá khứ đơn), nên đảo trợ động từ quá khứ 'did' lên trước chủ ngữ 'software'.",
+    targetChunk: { phrase: "Not only did software improve accuracy, but it also", meaningVi: "Không những phần mềm nâng cao độ chính xác, mà nó còn" },
+    skeleton: { subject: "the software", verb: "did improve", object: "accuracy" }
+  },
+  {
+    id: "inv_std_018",
+    level: "standard",
+    question: "It was during the global pandemic ______ e-commerce adoption accelerated by a full decade.",
+    options: { A: "that", B: "which", C: "when", D: "where" },
+    correctAnswer: "A",
+    clue: "CÂU CHẺ NHẤN MẠNH TRẠNG NGỮ THỜI GIAN: 'It was + Cụm thời gian + THAT + S + V'. Cấm dùng 'when'!",
+    explanationVi: "Trong câu chẻ nhấn mạnh 'It was... that', từ nối luôn luôn là 'that' bất kể thành phần được nhấn mạnh là thời gian hay nơi chốn.",
+    targetChunk: { phrase: "It was during the pandemic that adoption accelerated", meaningVi: "Chính trong thời kỳ đại dịch mà việc ứng dụng TMĐT đã tăng tốc" },
+    skeleton: { subject: "It", verb: "was during the pandemic", object: "that adoption accelerated" }
+  },
+  {
+    id: "inv_std_019",
+    level: "standard",
+    question: "Scarcely had the president concluded his speech ______ journalists began posing aggressive inquiries.",
+    options: { A: "when", B: "than", C: "then", D: "after" },
+    correctAnswer: "A",
+    clue: "Cấu trúc: 'Scarcely had + S + V3 WHEN S + V quá khứ' (Vừa mới... thì...).",
+    explanationVi: "'Scarcely' đi kèm với 'when'.",
+    targetChunk: { phrase: "Scarcely had he concluded speech when", meaningVi: "Ông vừa dứt lời bài phát biểu thì" },
+    skeleton: { subject: "journalists", verb: "began posing", object: "inquiries" }
+  },
+  {
+    id: "inv_std_020",
+    level: "standard",
+    question: "Only then ______ the executive realize the profound financial implications of the contract clause.",
+    options: { A: "did", B: "does", C: "was", D: "has" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ VỚI ONLY THEN: 'Only then + did + S + V-bare (realize)'.",
+    explanationVi: "Only then (Chỉ đến lúc đó) đảo trợ động từ 'did' lên trước chủ ngữ 'the executive'.",
+    targetChunk: { phrase: "Only then did the executive realize", meaningVi: "Chỉ đến lúc đó vị giám đốc điều hành mới nhận ra" },
+    skeleton: { subject: "the executive", verb: "did realize", object: "implications" }
+  },
+  {
+    id: "inv_std_021",
+    level: "standard",
+    question: "Neither did the union representatives accept the pay cut, ______ did they agree to the pension overhaul.",
+    options: { A: "nor", B: "or", C: "either", D: "neither" },
+    correctAnswer: "A",
+    clue: "CẤU TRÚC ĐẢO NGỮ PHỦ ĐỊNH KÉP: 'Neither did S + V, NOR did S + V' (Đã không... mà cũng chẳng...).",
+    explanationVi: "'nor' đứng đầu mệnh đề phủ định thứ hai và gây ra hiện tượng đảo ngữ (nor did they agree).",
+    targetChunk: { phrase: "nor did they agree to the overhaul", meaningVi: "mà họ cũng không đồng ý với việc đại tu lương hưu" },
+    skeleton: { subject: "they", verb: "did agree", object: "to the pension overhaul" }
+  },
+  {
+    id: "inv_std_022",
+    level: "standard",
+    question: "So lucrative ______ the government contract that several multinational consortia submitted bids.",
+    options: { A: "was", B: "were", C: "is", D: "being" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ VỚI SO... THAT: 'So + Adj (lucrative) + WAS + S (contract số ít) + that S + V'.",
+    explanationVi: "Đưa tính từ 'lucrative' lên đầu câu để nhấn mạnh mức độ sinh lời, to be 'was' đảo lên trước chủ ngữ 'the government contract'.",
+    targetChunk: { phrase: "So lucrative was the contract that", meaningVi: "Hợp đồng hấp dẫn đến mức mà" },
+    skeleton: { subject: "the contract", verb: "was", object: "so lucrative that consortia bid" }
+  },
+  {
+    id: "inv_std_023",
+    level: "standard",
+    question: "It was in the Geneva headquarters ______ the historic international trade accord was negotiated.",
+    options: { A: "that", B: "where", C: "which", D: "what" },
+    correctAnswer: "A",
+    clue: "CÂU CHẺ NHẤN MẠNH ĐỊA ĐIỂM: 'It was in Geneva + THAT + S + V'. Không dùng 'where' trong câu chẻ!",
+    explanationVi: "Công thức câu chẻ: It is/was + Thành phần nhấn mạnh + THAT + Mệnh đề.",
+    targetChunk: { phrase: "It was in Geneva that accord was negotiated", meaningVi: "Chính tại trụ sở Geneva mà hiệp định đã được đàm phán" },
+    skeleton: { subject: "It", verb: "was in Geneva", object: "that accord was negotiated" }
+  },
+  {
+    id: "inv_std_024",
+    level: "standard",
+    question: "Little ______ we suspect that the emerging startup would capture twenty percent of market share.",
+    options: { A: "did", B: "do", C: "have", D: "were" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ VỚI LITTLE: 'Little did we suspect...' (Chúng tôi hầu như không ngờ rằng...).",
+    explanationVi: "Đảo trợ động từ 'did' lên trước 'we'.",
+    targetChunk: { phrase: "Little did we suspect that", meaningVi: "Chúng tôi hầu như không hề mảy may ngờ rằng" },
+    skeleton: { subject: "we", verb: "did suspect", object: "that startup would capture share" }
+  },
+  {
+    id: "inv_std_025",
+    level: "standard",
+    question: "The director ______ submit the quarterly operational report before leaving for the airport yesterday.",
+    options: { A: "did", B: "does", C: "was", D: "is" },
+    correctAnswer: "A",
+    clue: "TRỢ ĐỘNG TỪ NHẤN MẠNH (Emphatic Did): 'did + V-bare (submit)' để nhấn mạnh 'thực sự đã làm việc đó'.",
+    explanationVi: "Trong câu khẳng định quá khứ (yesterday), dùng trợ động từ 'did' đứng trước V nguyên mẫu để nhấn mạnh hành động.",
+    targetChunk: { phrase: "did submit the report before leaving", meaningVi: "thực sự đã nộp báo cáo trước khi rời đi" },
+    skeleton: { subject: "The director", verb: "did submit", object: "the report" }
+  },
+  {
+    id: "inv_std_026",
+    level: "standard",
+    question: "Rarely ______ an error of this magnitude escaped detection by our automated auditing algorithms.",
+    options: { A: "has", B: "have", C: "is", D: "was" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ VỚI RARELY: 'Rarely has an error (số ít) escaped...'.",
+    explanationVi: "Chủ ngữ là 'an error' (số ít), đảo trợ động từ 'has' lên trước.",
+    targetChunk: { phrase: "Rarely has an error escaped detection", meaningVi: "Hiếm khi một sai sót lại lọt qua được sự phát hiện" },
+    skeleton: { subject: "an error", verb: "has escaped", object: "detection" }
+  },
+  {
+    id: "inv_std_027",
+    level: "standard",
+    question: "Only by working collaborative overtime ______ the assembly plant meet the unexpected surge in orders.",
+    options: { A: "could", B: "it could", C: "can it", D: "is" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ: 'Only by + V-ing + Modal (could) + S (plant) + V-bare (meet)'.",
+    explanationVi: "Đảo trợ động từ 'could' lên trước chủ ngữ 'the assembly plant'.",
+    targetChunk: { phrase: "Only by working overtime could the plant meet orders", meaningVi: "Chỉ bằng cách tăng ca thì nhà máy mới đáp ứng được các đơn hàng" },
+    skeleton: { subject: "plant", verb: "could meet", object: "surge in orders" }
+  },
+  {
+    id: "inv_std_028",
+    level: "standard",
+    question: "Such ______ the complexity of the proprietary algorithm that only two lead engineers understood it.",
+    options: { A: "was", B: "were", C: "is", D: "being" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ VỚI SUCH... THAT: 'Such + WAS + S (complexity số ít) + that S + V'.",
+    explanationVi: "Đảo 'Such was + Noun + that...' biểu thị mức độ lớn lao của sự phức tạp.",
+    targetChunk: { phrase: "Such was the complexity that", meaningVi: "Sự phức tạp lớn đến mức mà" },
+    skeleton: { subject: "the complexity", verb: "was", object: "such that two engineers understood it" }
+  },
+  {
+    id: "inv_std_029",
+    level: "standard",
+    question: "At no point during the press briefing ______ the spokesperson confirm the acquisition rumors.",
+    options: { A: "did", B: "does", C: "was", D: "has" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ: 'At no point + DID + S + V-bare (confirm)'.",
+    explanationVi: "Cụm phủ định 'At no point' (Không một thời điểm nào) đảo trợ động từ 'did' lên trước 'the spokesperson'.",
+    targetChunk: { phrase: "At no point did the spokesperson confirm", meaningVi: "Người phát ngôn không hề xác nhận tại bất kỳ thời điểm nào" },
+    skeleton: { subject: "spokesperson", verb: "did confirm", object: "rumors" }
+  },
+  {
+    id: "inv_std_030",
+    level: "standard",
+    question: "We ______ appreciate your patience while our server administrators resolve the connectivity glitch.",
+    options: { A: "do", B: "does", C: "did", D: "are" },
+    correctAnswer: "A",
+    clue: "TRỢ ĐỘNG TỪ NHẤN MẠNH HIỆN TẠI (Emphatic Do): 'We do appreciate...' (Chúng tôi thực sự rất trân trọng...).",
+    explanationVi: "Dùng 'do' đứng trước động từ nguyên mẫu 'appreciate' để nhấn mạnh sự cảm kích trong thư từ trang trọng.",
+    targetChunk: { phrase: "We do appreciate your patience", meaningVi: "Chúng tôi thực sự rất trân trọng sự kiên nhẫn của quý vị" },
+    skeleton: { subject: "We", verb: "do appreciate", object: "your patience" }
+  }
+];
+
+// 30 Advanced Questions (inv_adv_001 -> inv_adv_030)
+const advancedQuestions = [
+  {
+    id: "inv_adv_001",
+    level: "advanced",
+    question: "Not until the independent financial audit was concluded ______ the board authorize the dividend payout.",
+    options: { A: "did", B: "does", C: "was", D: "had" },
+    correctAnswer: "A",
+    clue: "BẪY 'NOT UNTIL': 'Not until S + V, TRỢ ĐỘNG TỪ (did) + S + V-bare'. Chỉ đảo ngữ ở MỆNH ĐỀ CHÍNH phía sau!",
+    explanationVi: "Với cấu trúc 'Not until...', mệnh đề thời gian giữ nguyên trật tự, chỉ đảo ngữ ở mệnh đề chính: 'did the board authorize'.",
+    targetChunk: { phrase: "Not until audit was concluded did the board authorize", meaningVi: "Mãi cho đến khi cuộc kiểm toán kết thúc thì hội đồng mới phê duyệt" },
+    skeleton: { subject: "the board", verb: "did authorize", object: "the dividend payout" }
+  },
+  {
+    id: "inv_adv_002",
+    level: "advanced",
+    question: "Beneath the main administrative campus ______ an intricate network of research cleanrooms.",
+    options: { A: "lies", B: "lie", C: "lying", D: "is lying" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ CỤM GIỚI TỪ CHỈ NƠI CHỐN (Locative Inversion): 'Beneath... + LIES + S (an intricate network số ít)'.",
+    explanationVi: "Đưa cụm giới từ chỉ địa điểm lên đầu câu, động từ 'lies' đảo trực tiếp lên trước chủ ngữ số ít 'an intricate network'.",
+    targetChunk: { phrase: "Beneath the campus lies an intricate network", meaningVi: "Bên dưới khuôn viên điều hành là một mạng lưới phức hợp" },
+    skeleton: { subject: "an intricate network", verb: "lies", object: "beneath the campus" }
+  },
+  {
+    id: "inv_adv_003",
+    level: "advanced",
+    question: "So dense ______ the technical jargon in the patent filing that outside counsel required three days to decode it.",
+    options: { A: "was", B: "were", C: "is", D: "being" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ SO... THAT: 'So dense WAS + S (jargon số ít không đếm được) + that...'.",
+    explanationVi: "Jargon (thuật ngữ chuyên ngành) là danh từ không đếm được, đảo to be quá khứ 'was' lên trước.",
+    targetChunk: { phrase: "So dense was the technical jargon that", meaningVi: "Thuật ngữ kỹ thuật dày đặc đến mức mà" },
+    skeleton: { subject: "the jargon", verb: "was so dense that counsel required time", object: null }
+  },
+  {
+    id: "inv_adv_004",
+    level: "advanced",
+    question: "______ did the marketing team expect that consumer demand for the retro collection would be so overwhelming.",
+    options: { A: "Little", B: "Few", C: "Small", D: "Slight" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ PHỦ ĐỊNH VỚI LITTLE: 'Little did the team expect' (Nhóm tiếp thị hầu như chẳng thể ngờ).",
+    explanationVi: "'Little' là trạng từ mang nghĩa phủ định, chỉ 'Little' mới kết hợp với 'did + S + expect'.",
+    targetChunk: { phrase: "Little did the team expect that", meaningVi: "Đội ngũ tiếp thị hầu như chẳng ngờ rằng" },
+    skeleton: { subject: "the team", verb: "did expect", object: "that demand would be overwhelming" }
+  },
+  {
+    id: "inv_adv_005",
+    level: "advanced",
+    question: "Prominently displayed in the executive foyer ______ the original architectural sketches of the headquarters.",
+    options: { A: "are", B: "is", C: "being", D: "be" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ PHÂN TỪ: 'Prominently displayed... + ARE + S (sketches số nhiều)'.",
+    explanationVi: "Chủ ngữ thực tế là 'the original architectural sketches' (số nhiều), nên to be chia là 'are'.",
+    targetChunk: { phrase: "Displayed in the foyer are the sketches", meaningVi: "Được trưng bày nổi bật tại sảnh là các bản phác thảo" },
+    skeleton: { subject: "the sketches", verb: "are displayed", object: "in the foyer" }
+  },
+  {
+    id: "inv_adv_006",
+    level: "advanced",
+    question: "Nowhere in the corporate bylaws ______ it state that employee stock options must be vested immediately.",
+    options: { A: "does", B: "do", C: "is", D: "has" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ VỚI NOWHERE: 'Nowhere in the bylaws + DOES + it + state...'.",
+    explanationVi: "'Nowhere' (Không nơi nào) đảo trợ động từ 'does' lên trước chủ ngữ số ít 'it'.",
+    targetChunk: { phrase: "Nowhere in the bylaws does it state", meaningVi: "Không có chỗ nào trong điều lệ công ty nêu rằng" },
+    skeleton: { subject: "it", verb: "does state", object: "that options must be vested" }
+  },
+  {
+    id: "inv_adv_007",
+    level: "advanced",
+    question: "Not only ______ the new software streamline accounting, but it also curtailed clerical overhead by half.",
+    options: { A: "did", B: "does", C: "was", D: "has" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ NOT ONLY: Mệnh đề sau có 'curtailed' (quá khứ) → đảo trợ động từ 'did' lên trước.",
+    explanationVi: "'Not only did the new software streamline...' là cấu trúc đảo ngữ thời quá khứ.",
+    targetChunk: { phrase: "Not only did software streamline, but it curtailed", meaningVi: "Không những phần mềm tối ưu hóa, mà nó còn cắt giảm một nửa" },
+    skeleton: { subject: "software", verb: "did streamline", object: "accounting" }
+  },
+  {
+    id: "inv_adv_008",
+    level: "advanced",
+    question: "Only when the third-quarter earnings report was released ______ the shareholders realize the extent of losses.",
+    options: { A: "did", B: "does", C: "were", D: "have" },
+    correctAnswer: "A",
+    clue: "BẪY ONLY WHEN: Đảo ngữ ở mệnh đề chính 'did the shareholders realize'.",
+    explanationVi: "Đảo trợ động từ quá khứ 'did' lên trước chủ ngữ 'the shareholders'.",
+    targetChunk: { phrase: "Only when report was released did shareholders realize", meaningVi: "Chỉ khi báo cáo được công bố thì các cổ đông mới nhận ra" },
+    skeleton: { subject: "shareholders", verb: "did realize", object: "the extent of losses" }
+  },
+  {
+    id: "inv_adv_009",
+    level: "advanced",
+    question: "Directly adjacent to the manufacturing plant ______ three multi-tier warehousing depots.",
+    options: { A: "stand", B: "stands", C: "standing", D: "is standing" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ VỊ TRÍ ĐỊA ĐIỂM: 'Directly adjacent... + STAND + S (depots số nhiều)'.",
+    explanationVi: "Chủ ngữ là danh từ số nhiều 'three warehousing depots', động từ 'stand' chia ở dạng số nhiều không có -s.",
+    targetChunk: { phrase: "Adjacent to the plant stand three depots", meaningVi: "Liền kề với nhà máy là ba khu nhà kho đa tầng" },
+    skeleton: { subject: "three depots", verb: "stand", object: "adjacent to the plant" }
+  },
+  {
+    id: "inv_adv_010",
+    level: "advanced",
+    question: "No sooner ______ the executive team finalized the presentation than the video link unexpectedly failed.",
+    options: { A: "had", B: "did", C: "have", D: "was" },
+    correctAnswer: "A",
+    clue: "CẤU TRÚC: 'No sooner HAD + S + V3 (finalized) THAN...'.",
+    explanationVi: "Đảo 'had' lên trước chủ ngữ 'the executive team'.",
+    targetChunk: { phrase: "No sooner had team finalized than", meaningVi: "Ban điều hành vừa hoàn tất xong thì" },
+    skeleton: { subject: "team", verb: "had finalized", object: "presentation" }
+  },
+  {
+    id: "inv_adv_011",
+    level: "advanced",
+    question: "The director ______ insist that all laboratory protocols be strictly adhered to during clinical trials.",
+    options: { A: "did", B: "does", C: "was", D: "has" },
+    correctAnswer: "A",
+    clue: "TRỢ ĐỘNG TỪ NHẤN MẠNH: 'did insist' để nhấn mạnh hành động quả quyết của giám đốc.",
+    explanationVi: "Trong văn cảnh quá khứ, 'did + V-bare' mang sắc thái nhấn mạnh tính kiên quyết.",
+    targetChunk: { phrase: "did insist that protocols be adhered to", meaningVi: "thực sự đã khăng khăng yêu cầu các quy trình phải được tuân thủ" },
+    skeleton: { subject: "The director", verb: "did insist", object: "that protocols be adhered to" }
+  },
+  {
+    id: "inv_adv_012",
+    level: "advanced",
+    question: "Hardly ______ the board members taken their seats when the chairman introduced the surprise acquisition bid.",
+    options: { A: "had", B: "did", C: "have", D: "were" },
+    correctAnswer: "A",
+    clue: "CẤU TRÚC: 'Hardly HAD + S + V3 (taken) WHEN...'.",
+    explanationVi: "Đảo trợ động từ 'had' lên trước chủ ngữ.",
+    targetChunk: { phrase: "Hardly had members taken seats when", meaningVi: "Các thành viên hội đồng vừa mới an tọa thì" },
+    skeleton: { subject: "members", verb: "had taken", object: "seats" }
+  },
+  {
+    id: "inv_adv_013",
+    level: "advanced",
+    question: "It was not until midnight ______ the maintenance crew succeeded in restoring electrical power to the plant.",
+    options: { A: "that", B: "when", C: "which", D: "where" },
+    correctAnswer: "A",
+    clue: "CÂU CHẺ VỚI NOT UNTIL: 'It was not until + Mốc thời gian + THAT + S + V'. Không dùng 'when'!",
+    explanationVi: "Cấu trúc câu chẻ nhấn mạnh: It was not until... THAT...",
+    targetChunk: { phrase: "It was not until midnight that crew succeeded", meaningVi: "Mãi cho đến nửa đêm thì đội bảo trì mới thành công" },
+    skeleton: { subject: "It", verb: "was not until midnight", object: "that crew succeeded in restoring power" }
+  },
+  {
+    id: "inv_adv_014",
+    level: "advanced",
+    question: "Such was the popularity of the new smartwatch ______ the server crashed due to massive web traffic.",
+    options: { A: "that", B: "so", C: "as", D: "than" },
+    correctAnswer: "A",
+    clue: "CẤU TRÚC: 'Such was + Noun + THAT + S + V' (Độ thịnh hành lớn đến mức mà server bị sập).",
+    explanationVi: "Such was X that: mức độ của X lớn đến nỗi...",
+    targetChunk: { phrase: "Such was the popularity that server crashed", meaningVi: "Độ phổ biến lớn đến mức máy chủ bị sập" },
+    skeleton: { subject: "the popularity", verb: "was such that server crashed", object: null }
+  },
+  {
+    id: "inv_adv_015",
+    level: "advanced",
+    question: "Only by leveraging cutting-edge cloud infrastructure ______ the enterprise achieve sub-second response times.",
+    options: { A: "could", B: "can it", C: "it could", D: "is it" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ ONLY BY: 'Only by + V-ing + Modal (could) + S (the enterprise) + V-bare'.",
+    explanationVi: "Đảo trợ động từ 'could' lên trước chủ ngữ.",
+    targetChunk: { phrase: "Only by leveraging infrastructure could the enterprise achieve", meaningVi: "Chỉ bằng cách tận dụng hạ tầng thì doanh nghiệp mới có thể đạt được" },
+    skeleton: { subject: "the enterprise", verb: "could achieve", object: "sub-second response times" }
+  },
+  {
+    id: "inv_adv_016",
+    level: "advanced",
+    question: "At no stage during the confidential merger talks ______ insider leaks reported to financial watchdogs.",
+    options: { A: "were", B: "was", C: "did", D: "have" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ PHỦ ĐỊNH BỊ ĐỘNG: 'At no stage... + WERE + S (insider leaks số nhiều) + reported'.",
+    explanationVi: "Chủ ngữ là danh từ số nhiều 'leaks', to be đảo lên trước là 'were'.",
+    targetChunk: { phrase: "At no stage were insider leaks reported", meaningVi: "Không có giai đoạn nào các rò rỉ nội bộ bị báo cáo" },
+    skeleton: { subject: "leaks", verb: "were reported", object: null }
+  },
+  {
+    id: "inv_adv_017",
+    level: "advanced",
+    question: "Across the street from the municipal convention hall ______ two premier boutique hotels.",
+    options: { A: "stand", B: "stands", C: "standing", D: "is standing" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ ĐỊA ĐIỂM: 'Across the street... + STAND + S (two boutique hotels số nhiều)'.",
+    explanationVi: "Chủ ngữ là 'two hotels' (số nhiều) đứng phía sau, động từ 'stand' chia số nhiều.",
+    targetChunk: { phrase: "Across the street stand two hotels", meaningVi: "Bên kia đường là hai khách sạn cao cấp" },
+    skeleton: { subject: "two hotels", verb: "stand", object: "across the street" }
+  },
+  {
+    id: "inv_adv_018",
+    level: "advanced",
+    question: "The director stated that rarely ______ an executive with such exceptional negotiation instincts.",
+    options: { A: "had he encountered", B: "he had encountered", C: "did he encountered", D: "he encountered" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ TRONG MỆNH ĐỀ RẰNG: '...rarely HAD HE ENCOUNTERED an executive...'.",
+    explanationVi: "Đảo ngữ vẫn áp dụng bình thường bên trong mệnh đề that sau trạng từ phủ định 'rarely'.",
+    targetChunk: { phrase: "rarely had he encountered such an executive", meaningVi: "hiếm khi ông lại gặp một nhà điều hành xuất sắc như vậy" },
+    skeleton: { subject: "he", verb: "had encountered", object: "an executive" }
+  },
+  {
+    id: "inv_adv_019",
+    level: "advanced",
+    question: "So turbulent ______ the market conditions that the corporate board delayed the initial public offering.",
+    options: { A: "were", B: "was", C: "are", D: "is" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ SO... THAT: 'So turbulent WERE + S (conditions số nhiều) + that...'.",
+    explanationVi: "Chủ ngữ là 'conditions' (số nhiều), to be chia là 'were'.",
+    targetChunk: { phrase: "So turbulent were the conditions that", meaningVi: "Điều kiện thị trường biến động dữ dội đến mức mà" },
+    skeleton: { subject: "conditions", verb: "were turbulent", object: null }
+  },
+  {
+    id: "inv_adv_020",
+    level: "advanced",
+    question: "Only after extensive benchmarking ______ the engineering consortium finalize the turbine blueprint.",
+    options: { A: "did", B: "does", C: "was", D: "has" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ: 'Only after + Noun + DID + S + V-bare (finalize)'.",
+    explanationVi: "Đảo trợ động từ 'did' lên trước chủ ngữ 'the consortium'.",
+    targetChunk: { phrase: "Only after benchmarking did the consortium finalize", meaningVi: "Chỉ sau khi đối chuẩn kỹ càng thì liên danh mới chốt bản vẽ" },
+    skeleton: { subject: "the consortium", verb: "did finalize", object: "the blueprint" }
+  },
+  {
+    id: "inv_adv_021",
+    level: "advanced",
+    question: "It was precisely because of supply chain disruptions ______ the delivery date had to be rescheduled.",
+    options: { A: "that", B: "which", C: "why", D: "when" },
+    correctAnswer: "A",
+    clue: "CÂU CHẺ NHẤN MẠNH NGUYÊN NHÂN: 'It was because of X + THAT + S + V'. Không dùng 'why' trong câu chẻ!",
+    explanationVi: "Câu chẻ nhấn mạnh lý do 'because of disruptions' luôn đi với liên từ 'that'.",
+    targetChunk: { phrase: "It was because of disruptions that date was rescheduled", meaningVi: "Chính vì sự gián đoạn chuỗi cung ứng mà ngày giao hàng phải đổi lại" },
+    skeleton: { subject: "It", verb: "was because of disruptions", object: "that date was rescheduled" }
+  },
+  {
+    id: "inv_adv_022",
+    level: "advanced",
+    question: "Scarcely ______ the regulatory inspection team arrived when they identified several safety violations.",
+    options: { A: "had", B: "did", C: "have", D: "were" },
+    correctAnswer: "A",
+    clue: "CẤU TRÚC: 'Scarcely HAD + S + V3 (arrived) WHEN...'.",
+    explanationVi: "Đảo 'had' lên trước chủ ngữ 'the team'.",
+    targetChunk: { phrase: "Scarcely had team arrived when violations were found", meaningVi: "Đoàn thanh tra vừa mới đến thì phát hiện vi phạm" },
+    skeleton: { subject: "team", verb: "had arrived", object: null }
+  },
+  {
+    id: "inv_adv_023",
+    level: "advanced",
+    question: "Under no circumstances ______ unauthorized individuals be permitted into the cleanroom facility.",
+    options: { A: "may", B: "they may", C: "may they", D: "can they" },
+    correctAnswer: "A",
+    clue: "CỤM PHỦ ĐỊNH: 'Under no circumstances + Modal (may) + S (individuals) + be permitted...'.",
+    explanationVi: "Đảo 'may' lên trước chủ ngữ 'unauthorized individuals'.",
+    targetChunk: { phrase: "Under no circumstances may individuals be permitted", meaningVi: "Dưới bất kỳ tình huống nào các cá nhân cũng không được phép vào" },
+    skeleton: { subject: "individuals", verb: "may be permitted", object: null }
+  },
+  {
+    id: "inv_adv_024",
+    level: "advanced",
+    question: "Included in the promotional media kit ______ high-resolution product photographs and spec sheets.",
+    options: { A: "are", B: "is", C: "being", D: "be" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ PHÂN TỪ: 'Included in the kit... + ARE + S (photographs and sheets số nhiều)'.",
+    explanationVi: "Chủ ngữ là cụm danh từ ghép số nhiều 'photographs and spec sheets', to be chia là 'are'.",
+    targetChunk: { phrase: "Included in the kit are photographs", meaningVi: "Bao gồm trong bộ tài liệu là các hình ảnh" },
+    skeleton: { subject: "photographs and spec sheets", verb: "are", object: "included in the kit" }
+  },
+  {
+    id: "inv_adv_025",
+    level: "advanced",
+    question: "The director confirmed that in no way ______ the executive board sanction an unauthorized budget overrun.",
+    options: { A: "would", B: "it would", C: "would it", D: "will it" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ PHỦ ĐỊNH TRONG THAT-CLAUSE: '...in no way WOULD + S (the board) + V-bare (sanction)'.",
+    explanationVi: "Đảo 'would' lên trước chủ ngữ 'the executive board'.",
+    targetChunk: { phrase: "in no way would the board sanction overrun", meaningVi: "hội đồng tuyệt đối sẽ không phê duyệt việc bội chi ngân sách" },
+    skeleton: { subject: "the board", verb: "would sanction", object: "budget overrun" }
+  },
+  {
+    id: "inv_adv_026",
+    level: "advanced",
+    question: "Not until all audit discrepancies were resolved ______ the treasury release the remaining grant payments.",
+    options: { A: "did", B: "does", C: "was", D: "has" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ NOT UNTIL: Đảo trợ động từ quá khứ 'did' lên trước chủ ngữ của mệnh đề chính 'the treasury'.",
+    explanationVi: "Đảo ngữ mệnh đề chính sau 'Not until'.",
+    targetChunk: { phrase: "Not until discrepancies were resolved did treasury release", meaningVi: "Mãi cho đến khi các sai sót được giải quyết thì kho bạc mới giải ngân" },
+    skeleton: { subject: "treasury", verb: "did release", object: "payments" }
+  },
+  {
+    id: "inv_adv_027",
+    level: "advanced",
+    question: "On the top floor of the corporate tower ______ the private offices of the founding partners.",
+    options: { A: "sit", B: "sits", C: "sitting", D: "is sitting" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ NƠI CHỐN: 'On the top floor... + SIT + S (the private offices số nhiều)'.",
+    explanationVi: "Chủ ngữ là 'the private offices' (số nhiều), động từ 'sit' (tọa lạc) chia ở dạng số nhiều không có -s.",
+    targetChunk: { phrase: "On the top floor sit the offices", meaningVi: "Trên tầng cao nhất là các văn phòng riêng" },
+    skeleton: { subject: "the offices", verb: "sit", object: "on the top floor" }
+  },
+  {
+    id: "inv_adv_028",
+    level: "advanced",
+    question: "So overwhelmingly positive ______ the initial reception that the publisher ordered an immediate second print run.",
+    options: { A: "was", B: "were", C: "is", D: "are" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ SO... THAT: 'So positive WAS + S (the reception số ít) + that...'.",
+    explanationVi: "Chủ ngữ là 'reception' (số ít), to be quá khứ chia là 'was'.",
+    targetChunk: { phrase: "So positive was the reception that", meaningVi: "Sự đón nhận nồng nhiệt đến mức mà" },
+    skeleton: { subject: "the reception", verb: "was positive", object: null }
+  },
+  {
+    id: "inv_adv_029",
+    level: "advanced",
+    question: "Little ______ the new employees anticipate the rigorous demands of the fast-paced trading floor.",
+    options: { A: "did", B: "do", C: "were", D: "have" },
+    correctAnswer: "A",
+    clue: "ĐẢO NGỮ VỚI LITTLE: 'Little did the new employees anticipate...' (Họ hầu như không lường trước được).",
+    explanationVi: "Đảo 'did' lên trước 'employees'.",
+    targetChunk: { phrase: "Little did employees anticipate the demands", meaningVi: "Các nhân viên mới hầu như không lường trước được những đòi hỏi khắt khe" },
+    skeleton: { subject: "employees", verb: "did anticipate", object: "the demands" }
+  },
+  {
+    id: "inv_adv_030",
+    level: "advanced",
+    question: "It was through relentless perseverance and strategic vision ______ the startup attained unicorn valuation.",
+    options: { A: "that", B: "which", C: "how", D: "what" },
+    correctAnswer: "A",
+    clue: "CÂU CHẺ NHẤN MẠNH PHƯƠNG THỨC: 'It was through X + THAT + S + V'. Không dùng 'how'!",
+    explanationVi: "Cấu trúc câu chẻ nhấn mạnh: It was [thành phần nhấn mạnh] THAT...",
+    targetChunk: { phrase: "It was through vision that startup attained valuation", meaningVi: "Chính nhờ tầm nhìn mà công ty khởi nghiệp đã đạt định giá kỳ lân" },
+    skeleton: { subject: "It", verb: "was through vision", object: "that startup attained valuation" }
+  }
+];
+
+topic.questions = [...standardQuestions, ...advancedQuestions];
+
+fs.writeFileSync('./data/grammar/inversion.json', JSON.stringify(topic, null, 2), 'utf8');
+console.log('inversion.json created successfully! Total questions:', topic.questions.length);
+console.log('Standard:', standardQuestions.length, 'Advanced:', advancedQuestions.length);

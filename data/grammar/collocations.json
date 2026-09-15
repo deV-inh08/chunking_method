@@ -1,0 +1,1389 @@
+{
+  "topicId": "collocations",
+  "titleVi": "Cụm Giới từ Cố định & Collocations",
+  "totalQuestions": 60,
+  "standardCount": 30,
+  "advancedCount": 30,
+  "questions": [
+    {
+      "id": "colloc_std_001",
+      "level": "standard",
+      "question": "The factory operates in strict ______ with national environmental safety standards.",
+      "options": {
+        "A": "compliance",
+        "B": "comply",
+        "C": "compliant",
+        "D": "compliantly"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ cố định: in compliance with (tuân thủ theo) → Cần danh từ: compliance.",
+      "explanationVi": "Cụm thành ngữ cố định kinh điển trong TOEIC: 'in compliance with' = tuân thủ theo, chiếu theo đúng quy định. Đứng giữa giới từ 'in' và 'with' là danh từ 'compliance'.",
+      "targetChunk": {
+        "phrase": "in strict compliance with national standards",
+        "meaningVi": "tuân thủ nghiêm ngặt theo các tiêu chuẩn quốc gia"
+      },
+      "skeleton": {
+        "subject": "The factory",
+        "verb": "operates",
+        "object": null
+      }
+    },
+    {
+      "id": "colloc_std_002",
+      "level": "standard",
+      "question": "The evaluation committee will take your prior experience into ______ when reviewing your candidacy.",
+      "options": {
+        "A": "consider",
+        "B": "consideration",
+        "C": "considerable",
+        "D": "considerate"
+      },
+      "correctAnswer": "B",
+      "clue": "Cụm động từ cố định: take sth into consideration (cân nhắc / tính đến điều gì) → Chọn consideration.",
+      "explanationVi": "Cụm từ cố định: 'take into consideration / take into account' = cân nhắc, tính đến. Đứng sau giới từ 'into' là danh từ 'consideration'.",
+      "targetChunk": {
+        "phrase": "take your prior experience into consideration",
+        "meaningVi": "tính đến kinh nghiệm trước đây của bạn"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "will take into consideration",
+        "object": "experience"
+      }
+    },
+    {
+      "id": "colloc_std_003",
+      "level": "standard",
+      "question": "The engineering team worked overtime to ______ the tight project deadline.",
+      "options": {
+        "A": "meet",
+        "B": "catch",
+        "C": "find",
+        "D": "gain"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation quen thuộc: \"meet the deadline\" (kịp thời hạn chót) → Chọn meet.",
+      "explanationVi": "'meet the deadline' = kịp hạn chót (đối ứng với miss the deadline = trễ hạn). Không dùng catch, find hay gain với deadline.",
+      "targetChunk": {
+        "phrase": "worked overtime to meet the tight deadline",
+        "meaningVi": "làm thêm giờ để kịp thời hạn gấp gáp"
+      },
+      "skeleton": {
+        "subject": "The team",
+        "verb": "worked overtime to meet",
+        "object": "the deadline"
+      }
+    },
+    {
+      "id": "colloc_std_004",
+      "level": "standard",
+      "question": "Please submit your quarterly expense report at your earliest ______ .",
+      "options": {
+        "A": "convenient",
+        "B": "convenience",
+        "C": "conveniently",
+        "D": "convene"
+      },
+      "correctAnswer": "B",
+      "clue": "Cụm từ lịch sự thường gặp trong email thương mại: at your earliest convenience → Chọn convenience.",
+      "explanationVi": "'at your earliest convenience' = sớm nhất khi bạn có thể / lúc nào bạn tiện nhất. Sau tính từ sở hữu 'your' và tính từ so sánh nhất 'earliest' cần danh từ 'convenience'.",
+      "targetChunk": {
+        "phrase": "at your earliest convenience",
+        "meaningVi": "sớm nhất khi bạn có thể"
+      },
+      "skeleton": {
+        "subject": "You (implied)",
+        "verb": "submit",
+        "object": "expense report"
+      }
+    },
+    {
+      "id": "colloc_std_005",
+      "level": "standard",
+      "question": "The revised bonus structure was designed in ______ with the new corporate policies.",
+      "options": {
+        "A": "accordance",
+        "B": "accord",
+        "C": "according",
+        "D": "accordingly"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ cố định: in accordance with (phù hợp với / dựa theo) → Chọn accordance.",
+      "explanationVi": "'in accordance with' = phù hợp với, theo đúng như quy định. 'according' phải đi với to (according to).",
+      "targetChunk": {
+        "phrase": "in accordance with the new corporate policies",
+        "meaningVi": "phù hợp với các chính sách mới của công ty"
+      },
+      "skeleton": {
+        "subject": "bonus structure",
+        "verb": "was designed",
+        "object": null
+      }
+    },
+    {
+      "id": "colloc_std_006",
+      "level": "standard",
+      "question": "Interns will conduct lab testing under the direct ______ of senior researchers.",
+      "options": {
+        "A": "supervise",
+        "B": "supervisor",
+        "C": "supervision",
+        "D": "supervisory"
+      },
+      "correctAnswer": "C",
+      "clue": "Cụm từ cố định: under the supervision of (dưới sự giám sát của) → Chọn supervision.",
+      "explanationVi": "'under the supervision of sb' = dưới sự giám sát, hướng dẫn của ai đó. 'supervisor' là người giám sát; 'supervise' là động từ.",
+      "targetChunk": {
+        "phrase": "under the direct supervision of senior researchers",
+        "meaningVi": "dưới sự giám sát trực tiếp của các nghiên cứu viên cấp cao"
+      },
+      "skeleton": {
+        "subject": "Interns",
+        "verb": "will conduct",
+        "object": "lab testing"
+      }
+    },
+    {
+      "id": "colloc_std_007",
+      "level": "standard",
+      "question": "Renewable energy investments play a ______ role in reducing carbon emissions.",
+      "options": {
+        "A": "crucial",
+        "B": "crucially",
+        "C": "crucialness",
+        "D": "crux"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"play a crucial / key / vital role in\" → Cần tính từ: crucial.",
+      "explanationVi": "'play a crucial/key/vital role in sth' = đóng vai trò sống còn, then chốt trong việc gì. Cần tính từ 'crucial' bổ nghĩa cho danh từ 'role'.",
+      "targetChunk": {
+        "phrase": "play a crucial role in reducing",
+        "meaningVi": "đóng vai trò then chốt trong việc giảm thiểu"
+      },
+      "skeleton": {
+        "subject": "investments",
+        "verb": "play",
+        "object": "a crucial role"
+      }
+    },
+    {
+      "id": "colloc_std_008",
+      "level": "standard",
+      "question": "The firm hired an independent polling agency to ______ a comprehensive market survey.",
+      "options": {
+        "A": "conduct",
+        "B": "make",
+        "C": "do",
+        "D": "produce"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"conduct a survey / study / investigation\" (tiến hành khảo sát) → Chọn conduct.",
+      "explanationVi": "Động từ chuẩn đi với khảo sát/nghiên cứu: 'conduct a survey' (tiến hành khảo sát). Không dùng make a survey hay do a survey trong văn phong học thuật/công sở TOEIC.",
+      "targetChunk": {
+        "phrase": "conduct a comprehensive market survey",
+        "meaningVi": "tiến hành một cuộc khảo sát thị trường toàn diện"
+      },
+      "skeleton": {
+        "subject": "The firm",
+        "verb": "hired an agency to conduct",
+        "object": "a market survey"
+      }
+    },
+    {
+      "id": "colloc_std_009",
+      "level": "standard",
+      "question": "It is highly recommended to ______ a table reservation at least three days in advance.",
+      "options": {
+        "A": "make",
+        "B": "do",
+        "C": "take",
+        "D": "give"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation kinh điển: \"make a reservation\" (đặt chỗ trước) → Chọn make.",
+      "explanationVi": "'make a reservation' = đặt chỗ trước (cho bàn ăn, chuyến bay, phòng khách sạn).",
+      "targetChunk": {
+        "phrase": "make a table reservation at least",
+        "meaningVi": "đặt bàn trước ít nhất"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "is recommended to make",
+        "object": "a reservation"
+      }
+    },
+    {
+      "id": "colloc_std_010",
+      "level": "standard",
+      "question": "The company spokesperson made an announcement on ______ of the board of directors.",
+      "options": {
+        "A": "behalf",
+        "B": "behave",
+        "C": "beholding",
+        "D": "benefit"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ cố định: on behalf of (thay mặt cho, đại diện cho) → Chọn behalf.",
+      "explanationVi": "'on behalf of sb' = thay mặt cho ai, đại diện cho ai. Đây là cụm cố định 100% không biến thể trong ngữ pháp TOEIC.",
+      "targetChunk": {
+        "phrase": "on behalf of the board of directors",
+        "meaningVi": "thay mặt cho ban giám đốc"
+      },
+      "skeleton": {
+        "subject": "spokesperson",
+        "verb": "made",
+        "object": "an announcement"
+      }
+    },
+    {
+      "id": "colloc_std_011",
+      "level": "standard",
+      "question": "The maintenance department will ______ measures to ensure the elevators remain functional.",
+      "options": {
+        "A": "take",
+        "B": "hold",
+        "C": "keep",
+        "D": "make"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"take measures / take steps / take precautions\" (thực hiện các biện pháp) → Chọn take.",
+      "explanationVi": "'take measures to do sth' = thực hiện các biện pháp để làm gì. Không dùng make measures hay hold measures.",
+      "targetChunk": {
+        "phrase": "take measures to ensure",
+        "meaningVi": "thực hiện các biện pháp để đảm bảo"
+      },
+      "skeleton": {
+        "subject": "department",
+        "verb": "will take",
+        "object": "measures"
+      }
+    },
+    {
+      "id": "colloc_std_012",
+      "level": "standard",
+      "question": "All employees are entitled to 15 days of annual leave ______ of their job title.",
+      "options": {
+        "A": "regardless",
+        "B": "regarding",
+        "C": "regard",
+        "D": "regarded"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm liên từ/giới từ: regardless of (bất kể, không phân biệt) → Chọn regardless.",
+      "explanationVi": "'regardless of' = bất kể, bất chấp (regardless of job title = không phân biệt chức danh). 'regarding' là giới từ mang nghĩa 'về việc gì'.",
+      "targetChunk": {
+        "phrase": "regardless of their job title",
+        "meaningVi": "bất kể chức danh công việc của họ là gì"
+      },
+      "skeleton": {
+        "subject": "All employees",
+        "verb": "are entitled to",
+        "object": "annual leave"
+      }
+    },
+    {
+      "id": "colloc_std_013",
+      "level": "standard",
+      "question": "The marketing campaign succeeded in drawing consumer ______ to the new organic beverage.",
+      "options": {
+        "A": "attention",
+        "B": "attend",
+        "C": "attentive",
+        "D": "attentively"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"draw attention to\" (thu hút sự chú ý vào) → Cần danh từ: attention.",
+      "explanationVi": "'draw attention to sth' = thu hút sự chú ý tới cái gì. 'attention' là danh từ không đếm được làm tân ngữ.",
+      "targetChunk": {
+        "phrase": "drawing consumer attention to the new beverage",
+        "meaningVi": "thu hút sự chú ý của người tiêu dùng tới thức uống mới"
+      },
+      "skeleton": {
+        "subject": "campaign",
+        "verb": "succeeded in drawing",
+        "object": "consumer attention"
+      }
+    },
+    {
+      "id": "colloc_std_014",
+      "level": "standard",
+      "question": "Ms. Chen is directly in ______ of inventory procurement for the flagship store.",
+      "options": {
+        "A": "charge",
+        "B": "duty",
+        "C": "control",
+        "D": "care"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ cố định: in charge of (chịu trách nhiệm / phụ trách) → Chọn charge.",
+      "explanationVi": "'in charge of sth' = chịu trách nhiệm/phụ trách cái gì. 'in care of' = nhờ ai chuyển giúp; 'under control' = trong tầm kiểm soát.",
+      "targetChunk": {
+        "phrase": "in charge of inventory procurement",
+        "meaningVi": "chịu trách nhiệm việc thu mua hàng tồn kho"
+      },
+      "skeleton": {
+        "subject": "Ms. Chen",
+        "verb": "is",
+        "object": "in charge of procurement"
+      }
+    },
+    {
+      "id": "colloc_std_015",
+      "level": "standard",
+      "question": "The automated software helps the warehouse team keep ______ of all outgoing shipments.",
+      "options": {
+        "A": "track",
+        "B": "trace",
+        "C": "record",
+        "D": "sight"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"keep track of\" (theo dõi, nắm bắt thông tin) → Chọn track.",
+      "explanationVi": "'keep track of sth' = theo dõi, ghi nhớ diễn biến hoặc vị trí của cái gì (keep track of shipments). 'keep a record of' cần có mạo từ 'a'.",
+      "targetChunk": {
+        "phrase": "keep track of all outgoing shipments",
+        "meaningVi": "theo dõi tất cả các lô hàng xuất đi"
+      },
+      "skeleton": {
+        "subject": "software",
+        "verb": "helps keep track of",
+        "object": "shipments"
+      }
+    },
+    {
+      "id": "colloc_std_016",
+      "level": "standard",
+      "question": "Customers are encouraged to take full ______ of the promotional discounts this weekend.",
+      "options": {
+        "A": "advantage",
+        "B": "advance",
+        "C": "admission",
+        "D": "adoption"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"take advantage of\" (tận dụng / nắm bắt cơ hội) → Chọn advantage.",
+      "explanationVi": "'take advantage of sth' = tận dụng tối đa cơ hội/lợi ích từ cái gì. Không có cụm 'take advance of'.",
+      "targetChunk": {
+        "phrase": "take full advantage of the promotional discounts",
+        "meaningVi": "tận dụng tối đa các chương trình giảm giá khuyến mãi"
+      },
+      "skeleton": {
+        "subject": "Customers",
+        "verb": "are encouraged to take advantage of",
+        "object": "discounts"
+      }
+    },
+    {
+      "id": "colloc_std_017",
+      "level": "standard",
+      "question": "Clients can ______ an order conveniently through our newly updated mobile application.",
+      "options": {
+        "A": "place",
+        "B": "give",
+        "C": "put",
+        "D": "lay"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation tiêu chuẩn thương mại: \"place an order\" (đặt hàng) → Chọn place.",
+      "explanationVi": "'place an order' = đặt một đơn hàng. Đây là collocation chuẩn mực trong ngữ cảnh thương mại của TOEIC.",
+      "targetChunk": {
+        "phrase": "place an order conveniently through",
+        "meaningVi": "đặt một đơn hàng một cách tiện lợi thông qua"
+      },
+      "skeleton": {
+        "subject": "Clients",
+        "verb": "can place",
+        "object": "an order"
+      }
+    },
+    {
+      "id": "colloc_std_018",
+      "level": "standard",
+      "question": "The president wrote a letter to ______ deep appreciation for the volunteers' dedication.",
+      "options": {
+        "A": "express",
+        "B": "speak",
+        "C": "tell",
+        "D": "say"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"express appreciation / gratitude\" (bày tỏ lòng cảm kích/biết ơn) → Chọn express.",
+      "explanationVi": "'express appreciation / gratitude' = bày tỏ sự tri ân, lòng biết ơn. Các động từ speak, tell, say không kết hợp trực tiếp với appreciation theo cách này.",
+      "targetChunk": {
+        "phrase": "express deep appreciation for",
+        "meaningVi": "bày tỏ lòng cảm kích sâu sắc đối với"
+      },
+      "skeleton": {
+        "subject": "The president",
+        "verb": "wrote a letter to express",
+        "object": "appreciation"
+      }
+    },
+    {
+      "id": "colloc_std_019",
+      "level": "standard",
+      "question": "Only high-level personnel are granted ______ to the confidential research archives.",
+      "options": {
+        "A": "access",
+        "B": "entry",
+        "C": "admission",
+        "D": "entrance"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"be granted access to\" (được cấp quyền truy cập vào) → Chọn access.",
+      "explanationVi": "'grant access to sth' = cấp quyền truy cập/tiếp cận vào nơi nào/hệ thống nào. 'access' đi trực tiếp với 'to sth'.",
+      "targetChunk": {
+        "phrase": "granted access to the confidential archives",
+        "meaningVi": "được cấp quyền truy cập vào kho lưu trữ bảo mật"
+      },
+      "skeleton": {
+        "subject": "personnel",
+        "verb": "are granted",
+        "object": "access"
+      }
+    },
+    {
+      "id": "colloc_std_020",
+      "level": "standard",
+      "question": "The management is urgently seeking qualified applicants to ______ a vacancy in accounting.",
+      "options": {
+        "A": "fill",
+        "B": "occupy",
+        "C": "load",
+        "D": "replace"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation tuyển dụng nhân sự: \"fill a vacancy / position\" (tuyển người vào chỗ trống) → Chọn fill.",
+      "explanationVi": "'fill a vacancy / fill a position' = tuyển người lấp vào vị trí tuyển dụng còn trống. Đây là cụm từ xuất hiện với tần suất cực cao trong Part 5 & 6.",
+      "targetChunk": {
+        "phrase": "to fill a vacancy in accounting",
+        "meaningVi": "để tuyển dụng vào vị trí trống bên phòng kế toán"
+      },
+      "skeleton": {
+        "subject": "management",
+        "verb": "is seeking applicants to fill",
+        "object": "a vacancy"
+      }
+    },
+    {
+      "id": "colloc_std_021",
+      "level": "standard",
+      "question": "In ______ to rising customer demand, the bakery has extended its weekend operating hours.",
+      "options": {
+        "A": "response",
+        "B": "answer",
+        "C": "reply",
+        "D": "reaction"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ cố định: in response to (để đáp lại / phản hồi lại) → Chọn response.",
+      "explanationVi": "'in response to sth' = để phản hồi/đáp ứng lại cái gì (in response to rising demand). Không dùng in reply to hay in reaction to trong cấu trúc kinh doanh này.",
+      "targetChunk": {
+        "phrase": "In response to rising customer demand",
+        "meaningVi": "nhằm đáp ứng nhu cầu ngày càng tăng của khách hàng"
+      },
+      "skeleton": {
+        "subject": "the bakery",
+        "verb": "has extended",
+        "object": "operating hours"
+      }
+    },
+    {
+      "id": "colloc_std_022",
+      "level": "standard",
+      "question": "We apologize, but the popular ergonomic chair model is currently ______ of stock.",
+      "options": {
+        "A": "out",
+        "B": "off",
+        "C": "away",
+        "D": "over"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm từ thương mại cố định: \"out of stock\" (hết hàng) → Chọn out.",
+      "explanationVi": "'out of stock' = hết hàng tạm thời trong kho (đối ứng với in stock = còn hàng).",
+      "targetChunk": {
+        "phrase": "is currently out of stock",
+        "meaningVi": "hiện tại đang tạm hết hàng"
+      },
+      "skeleton": {
+        "subject": "chair model",
+        "verb": "is",
+        "object": "out of stock"
+      }
+    },
+    {
+      "id": "colloc_std_023",
+      "level": "standard",
+      "question": "The executive assistant arranged the meeting room on very short ______ .",
+      "options": {
+        "A": "notice",
+        "B": "notion",
+        "C": "note",
+        "D": "notify"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ cố định: at/on short notice (trong thời gian thông báo ngắn / gấp gáp) → Chọn notice.",
+      "explanationVi": "'on short notice / at short notice' = trong một thời gian báo trước rất ngắn/gấp gáp. Cần danh từ 'notice'.",
+      "targetChunk": {
+        "phrase": "arranged the meeting room on very short notice",
+        "meaningVi": "đã sắp xếp phòng họp trong khoảng thời gian rất gấp"
+      },
+      "skeleton": {
+        "subject": "assistant",
+        "verb": "arranged",
+        "object": "meeting room"
+      }
+    },
+    {
+      "id": "colloc_std_024",
+      "level": "standard",
+      "question": "In an ______ to curb operating expenses, the company reduced its business travel budget.",
+      "options": {
+        "A": "effort",
+        "B": "attempting",
+        "C": "action",
+        "D": "aiming"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm từ cố định: in an effort to do sth (trong nỗ lực nhằm làm gì) → Cần danh từ: effort.",
+      "explanationVi": "'in an effort to do sth' = trong nỗ lực nhằm làm điều gì. Sau mạo từ 'an' cần danh từ số ít bắt đầu bằng nguyên âm ('effort').",
+      "targetChunk": {
+        "phrase": "In an effort to curb operating expenses",
+        "meaningVi": "trong nỗ lực nhằm cắt giảm chi phí vận hành"
+      },
+      "skeleton": {
+        "subject": "the company",
+        "verb": "reduced",
+        "object": "its budget"
+      }
+    },
+    {
+      "id": "colloc_std_025",
+      "level": "standard",
+      "question": "The enterprise attaches great ______ to employee safety and workplace wellness.",
+      "options": {
+        "A": "importance",
+        "B": "important",
+        "C": "importantly",
+        "D": "import"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"attach importance to sth\" (coi trọng điều gì) → Cần danh từ: importance.",
+      "explanationVi": "'attach importance / value to sth' = coi trọng, đặt nặng tầm quan trọng vào điều gì. Sau tính từ 'great' cần danh từ 'importance'.",
+      "targetChunk": {
+        "phrase": "attaches great importance to employee safety",
+        "meaningVi": "hết sức coi trọng an toàn của nhân viên"
+      },
+      "skeleton": {
+        "subject": "The enterprise",
+        "verb": "attaches",
+        "object": "great importance"
+      }
+    },
+    {
+      "id": "colloc_std_026",
+      "level": "standard",
+      "question": "With the ______ of senior managers, all attendees must sign the attendance roster.",
+      "options": {
+        "A": "exception",
+        "B": "except",
+        "C": "exceptional",
+        "D": "excepting"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ cố định: with the exception of (ngoại trừ) → Chọn exception.",
+      "explanationVi": "'with the exception of' = ngoại trừ (= except for). Đứng giữa 'the' và 'of' là danh từ 'exception'.",
+      "targetChunk": {
+        "phrase": "With the exception of senior managers",
+        "meaningVi": "ngoại trừ các nhà quản lý cấp cao"
+      },
+      "skeleton": {
+        "subject": "all attendees",
+        "verb": "must sign",
+        "object": "the roster"
+      }
+    },
+    {
+      "id": "colloc_std_027",
+      "level": "standard",
+      "question": "Routine maintenance requests fall ______ the jurisdiction of the facilities manager.",
+      "options": {
+        "A": "within",
+        "B": "between",
+        "C": "among",
+        "D": "along"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"fall within\" (nằm trong phạm vi / thuộc thẩm quyền của) → Chọn within.",
+      "explanationVi": "'fall within the jurisdiction / scope / purview of' = thuộc phạm vi thẩm quyền của ai. Giới từ 'within' đi với giới hạn/phạm vi.",
+      "targetChunk": {
+        "phrase": "fall within the jurisdiction of",
+        "meaningVi": "thuộc phạm vi thẩm quyền của"
+      },
+      "skeleton": {
+        "subject": "requests",
+        "verb": "fall within",
+        "object": "jurisdiction"
+      }
+    },
+    {
+      "id": "colloc_std_028",
+      "level": "standard",
+      "question": "The two negotiating parties finally ______ an agreement after eight hours of talks.",
+      "options": {
+        "A": "reached",
+        "B": "arrived",
+        "C": "gained",
+        "D": "won"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"reach an agreement\" (đạt được thỏa thuận) → Chọn reached.",
+      "explanationVi": "'reach an agreement' = đạt được một thỏa thuận chung. 'arrive' phải đi với giới từ (arrive at an agreement).",
+      "targetChunk": {
+        "phrase": "finally reached an agreement after eight hours",
+        "meaningVi": "cuối cùng đã đạt được thỏa thuận sau 8 tiếng đàm phán"
+      },
+      "skeleton": {
+        "subject": "parties",
+        "verb": "reached",
+        "object": "an agreement"
+      }
+    },
+    {
+      "id": "colloc_std_029",
+      "level": "standard",
+      "question": "In ______ of recent revenue declines, the board decided to postpone the factory expansion.",
+      "options": {
+        "A": "light",
+        "B": "sight",
+        "C": "viewing",
+        "D": "point"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ cố định: in light of (xét theo, căn cứ vào) → Chọn light.",
+      "explanationVi": "'in light of sth' = xét thấy, căn cứ vào, bởi vì tình huống nào đó (in light of recent revenue declines). Cụm tương đương là 'in view of'.",
+      "targetChunk": {
+        "phrase": "In light of recent revenue declines",
+        "meaningVi": "xét thấy những đợt sụt giảm doanh thu gần đây"
+      },
+      "skeleton": {
+        "subject": "the board",
+        "verb": "decided to postpone",
+        "object": "the expansion"
+      }
+    },
+    {
+      "id": "colloc_std_030",
+      "level": "standard",
+      "question": "Customers can transfer funds between accounts by ______ of online banking.",
+      "options": {
+        "A": "means",
+        "B": "ways",
+        "C": "methods",
+        "D": "modes"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ cố định: by means of (bằng phương tiện / cách thức gì) → Chọn means.",
+      "explanationVi": "'by means of sth' = bằng cách thức/phương tiện gì. Không dùng by ways of hay by methods of trong mẫu câu này.",
+      "targetChunk": {
+        "phrase": "by means of online banking",
+        "meaningVi": "bằng phương thức ngân hàng trực tuyến"
+      },
+      "skeleton": {
+        "subject": "Customers",
+        "verb": "can transfer",
+        "object": "funds"
+      }
+    },
+    {
+      "id": "colloc_adv_001",
+      "level": "advanced",
+      "question": "The municipal government worked in ______ with private developers to revitalize the riverfront.",
+      "options": {
+        "A": "conjunction",
+        "B": "conjunctive",
+        "C": "conjoin",
+        "D": "conjunctions"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ cao cấp: in conjunction with (phối hợp chặt chẽ cùng với) → Chọn conjunction.",
+      "explanationVi": "'in conjunction with sb/sth' = cùng phối hợp với, kết hợp với ai/cái gì để thực hiện dự án. Đây là collocation tần suất xuất hiện rất cao ở câu 125-130.",
+      "targetChunk": {
+        "phrase": "worked in conjunction with private developers",
+        "meaningVi": "đã phối hợp chặt chẽ cùng các nhà phát triển tư nhân"
+      },
+      "skeleton": {
+        "subject": "The government",
+        "verb": "worked in conjunction with",
+        "object": "developers"
+      }
+    },
+    {
+      "id": "colloc_adv_002",
+      "level": "advanced",
+      "question": "Discretionary bonuses are distributed entirely at the ______ of the regional vice president.",
+      "options": {
+        "A": "discretion",
+        "B": "discrete",
+        "C": "discretionary",
+        "D": "discreet"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm thành ngữ cố định trong quản trị kinh doanh: at the discretion of (tùy theo quyết định / toàn quyền của) → Chọn discretion.",
+      "explanationVi": "'at the discretion of sb' = tùy toàn quyền quyết định của ai đó. 'discretion' là danh từ chỉ quyền tự do định đoạt.",
+      "targetChunk": {
+        "phrase": "entirely at the discretion of the vice president",
+        "meaningVi": "hoàn toàn tùy thuộc vào quyết định của phó chủ tịch"
+      },
+      "skeleton": {
+        "subject": "bonuses",
+        "verb": "are distributed",
+        "object": null
+      }
+    },
+    {
+      "id": "colloc_adv_003",
+      "level": "advanced",
+      "question": "Client safety considerations must take ______ over all scheduling and financial concerns.",
+      "options": {
+        "A": "precedence",
+        "B": "precedent",
+        "C": "preceding",
+        "D": "precedently"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation 990: \"take precedence over\" (được ưu tiên trước / quan trọng hơn) → Chọn precedence.",
+      "explanationVi": "'take precedence over sth' = có quyền ưu tiên hơn, được đặt lên trước cái gì (= have priority over). 'precedent' là án lệ/tiền lệ; 'precedence' là quyền được ưu tiên trước.",
+      "targetChunk": {
+        "phrase": "take precedence over all scheduling concerns",
+        "meaningVi": "được ưu tiên hơn tất cả các mối bận tâm về tiến độ"
+      },
+      "skeleton": {
+        "subject": "considerations",
+        "verb": "must take precedence over",
+        "object": "concerns"
+      }
+    },
+    {
+      "id": "colloc_adv_004",
+      "level": "advanced",
+      "question": "Third-quarter sales figures fell ______ of Wall Street analysts' consensus projections.",
+      "options": {
+        "A": "short",
+        "B": "brief",
+        "C": "low",
+        "D": "scant"
+      },
+      "correctAnswer": "A",
+      "clue": "Thành ngữ kinh doanh: \"fall short of expectations/projections\" (không đạt / thấp hơn kỳ vọng) → Chọn short.",
+      "explanationVi": "'fall short of sth' = không đạt tới mức kỳ vọng/tiêu chuẩn đặt ra. Đối ứng là 'exceed expectations' (vượt kỳ vọng). Không dùng fall brief hay fall low.",
+      "targetChunk": {
+        "phrase": "fell short of analysts projections",
+        "meaningVi": "đã không đạt mức dự báo của giới phân tích"
+      },
+      "skeleton": {
+        "subject": "sales figures",
+        "verb": "fell short of",
+        "object": "projections"
+      }
+    },
+    {
+      "id": "colloc_adv_005",
+      "level": "advanced",
+      "question": "The council members finally reached a broad ______ regarding the proposed urban zoning regulations.",
+      "options": {
+        "A": "consensus",
+        "B": "consent",
+        "C": "unanimity",
+        "D": "accordance"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"reach a consensus\" (đạt được sự đồng thuận chung) → Chọn consensus.",
+      "explanationVi": "'reach a consensus on/regarding sth' = đạt được sự nhất trí, đồng thuận trong tập thể. 'consent' là sự bằng lòng/đồng ý cá nhân (give consent).",
+      "targetChunk": {
+        "phrase": "reached a broad consensus regarding zoning",
+        "meaningVi": "đạt được sự đồng thuận rộng rãi liên quan đến quy hoạch"
+      },
+      "skeleton": {
+        "subject": "members",
+        "verb": "reached",
+        "object": "a broad consensus"
+      }
+    },
+    {
+      "id": "colloc_adv_006",
+      "level": "advanced",
+      "question": "The prestigious award was presented to Dr. Patel in ______ of her groundbreaking oncology research.",
+      "options": {
+        "A": "recognition",
+        "B": "recognize",
+        "C": "recognizable",
+        "D": "recognizably"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ cố định: in recognition of (để ghi nhận, tưởng thưởng công lao) → Chọn recognition.",
+      "explanationVi": "'in recognition of sth' = nhằm ghi nhận, tôn vinh đóng góp của ai. Cần danh từ 'recognition'.",
+      "targetChunk": {
+        "phrase": "in recognition of her groundbreaking research",
+        "meaningVi": "để ghi nhận nghiên cứu mang tính đột phá của bà"
+      },
+      "skeleton": {
+        "subject": "award",
+        "verb": "was presented in recognition of",
+        "object": "research"
+      }
+    },
+    {
+      "id": "colloc_adv_007",
+      "level": "advanced",
+      "question": "The sudden strike by airport ground staff brought logistics operations to a complete ______ .",
+      "options": {
+        "A": "halt",
+        "B": "pause",
+        "C": "break",
+        "D": "rest"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation 990: \"bring sth to a halt\" (làm cho cái gì đình trệ, dừng hoàn toàn) → Chọn halt.",
+      "explanationVi": "'bring sth to a halt / come to a halt' = làm cho cái gì ngừng hoạt động hoàn toàn. Cụm chuẩn mực trong báo chí và đề TOEIC là 'to a complete halt'.",
+      "targetChunk": {
+        "phrase": "brought logistics operations to a complete halt",
+        "meaningVi": "khiến các hoạt động hậu cần bị tê liệt hoàn toàn"
+      },
+      "skeleton": {
+        "subject": "strike",
+        "verb": "brought to a halt",
+        "object": "operations"
+      }
+    },
+    {
+      "id": "colloc_adv_008",
+      "level": "advanced",
+      "question": "The proliferation of counterfeit products poses a serious ______ to legitimate luxury brand retailers.",
+      "options": {
+        "A": "threat",
+        "B": "danger",
+        "C": "risk",
+        "D": "hazard"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"pose a serious threat to\" (gây ra mối đe dọa nghiêm trọng cho) → Chọn threat.",
+      "explanationVi": "'pose a threat / challenge to sb/sth' = đặt ra mối đe dọa/thách thức đối với ai. Động từ 'pose' kết hợp tự nhiên nhất với 'threat'.",
+      "targetChunk": {
+        "phrase": "poses a serious threat to retailers",
+        "meaningVi": "gây ra mối đe dọa nghiêm trọng cho các nhà bán lẻ"
+      },
+      "skeleton": {
+        "subject": "proliferation",
+        "verb": "poses",
+        "object": "a threat"
+      }
+    },
+    {
+      "id": "colloc_adv_009",
+      "level": "advanced",
+      "question": "The company's record quarterly profits stand in stark ______ to the losses suffered by its competitors.",
+      "options": {
+        "A": "contrast",
+        "B": "contrasting",
+        "C": "contrary",
+        "D": "contrastingly"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation nâng cao: \"stand in stark contrast to\" (hoàn toàn tương phản/đối lập với) → Chọn contrast.",
+      "explanationVi": "'stand in stark contrast to sth' = hoàn toàn đối lập, tương phản rõ rệt với cái gì. Cần danh từ 'contrast' sau tính từ 'stark'.",
+      "targetChunk": {
+        "phrase": "stand in stark contrast to the losses",
+        "meaningVi": "đối lập hoàn toàn với các khoản thua lỗ"
+      },
+      "skeleton": {
+        "subject": "profits",
+        "verb": "stand in stark contrast to",
+        "object": "losses"
+      }
+    },
+    {
+      "id": "colloc_adv_010",
+      "level": "advanced",
+      "question": "The project manager struggled to strike a ______ between speed of delivery and system quality.",
+      "options": {
+        "A": "balance",
+        "B": "match",
+        "C": "scale",
+        "D": "symmetry"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"strike a balance between A and B\" (đạt được sự cân bằng giữa 2 yếu tố) → Chọn balance.",
+      "explanationVi": "'strike a balance between A and B' = cân bằng hài hòa giữa hai điều. Không dùng strike a match hay strike a scale với ý nghĩa này.",
+      "targetChunk": {
+        "phrase": "strike a balance between speed and quality",
+        "meaningVi": "tạo sự cân bằng giữa tốc độ và chất lượng"
+      },
+      "skeleton": {
+        "subject": "manager",
+        "verb": "struggled to strike",
+        "object": "a balance"
+      }
+    },
+    {
+      "id": "colloc_adv_011",
+      "level": "advanced",
+      "question": "The investigative audit shed new ______ on the accounting irregularities within the branch.",
+      "options": {
+        "A": "light",
+        "B": "shine",
+        "C": "glow",
+        "D": "ray"
+      },
+      "correctAnswer": "A",
+      "clue": "Thành ngữ: \"shed light on sth\" (làm sáng tỏ điều gì) → Chọn light.",
+      "explanationVi": "'shed light on sth / throw light on sth' = làm sáng tỏ, giúp làm rõ một bí ẩn hoặc sự việc phức tạp. Không dùng shed shine hay shed glow.",
+      "targetChunk": {
+        "phrase": "shed new light on the accounting irregularities",
+        "meaningVi": "làm sáng tỏ những điểm bất thường trong sổ sách kế toán"
+      },
+      "skeleton": {
+        "subject": "audit",
+        "verb": "shed light on",
+        "object": "irregularities"
+      }
+    },
+    {
+      "id": "colloc_adv_012",
+      "level": "advanced",
+      "question": "The corporation expanded its market footprint at the ______ of short-term quarterly profit margins.",
+      "options": {
+        "A": "expense",
+        "B": "costly",
+        "C": "expenditure",
+        "D": "spending"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ cố định: at the expense of sth (bằng sự trả giá / gây thiệt hại cho) → Chọn expense.",
+      "explanationVi": "'at the expense of sth' = với sự đánh đổi bằng, làm phương hại đến cái gì. 'expenditure' là khoản chi tiêu; cụm cố định là 'at the expense of'.",
+      "targetChunk": {
+        "phrase": "at the expense of short-term profit margins",
+        "meaningVi": "bằng sự đánh đổi biên lợi nhuận ngắn hạn"
+      },
+      "skeleton": {
+        "subject": "corporation",
+        "verb": "expanded footprint at the expense of",
+        "object": "margins"
+      }
+    },
+    {
+      "id": "colloc_adv_013",
+      "level": "advanced",
+      "question": "Our technical consultants must keep ______ of emerging artificial intelligence methodologies.",
+      "options": {
+        "A": "abreast",
+        "B": "ahead",
+        "C": "aboard",
+        "D": "aligned"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation 990: \"keep abreast of\" (cập nhật kịp thời những tiến bộ/thay đổi) → Chọn abreast.",
+      "explanationVi": "'keep abreast of sth' = luôn cập nhật thông tin kịp thời, theo sát những diễn biến mới nhất (keep abreast of developments/technologies).",
+      "targetChunk": {
+        "phrase": "keep abreast of emerging AI methodologies",
+        "meaningVi": "luôn cập nhật kịp thời các phương pháp AI mới nổi"
+      },
+      "skeleton": {
+        "subject": "consultants",
+        "verb": "must keep abreast of",
+        "object": "methodologies"
+      }
+    },
+    {
+      "id": "colloc_adv_014",
+      "level": "advanced",
+      "question": "To the best of our ______, the manufacturing defect is isolated to batch number 408.",
+      "options": {
+        "A": "knowledge",
+        "B": "know",
+        "C": "knowing",
+        "D": "knowledgeable"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm thành ngữ: to the best of one's knowledge (theo như hiểu biết tốt nhất của chúng tôi) → Chọn knowledge.",
+      "explanationVi": "'to the best of one's knowledge / belief' = theo như những gì ai đó biết rõ nhất. Cần danh từ 'knowledge' sau tính từ sở hữu 'our'.",
+      "targetChunk": {
+        "phrase": "To the best of our knowledge",
+        "meaningVi": "theo như những gì chúng tôi nắm được"
+      },
+      "skeleton": {
+        "subject": "defect",
+        "verb": "is isolated to",
+        "object": "batch"
+      }
+    },
+    {
+      "id": "colloc_adv_015",
+      "level": "advanced",
+      "question": "The hurricane wreaked ______ on the coastal communication infrastructure.",
+      "options": {
+        "A": "havoc",
+        "B": "damage",
+        "C": "disaster",
+        "D": "ruin"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation đặc thù: \"wreak havoc on\" (tàn phá nặng nề / gây thiệt hại nghiêm trọng) → Chọn havoc.",
+      "explanationVi": "'wreak havoc on sth' = tàn phá, gây tác hại to lớn đối với cái gì. Động từ 'wreak' đi kèm danh từ 'havoc'.",
+      "targetChunk": {
+        "phrase": "wreaked havoc on the coastal infrastructure",
+        "meaningVi": "đã tàn phá nặng nề cơ sở hạ tầng ven biển"
+      },
+      "skeleton": {
+        "subject": "The hurricane",
+        "verb": "wreaked havoc on",
+        "object": "infrastructure"
+      }
+    },
+    {
+      "id": "colloc_adv_016",
+      "level": "advanced",
+      "question": "The recent regulatory approval paves the ______ for widespread adoption of electric delivery fleets.",
+      "options": {
+        "A": "way",
+        "B": "road",
+        "C": "path",
+        "D": "lane"
+      },
+      "correctAnswer": "A",
+      "clue": "Thành ngữ: \"pave the way for\" (mở đường / tạo điều kiện thuận lợi cho) → Chọn way.",
+      "explanationVi": "'pave the way for sth' = mở đường cho, dọn đường tạo tiền đề cho sự phát triển của cái gì. Không dùng pave the road hay pave the path trong thành ngữ này.",
+      "targetChunk": {
+        "phrase": "paves the way for widespread adoption",
+        "meaningVi": "mở đường cho việc áp dụng rộng rãi"
+      },
+      "skeleton": {
+        "subject": "approval",
+        "verb": "paves the way for",
+        "object": "adoption"
+      }
+    },
+    {
+      "id": "colloc_adv_017",
+      "level": "advanced",
+      "question": "Laboratory technicians must ______ extreme caution when handling volatile chemical compounds.",
+      "options": {
+        "A": "exercise",
+        "B": "practice",
+        "C": "execute",
+        "D": "act"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation 990: \"exercise caution\" (thực hiện sự thận trọng, hết sức cẩn giác) → Chọn exercise.",
+      "explanationVi": "'exercise caution / care / discretion' = tỏ ra thận trọng, cẩn trọng. Trong văn phong kỹ thuật/trang trọng của TOEIC, 'exercise' đi kèm 'caution'.",
+      "targetChunk": {
+        "phrase": "exercise extreme caution when handling",
+        "meaningVi": "hết sức cẩn trọng khi xử lý"
+      },
+      "skeleton": {
+        "subject": "technicians",
+        "verb": "must exercise",
+        "object": "extreme caution"
+      }
+    },
+    {
+      "id": "colloc_adv_018",
+      "level": "advanced",
+      "question": "The international cultural exchange program is held under the ______ of the United Nations.",
+      "options": {
+        "A": "auspices",
+        "B": "guidelines",
+        "C": "custody",
+        "D": "aspects"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm từ trang trọng cấp độ 990: \"under the auspices of\" (dưới sự bảo trợ / tài trợ của) → Chọn auspices.",
+      "explanationVi": "'under the auspices of sb/sth' = dưới sự bảo trợ, chủ trì của tổ chức nào đó (under the auspices of the UN).",
+      "targetChunk": {
+        "phrase": "held under the auspices of the United Nations",
+        "meaningVi": "được tổ chức dưới sự bảo trợ của Liên Hợp Quốc"
+      },
+      "skeleton": {
+        "subject": "program",
+        "verb": "is held under the auspices of",
+        "object": "the UN"
+      }
+    },
+    {
+      "id": "colloc_adv_019",
+      "level": "advanced",
+      "question": "The analyst predicted that energy prices will remain volatile for the ______ future.",
+      "options": {
+        "A": "foreseeable",
+        "B": "foreseen",
+        "C": "foreseeing",
+        "D": "foresight"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm từ chỉ thời gian rất quen thuộc: in the foreseeable future (trong tương lai gần có thể dự đoán) → Chọn foreseeable.",
+      "explanationVi": "'for/in the foreseeable future' = trong tương lai có thể dự liệu trước được (khoảng thời gian sắp tới). Cần tính từ 'foreseeable'.",
+      "targetChunk": {
+        "phrase": "for the foreseeable future",
+        "meaningVi": "trong tương lai gần có thể đoán định"
+      },
+      "skeleton": {
+        "subject": "prices",
+        "verb": "will remain",
+        "object": "volatile"
+      }
+    },
+    {
+      "id": "colloc_adv_020",
+      "level": "advanced",
+      "question": "Rapid advancements in quantum computing could ______ current encryption algorithms obsolete.",
+      "options": {
+        "A": "render",
+        "B": "turn",
+        "C": "makeover",
+        "D": "bring"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc \"render + Object + Adjective\" (khiến cho cái gì trở nên như thế nào) → Chọn render.",
+      "explanationVi": "'render sth obsolete / ineffective / useless' = biến cái gì thành vô dụng/lỗi thời. 'render' trong trường hợp này mang nghĩa tương đương 'make sth + adj' nhưng trang trọng hơn rất nhiều.",
+      "targetChunk": {
+        "phrase": "render current encryption algorithms obsolete",
+        "meaningVi": "khiến cho các thuật toán mã hóa hiện tại trở nên lỗi thời"
+      },
+      "skeleton": {
+        "subject": "advancements",
+        "verb": "could render",
+        "object": "algorithms obsolete"
+      }
+    },
+    {
+      "id": "colloc_adv_021",
+      "level": "advanced",
+      "question": "The corporate restructuring committee gives high ______ to preserving frontline jobs.",
+      "options": {
+        "A": "priority",
+        "B": "prioritize",
+        "C": "prior",
+        "D": "priorities"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"give priority to\" (ưu tiên cho điều gì) → Cần danh từ: priority.",
+      "explanationVi": "'give priority to sth' = dành sự ưu tiên hàng đầu cho cái gì. Sau tính từ 'high' cần danh từ số ít không đếm được/trừu tượng 'priority'.",
+      "targetChunk": {
+        "phrase": "gives high priority to preserving frontline jobs",
+        "meaningVi": "dành sự ưu tiên cao cho việc bảo toàn công việc tuyến đầu"
+      },
+      "skeleton": {
+        "subject": "committee",
+        "verb": "gives",
+        "object": "high priority"
+      }
+    },
+    {
+      "id": "colloc_adv_022",
+      "level": "advanced",
+      "question": "The findings of the internal investigation have a direct ______ on the pending court litigation.",
+      "options": {
+        "A": "bearing",
+        "B": "carrying",
+        "C": "standing",
+        "D": "holding"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation 990: \"have a bearing on sth\" (có ảnh hưởng / mối liên hệ mật thiết tới) → Chọn bearing.",
+      "explanationVi": "'have a bearing on sth' = có tác động, ảnh hưởng hoặc liên quan trực tiếp đến cái gì (= have an impact on). 'bearing' là danh từ trong cụm này.",
+      "targetChunk": {
+        "phrase": "have a direct bearing on the pending litigation",
+        "meaningVi": "có ảnh hưởng trực tiếp tới vụ kiện tụng đang chờ xét xử"
+      },
+      "skeleton": {
+        "subject": "findings",
+        "verb": "have a bearing on",
+        "object": "litigation"
+      }
+    },
+    {
+      "id": "colloc_adv_023",
+      "level": "advanced",
+      "question": "When analyzing the quarterly financial statements, please ______ in mind that tax rates increased.",
+      "options": {
+        "A": "bear",
+        "B": "bare",
+        "C": "take",
+        "D": "hold"
+      },
+      "correctAnswer": "A",
+      "clue": "Thành ngữ: \"bear in mind\" (hãy ghi nhớ, khắc ghi trong đầu) → Chọn bear.",
+      "explanationVi": "'bear in mind that...' = hãy ghi nhớ rằng... (= keep in mind that...). 'bare' là tính từ (trần trụi).",
+      "targetChunk": {
+        "phrase": "bear in mind that tax rates increased",
+        "meaningVi": "hãy ghi nhớ rằng thuế suất đã tăng"
+      },
+      "skeleton": {
+        "subject": "You (implied)",
+        "verb": "bear in mind",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "colloc_adv_024",
+      "level": "advanced",
+      "question": "Companies that neglect software cybersecurity patches ______ the risk of crippling data breaches.",
+      "options": {
+        "A": "run",
+        "B": "drive",
+        "C": "takeoff",
+        "D": "walk"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"run the risk of doing sth\" (chịu rủi ro / có nguy cơ gặp phải) → Chọn run.",
+      "explanationVi": "'run the risk of sth / doing sth' = chịu rủi ro, liều mạng đối mặt với nguy cơ bị gì đó. Cụm tương đương là 'take the risk'.",
+      "targetChunk": {
+        "phrase": "run the risk of crippling data breaches",
+        "meaningVi": "đối mặt với rủi ro bị rò rỉ dữ liệu tê liệt hệ thống"
+      },
+      "skeleton": {
+        "subject": "Companies",
+        "verb": "run",
+        "object": "the risk"
+      }
+    },
+    {
+      "id": "colloc_adv_025",
+      "level": "advanced",
+      "question": "The replacement of the main database server is still ______ warranty until next November.",
+      "options": {
+        "A": "under",
+        "B": "in",
+        "C": "on",
+        "D": "at"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ bảo hành: \"under warranty\" (còn trong thời hạn bảo hành) → Chọn under.",
+      "explanationVi": "'under warranty' = còn được bảo hành (The server is under warranty). Không dùng in warranty hay on warranty.",
+      "targetChunk": {
+        "phrase": "is still under warranty until next November",
+        "meaningVi": "vẫn còn trong thời hạn bảo hành cho tới tháng 11 năm sau"
+      },
+      "skeleton": {
+        "subject": "replacement",
+        "verb": "is",
+        "object": "under warranty"
+      }
+    },
+    {
+      "id": "colloc_adv_026",
+      "level": "advanced",
+      "question": "Inflationary pressures are causing raw material costs to rise at an ______ rate.",
+      "options": {
+        "A": "alarming",
+        "B": "alarmed",
+        "C": "alarm",
+        "D": "alarmingly"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation: \"at an alarming rate\" (ở mức độ / tốc độ đáng báo động) → Cần tính từ đuôi -ing: alarming.",
+      "explanationVi": "'at an alarming rate / pace' = ở một tốc độ đáng báo động. 'alarming' là tính từ mang nghĩa 'gây lo ngại, đáng báo động' bổ nghĩa cho 'rate'.",
+      "targetChunk": {
+        "phrase": "rise at an alarming rate",
+        "meaningVi": "tăng lên với tốc độ đáng báo động"
+      },
+      "skeleton": {
+        "subject": "costs",
+        "verb": "rise",
+        "object": null
+      }
+    },
+    {
+      "id": "colloc_adv_027",
+      "level": "advanced",
+      "question": "Management resolved to take severe ______ action against employees who leak proprietary code.",
+      "options": {
+        "A": "disciplinary",
+        "B": "discipline",
+        "C": "disciplined",
+        "D": "disciplining"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation nhân sự: \"take disciplinary action\" (thi hành kỷ luật) → Cần tính từ: disciplinary.",
+      "explanationVi": "'take disciplinary action against sb' = thi hành biện pháp kỷ luật đối với ai. Cần tính từ 'disciplinary' bổ nghĩa cho danh từ 'action'.",
+      "targetChunk": {
+        "phrase": "take severe disciplinary action against",
+        "meaningVi": "áp dụng biện pháp xử lý kỷ luật nghiêm khắc đối với"
+      },
+      "skeleton": {
+        "subject": "Management",
+        "verb": "resolved to take",
+        "object": "disciplinary action"
+      }
+    },
+    {
+      "id": "colloc_adv_028",
+      "level": "advanced",
+      "question": "The firm holds Dr. Watson in high ______ for his seminal contributions to biotechnology.",
+      "options": {
+        "A": "esteem",
+        "B": "estimate",
+        "C": "estimation",
+        "D": "estimating"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation thành ngữ: \"hold sb in high esteem\" (hết sức kính trọng / coi trọng ai) → Chọn esteem.",
+      "explanationVi": "'hold sb in high esteem / regard' = vô cùng kính trọng, tôn sùng ai đó. 'esteem' là danh từ chỉ sự quý trọng.",
+      "targetChunk": {
+        "phrase": "holds Dr. Watson in high esteem for",
+        "meaningVi": "vô cùng kính trọng Tiến sĩ Watson vì"
+      },
+      "skeleton": {
+        "subject": "firm",
+        "verb": "holds in high esteem",
+        "object": "Dr. Watson"
+      }
+    },
+    {
+      "id": "colloc_adv_029",
+      "level": "advanced",
+      "question": "Both senior partners are currently in ______ for the vacant managing director position.",
+      "options": {
+        "A": "contention",
+        "B": "contest",
+        "C": "content",
+        "D": "contend"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation 990: \"in contention for\" (đang trong cuộc cạnh tranh gay gắt để giành lấy) → Chọn contention.",
+      "explanationVi": "'be in contention for sth' = đang tham gia cạnh tranh/tranh chấp để giành được vị trí hay giải thưởng. Cần danh từ 'contention'.",
+      "targetChunk": {
+        "phrase": "in contention for the vacant position",
+        "meaningVi": "đang cạnh tranh cho vị trí còn trống"
+      },
+      "skeleton": {
+        "subject": "Both senior partners",
+        "verb": "are",
+        "object": "in contention"
+      }
+    },
+    {
+      "id": "colloc_adv_030",
+      "level": "advanced",
+      "question": "The audit confirmed beyond reasonable ______ that no funds had been misappropriated.",
+      "options": {
+        "A": "doubt",
+        "B": "questioning",
+        "C": "hesitation",
+        "D": "skepticism"
+      },
+      "correctAnswer": "A",
+      "clue": "Thuật ngữ pháp lý - kinh doanh: \"beyond reasonable doubt\" (vượt trên mọi hoài nghi hợp lý / chắc chắn 100%) → Chọn doubt.",
+      "explanationVi": "'beyond reasonable doubt' = vượt trên mọi hoài nghi, hoàn toàn chắc chắn không còn gì nghi ngờ. Đây là cụm cố định xuất hiện nhiều trong các văn bản kiểm toán pháp lý của TOEIC.",
+      "targetChunk": {
+        "phrase": "confirmed beyond reasonable doubt that",
+        "meaningVi": "xác nhận một cách chắc chắn không còn nghi ngờ gì rằng"
+      },
+      "skeleton": {
+        "subject": "The audit",
+        "verb": "confirmed beyond reasonable doubt",
+        "object": "that clause"
+      }
+    }
+  ]
+}

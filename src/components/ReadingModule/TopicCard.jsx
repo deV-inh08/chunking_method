@@ -124,7 +124,7 @@ export function TopicCard({ topic, progress, onStartPractice }) {
                 border: '1px solid rgba(16, 185, 129, 0.25)',
               }}
             >
-              60 câu (30+30)
+              {topic.totalQuestions} câu ({topic.standardCount}+{topic.advancedCount})
             </span>
           ) : (
             <span
@@ -258,7 +258,7 @@ export function TopicCard({ topic, progress, onStartPractice }) {
                   padding: '6px 8px',
                 }}
               >
-                <Play size={12} fill="#93c5fd" /> Tiêu chuẩn (30)
+                <Play size={12} fill="#93c5fd" /> Tiêu chuẩn ({topic.standardCount})
               </button>
 
               <button
@@ -277,7 +277,7 @@ export function TopicCard({ topic, progress, onStartPractice }) {
                   padding: '6px 8px',
                 }}
               >
-                <Zap size={12} fill="#fcd34d" /> Bẫy 990 (30)
+                <Zap size={12} fill="#fcd34d" /> Bẫy 990 ({topic.advancedCount})
               </button>
             </div>
           </div>

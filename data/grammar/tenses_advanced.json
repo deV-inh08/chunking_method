@@ -1,0 +1,1389 @@
+{
+  "topicId": "tenses_advanced",
+  "titleVi": "Thì Động từ Hoàn thành & Tiếp diễn",
+  "totalQuestions": 60,
+  "standardCount": 30,
+  "advancedCount": 30,
+  "questions": [
+    {
+      "id": "tadv_std_001",
+      "level": "standard",
+      "question": "Ms. Thornton ______ as the head of corporate communications for over twelve years.",
+      "options": {
+        "A": "has served",
+        "B": "is serving",
+        "C": "served",
+        "D": "serves"
+      },
+      "correctAnswer": "A",
+      "clue": "Dấu hiệu 'for over twelve years' (trong hơn 12 năm qua đến nay) → Hiện tại hoàn thành: has served.",
+      "explanationVi": "'for + khoảng thời gian' kéo dài đến hiện tại là dấu hiệu điển hình của thì Hiện tại hoàn thành (has served).",
+      "targetChunk": {
+        "phrase": "has served as head for over twelve years",
+        "meaningVi": "đã phục vụ với vai trò trưởng bộ phận trong hơn 12 năm"
+      },
+      "skeleton": {
+        "subject": "Ms. Thornton",
+        "verb": "has served",
+        "object": null
+      }
+    },
+    {
+      "id": "tadv_std_002",
+      "level": "standard",
+      "question": "The accounting team ______ three comprehensive audits since the new fiscal policy was adopted.",
+      "options": {
+        "A": "has conducted",
+        "B": "conducted",
+        "C": "conducts",
+        "D": "is conducting"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc: 'since + QK đơn' → Mệnh đề chính chia Hiện tại hoàn thành: has conducted.",
+      "explanationVi": "Mệnh đề 'since + past simple' (kể từ khi chính sách được áp dụng) đòi hỏi mệnh đề chính phải chia thì Hiện tại hoàn thành (has conducted).",
+      "targetChunk": {
+        "phrase": "has conducted three audits since",
+        "meaningVi": "đã tiến hành 3 đợt kiểm toán kể từ khi"
+      },
+      "skeleton": {
+        "subject": "team",
+        "verb": "has conducted",
+        "object": "three audits"
+      }
+    },
+    {
+      "id": "tadv_std_003",
+      "level": "standard",
+      "question": "Prior to joining our organization, Dr. Kim ______ at a pharmaceutical lab in Boston.",
+      "options": {
+        "A": "had worked",
+        "B": "has worked",
+        "C": "works",
+        "D": "is working"
+      },
+      "correctAnswer": "A",
+      "clue": "'Prior to joining' (trước khi gia nhập trong quá khứ) → Hành động xảy ra trước đó chia Quá khứ hoàn thành: had worked.",
+      "explanationVi": "Hành động làm việc tại phòng thí nghiệm diễn ra trước hành động gia nhập công ty (trong quá khứ), nên chia thì Quá khứ hoàn thành (had worked).",
+      "targetChunk": {
+        "phrase": "had worked at a lab prior to joining",
+        "meaningVi": "đã từng làm việc tại một phòng lab trước khi gia nhập"
+      },
+      "skeleton": {
+        "subject": "Dr. Kim",
+        "verb": "had worked",
+        "object": null
+      }
+    },
+    {
+      "id": "tadv_std_004",
+      "level": "standard",
+      "question": "By the time the new assembly plant opens next July, technicians ______ specialized training.",
+      "options": {
+        "A": "will have completed",
+        "B": "completed",
+        "C": "have completed",
+        "D": "complete"
+      },
+      "correctAnswer": "A",
+      "clue": "'By the time + Hiện tại đơn' → Mệnh đề chính chia Tương lai hoàn thành: will have completed.",
+      "explanationVi": "Hành động hoàn tất đào tạo sẽ xảy ra trước thời điểm nhà máy mở cửa vào tháng 7 tới, công thức: 'By the time + S + V(hiện tại), S + will have + V3/ed'.",
+      "targetChunk": {
+        "phrase": "will have completed specialized training",
+        "meaningVi": "sẽ đã hoàn tất khóa đào tạo chuyên sâu"
+      },
+      "skeleton": {
+        "subject": "technicians",
+        "verb": "will have completed",
+        "object": "training"
+      }
+    },
+    {
+      "id": "tadv_std_005",
+      "level": "standard",
+      "question": "Over the past five years, our international customer base ______ by more than 40 percent.",
+      "options": {
+        "A": "has expanded",
+        "B": "expanded",
+        "C": "expands",
+        "D": "is expanding"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm thời gian 'Over the past five years' → Thì Hiện tại hoàn thành: has expanded.",
+      "explanationVi": "Cụm 'Over/In/During the past/last + khoảng thời gian' là dấu hiệu nhận biết tuyệt đối của thì Hiện tại hoàn thành.",
+      "targetChunk": {
+        "phrase": "customer base has expanded by more than 40 percent",
+        "meaningVi": "tập khách hàng đã mở rộng thêm hơn 40 phần trăm"
+      },
+      "skeleton": {
+        "subject": "customer base",
+        "verb": "has expanded",
+        "object": null
+      }
+    },
+    {
+      "id": "tadv_std_006",
+      "level": "standard",
+      "question": "The firm ______ the new line of ergonomic office chairs three months ago.",
+      "options": {
+        "A": "launched",
+        "B": "has launched",
+        "C": "had launched",
+        "D": "was launching"
+      },
+      "correctAnswer": "A",
+      "clue": "Có mốc thời gian xác định trong quá khứ 'three months ago' → Quá khứ đơn: launched.",
+      "explanationVi": "'ago' là dấu hiệu rõ ràng của thì Quá khứ đơn (launched), không dùng Hiện tại hoàn thành khi có thời điểm xác định trong quá khứ.",
+      "targetChunk": {
+        "phrase": "launched the new line three months ago",
+        "meaningVi": "đã ra mắt dòng sản phẩm mới 3 tháng trước"
+      },
+      "skeleton": {
+        "subject": "The firm",
+        "verb": "launched",
+        "object": "the new line"
+      }
+    },
+    {
+      "id": "tadv_std_007",
+      "level": "standard",
+      "question": "The research division ______ on the renewable fuel prototype all morning without taking a break.",
+      "options": {
+        "A": "has been working",
+        "B": "worked",
+        "C": "will work",
+        "D": "works"
+      },
+      "correctAnswer": "A",
+      "clue": "Nhấn mạnh tính liên tục suốt cả buổi sáng 'all morning' kéo dài đến hiện tại → Hiện tại hoàn thành tiếp diễn: has been working.",
+      "explanationVi": "'has been working' (Present Perfect Continuous) nhấn mạnh quá trình liên tục không gián đoạn kéo dài suốt buổi sáng đến nay.",
+      "targetChunk": {
+        "phrase": "has been working on the prototype all morning",
+        "meaningVi": "đã liên tục làm việc trên nguyên mẫu suốt buổi sáng"
+      },
+      "skeleton": {
+        "subject": "division",
+        "verb": "has been working on",
+        "object": "prototype"
+      }
+    },
+    {
+      "id": "tadv_std_008",
+      "level": "standard",
+      "question": "Before the keynote began, event organizers ______ welcome packets to every registered guest.",
+      "options": {
+        "A": "had distributed",
+        "B": "have distributed",
+        "C": "distribute",
+        "D": "are distributing"
+      },
+      "correctAnswer": "A",
+      "clue": "'Before + Quá khứ đơn' (before the keynote began) → Hành động trước đó chia Quá khứ hoàn thành: had distributed.",
+      "explanationVi": "Hành động phát tài liệu xảy ra trước khi bài diễn văn bắt đầu trong quá khứ, nên chia Quá khứ hoàn thành 'had distributed'.",
+      "targetChunk": {
+        "phrase": "had distributed welcome packets before the keynote began",
+        "meaningVi": "đã phát các gói tài liệu chào mừng trước khi bài phát biểu bắt đầu"
+      },
+      "skeleton": {
+        "subject": "organizers",
+        "verb": "had distributed",
+        "object": "packets"
+      }
+    },
+    {
+      "id": "tadv_std_009",
+      "level": "standard",
+      "question": "By next Friday, the contractors ______ renovating the corporate cafeteria.",
+      "options": {
+        "A": "will have finished",
+        "B": "finished",
+        "C": "have finished",
+        "D": "finish"
+      },
+      "correctAnswer": "A",
+      "clue": "'By next Friday' (trước thứ Sáu tuần tới) → Thì Tương lai hoàn thành: will have finished.",
+      "explanationVi": "'By + mốc tương lai' là dấu hiệu của Future Perfect ('will have finished').",
+      "targetChunk": {
+        "phrase": "will have finished renovating by next Friday",
+        "meaningVi": "sẽ đã hoàn tất việc sửa chữa trước thứ Sáu tới"
+      },
+      "skeleton": {
+        "subject": "contractors",
+        "verb": "will have finished renovating",
+        "object": "cafeteria"
+      }
+    },
+    {
+      "id": "tadv_std_010",
+      "level": "standard",
+      "question": "The management team ______ recent employee survey feedback carefully before deciding.",
+      "options": {
+        "A": "has examined",
+        "B": "was examining",
+        "C": "examines",
+        "D": "will examine"
+      },
+      "correctAnswer": "A",
+      "clue": "Có từ 'recent' bổ nghĩa cho danh từ kết hợp hành động vừa diễn ra để lại kết quả hiện tại → Hiện tại hoàn thành: has examined.",
+      "explanationVi": "Thì Hiện tại hoàn thành 'has examined' diễn tả hành động xem xét vừa mới diễn ra để lại kết quả ảnh hưởng tới quyết định hiện tại.",
+      "targetChunk": {
+        "phrase": "has examined recent feedback carefully",
+        "meaningVi": "đã xem xét kỹ lưỡng các phản hồi gần đây"
+      },
+      "skeleton": {
+        "subject": "team",
+        "verb": "has examined",
+        "object": "feedback"
+      }
+    },
+    {
+      "id": "tadv_std_011",
+      "level": "standard",
+      "question": "The company ______ the historic brick building downtown since early 2015.",
+      "options": {
+        "A": "has occupied",
+        "B": "is occupying",
+        "C": "occupied",
+        "D": "occupies"
+      },
+      "correctAnswer": "A",
+      "clue": "Dấu hiệu 'since early 2015' → Thì Hiện tại hoàn thành: has occupied.",
+      "explanationVi": "'since + mốc thời gian quá khứ' đòi hỏi động từ chia thì Hiện tại hoàn thành (has occupied).",
+      "targetChunk": {
+        "phrase": "has occupied the building since early 2015",
+        "meaningVi": "đã đặt trụ sở tại tòa nhà kể từ đầu năm 2015"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "has occupied",
+        "object": "the building"
+      }
+    },
+    {
+      "id": "tadv_std_012",
+      "level": "standard",
+      "question": "At 10:00 A.M. tomorrow, the executive board ______ the annual performance reviews.",
+      "options": {
+        "A": "will be conducting",
+        "B": "conducted",
+        "C": "has conducted",
+        "D": "had conducted"
+      },
+      "correctAnswer": "A",
+      "clue": "Thời điểm cụ thể trong tương lai 'At 10:00 A.M. tomorrow' → Thì Tương lai tiếp diễn: will be conducting.",
+      "explanationVi": "Diễn tả một hành động đang diễn ra tại một thời điểm xác định trong tương lai: 'At + giờ + tomorrow/next week' dùng Future Continuous ('will be conducting').",
+      "targetChunk": {
+        "phrase": "will be conducting reviews at 10:00 A.M. tomorrow",
+        "meaningVi": "sẽ đang tiến hành các cuộc đánh giá vào 10 giờ sáng mai"
+      },
+      "skeleton": {
+        "subject": "board",
+        "verb": "will be conducting",
+        "object": "reviews"
+      }
+    },
+    {
+      "id": "tadv_std_013",
+      "level": "standard",
+      "question": "The flight ______ by the time Mr. Nakamura arrived at the departure gate.",
+      "options": {
+        "A": "had already departed",
+        "B": "has already departed",
+        "C": "will depart",
+        "D": "departs"
+      },
+      "correctAnswer": "A",
+      "clue": "'By the time + Quá khứ đơn' (arrived) → Mệnh đề chính chia Quá khứ hoàn thành: had already departed.",
+      "explanationVi": "Chuyến bay đã cất cánh trước khi ông Nakamura đến cổng khởi hành trong quá khứ, nên chia thì Quá khứ hoàn thành 'had already departed'.",
+      "targetChunk": {
+        "phrase": "had already departed by the time he arrived",
+        "meaningVi": "đã cất cánh trước khi ông ấy tới nơi"
+      },
+      "skeleton": {
+        "subject": "flight",
+        "verb": "had departed",
+        "object": null
+      }
+    },
+    {
+      "id": "tadv_std_014",
+      "level": "standard",
+      "question": "Lately, several prominent clients ______ inquiries regarding our sustainable packaging options.",
+      "options": {
+        "A": "have made",
+        "B": "made",
+        "C": "make",
+        "D": "are making"
+      },
+      "correctAnswer": "A",
+      "clue": "Dấu hiệu 'Lately' (dạo gần đây) → Thì Hiện tại hoàn thành: have made.",
+      "explanationVi": "'Lately / Recently' là dấu hiệu nhận biết đặc trưng của thì Hiện tại hoàn thành trong các câu hỏi TOEIC Part 5.",
+      "targetChunk": {
+        "phrase": "Lately, clients have made inquiries regarding",
+        "meaningVi": "gần đây, các khách hàng đã gửi các câu hỏi tìm hiểu về"
+      },
+      "skeleton": {
+        "subject": "clients",
+        "verb": "have made",
+        "object": "inquiries"
+      }
+    },
+    {
+      "id": "tadv_std_015",
+      "level": "standard",
+      "question": "In the last quarter, regional retail outlets ______ a 12 percent decline in foot traffic.",
+      "options": {
+        "A": "have experienced",
+        "B": "experienced",
+        "C": "experience",
+        "D": "are experiencing"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm thời gian 'In the last quarter' (kéo dài suốt quý vừa qua) → Hiện tại hoàn thành: have experienced.",
+      "explanationVi": "'In the last quarter' nhấn mạnh khoảng thời gian kéo dài đến thời điểm báo cáo hiện tại nên chia thì Hiện tại hoàn thành (have experienced).",
+      "targetChunk": {
+        "phrase": "have experienced a 12 percent decline",
+        "meaningVi": "đã trải qua mức sụt giảm 12 phần trăm"
+      },
+      "skeleton": {
+        "subject": "outlets",
+        "verb": "have experienced",
+        "object": "a decline"
+      }
+    },
+    {
+      "id": "tadv_std_016",
+      "level": "standard",
+      "question": "When the fire alarm sounded, the software developers ______ an urgent client demonstration.",
+      "options": {
+        "A": "were conducting",
+        "B": "have conducted",
+        "C": "conduct",
+        "D": "will conduct"
+      },
+      "correctAnswer": "A",
+      "clue": "Hành động đang diễn ra trong quá khứ thì một hành động khác xen vào (sounded) → Quá khứ tiếp diễn: were conducting.",
+      "explanationVi": "Cấu trúc kết hợp: 'Past Continuous + when + Past Simple' diễn tả hành động đang diễn ra (were conducting) thì hành động khác chen vào (sounded).",
+      "targetChunk": {
+        "phrase": "were conducting a demonstration when the alarm sounded",
+        "meaningVi": "đang tiến hành buổi minh họa thì chuông báo cháy vang lên"
+      },
+      "skeleton": {
+        "subject": "developers",
+        "verb": "were conducting",
+        "object": "a demonstration"
+      }
+    },
+    {
+      "id": "tadv_std_017",
+      "level": "standard",
+      "question": "By the time the fiscal year concludes, the startup ______ profitability across all product categories.",
+      "options": {
+        "A": "will have achieved",
+        "B": "achieved",
+        "C": "has achieved",
+        "D": "achieves"
+      },
+      "correctAnswer": "A",
+      "clue": "'By the time + Hiện tại đơn' (concludes) → Mệnh đề chính chia Tương lai hoàn thành: will have achieved.",
+      "explanationVi": "Hành động đạt mức sinh lời sẽ hoàn tất trước khi năm tài chính kết thúc, công thức Future Perfect: 'will have achieved'.",
+      "targetChunk": {
+        "phrase": "will have achieved profitability across all categories",
+        "meaningVi": "sẽ đã đạt được khả năng sinh lời trên tất cả các danh mục"
+      },
+      "skeleton": {
+        "subject": "startup",
+        "verb": "will have achieved",
+        "object": "profitability"
+      }
+    },
+    {
+      "id": "tadv_std_018",
+      "level": "standard",
+      "question": "The chief architect ______ with the firm for twenty-five years when she retired last spring.",
+      "options": {
+        "A": "had been",
+        "B": "has been",
+        "C": "is",
+        "D": "will be"
+      },
+      "correctAnswer": "A",
+      "clue": "Khoảng thời gian (for 25 years) trước một mốc quá khứ (when she retired) → Quá khứ hoàn thành: had been.",
+      "explanationVi": "Quá trình 25 năm làm việc diễn ra trước thời điểm nghỉ hưu trong quá khứ, nên chia Quá khứ hoàn thành 'had been'.",
+      "targetChunk": {
+        "phrase": "had been with the firm for twenty-five years when she retired",
+        "meaningVi": "đã gắn bó với công ty 25 năm khi bà nghỉ hưu"
+      },
+      "skeleton": {
+        "subject": "architect",
+        "verb": "had been with",
+        "object": "the firm"
+      }
+    },
+    {
+      "id": "tadv_std_019",
+      "level": "standard",
+      "question": "Our engineering department ______ the database architecture several times this month.",
+      "options": {
+        "A": "has updated",
+        "B": "updated",
+        "C": "was updating",
+        "D": "had updated"
+      },
+      "correctAnswer": "A",
+      "clue": "Số lần lặp lại (several times) trong khoảng thời gian chưa kết thúc (this month) → Hiện tại hoàn thành: has updated.",
+      "explanationVi": "'several times this month' diễn tả tần suất hành động trong khoảng thời gian chưa kết thúc, chia thì Hiện tại hoàn thành.",
+      "targetChunk": {
+        "phrase": "has updated the database architecture several times",
+        "meaningVi": "đã cập nhật cấu trúc cơ sở dữ liệu vài lần trong tháng này"
+      },
+      "skeleton": {
+        "subject": "department",
+        "verb": "has updated",
+        "object": "architecture"
+      }
+    },
+    {
+      "id": "tadv_std_020",
+      "level": "standard",
+      "question": "The warehouse staff ______ the outgoing shipments since 6:00 A.M. this morning.",
+      "options": {
+        "A": "has been packing",
+        "B": "is packing",
+        "C": "packed",
+        "D": "pack"
+      },
+      "correctAnswer": "A",
+      "clue": "'since 6:00 A.M.' nhấn mạnh hành động liên tục từ sáng tới nay → Hiện tại hoàn thành tiếp diễn: has been packing.",
+      "explanationVi": "'has been packing' diễn tả hành động đóng gói liên tục từ 6 giờ sáng đến thời điểm nói.",
+      "targetChunk": {
+        "phrase": "has been packing shipments since 6:00 A.M.",
+        "meaningVi": "đã liên tục đóng gói các lô hàng từ 6 giờ sáng"
+      },
+      "skeleton": {
+        "subject": "staff",
+        "verb": "has been packing",
+        "object": "shipments"
+      }
+    },
+    {
+      "id": "tadv_std_021",
+      "level": "standard",
+      "question": "We ______ any formal response from the vendor since our inquiry was sent last Tuesday.",
+      "options": {
+        "A": "have not received",
+        "B": "did not receive",
+        "C": "do not receive",
+        "D": "had not received"
+      },
+      "correctAnswer": "A",
+      "clue": "'since + QK đơn' → Mệnh đề chính phủ định chia Hiện tại hoàn thành: have not received.",
+      "explanationVi": "Cấu trúc: 'have not + V3/ed ... since + past clause' (chưa nhận được phản hồi kể từ khi...).",
+      "targetChunk": {
+        "phrase": "have not received any response since our inquiry was sent",
+        "meaningVi": "chưa nhận được bất kỳ phản hồi nào kể từ khi câu hỏi được gửi"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "have not received",
+        "object": "any response"
+      }
+    },
+    {
+      "id": "tadv_std_022",
+      "level": "standard",
+      "question": "Next month, the senior research scientist ______ at the university for exactly two decades.",
+      "options": {
+        "A": "will have been",
+        "B": "was",
+        "C": "has been",
+        "D": "is"
+      },
+      "correctAnswer": "A",
+      "clue": "'Next month' + khoảng thời gian 'for exactly two decades' → Tương lai hoàn thành: will have been.",
+      "explanationVi": "'will have been' là thì Tương lai hoàn thành của động từ to be, biểu thị trạng thái tích lũy đủ 20 năm tính tới tháng sau.",
+      "targetChunk": {
+        "phrase": "will have been at the university for two decades",
+        "meaningVi": "sẽ đã công tác tại trường đại học được đúng hai thập kỷ"
+      },
+      "skeleton": {
+        "subject": "scientist",
+        "verb": "will have been at",
+        "object": "university"
+      }
+    },
+    {
+      "id": "tadv_std_023",
+      "level": "standard",
+      "question": "The auditors discovered that someone ______ unauthorized adjustments to the ledger entries.",
+      "options": {
+        "A": "had made",
+        "B": "has made",
+        "C": "makes",
+        "D": "is making"
+      },
+      "correctAnswer": "A",
+      "clue": "Hành động sửa sổ sách xảy ra trước khi kiểm toán viên phát hiện (discovered) → Quá khứ hoàn thành: had made.",
+      "explanationVi": "Quy tắc lùi thì: hành động điều chỉnh sổ sách (had made) diễn ra trước hành động phát hiện trong quá khứ (discovered).",
+      "targetChunk": {
+        "phrase": "discovered that someone had made unauthorized adjustments",
+        "meaningVi": "đã phát hiện rằng ai đó đã thực hiện những điều chỉnh trái phép"
+      },
+      "skeleton": {
+        "subject": "someone",
+        "verb": "had made",
+        "object": "adjustments"
+      }
+    },
+    {
+      "id": "tadv_std_024",
+      "level": "standard",
+      "question": "The marketing team ______ several advertising agencies before selecting Apex Media.",
+      "options": {
+        "A": "had evaluated",
+        "B": "has evaluated",
+        "C": "evaluates",
+        "D": "is evaluating"
+      },
+      "correctAnswer": "A",
+      "clue": "'before + V-ing/QK đơn' (before selecting) → Hành động đánh giá xảy ra trước đó chia Quá khứ hoàn thành: had evaluated.",
+      "explanationVi": "Hành động đánh giá các đại lý quảng cáo diễn ra trước thời điểm lựa chọn Apex Media trong quá khứ, nên chia 'had evaluated'.",
+      "targetChunk": {
+        "phrase": "had evaluated several agencies before selecting",
+        "meaningVi": "đã đánh giá một số công ty trước khi chọn"
+      },
+      "skeleton": {
+        "subject": "team",
+        "verb": "had evaluated",
+        "object": "agencies"
+      }
+    },
+    {
+      "id": "tadv_std_025",
+      "level": "standard",
+      "question": "Dr. Patel ______ for the flight for two hours before the gate agent announced a cancellation.",
+      "options": {
+        "A": "had been waiting",
+        "B": "has waited",
+        "C": "waits",
+        "D": "is waiting"
+      },
+      "correctAnswer": "A",
+      "clue": "Khoảng thời gian (for two hours) trước một sự kiện quá khứ (before the agent announced) → Quá khứ hoàn thành tiếp diễn: had been waiting.",
+      "explanationVi": "Nhấn mạnh quá trình đợi chờ liên tục trong 2 tiếng trước khi nhân viên thông báo hủy chuyến, chia Quá khứ hoàn thành tiếp diễn (had been waiting).",
+      "targetChunk": {
+        "phrase": "had been waiting for two hours before the agent announced",
+        "meaningVi": "đã đợi suốt hai tiếng đồng hồ trước khi nhân viên thông báo"
+      },
+      "skeleton": {
+        "subject": "Dr. Patel",
+        "verb": "had been waiting",
+        "object": null
+      }
+    },
+    {
+      "id": "tadv_std_026",
+      "level": "standard",
+      "question": "By the time the annual gala begins, the catering crew ______ all banquet tables.",
+      "options": {
+        "A": "will have arranged",
+        "B": "arranged",
+        "C": "has arranged",
+        "D": "arranges"
+      },
+      "correctAnswer": "A",
+      "clue": "'By the time + Hiện tại đơn' (begins) → Tương lai hoàn thành: will have arranged.",
+      "explanationVi": "Cấu trúc: 'By the time + S + V(hiện tại), S + will have + V3/ed'. Đội tiệc sẽ đã sắp xếp xong bàn tiệc trước khi dạ tiệc bắt đầu.",
+      "targetChunk": {
+        "phrase": "will have arranged all banquet tables by the time it begins",
+        "meaningVi": "sẽ đã sắp xếp xong tất cả các bàn tiệc trước khi buổi tiệc bắt đầu"
+      },
+      "skeleton": {
+        "subject": "crew",
+        "verb": "will have arranged",
+        "object": "tables"
+      }
+    },
+    {
+      "id": "tadv_std_027",
+      "level": "standard",
+      "question": "The technician realized that he ______ to power down the diagnostic equipment before leaving.",
+      "options": {
+        "A": "had forgotten",
+        "B": "has forgotten",
+        "C": "forgets",
+        "D": "forgetting"
+      },
+      "correctAnswer": "A",
+      "clue": "Hành động quên xảy ra trước khi nhận ra (realized) trong quá khứ → Quá khứ hoàn thành: had forgotten.",
+      "explanationVi": "Hành động quên tắt nguồn thiết bị xảy ra trước hành động nhận ra ('realized'), nên chia thì Quá khứ hoàn thành 'had forgotten'.",
+      "targetChunk": {
+        "phrase": "realized that he had forgotten to power down",
+        "meaningVi": "nhận ra rằng anh ấy đã quên ngắt nguồn"
+      },
+      "skeleton": {
+        "subject": "he",
+        "verb": "had forgotten to power down",
+        "object": "equipment"
+      }
+    },
+    {
+      "id": "tadv_std_028",
+      "level": "standard",
+      "question": "The CEO ______ corporate stakeholders since the unexpected resignation was announced.",
+      "options": {
+        "A": "has been reassuring",
+        "B": "is reassuring",
+        "C": "reassured",
+        "D": "reassures"
+      },
+      "correctAnswer": "A",
+      "clue": "'since + clause' kết hợp nhấn mạnh hành động liên tục trấn an → Hiện tại hoàn thành tiếp diễn: has been reassuring.",
+      "explanationVi": "'has been reassuring' diễn tả hành động trấn an liên tục diễn ra từ thời điểm có thông báo từ chức đến tận bây giờ.",
+      "targetChunk": {
+        "phrase": "has been reassuring corporate stakeholders since",
+        "meaningVi": "đã liên tục trấn an các bên liên quan kể từ khi"
+      },
+      "skeleton": {
+        "subject": "The CEO",
+        "verb": "has been reassuring",
+        "object": "stakeholders"
+      }
+    },
+    {
+      "id": "tadv_std_029",
+      "level": "standard",
+      "question": "By next January, the software development division ______ three major platform overhauls.",
+      "options": {
+        "A": "will have completed",
+        "B": "completed",
+        "C": "completes",
+        "D": "has completed"
+      },
+      "correctAnswer": "A",
+      "clue": "'By next January' (trước tháng 1 tới) → Tương lai hoàn thành: will have completed.",
+      "explanationVi": "Dấu hiệu 'By + mốc tương lai' đòi hỏi thì Tương lai hoàn thành 'will have completed'.",
+      "targetChunk": {
+        "phrase": "will have completed three major platform overhauls",
+        "meaningVi": "sẽ đã hoàn tất ba đợt đại tu nền tảng lớn"
+      },
+      "skeleton": {
+        "subject": "division",
+        "verb": "will have completed",
+        "object": "overhauls"
+      }
+    },
+    {
+      "id": "tadv_std_030",
+      "level": "standard",
+      "question": "The facilities team ______ the heating system before the building reopened on Monday morning.",
+      "options": {
+        "A": "had repaired",
+        "B": "has repaired",
+        "C": "repairs",
+        "D": "is repairing"
+      },
+      "correctAnswer": "A",
+      "clue": "'before + QK đơn' (before the building reopened) → Quá khứ hoàn thành: had repaired.",
+      "explanationVi": "Hành động sửa hệ thống sưởi hoàn tất trước khi tòa nhà mở cửa lại trong quá khứ, nên chia Quá khứ hoàn thành 'had repaired'.",
+      "targetChunk": {
+        "phrase": "had repaired the heating system before the building reopened",
+        "meaningVi": "đã sửa xong hệ thống sưởi trước khi tòa nhà mở cửa lại"
+      },
+      "skeleton": {
+        "subject": "team",
+        "verb": "had repaired",
+        "object": "heating system"
+      }
+    },
+    {
+      "id": "tadv_adv_001",
+      "level": "advanced",
+      "question": "The pharmaceutical corporation ______ the patent for the synthetic compound for over two decades.",
+      "options": {
+        "A": "has held",
+        "B": "is holding",
+        "C": "holds",
+        "D": "has been held"
+      },
+      "correctAnswer": "A",
+      "clue": "Động từ trạng thái 'hold' (sở hữu/nắm giữ) KHÔNG chia ở thì tiếp diễn, dùng Hiện tại hoàn thành: has held.",
+      "explanationVi": "Bẫy 990: Động từ trạng thái (stative verbs) chỉ quyền sở hữu như 'own, possess, hold' không chia ở dạng tiếp diễn (-ing) dù có 'for over two decades'. Ta chia thì Hiện tại hoàn thành đơn giản: 'has held'.",
+      "targetChunk": {
+        "phrase": "has held the patent for over two decades",
+        "meaningVi": "đã nắm giữ bằng sáng chế trong hơn hai thập kỷ"
+      },
+      "skeleton": {
+        "subject": "corporation",
+        "verb": "has held",
+        "object": "the patent"
+      }
+    },
+    {
+      "id": "tadv_adv_002",
+      "level": "advanced",
+      "question": "The committee members ______ about the budgetary deficit for hours before reaching an agreement.",
+      "options": {
+        "A": "had been arguing",
+        "B": "have argued",
+        "C": "are arguing",
+        "D": "argued"
+      },
+      "correctAnswer": "A",
+      "clue": "Nhấn mạnh quá trình tranh cãi liên tục (for hours) trước một sự kiện trong quá khứ (before reaching) → Quá khứ hoàn thành tiếp diễn: had been arguing.",
+      "explanationVi": "Cấu trúc Quá khứ hoàn thành tiếp diễn: 'had been + V-ing ... for + duration ... before + Past action' nhấn mạnh tính liên tục và căng thẳng của hành động tranh cãi kéo dài suốt nhiều giờ trước khi đạt thỏa thuận.",
+      "targetChunk": {
+        "phrase": "had been arguing for hours before reaching an agreement",
+        "meaningVi": "đã tranh cãi suốt nhiều giờ trước khi đạt được thỏa thuận"
+      },
+      "skeleton": {
+        "subject": "members",
+        "verb": "had been arguing",
+        "object": null
+      }
+    },
+    {
+      "id": "tadv_adv_003",
+      "level": "advanced",
+      "question": "By the time the new regulations take effect next year, legal experts ______ the compliance guidelines.",
+      "options": {
+        "A": "will have revised",
+        "B": "revised",
+        "C": "have revised",
+        "D": "revise"
+      },
+      "correctAnswer": "A",
+      "clue": "By the time + Hiện tại đơn (take effect) → Vế chính chia Tương lai hoàn thành: will have revised.",
+      "explanationVi": "Quy tắc tương thích thì tương lai: 'By the time + S + V(hiện tại), S + will have + V3/ed'. Các chuyên gia pháp lý sẽ đã chỉnh sửa xong tài liệu hướng dẫn trước khi luật mới có hiệu lực.",
+      "targetChunk": {
+        "phrase": "will have revised the compliance guidelines",
+        "meaningVi": "sẽ đã chỉnh sửa các hướng dẫn tuân thủ"
+      },
+      "skeleton": {
+        "subject": "experts",
+        "verb": "will have revised",
+        "object": "guidelines"
+      }
+    },
+    {
+      "id": "tadv_adv_004",
+      "level": "advanced",
+      "question": "The firm reported that quarterly revenues ______ substantially following the brand re-launch.",
+      "options": {
+        "A": "had increased",
+        "B": "have increased",
+        "C": "increase",
+        "D": "are increasing"
+      },
+      "correctAnswer": "A",
+      "clue": "Lùi thì trong câu tường thuật: động từ tường thuật ở quá khứ 'reported that' → Mệnh đề sau lùi về Quá khứ hoàn thành: had increased.",
+      "explanationVi": "Do động từ chính 'reported' ở thì Quá khứ đơn, sự việc doanh thu tăng diễn ra trước thời điểm báo cáo, nên lùi thì về Quá khứ hoàn thành 'had increased'.",
+      "targetChunk": {
+        "phrase": "reported that quarterly revenues had increased substantially",
+        "meaningVi": "đã báo cáo rằng doanh thu hàng quý đã tăng lên đáng kể"
+      },
+      "skeleton": {
+        "subject": "revenues",
+        "verb": "had increased",
+        "object": null
+      }
+    },
+    {
+      "id": "tadv_adv_005",
+      "level": "advanced",
+      "question": "Never in the company's fifty-year history ______ such an unprecedented surge in consumer demand.",
+      "options": {
+        "A": "has there been",
+        "B": "there has been",
+        "C": "was there",
+        "D": "there was"
+      },
+      "correctAnswer": "A",
+      "clue": "Đảo ngữ với cụm phủ định đầu câu: 'Never... has there been...' → Chọn has there been.",
+      "explanationVi": "Cấu trúc đảo ngữ: 'Never in... + HAS + THERE + BEEN + Noun'. Đảo trợ động từ 'has' lên trước 'there' trong cấu trúc hiện tại hoàn thành.",
+      "targetChunk": {
+        "phrase": "Never in history has there been such a surge",
+        "meaningVi": "chưa từng có trong lịch sử lại có sự bùng nổ nhu cầu như vậy"
+      },
+      "skeleton": {
+        "subject": "there",
+        "verb": "has been",
+        "object": "a surge"
+      }
+    },
+    {
+      "id": "tadv_adv_006",
+      "level": "advanced",
+      "question": "The research lab ______ the chemical properties of the polymer since the initial discovery in 2021.",
+      "options": {
+        "A": "has been studying",
+        "B": "is studying",
+        "C": "studied",
+        "D": "studies"
+      },
+      "correctAnswer": "A",
+      "clue": "Nhấn mạnh quá trình nghiên cứu liên tục không ngừng nghỉ từ năm 2021 đến nay: has been studying.",
+      "explanationVi": "'has been studying' (Hiện tại hoàn thành tiếp diễn) nhấn mạnh hoạt động nghiên cứu khoa học liên tục từ khi phát hiện năm 2021 đến nay.",
+      "targetChunk": {
+        "phrase": "has been studying the properties since 2021",
+        "meaningVi": "đã liên tục nghiên cứu các đặc tính kể từ năm 2021"
+      },
+      "skeleton": {
+        "subject": "lab",
+        "verb": "has been studying",
+        "object": "properties"
+      }
+    },
+    {
+      "id": "tadv_adv_007",
+      "level": "advanced",
+      "question": "The regional director confirmed that the branch ______ its annual sales target before the end of November.",
+      "options": {
+        "A": "had already met",
+        "B": "has already met",
+        "C": "will meet",
+        "D": "meets"
+      },
+      "correctAnswer": "A",
+      "clue": "Tường thuật gián tiếp (confirmed that) với hành động đã hoàn tất trước mốc cuối tháng 11 trong quá khứ → Quá khứ hoàn thành: had already met.",
+      "explanationVi": "Động từ 'confirmed' ở quá khứ, hành động đạt chỉ tiêu diễn ra trước thời điểm cuối tháng 11 trong quá khứ nên chia Quá khứ hoàn thành 'had already met'.",
+      "targetChunk": {
+        "phrase": "confirmed that the branch had already met its target",
+        "meaningVi": "xác nhận rằng chi nhánh đã đạt được chỉ tiêu từ trước"
+      },
+      "skeleton": {
+        "subject": "branch",
+        "verb": "had met",
+        "object": "target"
+      }
+    },
+    {
+      "id": "tadv_adv_008",
+      "level": "advanced",
+      "question": "By the time the keynote presentation commences, over five hundred delegates ______ in the auditorium.",
+      "options": {
+        "A": "will have gathered",
+        "B": "gathered",
+        "C": "gather",
+        "D": "have gathered"
+      },
+      "correctAnswer": "A",
+      "clue": "'By the time + Hiện tại đơn' (commences) → Mệnh đề chính chia Tương lai hoàn thành: will have gathered.",
+      "explanationVi": "Hành động tụ họp của 500 đại biểu sẽ hoàn tất trước khi bài thuyết trình bắt đầu, công thức Future Perfect: 'will have gathered'.",
+      "targetChunk": {
+        "phrase": "over five hundred delegates will have gathered",
+        "meaningVi": "hơn 500 đại biểu sẽ đã tề tựu đông đủ"
+      },
+      "skeleton": {
+        "subject": "delegates",
+        "verb": "will have gathered",
+        "object": null
+      }
+    },
+    {
+      "id": "tadv_adv_009",
+      "level": "advanced",
+      "question": "The consulting team ______ the client's supply chain for three months prior to delivering recommendations.",
+      "options": {
+        "A": "had been analyzing",
+        "B": "has been analyzing",
+        "C": "is analyzing",
+        "D": "analyzes"
+      },
+      "correctAnswer": "A",
+      "clue": "Khoảng thời gian (for three months) trước một hành động quá khứ (prior to delivering) → Quá khứ hoàn thành tiếp diễn: had been analyzing.",
+      "explanationVi": "Nhấn mạnh quá trình phân tích liên tục trong 3 tháng trước khi đưa ra các khuyến nghị trong quá khứ, nên chia 'had been analyzing'.",
+      "targetChunk": {
+        "phrase": "had been analyzing the supply chain for three months",
+        "meaningVi": "đã liên tục phân tích chuỗi cung ứng trong 3 tháng"
+      },
+      "skeleton": {
+        "subject": "team",
+        "verb": "had been analyzing",
+        "object": "supply chain"
+      }
+    },
+    {
+      "id": "tadv_adv_010",
+      "level": "advanced",
+      "question": "Dr. Evans ______ as chief technical advisor until her unexpected retirement last month.",
+      "options": {
+        "A": "had served",
+        "B": "has served",
+        "C": "is serving",
+        "D": "serves"
+      },
+      "correctAnswer": "A",
+      "clue": "Hành động kết thúc hoàn toàn trước một mốc quá khứ (until her retirement last month) → Quá khứ hoàn thành: had served.",
+      "explanationVi": "Vì việc làm cố vấn đã chấm dứt hoàn toàn khi bà nghỉ hưu vào tháng trước (không còn kéo dài đến hiện tại), nên dùng Quá khứ hoàn thành 'had served' (hoặc Quá khứ đơn), không được dùng Hiện tại hoàn thành.",
+      "targetChunk": {
+        "phrase": "had served as chief advisor until her retirement",
+        "meaningVi": "đã giữ chức cố vấn trưởng cho đến khi bà nghỉ hưu"
+      },
+      "skeleton": {
+        "subject": "Dr. Evans",
+        "verb": "had served",
+        "object": null
+      }
+    },
+    {
+      "id": "tadv_adv_011",
+      "level": "advanced",
+      "question": "The audit discovered that the factory ______ safety regulations systematically for several quarters.",
+      "options": {
+        "A": "had been violating",
+        "B": "has been violating",
+        "C": "is violating",
+        "D": "violates"
+      },
+      "correctAnswer": "A",
+      "clue": "Quá trình vi phạm liên tục xảy ra trước thời điểm kiểm toán phát hiện (discovered) → Quá khứ hoàn thành tiếp diễn: had been violating.",
+      "explanationVi": "Nhấn mạnh tính liên tục của hành vi vi phạm kéo dài suốt nhiều quý trước khi cuộc kiểm toán phát hiện ra trong quá khứ: 'had been violating'.",
+      "targetChunk": {
+        "phrase": "had been violating safety regulations systematically",
+        "meaningVi": "đã liên tục vi phạm các quy định an toàn một cách có hệ thống"
+      },
+      "skeleton": {
+        "subject": "factory",
+        "verb": "had been violating",
+        "object": "regulations"
+      }
+    },
+    {
+      "id": "tadv_adv_012",
+      "level": "advanced",
+      "question": "In another two weeks, the construction crew ______ on the bridge foundation for a full year.",
+      "options": {
+        "A": "will have been working",
+        "B": "worked",
+        "C": "had worked",
+        "D": "has worked"
+      },
+      "correctAnswer": "A",
+      "clue": "Dấu hiệu mốc tương lai 'In another two weeks' + khoảng thời gian 'for a full year' → Tương lai hoàn thành tiếp diễn: will have been working.",
+      "explanationVi": "Cấu trúc Future Perfect Continuous ('will have been working') nhấn mạnh sự liên tục của quá trình thi công chạm mốc đúng tròn 1 năm tính tới 2 tuần nữa.",
+      "targetChunk": {
+        "phrase": "will have been working on the bridge for a year",
+        "meaningVi": "sẽ đã liên tục thi công cây cầu được tròn một năm"
+      },
+      "skeleton": {
+        "subject": "crew",
+        "verb": "will have been working on",
+        "object": "foundation"
+      }
+    },
+    {
+      "id": "tadv_adv_013",
+      "level": "advanced",
+      "question": "The enterprise ______ the leading provider of enterprise cloud solutions since the merger in 2019.",
+      "options": {
+        "A": "has remained",
+        "B": "is remaining",
+        "C": "remained",
+        "D": "had remained"
+      },
+      "correctAnswer": "A",
+      "clue": "Động từ trạng thái 'remain' không dùng ở thì tiếp diễn, kết hợp với 'since 2019' → Hiện tại hoàn thành: has remained.",
+      "explanationVi": "'remain' là linking verb/stative verb chỉ trạng thái nên không dùng dạng tiếp diễn (*is remaining). Đi với 'since 2019' ta chia Hiện tại hoàn thành 'has remained'.",
+      "targetChunk": {
+        "phrase": "has remained the leading provider since the merger",
+        "meaningVi": "vẫn duy trì vị thế nhà cung cấp hàng đầu kể từ vụ sáp nhập"
+      },
+      "skeleton": {
+        "subject": "enterprise",
+        "verb": "has remained",
+        "object": "the leading provider"
+      }
+    },
+    {
+      "id": "tadv_adv_014",
+      "level": "advanced",
+      "question": "Hardly ______ the plane touched down when the airport closed due to heavy snowfall.",
+      "options": {
+        "A": "had",
+        "B": "has",
+        "C": "did",
+        "D": "was"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc đảo ngữ: 'Hardly HAD + S + touched down when...' → Chọn had.",
+      "explanationVi": "Cấu trúc đảo ngữ Quá khứ hoàn thành: 'Hardly HAD + S + V3/ed WHEN + S + V(quá khứ đơn)'.",
+      "targetChunk": {
+        "phrase": "Hardly had the plane touched down when",
+        "meaningVi": "máy bay vừa mới tiếp đất thì"
+      },
+      "skeleton": {
+        "subject": "plane",
+        "verb": "had touched down",
+        "object": null
+      }
+    },
+    {
+      "id": "tadv_adv_015",
+      "level": "advanced",
+      "question": "By the time the shareholders convene next month, the restructuring plan ______ by the board.",
+      "options": {
+        "A": "will have been approved",
+        "B": "was approved",
+        "C": "has been approved",
+        "D": "is approved"
+      },
+      "correctAnswer": "A",
+      "clue": "'By the time + Hiện tại đơn' kết hợp với thể BỊ ĐỘNG của Tương lai hoàn thành: will have been approved.",
+      "explanationVi": "Kế hoạch sẽ ĐƯỢC phê duyệt trước khi các cổ đông họp vào tháng sau, công thức: 'will have been + V3/ed'.",
+      "targetChunk": {
+        "phrase": "plan will have been approved by the board",
+        "meaningVi": "kế hoạch sẽ đã được ban giám đốc phê chuẩn"
+      },
+      "skeleton": {
+        "subject": "plan",
+        "verb": "will have been approved",
+        "object": null
+      }
+    },
+    {
+      "id": "tadv_adv_016",
+      "level": "advanced",
+      "question": "The executive vice president ______ about market fluctuations for months before deciding to hedge currency risk.",
+      "options": {
+        "A": "had been worrying",
+        "B": "has worried",
+        "C": "worries",
+        "D": "is worrying"
+      },
+      "correctAnswer": "A",
+      "clue": "Nhấn mạnh tâm lý lo âu kéo dài liên tục trước một quyết định trong quá khứ → Quá khứ hoàn thành tiếp diễn: had been worrying.",
+      "explanationVi": "'had been worrying... for months before deciding' nhấn mạnh sự bận tâm lo lắng diễn ra liên tục trước thời điểm ra quyết định trong quá khứ.",
+      "targetChunk": {
+        "phrase": "had been worrying about fluctuations for months",
+        "meaningVi": "đã lo lắng về sự biến động suốt nhiều tháng"
+      },
+      "skeleton": {
+        "subject": "vice president",
+        "verb": "had been worrying about",
+        "object": "fluctuations"
+      }
+    },
+    {
+      "id": "tadv_adv_017",
+      "level": "advanced",
+      "question": "Over the last decade, corporate sustainability initiatives ______ from public relations efforts into core strategies.",
+      "options": {
+        "A": "have evolved",
+        "B": "evolved",
+        "C": "are evolving",
+        "D": "evolve"
+      },
+      "correctAnswer": "A",
+      "clue": "'Over the last decade' (suốt thập kỷ qua đến nay) → Hiện tại hoàn thành: have evolved.",
+      "explanationVi": "'Over the last decade' là dấu hiệu của thì Hiện tại hoàn thành ('have evolved' = đã tiến hóa, phát triển).",
+      "targetChunk": {
+        "phrase": "initiatives have evolved from PR into core strategies",
+        "meaningVi": "các sáng kiến đã phát triển từ quan hệ công chúng thành chiến lược cốt lõi"
+      },
+      "skeleton": {
+        "subject": "initiatives",
+        "verb": "have evolved from",
+        "object": "PR"
+      }
+    },
+    {
+      "id": "tadv_adv_018",
+      "level": "advanced",
+      "question": "The logistics firm ______ autonomous delivery drones for six months before securing regulatory approval.",
+      "options": {
+        "A": "had been testing",
+        "B": "has tested",
+        "C": "tests",
+        "D": "is testing"
+      },
+      "correctAnswer": "A",
+      "clue": "Quá trình thử nghiệm liên tục trong 6 tháng trước khi được phê duyệt trong quá khứ → had been testing.",
+      "explanationVi": "'had been testing... for six months before securing' diễn tả hành động diễn ra liên tục trước một mốc trong quá khứ.",
+      "targetChunk": {
+        "phrase": "had been testing drones for six months before securing approval",
+        "meaningVi": "đã thử nghiệm máy bay không người lái suốt 6 tháng trước khi được cấp phép"
+      },
+      "skeleton": {
+        "subject": "firm",
+        "verb": "had been testing",
+        "object": "drones"
+      }
+    },
+    {
+      "id": "tadv_adv_019",
+      "level": "advanced",
+      "question": "At this exact hour next Wednesday, the chief executive ______ keynote remarks at the summit.",
+      "options": {
+        "A": "will be delivering",
+        "B": "delivered",
+        "C": "has delivered",
+        "D": "had delivered"
+      },
+      "correctAnswer": "A",
+      "clue": "Thời điểm xác định trong tương lai 'At this exact hour next Wednesday' → Tương lai tiếp diễn: will be delivering.",
+      "explanationVi": "Diễn tả một hành động sẽ đang diễn ra tại một thời điểm cụ thể trong tương lai: Future Continuous ('will be delivering').",
+      "targetChunk": {
+        "phrase": "will be delivering keynote remarks at this hour next Wednesday",
+        "meaningVi": "sẽ đang trình bày bài phát biểu khai mạc vào đúng giờ này thứ Tư tới"
+      },
+      "skeleton": {
+        "subject": "chief executive",
+        "verb": "will be delivering",
+        "object": "remarks"
+      }
+    },
+    {
+      "id": "tadv_adv_020",
+      "level": "advanced",
+      "question": "The data analyst realized that the software ______ duplicate customer profiles for several weeks.",
+      "options": {
+        "A": "had been generating",
+        "B": "has been generating",
+        "C": "generates",
+        "D": "is generating"
+      },
+      "correctAnswer": "A",
+      "clue": "Hành động tạo dữ liệu trùng lặp liên tục diễn ra trước khi nhà phân tích phát hiện (realized) → Quá khứ hoàn thành tiếp diễn: had been generating.",
+      "explanationVi": "'had been generating duplicate profiles' diễn tả sự việc tạo bản ghi trùng lặp diễn ra liên tục trước mốc quá khứ 'realized'.",
+      "targetChunk": {
+        "phrase": "realized that software had been generating duplicate profiles",
+        "meaningVi": "nhận ra rằng phần mềm đã liên tục tạo ra các hồ sơ trùng lặp"
+      },
+      "skeleton": {
+        "subject": "software",
+        "verb": "had been generating",
+        "object": "profiles"
+      }
+    },
+    {
+      "id": "tadv_adv_021",
+      "level": "advanced",
+      "question": "Up to the present time, no independent security firm ______ able to breach our encrypted database.",
+      "options": {
+        "A": "has been",
+        "B": "was",
+        "C": "had been",
+        "D": "is"
+      },
+      "correctAnswer": "A",
+      "clue": "'Up to the present time' (Cho đến thời điểm hiện tại) → Hiện tại hoàn thành: has been.",
+      "explanationVi": "'Up to the present time / So far / As of yet' là dấu hiệu nhận biết của thì Hiện tại hoàn thành ('has been').",
+      "targetChunk": {
+        "phrase": "Up to the present time, no firm has been able to",
+        "meaningVi": "cho đến thời điểm hiện tại, chưa có công ty nào có thể"
+      },
+      "skeleton": {
+        "subject": "no firm",
+        "verb": "has been",
+        "object": "able to breach"
+      }
+    },
+    {
+      "id": "tadv_adv_022",
+      "level": "advanced",
+      "question": "By the time the environmental study is concluded next spring, researchers ______ thousands of soil samples.",
+      "options": {
+        "A": "will have collected",
+        "B": "collected",
+        "C": "have collected",
+        "D": "collect"
+      },
+      "correctAnswer": "A",
+      "clue": "By the time + Hiện tại đơn → Tương lai hoàn thành: will have collected.",
+      "explanationVi": "Hành động thu thập hàng ngàn mẫu đất sẽ hoàn thành trước thời điểm nghiên cứu kết thúc vào mùa xuân tới: 'will have collected'.",
+      "targetChunk": {
+        "phrase": "will have collected thousands of soil samples",
+        "meaningVi": "sẽ đã thu thập hàng ngàn mẫu đất"
+      },
+      "skeleton": {
+        "subject": "researchers",
+        "verb": "will have collected",
+        "object": "samples"
+      }
+    },
+    {
+      "id": "tadv_adv_023",
+      "level": "advanced",
+      "question": "The senior engineer ______ that the blueprint had been altered without proper authorization.",
+      "options": {
+        "A": "discovered",
+        "B": "has discovered",
+        "C": "discovers",
+        "D": "discovering"
+      },
+      "correctAnswer": "A",
+      "clue": "Hành động phát hiện ở Quá khứ đơn (discovered), sau khi bản thiết kế đã bị thay đổi trước đó (had been altered).",
+      "explanationVi": "Sự việc bản vẽ bị sửa diễn ra trước (had been altered), nên hành động phát hiện diễn ra sau trong quá khứ chia Quá khứ đơn 'discovered'.",
+      "targetChunk": {
+        "phrase": "discovered that the blueprint had been altered",
+        "meaningVi": "đã phát hiện ra rằng bản thiết kế đã bị chỉnh sửa"
+      },
+      "skeleton": {
+        "subject": "engineer",
+        "verb": "discovered",
+        "object": "that-clause"
+      }
+    },
+    {
+      "id": "tadv_adv_024",
+      "level": "advanced",
+      "question": "The financial advisory board ______ monthly without interruption since the company's incorporation in 2012.",
+      "options": {
+        "A": "has been meeting",
+        "B": "was meeting",
+        "C": "met",
+        "D": "meets"
+      },
+      "correctAnswer": "A",
+      "clue": "Nhấn mạnh việc họp định kỳ liên tục không gián đoạn (without interruption since 2012) → Hiện tại hoàn thành tiếp diễn: has been meeting.",
+      "explanationVi": "'has been meeting' diễn tả hành động họp hàng tháng được duy trì liên tục từ năm 2012 cho tới tận ngày nay.",
+      "targetChunk": {
+        "phrase": "has been meeting monthly without interruption since",
+        "meaningVi": "đã duy trì các cuộc họp hàng tháng không gián đoạn kể từ"
+      },
+      "skeleton": {
+        "subject": "board",
+        "verb": "has been meeting",
+        "object": null
+      }
+    },
+    {
+      "id": "tadv_adv_025",
+      "level": "advanced",
+      "question": "Before the venture capital firm agreed to invest, they ______ thorough background checks on the founders.",
+      "options": {
+        "A": "had conducted",
+        "B": "have conducted",
+        "C": "conduct",
+        "D": "are conducting"
+      },
+      "correctAnswer": "A",
+      "clue": "'Before + QK đơn' (agreed) → Hành động thẩm định kiểm tra lý lịch xảy ra trước chia Quá khứ hoàn thành: had conducted.",
+      "explanationVi": "Hành động điều tra lý lịch sáng lập viên diễn ra và hoàn thành trước thời điểm đồng ý đầu tư trong quá khứ: 'had conducted'.",
+      "targetChunk": {
+        "phrase": "had conducted thorough background checks before agreeing",
+        "meaningVi": "đã tiến hành kiểm tra lý lịch kỹ lưỡng trước khi đồng ý"
+      },
+      "skeleton": {
+        "subject": "they",
+        "verb": "had conducted",
+        "object": "checks"
+      }
+    },
+    {
+      "id": "tadv_adv_026",
+      "level": "advanced",
+      "question": "In another five months, the international consortium ______ on the tunnel project for a decade.",
+      "options": {
+        "A": "will have been collaborating",
+        "B": "collaborated",
+        "C": "has collaborated",
+        "D": "collaborates"
+      },
+      "correctAnswer": "A",
+      "clue": "'In another five months' + 'for a decade' → Tương lai hoàn thành tiếp diễn: will have been collaborating.",
+      "explanationVi": "Nhấn mạnh quá trình hợp tác liên tục chạm mốc đúng 1 thập kỷ tính tới 5 tháng nữa: 'will have been collaborating'.",
+      "targetChunk": {
+        "phrase": "will have been collaborating on the tunnel project for a decade",
+        "meaningVi": "sẽ đã liên tục hợp tác trong dự án đường hầm được tròn một thập kỷ"
+      },
+      "skeleton": {
+        "subject": "consortium",
+        "verb": "will have been collaborating",
+        "object": null
+      }
+    },
+    {
+      "id": "tadv_adv_027",
+      "level": "advanced",
+      "question": "The regional manager stated that the factory ______ its production target prior to the supply outage.",
+      "options": {
+        "A": "had reached",
+        "B": "has reached",
+        "C": "reaches",
+        "D": "is reaching"
+      },
+      "correctAnswer": "A",
+      "clue": "Tường thuật gián tiếp (stated that) với hành động đã đạt trước sự cố mất nguồn cung trong quá khứ → Quá khứ hoàn thành: had reached.",
+      "explanationVi": "Hành động đạt chỉ tiêu diễn ra trước thời điểm xảy ra sự cố nguồn cung trong quá khứ: 'had reached'.",
+      "targetChunk": {
+        "phrase": "had reached its production target prior to the outage",
+        "meaningVi": "đã đạt chỉ tiêu sản xuất trước khi xảy ra sự cố nguồn cung"
+      },
+      "skeleton": {
+        "subject": "factory",
+        "verb": "had reached",
+        "object": "target"
+      }
+    },
+    {
+      "id": "tadv_adv_028",
+      "level": "advanced",
+      "question": "The marketing department ______ several promotional concepts before settling on the current theme.",
+      "options": {
+        "A": "had piloted",
+        "B": "has piloted",
+        "C": "pilots",
+        "D": "is piloting"
+      },
+      "correctAnswer": "A",
+      "clue": "Thử nghiệm nhiều ý tưởng trước khi chốt chủ đề hiện tại trong quá khứ: had piloted before settling.",
+      "explanationVi": "Hành động thử nghiệm (piloted) diễn ra trước thời điểm chốt ý tưởng (settling on), nên chia Quá khứ hoàn thành 'had piloted'.",
+      "targetChunk": {
+        "phrase": "had piloted several promotional concepts before settling",
+        "meaningVi": "đã thử nghiệm nhiều ý tưởng quảng bá trước khi chốt lại"
+      },
+      "skeleton": {
+        "subject": "department",
+        "verb": "had piloted",
+        "object": "concepts"
+      }
+    },
+    {
+      "id": "tadv_adv_029",
+      "level": "advanced",
+      "question": "By the end of the promotional campaign next week, our social media posts ______ by millions of users.",
+      "options": {
+        "A": "will have been viewed",
+        "B": "were viewed",
+        "C": "have been viewed",
+        "D": "are being viewed"
+      },
+      "correctAnswer": "A",
+      "clue": "'By the end of next week' kết hợp với thể BỊ ĐỘNG của Tương lai hoàn thành: will have been viewed.",
+      "explanationVi": "Các bài đăng sẽ ĐƯỢC hàng triệu người xem trước thời điểm cuối tuần tới: 'will have been viewed'.",
+      "targetChunk": {
+        "phrase": "posts will have been viewed by millions of users",
+        "meaningVi": "các bài đăng sẽ đã được hàng triệu người xem"
+      },
+      "skeleton": {
+        "subject": "posts",
+        "verb": "will have been viewed",
+        "object": null
+      }
+    },
+    {
+      "id": "tadv_adv_030",
+      "level": "advanced",
+      "question": "The lead software developer ______ the bug for three days before discovering a faulty database query.",
+      "options": {
+        "A": "had been tracking",
+        "B": "has been tracking",
+        "C": "tracks",
+        "D": "is tracking"
+      },
+      "correctAnswer": "A",
+      "clue": "Nhấn mạnh quá trình truy tìm lỗi liên tục trong 3 ngày trước khi phát hiện truy vấn sai trong quá khứ → had been tracking.",
+      "explanationVi": "Nhấn mạnh sự liên tục của hành động truy vết lỗi (had been tracking... for three days before discovering) trong quá khứ.",
+      "targetChunk": {
+        "phrase": "had been tracking the bug for three days before discovering",
+        "meaningVi": "đã liên tục truy vết lỗi trong suốt 3 ngày trước khi phát hiện"
+      },
+      "skeleton": {
+        "subject": "developer",
+        "verb": "had been tracking",
+        "object": "the bug"
+      }
+    }
+  ]
+}

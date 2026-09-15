@@ -1,0 +1,1389 @@
+{
+  "topicId": "comparisons",
+  "topicName": "Cấu trúc So sánh",
+  "topicNameEn": "Comparisons & Superlatives",
+  "category": "clauses_syntax",
+  "description": "So sánh hơn (-er / more than), so sánh nhất (the -est / the most), so sánh bằng (as... as), trạng từ nhấn mạnh so sánh hơn (much, far, significantly), so sánh kép (The more... the more), và cấu trúc the comparative of the two.",
+  "questions": [
+    {
+      "id": "comp_std_001",
+      "level": "standard",
+      "question": "The upgraded conveyor system operates ______ than the older machinery installed in 2018.",
+      "options": {
+        "A": "efficiently",
+        "B": "more efficiently",
+        "C": "most efficiently",
+        "D": "efficiency"
+      },
+      "correctAnswer": "B",
+      "clue": "Có từ 'than' ở phía sau và bổ nghĩa cho động từ 'operates' → So sánh hơn của trạng từ dài: more efficiently than.",
+      "explanationVi": "'operates' là động từ thường nên cần trạng từ 'efficiently'. Có 'than' nên dùng dạng so sánh hơn 'more efficiently'.",
+      "targetChunk": {
+        "phrase": "operates more efficiently than",
+        "meaningVi": "vận hành hiệu quả hơn so với"
+      },
+      "skeleton": {
+        "subject": "The conveyor system",
+        "verb": "operates",
+        "object": null
+      }
+    },
+    {
+      "id": "comp_std_002",
+      "level": "standard",
+      "question": "Our flagship hotel in Geneva is widely considered ______ luxurious property in the entire chain.",
+      "options": {
+        "A": "the most",
+        "B": "more",
+        "C": "most",
+        "D": "much"
+      },
+      "correctAnswer": "A",
+      "clue": "So sánh nhất của tính từ dài 'luxurious' trong phạm vi 'in the entire chain' → the most + Adj.",
+      "explanationVi": "Trong một tập thể rộng lớn (in the entire chain), cấu trúc so sánh nhất là 'the most luxurious'.",
+      "targetChunk": {
+        "phrase": "the most luxurious property in the chain",
+        "meaningVi": "bất động sản sang trọng nhất trong toàn bộ chuỗi"
+      },
+      "skeleton": {
+        "subject": "Our hotel",
+        "verb": "is considered",
+        "object": "the most luxurious property"
+      }
+    },
+    {
+      "id": "comp_std_003",
+      "level": "standard",
+      "question": "The newly engineered battery allows electric vehicles to travel ______ than previous models.",
+      "options": {
+        "A": "farther",
+        "B": "father",
+        "C": "farthest",
+        "D": "far"
+      },
+      "correctAnswer": "A",
+      "clue": "So sánh hơn về khoảng cách quãng đường (far → farther) trước từ 'than'.",
+      "explanationVi": "'farther' là dạng so sánh hơn chỉ khoảng cách vật lý của 'far'.",
+      "targetChunk": {
+        "phrase": "travel farther than previous models",
+        "meaningVi": "di chuyển xa hơn so với các mẫu trước"
+      },
+      "skeleton": {
+        "subject": "The battery",
+        "verb": "allows",
+        "object": "vehicles to travel farther"
+      }
+    },
+    {
+      "id": "comp_std_004",
+      "level": "standard",
+      "question": "The prototype was not as ______ as the technical specifications had originally indicated.",
+      "options": {
+        "A": "reliable",
+        "B": "reliably",
+        "C": "reliability",
+        "D": "more reliable"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc so sánh bằng: as + Tính từ nguyên mẫu + as (đứng sau to be 'was not').",
+      "explanationVi": "Sau to be 'was' cần tính từ 'reliable'. Cấu trúc 'as... as' giữ nguyên dạng tính từ, không thêm more hay -er.",
+      "targetChunk": {
+        "phrase": "not as reliable as indicated",
+        "meaningVi": "không đáng tin cậy như đã nêu"
+      },
+      "skeleton": {
+        "subject": "The prototype",
+        "verb": "was not",
+        "object": "as reliable as indicated"
+      }
+    },
+    {
+      "id": "comp_std_005",
+      "level": "standard",
+      "question": "Quarterly sales figures for the medical division were ______ higher than initially projected.",
+      "options": {
+        "A": "substantially",
+        "B": "very",
+        "C": "so",
+        "D": "more"
+      },
+      "correctAnswer": "A",
+      "clue": "TRẠNG TỪ NHẤN MẠNH SO SÁNH HƠN: 'substantially higher' (cao hơn đáng kể). Tuyệt đối không dùng 'very' trước tính từ so sánh hơn!",
+      "explanationVi": "Các trạng từ nhấn mạnh so sánh hơn gồm: much, far, significantly, substantially, considerably, slightly.",
+      "targetChunk": {
+        "phrase": "substantially higher than projected",
+        "meaningVi": "cao hơn đáng kể so với dự tính ban đầu"
+      },
+      "skeleton": {
+        "subject": "sales figures",
+        "verb": "were",
+        "object": "substantially higher"
+      }
+    },
+    {
+      "id": "comp_std_006",
+      "level": "standard",
+      "question": "This quarter's marketing campaign proved to be ______ successful one in the company's history.",
+      "options": {
+        "A": "the most",
+        "B": "more",
+        "C": "most",
+        "D": "much"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc so sánh nhất trong lịch sử công ty: 'the most successful one in company's history'.",
+      "explanationVi": "Có 'in the company's history' xác lập phạm vi so sánh nhất → 'the most successful'.",
+      "targetChunk": {
+        "phrase": "the most successful in company history",
+        "meaningVi": "thành công nhất trong lịch sử công ty"
+      },
+      "skeleton": {
+        "subject": "The campaign",
+        "verb": "proved to be",
+        "object": "the most successful one"
+      }
+    },
+    {
+      "id": "comp_std_007",
+      "level": "standard",
+      "question": "The newly opened cafeteria offers ______ menu selections than the previous concessionaire.",
+      "options": {
+        "A": "healthier",
+        "B": "healthiest",
+        "C": "healthy",
+        "D": "more healthy"
+      },
+      "correctAnswer": "A",
+      "clue": "Tính từ ngắn kết thúc bằng đuôi -y (healthy) khi so sánh hơn đổi thành -ier: healthier than.",
+      "explanationVi": "healthy → healthier. Có từ 'than' nên dùng dạng so sánh hơn.",
+      "targetChunk": {
+        "phrase": "offers healthier menu selections",
+        "meaningVi": "cung cấp các lựa chọn thực đơn lành mạnh hơn"
+      },
+      "skeleton": {
+        "subject": "The cafeteria",
+        "verb": "offers",
+        "object": "healthier menu selections"
+      }
+    },
+    {
+      "id": "comp_std_008",
+      "level": "standard",
+      "question": "Please submit the final version of the audited financial statements as soon as ______.",
+      "options": {
+        "A": "possible",
+        "B": "possibly",
+        "C": "possibility",
+        "D": "possibilities"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm thành ngữ kinh điển: as soon as possible (càng sớm càng tốt).",
+      "explanationVi": "'as soon as possible' (ASAP) là cụm cố định trong giao tiếp công sở.",
+      "targetChunk": {
+        "phrase": "as soon as possible",
+        "meaningVi": "càng sớm càng tốt"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "submit",
+        "object": "the statements as soon as possible"
+      }
+    },
+    {
+      "id": "comp_std_009",
+      "level": "standard",
+      "question": "The air freight shipping option is ______ more expensive than standard sea cargo delivery.",
+      "options": {
+        "A": "much",
+        "B": "very",
+        "C": "too",
+        "D": "quite"
+      },
+      "correctAnswer": "A",
+      "clue": "TRẠNG TỪ BỔ NGHĨA CHO SO SÁNH HƠN: 'much more expensive' (đắt hơn rất nhiều). Cấm dùng 'very' trước 'more'.",
+      "explanationVi": "'much' bổ nghĩa mức độ cho 'more expensive'.",
+      "targetChunk": {
+        "phrase": "much more expensive than sea cargo",
+        "meaningVi": "đắt hơn rất nhiều so với vận tải đường biển"
+      },
+      "skeleton": {
+        "subject": "The air freight option",
+        "verb": "is",
+        "object": "much more expensive"
+      }
+    },
+    {
+      "id": "comp_std_010",
+      "level": "standard",
+      "question": "Of all the applicants interviewed this week, Ms. Jensen was by far ______ qualified.",
+      "options": {
+        "A": "the most",
+        "B": "more",
+        "C": "most",
+        "D": "much"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm 'by far the most + Adj' (vượt trội nhất, bỏ xa những người còn lại).",
+      "explanationVi": "Trong phạm vi 'Of all the applicants', so sánh nhất dùng 'by far the most qualified'.",
+      "targetChunk": {
+        "phrase": "by far the most qualified",
+        "meaningVi": "có trình độ vượt trội nhất trong tất cả"
+      },
+      "skeleton": {
+        "subject": "Ms. Jensen",
+        "verb": "was",
+        "object": "the most qualified"
+      }
+    },
+    {
+      "id": "comp_std_011",
+      "level": "standard",
+      "question": "The revised user guide explains complex technical procedures ______ clearly than the old manual.",
+      "options": {
+        "A": "more",
+        "B": "most",
+        "C": "much",
+        "D": "as"
+      },
+      "correctAnswer": "A",
+      "clue": "Có từ 'than' ở phía sau và trạng từ 'clearly' → more clearly than (rõ ràng hơn).",
+      "explanationVi": "So sánh hơn của trạng từ 'clearly' là 'more clearly'.",
+      "targetChunk": {
+        "phrase": "explains procedures more clearly than",
+        "meaningVi": "giải thích các quy trình rõ ràng hơn"
+      },
+      "skeleton": {
+        "subject": "The guide",
+        "verb": "explains",
+        "object": "procedures more clearly"
+      }
+    },
+    {
+      "id": "comp_std_012",
+      "level": "standard",
+      "question": "The economic downturn was significantly ______ than the financial analysts had forecasted.",
+      "options": {
+        "A": "worse",
+        "B": "bad",
+        "C": "worst",
+        "D": "badly"
+      },
+      "correctAnswer": "A",
+      "clue": "So sánh hơn bất quy tắc của 'bad' là 'worse' (bad → worse than).",
+      "explanationVi": "Có 'than' và trạng từ nhấn mạnh 'significantly', tính từ 'bad' chuyển thành 'worse'.",
+      "targetChunk": {
+        "phrase": "significantly worse than forecasted",
+        "meaningVi": "tồi tệ hơn đáng kể so với dự báo"
+      },
+      "skeleton": {
+        "subject": "The economic downturn",
+        "verb": "was",
+        "object": "significantly worse"
+      }
+    },
+    {
+      "id": "comp_std_013",
+      "level": "standard",
+      "question": "The customer satisfaction rating of our courier service is as ______ as that of our competitors.",
+      "options": {
+        "A": "high",
+        "B": "higher",
+        "C": "highest",
+        "D": "highly"
+      },
+      "correctAnswer": "A",
+      "clue": "So sánh bằng sau to be 'is': as + Tính từ nguyên mẫu (high) + as.",
+      "explanationVi": "Cần tính từ 'high' mô tả chỉ số đánh giá (rating is high). Cấu trúc as... as giữ nguyên dạng nguyên thể.",
+      "targetChunk": {
+        "phrase": "as high as that of competitors",
+        "meaningVi": "cao ngang bằng với chỉ số của đối thủ"
+      },
+      "skeleton": {
+        "subject": "The rating",
+        "verb": "is",
+        "object": "as high as that of competitors"
+      }
+    },
+    {
+      "id": "comp_std_014",
+      "level": "standard",
+      "question": "Among the five proposals submitted, the board selected the one with ______ overall implementation cost.",
+      "options": {
+        "A": "the lowest",
+        "B": "lower",
+        "C": "low",
+        "D": "lowest"
+      },
+      "correctAnswer": "A",
+      "clue": "So sánh nhất giữa 5 phương án (Among the five proposals) → the lowest (thấp nhất).",
+      "explanationVi": "So sánh trong nhóm từ 3 trở lên dùng so sánh nhất có mạo từ 'the': the lowest cost.",
+      "targetChunk": {
+        "phrase": "the lowest overall implementation cost",
+        "meaningVi": "chi phí triển khai tổng thể thấp nhất"
+      },
+      "skeleton": {
+        "subject": "the board",
+        "verb": "selected",
+        "object": "the one with the lowest cost"
+      }
+    },
+    {
+      "id": "comp_std_015",
+      "level": "standard",
+      "question": "The new production methodology is far ______ effective than our traditional assembly technique.",
+      "options": {
+        "A": "more",
+        "B": "most",
+        "C": "much",
+        "D": "very"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc far + more + Adj + than (hiệu quả hơn nhiều).",
+      "explanationVi": "'far' là trạng từ nhấn mạnh cho 'more effective than'.",
+      "targetChunk": {
+        "phrase": "far more effective than traditional technique",
+        "meaningVi": "hiệu quả hơn nhiều so với kỹ thuật truyền thống"
+      },
+      "skeleton": {
+        "subject": "The methodology",
+        "verb": "is",
+        "object": "far more effective"
+      }
+    },
+    {
+      "id": "comp_std_016",
+      "level": "standard",
+      "question": "Commercial air tickets purchased during peak holiday seasons are considerably ______ expensive.",
+      "options": {
+        "A": "more",
+        "B": "most",
+        "C": "much",
+        "D": "as"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm 'considerably more expensive' (đắt đỏ hơn đáng kể).",
+      "explanationVi": "'considerably' bổ nghĩa cho dạng so sánh hơn 'more expensive'.",
+      "targetChunk": {
+        "phrase": "considerably more expensive during peak seasons",
+        "meaningVi": "đắt đỏ hơn đáng kể trong các mùa cao điểm"
+      },
+      "skeleton": {
+        "subject": "air tickets",
+        "verb": "are",
+        "object": "considerably more expensive"
+      }
+    },
+    {
+      "id": "comp_std_017",
+      "level": "standard",
+      "question": "Employees who demonstrate adaptability progress ______ through the ranks than those who resist change.",
+      "options": {
+        "A": "more rapidly",
+        "B": "rapid",
+        "C": "most rapidly",
+        "D": "rapidity"
+      },
+      "correctAnswer": "A",
+      "clue": "Bổ nghĩa cho động từ 'progress' trước từ 'than' cần Trạng từ so sánh hơn: more rapidly than.",
+      "explanationVi": "Trạng từ 'rapidly' khi so sánh hơn là 'more rapidly'.",
+      "targetChunk": {
+        "phrase": "progress more rapidly through the ranks",
+        "meaningVi": "thăng tiến nhanh hơn qua các cấp bậc"
+      },
+      "skeleton": {
+        "subject": "Employees",
+        "verb": "progress",
+        "object": "more rapidly"
+      }
+    },
+    {
+      "id": "comp_std_018",
+      "level": "standard",
+      "question": "This model is by far ______ energy-saving appliance currently available on the commercial market.",
+      "options": {
+        "A": "the most",
+        "B": "more",
+        "C": "most",
+        "D": "much"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm 'by far the most + Adj' (vượt trội nhất).",
+      "explanationVi": "So sánh nhất có mạo từ 'the'.",
+      "targetChunk": {
+        "phrase": "the most energy-saving appliance",
+        "meaningVi": "thiết bị tiết kiệm điện nhất"
+      },
+      "skeleton": {
+        "subject": "This model",
+        "verb": "is",
+        "object": "the most energy-saving appliance"
+      }
+    },
+    {
+      "id": "comp_std_019",
+      "level": "standard",
+      "question": "Online registration is ______ simpler and quicker than filling out paper forms at the venue.",
+      "options": {
+        "A": "much",
+        "B": "very",
+        "C": "too",
+        "D": "quite"
+      },
+      "correctAnswer": "A",
+      "clue": "Nhấn mạnh so sánh hơn của tính từ ngắn 'simpler and quicker' bằng trạng từ 'much'.",
+      "explanationVi": "Không bao giờ dùng 'very simpler', phải dùng 'much simpler'.",
+      "targetChunk": {
+        "phrase": "much simpler and quicker than paper forms",
+        "meaningVi": "đơn giản và nhanh chóng hơn nhiều so với biểu mẫu giấy"
+      },
+      "skeleton": {
+        "subject": "Online registration",
+        "verb": "is",
+        "object": "much simpler and quicker"
+      }
+    },
+    {
+      "id": "comp_std_020",
+      "level": "standard",
+      "question": "The director requested that the contract terms be drafted as ______ as possible.",
+      "options": {
+        "A": "clearly",
+        "B": "clear",
+        "C": "clearness",
+        "D": "more clearly"
+      },
+      "correctAnswer": "A",
+      "clue": "Bổ nghĩa cho động từ bị động 'be drafted' trong cấu trúc as... as possible cần Trạng từ 'clearly'.",
+      "explanationVi": "draft clearly (soạn thảo một cách rõ ràng). Cấu trúc: as + Adv + as possible.",
+      "targetChunk": {
+        "phrase": "drafted as clearly as possible",
+        "meaningVi": "được soạn thảo rõ ràng nhất có thể"
+      },
+      "skeleton": {
+        "subject": "the contract terms",
+        "verb": "be drafted",
+        "object": "as clearly as possible"
+      }
+    },
+    {
+      "id": "comp_std_021",
+      "level": "standard",
+      "question": "The new server infrastructure is capable of processing transactions three times as ______ as the old setup.",
+      "options": {
+        "A": "fast",
+        "B": "faster",
+        "C": "fastest",
+        "D": "more fast"
+      },
+      "correctAnswer": "A",
+      "clue": "So sánh bội số: three times as + Trạng từ/Tính từ nguyên mẫu (fast) + as.",
+      "explanationVi": "Cấu trúc so sánh gấp bao nhiêu lần: số lần (three times) + as + Adj/Adv + as.",
+      "targetChunk": {
+        "phrase": "three times as fast as the old setup",
+        "meaningVi": "nhanh gấp ba lần so với hệ thống cũ"
+      },
+      "skeleton": {
+        "subject": "The infrastructure",
+        "verb": "is capable of processing",
+        "object": "transactions three times as fast"
+      }
+    },
+    {
+      "id": "comp_std_022",
+      "level": "standard",
+      "question": "Due to rising import tariffs, components manufactured abroad are now ______ costly than domestic parts.",
+      "options": {
+        "A": "more",
+        "B": "most",
+        "C": "much",
+        "D": "as"
+      },
+      "correctAnswer": "A",
+      "clue": "Có từ 'than' ở phía sau: more costly than (đắt đỏ hơn).",
+      "explanationVi": "'costly' là tính từ hai âm tiết, so sánh hơn có thể dùng 'more costly than'.",
+      "targetChunk": {
+        "phrase": "more costly than domestic parts",
+        "meaningVi": "tốn kém hơn các linh kiện trong nước"
+      },
+      "skeleton": {
+        "subject": "components",
+        "verb": "are",
+        "object": "more costly than domestic parts"
+      }
+    },
+    {
+      "id": "comp_std_023",
+      "level": "standard",
+      "question": "Our quarterly performance was ______ better than expected despite severe supply shortages.",
+      "options": {
+        "A": "far",
+        "B": "very",
+        "C": "too",
+        "D": "so"
+      },
+      "correctAnswer": "A",
+      "clue": "Trạng từ nhấn mạnh so sánh hơn trước 'better': far better (tốt hơn nhiều).",
+      "explanationVi": "'far better' là cụm cố định nhấn mạnh mức độ vượt trội.",
+      "targetChunk": {
+        "phrase": "far better than expected",
+        "meaningVi": "tốt hơn nhiều so với mong đợi"
+      },
+      "skeleton": {
+        "subject": "performance",
+        "verb": "was",
+        "object": "far better than expected"
+      }
+    },
+    {
+      "id": "comp_std_024",
+      "level": "standard",
+      "question": "The committee agreed that this was ______ presentation given during the three-day seminar.",
+      "options": {
+        "A": "the most informative",
+        "B": "more informative",
+        "C": "most informative",
+        "D": "as informative"
+      },
+      "correctAnswer": "A",
+      "clue": "So sánh nhất trong toàn bộ hội thảo (during the three-day seminar): the most informative presentation.",
+      "explanationVi": "So sánh nhất có mạo từ 'the'.",
+      "targetChunk": {
+        "phrase": "the most informative presentation",
+        "meaningVi": "bài thuyết trình nhiều thông tin bổ ích nhất"
+      },
+      "skeleton": {
+        "subject": "this",
+        "verb": "was",
+        "object": "the most informative presentation"
+      }
+    },
+    {
+      "id": "comp_std_025",
+      "level": "standard",
+      "question": "The customer service line was not ______ busy as we had anticipated for Monday morning.",
+      "options": {
+        "A": "as",
+        "B": "more",
+        "C": "so",
+        "D": "than"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc so sánh bằng: not as/so + Adj + as.",
+      "explanationVi": "not as busy as: không bận rộn bằng như dự kiến.",
+      "targetChunk": {
+        "phrase": "not as busy as anticipated",
+        "meaningVi": "không bận rộn như dự kiến"
+      },
+      "skeleton": {
+        "subject": "The line",
+        "verb": "was not",
+        "object": "as busy as anticipated"
+      }
+    },
+    {
+      "id": "comp_std_026",
+      "level": "standard",
+      "question": "Automated guided vehicles transport assembly parts ______ safely than manual forklifts.",
+      "options": {
+        "A": "more",
+        "B": "most",
+        "C": "much",
+        "D": "as"
+      },
+      "correctAnswer": "A",
+      "clue": "Có từ 'than' ở phía sau: more safely than (an toàn hơn).",
+      "explanationVi": "Bổ nghĩa cho động từ 'transport' bằng trạng từ so sánh hơn 'more safely'.",
+      "targetChunk": {
+        "phrase": "transport parts more safely than forklifts",
+        "meaningVi": "vận chuyển linh kiện an toàn hơn xe nâng"
+      },
+      "skeleton": {
+        "subject": "Vehicles",
+        "verb": "transport",
+        "object": "assembly parts more safely"
+      }
+    },
+    {
+      "id": "comp_std_027",
+      "level": "standard",
+      "question": "The newly renovated branch is twice as ______ as the original facility opened in 2012.",
+      "options": {
+        "A": "large",
+        "B": "larger",
+        "C": "largest",
+        "D": "more large"
+      },
+      "correctAnswer": "A",
+      "clue": "So sánh bội số: twice as + Tính từ nguyên mẫu (large) + as.",
+      "explanationVi": "twice as large as: rộng gấp đôi so với.",
+      "targetChunk": {
+        "phrase": "twice as large as the original facility",
+        "meaningVi": "rộng gấp đôi so với cơ sở ban đầu"
+      },
+      "skeleton": {
+        "subject": "The branch",
+        "verb": "is",
+        "object": "twice as large as the original facility"
+      }
+    },
+    {
+      "id": "comp_std_028",
+      "level": "standard",
+      "question": "The senior software engineer resolves complex database errors ______ than the junior developers.",
+      "options": {
+        "A": "more quickly",
+        "B": "quick",
+        "C": "quicker",
+        "D": "most quickly"
+      },
+      "correctAnswer": "A",
+      "clue": "Bổ nghĩa cho động từ 'resolves' trước từ 'than' cần Trạng từ so sánh hơn: more quickly than.",
+      "explanationVi": "Động từ thường đi với trạng từ 'quickly', dạng so sánh hơn là 'more quickly'.",
+      "targetChunk": {
+        "phrase": "resolves errors more quickly",
+        "meaningVi": "xử lý các lỗi nhanh chóng hơn"
+      },
+      "skeleton": {
+        "subject": "The engineer",
+        "verb": "resolves",
+        "object": "errors more quickly"
+      }
+    },
+    {
+      "id": "comp_std_029",
+      "level": "standard",
+      "question": "The second prototype proved to be ______ durable than the initial demonstration unit.",
+      "options": {
+        "A": "considerably more",
+        "B": "very",
+        "C": "too much",
+        "D": "so"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm so sánh hơn có trạng từ nhấn mạnh: considerably more durable than.",
+      "explanationVi": "'considerably' bổ nghĩa cho 'more durable'.",
+      "targetChunk": {
+        "phrase": "considerably more durable than the initial unit",
+        "meaningVi": "bền hơn đáng kể so với mẫu ban đầu"
+      },
+      "skeleton": {
+        "subject": "The prototype",
+        "verb": "proved to be",
+        "object": "more durable"
+      }
+    },
+    {
+      "id": "comp_std_030",
+      "level": "standard",
+      "question": "Of the three commercial properties available, the waterfront parcel has ______ scenic view.",
+      "options": {
+        "A": "the most",
+        "B": "more",
+        "C": "most",
+        "D": "much"
+      },
+      "correctAnswer": "A",
+      "clue": "So sánh nhất giữa 3 bất động sản: the most scenic view (tầm nhìn đẹp nhất).",
+      "explanationVi": "Trong số ba bất động sản (Of the three), dùng so sánh nhất có 'the'.",
+      "targetChunk": {
+        "phrase": "the most scenic view",
+        "meaningVi": "tầm nhìn nên thơ nhất"
+      },
+      "skeleton": {
+        "subject": "the parcel",
+        "verb": "has",
+        "object": "the most scenic view"
+      }
+    },
+    {
+      "id": "comp_adv_001",
+      "level": "advanced",
+      "question": "______ the feedback from beta testers is received, the faster the engineering team can address bugs.",
+      "options": {
+        "A": "The sooner",
+        "B": "Sooner",
+        "C": "Soonest",
+        "D": "As soon as"
+      },
+      "correctAnswer": "A",
+      "clue": "BẪY SO SÁNH KÉP (The more... the more): 'The sooner S + V, the faster S + V' (Càng sớm... thì càng nhanh...).",
+      "explanationVi": "Cấu trúc so sánh song song / so sánh kép: The + Comparative, the + Comparative.",
+      "targetChunk": {
+        "phrase": "The sooner feedback is received, the faster",
+        "meaningVi": "Phản hồi nhận được càng sớm, xử lý càng nhanh"
+      },
+      "skeleton": {
+        "subject": "The sooner feedback is received",
+        "verb": "the faster team can address",
+        "object": "bugs"
+      }
+    },
+    {
+      "id": "comp_adv_002",
+      "level": "advanced",
+      "question": "The more thoroughly the proposal is evaluated, ______ the likelihood of costly operational oversights.",
+      "options": {
+        "A": "the lower",
+        "B": "lower",
+        "C": "the lowest",
+        "D": "lowest"
+      },
+      "correctAnswer": "A",
+      "clue": "SO SÁNH KÉP: 'The more thoroughly..., THE LOWER the likelihood...' (Đề xuất được đánh giá càng kỹ thì khả năng sơ suất càng thấp).",
+      "explanationVi": "Vế thứ hai của cấu trúc so sánh kép bắt buộc phải có mạo từ 'the' đi liền với dạng so sánh hơn: The lower.",
+      "targetChunk": {
+        "phrase": "the lower the likelihood of oversights",
+        "meaningVi": "khả năng xảy ra sai sót càng thấp"
+      },
+      "skeleton": {
+        "subject": "the likelihood",
+        "verb": "is",
+        "object": "lower"
+      }
+    },
+    {
+      "id": "comp_adv_003",
+      "level": "advanced",
+      "question": "Between the two candidate cities for the new logistics hub, Frankfurt is clearly ______ strategic choice.",
+      "options": {
+        "A": "the more",
+        "B": "more",
+        "C": "the most",
+        "D": "most"
+      },
+      "correctAnswer": "A",
+      "clue": "BẪY 990: SO SÁNH HƠN GIỮA HAI ĐỐI TƯỢNG CÓ 'THE': 'the more strategic choice' (lựa chọn chiến lược hơn trong số hai lựa chọn).",
+      "explanationVi": "Khi so sánh giữa ĐÚNG HAI đối tượng (Between the two...), cấu trúc chuẩn là 'THE + Comparative' (chứ không dùng the most hay more đơn thuần).",
+      "targetChunk": {
+        "phrase": "the more strategic choice between the two",
+        "meaningVi": "lựa chọn chiến lược hơn trong số hai thành phố"
+      },
+      "skeleton": {
+        "subject": "Frankfurt",
+        "verb": "is",
+        "object": "the more strategic choice"
+      }
+    },
+    {
+      "id": "comp_adv_004",
+      "level": "advanced",
+      "question": "The regional director made it clear that no other issue was ______ urgent as securing the supply chain.",
+      "options": {
+        "A": "as",
+        "B": "so",
+        "C": "more",
+        "D": "than"
+      },
+      "correctAnswer": "A",
+      "clue": "SO SÁNH BẰNG MANG NGHĨA TUYỆT ĐỐI VỚI 'NO OTHER': 'no other issue was AS urgent AS...' (không có vấn đề nào cấp bách bằng việc...).",
+      "explanationVi": "Cấu trúc: No other + N + as + Adj + as mang nghĩa so sánh nhất (việc bảo vệ chuỗi cung ứng là cấp bách nhất).",
+      "targetChunk": {
+        "phrase": "no other issue was as urgent as",
+        "meaningVi": "không có vấn đề nào cấp bách bằng"
+      },
+      "skeleton": {
+        "subject": "no other issue",
+        "verb": "was",
+        "object": "as urgent as securing the supply chain"
+      }
+    },
+    {
+      "id": "comp_adv_005",
+      "level": "advanced",
+      "question": "All quarterly financial audits must be finalized no ______ than the fifteenth of the following month.",
+      "options": {
+        "A": "later",
+        "B": "latter",
+        "C": "latest",
+        "D": "late"
+      },
+      "correctAnswer": "A",
+      "clue": "Thành ngữ thời hạn cố định trong hợp đồng TOEIC: 'no later than + thời gian' (không muộn hơn ngày...).",
+      "explanationVi": "'no later than' chỉ hạn chót chốt lại một công việc. Không nhầm với 'latter' (sau).",
+      "targetChunk": {
+        "phrase": "no later than the fifteenth",
+        "meaningVi": "không muộn hơn ngày mười lăm"
+      },
+      "skeleton": {
+        "subject": "audits",
+        "verb": "must be finalized",
+        "object": "no later than the fifteenth"
+      }
+    },
+    {
+      "id": "comp_adv_006",
+      "level": "advanced",
+      "question": "The new turbine is not only quieter but also consumes ______ less electricity than the older model.",
+      "options": {
+        "A": "substantially",
+        "B": "very",
+        "C": "extremely",
+        "D": "fairly"
+      },
+      "correctAnswer": "A",
+      "clue": "TRẠNG TỪ NHẤN MẠNH TRƯỚC 'LESS': 'substantially less' (ít hơn đáng kể). Cấm dùng 'very less'.",
+      "explanationVi": "'substantially' bổ nghĩa cho 'less electricity' để nhấn mạnh mức độ tiết kiệm điện.",
+      "targetChunk": {
+        "phrase": "substantially less electricity",
+        "meaningVi": "ít điện hơn đáng kể"
+      },
+      "skeleton": {
+        "subject": "The turbine",
+        "verb": "consumes",
+        "object": "substantially less electricity"
+      }
+    },
+    {
+      "id": "comp_adv_007",
+      "level": "advanced",
+      "question": "Of the two software proposals evaluated by the IT steering committee, the cloud-based solution is ______.",
+      "options": {
+        "A": "the less expensive",
+        "B": "least expensive",
+        "C": "the least expensive",
+        "D": "less expensive"
+      },
+      "correctAnswer": "A",
+      "clue": "SO SÁNH 2 ĐỐI TƯỢNG (Of the two proposals...): 'the less expensive' (phương án ít tốn kém hơn trong hai phương án).",
+      "explanationVi": "Khi so sánh giữa 2 vật, phải dùng 'the + so sánh hơn' (the less expensive), không dùng 'least' vì 'least' chỉ dùng cho từ 3 vật trở lên.",
+      "targetChunk": {
+        "phrase": "the less expensive of the two",
+        "meaningVi": "phương án ít tốn kém hơn trong số hai phương án"
+      },
+      "skeleton": {
+        "subject": "the solution",
+        "verb": "is",
+        "object": "the less expensive"
+      }
+    },
+    {
+      "id": "comp_adv_008",
+      "level": "advanced",
+      "question": "The newly opened conference facility can accommodate as ______ as twelve hundred foreign delegates.",
+      "options": {
+        "A": "many",
+        "B": "much",
+        "C": "more",
+        "D": "most"
+      },
+      "correctAnswer": "A",
+      "clue": "CỤM ĐỊNH LƯỢNG: 'as many as + con số' (lên tới tận / nhiều tới con số...) đi với danh từ đếm được 'delegates'.",
+      "explanationVi": "'as many as' nhấn mạnh số lượng người hoặc vật đếm được đạt tới con số bất ngờ.",
+      "targetChunk": {
+        "phrase": "accommodate as many as 1200 delegates",
+        "meaningVi": "chứa được lên tới tận 1.200 đại biểu"
+      },
+      "skeleton": {
+        "subject": "The facility",
+        "verb": "can accommodate",
+        "object": "as many as 1200 delegates"
+      }
+    },
+    {
+      "id": "comp_adv_009",
+      "level": "advanced",
+      "question": "The company's net operating profits rose by as ______ as forty million dollars following the product rollout.",
+      "options": {
+        "A": "much",
+        "B": "many",
+        "C": "more",
+        "D": "most"
+      },
+      "correctAnswer": "A",
+      "clue": "CỤM ĐỊNH LƯỢNG TIỀN BẠC: 'as much as + số tiền' (lên tới tận bao nhiêu tiền - danh từ không đếm được).",
+      "explanationVi": "Tiền bạc (dollars) và phần trăm được xem là lượng không đếm được nên dùng 'as much as'.",
+      "targetChunk": {
+        "phrase": "rose by as much as forty million dollars",
+        "meaningVi": "tăng lên tới tận bốn mươi triệu đô la"
+      },
+      "skeleton": {
+        "subject": "profits",
+        "verb": "rose",
+        "object": "by as much as forty million dollars"
+      }
+    },
+    {
+      "id": "comp_adv_010",
+      "level": "advanced",
+      "question": "The corporate legal counsel recommended settling the dispute out of court rather ______ risking a jury trial.",
+      "options": {
+        "A": "than",
+        "B": "then",
+        "C": "to",
+        "D": "from"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm so sánh lựa chọn: 'rather THAN + V-ing' (thay vì làm điều gì).",
+      "explanationVi": "rather than đi với danh động từ hoặc động từ nguyên thể mang nghĩa 'hơn là / thay vì'.",
+      "targetChunk": {
+        "phrase": "rather than risking a jury trial",
+        "meaningVi": "thay vì mạo hiểm với một phiên tòa bồi thẩm đoàn"
+      },
+      "skeleton": {
+        "subject": "counsel",
+        "verb": "recommended",
+        "object": "settling the dispute"
+      }
+    },
+    {
+      "id": "comp_adv_011",
+      "level": "advanced",
+      "question": "The higher the initial investment in research, ______ the long-term competitive advantage for the firm.",
+      "options": {
+        "A": "the greater",
+        "B": "greater",
+        "C": "the greatest",
+        "D": "greatest"
+      },
+      "correctAnswer": "A",
+      "clue": "SO SÁNH KÉP: 'The higher..., THE GREATER the advantage...' (Đầu tư càng cao, lợi thế càng lớn).",
+      "explanationVi": "Cấu trúc The + comparative..., the + comparative...",
+      "targetChunk": {
+        "phrase": "the greater the long-term advantage",
+        "meaningVi": "lợi thế dài hạn càng lớn"
+      },
+      "skeleton": {
+        "subject": "the advantage",
+        "verb": "is",
+        "object": "greater"
+      }
+    },
+    {
+      "id": "comp_adv_012",
+      "level": "advanced",
+      "question": "The senior economist stated that inflation would moderate ______ later this autumn.",
+      "options": {
+        "A": "sooner or",
+        "B": "sooner and",
+        "C": "soonest or",
+        "D": "soon than"
+      },
+      "correctAnswer": "A",
+      "clue": "Thành ngữ: 'sooner or later' (không sớm thì muộn).",
+      "explanationVi": "'sooner or later' là thành ngữ cố định chỉ sự việc tất yếu sẽ diễn ra.",
+      "targetChunk": {
+        "phrase": "sooner or later this autumn",
+        "meaningVi": "không sớm thì muộn vào mùa thu này"
+      },
+      "skeleton": {
+        "subject": "inflation",
+        "verb": "would moderate",
+        "object": "sooner or later"
+      }
+    },
+    {
+      "id": "comp_adv_013",
+      "level": "advanced",
+      "question": "The newly drafted bylaws are ______ more comprehensive than the statutes enacted five years ago.",
+      "options": {
+        "A": "infinitely",
+        "B": "very",
+        "C": "quite",
+        "D": "too"
+      },
+      "correctAnswer": "A",
+      "clue": "Trạng từ nhấn mạnh so sánh hơn cấp độ cao: 'infinitely more comprehensive' (toàn diện hơn vô cùng).",
+      "explanationVi": "'infinitely' dùng để nhấn mạnh sự cách biệt rất lớn trước dạng so sánh hơn 'more comprehensive'.",
+      "targetChunk": {
+        "phrase": "infinitely more comprehensive",
+        "meaningVi": "toàn diện hơn gấp bội phần"
+      },
+      "skeleton": {
+        "subject": "The bylaws",
+        "verb": "are",
+        "object": "infinitely more comprehensive"
+      }
+    },
+    {
+      "id": "comp_adv_014",
+      "level": "advanced",
+      "question": "The director noted that the marketing budget had been reduced to as ______ as twenty thousand dollars.",
+      "options": {
+        "A": "little",
+        "B": "few",
+        "C": "less",
+        "D": "least"
+      },
+      "correctAnswer": "A",
+      "clue": "CỤM NHẤN MẠNH SỐ LƯỢNG ÍT ỎI: 'as little as + số tiền' (chỉ vỏn vẹn / ít ỏi ở mức...).",
+      "explanationVi": "'as little as' dùng với tiền bạc hoặc thời gian để nhấn mạnh mức độ ít ỏi đáng kinh ngạc.",
+      "targetChunk": {
+        "phrase": "reduced to as little as twenty thousand",
+        "meaningVi": "bị cắt giảm chỉ còn vỏn vẹn hai mươi nghìn đô"
+      },
+      "skeleton": {
+        "subject": "budget",
+        "verb": "had been reduced",
+        "object": "to as little as twenty thousand dollars"
+      }
+    },
+    {
+      "id": "comp_adv_015",
+      "level": "advanced",
+      "question": "As ______ as three senior vice presidents have resigned in the wake of the corporate scandal.",
+      "options": {
+        "A": "many",
+        "B": "much",
+        "C": "few",
+        "D": "little"
+      },
+      "correctAnswer": "A",
+      "clue": "Nhấn mạnh số lượng người đếm được: 'As many as three senior vice presidents' (Có tới tận 3 phó chủ tịch đã từ chức).",
+      "explanationVi": "Danh từ đếm được 'vice presidents' đi kèm 'as many as'.",
+      "targetChunk": {
+        "phrase": "As many as three vice presidents",
+        "meaningVi": "Có tới tận ba vị phó chủ tịch"
+      },
+      "skeleton": {
+        "subject": "As many as three vice presidents",
+        "verb": "have resigned",
+        "object": null
+      }
+    },
+    {
+      "id": "comp_adv_016",
+      "level": "advanced",
+      "question": "The revised compensation package is superior ______ any offer submitted by rival technology firms.",
+      "options": {
+        "A": "to",
+        "B": "than",
+        "C": "from",
+        "D": "with"
+      },
+      "correctAnswer": "A",
+      "clue": "BẪY TÍNH TỪ SO SÁNH GỐC LA-TINH: 'superior TO' (vượt trội hơn so với) - TUYỆT ĐỐI KHÔNG DÙNG 'superior than'!",
+      "explanationVi": "Các tính từ gốc Latin như superior, inferior, senior, junior, prior bắt buộc đi với giới từ 'to', không đi với 'than'.",
+      "targetChunk": {
+        "phrase": "superior to any offer by rivals",
+        "meaningVi": "vượt trội hơn bất kỳ lời đề nghị nào của đối thủ"
+      },
+      "skeleton": {
+        "subject": "The package",
+        "verb": "is",
+        "object": "superior to any offer"
+      }
+    },
+    {
+      "id": "comp_adv_017",
+      "level": "advanced",
+      "question": "The board considered the offshore manufacturing plant inferior ______ the domestic facility in safety metrics.",
+      "options": {
+        "A": "to",
+        "B": "than",
+        "C": "at",
+        "D": "over"
+      },
+      "correctAnswer": "A",
+      "clue": "BẪY TÍNH TỪ GỐC LA-TINH: 'inferior TO' (kém hơn so với...).",
+      "explanationVi": "'inferior' luôn đi với giới từ 'to', không dùng 'than'.",
+      "targetChunk": {
+        "phrase": "inferior to the domestic facility",
+        "meaningVi": "kém hơn so với cơ sở trong nước"
+      },
+      "skeleton": {
+        "subject": "The board",
+        "verb": "considered",
+        "object": "the plant inferior to the domestic facility"
+      }
+    },
+    {
+      "id": "comp_adv_018",
+      "level": "advanced",
+      "question": "The earlier the project manager identifies logistical bottlenecks, ______ the overall disruption to clients.",
+      "options": {
+        "A": "the less",
+        "B": "less",
+        "C": "the least",
+        "D": "least"
+      },
+      "correctAnswer": "A",
+      "clue": "SO SÁNH KÉP: 'The earlier S + V, THE LESS the disruption' (Nhận biết càng sớm thì sự gián đoạn càng ít).",
+      "explanationVi": "Vế 2 bắt buộc có mạo từ 'the' kết hợp dạng so sánh hơn 'less'.",
+      "targetChunk": {
+        "phrase": "the less the overall disruption",
+        "meaningVi": "sự gián đoạn tổng thể càng ít"
+      },
+      "skeleton": {
+        "subject": "the disruption",
+        "verb": "is",
+        "object": "less"
+      }
+    },
+    {
+      "id": "comp_adv_019",
+      "level": "advanced",
+      "question": "The newly drafted privacy protocol is ______ as rigorous as the European Union's general data regulation.",
+      "options": {
+        "A": "every bit",
+        "B": "all bit",
+        "C": "each bit",
+        "D": "very bit"
+      },
+      "correctAnswer": "A",
+      "clue": "Thành ngữ nhấn mạnh so sánh bằng: 'every bit as + Adj + as' (hoàn toàn ngang ngửa / khắt khe hệt như...).",
+      "explanationVi": "'every bit as rigorous as' là thành ngữ nâng cao nhấn mạnh sự tương đồng hoàn toàn về mức độ.",
+      "targetChunk": {
+        "phrase": "every bit as rigorous as the regulation",
+        "meaningVi": "nghiêm ngặt hoàn toàn ngang ngửa với quy định"
+      },
+      "skeleton": {
+        "subject": "The protocol",
+        "verb": "is",
+        "object": "every bit as rigorous as the regulation"
+      }
+    },
+    {
+      "id": "comp_adv_020",
+      "level": "advanced",
+      "question": "Mr. Dubois arrived at the corporate summit prior ______ the commencement of the opening ceremony.",
+      "options": {
+        "A": "to",
+        "B": "than",
+        "C": "from",
+        "D": "at"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm cố định: 'prior TO' (trước khi...). Không dùng 'prior than'.",
+      "explanationVi": "'prior to' là cụm giới từ đồng nghĩa với 'before'.",
+      "targetChunk": {
+        "phrase": "prior to the commencement of ceremony",
+        "meaningVi": "trước khi lễ khai mạc bắt đầu"
+      },
+      "skeleton": {
+        "subject": "Mr. Dubois",
+        "verb": "arrived",
+        "object": "prior to the commencement"
+      }
+    },
+    {
+      "id": "comp_adv_021",
+      "level": "advanced",
+      "question": "The director stressed that quality control must take precedence ______ speed of production.",
+      "options": {
+        "A": "over",
+        "B": "than",
+        "C": "to",
+        "D": "against"
+      },
+      "correctAnswer": "A",
+      "clue": "Collocation so sánh ưu tiên: 'take precedence OVER sth' (được ưu tiên quan trọng hơn cái gì).",
+      "explanationVi": "'take precedence over' là cụm từ nâng cao mang nghĩa có vị trí ưu tiên cao hơn.",
+      "targetChunk": {
+        "phrase": "take precedence over speed of production",
+        "meaningVi": "được ưu tiên hơn tốc độ sản xuất"
+      },
+      "skeleton": {
+        "subject": "quality control",
+        "verb": "must take",
+        "object": "precedence over speed"
+      }
+    },
+    {
+      "id": "comp_adv_022",
+      "level": "advanced",
+      "question": "Between the two merger options under discussion, the stock buyout is undeniably ______ viable path.",
+      "options": {
+        "A": "the more",
+        "B": "the most",
+        "C": "more",
+        "D": "most"
+      },
+      "correctAnswer": "A",
+      "clue": "SO SÁNH 2 ĐỐI TƯỢNG (Between the two options): 'the more viable path' (con đường khả thi hơn trong số 2 con đường).",
+      "explanationVi": "Chỉ có 2 phương án nên bắt buộc dùng 'the + comparative' (the more).",
+      "targetChunk": {
+        "phrase": "the more viable path between the two",
+        "meaningVi": "con đường khả thi hơn trong số hai phương án"
+      },
+      "skeleton": {
+        "subject": "the buyout",
+        "verb": "is",
+        "object": "the more viable path"
+      }
+    },
+    {
+      "id": "comp_adv_023",
+      "level": "advanced",
+      "question": "The energy consumption metrics for the new hybrid vehicle are even ______ than laboratory estimates.",
+      "options": {
+        "A": "better",
+        "B": "good",
+        "C": "best",
+        "D": "well"
+      },
+      "correctAnswer": "A",
+      "clue": "Trạng từ 'even' dùng để nhấn mạnh so sánh hơn trước 'than': even better than.",
+      "explanationVi": "'even' bổ nghĩa cho dạng so sánh hơn 'better'.",
+      "targetChunk": {
+        "phrase": "even better than laboratory estimates",
+        "meaningVi": "thậm chí còn tốt hơn cả ước tính phòng thí nghiệm"
+      },
+      "skeleton": {
+        "subject": "The metrics",
+        "verb": "are",
+        "object": "even better than estimates"
+      }
+    },
+    {
+      "id": "comp_adv_024",
+      "level": "advanced",
+      "question": "The more automated our packaging lines become, ______ manual errors are recorded in shipment manifests.",
+      "options": {
+        "A": "the fewer",
+        "B": "fewer",
+        "C": "the fewest",
+        "D": "fewest"
+      },
+      "correctAnswer": "A",
+      "clue": "SO SÁNH KÉP VỚI DANH TỪ ĐẾM ĐƯỢC: 'the fewer + N đếm được số nhiều' (càng ít lỗi thủ công xảy ra).",
+      "explanationVi": "Danh từ số nhiều đếm được 'manual errors' đi với 'the fewer' trong cấu trúc so sánh kép.",
+      "targetChunk": {
+        "phrase": "the fewer manual errors are recorded",
+        "meaningVi": "càng ít lỗi thủ công bị ghi nhận"
+      },
+      "skeleton": {
+        "subject": "fewer manual errors",
+        "verb": "are recorded",
+        "object": null
+      }
+    },
+    {
+      "id": "comp_adv_025",
+      "level": "advanced",
+      "question": "Nothing could be ______ motivating to the sales department than the newly announced equity shares.",
+      "options": {
+        "A": "more",
+        "B": "most",
+        "C": "much",
+        "D": "as"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc phủ định kết hợp so sánh hơn mang nghĩa tuyệt đối: 'Nothing could be more + Adj + than' (Không có gì có thể khích lệ hơn...).",
+      "explanationVi": "'Nothing could be more motivating than...' mang nghĩa cổ phần thưởng là thứ tạo động lực lớn nhất.",
+      "targetChunk": {
+        "phrase": "Nothing could be more motivating than",
+        "meaningVi": "Không có gì có thể tạo động lực lớn hơn"
+      },
+      "skeleton": {
+        "subject": "Nothing",
+        "verb": "could be",
+        "object": "more motivating than the shares"
+      }
+    },
+    {
+      "id": "comp_adv_026",
+      "level": "advanced",
+      "question": "The corporate restructuring was ______ successful than anyone in executive leadership had anticipated.",
+      "options": {
+        "A": "no less",
+        "B": "not less",
+        "C": "no least",
+        "D": "no more"
+      },
+      "correctAnswer": "A",
+      "clue": "Thành ngữ: 'no less + Adj + than' (hoàn toàn không hề kém cạnh / thành công chẳng kém gì...).",
+      "explanationVi": "'no less successful than' nhấn mạnh thành công vượt bậc không thua kém kỳ vọng của ban lãnh đạo.",
+      "targetChunk": {
+        "phrase": "no less successful than anticipated",
+        "meaningVi": "thành công không hề kém so với dự tính"
+      },
+      "skeleton": {
+        "subject": "The restructuring",
+        "verb": "was",
+        "object": "no less successful than anticipated"
+      }
+    },
+    {
+      "id": "comp_adv_027",
+      "level": "advanced",
+      "question": "The new distribution center is located twice as ______ from the shipping port as the previous hub.",
+      "options": {
+        "A": "far",
+        "B": "farther",
+        "C": "farthest",
+        "D": "further"
+      },
+      "correctAnswer": "A",
+      "clue": "So sánh bội số: twice as + Tính từ/Trạng từ nguyên mẫu (far) + as.",
+      "explanationVi": "twice as far as: xa gấp đôi so với.",
+      "targetChunk": {
+        "phrase": "twice as far from the port as the previous hub",
+        "meaningVi": "xa gấp đôi cảng biển so với trạm trung chuyển trước"
+      },
+      "skeleton": {
+        "subject": "The center",
+        "verb": "is located",
+        "object": "twice as far from the port"
+      }
+    },
+    {
+      "id": "comp_adv_028",
+      "level": "advanced",
+      "question": "The chief financial officer insisted on reviewing the figures ______ personal scrutiny could guarantee.",
+      "options": {
+        "A": "as closely as",
+        "B": "so closely",
+        "C": "more closely",
+        "D": "closest as"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc so sánh bằng: as + Adv (closely) + as + S + could guarantee.",
+      "explanationVi": "Bổ nghĩa cho động từ 'reviewing' bằng trạng từ 'closely' trong cấu trúc as... as.",
+      "targetChunk": {
+        "phrase": "as closely as personal scrutiny could guarantee",
+        "meaningVi": "chặt chẽ và kỹ lưỡng nhất có thể"
+      },
+      "skeleton": {
+        "subject": "The CFO",
+        "verb": "insisted on reviewing",
+        "object": "the figures as closely as possible"
+      }
+    },
+    {
+      "id": "comp_adv_029",
+      "level": "advanced",
+      "question": "The newly negotiated freight agreement proved to be far ______ favorable than earlier drafts had suggested.",
+      "options": {
+        "A": "more",
+        "B": "most",
+        "C": "much",
+        "D": "as"
+      },
+      "correctAnswer": "A",
+      "clue": "far more favorable than (thuận lợi hơn rất nhiều so với).",
+      "explanationVi": "'far' bổ nghĩa cho dạng so sánh hơn 'more favorable'.",
+      "targetChunk": {
+        "phrase": "far more favorable than earlier drafts",
+        "meaningVi": "thuận lợi hơn nhiều so với các bản dự thảo trước"
+      },
+      "skeleton": {
+        "subject": "The agreement",
+        "verb": "proved to be",
+        "object": "far more favorable"
+      }
+    },
+    {
+      "id": "comp_adv_030",
+      "level": "advanced",
+      "question": "The conference was attended by ______ thirty thousand registered delegates from over fifty nations.",
+      "options": {
+        "A": "in excess of",
+        "B": "excess of",
+        "C": "in excess",
+        "D": "excessively"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm thành ngữ trang trọng chỉ số lượng vượt mức: 'in excess of + con số' = more than (vượt quá mức 30.000 đại biểu).",
+      "explanationVi": "'in excess of' là cụm giới từ cố định trong báo cáo kinh tế TOEIC điểm cao.",
+      "targetChunk": {
+        "phrase": "in excess of thirty thousand delegates",
+        "meaningVi": "vượt quá ba mươi nghìn đại biểu"
+      },
+      "skeleton": {
+        "subject": "The conference",
+        "verb": "was attended",
+        "object": "by in excess of thirty thousand delegates"
+      }
+    }
+  ]
+}

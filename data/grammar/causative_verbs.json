@@ -1,0 +1,1389 @@
+{
+  "topicId": "causative_verbs",
+  "titleVi": "Thể Sai khiến & Cấu trúc Nhờ vả",
+  "totalQuestions": 60,
+  "standardCount": 30,
+  "advancedCount": 30,
+  "questions": [
+    {
+      "id": "caus_std_001",
+      "level": "standard",
+      "question": "The branch manager had the IT technician ______ the malfunctioning printer.",
+      "options": {
+        "A": "repair",
+        "B": "to repair",
+        "C": "repaired",
+        "D": "repairing"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc chủ động với have: 'have + người + V-bare' (nhờ ai làm gì) → Chọn repair.",
+      "explanationVi": "Cấu trúc sai khiến chủ động: 'have someone DO something' (nhờ/yêu cầu ai làm việc gì). 'the IT technician' là người thực hiện hành động, nên dùng động từ nguyên mẫu không 'to' ('repair').",
+      "targetChunk": {
+        "phrase": "had the IT technician repair the printer",
+        "meaningVi": "đã nhờ kỹ thuật viên IT sửa chiếc máy in"
+      },
+      "skeleton": {
+        "subject": "The branch manager",
+        "verb": "had the technician repair",
+        "object": "the printer"
+      }
+    },
+    {
+      "id": "caus_std_002",
+      "level": "standard",
+      "question": "We need to have our heating and cooling system ______ before the winter season begins.",
+      "options": {
+        "A": "inspected",
+        "B": "inspect",
+        "C": "to inspect",
+        "D": "inspecting"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc bị động với have: 'have + vật + V3/ed' (thuê làm cái gì) → Chọn inspected.",
+      "explanationVi": "Cấu trúc sai khiến bị động: 'have something DONE (V3/ed)' (thuê/nhờ ai làm gì cho một đồ vật). 'our system' là vật chịu tác động kiểm tra nên dùng quá khứ phân từ 'inspected'.",
+      "targetChunk": {
+        "phrase": "have our heating and cooling system inspected",
+        "meaningVi": "cho người kiểm tra hệ thống sưởi và làm mát"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "need to have inspected",
+        "object": "system"
+      }
+    },
+    {
+      "id": "caus_std_003",
+      "level": "standard",
+      "question": "The supervisor got the maintenance team ______ the factory floor over the weekend.",
+      "options": {
+        "A": "to clean",
+        "B": "clean",
+        "C": "cleaned",
+        "D": "cleaning"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc chủ động với get: 'get + người + TO-V' (nhờ/thuyết phục ai làm gì) → Chọn to clean.",
+      "explanationVi": "Cấu trúc sai khiến chủ động với 'get': 'get someone TO DO something' (khác với 'have sb do sth', get bắt buộc có 'to').",
+      "targetChunk": {
+        "phrase": "got the maintenance team to clean the floor",
+        "meaningVi": "đã nhờ đội bảo trì dọn dẹp sàn nhà máy"
+      },
+      "skeleton": {
+        "subject": "supervisor",
+        "verb": "got the team to clean",
+        "object": "the floor"
+      }
+    },
+    {
+      "id": "caus_std_004",
+      "level": "standard",
+      "question": "Please get these legal documents ______ and mailed to the regional office by noon.",
+      "options": {
+        "A": "signed",
+        "B": "to sign",
+        "C": "sign",
+        "D": "signing"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc bị động với get: 'get + vật + V3/ed' → Chọn signed.",
+      "explanationVi": "Cấu trúc sai khiến bị động với 'get': 'get something DONE (V3/ed)' (làm cho cái gì được hoàn tất). 'documents' là vật được ký nên dùng 'signed'.",
+      "targetChunk": {
+        "phrase": "get these legal documents signed and mailed",
+        "meaningVi": "cho ký và gửi các tài liệu pháp lý này đi"
+      },
+      "skeleton": {
+        "subject": "You (implied)",
+        "verb": "get signed and mailed",
+        "object": "documents"
+      }
+    },
+    {
+      "id": "caus_std_005",
+      "level": "standard",
+      "question": "The security policy makes all visitors ______ their photo identification at the front desk.",
+      "options": {
+        "A": "present",
+        "B": "to present",
+        "C": "presented",
+        "D": "presenting"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc với make: 'make + người + V-bare' (bắt buộc ai làm gì) → Chọn present.",
+      "explanationVi": "Cấu trúc: 'make someone DO something' (bắt buộc/khiến ai đó làm việc gì). Theo sau tân ngữ 'all visitors' là động từ nguyên mẫu không 'to' ('present').",
+      "targetChunk": {
+        "phrase": "makes all visitors present their photo identification",
+        "meaningVi": "bắt buộc tất cả khách phải xuất trình giấy tờ tùy thân có ảnh"
+      },
+      "skeleton": {
+        "subject": "policy",
+        "verb": "makes visitors present",
+        "object": "identification"
+      }
+    },
+    {
+      "id": "caus_std_006",
+      "level": "standard",
+      "question": "The software company will not let users ______ the database without dual-factor authentication.",
+      "options": {
+        "A": "access",
+        "B": "to access",
+        "C": "accessed",
+        "D": "accessing"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc với let: 'let + người + V-bare' (cho phép ai làm gì) → Chọn access.",
+      "explanationVi": "Cấu trúc: 'let someone DO something' (cho phép ai làm gì). Sau tân ngữ 'users' là động từ nguyên mẫu không 'to' ('access').",
+      "targetChunk": {
+        "phrase": "not let users access the database without",
+        "meaningVi": "không cho phép người dùng truy cập cơ sở dữ liệu nếu thiếu"
+      },
+      "skeleton": {
+        "subject": "company",
+        "verb": "will not let users access",
+        "object": "database"
+      }
+    },
+    {
+      "id": "caus_std_007",
+      "level": "standard",
+      "question": "The training seminar will help new associates ______ our enterprise software more quickly.",
+      "options": {
+        "A": "master",
+        "B": "mastered",
+        "C": "mastering",
+        "D": "masters"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc với help: 'help + người + (to) V-bare' → Chọn master.",
+      "explanationVi": "Cấu trúc: 'help someone (to) DO something' (giúp ai làm việc gì). Có thể dùng V-bare ('master') hoặc to-infinitive.",
+      "targetChunk": {
+        "phrase": "help new associates master our enterprise software",
+        "meaningVi": "giúp các nhân viên mới thành thạo phần mềm doanh nghiệp"
+      },
+      "skeleton": {
+        "subject": "seminar",
+        "verb": "will help associates master",
+        "object": "software"
+      }
+    },
+    {
+      "id": "caus_std_008",
+      "level": "standard",
+      "question": "The executive director allowed the marketing team ______ remotely on Fridays.",
+      "options": {
+        "A": "to work",
+        "B": "work",
+        "C": "working",
+        "D": "worked"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc với allow: 'allow + người + TO-V' (cho phép ai làm gì) → Chọn to work.",
+      "explanationVi": "Cấu trúc: 'allow someone TO DO something' (cho phép ai làm gì). Khác với 'let' (let sb do sth), 'allow' bắt buộc đi với To-infinitive.",
+      "targetChunk": {
+        "phrase": "allowed the marketing team to work remotely",
+        "meaningVi": "đã cho phép nhóm tiếp thị làm việc từ xa"
+      },
+      "skeleton": {
+        "subject": "director",
+        "verb": "allowed the team to work",
+        "object": null
+      }
+    },
+    {
+      "id": "caus_std_009",
+      "level": "standard",
+      "question": "Mr. Vance will have his executive assistant ______ a conference room for tomorrow morning.",
+      "options": {
+        "A": "reserve",
+        "B": "to reserve",
+        "C": "reserved",
+        "D": "reserving"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc chủ động với have: 'have + người (assistant) + V-bare' → Chọn reserve.",
+      "explanationVi": "'have someone DO something' (nhờ ai làm việc gì). 'his executive assistant' là người thực hiện hành động đặt phòng, nên dùng động từ nguyên mẫu 'reserve'.",
+      "targetChunk": {
+        "phrase": "have his executive assistant reserve a conference room",
+        "meaningVi": "nhờ trợ lý điều hành đặt một phòng hội nghị"
+      },
+      "skeleton": {
+        "subject": "Mr. Vance",
+        "verb": "will have assistant reserve",
+        "object": "conference room"
+      }
+    },
+    {
+      "id": "caus_std_010",
+      "level": "standard",
+      "question": "The publishing house had the manuscript ______ by three independent copy editors.",
+      "options": {
+        "A": "proofread",
+        "B": "to proofread",
+        "C": "proofreading",
+        "D": "proofreads"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc bị động: 'have + vật (manuscript) + V3/ed' → Chọn proofread (V3 của proofread).",
+      "explanationVi": "'have something DONE' (cho cái gì được làm). 'manuscript' (bản thảo) là vật được hiệu đính bởi các biên tập viên ('by three copy editors'). 'proofread' có dạng quá khứ phân từ giữ nguyên là 'proofread'.",
+      "targetChunk": {
+        "phrase": "had the manuscript proofread by editors",
+        "meaningVi": "đã cho bản thảo được hiệu đính bởi các biên tập viên"
+      },
+      "skeleton": {
+        "subject": "publishing house",
+        "verb": "had proofread",
+        "object": "manuscript"
+      }
+    },
+    {
+      "id": "caus_std_011",
+      "level": "standard",
+      "question": "The legal counsel enabled the two companies ______ a mutually beneficial licensing agreement.",
+      "options": {
+        "A": "to reach",
+        "B": "reach",
+        "C": "reaching",
+        "D": "reached"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc với enable: 'enable + tân ngữ + TO-V' (tạo điều kiện cho ai làm gì) → Chọn to reach.",
+      "explanationVi": "Cấu trúc: 'enable someone TO DO something' (cho phép/tạo điều kiện cho ai làm gì). Bắt buộc đi với To-infinitive.",
+      "targetChunk": {
+        "phrase": "enabled the two companies to reach an agreement",
+        "meaningVi": "đã tạo điều kiện cho hai công ty đạt được thỏa thuận"
+      },
+      "skeleton": {
+        "subject": "counsel",
+        "verb": "enabled companies to reach",
+        "object": "an agreement"
+      }
+    },
+    {
+      "id": "caus_std_012",
+      "level": "standard",
+      "question": "The client asked us to get the delivery date ______ to the following Monday.",
+      "options": {
+        "A": "moved",
+        "B": "to move",
+        "C": "move",
+        "D": "moving"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc bị động với get: 'get + vật (date) + V3/ed' → Chọn moved.",
+      "explanationVi": "'get something DONE' (chuyển ngày giao hàng). 'the delivery date' là danh từ chỉ sự việc được dời ngày nên dùng dạng phân từ 'moved'.",
+      "targetChunk": {
+        "phrase": "get the delivery date moved to Monday",
+        "meaningVi": "dời ngày giao hàng sang thứ Hai tuần sau"
+      },
+      "skeleton": {
+        "subject": "us",
+        "verb": "get moved",
+        "object": "delivery date"
+      }
+    },
+    {
+      "id": "caus_std_013",
+      "level": "standard",
+      "question": "Heavy rainfall made the construction crew ______ outdoor operations until noon.",
+      "options": {
+        "A": "suspend",
+        "B": "to suspend",
+        "C": "suspended",
+        "D": "suspending"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc với make: 'make + người + V-bare' → Chọn suspend.",
+      "explanationVi": "'make someone DO something' (khiến/buộc ai phải làm gì). 'suspend' ở dạng nguyên mẫu không 'to'.",
+      "targetChunk": {
+        "phrase": "made the construction crew suspend outdoor operations",
+        "meaningVi": "khiến đội thi công phải tạm ngưng các hoạt động ngoài trời"
+      },
+      "skeleton": {
+        "subject": "rainfall",
+        "verb": "made crew suspend",
+        "object": "operations"
+      }
+    },
+    {
+      "id": "caus_std_014",
+      "level": "standard",
+      "question": "Management will not permit employees ______ personal phone calls during shifts.",
+      "options": {
+        "A": "to make",
+        "B": "make",
+        "C": "making",
+        "D": "made"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc với permit: 'permit + người + TO-V' (cho phép ai làm gì) → Chọn to make.",
+      "explanationVi": "Cấu trúc: 'permit someone TO DO something' (cho phép ai làm việc gì). Bắt buộc dùng To-infinitive.",
+      "targetChunk": {
+        "phrase": "not permit employees to make personal calls",
+        "meaningVi": "không cho phép nhân viên gọi các cuộc gọi cá nhân"
+      },
+      "skeleton": {
+        "subject": "Management",
+        "verb": "will not permit employees to make",
+        "object": "calls"
+      }
+    },
+    {
+      "id": "caus_std_015",
+      "level": "standard",
+      "question": "We should have the accounting ledger ______ before submitting it to the board.",
+      "options": {
+        "A": "audited",
+        "B": "audit",
+        "C": "to audit",
+        "D": "auditing"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc bị động: 'have + vật (ledger) + V3/ed' → Chọn audited.",
+      "explanationVi": "'have something DONE' (cho cái gì được kiểm toán). Sổ cái kế toán được kiểm toán nên chia ở dạng bị động 'audited'.",
+      "targetChunk": {
+        "phrase": "have the accounting ledger audited before submitting",
+        "meaningVi": "cho sổ cái kế toán được kiểm toán trước khi nộp"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "should have audited",
+        "object": "ledger"
+      }
+    },
+    {
+      "id": "caus_std_016",
+      "level": "standard",
+      "question": "The technician got the automated assembly robot ______ again within twenty minutes.",
+      "options": {
+        "A": "to run",
+        "B": "run",
+        "C": "running",
+        "D": "ran"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc: 'get + vật/hệ thống + TO-V' (khiến cho cái gì vận hành trở lại) → Chọn to run.",
+      "explanationVi": "'get something TO DO / TO RUN' (làm cho máy móc hoạt động trở lại). 'to run' là động từ nguyên mẫu có to.",
+      "targetChunk": {
+        "phrase": "got the automated robot to run again",
+        "meaningVi": "đã làm cho rô-bốt tự động vận hành trở lại"
+      },
+      "skeleton": {
+        "subject": "technician",
+        "verb": "got robot to run",
+        "object": null
+      }
+    },
+    {
+      "id": "caus_std_017",
+      "level": "standard",
+      "question": "Please let me ______ as soon as the overseas client confirms the shipment arrival.",
+      "options": {
+        "A": "know",
+        "B": "to know",
+        "C": "known",
+        "D": "knowing"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm từ giao tiếp công sở kinh điển: 'let me know' (hãy cho tôi biết) → Chọn know.",
+      "explanationVi": "Cấu trúc: 'let someone DO something'. Sau 'me' là động từ nguyên mẫu không 'to' ('know').",
+      "targetChunk": {
+        "phrase": "Please let me know as soon as",
+        "meaningVi": "vui lòng cho tôi biết ngay khi"
+      },
+      "skeleton": {
+        "subject": "You (implied)",
+        "verb": "let know",
+        "object": "me"
+      }
+    },
+    {
+      "id": "caus_std_018",
+      "level": "standard",
+      "question": "The CFO had the external audit firm ______ every transaction exceeding ten thousand dollars.",
+      "options": {
+        "A": "verify",
+        "B": "to verify",
+        "C": "verified",
+        "D": "verifying"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc chủ động: 'have + đơn vị/người (firm) + V-bare' → Chọn verify.",
+      "explanationVi": "'have someone DO something' (yêu cầu đơn vị nào thực hiện hành động). 'verify' ở dạng nguyên mẫu không 'to'.",
+      "targetChunk": {
+        "phrase": "had the external audit firm verify every transaction",
+        "meaningVi": "đã yêu cầu công ty kiểm toán độc lập xác minh mọi giao dịch"
+      },
+      "skeleton": {
+        "subject": "The CFO",
+        "verb": "had the firm verify",
+        "object": "transaction"
+      }
+    },
+    {
+      "id": "caus_std_019",
+      "level": "standard",
+      "question": "The firm will get its regional sales representatives ______ in the new CRM software.",
+      "options": {
+        "A": "trained",
+        "B": "train",
+        "C": "to train",
+        "D": "training"
+      },
+      "correctAnswer": "A",
+      "clue": "Các đại diện kinh doanh 'được đào tạo' (bị động): 'get + người + V3/ed' → Chọn trained.",
+      "explanationVi": "'get someone DONE (trained in...)' = cho ai đó được đào tạo về chuyên môn. Ở đây mang nghĩa bị động được đào tạo nên dùng 'trained'.",
+      "targetChunk": {
+        "phrase": "get its regional sales representatives trained",
+        "meaningVi": "cho các đại diện bán hàng khu vực được đào tạo"
+      },
+      "skeleton": {
+        "subject": "firm",
+        "verb": "will get trained",
+        "object": "representatives"
+      }
+    },
+    {
+      "id": "caus_std_020",
+      "level": "standard",
+      "question": "The regional director required all department heads ______ their quarterly budget proposals.",
+      "options": {
+        "A": "to submit",
+        "B": "submit",
+        "C": "submitted",
+        "D": "submitting"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc với require: 'require + người + TO-V' (yêu cầu ai làm gì) → Chọn to submit.",
+      "explanationVi": "Cấu trúc: 'require someone TO DO something'. Sau tân ngữ 'all department heads' là To-infinitive ('to submit').",
+      "targetChunk": {
+        "phrase": "required all department heads to submit",
+        "meaningVi": "đã yêu cầu tất cả các trưởng bộ phận nộp"
+      },
+      "skeleton": {
+        "subject": "director",
+        "verb": "required heads to submit",
+        "object": "proposals"
+      }
+    },
+    {
+      "id": "caus_std_021",
+      "level": "standard",
+      "question": "The graphic design team had the product catalog ______ by an external printing company.",
+      "options": {
+        "A": "printed",
+        "B": "print",
+        "C": "to print",
+        "D": "printing"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc bị động: 'have + vật (catalog) + V3/ed' → Chọn printed.",
+      "explanationVi": "'have something DONE' (thuê in cuốn danh mục sản phẩm). Cuốn catalog được in bởi công ty in nên chia 'printed'.",
+      "targetChunk": {
+        "phrase": "had the product catalog printed by a printing company",
+        "meaningVi": "đã cho in cuốn danh mục sản phẩm tại công ty in"
+      },
+      "skeleton": {
+        "subject": "team",
+        "verb": "had printed",
+        "object": "catalog"
+      }
+    },
+    {
+      "id": "caus_std_022",
+      "level": "standard",
+      "question": "The facility manager persuaded the building owners ______ in high-efficiency solar panels.",
+      "options": {
+        "A": "to invest",
+        "B": "invest",
+        "C": "invested",
+        "D": "investing"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc với persuade: 'persuade + người + TO-V' (thuyết phục ai làm gì) → Chọn to invest.",
+      "explanationVi": "Cấu trúc: 'persuade someone TO DO something' (thuyết phục ai đó làm điều gì). Bắt buộc đi với To-infinitive.",
+      "targetChunk": {
+        "phrase": "persuaded the building owners to invest in",
+        "meaningVi": "đã thuyết phục các chủ tòa nhà đầu tư vào"
+      },
+      "skeleton": {
+        "subject": "manager",
+        "verb": "persuaded owners to invest in",
+        "object": "solar panels"
+      }
+    },
+    {
+      "id": "caus_std_023",
+      "level": "standard",
+      "question": "The factory supervisor made the new technicians ______ the complete safety handbook.",
+      "options": {
+        "A": "read",
+        "B": "to read",
+        "C": "reading",
+        "D": "reads"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc với make: 'make + người + V-bare' → Chọn read.",
+      "explanationVi": "'make someone DO something' (bắt buộc ai làm gì). Động từ 'read' ở dạng nguyên mẫu không 'to'.",
+      "targetChunk": {
+        "phrase": "made the new technicians read the handbook",
+        "meaningVi": "bắt buộc các kỹ thuật viên mới phải đọc cuốn sổ tay"
+      },
+      "skeleton": {
+        "subject": "supervisor",
+        "verb": "made technicians read",
+        "object": "handbook"
+      }
+    },
+    {
+      "id": "caus_std_024",
+      "level": "standard",
+      "question": "We need to get our corporate headquarters ______ before the lease expires next year.",
+      "options": {
+        "A": "appraised",
+        "B": "appraise",
+        "C": "to appraise",
+        "D": "appraising"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc bị động với get: 'get + vật (headquarters) + V3/ed' (cho thẩm định giá) → Chọn appraised.",
+      "explanationVi": "'get something DONE' (thuê thẩm định giá trụ sở). Trụ sở được định giá bởi chuyên gia nên chia quá khứ phân từ 'appraised'.",
+      "targetChunk": {
+        "phrase": "get our corporate headquarters appraised before the lease expires",
+        "meaningVi": "cho thẩm định giá trụ sở công ty trước khi hợp đồng thuê hết hạn"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "need to get appraised",
+        "object": "headquarters"
+      }
+    },
+    {
+      "id": "caus_std_025",
+      "level": "standard",
+      "question": "The new executive assistant will have the courier service ______ the confidential contracts.",
+      "options": {
+        "A": "deliver",
+        "B": "to deliver",
+        "C": "delivered",
+        "D": "delivering"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc chủ động: 'have + người/dịch vụ (courier service) + V-bare' → Chọn deliver.",
+      "explanationVi": "'have someone DO something' (nhờ bên chuyển phát giao tài liệu). 'deliver' ở dạng nguyên mẫu không 'to'.",
+      "targetChunk": {
+        "phrase": "have the courier service deliver the contracts",
+        "meaningVi": "nhờ dịch vụ chuyển phát nhanh giao các bản hợp đồng"
+      },
+      "skeleton": {
+        "subject": "assistant",
+        "verb": "will have service deliver",
+        "object": "contracts"
+      }
+    },
+    {
+      "id": "caus_std_026",
+      "level": "standard",
+      "question": "The company handbook encourages employees ______ questions whenever procedures are unclear.",
+      "options": {
+        "A": "to ask",
+        "B": "ask",
+        "C": "asking",
+        "D": "asked"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc với encourage: 'encourage + người + TO-V' (khuyến khích ai làm gì) → Chọn to ask.",
+      "explanationVi": "Cấu trúc: 'encourage someone TO DO something'. Bắt buộc đi với To-infinitive.",
+      "targetChunk": {
+        "phrase": "encourages employees to ask questions",
+        "meaningVi": "khuyến khích nhân viên đặt các câu hỏi"
+      },
+      "skeleton": {
+        "subject": "handbook",
+        "verb": "encourages employees to ask",
+        "object": "questions"
+      }
+    },
+    {
+      "id": "caus_std_027",
+      "level": "standard",
+      "question": "The IT department had all company laptops ______ with the latest security patch.",
+      "options": {
+        "A": "updated",
+        "B": "update",
+        "C": "to update",
+        "D": "updating"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc bị động: 'have + vật (laptops) + V3/ed' → Chọn updated.",
+      "explanationVi": "'have something DONE' (cài đặt cập nhật cho máy tính xách tay). 'laptops' là vật chịu tác động được cập nhật nên chia 'updated'.",
+      "targetChunk": {
+        "phrase": "had all company laptops updated with the patch",
+        "meaningVi": "đã cho toàn bộ máy tính xách tay được cập nhật bản vá"
+      },
+      "skeleton": {
+        "subject": "department",
+        "verb": "had updated",
+        "object": "laptops"
+      }
+    },
+    {
+      "id": "caus_std_028",
+      "level": "standard",
+      "question": "The committee got the consultant ______ a detailed report on market trends.",
+      "options": {
+        "A": "to prepare",
+        "B": "prepare",
+        "C": "prepared",
+        "D": "preparing"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc chủ động với get: 'get + người (consultant) + TO-V' → Chọn to prepare.",
+      "explanationVi": "'get someone TO DO something' (nhờ chuyên gia tư vấn soạn thảo báo cáo). Dùng To-infinitive.",
+      "targetChunk": {
+        "phrase": "got the consultant to prepare a report",
+        "meaningVi": "đã nhờ chuyên gia tư vấn soạn một bản báo cáo"
+      },
+      "skeleton": {
+        "subject": "committee",
+        "verb": "got consultant to prepare",
+        "object": "a report"
+      }
+    },
+    {
+      "id": "caus_std_029",
+      "level": "standard",
+      "question": "Please don't let the client ______ waiting in the reception lobby for too long.",
+      "options": {
+        "A": "keep",
+        "B": "to keep",
+        "C": "kept",
+        "D": "keeping"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc với let: 'let + người + V-bare' → Chọn keep.",
+      "explanationVi": "'let someone DO something' (để cho ai phải chờ). Theo sau 'the client' là động từ nguyên mẫu không 'to' ('keep').",
+      "targetChunk": {
+        "phrase": "not let the client keep waiting",
+        "meaningVi": "đừng để cho khách hàng phải tiếp tục chờ đợi"
+      },
+      "skeleton": {
+        "subject": "You (implied)",
+        "verb": "not let keep waiting",
+        "object": "the client"
+      }
+    },
+    {
+      "id": "caus_std_030",
+      "level": "standard",
+      "question": "The hotel management had the banquet hall ______ with fresh floral arrangements.",
+      "options": {
+        "A": "decorated",
+        "B": "decorate",
+        "C": "to decorate",
+        "D": "decorating"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc bị động: 'have + vật (hall) + V3/ed' → Chọn decorated.",
+      "explanationVi": "'have something DONE' (cho trang hoàng sảnh tiệc). Sảnh tiệc được trang trí hoa tươi nên chia 'decorated'.",
+      "targetChunk": {
+        "phrase": "had the banquet hall decorated with floral arrangements",
+        "meaningVi": "đã cho sảnh tiệc được trang hoàng bằng các lẵng hoa tươi"
+      },
+      "skeleton": {
+        "subject": "management",
+        "verb": "had decorated",
+        "object": "hall"
+      }
+    },
+    {
+      "id": "caus_adv_001",
+      "level": "advanced",
+      "question": "During the internal investigation, the accounting staff were made ______ daily attendance logs.",
+      "options": {
+        "A": "to submit",
+        "B": "submit",
+        "C": "submitting",
+        "D": "submitted"
+      },
+      "correctAnswer": "A",
+      "clue": "Bẫy 990 kinh điển: 'make sb do sth' (chủ động), nhưng ở BỊ ĐỘNG 'be made TO DO sth' → Chọn to submit.",
+      "explanationVi": "Quy tắc bẫy điểm cao trong TOEIC: Ở thể chủ động: 'make sb DO sth' (V-bare). Nhưng khi chuyển sang thể BỊ ĐỘNG: 'sb BE MADE TO DO sth' (bắt buộc phải có 'TO'). Vì vậy 'were made TO SUBMIT' là đáp án đúng duy nhất.",
+      "targetChunk": {
+        "phrase": "staff were made to submit daily logs",
+        "meaningVi": "nhân viên bị yêu cầu phải nộp nhật ký điểm danh hàng ngày"
+      },
+      "skeleton": {
+        "subject": "staff",
+        "verb": "were made to submit",
+        "object": "logs"
+      }
+    },
+    {
+      "id": "caus_adv_002",
+      "level": "advanced",
+      "question": "Having had the manufacturing machinery thoroughly ______, the plant manager authorized resumption of operations.",
+      "options": {
+        "A": "serviced",
+        "B": "service",
+        "C": "to service",
+        "D": "servicing"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc sai khiến trong phân từ hoàn thành: 'Having had + vật (machinery) + V3/ed' → Chọn serviced.",
+      "explanationVi": "Cấu trúc phân từ hoàn thành kết hợp thể sai khiến bị động: 'Having had something DONE' (Sau khi đã cho máy móc được bảo dưỡng kỹ lưỡng...). 'machinery' chịu tác động bảo dưỡng nên dùng 'serviced'.",
+      "targetChunk": {
+        "phrase": "Having had the machinery thoroughly serviced",
+        "meaningVi": "sau khi đã cho máy móc được bảo dưỡng kỹ lưỡng"
+      },
+      "skeleton": {
+        "subject": "manager",
+        "verb": "authorized",
+        "object": "resumption"
+      }
+    },
+    {
+      "id": "caus_adv_003",
+      "level": "advanced",
+      "question": "The senior software architect must have the database migration script ______ before deployment.",
+      "options": {
+        "A": "validated",
+        "B": "validate",
+        "C": "to validate",
+        "D": "validating"
+      },
+      "correctAnswer": "A",
+      "clue": "'must have + vật (script) + V3/ed' (phải cho kịch bản được xác thực trước) → Chọn validated.",
+      "explanationVi": "Cấu trúc sai khiến bị động sau modal verb: 'must have something DONE'. Đoạn mã di chuyển dữ liệu được kiểm định/xác thực nên dùng 'validated'.",
+      "targetChunk": {
+        "phrase": "have the migration script validated before deployment",
+        "meaningVi": "cho kịch bản chuyển đổi cơ sở dữ liệu được xác thực trước khi triển khai"
+      },
+      "skeleton": {
+        "subject": "architect",
+        "verb": "must have validated",
+        "object": "script"
+      }
+    },
+    {
+      "id": "caus_adv_004",
+      "level": "advanced",
+      "question": "The executive committee compelled the regional subsidiary ______ its questionable financial statements.",
+      "options": {
+        "A": "to retract",
+        "B": "retract",
+        "C": "retracted",
+        "D": "retracting"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc với compel: 'compel + tân ngữ + TO-V' (bắt buộc/ép buộc ai làm gì) → Chọn to retract.",
+      "explanationVi": "Cấu trúc: 'compel someone TO DO something' (ép buộc ai đó làm gì). Khác với 'make sb do sth', 'compel' bắt buộc đi với To-infinitive.",
+      "targetChunk": {
+        "phrase": "compelled the subsidiary to retract its statements",
+        "meaningVi": "đã buộc công ty con phải rút lại các báo cáo"
+      },
+      "skeleton": {
+        "subject": "committee",
+        "verb": "compelled subsidiary to retract",
+        "object": "statements"
+      }
+    },
+    {
+      "id": "caus_adv_005",
+      "level": "advanced",
+      "question": "The CEO had the entire board of trustees ______ of the impending acquisition negotiations.",
+      "options": {
+        "A": "apprised",
+        "B": "apprise",
+        "C": "to apprise",
+        "D": "apprising"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc bị động: 'have + người + apprised of sth' (cho ai đó được thông báo kịp thời về cái gì) → Chọn apprised.",
+      "explanationVi": "'have someone apprised of sth' = cho ai đó được thông tin/cập nhật tình hình về cái gì (apprised là phân từ mang nghĩa được thông báo). Cụm 'be apprised of sth'.",
+      "targetChunk": {
+        "phrase": "had the board of trustees apprised of negotiations",
+        "meaningVi": "đã cho toàn thể hội đồng quản trị được thông báo về các cuộc đàm phán"
+      },
+      "skeleton": {
+        "subject": "The CEO",
+        "verb": "had apprised of",
+        "object": "board"
+      }
+    },
+    {
+      "id": "caus_adv_006",
+      "level": "advanced",
+      "question": "The patent attorney had the complex licensing terms ______ into plain language for the client.",
+      "options": {
+        "A": "transcribed",
+        "B": "transcribe",
+        "C": "to transcribe",
+        "D": "transcribing"
+      },
+      "correctAnswer": "A",
+      "clue": "'have + vật (terms) + V3/ed' (cho các điều khoản được chuyển thể/diễn giải) → Chọn transcribed.",
+      "explanationVi": "'have something DONE' (chuyển ngữ các điều khoản sang ngôn ngữ dễ hiểu). Các điều khoản được biên soạn/chuyển dịch nên dùng 'transcribed'.",
+      "targetChunk": {
+        "phrase": "had the licensing terms transcribed into plain language",
+        "meaningVi": "đã cho các điều khoản cấp phép được diễn giải sang ngôn ngữ bình dân"
+      },
+      "skeleton": {
+        "subject": "attorney",
+        "verb": "had transcribed",
+        "object": "terms"
+      }
+    },
+    {
+      "id": "caus_adv_007",
+      "level": "advanced",
+      "question": "The project manager leaves no team member ______ unsupported during high-pressure sprint cycles.",
+      "options": {
+        "A": "feeling",
+        "B": "to feel",
+        "C": "felt",
+        "D": "feel"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc sai khiến/tác động: 'leave someone DOING something' (để cho ai cảm thấy/lâm vào tình trạng) → Chọn feeling.",
+      "explanationVi": "Cấu trúc: 'leave someone + V-ing / Adj' (để cho ai ở trong trạng thái làm gì/cảm thấy gì). 'leaves no team member feeling unsupported' = không để bất kỳ thành viên nào cảm thấy bơ vơ.",
+      "targetChunk": {
+        "phrase": "leaves no team member feeling unsupported",
+        "meaningVi": "không để cho bất kỳ thành viên nào cảm thấy không được hỗ trợ"
+      },
+      "skeleton": {
+        "subject": "manager",
+        "verb": "leaves",
+        "object": "member feeling unsupported"
+      }
+    },
+    {
+      "id": "caus_adv_008",
+      "level": "advanced",
+      "question": "The government regulator made the chemical manufacturer ______ extensive soil remediation measures.",
+      "options": {
+        "A": "undertake",
+        "B": "to undertake",
+        "C": "undertaken",
+        "D": "undertaking"
+      },
+      "correctAnswer": "A",
+      "clue": "'make + tân ngữ + V-bare' (buộc nhà sản xuất phải thực hiện) → Chọn undertake.",
+      "explanationVi": "'make someone DO something' (buộc ai thực hiện hành động). 'undertake' là động từ nguyên mẫu không 'to'.",
+      "targetChunk": {
+        "phrase": "made the manufacturer undertake remediation measures",
+        "meaningVi": "buộc nhà sản xuất phải thực hiện các biện pháp khắc phục ô nhiễm"
+      },
+      "skeleton": {
+        "subject": "regulator",
+        "verb": "made manufacturer undertake",
+        "object": "measures"
+      }
+    },
+    {
+      "id": "caus_adv_009",
+      "level": "advanced",
+      "question": "The client expects to have the renovated storefront ______ over to them by Friday afternoon.",
+      "options": {
+        "A": "handed",
+        "B": "hand",
+        "C": "to hand",
+        "D": "handing"
+      },
+      "correctAnswer": "A",
+      "clue": "'have + vật (storefront) + V3/ed + over' (bàn giao cửa hàng) → Chọn handed.",
+      "explanationVi": "'have something HANDED OVER' (bàn giao mặt bằng cửa hàng). Mặt bằng được bàn giao (bị động) nên chia quá khứ phân từ 'handed'.",
+      "targetChunk": {
+        "phrase": "have the renovated storefront handed over to them",
+        "meaningVi": "được bàn giao lại mặt bằng cửa hàng đã cải tạo"
+      },
+      "skeleton": {
+        "subject": "client",
+        "verb": "expects to have handed over",
+        "object": "storefront"
+      }
+    },
+    {
+      "id": "caus_adv_010",
+      "level": "advanced",
+      "question": "The auditors were heard ______ concerns regarding the company's unrecorded liabilities.",
+      "options": {
+        "A": "voicing",
+        "B": "voiced",
+        "C": "voice",
+        "D": "to voice"
+      },
+      "correctAnswer": "A",
+      "clue": "Động từ tri giác ở thể bị động: 'be heard DOING sth' (được nghe thấy đang bày tỏ quan ngại) → Chọn voicing.",
+      "explanationVi": "Cấu trúc động từ tri giác ở thể bị động: 'sb be heard / seen + V-ing' diễn tả hành động đang diễn ra tại thời điểm được nghe/thấy (were heard voicing concerns = được nghe thấy đang cất lên những lo ngại).",
+      "targetChunk": {
+        "phrase": "were heard voicing concerns regarding liabilities",
+        "meaningVi": "được nghe thấy là đang bày tỏ những quan ngại về các khoản nợ"
+      },
+      "skeleton": {
+        "subject": "auditors",
+        "verb": "were heard voicing",
+        "object": "concerns"
+      }
+    },
+    {
+      "id": "caus_adv_011",
+      "level": "advanced",
+      "question": "The executive committee will have outside specialists ______ an actuarial assessment of pension liabilities.",
+      "options": {
+        "A": "perform",
+        "B": "to perform",
+        "C": "performed",
+        "D": "performing"
+      },
+      "correctAnswer": "A",
+      "clue": "'have + người (specialists) + V-bare' (nhờ các chuyên gia tiến hành thẩm định) → Chọn perform.",
+      "explanationVi": "'have someone DO something' (nhờ ai làm việc gì). 'outside specialists' là người thực hiện, dùng động từ nguyên mẫu 'perform'.",
+      "targetChunk": {
+        "phrase": "have outside specialists perform an assessment",
+        "meaningVi": "nhờ các chuyên gia bên ngoài tiến hành đánh giá"
+      },
+      "skeleton": {
+        "subject": "committee",
+        "verb": "will have specialists perform",
+        "object": "assessment"
+      }
+    },
+    {
+      "id": "caus_adv_012",
+      "level": "advanced",
+      "question": "The hospital network got its electronic health records ______ into a unified cloud repository.",
+      "options": {
+        "A": "consolidated",
+        "B": "consolidate",
+        "C": "to consolidate",
+        "D": "consolidating"
+      },
+      "correctAnswer": "A",
+      "clue": "'get + vật (records) + V3/ed' (cho hợp nhất hồ sơ y tế) → Chọn consolidated.",
+      "explanationVi": "'get something DONE' (hợp nhất dữ liệu). Hồ sơ y tế được hợp nhất (bị động) nên dùng dạng phân từ 'consolidated'.",
+      "targetChunk": {
+        "phrase": "got its health records consolidated into a repository",
+        "meaningVi": "đã cho các hồ sơ y tế được hợp nhất vào một kho lưu trữ"
+      },
+      "skeleton": {
+        "subject": "network",
+        "verb": "got consolidated",
+        "object": "records"
+      }
+    },
+    {
+      "id": "caus_adv_013",
+      "level": "advanced",
+      "question": "All junior associates were made ______ an ethics compliance workshop before working on client files.",
+      "options": {
+        "A": "to attend",
+        "B": "attend",
+        "C": "attended",
+        "D": "attending"
+      },
+      "correctAnswer": "A",
+      "clue": "Thể bị động của make: 'be made TO DO sth' (bị bắt buộc tham dự) → Chọn to attend.",
+      "explanationVi": "Bẫy ngữ pháp: Ở thể bị động, động từ theo sau 'be made' bắt buộc phải có 'to' ('were made TO ATTEND').",
+      "targetChunk": {
+        "phrase": "were made to attend an ethics compliance workshop",
+        "meaningVi": "bị bắt buộc phải tham dự một buổi tập huấn tuân thủ đạo đức"
+      },
+      "skeleton": {
+        "subject": "associates",
+        "verb": "were made to attend",
+        "object": "workshop"
+      }
+    },
+    {
+      "id": "caus_adv_014",
+      "level": "advanced",
+      "question": "The compliance officer had the security protocols ______ to address vulnerabilities identified in the audit.",
+      "options": {
+        "A": "amended",
+        "B": "amend",
+        "C": "to amend",
+        "D": "amending"
+      },
+      "correctAnswer": "A",
+      "clue": "'have + vật (protocols) + V3/ed' (cho chỉnh sửa các quy chuẩn an ninh) → Chọn amended.",
+      "explanationVi": "'have something DONE'. Các quy chuẩn an ninh được sửa đổi bổ sung (amended) để giải quyết các lỗ hổng.",
+      "targetChunk": {
+        "phrase": "had the security protocols amended to address",
+        "meaningVi": "đã cho chỉnh sửa các quy chuẩn an ninh nhằm xử lý"
+      },
+      "skeleton": {
+        "subject": "officer",
+        "verb": "had amended",
+        "object": "protocols"
+      }
+    },
+    {
+      "id": "caus_adv_015",
+      "level": "advanced",
+      "question": "The airline was forced ______ all regional flights due to severe volcanic ash clouds.",
+      "options": {
+        "A": "to ground",
+        "B": "ground",
+        "C": "grounded",
+        "D": "grounding"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc với force: 'be forced TO-V' (bị buộc phải làm gì) → Chọn to ground.",
+      "explanationVi": "Cấu trúc: 'force someone TO DO sth' -> bị động: 'be forced TO DO sth' (bị ép buộc đình chỉ bay).",
+      "targetChunk": {
+        "phrase": "was forced to ground all regional flights",
+        "meaningVi": "bị buộc phải đình chỉ mọi chuyến bay khu vực"
+      },
+      "skeleton": {
+        "subject": "airline",
+        "verb": "was forced to ground",
+        "object": "flights"
+      }
+    },
+    {
+      "id": "caus_adv_016",
+      "level": "advanced",
+      "question": "The general counsel had the intellectual property clause ______ by a patent specialist.",
+      "options": {
+        "A": "scrutinized",
+        "B": "scrutinize",
+        "C": "to scrutinize",
+        "D": "scrutinizing"
+      },
+      "correctAnswer": "A",
+      "clue": "'have + vật (clause) + V3/ed' (cho điều khoản được soi xét kỹ lưỡng) → Chọn scrutinized.",
+      "explanationVi": "'have something DONE' (cho cái gì được kiểm tra kỹ). Điều khoản sở hữu trí tuệ được kiểm tra tỉ mỉ bởi chuyên gia bằng sáng chế nên dùng 'scrutinized'.",
+      "targetChunk": {
+        "phrase": "had the clause scrutinized by a patent specialist",
+        "meaningVi": "đã cho điều khoản được xem xét kỹ lưỡng bởi chuyên gia bằng sáng chế"
+      },
+      "skeleton": {
+        "subject": "counsel",
+        "verb": "had scrutinized",
+        "object": "clause"
+      }
+    },
+    {
+      "id": "caus_adv_017",
+      "level": "advanced",
+      "question": "The financial technology firm had its anti-fraud algorithms ______ by third-party cybersecurity auditors.",
+      "options": {
+        "A": "evaluated",
+        "B": "evaluate",
+        "C": "to evaluate",
+        "D": "evaluating"
+      },
+      "correctAnswer": "A",
+      "clue": "'have + vật (algorithms) + V3/ed' → Chọn evaluated.",
+      "explanationVi": "'have something DONE'. Các thuật toán chống gian lận được đánh giá bởi bên thứ ba nên dùng dạng phân từ 'evaluated'.",
+      "targetChunk": {
+        "phrase": "had its algorithms evaluated by auditors",
+        "meaningVi": "đã cho các thuật toán được đánh giá bởi các kiểm toán viên"
+      },
+      "skeleton": {
+        "subject": "firm",
+        "verb": "had evaluated",
+        "object": "algorithms"
+      }
+    },
+    {
+      "id": "caus_adv_018",
+      "level": "advanced",
+      "question": "The director will not let any unauthorized personnel ______ the high-containment bio-research laboratory.",
+      "options": {
+        "A": "enter",
+        "B": "to enter",
+        "C": "entered",
+        "D": "entering"
+      },
+      "correctAnswer": "A",
+      "clue": "'let + người (personnel) + V-bare' (cho phép ai bước vào) → Chọn enter.",
+      "explanationVi": "'let someone DO something' (cho phép ai làm gì). Động từ 'enter' giữ nguyên mẫu không 'to'.",
+      "targetChunk": {
+        "phrase": "not let any unauthorized personnel enter the laboratory",
+        "meaningVi": "không cho phép bất kỳ nhân viên không phận sự nào bước vào phòng lab"
+      },
+      "skeleton": {
+        "subject": "director",
+        "verb": "will not let personnel enter",
+        "object": "laboratory"
+      }
+    },
+    {
+      "id": "caus_adv_019",
+      "level": "advanced",
+      "question": "The factory owners had the industrial emissions ______ independently every three months.",
+      "options": {
+        "A": "monitored",
+        "B": "monitor",
+        "C": "to monitor",
+        "D": "monitoring"
+      },
+      "correctAnswer": "A",
+      "clue": "'have + vật (emissions) + V3/ed' (cho lượng khí thải được giám sát định kỳ) → Chọn monitored.",
+      "explanationVi": "'have something DONE'. Khí thải nhà máy được giám sát định kỳ 3 tháng một lần nên dùng dạng bị động 'monitored'.",
+      "targetChunk": {
+        "phrase": "had the industrial emissions monitored independently",
+        "meaningVi": "đã cho lượng khí thải công nghiệp được giám sát độc lập"
+      },
+      "skeleton": {
+        "subject": "owners",
+        "verb": "had monitored",
+        "object": "emissions"
+      }
+    },
+    {
+      "id": "caus_adv_020",
+      "level": "advanced",
+      "question": "The committee got the software vendor ______ a comprehensive feature roadmap before signing.",
+      "options": {
+        "A": "to provide",
+        "B": "provide",
+        "C": "provided",
+        "D": "providing"
+      },
+      "correctAnswer": "A",
+      "clue": "'get + bên bán (vendor) + TO-V' (yêu cầu nhà cung cấp cung cấp lộ trình) → Chọn to provide.",
+      "explanationVi": "'get someone TO DO something' (nhờ/yêu cầu ai làm việc gì). Bắt buộc đi với To-infinitive.",
+      "targetChunk": {
+        "phrase": "got the vendor to provide a roadmap",
+        "meaningVi": "đã yêu cầu nhà cung cấp cung cấp lộ trình tính năng"
+      },
+      "skeleton": {
+        "subject": "committee",
+        "verb": "got vendor to provide",
+        "object": "a roadmap"
+      }
+    },
+    {
+      "id": "caus_adv_021",
+      "level": "advanced",
+      "question": "The plant manager had all safety valves ______ prior to restarting high-pressure steam operations.",
+      "options": {
+        "A": "recalibrated",
+        "B": "recalibrate",
+        "C": "to recalibrate",
+        "D": "recalibrating"
+      },
+      "correctAnswer": "A",
+      "clue": "'have + vật (valves) + V3/ed' (cho hiệu chuẩn lại các van an toàn) → Chọn recalibrated.",
+      "explanationVi": "'have something DONE'. Các van an toàn được hiệu chuẩn lại trước khi khởi động lại nồi hơi, nên dùng 'recalibrated'.",
+      "targetChunk": {
+        "phrase": "had all safety valves recalibrated prior to restarting",
+        "meaningVi": "đã cho hiệu chuẩn lại tất cả van an toàn trước khi khởi động lại"
+      },
+      "skeleton": {
+        "subject": "manager",
+        "verb": "had recalibrated",
+        "object": "valves"
+      }
+    },
+    {
+      "id": "caus_adv_022",
+      "level": "advanced",
+      "question": "The unexpected supply disruption left the retail chain ______ for alternative logistics partners.",
+      "options": {
+        "A": "scrambling",
+        "B": "to scramble",
+        "C": "scramble",
+        "D": "scrambled"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc tác động: 'leave someone DOING sth' (khiến cho ai phải cuống cuồng tìm kiếm) → Chọn scrambling.",
+      "explanationVi": "'leave someone V-ing' (khiến cho ai rơi vào trạng thái đang phải tất bật làm việc gì). 'scrambling for' = cuống cuồng xoay xở tìm kiếm.",
+      "targetChunk": {
+        "phrase": "left the retail chain scrambling for partners",
+        "meaningVi": "khiến chuỗi bán lẻ phải cuống cuồng tìm đối tác"
+      },
+      "skeleton": {
+        "subject": "disruption",
+        "verb": "left chain scrambling",
+        "object": null
+      }
+    },
+    {
+      "id": "caus_adv_023",
+      "level": "advanced",
+      "question": "The chief executive had the regional sales figures ______ by independent analysts.",
+      "options": {
+        "A": "verified",
+        "B": "verify",
+        "C": "to verify",
+        "D": "verifying"
+      },
+      "correctAnswer": "A",
+      "clue": "'have + vật (figures) + V3/ed' (cho các số liệu được xác thực) → Chọn verified.",
+      "explanationVi": "'have something DONE'. Số liệu bán hàng được các nhà phân tích độc lập xác nhận nên dùng 'verified'.",
+      "targetChunk": {
+        "phrase": "had the sales figures verified by analysts",
+        "meaningVi": "đã cho các con số bán hàng được các nhà phân tích xác minh"
+      },
+      "skeleton": {
+        "subject": "chief executive",
+        "verb": "had verified",
+        "object": "figures"
+      }
+    },
+    {
+      "id": "caus_adv_024",
+      "level": "advanced",
+      "question": "The corporate audit team got each department ______ an itemized account of promotional expenditures.",
+      "options": {
+        "A": "to compile",
+        "B": "compile",
+        "C": "compiled",
+        "D": "compiling"
+      },
+      "correctAnswer": "A",
+      "clue": "'get + bộ phận (department) + TO-V' → Chọn to compile.",
+      "explanationVi": "'get someone TO DO something' (yêu cầu từng phòng ban tổng hợp bản kê chi tiết). Bắt buộc dùng To-infinitive.",
+      "targetChunk": {
+        "phrase": "got each department to compile an itemized account",
+        "meaningVi": "đã yêu cầu từng phòng ban tổng hợp bản kê chi tiết"
+      },
+      "skeleton": {
+        "subject": "team",
+        "verb": "got department to compile",
+        "object": "an account"
+      }
+    },
+    {
+      "id": "caus_adv_025",
+      "level": "advanced",
+      "question": "New environmental statutes will oblige industrial facilities ______ their greenhouse gas emissions by 30 percent.",
+      "options": {
+        "A": "to curtail",
+        "B": "curtail",
+        "C": "curtailed",
+        "D": "curtailing"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc với oblige: 'oblige + tân ngữ + TO-V' (bắt buộc ai cắt giảm) → Chọn to curtail.",
+      "explanationVi": "Cấu trúc: 'oblige someone TO DO something' (bắt buộc ai làm điều gì theo luật định). Bắt buộc đi với To-infinitive.",
+      "targetChunk": {
+        "phrase": "oblige facilities to curtail their emissions",
+        "meaningVi": "bắt buộc các cơ sở phải cắt giảm lượng khí thải"
+      },
+      "skeleton": {
+        "subject": "statutes",
+        "verb": "will oblige facilities to curtail",
+        "object": "emissions"
+      }
+    },
+    {
+      "id": "caus_adv_026",
+      "level": "advanced",
+      "question": "The hospital board had the ventilation system in the surgical wing ______ overnight.",
+      "options": {
+        "A": "disinfected",
+        "B": "disinfect",
+        "C": "to disinfect",
+        "D": "disinfecting"
+      },
+      "correctAnswer": "A",
+      "clue": "'have + vật (system) + V3/ed' (cho khử trùng hệ thống thông gió) → Chọn disinfected.",
+      "explanationVi": "'have something DONE'. Hệ thống thông gió phòng mổ được khử trùng qua đêm nên chia dạng phân từ 'disinfected'.",
+      "targetChunk": {
+        "phrase": "had the ventilation system disinfected overnight",
+        "meaningVi": "đã cho hệ thống thông gió được khử trùng qua đêm"
+      },
+      "skeleton": {
+        "subject": "board",
+        "verb": "had disinfected",
+        "object": "system"
+      }
+    },
+    {
+      "id": "caus_adv_027",
+      "level": "advanced",
+      "question": "The lead contractor made the subcontractors ______ the defective scaffolding immediately.",
+      "options": {
+        "A": "dismantle",
+        "B": "to dismantle",
+        "C": "dismantled",
+        "D": "dismantling"
+      },
+      "correctAnswer": "A",
+      "clue": "'make + bên thi công (subcontractors) + V-bare' (buộc nhà thầu phụ phải tháo dỡ) → Chọn dismantle.",
+      "explanationVi": "'make someone DO something' (bắt buộc ai làm gì). Động từ 'dismantle' ở dạng nguyên mẫu không 'to'.",
+      "targetChunk": {
+        "phrase": "made the subcontractors dismantle the scaffolding",
+        "meaningVi": "buộc các nhà thầu phụ phải tháo dỡ giàn giáo bị lỗi"
+      },
+      "skeleton": {
+        "subject": "contractor",
+        "verb": "made subcontractors dismantle",
+        "object": "scaffolding"
+      }
+    },
+    {
+      "id": "caus_adv_028",
+      "level": "advanced",
+      "question": "The publishing director had the preliminary drafts ______ for copyright infringement before distribution.",
+      "options": {
+        "A": "screened",
+        "B": "screen",
+        "C": "to screen",
+        "D": "screening"
+      },
+      "correctAnswer": "A",
+      "clue": "'have + vật (drafts) + V3/ed' (cho rà soát các bản thảo) → Chọn screened.",
+      "explanationVi": "'have something DONE'. Các bản thảo sơ bộ được rà soát vi phạm bản quyền nên dùng dạng bị động 'screened'.",
+      "targetChunk": {
+        "phrase": "had the preliminary drafts screened for infringement",
+        "meaningVi": "đã cho các bản thảo sơ bộ được rà soát vi phạm bản quyền"
+      },
+      "skeleton": {
+        "subject": "director",
+        "verb": "had screened",
+        "object": "drafts"
+      }
+    },
+    {
+      "id": "caus_adv_029",
+      "level": "advanced",
+      "question": "The financial regulator got the troubled commercial bank ______ its risk management reserves.",
+      "options": {
+        "A": "to bolster",
+        "B": "bolster",
+        "C": "bolstered",
+        "D": "bolstering"
+      },
+      "correctAnswer": "A",
+      "clue": "'get + ngân hàng (bank) + TO-V' (yêu cầu ngân hàng củng cố quỹ dự phòng) → Chọn to bolster.",
+      "explanationVi": "'get someone TO DO something' (thuyết phục/yêu cầu ai làm việc gì). Bắt buộc đi với To-infinitive.",
+      "targetChunk": {
+        "phrase": "got the bank to bolster its reserves",
+        "meaningVi": "đã yêu cầu ngân hàng củng cố quỹ dự phòng"
+      },
+      "skeleton": {
+        "subject": "regulator",
+        "verb": "got bank to bolster",
+        "object": "reserves"
+      }
+    },
+    {
+      "id": "caus_adv_030",
+      "level": "advanced",
+      "question": "Before launching the mobile app, the developers had its cybersecurity architecture ______ by ethical hackers.",
+      "options": {
+        "A": "penetration-tested",
+        "B": "penetration-test",
+        "C": "to penetration-test",
+        "D": "testing"
+      },
+      "correctAnswer": "A",
+      "clue": "'have + vật (architecture) + V3/ed' (cho kiểm thử bảo mật kiến trúc hệ thống) → Chọn penetration-tested.",
+      "explanationVi": "'have something DONE'. Cấu trúc kiến trúc an ninh mạng được kiểm thử xâm nhập bởi các hacker mũ trắng nên dùng phân từ 'penetration-tested'.",
+      "targetChunk": {
+        "phrase": "had its architecture penetration-tested by hackers",
+        "meaningVi": "đã cho kiến trúc hệ thống được kiểm thử xâm nhập"
+      },
+      "skeleton": {
+        "subject": "developers",
+        "verb": "had penetration-tested",
+        "object": "architecture"
+      }
+    }
+  ]
+}

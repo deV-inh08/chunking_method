@@ -1,0 +1,1389 @@
+{
+  "topicId": "participles",
+  "topicName": "Phân từ & Rút gọn mệnh đề",
+  "topicNameEn": "Participles & Participial Clauses",
+  "category": "clauses_syntax",
+  "description": "Hiện tại phân từ (V-ing) vs Quá khứ phân từ (V-ed/V3), tính từ phân từ thường gặp, rút gọn 2 mệnh đề cùng chủ ngữ, liên từ đi với phân từ (when/while/once + participle), và phân từ độc lập (given, barring, regarding).",
+  "questions": [
+    {
+      "id": "part_std_001",
+      "level": "standard",
+      "question": "The director commended the marketing department for their ______ sales performance this past quarter.",
+      "options": {
+        "A": "outstand",
+        "B": "outstanding",
+        "C": "outstandingly",
+        "D": "outstood"
+      },
+      "correctAnswer": "B",
+      "clue": "Đứng trước cụm danh từ 'sales performance' cần một Tính từ phân từ chỉ tính chất nổi bật: outstanding (xuất sắc).",
+      "explanationVi": "'outstanding' là hiện tại phân từ làm tính từ mang nghĩa xuất sắc, vượt trội.",
+      "targetChunk": {
+        "phrase": "outstanding sales performance",
+        "meaningVi": "hiệu quả bán hàng xuất sắc"
+      },
+      "skeleton": {
+        "subject": "The director",
+        "verb": "commended",
+        "object": "the marketing department"
+      }
+    },
+    {
+      "id": "part_std_002",
+      "level": "standard",
+      "question": "Please review the ______ spreadsheet for an itemized breakdown of project expenditures.",
+      "options": {
+        "A": "attach",
+        "B": "attaching",
+        "C": "attached",
+        "D": "attachment"
+      },
+      "correctAnswer": "C",
+      "clue": "Đứng trước danh từ 'spreadsheet' cần Tính từ quá khứ phân từ mang nghĩa bị động: attached (được đính kèm).",
+      "explanationVi": "Bảng tính 'được đính kèm' trong email, do đó dùng dạng phân từ bị động 'attached spreadsheet'.",
+      "targetChunk": {
+        "phrase": "review the attached spreadsheet",
+        "meaningVi": "xem bảng tính được đính kèm"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "review",
+        "object": "the attached spreadsheet"
+      }
+    },
+    {
+      "id": "part_std_003",
+      "level": "standard",
+      "question": "Customer service agents must deal with ______ callers in a calm and diplomatic manner.",
+      "options": {
+        "A": "frustrate",
+        "B": "frustrated",
+        "C": "frustrating",
+        "D": "frustration"
+      },
+      "correctAnswer": "B",
+      "clue": "Người gọi điện cảm thấy bực bội (cảm xúc của con người) → dùng tính từ đuôi -ed: frustrated callers.",
+      "explanationVi": "Tính từ đuôi -ed chỉ cảm xúc chịu tác động của con người (khách hàng đang bực bội).",
+      "targetChunk": {
+        "phrase": "deal with frustrated callers",
+        "meaningVi": "xử lý những người gọi điện đang bức xúc"
+      },
+      "skeleton": {
+        "subject": "Customer service agents",
+        "verb": "must deal with",
+        "object": "frustrated callers"
+      }
+    },
+    {
+      "id": "part_std_004",
+      "level": "standard",
+      "question": "The keynote speaker delivered a highly ______ address that motivated all newly hired associates.",
+      "options": {
+        "A": "inspire",
+        "B": "inspiring",
+        "C": "inspired",
+        "D": "inspiration"
+      },
+      "correctAnswer": "B",
+      "clue": "Bài phát biểu 'mang tính truyền cảm hứng' (bản chất của sự vật) đứng trước danh từ 'address' → dùng đuôi -ing: inspiring.",
+      "explanationVi": "Bài diễn văn mang tính chất truyền cảm hứng cho người nghe nên dùng hiện tại phân từ 'inspiring'.",
+      "targetChunk": {
+        "phrase": "delivered an inspiring address",
+        "meaningVi": "đã có một bài phát biểu đầy cảm hứng"
+      },
+      "skeleton": {
+        "subject": "The speaker",
+        "verb": "delivered",
+        "object": "a highly inspiring address"
+      }
+    },
+    {
+      "id": "part_std_005",
+      "level": "standard",
+      "question": "Any ______ merchandise should be returned to the manufacturer within thirty days for a full refund.",
+      "options": {
+        "A": "damage",
+        "B": "damaging",
+        "C": "damaged",
+        "D": "damages"
+      },
+      "correctAnswer": "C",
+      "clue": "Hàng hóa 'bị hư hại' (mang nghĩa bị động) đứng trước danh từ 'merchandise' → damaged goods/merchandise.",
+      "explanationVi": "Hàng hóa chịu sự tác động hư hỏng do vận chuyển, dùng quá khứ phân từ 'damaged'.",
+      "targetChunk": {
+        "phrase": "Any damaged merchandise",
+        "meaningVi": "Bất kỳ hàng hóa nào bị hư hại"
+      },
+      "skeleton": {
+        "subject": "Any damaged merchandise",
+        "verb": "should be returned",
+        "object": null
+      }
+    },
+    {
+      "id": "part_std_006",
+      "level": "standard",
+      "question": "The firm launched an aggressive advertising campaign to appeal to ______ consumers in suburban markets.",
+      "options": {
+        "A": "exist",
+        "B": "existing",
+        "C": "existed",
+        "D": "existence"
+      },
+      "correctAnswer": "B",
+      "clue": "Collocation kinh doanh quen thuộc: 'existing customers/consumers' (khách hàng hiện có/hiện hữu).",
+      "explanationVi": "'exist' là nội động từ, tính từ phân từ chỉ dùng dạng 'existing' (đang tồn tại/hiện hữu).",
+      "targetChunk": {
+        "phrase": "appeal to existing consumers",
+        "meaningVi": "thu hút những người tiêu dùng hiện có"
+      },
+      "skeleton": {
+        "subject": "The firm",
+        "verb": "launched",
+        "object": "an advertising campaign"
+      }
+    },
+    {
+      "id": "part_std_007",
+      "level": "standard",
+      "question": "The human resources committee received dozens of resumes from highly ______ job candidates.",
+      "options": {
+        "A": "qualify",
+        "B": "qualifying",
+        "C": "qualified",
+        "D": "qualification"
+      },
+      "correctAnswer": "C",
+      "clue": "Collocation nhân sự kinh điển: 'highly qualified candidates' (các ứng viên có trình độ năng lực cao).",
+      "explanationVi": "'qualified' là quá khứ phân từ làm tính từ mang nghĩa có đủ bằng cấp và năng lực chuyên môn.",
+      "targetChunk": {
+        "phrase": "highly qualified job candidates",
+        "meaningVi": "các ứng viên xin việc có trình độ cao"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "received",
+        "object": "resumes from qualified candidates"
+      }
+    },
+    {
+      "id": "part_std_008",
+      "level": "standard",
+      "question": "Because of ______ energy costs, the manufacturing facility implemented strict conservation protocols.",
+      "options": {
+        "A": "rise",
+        "B": "rising",
+        "C": "risen",
+        "D": "rose"
+      },
+      "correctAnswer": "B",
+      "clue": "Chi phí năng lượng 'đang gia tăng' đứng trước danh từ 'energy costs' → rising energy costs.",
+      "explanationVi": "'rise' là nội động từ, dạng tính từ phân từ chỉ xu hướng đang tăng là 'rising'.",
+      "targetChunk": {
+        "phrase": "Because of rising energy costs",
+        "meaningVi": "Do chi phí năng lượng ngày một tăng cao"
+      },
+      "skeleton": {
+        "subject": "the facility",
+        "verb": "implemented",
+        "object": "strict conservation protocols"
+      }
+    },
+    {
+      "id": "part_std_009",
+      "level": "standard",
+      "question": "The executive committee will review the ______ budget proposal during tomorrow morning's briefing.",
+      "options": {
+        "A": "revise",
+        "B": "revising",
+        "C": "revised",
+        "D": "revision"
+      },
+      "correctAnswer": "C",
+      "clue": "Bản đề xuất ngân sách 'đã được chỉnh sửa' (bị động) đứng trước danh từ 'proposal' → revised budget proposal.",
+      "explanationVi": "Đề xuất được sửa đổi bởi ban tài chính nên dùng quá khứ phân từ 'revised'.",
+      "targetChunk": {
+        "phrase": "review the revised budget proposal",
+        "meaningVi": "xem xét đề xuất ngân sách đã được điều chỉnh"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "will review",
+        "object": "the revised budget proposal"
+      }
+    },
+    {
+      "id": "part_std_010",
+      "level": "standard",
+      "question": "The corporate catering team delivered a ______ array of gourmet dishes for the banquet.",
+      "options": {
+        "A": "fascinate",
+        "B": "fascinated",
+        "C": "fascinating",
+        "D": "fascination"
+      },
+      "correctAnswer": "C",
+      "clue": "Món ăn/thực đơn mang tính hấp dẫn lôi cuốn (bản chất sự vật) → dùng đuôi -ing: fascinating array.",
+      "explanationVi": "Hiện tại phân từ 'fascinating' mô tả sự lôi cuốn, hấp dẫn của các món ăn.",
+      "targetChunk": {
+        "phrase": "a fascinating array of gourmet dishes",
+        "meaningVi": "một loạt các món ăn thượng hạng đầy hấp dẫn"
+      },
+      "skeleton": {
+        "subject": "The catering team",
+        "verb": "delivered",
+        "object": "a fascinating array of dishes"
+      }
+    },
+    {
+      "id": "part_std_011",
+      "level": "standard",
+      "question": "Job candidates must possess an ______ knowledge of international maritime trade regulations.",
+      "options": {
+        "A": "extend",
+        "B": "extending",
+        "C": "extensive",
+        "D": "extended"
+      },
+      "correctAnswer": "C",
+      "clue": "Collocation quen thuộc: 'an extensive knowledge of sth' (kiến thức sâu rộng về lĩnh vực gì).",
+      "explanationVi": "'extensive' là tính từ chuẩn chỉ kiến thức uyên bác/sâu rộng.",
+      "targetChunk": {
+        "phrase": "an extensive knowledge of regulations",
+        "meaningVi": "kiến thức sâu rộng về các quy định"
+      },
+      "skeleton": {
+        "subject": "Job candidates",
+        "verb": "must possess",
+        "object": "an extensive knowledge"
+      }
+    },
+    {
+      "id": "part_std_012",
+      "level": "standard",
+      "question": "All ______ employees must report to the assembly point immediately upon hearing the fire alarm.",
+      "options": {
+        "A": "remain",
+        "B": "remaining",
+        "C": "remained",
+        "D": "remains"
+      },
+      "correctAnswer": "B",
+      "clue": "Những nhân viên 'còn lại bên trong' tòa nhà: remaining employees.",
+      "explanationVi": "'remain' là nội động từ, tính từ phân từ luôn là 'remaining' (còn lại).",
+      "targetChunk": {
+        "phrase": "All remaining employees must report",
+        "meaningVi": "Tất cả các nhân viên còn lại phải báo cáo có mặt"
+      },
+      "skeleton": {
+        "subject": "All remaining employees",
+        "verb": "must report",
+        "object": "to the assembly point"
+      }
+    },
+    {
+      "id": "part_std_013",
+      "level": "standard",
+      "question": "The company offers a ______ benefits package designed to attract top-tier engineering talent.",
+      "options": {
+        "A": "compete",
+        "B": "competing",
+        "C": "competitive",
+        "D": "competitively"
+      },
+      "correctAnswer": "C",
+      "clue": "Collocation nhân sự: 'a competitive benefits/salary package' (gói phúc lợi/mức lương có tính cạnh tranh cao).",
+      "explanationVi": "Trước danh từ 'package' cần tính từ 'competitive'.",
+      "targetChunk": {
+        "phrase": "a competitive benefits package",
+        "meaningVi": "gói phúc lợi có tính cạnh tranh cao"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "offers",
+        "object": "a competitive benefits package"
+      }
+    },
+    {
+      "id": "part_std_014",
+      "level": "standard",
+      "question": "The survey revealed that eighty percent of clients were completely ______ with our technical support.",
+      "options": {
+        "A": "satisfy",
+        "B": "satisfying",
+        "C": "satisfied",
+        "D": "satisfaction"
+      },
+      "correctAnswer": "C",
+      "clue": "Cấu trúc chỉ cảm xúc hài lòng của con người: be satisfied with sth (hài lòng với cái gì).",
+      "explanationVi": "Khách hàng cảm thấy hài lòng, dùng tính từ đuôi -ed 'satisfied'.",
+      "targetChunk": {
+        "phrase": "completely satisfied with our technical support",
+        "meaningVi": "hoàn toàn hài lòng với dịch vụ hỗ trợ kỹ thuật"
+      },
+      "skeleton": {
+        "subject": "clients",
+        "verb": "were",
+        "object": "completely satisfied with support"
+      }
+    },
+    {
+      "id": "part_std_015",
+      "level": "standard",
+      "question": "NovaTech is widely regarded as the ______ manufacturer of lithium batteries in East Asia.",
+      "options": {
+        "A": "lead",
+        "B": "leading",
+        "C": "led",
+        "D": "leader"
+      },
+      "correctAnswer": "B",
+      "clue": "Collocation kinh doanh: 'leading manufacturer' (nhà sản xuất hàng đầu / dẫn đầu).",
+      "explanationVi": "Hiện tại phân từ 'leading' đóng vai trò tính từ mang nghĩa đứng đầu ngành.",
+      "targetChunk": {
+        "phrase": "the leading manufacturer of batteries",
+        "meaningVi": "nhà sản xuất pin hàng đầu"
+      },
+      "skeleton": {
+        "subject": "NovaTech",
+        "verb": "is regarded as",
+        "object": "the leading manufacturer"
+      }
+    },
+    {
+      "id": "part_std_016",
+      "level": "standard",
+      "question": "Please handle the laboratory glassware with care, as it is extremely ______.",
+      "options": {
+        "A": "fragility",
+        "B": "fragile",
+        "C": "fragilely",
+        "D": "fragment"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau to be 'is' và trạng từ 'extremely' cần một Tính từ mô tả đồ thủy tinh: fragile (dễ vỡ).",
+      "explanationVi": "'fragile' là tính từ chỉ đặc tính dễ vỡ của đồ thủy tinh.",
+      "targetChunk": {
+        "phrase": "extremely fragile",
+        "meaningVi": "cực kỳ dễ vỡ"
+      },
+      "skeleton": {
+        "subject": "it",
+        "verb": "is",
+        "object": "extremely fragile"
+      }
+    },
+    {
+      "id": "part_std_017",
+      "level": "standard",
+      "question": "The director was profoundly ______ by the dedication shown by the disaster recovery volunteers.",
+      "options": {
+        "A": "touch",
+        "B": "touching",
+        "C": "touched",
+        "D": "touches"
+      },
+      "correctAnswer": "C",
+      "clue": "Vị giám đốc cảm thấy xúc động (cảm xúc con người) trước sự tận tụy → was touched by.",
+      "explanationVi": "Cảm xúc con người bị tác động dùng tính từ phân từ đuôi -ed 'touched'.",
+      "targetChunk": {
+        "phrase": "profoundly touched by the dedication",
+        "meaningVi": "xúc động sâu sắc trước sự tận tụy"
+      },
+      "skeleton": {
+        "subject": "The director",
+        "verb": "was",
+        "object": "touched by the dedication"
+      }
+    },
+    {
+      "id": "part_std_018",
+      "level": "standard",
+      "question": "The newly drafted bylaws aim to protect the ______ rights of all registered union workers.",
+      "options": {
+        "A": "establish",
+        "B": "establishing",
+        "C": "established",
+        "D": "establishment"
+      },
+      "correctAnswer": "C",
+      "clue": "Các quyền lợi 'đã được thiết lập từ trước' (bị động) đứng trước danh từ 'rights' → established rights.",
+      "explanationVi": "Quyền lợi đã được công nhận từ lâu đời, dùng quá khứ phân từ 'established'.",
+      "targetChunk": {
+        "phrase": "protect the established rights",
+        "meaningVi": "bảo vệ những quyền lợi đã được xác lập"
+      },
+      "skeleton": {
+        "subject": "bylaws",
+        "verb": "aim to protect",
+        "object": "the established rights"
+      }
+    },
+    {
+      "id": "part_std_019",
+      "level": "standard",
+      "question": "The firm's legal counsel presented a ______ argument that convinced the arbitration panel.",
+      "options": {
+        "A": "compel",
+        "B": "compelling",
+        "C": "compelled",
+        "D": "compulsion"
+      },
+      "correctAnswer": "B",
+      "clue": "Luận điểm 'mang tính thuyết phục cao' (bản chất của lập luận) đứng trước 'argument' → a compelling argument.",
+      "explanationVi": "Lập luận mang tính thuyết phục lòng người dùng hiện tại phân từ 'compelling'.",
+      "targetChunk": {
+        "phrase": "presented a compelling argument",
+        "meaningVi": "đưa ra một lập luận đầy sức thuyết phục"
+      },
+      "skeleton": {
+        "subject": "counsel",
+        "verb": "presented",
+        "object": "a compelling argument"
+      }
+    },
+    {
+      "id": "part_std_020",
+      "level": "standard",
+      "question": "All ______ participants should proceed to the main auditorium for the keynote address.",
+      "options": {
+        "A": "register",
+        "B": "registering",
+        "C": "registered",
+        "D": "registration"
+      },
+      "clue": "Những người tham dự 'đã đăng ký trước' (bị động) đứng trước danh từ 'participants' → registered participants.",
+      "correctAnswer": "C",
+      "explanationVi": "Khách tham dự đã hoàn tất thủ tục đăng ký dùng quá khứ phân từ 'registered'.",
+      "targetChunk": {
+        "phrase": "All registered participants",
+        "meaningVi": "Tất cả các đại biểu đã đăng ký"
+      },
+      "skeleton": {
+        "subject": "All registered participants",
+        "verb": "should proceed",
+        "object": "to the auditorium"
+      }
+    },
+    {
+      "id": "part_std_021",
+      "level": "standard",
+      "question": "The corporate restructuring was a ______ experience for many long-tenured employees.",
+      "options": {
+        "A": "challenge",
+        "B": "challenging",
+        "C": "challenged",
+        "D": "challenger"
+      },
+      "correctAnswer": "B",
+      "clue": "Một trải nghiệm 'đầy tính thử thách/khó khăn' đứng trước danh từ 'experience' → a challenging experience.",
+      "explanationVi": "Trải nghiệm mang tính chất cam go, thử thách dùng hiện tại phân từ 'challenging'.",
+      "targetChunk": {
+        "phrase": "a challenging experience",
+        "meaningVi": "một trải nghiệm đầy tính thử thách"
+      },
+      "skeleton": {
+        "subject": "restructuring",
+        "verb": "was",
+        "object": "a challenging experience"
+      }
+    },
+    {
+      "id": "part_std_022",
+      "level": "standard",
+      "question": "The supplier failed to replace the ______ components within the contractual warranty period.",
+      "options": {
+        "A": "defect",
+        "B": "defective",
+        "C": "defecting",
+        "D": "defectively"
+      },
+      "correctAnswer": "B",
+      "clue": "Linh kiện 'bị lỗi kỹ thuật' đứng trước danh từ 'components' → defective components.",
+      "explanationVi": "'defective' là tính từ chính xác chỉ đồ vật bị lỗi kỹ thuật.",
+      "targetChunk": {
+        "phrase": "replace the defective components",
+        "meaningVi": "thay thế các linh kiện bị lỗi"
+      },
+      "skeleton": {
+        "subject": "The supplier",
+        "verb": "failed to replace",
+        "object": "the defective components"
+      }
+    },
+    {
+      "id": "part_std_023",
+      "level": "standard",
+      "question": "The hotel offers ______ ocean views from all executive suites on the top four floors.",
+      "options": {
+        "A": "stun",
+        "B": "stunning",
+        "C": "stunned",
+        "D": "stuns"
+      },
+      "correctAnswer": "B",
+      "clue": "Tầm nhìn cảnh biển 'tuyệt đẹp / ngoạn mục' (bản chất cảnh quan) đứng trước 'ocean views' → stunning ocean views.",
+      "explanationVi": "Cảnh tượng ngoạn mục gây sửng sốt dùng tính từ hiện tại phân từ 'stunning'.",
+      "targetChunk": {
+        "phrase": "stunning ocean views",
+        "meaningVi": "tầm nhìn ra biển tuyệt đẹp"
+      },
+      "skeleton": {
+        "subject": "The hotel",
+        "verb": "offers",
+        "object": "stunning ocean views"
+      }
+    },
+    {
+      "id": "part_std_024",
+      "level": "standard",
+      "question": "The marketing director is ______ in expanding our brand footprint into the Southeast Asian market.",
+      "options": {
+        "A": "interest",
+        "B": "interesting",
+        "C": "interested",
+        "D": "interests"
+      },
+      "correctAnswer": "C",
+      "clue": "Cấu trúc chỉ sự quan tâm/hứng thú của con người: be interested IN sth.",
+      "explanationVi": "Người cảm thấy hứng thú dùng tính từ đuôi -ed 'interested in'.",
+      "targetChunk": {
+        "phrase": "interested in expanding our brand",
+        "meaningVi": "hứng thú với việc mở rộng thương hiệu"
+      },
+      "skeleton": {
+        "subject": "The director",
+        "verb": "is",
+        "object": "interested in expanding brand"
+      }
+    },
+    {
+      "id": "part_std_025",
+      "level": "standard",
+      "question": "Please sign on the ______ line at the bottom of the non-disclosure agreement.",
+      "options": {
+        "A": "indicate",
+        "B": "indicating",
+        "C": "indicated",
+        "D": "indication"
+      },
+      "correctAnswer": "C",
+      "clue": "Dòng kẻ 'được chỉ dẫn/được đánh dấu' (bị động) đứng trước danh từ 'line' → on the indicated line.",
+      "explanationVi": "Dòng kẻ đã được định vị sẵn trên giấy tờ dùng quá khứ phân từ 'indicated'.",
+      "targetChunk": {
+        "phrase": "sign on the indicated line",
+        "meaningVi": "ký tên vào dòng kẻ đã được chỉ định"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "sign",
+        "object": "on the indicated line"
+      }
+    },
+    {
+      "id": "part_std_026",
+      "level": "standard",
+      "question": "The workshop facilitator addressed ______ concerns regarding the adoption of cloud-based storage.",
+      "options": {
+        "A": "grow",
+        "B": "growing",
+        "C": "grown",
+        "D": "grows"
+      },
+      "correctAnswer": "B",
+      "clue": "Những mối lo ngại 'ngày càng gia tăng' đứng trước danh từ 'concerns' → growing concerns.",
+      "explanationVi": "'grow' ở đây mang nghĩa ngày một tăng lên, dùng dạng hiện tại phân từ 'growing'.",
+      "targetChunk": {
+        "phrase": "addressed growing concerns",
+        "meaningVi": "giải quyết những mối quan ngại ngày càng lớn"
+      },
+      "skeleton": {
+        "subject": "The facilitator",
+        "verb": "addressed",
+        "object": "growing concerns"
+      }
+    },
+    {
+      "id": "part_std_027",
+      "level": "standard",
+      "question": "All ______ merchandise must be accompanied by an original purchase receipt for exchange.",
+      "options": {
+        "A": "return",
+        "B": "returning",
+        "C": "returned",
+        "D": "returns"
+      },
+      "correctAnswer": "C",
+      "clue": "Hàng hóa 'được trả lại' bởi khách hàng (bị động) đứng trước 'merchandise' → returned merchandise.",
+      "explanationVi": "Hàng hóa đem trả lại dùng quá khứ phân từ 'returned'.",
+      "targetChunk": {
+        "phrase": "All returned merchandise",
+        "meaningVi": "Tất cả hàng hóa được đem trả lại"
+      },
+      "skeleton": {
+        "subject": "All returned merchandise",
+        "verb": "must be accompanied",
+        "object": null
+      }
+    },
+    {
+      "id": "part_std_028",
+      "level": "standard",
+      "question": "The keynote speaker provided a ______ demonstration of the automated warehouse robotics.",
+      "options": {
+        "A": "live",
+        "B": "lively",
+        "C": "living",
+        "D": "lived"
+      },
+      "correctAnswer": "A",
+      "clue": "Buổi biểu diễn 'trực tiếp' trước cử tọa: a live demonstration.",
+      "explanationVi": "'live' là tính từ mang nghĩa trực tiếp tại chỗ.",
+      "targetChunk": {
+        "phrase": "a live demonstration of robotics",
+        "meaningVi": "buổi trình diễn trực tiếp hệ thống robot"
+      },
+      "skeleton": {
+        "subject": "The speaker",
+        "verb": "provided",
+        "object": "a live demonstration"
+      }
+    },
+    {
+      "id": "part_std_029",
+      "level": "standard",
+      "question": "The director commended the team for completing the project despite ______ budgetary cutbacks.",
+      "options": {
+        "A": "demand",
+        "B": "demanding",
+        "C": "demanded",
+        "D": "demands"
+      },
+      "correctAnswer": "B",
+      "clue": "Đòi hỏi khắt khe (bản chất của hoàn cảnh khó khăn) đứng trước danh từ 'cutbacks' → demanding cutbacks.",
+      "explanationVi": "'demanding' mang nghĩa đòi hỏi nhiều nỗ lực, cam go khắt khe.",
+      "targetChunk": {
+        "phrase": "despite demanding budgetary cutbacks",
+        "meaningVi": "bất chấp sự cắt giảm ngân sách khắt khe"
+      },
+      "skeleton": {
+        "subject": "The director",
+        "verb": "commended",
+        "object": "the team"
+      }
+    },
+    {
+      "id": "part_std_030",
+      "level": "standard",
+      "question": "The company's ______ expansion into overseas markets has generated record annual profits.",
+      "options": {
+        "A": "continue",
+        "B": "continuing",
+        "C": "continued",
+        "D": "continuation"
+      },
+      "correctAnswer": "C",
+      "clue": "Collocation kinh doanh: 'continued expansion/success' (sự mở rộng/thành công liên tục không ngừng).",
+      "explanationVi": "'continued' là tính từ phân từ chỉ sự việc được duy trì liên tục qua nhiều năm.",
+      "targetChunk": {
+        "phrase": "continued expansion into overseas markets",
+        "meaningVi": "sự mở rộng liên tục sang các thị trường nước ngoài"
+      },
+      "skeleton": {
+        "subject": "expansion",
+        "verb": "has generated",
+        "object": "profits"
+      }
+    },
+    {
+      "id": "part_adv_001",
+      "level": "advanced",
+      "question": "______ the draft proposal thoroughly, the executive committee voted unanimously in favor of ratification.",
+      "options": {
+        "A": "Having reviewed",
+        "B": "Reviewed",
+        "C": "Review",
+        "D": "Have reviewed"
+      },
+      "correctAnswer": "A",
+      "clue": "RÚT GỌN 2 MỆNH ĐỀ CÙNG CHỦ NGỮ (Hoàn thành chủ động): Ủy ban ĐÃ XEM XÉT XONG xuôi rồi mới bỏ phiếu → Having + V3/ed.",
+      "explanationVi": "Hành động xem xét xảy ra và hoàn tất trước hành động bỏ phiếu, chủ ngữ là ủy ban (chủ động) nên dùng Perfect Participle 'Having reviewed'.",
+      "targetChunk": {
+        "phrase": "Having reviewed the proposal thoroughly",
+        "meaningVi": "Sau khi đã xem xét kỹ lưỡng bản đề xuất"
+      },
+      "skeleton": {
+        "subject": "the committee",
+        "verb": "voted",
+        "object": "in favor of ratification"
+      }
+    },
+    {
+      "id": "part_adv_002",
+      "level": "advanced",
+      "question": "______ with state-of-the-art telemetry sensors, the autonomous delivery drone navigated effortlessly.",
+      "options": {
+        "A": "Equipping",
+        "B": "Equipped",
+        "C": "Equip",
+        "D": "Equipment"
+      },
+      "correctAnswer": "B",
+      "clue": "RÚT GỌN MỆNH ĐỀ DẠNG BỊ ĐỘNG: Drone 'được trang bị' cảm biến (Equipped with...) cùng chủ ngữ với vế chính.",
+      "explanationVi": "Chiếc drone chịu tác động (được trang bị), mệnh đề phân từ bắt đầu bằng V3/ed 'Equipped with'.",
+      "targetChunk": {
+        "phrase": "Equipped with state-of-the-art sensors",
+        "meaningVi": "Được trang bị các cảm biến tối tân"
+      },
+      "skeleton": {
+        "subject": "the drone",
+        "verb": "navigated",
+        "object": null
+      }
+    },
+    {
+      "id": "part_adv_003",
+      "level": "advanced",
+      "question": "______ operating heavy factory equipment, workers must fasten their safety harnesses securely.",
+      "options": {
+        "A": "When",
+        "B": "During",
+        "C": "Because",
+        "D": "Despite"
+      },
+      "correctAnswer": "A",
+      "clue": "LIÊN TỪ ĐI VỚI PHÂN TỪ V-ING: 'When + V-ing' (Khi đang vận hành máy móc). 'During' là giới từ chỉ đi với Danh từ, không đi với V-ing có tân ngữ.",
+      "explanationVi": "When/While + V-ing là cấu trúc rút gọn mệnh đề trạng ngữ thời gian chủ động phổ biến nhất trong TOEIC.",
+      "targetChunk": {
+        "phrase": "When operating heavy equipment",
+        "meaningVi": "Khi vận hành thiết bị nặng"
+      },
+      "skeleton": {
+        "subject": "workers",
+        "verb": "must fasten",
+        "object": "their safety harnesses"
+      }
+    },
+    {
+      "id": "part_adv_004",
+      "level": "advanced",
+      "question": "______ of the hazardous chemicals on the manufacturing floor, technicians must wear hazmat gear.",
+      "options": {
+        "A": "Disposing",
+        "B": "When disposing",
+        "C": "During disposal",
+        "D": "Disposed"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc 'When disposing of...' (Khi tiến hành xử lý tiêu hủy hóa chất độc hại).",
+      "explanationVi": "Cần liên từ thời gian 'When' kết hợp hiện tại phân từ 'disposing of' mang nghĩa chủ động.",
+      "targetChunk": {
+        "phrase": "When disposing of hazardous chemicals",
+        "meaningVi": "Khi xử lý các hóa chất độc hại"
+      },
+      "skeleton": {
+        "subject": "technicians",
+        "verb": "must wear",
+        "object": "hazmat gear"
+      }
+    },
+    {
+      "id": "part_adv_005",
+      "level": "advanced",
+      "question": "______ the severe macroeconomic headwinds, the retail chain's fourth-quarter profits were impressive.",
+      "options": {
+        "A": "Given",
+        "B": "Giving",
+        "C": "Gave",
+        "D": "Give"
+      },
+      "correctAnswer": "A",
+      "clue": "GIỚI TỪ PHÂN TỪ CỐ ĐỊNH: 'Given + Noun/Clause' (Xét đến / Căn cứ vào hoàn cảnh...).",
+      "explanationVi": "'Given' đóng vai trò như một giới từ chỉ nguyên nhân/bối cảnh cân nhắc ('Given the severe headwinds').",
+      "targetChunk": {
+        "phrase": "Given the severe headwinds",
+        "meaningVi": "Xét đến những cơn gió ngược kinh tế nghiêm trọng"
+      },
+      "skeleton": {
+        "subject": "profits",
+        "verb": "were",
+        "object": "impressive"
+      }
+    },
+    {
+      "id": "part_adv_006",
+      "level": "advanced",
+      "question": "Weather ______, the outdoor charity golf tournament will commence promptly at 8:00 AM on Saturday.",
+      "options": {
+        "A": "permitting",
+        "B": "permitted",
+        "C": "permission",
+        "D": "permit"
+      },
+      "correctAnswer": "A",
+      "clue": "THÀNH NGỮ PHÂN TỪ TUYỆT ĐỐI (Absolute Participle): 'Weather permitting' (Nếu thời tiết cho phép).",
+      "explanationVi": "'Weather permitting' là cụm phân từ độc lập (chủ ngữ là weather, động từ chủ động là permitting).",
+      "targetChunk": {
+        "phrase": "Weather permitting",
+        "meaningVi": "Nếu thời tiết thuận lợi cho phép"
+      },
+      "skeleton": {
+        "subject": "the tournament",
+        "verb": "will commence",
+        "object": null
+      }
+    },
+    {
+      "id": "part_adv_007",
+      "level": "advanced",
+      "question": "______ by a distinguished committee of peers, the chief researcher received the lifetime innovation medal.",
+      "options": {
+        "A": "Nominating",
+        "B": "Nominated",
+        "C": "Nominate",
+        "D": "Nomination"
+      },
+      "correctAnswer": "B",
+      "clue": "RÚT GỌN BỊ ĐỘNG: Vị trưởng nhóm nghiên cứu 'được đề cử' bởi hội đồng (Nominated by...).",
+      "explanationVi": "Có tác nhân 'by a committee', rút gọn mệnh đề bị động dùng quá khứ phân từ 'Nominated'.",
+      "targetChunk": {
+        "phrase": "Nominated by a distinguished committee",
+        "meaningVi": "Được đề cử bởi một hội đồng danh tiếng"
+      },
+      "skeleton": {
+        "subject": "the chief researcher",
+        "verb": "received",
+        "object": "the medal"
+      }
+    },
+    {
+      "id": "part_adv_008",
+      "level": "advanced",
+      "question": "Once ______, the commercial lease agreement cannot be altered without written consent from both parties.",
+      "options": {
+        "A": "signed",
+        "B": "signing",
+        "C": "sign",
+        "D": "signs"
+      },
+      "correctAnswer": "A",
+      "clue": "LIÊN TỪ + QUÁ KHỨ PHÂN TỪ BỊ ĐỘNG: 'Once signed' = Once it is signed (Một khi đã được ký kết).",
+      "explanationVi": "Hợp đồng được ký kết, rút gọn mệnh đề trạng ngữ sau 'Once' còn lại V3/ed 'signed'.",
+      "targetChunk": {
+        "phrase": "Once signed, the lease agreement",
+        "meaningVi": "Một khi đã được ký kết, hợp đồng thuê"
+      },
+      "skeleton": {
+        "subject": "the agreement",
+        "verb": "cannot be altered",
+        "object": null
+      }
+    },
+    {
+      "id": "part_adv_009",
+      "level": "advanced",
+      "question": "______ at the convention center three hours before the keynote, Dr. Soto rehearsed his multimedia slides.",
+      "options": {
+        "A": "Arriving",
+        "B": "Arrived",
+        "C": "Arrival",
+        "D": "Arrive"
+      },
+      "correctAnswer": "A",
+      "clue": "RÚT GỌN CHỦ ĐỘNG VỚI NỘI ĐỘNG TỪ 'ARRIVE': Dr. Soto tự mình đến nơi → Arriving at... (không dùng Arrived).",
+      "explanationVi": "'Arrive' là nội động từ chỉ hành động của chính tiến sĩ Soto, rút gọn phân từ chủ động là 'Arriving'.",
+      "targetChunk": {
+        "phrase": "Arriving at the center three hours before",
+        "meaningVi": "Đến trung tâm hội nghị ba tiếng trước giờ khai mạc"
+      },
+      "skeleton": {
+        "subject": "Dr. Soto",
+        "verb": "rehearsed",
+        "object": "his slides"
+      }
+    },
+    {
+      "id": "part_adv_010",
+      "level": "advanced",
+      "question": "Any inquiries ______ the pending corporate merger should be directed to the public relations department.",
+      "options": {
+        "A": "regard",
+        "B": "regarding",
+        "C": "regarded",
+        "D": "regards"
+      },
+      "correctAnswer": "B",
+      "clue": "GIỚI TỪ PHÂN TỪ CỐ ĐỊNH: 'regarding' = concerning / about (liên quan đến / về việc gì).",
+      "explanationVi": "'regarding' đóng vai trò giới từ mang nghĩa liên quan đến sự sáp nhập.",
+      "targetChunk": {
+        "phrase": "inquiries regarding the merger",
+        "meaningVi": "các câu hỏi thắc mắc liên quan đến vụ sáp nhập"
+      },
+      "skeleton": {
+        "subject": "Any inquiries regarding the merger",
+        "verb": "should be directed",
+        "object": null
+      }
+    },
+    {
+      "id": "part_adv_011",
+      "level": "advanced",
+      "question": "The director expressed confidence that, all things ______, our market share will continue to expand.",
+      "options": {
+        "A": "consider",
+        "B": "considering",
+        "C": "considered",
+        "D": "consideration"
+      },
+      "correctAnswer": "C",
+      "clue": "THÀNH NGỮ PHÂN TỪ ĐỘC LẬP: 'all things considered' (khi cân nhắc mọi yếu tố).",
+      "explanationVi": "'all things considered' là thành ngữ cố định dạng phân từ độc lập bị động.",
+      "targetChunk": {
+        "phrase": "all things considered",
+        "meaningVi": "sau khi đã cân nhắc mọi khía cạnh"
+      },
+      "skeleton": {
+        "subject": "market share",
+        "verb": "will continue to expand",
+        "object": null
+      }
+    },
+    {
+      "id": "part_adv_012",
+      "level": "advanced",
+      "question": "Barring unforeseen supply chain disruptions, our manufacturing output ______ sixty thousand units this month.",
+      "options": {
+        "A": "reach",
+        "B": "will reach",
+        "C": "reaching",
+        "D": "reached"
+      },
+      "correctAnswer": "B",
+      "clue": "'Barring' là phân từ đóng vai trò giới từ mang nghĩa 'Trừ khi có...', mệnh đề chính chỉ tương lai chia 'will reach'.",
+      "explanationVi": "Barring = Except for / If there are no... Câu có mốc thời gian tháng này chỉ dự báo tương lai: will reach.",
+      "targetChunk": {
+        "phrase": "Barring unforeseen disruptions",
+        "meaningVi": "Trừ phi có những gián đoạn bất ngờ"
+      },
+      "skeleton": {
+        "subject": "output",
+        "verb": "will reach",
+        "object": "sixty thousand units"
+      }
+    },
+    {
+      "id": "part_adv_013",
+      "level": "advanced",
+      "question": "Although ______ by supply shortages, the automotive manufacturer fulfilled all consumer preorders.",
+      "options": {
+        "A": "hampered",
+        "B": "hampering",
+        "C": "hamper",
+        "D": "hampers"
+      },
+      "correctAnswer": "A",
+      "clue": "RÚT GỌN BỊ ĐỘNG SAU 'ALTHOUGH': Nhà sản xuất 'bị cản trở/gặp khó khăn' bởi sự thiếu hụt linh kiện (hampered by...).",
+      "explanationVi": "Although (it was) hampered by... rút gọn còn 'Although hampered by'.",
+      "targetChunk": {
+        "phrase": "Although hampered by shortages",
+        "meaningVi": "Dù bị cản trở bởi tình trạng thiếu hụt nguồn cung"
+      },
+      "skeleton": {
+        "subject": "the manufacturer",
+        "verb": "fulfilled",
+        "object": "all consumer preorders"
+      }
+    },
+    {
+      "id": "part_adv_014",
+      "level": "advanced",
+      "question": "______ the executive summary, please forward the complete financial audit to the compliance committee.",
+      "options": {
+        "A": "Upon reading",
+        "B": "Read",
+        "C": "Having read",
+        "D": "Have read"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc: 'Upon + V-ing' (Ngay sau khi đọc xong...).",
+      "explanationVi": "Upon/On + V-ing diễn tả hành động xảy ra ngay lập tức trước mệnh đề mệnh lệnh tiếp theo.",
+      "targetChunk": {
+        "phrase": "Upon reading the executive summary",
+        "meaningVi": "Ngay sau khi đọc xong bản tóm tắt điều hành"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "please forward",
+        "object": "the audit"
+      }
+    },
+    {
+      "id": "part_adv_015",
+      "level": "advanced",
+      "question": "The newly engineered ceramic coating, ______ to extreme temperatures, prevents thermal degradation.",
+      "options": {
+        "A": "when exposed",
+        "B": "when exposing",
+        "C": "expose",
+        "D": "exposure"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc bị động rút gọn sau 'when': 'when exposed to...' (khi bị phơi nhiễm / tiếp xúc với nhiệt độ cao).",
+      "explanationVi": "Lớp phủ gốm 'khi được phơi/tiếp xúc' với nhiệt độ cực hạn, dạng bị động là 'when exposed'.",
+      "targetChunk": {
+        "phrase": "when exposed to extreme temperatures",
+        "meaningVi": "khi tiếp xúc với nhiệt độ khắc nghiệt"
+      },
+      "skeleton": {
+        "subject": "The coating",
+        "verb": "prevents",
+        "object": "thermal degradation"
+      }
+    },
+    {
+      "id": "part_adv_016",
+      "level": "advanced",
+      "question": "______ failed to meet the initial production targets, the plant manager implemented a three-shift schedule.",
+      "options": {
+        "A": "Having",
+        "B": "Have",
+        "C": "Had",
+        "D": "Has"
+      },
+      "correctAnswer": "A",
+      "clue": "RÚT GỌN HOÀN THÀNH: 'Having failed to meet...' (Do đã không thể đáp ứng chỉ tiêu sản xuất trước đó).",
+      "explanationVi": "Having + V3/ed diễn tả nguyên nhân đã hoàn tất trong quá khứ dẫn tới quyết định của quản đốc.",
+      "targetChunk": {
+        "phrase": "Having failed to meet targets",
+        "meaningVi": "Sau khi đã không đạt được các mục tiêu ban đầu"
+      },
+      "skeleton": {
+        "subject": "the plant manager",
+        "verb": "implemented",
+        "object": "a three-shift schedule"
+      }
+    },
+    {
+      "id": "part_adv_017",
+      "level": "advanced",
+      "question": "Strict safety regulations were enacted, ______ unauthorized access to the industrial testing grounds.",
+      "options": {
+        "A": "prohibiting",
+        "B": "prohibited",
+        "C": "prohibit",
+        "D": "prohibition"
+      },
+      "correctAnswer": "A",
+      "clue": "PHÂN TỪ CHỈ KẾT QUẢ / MỤC ĐÍCH: ', prohibiting unauthorized access' (nghiêm cấm việc xâm nhập trái phép).",
+      "explanationVi": "Mệnh đề phân từ V-ing đứng sau dấu phẩy biểu thị hệ quả hoặc nội dung của quy định vừa ban hành.",
+      "targetChunk": {
+        "phrase": ", prohibiting unauthorized access",
+        "meaningVi": ", nghiêm cấm việc xâm nhập trái phép"
+      },
+      "skeleton": {
+        "subject": "regulations",
+        "verb": "were enacted",
+        "object": null
+      }
+    },
+    {
+      "id": "part_adv_018",
+      "level": "advanced",
+      "question": "Unless ______ in a temperature-controlled vault, biological specimens degrade rapidly.",
+      "options": {
+        "A": "kept",
+        "B": "keeping",
+        "C": "keep",
+        "D": "keeps"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm rút gọn kinh điển: 'Unless kept in...' = Unless they are kept in (Trừ khi được lưu trữ trong...).",
+      "explanationVi": "Mẫu vật sinh học 'được bảo quản' (bị động), sau liên từ 'Unless' rút gọn giữ lại V3/ed 'kept'.",
+      "targetChunk": {
+        "phrase": "Unless kept in a temperature-controlled vault",
+        "meaningVi": "Trừ khi được bảo quản trong khoang điều nhiệt"
+      },
+      "skeleton": {
+        "subject": "specimens",
+        "verb": "degrade",
+        "object": "rapidly"
+      }
+    },
+    {
+      "id": "part_adv_019",
+      "level": "advanced",
+      "question": "______ the rapid advance of automated robotics, universities are overhauling engineering curricula.",
+      "options": {
+        "A": "Witnessing",
+        "B": "Witnessed",
+        "C": "Witness",
+        "D": "Witnesses"
+      },
+      "correctAnswer": "A",
+      "clue": "RÚT GỌN CHỦ ĐỘNG: Các trường đại học chứng kiến sự phát triển của robot → Witnessing the advance...",
+      "explanationVi": "Chủ ngữ của cả 2 vế là các trường đại học (chủ động chứng kiến), dùng hiện tại phân từ 'Witnessing'.",
+      "targetChunk": {
+        "phrase": "Witnessing the rapid advance of robotics",
+        "meaningVi": "Chứng kiến bước tiến nhanh chóng của ngành robot"
+      },
+      "skeleton": {
+        "subject": "universities",
+        "verb": "are overhauling",
+        "object": "curricula"
+      }
+    },
+    {
+      "id": "part_adv_020",
+      "level": "advanced",
+      "question": "The director commended the legal team, ______ that their due diligence saved the company millions.",
+      "options": {
+        "A": "noting",
+        "B": "noted",
+        "C": "note",
+        "D": "notes"
+      },
+      "correctAnswer": "A",
+      "clue": "RÚT GỌN ĐỒNG THỜI: Vị giám đốc khen ngợi đội pháp chế, ĐỒNG THỜI LƯU Ý RẰNG... (noting that...).",
+      "explanationVi": "V-ing sau dấu phẩy thể hiện hành động diễn ra song song với hành động chính (commended).",
+      "targetChunk": {
+        "phrase": ", noting that their due diligence saved millions",
+        "meaningVi": ", đồng thời nhấn mạnh sự thẩm định của họ đã tiết kiệm hàng triệu đô"
+      },
+      "skeleton": {
+        "subject": "The director",
+        "verb": "commended",
+        "object": "the legal team"
+      }
+    },
+    {
+      "id": "part_adv_021",
+      "level": "advanced",
+      "question": "______ with navigating maritime shipping lanes, captains must maintain continuous radio contact.",
+      "options": {
+        "A": "When tasked",
+        "B": "When tasking",
+        "C": "Task",
+        "D": "Tasks"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc bị động rút gọn sau 'When': 'When tasked with...' (Khi được giao trọng trách điều hướng...).",
+      "explanationVi": "Thuyền trưởng được giao nhiệm vụ điều hướng tàu thủy (bị động).",
+      "targetChunk": {
+        "phrase": "When tasked with navigating lanes",
+        "meaningVi": "Khi được giao nhiệm vụ định vị các tuyến hàng hải"
+      },
+      "skeleton": {
+        "subject": "captains",
+        "verb": "must maintain",
+        "object": "radio contact"
+      }
+    },
+    {
+      "id": "part_adv_022",
+      "level": "advanced",
+      "question": "______ to commercial viability, the synthetic fuel prototype underwent rigorous field testing.",
+      "options": {
+        "A": "Prior",
+        "B": "Before",
+        "C": "Until",
+        "D": "While"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm tính từ/giới từ cố định: 'Prior to + Noun' (Trước khi đạt được tính khả thi thương mại).",
+      "explanationVi": "'Prior to' đi kèm cụm danh từ 'commercial viability'.",
+      "targetChunk": {
+        "phrase": "Prior to commercial viability",
+        "meaningVi": "Trước khi đạt đến khả năng thương mại hóa"
+      },
+      "skeleton": {
+        "subject": "the prototype",
+        "verb": "underwent",
+        "object": "field testing"
+      }
+    },
+    {
+      "id": "part_adv_023",
+      "level": "advanced",
+      "question": "The regional assembly plant ceased operations, ______ nearly five hundred automotive technicians jobless.",
+      "options": {
+        "A": "leaving",
+        "B": "left",
+        "C": "leaves",
+        "D": "leave"
+      },
+      "correctAnswer": "A",
+      "clue": "MỆNH ĐỀ PHÂN TỪ CHỈ HẬU QUẢ: Nhà máy đóng cửa, ĐỂ LẠI hậu quả là khiến 500 công nhân mất việc → leaving.",
+      "explanationVi": "', leaving + O + Adj' là cấu trúc phân từ kết quả kinh điển trong bài đọc Part 5/6.",
+      "targetChunk": {
+        "phrase": ", leaving nearly five hundred technicians jobless",
+        "meaningVi": ", khiến gần 500 kỹ thuật viên rơi vào cảnh thất nghiệp"
+      },
+      "skeleton": {
+        "subject": "The plant",
+        "verb": "ceased",
+        "object": "operations"
+      }
+    },
+    {
+      "id": "part_adv_024",
+      "level": "advanced",
+      "question": "______ strictly to the instructional guidelines, the laboratory technician avoided chemical contamination.",
+      "options": {
+        "A": "Adhering",
+        "B": "Adhered",
+        "C": "Adhere",
+        "D": "Adherence"
+      },
+      "correctAnswer": "A",
+      "clue": "RÚT GỌN CHỦ ĐỘNG: Kỹ thuật viên 'tuân thủ nghiêm ngặt' chỉ dẫn → Adhering strictly to...",
+      "explanationVi": "Kỹ thuật viên chủ động tuân theo hướng dẫn, dùng Hiện tại phân từ 'Adhering'.",
+      "targetChunk": {
+        "phrase": "Adhering strictly to the guidelines",
+        "meaningVi": "Tuân thủ nghiêm ngặt các bản hướng dẫn"
+      },
+      "skeleton": {
+        "subject": "the technician",
+        "verb": "avoided",
+        "object": "contamination"
+      }
+    },
+    {
+      "id": "part_adv_025",
+      "level": "advanced",
+      "question": "The committee approved the merger, ______ that the combined entity divest non-core media assets.",
+      "options": {
+        "A": "stipulating",
+        "B": "stipulated",
+        "C": "stipulate",
+        "D": "stipulation"
+      },
+      "correctAnswer": "A",
+      "clue": "PHÂN TỪ KÈM ĐIỀU KIỆN: ', stipulating that...' (kèm theo điều khoản quy định rằng...).",
+      "explanationVi": "Ủy ban phê duyệt đồng thời kèm theo quy định ràng buộc, dùng Hiện tại phân từ 'stipulating that'.",
+      "targetChunk": {
+        "phrase": ", stipulating that the entity divest assets",
+        "meaningVi": ", quy định rằng thực thể hợp nhất phải thoái vốn tài sản phụ"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "approved",
+        "object": "the merger"
+      }
+    },
+    {
+      "id": "part_adv_026",
+      "level": "advanced",
+      "question": "______ the ongoing macroeconomic downturn, luxury goods manufacturers reported resilient revenues.",
+      "options": {
+        "A": "Notwithstanding",
+        "B": "Whereas",
+        "C": "Although",
+        "D": "Because"
+      },
+      "correctAnswer": "A",
+      "clue": "GIỚI TỪ PHÂN TỪ: 'Notwithstanding + Noun' = Despite / In spite of (Bất chấp sự suy thoái kinh tế).",
+      "explanationVi": "'Notwithstanding' đi với cụm danh từ 'the ongoing macroeconomic downturn'. 'Although' phải đi với mệnh đề S-V.",
+      "targetChunk": {
+        "phrase": "Notwithstanding the downturn",
+        "meaningVi": "Bất chấp sự suy thoái đang diễn ra"
+      },
+      "skeleton": {
+        "subject": "manufacturers",
+        "verb": "reported",
+        "object": "resilient revenues"
+      }
+    },
+    {
+      "id": "part_adv_027",
+      "level": "advanced",
+      "question": "The newly engineered structural alloy, ______ by external metallurgists, exceeded tensile benchmarks.",
+      "options": {
+        "A": "tested",
+        "B": "testing",
+        "C": "test",
+        "D": "tests"
+      },
+      "correctAnswer": "A",
+      "clue": "RÚT GỌN BỊ ĐỘNG CHÈN GIỮA DẤU PHẨY: alloy, (which was) tested by metallurgists, ... → 'tested'.",
+      "explanationVi": "Hợp kim 'được thử nghiệm' bởi các chuyên gia luyện kim (có 'by'), dùng quá khứ phân từ 'tested'.",
+      "targetChunk": {
+        "phrase": "alloy, tested by external metallurgists",
+        "meaningVi": "hợp kim, được thử nghiệm bởi các nhà luyện kim độc lập"
+      },
+      "skeleton": {
+        "subject": "The alloy",
+        "verb": "exceeded",
+        "object": "benchmarks"
+      }
+    },
+    {
+      "id": "part_adv_028",
+      "level": "advanced",
+      "question": "______ from the initial customer feedback, the updated user interface is far more intuitive.",
+      "options": {
+        "A": "Judging",
+        "B": "Judged",
+        "C": "Judge",
+        "D": "Judgment"
+      },
+      "correctAnswer": "A",
+      "clue": "THÀNH NGỮ PHÂN TỪ CỐ ĐỊNH: 'Judging from/by sth' (Nhìn nhận/Đánh giá từ những phản hồi ban đầu).",
+      "explanationVi": "'Judging from' là phân từ độc lập cố định mang nghĩa 'căn cứ theo / phán đoán từ'.",
+      "targetChunk": {
+        "phrase": "Judging from the initial feedback",
+        "meaningVi": "Đánh giá từ những phản hồi ban đầu của khách hàng"
+      },
+      "skeleton": {
+        "subject": "the interface",
+        "verb": "is",
+        "object": "intuitive"
+      }
+    },
+    {
+      "id": "part_adv_029",
+      "level": "advanced",
+      "question": "The executive committee rejected the acquisition proposal, ______ regulatory antitrust concerns as the reason.",
+      "options": {
+        "A": "citing",
+        "B": "cited",
+        "C": "cite",
+        "D": "cites"
+      },
+      "correctAnswer": "A",
+      "clue": "PHÂN TỪ CHỦ ĐỘNG NÊU NGUYÊN DO: ', citing X as the reason' (viện dẫn lý do là các lo ngại chống độc quyền).",
+      "explanationVi": "Ủy ban từ chối và đưa ra lý lẽ, dùng Hiện tại phân từ 'citing'.",
+      "targetChunk": {
+        "phrase": ", citing antitrust concerns as the reason",
+        "meaningVi": ", viện dẫn các lo ngại chống độc quyền làm lý do"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "rejected",
+        "object": "the proposal"
+      }
+    },
+    {
+      "id": "part_adv_030",
+      "level": "advanced",
+      "question": "______ with creating an entirely new brand identity, the marketing firm conducted focus group interviews.",
+      "options": {
+        "A": "Charged",
+        "B": "Charging",
+        "C": "Charge",
+        "D": "Charges"
+      },
+      "correctAnswer": "A",
+      "clue": "RÚT GỌN BỊ ĐỘNG: Đơn vị tiếp thị 'được giao trọng trách' (Charged with creating...) cùng chủ ngữ với vế chính.",
+      "explanationVi": "'be charged with sth' nghĩa là được giao phó trách nhiệm. Rút gọn phân từ bị động là 'Charged with'.",
+      "targetChunk": {
+        "phrase": "Charged with creating an identity",
+        "meaningVi": "Được giao nhiệm vụ sáng tạo bộ nhận diện thương hiệu"
+      },
+      "skeleton": {
+        "subject": "the firm",
+        "verb": "conducted",
+        "object": "interviews"
+      }
+    }
+  ]
+}

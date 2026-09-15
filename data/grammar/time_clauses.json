@@ -1,0 +1,1389 @@
+{
+  "topicId": "time_clauses",
+  "titleVi": "Mệnh đề Trạng ngữ Thời gian & Tương thích thì",
+  "totalQuestions": 60,
+  "standardCount": 30,
+  "advancedCount": 30,
+  "questions": [
+    {
+      "id": "time_std_001",
+      "level": "standard",
+      "question": "The production team will start manufacturing the new model as soon as the client ______ the contract.",
+      "options": {
+        "A": "signs",
+        "B": "will sign",
+        "C": "signed",
+        "D": "is signing"
+      },
+      "correctAnswer": "A",
+      "clue": "Quy tắc vàng TOEIC: Mệnh đề chỉ thời gian (as soon as) dùng Hiện tại đơn thay cho Tương lai đơn → Chọn signs.",
+      "explanationVi": "Trong mệnh đề trạng ngữ chỉ thời gian bắt đầu bằng 'as soon as', 'when', 'before', 'after', ta dùng thì Hiện tại đơn ('signs') để diễn tả hành động trong tương lai, tuyệt đối không dùng 'will'.",
+      "targetChunk": {
+        "phrase": "as soon as the client signs the contract",
+        "meaningVi": "ngay khi khách hàng ký kết hợp đồng"
+      },
+      "skeleton": {
+        "subject": "The production team",
+        "verb": "will start manufacturing",
+        "object": "the new model"
+      }
+    },
+    {
+      "id": "time_std_002",
+      "level": "standard",
+      "question": "Please submit your comprehensive travel expense report ______ Friday at 5:00 P.M.",
+      "options": {
+        "A": "by",
+        "B": "until",
+        "C": "while",
+        "D": "during"
+      },
+      "correctAnswer": "A",
+      "clue": "Chỉ hạn chót phải hoàn thành hành động (nộp trước 5 giờ chiều thứ Sáu) → Chọn by.",
+      "explanationVi": "'by' dùng để chỉ thời hạn chót mà một hành động đơn lẻ phải hoàn tất (submit by Friday). 'until' dùng cho hành động kéo dài liên tục cho tới một thời điểm (wait until Friday).",
+      "targetChunk": {
+        "phrase": "submit your expense report by Friday",
+        "meaningVi": "nộp báo cáo chi phí trước thứ Sáu"
+      },
+      "skeleton": {
+        "subject": "You (implied)",
+        "verb": "submit",
+        "object": "expense report"
+      }
+    },
+    {
+      "id": "time_std_003",
+      "level": "standard",
+      "question": "The maintenance crew will remain in the server room ______ the network connectivity is fully restored.",
+      "options": {
+        "A": "until",
+        "B": "by",
+        "C": "during",
+        "D": "while"
+      },
+      "correctAnswer": "A",
+      "clue": "Hành động kéo dài liên tục 'will remain' (ở lại cho tới khi mạng khôi phục xong) → Chọn until.",
+      "explanationVi": "'until' diễn tả một trạng thái hoặc hành động kéo dài liên tục cho tới một thời điểm hoặc sự kiện khác. 'remain until...' = ở lại cho đến khi...",
+      "targetChunk": {
+        "phrase": "remain in the server room until connectivity is restored",
+        "meaningVi": "ở lại trong phòng máy chủ cho tới khi kết nối được khôi phục"
+      },
+      "skeleton": {
+        "subject": "The crew",
+        "verb": "will remain",
+        "object": null
+      }
+    },
+    {
+      "id": "time_std_004",
+      "level": "standard",
+      "question": "Mr. Vance has managed the corporate communications office ______ he joined the firm in 2018.",
+      "options": {
+        "A": "since",
+        "B": "for",
+        "C": "from",
+        "D": "when"
+      },
+      "correctAnswer": "A",
+      "clue": "Mệnh đề chính chia Hiện tại hoàn thành (has managed), vế sau là mốc thời gian quá khứ → Chọn since.",
+      "explanationVi": "'since + mốc thời gian / mệnh đề quá khứ đơn' đi kèm mệnh đề chính chia thì Hiện tại hoàn thành (has managed... since he joined).",
+      "targetChunk": {
+        "phrase": "has managed the office since he joined",
+        "meaningVi": "đã quản lý văn phòng kể từ khi ông gia nhập"
+      },
+      "skeleton": {
+        "subject": "Mr. Vance",
+        "verb": "has managed",
+        "object": "the communications office"
+      }
+    },
+    {
+      "id": "time_std_005",
+      "level": "standard",
+      "question": "______ the renovation is completed, all marketing employees will relocate to the sixth floor.",
+      "options": {
+        "A": "Once",
+        "B": "During",
+        "C": "While",
+        "D": "Between"
+      },
+      "correctAnswer": "A",
+      "clue": "Đứng đầu mệnh đề mang nghĩa \"Một khi... thì...\" (Once + clause) → Chọn Once.",
+      "explanationVi": "'Once' là liên từ chỉ thời gian mang nghĩa 'một khi / ngay sau khi' (Once the renovation is completed = Một khi việc cải tạo hoàn tất). 'During' và 'Between' là giới từ chỉ đi với cụm danh từ.",
+      "targetChunk": {
+        "phrase": "Once the renovation is completed, all employees will relocate",
+        "meaningVi": "một khi việc cải tạo hoàn thành, tất cả nhân viên sẽ chuyển"
+      },
+      "skeleton": {
+        "subject": "all employees",
+        "verb": "will relocate to",
+        "object": "the sixth floor"
+      }
+    },
+    {
+      "id": "time_std_006",
+      "level": "standard",
+      "question": "The keynote speaker had already begun her presentation ______ the late attendees arrived.",
+      "options": {
+        "A": "when",
+        "B": "while",
+        "C": "during",
+        "D": "until"
+      },
+      "correctAnswer": "A",
+      "clue": "Hành động xảy ra trước trong quá khứ (had already begun) thì hành động chen vào chia QK đơn với 'when' → Chọn when.",
+      "explanationVi": "Cấu trúc tương thích thì: Quá khứ hoàn thành (had begun) kết hợp với 'when + Quá khứ đơn' (when attendees arrived). 'while' thường đi với thì tiếp diễn.",
+      "targetChunk": {
+        "phrase": "had already begun her presentation when attendees arrived",
+        "meaningVi": "đã bắt đầu bài thuyết trình khi người tham dự đến"
+      },
+      "skeleton": {
+        "subject": "speaker",
+        "verb": "had begun",
+        "object": "presentation"
+      }
+    },
+    {
+      "id": "time_std_007",
+      "level": "standard",
+      "question": "Please silence all mobile devices ______ the executive presentation is in progress.",
+      "options": {
+        "A": "while",
+        "B": "during",
+        "C": "for",
+        "D": "since"
+      },
+      "correctAnswer": "A",
+      "clue": "Phía sau là một mệnh đề hoàn chỉnh (the presentation is in progress) → Cần liên từ: while.",
+      "explanationVi": "'while' là liên từ theo sau bởi mệnh đề S + V. 'during' là giới từ chỉ đi kèm cụm danh từ (during the presentation).",
+      "targetChunk": {
+        "phrase": "while the executive presentation is in progress",
+        "meaningVi": "trong khi bài thuyết trình điều hành đang diễn ra"
+      },
+      "skeleton": {
+        "subject": "You (implied)",
+        "verb": "silence",
+        "object": "mobile devices"
+      }
+    },
+    {
+      "id": "time_std_008",
+      "level": "standard",
+      "question": "All employees must wash their hands thoroughly before ______ the sterile food processing area.",
+      "options": {
+        "A": "entering",
+        "B": "entered",
+        "C": "enter",
+        "D": "have entered"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau giới từ / liên từ rút gọn 'before' đi với danh động từ → Chọn entering.",
+      "explanationVi": "'before + V-ing' trong cấu trúc rút gọn trạng từ cùng chủ ngữ (before entering = trước khi bước vào).",
+      "targetChunk": {
+        "phrase": "before entering the sterile food processing area",
+        "meaningVi": "trước khi bước vào khu vực chế biến thực phẩm vô trùng"
+      },
+      "skeleton": {
+        "subject": "All employees",
+        "verb": "must wash",
+        "object": "their hands"
+      }
+    },
+    {
+      "id": "time_std_009",
+      "level": "standard",
+      "question": "When the delivery truck ______, the warehouse staff will begin unloading the cargo immediately.",
+      "options": {
+        "A": "arrives",
+        "B": "will arrive",
+        "C": "arrived",
+        "D": "is arriving"
+      },
+      "correctAnswer": "A",
+      "clue": "Mệnh đề 'When' chỉ thời gian trong tương lai → Dùng thì Hiện tại đơn: arrives.",
+      "explanationVi": "Quy tắc: 'When + S + V(hiện tại đơn), S + will + V-bare'. Tuyệt đối không dùng 'will arrive' trong mệnh đề phụ chỉ thời gian.",
+      "targetChunk": {
+        "phrase": "When the delivery truck arrives",
+        "meaningVi": "khi xe tải giao hàng tới nơi"
+      },
+      "skeleton": {
+        "subject": "staff",
+        "verb": "will begin unloading",
+        "object": "cargo"
+      }
+    },
+    {
+      "id": "time_std_010",
+      "level": "standard",
+      "question": "The firm will not release the updated software ______ all beta testing protocols are completed.",
+      "options": {
+        "A": "until",
+        "B": "by",
+        "C": "during",
+        "D": "between"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc phủ định: not ... until (chỉ làm việc gì khi... / cho đến khi... mới làm) → Chọn until.",
+      "explanationVi": "'will not release ... until all testing is completed' = sẽ không phát hành phần mềm cho đến khi toàn bộ việc thử nghiệm beta hoàn tất.",
+      "targetChunk": {
+        "phrase": "will not release the software until testing is completed",
+        "meaningVi": "sẽ không phát hành phần mềm cho tới khi hoàn tất kiểm thử"
+      },
+      "skeleton": {
+        "subject": "The firm",
+        "verb": "will not release",
+        "object": "the software"
+      }
+    },
+    {
+      "id": "time_std_011",
+      "level": "standard",
+      "question": "The financial consultant reviewed the tax forms carefully before ______ them to the revenue service.",
+      "options": {
+        "A": "submitting",
+        "B": "submitted",
+        "C": "submit",
+        "D": "submits"
+      },
+      "correctAnswer": "A",
+      "clue": "Sau liên từ 'before' rút gọn mệnh đề cùng chủ ngữ → Chọn V-ing: submitting.",
+      "explanationVi": "Rút gọn mệnh đề thời gian cùng chủ ngữ: 'before submitting them' (= before he submitted them).",
+      "targetChunk": {
+        "phrase": "before submitting them to the revenue service",
+        "meaningVi": "trước khi nộp chúng cho cơ quan thuế vụ"
+      },
+      "skeleton": {
+        "subject": "consultant",
+        "verb": "reviewed",
+        "object": "forms"
+      }
+    },
+    {
+      "id": "time_std_012",
+      "level": "standard",
+      "question": "We should reserve the banquet hall ______ the promotional discount expires next Tuesday.",
+      "options": {
+        "A": "before",
+        "B": "during",
+        "C": "until",
+        "D": "from"
+      },
+      "correctAnswer": "A",
+      "clue": "Đặt phòng \"trước khi\" ưu đãi giảm giá hết hạn (before + clause) → Chọn before.",
+      "explanationVi": "'before + clause' = trước khi điều gì xảy ra. 'during' là giới từ, 'until' mang nghĩa cho đến khi.",
+      "targetChunk": {
+        "phrase": "before the promotional discount expires",
+        "meaningVi": "trước khi chương trình giảm giá khuyến mãi hết hạn"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "should reserve",
+        "object": "the hall"
+      }
+    },
+    {
+      "id": "time_std_013",
+      "level": "standard",
+      "question": "Dr. Lewis had published four research papers before she ______ tenured faculty status.",
+      "options": {
+        "A": "attained",
+        "B": "attains",
+        "C": "will attain",
+        "D": "attaining"
+      },
+      "correctAnswer": "A",
+      "clue": "Mệnh đề chính thì Quá khứ hoàn thành (had published) → Mệnh đề after/before ở Quá khứ đơn: attained.",
+      "explanationVi": "Hành động xuất bản bài báo diễn ra trước (had published), hành động nhận biên chế diễn ra sau trong quá khứ nên chia Quá khứ đơn 'attained'.",
+      "targetChunk": {
+        "phrase": "before she attained tenured faculty status",
+        "meaningVi": "trước khi bà đạt được quy chế giảng viên biên chế"
+      },
+      "skeleton": {
+        "subject": "Dr. Lewis",
+        "verb": "had published",
+        "object": "papers"
+      }
+    },
+    {
+      "id": "time_std_014",
+      "level": "standard",
+      "question": "______ you encounter any difficulties with the software installation, please contact tech support.",
+      "options": {
+        "A": "Whenever",
+        "B": "During",
+        "C": "Until",
+        "D": "While"
+      },
+      "correctAnswer": "A",
+      "clue": "Bất cứ khi nào bạn gặp khó khăn: Whenever you encounter... → Chọn Whenever.",
+      "explanationVi": "'Whenever' = bất cứ khi nào (= every time that), mở đầu mệnh đề trạng ngữ thời gian/điều kiện.",
+      "targetChunk": {
+        "phrase": "Whenever you encounter any difficulties",
+        "meaningVi": "bất cứ khi nào bạn gặp bất kỳ khó khăn nào"
+      },
+      "skeleton": {
+        "subject": "You (implied)",
+        "verb": "contact",
+        "object": "tech support"
+      }
+    },
+    {
+      "id": "time_std_015",
+      "level": "standard",
+      "question": "The factory operates around the clock, ______ maintenance work is scheduled for Sundays.",
+      "options": {
+        "A": "although",
+        "B": "during",
+        "C": "while",
+        "D": "except that"
+      },
+      "correctAnswer": "D",
+      "clue": "Ngoại trừ việc công tác bảo trì được lên lịch vào chủ nhật → Chọn except that.",
+      "explanationVi": "'except that + clause' = ngoại trừ một điều là. Các phương án khác không phù hợp về ngữ nghĩa.",
+      "targetChunk": {
+        "phrase": "except that maintenance work is scheduled for Sundays",
+        "meaningVi": "ngoại trừ việc công tác bảo trì được xếp lịch vào các ngày chủ nhật"
+      },
+      "skeleton": {
+        "subject": "factory",
+        "verb": "operates",
+        "object": null
+      }
+    },
+    {
+      "id": "time_std_016",
+      "level": "standard",
+      "question": "The warranty remains valid ______ the product is serviced exclusively by certified technicians.",
+      "options": {
+        "A": "as long as",
+        "B": "as well as",
+        "C": "as much as",
+        "D": "as soon as"
+      },
+      "correctAnswer": "A",
+      "clue": "Miễn là sản phẩm được bảo dưỡng bởi thợ có chứng chỉ: as long as → Chọn as long as.",
+      "explanationVi": "'as long as + clause' = miễn là, với điều kiện là. 'as soon as' = ngay khi.",
+      "targetChunk": {
+        "phrase": "remains valid as long as the product is serviced",
+        "meaningVi": "vẫn có hiệu lực miễn là sản phẩm được bảo dưỡng"
+      },
+      "skeleton": {
+        "subject": "warranty",
+        "verb": "remains",
+        "object": "valid"
+      }
+    },
+    {
+      "id": "time_std_017",
+      "level": "standard",
+      "question": "Ms. Gomez was preparing the slide deck while Mr. Chen ______ the financial tables.",
+      "options": {
+        "A": "was formatting",
+        "B": "formats",
+        "C": "will format",
+        "D": "has formatted"
+      },
+      "correctAnswer": "A",
+      "clue": "Hai hành động diễn ra song song đồng thời trong quá khứ với liên từ 'while' → Chọn was formatting.",
+      "explanationVi": "Diễn tả hai hành động song song cùng diễn ra trong quá khứ: Past Continuous + while + Past Continuous (was preparing ... while Mr. Chen was formatting).",
+      "targetChunk": {
+        "phrase": "while Mr. Chen was formatting the tables",
+        "meaningVi": "trong khi ông Chen đang định dạng các bảng biểu tài chính"
+      },
+      "skeleton": {
+        "subject": "Mr. Chen",
+        "verb": "was formatting",
+        "object": "the financial tables"
+      }
+    },
+    {
+      "id": "time_std_018",
+      "level": "standard",
+      "question": "The inspectors will certify the premises after they ______ the fire suppression system.",
+      "options": {
+        "A": "examine",
+        "B": "will examine",
+        "C": "examined",
+        "D": "are examining"
+      },
+      "correctAnswer": "A",
+      "clue": "Mệnh đề sau 'after' chỉ thời gian trong tương lai → Dùng thì Hiện tại đơn: examine.",
+      "explanationVi": "Không dùng thì tương lai với 'will' trong mệnh đề thời gian sau 'after'. Dùng Hiện tại đơn 'examine'.",
+      "targetChunk": {
+        "phrase": "after they examine the fire suppression system",
+        "meaningVi": "sau khi họ kiểm tra hệ thống dập lửa"
+      },
+      "skeleton": {
+        "subject": "inspectors",
+        "verb": "will certify",
+        "object": "premises"
+      }
+    },
+    {
+      "id": "time_std_019",
+      "level": "standard",
+      "question": "The new regional manager has implemented significant changes ______ taking office last month.",
+      "options": {
+        "A": "since",
+        "B": "for",
+        "C": "from",
+        "D": "in"
+      },
+      "correctAnswer": "A",
+      "clue": "Đi kèm thì Hiện tại hoàn thành (has implemented) và danh động từ/hành động quá khứ (taking office last month) → Chọn since.",
+      "explanationVi": "'since + V-ing / mốc thời gian' = kể từ khi nhận chức vào tháng trước. Mệnh đề chính chia Hiện tại hoàn thành.",
+      "targetChunk": {
+        "phrase": "implemented significant changes since taking office",
+        "meaningVi": "đã thực hiện những thay đổi đáng kể kể từ khi nhậm chức"
+      },
+      "skeleton": {
+        "subject": "manager",
+        "verb": "has implemented",
+        "object": "changes"
+      }
+    },
+    {
+      "id": "time_std_020",
+      "level": "standard",
+      "question": "Staff members are requested not to leave the building ______ the fire drill has officially ended.",
+      "options": {
+        "A": "until",
+        "B": "during",
+        "C": "while",
+        "D": "by"
+      },
+      "correctAnswer": "A",
+      "clue": "Yêu cầu không rời tòa nhà cho đến khi buổi diễn tập chính thức kết thúc: not leave ... until → Chọn until.",
+      "explanationVi": "'not ... until' = không làm gì cho tới khi sự việc kết thúc hoàn toàn. 'until + clause'.",
+      "targetChunk": {
+        "phrase": "not to leave the building until the drill has ended",
+        "meaningVi": "không rời khỏi tòa nhà cho tới khi buổi diễn tập kết thúc"
+      },
+      "skeleton": {
+        "subject": "Staff",
+        "verb": "are requested not to leave",
+        "object": "the building"
+      }
+    },
+    {
+      "id": "time_std_021",
+      "level": "standard",
+      "question": "______ the client finalizes the contract specifications, work on the project will commence.",
+      "options": {
+        "A": "As soon as",
+        "B": "During",
+        "C": "Until",
+        "D": "Between"
+      },
+      "correctAnswer": "A",
+      "clue": "Ngay khi khách hàng chốt xong các đặc tả hợp đồng: As soon as + clause → Chọn As soon as.",
+      "explanationVi": "'As soon as' là liên từ chỉ thời gian nối hai mệnh đề (As soon as S + V, S + will + V).",
+      "targetChunk": {
+        "phrase": "As soon as the client finalizes specifications",
+        "meaningVi": "ngay khi khách hàng chốt các thông số kỹ thuật"
+      },
+      "skeleton": {
+        "subject": "work",
+        "verb": "will commence",
+        "object": null
+      }
+    },
+    {
+      "id": "time_std_022",
+      "level": "standard",
+      "question": "The store manager had already locked the front doors ______ the customer knocked.",
+      "options": {
+        "A": "when",
+        "B": "while",
+        "C": "during",
+        "D": "until"
+      },
+      "correctAnswer": "A",
+      "clue": "Hành động đã hoàn tất trước (had already locked) khi hành động khác xảy ra trong quá khứ → Chọn when.",
+      "explanationVi": "Quá khứ hoàn thành (had locked) kết hợp với 'when + Quá khứ đơn' (when the customer knocked).",
+      "targetChunk": {
+        "phrase": "had already locked the front doors when the customer knocked",
+        "meaningVi": "đã khóa các cửa trước khi khách hàng gõ cửa"
+      },
+      "skeleton": {
+        "subject": "manager",
+        "verb": "had locked",
+        "object": "doors"
+      }
+    },
+    {
+      "id": "time_std_023",
+      "level": "standard",
+      "question": "Security personnel must inspect every delivery vehicle ______ granting access to the compound.",
+      "options": {
+        "A": "before",
+        "B": "during",
+        "C": "until",
+        "D": "since"
+      },
+      "correctAnswer": "A",
+      "clue": "Kiểm tra xe 'trước khi' cấp quyền vào khu phức hợp: before + V-ing → Chọn before.",
+      "explanationVi": "'before + V-ing' (trước khi làm gì). Phù hợp nhất về logic an ninh nhà xưởng.",
+      "targetChunk": {
+        "phrase": "inspect every delivery vehicle before granting access",
+        "meaningVi": "kiểm tra từng xe giao hàng trước khi cấp phép vào"
+      },
+      "skeleton": {
+        "subject": "Security personnel",
+        "verb": "must inspect",
+        "object": "vehicle"
+      }
+    },
+    {
+      "id": "time_std_024",
+      "level": "standard",
+      "question": "The software will prompt users to change their passwords ______ ninety days have elapsed.",
+      "options": {
+        "A": "once",
+        "B": "during",
+        "C": "while",
+        "D": "until"
+      },
+      "correctAnswer": "A",
+      "clue": "Phần mềm sẽ nhắc nhở người dùng \"một khi\" 90 ngày đã trôi qua: once + clause → Chọn once.",
+      "explanationVi": "'once + clause' = một khi điều gì xảy ra xong. Diễn tả điều kiện thời gian hoàn tất.",
+      "targetChunk": {
+        "phrase": "prompt users to change passwords once ninety days have elapsed",
+        "meaningVi": "nhắc người dùng đổi mật khẩu một khi 90 ngày đã trôi qua"
+      },
+      "skeleton": {
+        "subject": "software",
+        "verb": "will prompt users to change",
+        "object": "passwords"
+      }
+    },
+    {
+      "id": "time_std_025",
+      "level": "standard",
+      "question": "The board will review the quarterly budget ______ the CFO delivers her presentation.",
+      "options": {
+        "A": "after",
+        "B": "during",
+        "C": "between",
+        "D": "since"
+      },
+      "correctAnswer": "A",
+      "clue": "Xem xét ngân sách \"sau khi\" Giám đốc tài chính thuyết trình: after + clause → Chọn after.",
+      "explanationVi": "'after + S + V(hiện tại đơn)' làm mệnh đề trạng ngữ chỉ thời gian kết hợp với 'will review'.",
+      "targetChunk": {
+        "phrase": "review the budget after the CFO delivers presentation",
+        "meaningVi": "xem xét ngân sách sau khi Giám đốc tài chính thuyết trình"
+      },
+      "skeleton": {
+        "subject": "board",
+        "verb": "will review",
+        "object": "budget"
+      }
+    },
+    {
+      "id": "time_std_026",
+      "level": "standard",
+      "question": "Flight attendants asked passengers to remain seated ______ the seatbelt sign was illuminated.",
+      "options": {
+        "A": "while",
+        "B": "during",
+        "C": "since",
+        "D": "before"
+      },
+      "correctAnswer": "A",
+      "clue": "Yêu cầu ngồi yên \"trong khi\" đèn báo cài dây an toàn đang bật: while + clause → Chọn while.",
+      "explanationVi": "'while + clause' = trong khi. 'during' chỉ đi với danh từ, không đi với mệnh đề 'the seatbelt sign was illuminated'.",
+      "targetChunk": {
+        "phrase": "remain seated while the seatbelt sign was illuminated",
+        "meaningVi": "ngồi yên tại chỗ trong khi đèn cài dây an toàn còn bật sáng"
+      },
+      "skeleton": {
+        "subject": "passengers",
+        "verb": "remain seated",
+        "object": null
+      }
+    },
+    {
+      "id": "time_std_027",
+      "level": "standard",
+      "question": "The audit report must be completed ______ the end of the current fiscal quarter.",
+      "options": {
+        "A": "by",
+        "B": "until",
+        "C": "while",
+        "D": "since"
+      },
+      "correctAnswer": "A",
+      "clue": "Phải hoàn thành \"trước thời điểm cuối quý\" (thời hạn chót hoàn tất): by the end of → Chọn by.",
+      "explanationVi": "'by the end of sth' = trước thời điểm kết thúc cái gì. 'until' diễn tả hành động duy trì liên tục kéo dài, không dùng với động từ hoàn thành dứt điểm 'must be completed'.",
+      "targetChunk": {
+        "phrase": "must be completed by the end of the quarter",
+        "meaningVi": "phải được hoàn tất trước cuối quý"
+      },
+      "skeleton": {
+        "subject": "report",
+        "verb": "must be completed",
+        "object": null
+      }
+    },
+    {
+      "id": "time_std_028",
+      "level": "standard",
+      "question": "The sales staff celebrated ______ the quarterly revenue numbers were announced.",
+      "options": {
+        "A": "as soon as",
+        "B": "during",
+        "C": "until",
+        "D": "between"
+      },
+      "correctAnswer": "A",
+      "clue": "Nhân viên kinh doanh ăn mừng \"ngay khi\" con số doanh thu được công bố → Chọn as soon as.",
+      "explanationVi": "'as soon as + clause' = ngay khi. Cả hai hành động đều ở quá khứ: celebrated as soon as numbers were announced.",
+      "targetChunk": {
+        "phrase": "celebrated as soon as the revenue numbers were announced",
+        "meaningVi": "đã ăn mừng ngay khi các số liệu doanh thu được công bố"
+      },
+      "skeleton": {
+        "subject": "staff",
+        "verb": "celebrated",
+        "object": null
+      }
+    },
+    {
+      "id": "time_std_029",
+      "level": "standard",
+      "question": "Please review the updated employee handbook ______ signing the acknowledgment form.",
+      "options": {
+        "A": "before",
+        "B": "during",
+        "C": "until",
+        "D": "since"
+      },
+      "correctAnswer": "A",
+      "clue": "Xem lại sổ tay nhân viên \"trước khi\" ký vào biên nhận: before + V-ing → Chọn before.",
+      "explanationVi": "'before signing' = trước khi ký xác nhận. Cấu trúc rút gọn mệnh đề trạng từ thời gian.",
+      "targetChunk": {
+        "phrase": "review the handbook before signing the form",
+        "meaningVi": "đọc kỹ sổ tay trước khi ký mẫu xác nhận"
+      },
+      "skeleton": {
+        "subject": "You (implied)",
+        "verb": "review",
+        "object": "handbook"
+      }
+    },
+    {
+      "id": "time_std_030",
+      "level": "standard",
+      "question": "The delivery driver waited outside the warehouse ______ the receiving manager arrived with the keys.",
+      "options": {
+        "A": "until",
+        "B": "by",
+        "C": "during",
+        "D": "while"
+      },
+      "correctAnswer": "A",
+      "clue": "Tài xế đã đứng đợi liên tục bên ngoài \"cho tới khi\" người quản lý tới: waited ... until → Chọn until.",
+      "explanationVi": "'waited ... until' = đứng đợi cho tới khi. Động từ 'wait' biểu thị hành động kéo dài liên tục nên luôn đi với 'until'.",
+      "targetChunk": {
+        "phrase": "waited outside the warehouse until the manager arrived",
+        "meaningVi": "đã đợi bên ngoài kho cho tới khi người quản lý tới"
+      },
+      "skeleton": {
+        "subject": "driver",
+        "verb": "waited",
+        "object": null
+      }
+    },
+    {
+      "id": "time_adv_001",
+      "level": "advanced",
+      "question": "By the time the keynote speaker finishes her opening remarks, the technician ______ the projector.",
+      "options": {
+        "A": "will have calibrated",
+        "B": "calibrated",
+        "C": "calibrates",
+        "D": "has calibrated"
+      },
+      "correctAnswer": "A",
+      "clue": "Bẫy 990 kinh điển: By the time + S + V(hiện tại) → Vế chính chia TƯƠNG LAI HOÀN THÀNH: will have V3/ed.",
+      "explanationVi": "Cấu trúc tương thích thì cốt lõi trong TOEIC: 'By the time + S + V(hiện tại đơn), S + will have + V3/ed' (Vào thời điểm diễn giả nói xong thì kỹ thuật viên sẽ ĐÃ hiệu chuẩn xong máy chiếu).",
+      "targetChunk": {
+        "phrase": "By the time she finishes, the technician will have calibrated",
+        "meaningVi": "vào thời điểm bà ấy kết thúc, kỹ thuật viên sẽ đã hiệu chuẩn xong"
+      },
+      "skeleton": {
+        "subject": "technician",
+        "verb": "will have calibrated",
+        "object": "the projector"
+      }
+    },
+    {
+      "id": "time_adv_002",
+      "level": "advanced",
+      "question": "By the time the emergency response crew reached the factory, the fire ______ by automated sprinklers.",
+      "options": {
+        "A": "had been extinguished",
+        "B": "has been extinguished",
+        "C": "was extinguishing",
+        "D": "would extinguish"
+      },
+      "correctAnswer": "A",
+      "clue": "Bẫy 990: By the time + S + V(quá khứ) → Vế chính chia QUÁ KHỨ HOÀN THÀNH: had been V3/ed.",
+      "explanationVi": "Cấu trúc tương thích thì trong quá khứ: 'By the time + S + V(quá khứ đơn), S + had + V3/ed' (Vào thời điểm đội cứu hộ tới nơi thì đám cháy ĐÃ ĐƯỢC dập tắt trước đó).",
+      "targetChunk": {
+        "phrase": "By the time the crew reached the factory, the fire had been extinguished",
+        "meaningVi": "vào thời điểm đội cứu hộ tới nhà máy, đám cháy đã được dập tắt"
+      },
+      "skeleton": {
+        "subject": "the fire",
+        "verb": "had been extinguished",
+        "object": null
+      }
+    },
+    {
+      "id": "time_adv_003",
+      "level": "advanced",
+      "question": "Hardly had the CEO concluded his address ______ shareholders began raising urgent questions.",
+      "options": {
+        "A": "when",
+        "B": "than",
+        "C": "then",
+        "D": "after"
+      },
+      "correctAnswer": "A",
+      "clue": "Cặp cấu trúc đảo ngữ thời gian: Hardly / Scarcely had + S + V3/ed ... WHEN ... → Chọn when.",
+      "explanationVi": "Cấu trúc cố định cấp độ 990: 'Hardly / Scarcely had S + V3/ed WHEN S + V(quá khứ đơn)' = Vừa mới... thì... (Không dùng 'than' với Hardly; 'than' chỉ đi với 'No sooner').",
+      "targetChunk": {
+        "phrase": "Hardly had the CEO concluded his address when shareholders began",
+        "meaningVi": "vị CEO vừa mới kết thúc bài phát biểu thì các cổ đông đã bắt đầu"
+      },
+      "skeleton": {
+        "subject": "shareholders",
+        "verb": "began raising",
+        "object": "questions"
+      }
+    },
+    {
+      "id": "time_adv_004",
+      "level": "advanced",
+      "question": "No sooner had the promotional coupon been posted online ______ the server crashed from excessive traffic.",
+      "options": {
+        "A": "than",
+        "B": "when",
+        "C": "then",
+        "D": "as"
+      },
+      "correctAnswer": "A",
+      "clue": "Cặp cấu trúc đảo ngữ thời gian: No sooner had + S + V3/ed ... THAN ... → Chọn than.",
+      "explanationVi": "Cấu trúc cố định: 'No sooner had + S + V3/ed THAN + S + V(quá khứ đơn)' = Vừa mới... thì đã... Lưu ý: 'No sooner' luôn đi với 'than', không đi với 'when'.",
+      "targetChunk": {
+        "phrase": "No sooner had the coupon been posted than the server crashed",
+        "meaningVi": "mã giảm giá vừa mới được đăng lên thì máy chủ đã bị sập"
+      },
+      "skeleton": {
+        "subject": "server",
+        "verb": "crashed",
+        "object": null
+      }
+    },
+    {
+      "id": "time_adv_005",
+      "level": "advanced",
+      "question": "______ upon arriving at the airport, international business travelers should proceed to customs.",
+      "options": {
+        "A": "Directly",
+        "B": "Direct",
+        "C": "Direction",
+        "D": "Directed"
+      },
+      "correctAnswer": "A",
+      "clue": "Phó từ bổ nghĩa cho cụm giới từ thời gian: 'Directly upon arriving' (Ngay khi vừa đến) → Chọn Directly.",
+      "explanationVi": "'Directly / Immediately upon + V-ing' = Ngay khi vừa làm gì. 'Directly' là phó từ nhấn mạnh tính tức thời của hành động.",
+      "targetChunk": {
+        "phrase": "Directly upon arriving at the airport",
+        "meaningVi": "ngay lập tức khi vừa tới sân bay"
+      },
+      "skeleton": {
+        "subject": "travelers",
+        "verb": "should proceed to",
+        "object": "customs"
+      }
+    },
+    {
+      "id": "time_adv_006",
+      "level": "advanced",
+      "question": "Not until the independent audit was finalized ______ the board authorize the release of the annual report.",
+      "options": {
+        "A": "did",
+        "B": "was",
+        "C": "has",
+        "D": "had"
+      },
+      "correctAnswer": "A",
+      "clue": "Đảo ngữ với 'Not until...': Not until + clause, TRỢ ĐỘNG TỪ + S + V-bare → Chọn did.",
+      "explanationVi": "Cấu trúc đảo ngữ: 'Not until + clause, DID + S + V-bare'. Động từ chính phía sau là 'authorize' nguyên mẫu nên trợ động từ ở quá khứ phải là 'did'.",
+      "targetChunk": {
+        "phrase": "Not until the audit was finalized did the board authorize",
+        "meaningVi": "mãi cho đến khi cuộc kiểm toán hoàn tất thì ban giám đốc mới phê duyệt"
+      },
+      "skeleton": {
+        "subject": "the board",
+        "verb": "did authorize",
+        "object": "annual report"
+      }
+    },
+    {
+      "id": "time_adv_007",
+      "level": "advanced",
+      "question": "Once ______ by the regional director, the proposed budget will be submitted to the finance ministry.",
+      "options": {
+        "A": "approved",
+        "B": "approving",
+        "C": "approve",
+        "D": "approval"
+      },
+      "correctAnswer": "A",
+      "clue": "Rút gọn mệnh đề thời gian bị động: Once [it is] approved by... → Chọn approved.",
+      "explanationVi": "Cấu trúc rút gọn mệnh đề trạng ngữ ở thể bị động: 'Once + V3/ed' (= Once it has been approved). Ngân sách được phê duyệt (bị động) nên dùng 'approved'.",
+      "targetChunk": {
+        "phrase": "Once approved by the regional director",
+        "meaningVi": "một khi được phê duyệt bởi giám đốc khu vực"
+      },
+      "skeleton": {
+        "subject": "budget",
+        "verb": "will be submitted",
+        "object": null
+      }
+    },
+    {
+      "id": "time_adv_008",
+      "level": "advanced",
+      "question": "The vice president will address the media ______ the trade delegation signs the formal agreement.",
+      "options": {
+        "A": "the moment",
+        "B": "in order that",
+        "C": "so as to",
+        "D": "even though"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm liên từ chỉ thời gian: 'the moment' = ngay khoảnh khắc / ngay khi (the moment + clause) → Chọn the moment.",
+      "explanationVi": "'the moment + clause' hoạt động như một liên từ thời gian tương đương với 'as soon as' (The VP will address the media the moment the delegation signs...).",
+      "targetChunk": {
+        "phrase": "the moment the trade delegation signs the agreement",
+        "meaningVi": "ngay khoảnh khắc phái đoàn thương mại ký thỏa thuận"
+      },
+      "skeleton": {
+        "subject": "vice president",
+        "verb": "will address",
+        "object": "media"
+      }
+    },
+    {
+      "id": "time_adv_009",
+      "level": "advanced",
+      "question": "Production of the hybrid sedan will be suspended ______ the supply chain bottleneck is fully resolved.",
+      "options": {
+        "A": "pending",
+        "B": "during",
+        "C": "throughout",
+        "D": "while"
+      },
+      "correctAnswer": "A",
+      "clue": "Giới từ cao cấp chỉ thời gian/chờ đợi: 'pending' (trong khi chờ đợi / cho đến khi giải quyết xong) → Chọn pending.",
+      "explanationVi": "'pending + N' = trong khi chờ đợi, cho tới khi việc gì hoàn thành (pending the resolution of...). Ở câu này nếu là clause thì 'pending that' hoặc 'until'. Ở đây 'until' không có trong lựa chọn, 'pending' đứng trước cụm danh từ làm giới từ chuẩn mực.",
+      "targetChunk": {
+        "phrase": "suspended pending the resolution of the bottleneck",
+        "meaningVi": "tạm ngưng trong khi chờ giải quyết nút thắt cổ chai"
+      },
+      "skeleton": {
+        "subject": "Production",
+        "verb": "will be suspended",
+        "object": null
+      }
+    },
+    {
+      "id": "time_adv_010",
+      "level": "advanced",
+      "question": "The team will have finished compiling the market research report by ______ the client arrives on Friday.",
+      "options": {
+        "A": "the time",
+        "B": "that time",
+        "C": "which time",
+        "D": "then"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm liên từ: by the time + S + V (vào lúc / trước khi ai đó tới) → Chọn the time.",
+      "explanationVi": "'by the time + clause' = vào lúc mà. Đi kèm với thì tương lai hoàn thành 'will have finished' ở mệnh đề chính.",
+      "targetChunk": {
+        "phrase": "by the time the client arrives on Friday",
+        "meaningVi": "vào thời điểm khách hàng tới vào thứ Sáu"
+      },
+      "skeleton": {
+        "subject": "The team",
+        "verb": "will have finished compiling",
+        "object": "the report"
+      }
+    },
+    {
+      "id": "time_adv_011",
+      "level": "advanced",
+      "question": "______ reviewing the quarterly performance logs, the supervisor detected several billing anomalies.",
+      "options": {
+        "A": "While",
+        "B": "During",
+        "C": "Whereas",
+        "D": "Since"
+      },
+      "correctAnswer": "A",
+      "clue": "Rút gọn mệnh đề thời gian chủ động: 'While [she was] reviewing...' → Chọn While.",
+      "explanationVi": "'While + V-ing' là dạng rút gọn của mệnh đề thời gian khi hai vế có cùng chủ ngữ ('While reviewing...' = trong khi đang xem xét...). 'During' chỉ đi với danh từ, không đi với V-ing có tân ngữ.",
+      "targetChunk": {
+        "phrase": "While reviewing the quarterly performance logs",
+        "meaningVi": "trong khi đang xem lại các nhật ký hiệu suất quý"
+      },
+      "skeleton": {
+        "subject": "supervisor",
+        "verb": "detected",
+        "object": "anomalies"
+      }
+    },
+    {
+      "id": "time_adv_012",
+      "level": "advanced",
+      "question": "The executive committee will not finalize the budget ______ all department forecasts have been verified.",
+      "options": {
+        "A": "until",
+        "B": "by",
+        "C": "during",
+        "D": "while"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc phủ định với thì Hiện tại hoàn thành trong mệnh đề thời gian: will not ... until S + have V3/ed → Chọn until.",
+      "explanationVi": "'will not do sth until + Present Perfect' = sẽ không làm gì cho tới khi một hành động khác đã được xác thực xong hoàn toàn.",
+      "targetChunk": {
+        "phrase": "will not finalize the budget until all forecasts have been verified",
+        "meaningVi": "sẽ không chốt ngân sách cho tới khi tất cả các dự báo được xác thực"
+      },
+      "skeleton": {
+        "subject": "committee",
+        "verb": "will not finalize",
+        "object": "budget"
+      }
+    },
+    {
+      "id": "time_adv_013",
+      "level": "advanced",
+      "question": "Scarcely had the contract been signed ______ the exchange rate fluctuated unpredictably.",
+      "options": {
+        "A": "when",
+        "B": "than",
+        "C": "then",
+        "D": "as"
+      },
+      "correctAnswer": "A",
+      "clue": "Cặp liên từ đảo ngữ: Scarcely had + S + V3/ed ... WHEN ... → Chọn when.",
+      "explanationVi": "'Scarcely had... when...' = Vừa mới... thì... 'Scarcely' tương tự 'Hardly', bắt buộc đi kèm với 'when'.",
+      "targetChunk": {
+        "phrase": "Scarcely had the contract been signed when the rate fluctuated",
+        "meaningVi": "hợp đồng vừa mới được ký thì tỷ giá hối đoái đã biến động"
+      },
+      "skeleton": {
+        "subject": "exchange rate",
+        "verb": "fluctuated",
+        "object": null
+      }
+    },
+    {
+      "id": "time_adv_014",
+      "level": "advanced",
+      "question": "The new encryption protocol will activate ______ the system detects an unauthorized access attempt.",
+      "options": {
+        "A": "the instant",
+        "B": "in order that",
+        "C": "so that",
+        "D": "so as to"
+      },
+      "correctAnswer": "A",
+      "clue": "Liên từ thời gian tức thời: 'the instant' = ngay khoảnh khắc / ngay khi (the instant + clause) → Chọn the instant.",
+      "explanationVi": "'the instant + clause' hoạt động như một liên từ thời gian chỉ sự việc xảy ra ngay lập tức (= as soon as / the moment).",
+      "targetChunk": {
+        "phrase": "activates the instant the system detects unauthorized access",
+        "meaningVi": "kích hoạt ngay khoảnh khắc hệ thống phát hiện hành vi truy cập trái phép"
+      },
+      "skeleton": {
+        "subject": "protocol",
+        "verb": "will activate",
+        "object": null
+      }
+    },
+    {
+      "id": "time_adv_015",
+      "level": "advanced",
+      "question": "By the time the new assembly line becomes operational next month, technicians ______ training.",
+      "options": {
+        "A": "will have completed",
+        "B": "completed",
+        "C": "have completed",
+        "D": "will complete"
+      },
+      "correctAnswer": "A",
+      "clue": "By the time + Hiện tại đơn (becomes operational) → Vế chính chia Tương lai hoàn thành: will have completed.",
+      "explanationVi": "Quy tắc phối hợp thì: 'By the time + S + V(hiện tại đơn), S + will have + V3/ed' biểu thị một hành động sẽ hoàn tất trước một thời điểm/hành động khác trong tương lai.",
+      "targetChunk": {
+        "phrase": "By the time it becomes operational, technicians will have completed training",
+        "meaningVi": "vào thời điểm dây chuyền hoạt động, kỹ thuật viên sẽ đã hoàn tất đào tạo"
+      },
+      "skeleton": {
+        "subject": "technicians",
+        "verb": "will have completed",
+        "object": "training"
+      }
+    },
+    {
+      "id": "time_adv_016",
+      "level": "advanced",
+      "question": "The lead software architect ______ at the technology firm for ten years by this coming December.",
+      "options": {
+        "A": "will have worked",
+        "B": "worked",
+        "C": "has worked",
+        "D": "is working"
+      },
+      "correctAnswer": "A",
+      "clue": "Có dấu hiệu 'by + mốc tương lai' (by this coming December) + khoảng thời gian (for ten years) → Tương lai hoàn thành: will have worked.",
+      "explanationVi": "Cấu trúc: 'by + thời điểm tương lai' kết hợp với 'for + khoảng thời gian' là dấu hiệu nhận biết tuyệt đối của thì Tương lai hoàn thành ('will have worked').",
+      "targetChunk": {
+        "phrase": "will have worked at the firm for ten years by December",
+        "meaningVi": "sẽ đã làm việc tại công ty được 10 năm tính đến tháng 12 tới"
+      },
+      "skeleton": {
+        "subject": "architect",
+        "verb": "will have worked",
+        "object": null
+      }
+    },
+    {
+      "id": "time_adv_017",
+      "level": "advanced",
+      "question": "______ implemented, the automated inventory software will streamline order fulfillment.",
+      "options": {
+        "A": "Once",
+        "B": "During",
+        "C": "Until",
+        "D": "While"
+      },
+      "correctAnswer": "A",
+      "clue": "Rút gọn mệnh đề phân từ bị động: 'Once implemented' (Một khi được triển khai) → Chọn Once.",
+      "explanationVi": "'Once + V-ed' = Một khi được làm gì (dạng rút gọn của Once it is implemented). 'During' không đi với tính từ/phân từ theo cách này.",
+      "targetChunk": {
+        "phrase": "Once implemented, the software will streamline fulfillment",
+        "meaningVi": "một khi được triển khai, phần mềm sẽ tối ưu hóa khâu hoàn tất đơn hàng"
+      },
+      "skeleton": {
+        "subject": "software",
+        "verb": "will streamline",
+        "object": "fulfillment"
+      }
+    },
+    {
+      "id": "time_adv_018",
+      "level": "advanced",
+      "question": "The customer service representative remained on the phone ______ the billing issue was resolved.",
+      "options": {
+        "A": "until such time as",
+        "B": "as much as",
+        "C": "in order that",
+        "D": "so as"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm liên từ pháp lý - thương mại trang trọng: 'until such time as' (= until) → Chọn until such time as.",
+      "explanationVi": "'until such time as + clause' là cấu trúc trang trọng cấp độ 990 tương đương với 'until' (cho đến khi nào mà sự việc xảy ra).",
+      "targetChunk": {
+        "phrase": "remained on the phone until such time as the issue was resolved",
+        "meaningVi": "vẫn giữ máy điện thoại cho tới khi sự cố được giải quyết xong"
+      },
+      "skeleton": {
+        "subject": "representative",
+        "verb": "remained on the phone",
+        "object": null
+      }
+    },
+    {
+      "id": "time_adv_019",
+      "level": "advanced",
+      "question": "The CFO announced that capital expenditures would be frozen ______ further notice.",
+      "options": {
+        "A": "until",
+        "B": "by",
+        "C": "during",
+        "D": "since"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm từ cố định trong thông báo công ty: 'until further notice' (cho đến khi có thông báo mới) → Chọn until.",
+      "explanationVi": "'until further notice' = cho tới khi có thông báo tiếp theo. Đây là collocation giới từ thời gian kinh điển trong TOEIC.",
+      "targetChunk": {
+        "phrase": "frozen until further notice",
+        "meaningVi": "bị đóng băng cho đến khi có thông báo mới"
+      },
+      "skeleton": {
+        "subject": "expenditures",
+        "verb": "would be frozen",
+        "object": null
+      }
+    },
+    {
+      "id": "time_adv_020",
+      "level": "advanced",
+      "question": "Never before ______ our research division witnessed such rapid advancements in artificial intelligence.",
+      "options": {
+        "A": "has",
+        "B": "did",
+        "C": "was",
+        "D": "is"
+      },
+      "correctAnswer": "A",
+      "clue": "Đảo ngữ với cụm từ chỉ thời gian phủ định: Never before + HAS/HAVE + S + V3/ed → Chọn has.",
+      "explanationVi": "'Never before + has + S + witnessed...' = Chưa bao giờ trước đây phòng nghiên cứu lại chứng kiến... Động từ chính là 'witnessed' nên dùng trợ động từ hoàn thành 'has'.",
+      "targetChunk": {
+        "phrase": "Never before has our division witnessed",
+        "meaningVi": "chưa bao giờ trước đây bộ phận của chúng tôi lại chứng kiến"
+      },
+      "skeleton": {
+        "subject": "division",
+        "verb": "has witnessed",
+        "object": "advancements"
+      }
+    },
+    {
+      "id": "time_adv_021",
+      "level": "advanced",
+      "question": "The plant manager walked through the assembly area, ______ potential safety hazards along the way.",
+      "options": {
+        "A": "noting",
+        "B": "noted",
+        "C": "notes",
+        "D": "note"
+      },
+      "correctAnswer": "A",
+      "clue": "Phân từ hiện tại chỉ hành động diễn ra đồng thời cùng lúc với hành động chính (walked... noting...) → Chọn noting.",
+      "explanationVi": "Dùng V-ing (noting = vừa đi vừa ghi chú lại) để diễn tả hành động phụ diễn ra đồng thời với hành động chính 'walked' của cùng một chủ ngữ.",
+      "targetChunk": {
+        "phrase": "walked through the assembly area, noting potential safety hazards",
+        "meaningVi": "đã đi thị sát khu vực lắp ráp, vừa đi vừa ghi nhận các mối nguy an toàn"
+      },
+      "skeleton": {
+        "subject": "manager",
+        "verb": "walked",
+        "object": null
+      }
+    },
+    {
+      "id": "time_adv_022",
+      "level": "advanced",
+      "question": "Immediately ______ receiving the safety violation notice, the facility halted all operations.",
+      "options": {
+        "A": "upon",
+        "B": "at",
+        "C": "in",
+        "D": "for"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ thời gian tức thời: 'Immediately upon + V-ing' (Ngay sau khi...) → Chọn upon.",
+      "explanationVi": "'Immediately upon + V-ing / Noun' = Ngay khi vừa... 'upon receiving' = khi nhận được. 'at', 'in', 'for' không kết hợp với 'immediately ... receiving' theo cách này.",
+      "targetChunk": {
+        "phrase": "Immediately upon receiving the violation notice",
+        "meaningVi": "ngay lập tức khi vừa nhận được thông báo vi phạm"
+      },
+      "skeleton": {
+        "subject": "facility",
+        "verb": "halted",
+        "object": "operations"
+      }
+    },
+    {
+      "id": "time_adv_023",
+      "level": "advanced",
+      "question": "The quarterly audit had scarcely begun ______ investigators discovered substantial bookkeeping errors.",
+      "options": {
+        "A": "when",
+        "B": "than",
+        "C": "then",
+        "D": "as"
+      },
+      "correctAnswer": "A",
+      "clue": "Cặp liên từ: had scarcely + V3/ed ... WHEN ... → Chọn when.",
+      "explanationVi": "'had scarcely begun when investigators discovered...' = Cuộc kiểm toán vừa mới bắt đầu thì các điều tra viên đã phát hiện... Bắt buộc dùng 'when' đi với scarcely.",
+      "targetChunk": {
+        "phrase": "had scarcely begun when investigators discovered errors",
+        "meaningVi": "vừa mới bắt đầu thì các điều tra viên đã phát hiện các sai sót"
+      },
+      "skeleton": {
+        "subject": "investigators",
+        "verb": "discovered",
+        "object": "errors"
+      }
+    },
+    {
+      "id": "time_adv_024",
+      "level": "advanced",
+      "question": "The board will defer announcing the acquisition ______ the regulatory approvals are formally granted.",
+      "options": {
+        "A": "until",
+        "B": "by",
+        "C": "during",
+        "D": "while"
+      },
+      "correctAnswer": "A",
+      "clue": "Trì hoãn cho tới khi các phê duyệt quy định được cấp chính thức: defer ... until → Chọn until.",
+      "explanationVi": "'defer sth until + clause' = hoãn việc gì lại cho tới khi. Động từ defer mang nghĩa kéo dài sự trì hoãn cho đến một thời điểm xác định.",
+      "targetChunk": {
+        "phrase": "defer announcing the acquisition until approvals are granted",
+        "meaningVi": "lùi việc công bố vụ thâu tóm cho tới khi được cấp phép chính thức"
+      },
+      "skeleton": {
+        "subject": "board",
+        "verb": "will defer announcing",
+        "object": "acquisition"
+      }
+    },
+    {
+      "id": "time_adv_025",
+      "level": "advanced",
+      "question": "By next November, the company ______ its clean energy transition ahead of the target date.",
+      "options": {
+        "A": "will have completed",
+        "B": "completed",
+        "C": "is completing",
+        "D": "has completed"
+      },
+      "correctAnswer": "A",
+      "clue": "Có mốc thời gian tương lai: 'By next November' → Thì Tương lai hoàn thành: will have completed.",
+      "explanationVi": "'By + mốc tương lai' là dấu hiệu của Future Perfect ('will have completed'). Hành động chuyển đổi sẽ hoàn tất trước tháng 11 năm sau.",
+      "targetChunk": {
+        "phrase": "By next November, the company will have completed transition",
+        "meaningVi": "tính đến tháng 11 tới, công ty sẽ đã hoàn tất quá trình chuyển đổi"
+      },
+      "skeleton": {
+        "subject": "company",
+        "verb": "will have completed",
+        "object": "transition"
+      }
+    },
+    {
+      "id": "time_adv_026",
+      "level": "advanced",
+      "question": "The executive committee convened an emergency session just ______ the stock market opened.",
+      "options": {
+        "A": "as",
+        "B": "while",
+        "C": "during",
+        "D": "since"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm liên từ: 'just as' = ngay đúng lúc / ngay khi (just as the market opened) → Chọn as.",
+      "explanationVi": "'just as + clause' = ngay đúng thời điểm mà cái gì diễn ra. 'just while' không chuẩn ngữ pháp, 'during' là giới từ.",
+      "targetChunk": {
+        "phrase": "convened an emergency session just as the market opened",
+        "meaningVi": "triệu tập một phiên họp khẩn cấp ngay đúng lúc thị trường chứng khoán mở cửa"
+      },
+      "skeleton": {
+        "subject": "committee",
+        "verb": "convened",
+        "object": "session"
+      }
+    },
+    {
+      "id": "time_adv_027",
+      "level": "advanced",
+      "question": "The senior software engineer had scarcely deployed the patch ______ the system error reoccurred.",
+      "options": {
+        "A": "when",
+        "B": "than",
+        "C": "after",
+        "D": "while"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc tương quan: had scarcely + V3/ed ... WHEN ... → Chọn when.",
+      "explanationVi": "'had scarcely deployed... when...' (vừa mới triển khai bản vá thì lỗi hệ thống tái diễn). Bắt buộc đi với 'when'.",
+      "targetChunk": {
+        "phrase": "had scarcely deployed the patch when error reoccurred",
+        "meaningVi": "vừa mới triển khai bản vá thì lỗi lại tái diễn"
+      },
+      "skeleton": {
+        "subject": "error",
+        "verb": "reoccurred",
+        "object": null
+      }
+    },
+    {
+      "id": "time_adv_028",
+      "level": "advanced",
+      "question": "No sooner had the keynote address concluded ______ attendees rushed to the demonstration booths.",
+      "options": {
+        "A": "than",
+        "B": "when",
+        "C": "then",
+        "D": "after"
+      },
+      "correctAnswer": "A",
+      "clue": "No sooner had + S + V3/ed ... THAN ... → Chọn than.",
+      "explanationVi": "Cấu trúc đảo ngữ: 'No sooner had... THAN...'. Không dùng when hay then sau No sooner.",
+      "targetChunk": {
+        "phrase": "No sooner had the address concluded than attendees rushed",
+        "meaningVi": "bài diễn văn vừa kết thúc thì người tham dự đã ùa tới"
+      },
+      "skeleton": {
+        "subject": "attendees",
+        "verb": "rushed to",
+        "object": "booths"
+      }
+    },
+    {
+      "id": "time_adv_029",
+      "level": "advanced",
+      "question": "The manufacturing plant had been operating at full capacity for months before maintenance ______ .",
+      "options": {
+        "A": "was scheduled",
+        "B": "is scheduled",
+        "C": "will be scheduled",
+        "D": "schedules"
+      },
+      "correctAnswer": "A",
+      "clue": "Mệnh đề trước chia Quá khứ hoàn thành tiếp diễn (had been operating) → Vế sau 'before' chia Quá khứ đơn: was scheduled.",
+      "explanationVi": "Tương thích thì quá khứ: Past Perfect Continuous kết hợp với Past Simple sau 'before' (before maintenance was scheduled).",
+      "targetChunk": {
+        "phrase": "before maintenance was scheduled",
+        "meaningVi": "trước khi công tác bảo trì được lên lịch"
+      },
+      "skeleton": {
+        "subject": "maintenance",
+        "verb": "was scheduled",
+        "object": null
+      }
+    },
+    {
+      "id": "time_adv_030",
+      "level": "advanced",
+      "question": "By the time the annual shareholder meeting adjourns, all executive resolutions ______ .",
+      "options": {
+        "A": "will have been ratified",
+        "B": "were ratified",
+        "C": "have ratified",
+        "D": "are ratifying"
+      },
+      "correctAnswer": "A",
+      "clue": "By the time + Hiện tại đơn (adjourns) → Vế chính chia Tương lai hoàn thành ở thể BỊ ĐỘNG: will have been ratified.",
+      "explanationVi": "Cấu trúc: 'By the time + S + V(hiện tại đơn), S + will have been + V3/ed' (Vào thời điểm cuộc họp bế mạc thì tất cả các nghị quyết sẽ ĐÃ ĐƯỢC thông qua). 'resolutions' chịu tác động nên dùng dạng bị động.",
+      "targetChunk": {
+        "phrase": "By the time the meeting adjourns, resolutions will have been ratified",
+        "meaningVi": "vào thời điểm cuộc họp bế mạc, các nghị quyết sẽ đã được phê chuẩn"
+      },
+      "skeleton": {
+        "subject": "resolutions",
+        "verb": "will have been ratified",
+        "object": null
+      }
+    }
+  ]
+}

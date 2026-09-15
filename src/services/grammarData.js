@@ -95,6 +95,7 @@ export const TOPICS_CATALOG = [
   },
   {
     id: 'conjunctions',
+    aliases: ['conjunctions_transitions'],
     topicNumber: 6,
     nameVi: 'Liên từ & Từ nối (Conjunctions)',
     nameEn: 'Conjunctions & Connectors',
@@ -107,13 +108,14 @@ export const TOPICS_CATALOG = [
   // ── Nhóm 2: Động từ & Thời thì (7 - 12) ──
   {
     id: 'tenses_basic',
+    aliases: ['verbs_tenses'],
     topicNumber: 7,
-    nameVi: 'Thì Động từ Cơ bản (Basic Tenses)',
-    nameEn: 'Present, Past & Future Tenses',
+    nameVi: 'Thì Động từ (Verb Tenses)',
+    nameEn: 'Present, Past, Future & Perfect Tenses',
     category: 'verbs_tenses',
     icon: 'Clock',
-    description: 'Hiện tại đơn, Quá khứ đơn, Tương lai đơn. Dấu hiệu nhận biết thời gian trong TOEIC.',
-    tips: 'Tìm manh mối thời gian: recently, yesterday, tomorrow, next week, regularly.',
+    description: 'Các thì hiện tại, quá khứ, tương lai và hoàn thành. Dấu hiệu nhận biết thời gian trong TOEIC.',
+    tips: 'Tìm manh mối thời gian: recently, yesterday, tomorrow, next week, regularly, since, for.',
   },
   {
     id: 'tenses_advanced',
@@ -147,19 +149,21 @@ export const TOPICS_CATALOG = [
   },
   {
     id: 'modal_verbs',
+    aliases: ['modals_causatives', 'modals'],
     topicNumber: 11,
-    nameVi: 'Động từ Khuyết thiếu (Modals)',
-    nameEn: 'Modal Verbs & Semi-Modals',
+    nameVi: 'Động từ Khuyết thiếu & Sai khiến',
+    nameEn: 'Modal Verbs & Causatives',
     category: 'verbs_tenses',
     icon: 'Sliders',
-    description: 'Can, could, may, might, must, should, would. Sau modal verb luôn đi kèm Động từ nguyên mẫu V-bare.',
-    tips: 'Modal + have + V3/ed diễn tả dự đoán hoặc hối tiếc trong quá khứ.',
+    description: 'Can, could, may, might, must, should, would, và cấu trúc nhờ vả have/get/make sb do sth.',
+    tips: 'Sau modal verb đi kèm V-bare; have sb do sth vs have sth done (bị động).',
   },
   {
     id: 'gerunds_infinitives',
+    aliases: ['to_v_gerund'],
     topicNumber: 12,
     nameVi: 'Danh động từ & Động từ nguyên mẫu',
-    nameEn: 'Gerunds (V-ing) vs Infinitives (To-V)',
+    nameEn: 'To-V vs V-ing (Gerunds & Infinitives)',
     category: 'verbs_tenses',
     icon: 'Repeat',
     description: 'Các động từ chỉ đi với V-ing (postpone, consider, avoid) vs To-V (decide, plan, hope, aim).',
@@ -319,7 +323,15 @@ Object.entries(rawJsonModules).forEach(([filePath, moduleExports]) => {
  */
 export function getAllGrammarTopics() {
   return TOPICS_CATALOG.map(catalogTopic => {
-    const fileData = loadedGrammarData[catalogTopic.id];
+    let fileData = loadedGrammarData[catalogTopic.id];
+    if (!fileData && catalogTopic.aliases) {
+      for (const alias of catalogTopic.aliases) {
+        if (loadedGrammarData[alias]) {
+          fileData = loadedGrammarData[alias];
+          break;
+        }
+      }
+    }
 
     if (fileData && Array.isArray(fileData.questions) && fileData.questions.length > 0) {
       const questions = fileData.questions;
@@ -359,7 +371,7 @@ export function getAllGrammarTopics() {
  */
 export function getGrammarTopicById(topicId) {
   const allTopics = getAllGrammarTopics();
-  return allTopics.find(t => t.id === topicId) || null;
+  return allTopics.find(t => t.id === topicId || (t.aliases && t.aliases.includes(topicId))) || null;
 }
 
 /**

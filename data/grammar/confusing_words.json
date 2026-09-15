@@ -1,0 +1,1389 @@
+{
+  "topicId": "confusing_words",
+  "titleVi": "Cặp từ Dễ nhầm lẫn TOEIC",
+  "totalQuestions": 60,
+  "standardCount": 30,
+  "advancedCount": 30,
+  "questions": [
+    {
+      "id": "conf_std_001",
+      "level": "standard",
+      "question": "The management board decided to ______ the minimum wage for all entry-level workers.",
+      "options": {
+        "A": "rise",
+        "B": "raise",
+        "C": "arise",
+        "D": "rising"
+      },
+      "correctAnswer": "B",
+      "clue": "Phía sau có tân ngữ danh từ \"the minimum wage\" → Cần ngoại động từ: raise.",
+      "explanationVi": "'raise' là ngoại động từ mang nghĩa 'nâng lên, tăng lên' và bắt buộc có tân ngữ phía sau (raise the minimum wage). Ngược lại, 'rise' và 'arise' là nội động từ, không bao giờ có tân ngữ trực tiếp.",
+      "targetChunk": {
+        "phrase": "raise the minimum wage",
+        "meaningVi": "nâng mức lương tối thiểu"
+      },
+      "skeleton": {
+        "subject": "The management board",
+        "verb": "decided to raise",
+        "object": "the minimum wage"
+      }
+    },
+    {
+      "id": "conf_std_002",
+      "level": "standard",
+      "question": "Fuel prices are expected to ______ sharply due to rising global demand.",
+      "options": {
+        "A": "raise",
+        "B": "rise",
+        "C": "raising",
+        "D": "raised"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau chỗ trống là trạng từ \"sharply\", không có tân ngữ danh từ → Cần nội động từ: rise.",
+      "explanationVi": "'rise' là nội động từ (tự tăng lên), không có tân ngữ theo sau (Fuel prices rise sharply = giá nhiên liệu tăng mạnh). 'raise' cần tân ngữ.",
+      "targetChunk": {
+        "phrase": "are expected to rise sharply",
+        "meaningVi": "được dự kiến sẽ tăng mạnh"
+      },
+      "skeleton": {
+        "subject": "Fuel prices",
+        "verb": "are expected to rise",
+        "object": null
+      }
+    },
+    {
+      "id": "conf_std_003",
+      "level": "standard",
+      "question": "Please ______ human resources if your residential address or phone number changes.",
+      "options": {
+        "A": "announce",
+        "B": "notify",
+        "C": "declare",
+        "D": "state"
+      },
+      "correctAnswer": "B",
+      "clue": "Phía sau là tân ngữ CHỈ NGƯỜI / BỘ PHẬN \"human resources\" → notify someone.",
+      "explanationVi": "'notify / inform sb (of sth)' = thông báo cho AI ĐÓ. Các động từ 'announce', 'declare', 'state' mang nghĩa thông báo SỰ VIỆC, phải đi kèm tân ngữ chỉ sự việc (announce a policy) chứ không đi trực tiếp với tân ngữ chỉ người.",
+      "targetChunk": {
+        "phrase": "notify human resources",
+        "meaningVi": "thông báo cho phòng nhân sự"
+      },
+      "skeleton": {
+        "subject": "You (implied)",
+        "verb": "notify",
+        "object": "human resources"
+      }
+    },
+    {
+      "id": "conf_std_004",
+      "level": "standard",
+      "question": "The CEO will ______ the corporate restructuring plan at the press conference tomorrow.",
+      "options": {
+        "A": "inform",
+        "B": "notify",
+        "C": "announce",
+        "D": "advise"
+      },
+      "correctAnswer": "C",
+      "clue": "Phía sau là tân ngữ CHỈ SỰ VIỆC \"the restructuring plan\" → announce something.",
+      "explanationVi": "'announce sth' = công bố điều gì. 'inform / notify / advise' thường đi với tân ngữ chỉ người (inform someone).",
+      "targetChunk": {
+        "phrase": "announce the corporate restructuring plan",
+        "meaningVi": "công bố kế hoạch tái cơ cấu doanh nghiệp"
+      },
+      "skeleton": {
+        "subject": "The CEO",
+        "verb": "will announce",
+        "object": "the restructuring plan"
+      }
+    },
+    {
+      "id": "conf_std_005",
+      "level": "standard",
+      "question": "Investing in automated machinery proved to be an ______ decision for the factory.",
+      "options": {
+        "A": "economic",
+        "B": "economical",
+        "C": "economics",
+        "D": "economize"
+      },
+      "correctAnswer": "B",
+      "clue": "Quyết định giúp \"tiết kiệm chi phí, sinh lời tốt\" → Chọn economical.",
+      "explanationVi": "'economical' = tiết kiệm, kinh tế (chi phí thấp, hiệu quả). 'economic' = thuộc về nền kinh tế vĩ mô (economic growth, economic crisis). Ở đây quyết định đầu tư giúp tiết kiệm chi phí nên dùng 'economical decision'.",
+      "targetChunk": {
+        "phrase": "an economical decision for the factory",
+        "meaningVi": "một quyết định tiết kiệm chi phí cho nhà máy"
+      },
+      "skeleton": {
+        "subject": "Investing",
+        "verb": "proved to be",
+        "object": "an economical decision"
+      }
+    },
+    {
+      "id": "conf_std_006",
+      "level": "standard",
+      "question": "The recent decrease in interest rates has stimulated national ______ growth.",
+      "options": {
+        "A": "economical",
+        "B": "economic",
+        "C": "economize",
+        "D": "economy"
+      },
+      "correctAnswer": "B",
+      "clue": "Tăng trưởng kinh tế của quốc gia → Cụm từ: economic growth.",
+      "explanationVi": "'economic growth' = sự tăng trưởng kinh tế (economic = thuộc về nền kinh tế). 'economical' có nghĩa là tiết kiệm.",
+      "targetChunk": {
+        "phrase": "national economic growth",
+        "meaningVi": "tăng trưởng kinh tế quốc gia"
+      },
+      "skeleton": {
+        "subject": "decrease",
+        "verb": "has stimulated",
+        "object": "economic growth"
+      }
+    },
+    {
+      "id": "conf_std_007",
+      "level": "standard",
+      "question": "The financial advisor gave us valuable ______ on how to diversify our investment portfolio.",
+      "options": {
+        "A": "advise",
+        "B": "advice",
+        "C": "advises",
+        "D": "advising"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau tính từ \"valuable\" cần một danh từ không đếm được → Chọn advice.",
+      "explanationVi": "'advice' (đuôi -ce) là DANH TỪ không đếm được (lời khuyên). 'advise' (đuôi -se) là ĐỘNG TỪ (khuyên bảo).",
+      "targetChunk": {
+        "phrase": "valuable advice on how to",
+        "meaningVi": "lời khuyên quý báu về cách thức"
+      },
+      "skeleton": {
+        "subject": "The financial advisor",
+        "verb": "gave",
+        "object": "valuable advice"
+      }
+    },
+    {
+      "id": "conf_std_008",
+      "level": "standard",
+      "question": "We strongly ______ all department managers to review the revised safety protocols.",
+      "options": {
+        "A": "advice",
+        "B": "advise",
+        "C": "advisable",
+        "D": "advisory"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau phó từ \"strongly\" cần động từ chính của câu → Chọn advise (sb to do sth).",
+      "explanationVi": "'advise sb to do sth' (khuyên ai làm gì) là động từ chính theo sau chủ ngữ 'We' và trạng từ 'strongly'. 'advice' là danh từ.",
+      "targetChunk": {
+        "phrase": "strongly advise all department managers",
+        "meaningVi": "khuyến nghị mạnh mẽ tất cả trưởng bộ phận"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "advise",
+        "object": "all department managers"
+      }
+    },
+    {
+      "id": "conf_std_009",
+      "level": "standard",
+      "question": "The new tax policy will directly ______ international shipping operations.",
+      "options": {
+        "A": "effect",
+        "B": "affect",
+        "C": "effective",
+        "D": "affection"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau trợ động từ khuyết thiếu \"will\" và phó từ \"directly\" cần một động từ nguyên thể → Chọn affect.",
+      "explanationVi": "'affect' (bắt đầu bằng A) là ĐỘNG TỪ mang nghĩa 'ảnh hưởng đến, tác động đến'. 'effect' (bắt đầu bằng E) là DANH TỪ mang nghĩa 'tác động, hiệu ứng, hiệu lực'.",
+      "targetChunk": {
+        "phrase": "directly affect international shipping operations",
+        "meaningVi": "ảnh hưởng trực tiếp đến các hoạt động vận chuyển quốc tế"
+      },
+      "skeleton": {
+        "subject": "The tax policy",
+        "verb": "will affect",
+        "object": "shipping operations"
+      }
+    },
+    {
+      "id": "conf_std_010",
+      "level": "standard",
+      "question": "The marketing campaign had an immediate ______ on customer engagement levels.",
+      "options": {
+        "A": "affect",
+        "B": "effect",
+        "C": "affecting",
+        "D": "effectual"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau mạo từ và tính từ \"an immediate\" cần một danh từ: have an effect on.",
+      "explanationVi": "Cụm danh từ cố định: 'have an effect on sth' = có tác động/ảnh hưởng tới cái gì. 'effect' là danh từ, còn 'affect' là động từ.",
+      "targetChunk": {
+        "phrase": "had an immediate effect on",
+        "meaningVi": "đã tạo ra tác động ngay lập tức đối với"
+      },
+      "skeleton": {
+        "subject": "The marketing campaign",
+        "verb": "had",
+        "object": "an immediate effect"
+      }
+    },
+    {
+      "id": "conf_std_011",
+      "level": "standard",
+      "question": "All employees are required to keep confidential files in a secure location to ______ privacy.",
+      "options": {
+        "A": "assure",
+        "B": "ensure",
+        "C": "insure",
+        "D": "assurance"
+      },
+      "correctAnswer": "B",
+      "clue": "Mang nghĩa \"đảm bảo rằng một việc gì đó xảy ra / chắc chắn\" → Chọn ensure.",
+      "explanationVi": "'ensure' = đảm bảo, làm cho chắc chắn xảy ra (ensure privacy = đảm bảo tính riêng tư). 'assure' = cam đoan, trấn an AI ĐÓ (assure sb that...). 'insure' = mua bảo hiểm.",
+      "targetChunk": {
+        "phrase": "to ensure privacy",
+        "meaningVi": "nhằm đảm bảo quyền riêng tư"
+      },
+      "skeleton": {
+        "subject": "All employees",
+        "verb": "are required to keep",
+        "object": "confidential files"
+      }
+    },
+    {
+      "id": "conf_std_012",
+      "level": "standard",
+      "question": "The account manager ______ the client that the project would be delivered on time.",
+      "options": {
+        "A": "ensured",
+        "B": "assured",
+        "C": "insured",
+        "D": "sure"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc \"______ sb that...\" (trấn an / cam đoan với ai) → Chọn assured.",
+      "explanationVi": "'assure sb that...' (cam đoan với ai rằng...) là cấu trúc bắt buộc có tân ngữ chỉ người ('the client'). 'ensure' không đi với 'sb that' theo cách này.",
+      "targetChunk": {
+        "phrase": "assured the client that",
+        "meaningVi": "đã cam đoan với khách hàng rằng"
+      },
+      "skeleton": {
+        "subject": "The account manager",
+        "verb": "assured",
+        "object": "the client"
+      }
+    },
+    {
+      "id": "conf_std_013",
+      "level": "standard",
+      "question": "All company vehicles are fully ______ against theft and accidental damage.",
+      "options": {
+        "A": "assured",
+        "B": "ensured",
+        "C": "insured",
+        "D": "insuring"
+      },
+      "correctAnswer": "C",
+      "clue": "Bảo hiểm xe cộ chống mất cắp và tai nạn: be insured against.",
+      "explanationVi": "'insure against' = được mua bảo hiểm bồi thường trước rủi ro. 'assure' là cam đoan; 'ensure' là đảm bảo chắc chắn.",
+      "targetChunk": {
+        "phrase": "fully insured against theft",
+        "meaningVi": "được bảo hiểm toàn diện trước việc mất cắp"
+      },
+      "skeleton": {
+        "subject": "vehicles",
+        "verb": "are insured",
+        "object": null
+      }
+    },
+    {
+      "id": "conf_std_014",
+      "level": "standard",
+      "question": "The human resources director handles all ______ matters with the utmost discretion.",
+      "options": {
+        "A": "personnel",
+        "B": "personal",
+        "C": "personality",
+        "D": "personally"
+      },
+      "correctAnswer": "B",
+      "clue": "Các vấn đề cá nhân / riêng tư của nhân viên → Chọn personal matters.",
+      "explanationVi": "'personal' (tính từ) = thuộc về cá nhân, riêng tư (personal matters). 'personnel' (danh từ) = lực lượng nhân sự, nhân viên trong công ty (personnel department).",
+      "targetChunk": {
+        "phrase": "handles all personal matters with",
+        "meaningVi": "xử lý tất cả vấn đề riêng tư của cá nhân với"
+      },
+      "skeleton": {
+        "subject": "The director",
+        "verb": "handles",
+        "object": "all personal matters"
+      }
+    },
+    {
+      "id": "conf_std_015",
+      "level": "standard",
+      "question": "All authorized ______ must wear their security badges at all times inside the facility.",
+      "options": {
+        "A": "personal",
+        "B": "personnel",
+        "C": "personally",
+        "D": "personality"
+      },
+      "correctAnswer": "B",
+      "clue": "Toàn bộ nhân sự được cấp phép: authorized personnel.",
+      "explanationVi": "'personnel' là danh từ tập hợp mang nghĩa 'toàn bộ nhân viên, cán bộ' (authorized personnel = nhân viên được ủy quyền). 'personal' là tính từ.",
+      "targetChunk": {
+        "phrase": "All authorized personnel must wear",
+        "meaningVi": "tất cả nhân viên được cấp thẩm quyền phải đeo"
+      },
+      "skeleton": {
+        "subject": "All authorized personnel",
+        "verb": "must wear",
+        "object": "their security badges"
+      }
+    },
+    {
+      "id": "conf_std_016",
+      "level": "standard",
+      "question": "Due to severe traffic congestion, you risk ______ your scheduled flight.",
+      "options": {
+        "A": "loose",
+        "B": "losing",
+        "C": "loss",
+        "D": "loosely"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc \"risk doing sth\" (có nguy cơ bị mất / lỡ) → Chọn losing (động từ lose).",
+      "explanationVi": "'lose' (động từ, dạng V-ing: losing) = làm mất, bỏ lỡ (lose a flight). 'loose' (tính từ) = lỏng lẻo, rộng thùng thình. 'loss' (danh từ) = sự mất mát.",
+      "targetChunk": {
+        "phrase": "risk losing your scheduled flight",
+        "meaningVi": "có nguy cơ bị lỡ chuyến bay đã đặt"
+      },
+      "skeleton": {
+        "subject": "you",
+        "verb": "risk losing",
+        "object": "your scheduled flight"
+      }
+    },
+    {
+      "id": "conf_std_017",
+      "level": "standard",
+      "question": "The technician tightened several ______ screws on the conveyor belt casing.",
+      "options": {
+        "A": "lose",
+        "B": "loose",
+        "C": "loss",
+        "D": "lost"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ \"screws\" (những con ốc vít) cần tính từ mang nghĩa \"bị lỏng\" → Chọn loose.",
+      "explanationVi": "'loose' là tính từ có nghĩa là 'lỏng lẻo, không chặt' (loose screws = các con ốc bị lỏng). 'lose' là động từ (đánh mất), 'loss' là danh từ.",
+      "targetChunk": {
+        "phrase": "tightened several loose screws",
+        "meaningVi": "siết chặt một số con ốc bị lỏng"
+      },
+      "skeleton": {
+        "subject": "The technician",
+        "verb": "tightened",
+        "object": "several loose screws"
+      }
+    },
+    {
+      "id": "conf_std_018",
+      "level": "standard",
+      "question": "The quarterly financial report indicated a substantial net ______ for the manufacturing division.",
+      "options": {
+        "A": "lose",
+        "B": "loose",
+        "C": "loss",
+        "D": "loosely"
+      },
+      "correctAnswer": "C",
+      "clue": "Cụm thuật ngữ tài chính: \"net loss\" (khoản lỗ ròng) → Cần danh từ: loss.",
+      "explanationVi": "'net loss' = khoản lỗ ròng (đối ứng với net profit = lợi nhuận ròng). 'loss' là danh từ, trong khi 'lose' là động từ và 'loose' là tính từ.",
+      "targetChunk": {
+        "phrase": "a substantial net loss for",
+        "meaningVi": "khoản lỗ ròng đáng kể đối với"
+      },
+      "skeleton": {
+        "subject": "report",
+        "verb": "indicated",
+        "object": "a substantial net loss"
+      }
+    },
+    {
+      "id": "conf_std_019",
+      "level": "standard",
+      "question": "The applicant was ______ to accept the contract offer once the salary was adjusted.",
+      "options": {
+        "A": "eager",
+        "B": "anxious",
+        "C": "anxiously",
+        "D": "eagerness"
+      },
+      "correctAnswer": "A",
+      "clue": "Háo hức, sốt sắng đón nhận lời mời làm việc: eager to do sth.",
+      "explanationVi": "'eager to do sth' = hào hứng, nóng lòng làm điều gì tích cực. 'anxious to do sth' mang sắc thái lo âu, bồn chồn, sốt ruột trước tình huống căng thẳng.",
+      "targetChunk": {
+        "phrase": "eager to accept the contract offer",
+        "meaningVi": "rất hào hứng nhận lời mời ký hợp đồng"
+      },
+      "skeleton": {
+        "subject": "The applicant",
+        "verb": "was eager to accept",
+        "object": "the contract offer"
+      }
+    },
+    {
+      "id": "conf_std_020",
+      "level": "standard",
+      "question": "Only authorized administrators may have ______ to confidential patient records.",
+      "options": {
+        "A": "assess",
+        "B": "access",
+        "C": "excess",
+        "D": "accessible"
+      },
+      "correctAnswer": "B",
+      "clue": "Cụm từ quen thuộc: \"have access to\" (có quyền truy cập vào) → Chọn access.",
+      "explanationVi": "'have access to sth' = có quyền truy cập vào cái gì ('access' là danh từ). 'assess' là động từ (đánh giá, thẩm định); 'excess' là danh từ (sự vượt mức, quá độ).",
+      "targetChunk": {
+        "phrase": "have access to confidential patient records",
+        "meaningVi": "có quyền truy cập vào hồ sơ bảo mật của bệnh nhân"
+      },
+      "skeleton": {
+        "subject": "administrators",
+        "verb": "may have",
+        "object": "access"
+      }
+    },
+    {
+      "id": "conf_std_021",
+      "level": "standard",
+      "question": "Independent auditors will visit next Monday to ______ the facility's safety measures.",
+      "options": {
+        "A": "access",
+        "B": "assess",
+        "C": "excess",
+        "D": "assessment"
+      },
+      "correctAnswer": "B",
+      "clue": "Đến để \"đánh giá, thẩm định\" các biện pháp an toàn: to assess.",
+      "explanationVi": "'assess' (động từ) = đánh giá, kiểm định, xem xét chất lượng. 'access' (động từ/danh từ) = truy cập. Ngữ cảnh kiểm toán viên đến cơ sở để kiểm tra đánh giá nên chọn 'assess'.",
+      "targetChunk": {
+        "phrase": "to assess the safety measures",
+        "meaningVi": "để đánh giá các biện pháp an toàn"
+      },
+      "skeleton": {
+        "subject": "auditors",
+        "verb": "will visit to assess",
+        "object": "safety measures"
+      }
+    },
+    {
+      "id": "conf_std_022",
+      "level": "standard",
+      "question": "The committee was pleased to ______ the revised grant proposal from the university.",
+      "options": {
+        "A": "accept",
+        "B": "except",
+        "C": "excerpt",
+        "D": "exception"
+      },
+      "correctAnswer": "A",
+      "clue": "Hài lòng \"chấp nhận / tiếp nhận\" đề xuất xin tài trợ: to accept.",
+      "explanationVi": "'accept' (động từ) = tiếp nhận, chấp nhận. 'except' là giới từ/liên từ (ngoại trừ); 'excerpt' là đoạn trích.",
+      "targetChunk": {
+        "phrase": "pleased to accept the revised grant proposal",
+        "meaningVi": "hài lòng chấp thuận đề xuất tài trợ đã chỉnh sửa"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "was pleased to accept",
+        "object": "the grant proposal"
+      }
+    },
+    {
+      "id": "conf_std_023",
+      "level": "standard",
+      "question": "All employees ______ those working in customer support are entitled to flexible hours.",
+      "options": {
+        "A": "accept",
+        "B": "except",
+        "C": "access",
+        "D": "accepting"
+      },
+      "correctAnswer": "B",
+      "clue": "Tất cả nhân viên \"ngoại trừ\" những người làm hỗ trợ khách hàng → Chọn except.",
+      "explanationVi": "'except' là giới từ mang nghĩa 'ngoại trừ' (All employees except those...). 'accept' là động từ.",
+      "targetChunk": {
+        "phrase": "All employees except those working in",
+        "meaningVi": "tất cả nhân viên ngoại trừ những ai làm tại"
+      },
+      "skeleton": {
+        "subject": "All employees except those",
+        "verb": "are entitled to",
+        "object": "flexible hours"
+      }
+    },
+    {
+      "id": "conf_std_024",
+      "level": "standard",
+      "question": "The new graphic designer received numerous ______ on her innovative logo concept.",
+      "options": {
+        "A": "complements",
+        "B": "compliments",
+        "C": "complimentary",
+        "D": "complementary"
+      },
+      "correctAnswer": "B",
+      "clue": "Nhận được nhiều \"lời khen ngợi\" từ mọi người → Chọn compliments (chữ i).",
+      "explanationVi": "'compliment' (với chữ 'i') = lời khen ngợi (pay/receive a compliment). 'complement' (với chữ 'e') = phần bổ sung, bổ trợ hoàn thiện lẫn nhau.",
+      "targetChunk": {
+        "phrase": "received numerous compliments on",
+        "meaningVi": "nhận được vô số lời khen ngợi về"
+      },
+      "skeleton": {
+        "subject": "designer",
+        "verb": "received",
+        "object": "numerous compliments"
+      }
+    },
+    {
+      "id": "conf_std_025",
+      "level": "standard",
+      "question": "The wine selection was chosen to ______ the exquisite five-course dinner menu.",
+      "options": {
+        "A": "compliment",
+        "B": "complement",
+        "C": "complimentary",
+        "D": "complemented"
+      },
+      "correctAnswer": "B",
+      "clue": "Rượu vang được chọn để \"kết hợp hài hòa, bổ sung tôn vị\" cho thực đơn: to complement (chữ e).",
+      "explanationVi": "'complement' (chữ 'e') = bổ trợ, làm cho hoàn hảo hơn khi kết hợp cùng (complement the dinner menu). 'compliment' (chữ 'i') = khen ngợi.",
+      "targetChunk": {
+        "phrase": "chosen to complement the exquisite menu",
+        "meaningVi": "được chọn để kết hợp hoàn hảo với thực đơn tinh tế"
+      },
+      "skeleton": {
+        "subject": "The wine selection",
+        "verb": "was chosen to complement",
+        "object": "the menu"
+      }
+    },
+    {
+      "id": "conf_std_026",
+      "level": "standard",
+      "question": "Our legal department will provide professional ______ regarding the patent application.",
+      "options": {
+        "A": "council",
+        "B": "counsel",
+        "C": "counselor",
+        "D": "councils"
+      },
+      "correctAnswer": "B",
+      "clue": "Bộ phận pháp lý cung cấp \"lời khuyên, sự tư vấn pháp lý\" → Chọn counsel.",
+      "explanationVi": "'counsel' (danh từ không đếm được) = lời tư vấn, cố vấn pháp lý (legal counsel). 'council' (danh từ đếm được) = hội đồng (city council, advisory council).",
+      "targetChunk": {
+        "phrase": "provide professional counsel regarding",
+        "meaningVi": "cung cấp sự tư vấn chuyên nghiệp liên quan đến"
+      },
+      "skeleton": {
+        "subject": "department",
+        "verb": "will provide",
+        "object": "professional counsel"
+      }
+    },
+    {
+      "id": "conf_std_027",
+      "level": "standard",
+      "question": "The city ______ voted in favor of approving the downtown development plan.",
+      "options": {
+        "A": "counsel",
+        "B": "council",
+        "C": "counseling",
+        "D": "counseled"
+      },
+      "correctAnswer": "B",
+      "clue": "\"Hội đồng\" thành phố đã bỏ phiếu thông qua: city council.",
+      "explanationVi": "'city council' = hội đồng thành phố (nhóm người đại diện cơ quan điều hành). 'counsel' là sự tư vấn hoặc luật sư cố vấn.",
+      "targetChunk": {
+        "phrase": "The city council voted in favor of",
+        "meaningVi": "hội đồng thành phố đã bỏ phiếu thuận cho"
+      },
+      "skeleton": {
+        "subject": "The city council",
+        "verb": "voted",
+        "object": null
+      }
+    },
+    {
+      "id": "conf_std_028",
+      "level": "standard",
+      "question": "The CEO was ______ that the company would achieve profitability by the fourth quarter.",
+      "options": {
+        "A": "confidential",
+        "B": "confident",
+        "C": "confide",
+        "D": "confidently"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau \"was\" mô tả tâm lý cảm xúc của vị CEO \"tin tưởng, tự tin\" → Chọn confident.",
+      "explanationVi": "'confident' (tính từ) = tự tin, chắc chắn, tin tưởng (confident that...). 'confidential' (tính từ) = bảo mật, tuyệt mật (confidential document).",
+      "targetChunk": {
+        "phrase": "was confident that the company would",
+        "meaningVi": "đã tự tin rằng công ty sẽ"
+      },
+      "skeleton": {
+        "subject": "The CEO",
+        "verb": "was confident",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "conf_std_029",
+      "level": "standard",
+      "question": "The salary information in this folder is strictly ______ and must not be shared.",
+      "options": {
+        "A": "confident",
+        "B": "confidential",
+        "C": "confidently",
+        "D": "confidence"
+      },
+      "correctAnswer": "B",
+      "clue": "Thông tin tiền lương phải \"bảo mật\" tuyệt đối: strictly confidential.",
+      "explanationVi": "'strictly confidential' = tuyệt đối bảo mật. 'confidential' dùng cho tài liệu, thông tin bí mật. 'confident' chỉ cảm xúc tự tin của con người.",
+      "targetChunk": {
+        "phrase": "is strictly confidential and must not",
+        "meaningVi": "tuyệt đối bảo mật và không được phép"
+      },
+      "skeleton": {
+        "subject": "The salary information",
+        "verb": "is",
+        "object": "strictly confidential"
+      }
+    },
+    {
+      "id": "conf_std_030",
+      "level": "standard",
+      "question": "We need to order additional office ______ such as envelopes and printer cartridges.",
+      "options": {
+        "A": "stationary",
+        "B": "stationery",
+        "C": "station",
+        "D": "stationer"
+      },
+      "correctAnswer": "B",
+      "clue": "Văn phòng phẩm (phong bì, mực in) → Cần chữ \"e\": stationery.",
+      "explanationVi": "'stationery' (đuôi -ery có chữ 'e') = văn phòng phẩm (giấy, bút, phong bì). 'stationary' (đuôi -ary có chữ 'a') = đứng yên, không dịch chuyển (stationary bike). Mẹo nhớ: 'e' for envelope (phong bì) → stationery.",
+      "targetChunk": {
+        "phrase": "order additional office stationery",
+        "meaningVi": "đặt thêm văn phòng phẩm"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "need to order",
+        "object": "additional office stationery"
+      }
+    },
+    {
+      "id": "conf_adv_001",
+      "level": "advanced",
+      "question": "The research team made ______ progress on the battery efficiency project this month.",
+      "options": {
+        "A": "considerate",
+        "B": "considerable",
+        "C": "considerably",
+        "D": "consideration"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ \"progress\" mang nghĩa \"đáng kể, to lớn\" → Chọn considerable.",
+      "explanationVi": "'considerable' = đáng kể, to lớn (considerable progress/effort/amount). 'considerate' = chu đáo, biết quan tâm đến người khác (a considerate host).",
+      "targetChunk": {
+        "phrase": "made considerable progress on",
+        "meaningVi": "đạt được tiến bộ đáng kể về"
+      },
+      "skeleton": {
+        "subject": "The research team",
+        "verb": "made",
+        "object": "considerable progress"
+      }
+    },
+    {
+      "id": "conf_adv_002",
+      "level": "advanced",
+      "question": "It was very ______ of the project manager to offer the team comp time after the product launch.",
+      "options": {
+        "A": "considerable",
+        "B": "considerate",
+        "C": "considerately",
+        "D": "considering"
+      },
+      "correctAnswer": "B",
+      "clue": "Khen ngợi tính cách của người quản lý \"chu đáo, biết nghĩ cho người khác\" → Chọn considerate.",
+      "explanationVi": "'considerate' = chu đáo, ân cần, tinh tế (It was considerate of sb to do sth = Ai đó thật chu đáo khi làm điều gì). 'considerable' nghĩa là to tát, đáng kể.",
+      "targetChunk": {
+        "phrase": "very considerate of the project manager to offer",
+        "meaningVi": "rất chu đáo khi vị quản lý dự án đề nghị"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "was considerate",
+        "object": null
+      }
+    },
+    {
+      "id": "conf_adv_003",
+      "level": "advanced",
+      "question": "The firm has won the Industry Leadership Award for three ______ years.",
+      "options": {
+        "A": "successful",
+        "B": "successive",
+        "C": "success",
+        "D": "successfully"
+      },
+      "correctAnswer": "B",
+      "clue": "Trong ba năm \"liên tiếp / nối tiếp nhau\": three successive years.",
+      "explanationVi": "'successive' = liên tiếp, kế tiếp nhau (three successive years = 3 năm liên tiếp = three consecutive years). 'successful' = thành công rực rỡ.",
+      "targetChunk": {
+        "phrase": "for three successive years",
+        "meaningVi": "trong ba năm liên tiếp"
+      },
+      "skeleton": {
+        "subject": "The firm",
+        "verb": "has won",
+        "object": "the Award"
+      }
+    },
+    {
+      "id": "conf_adv_004",
+      "level": "advanced",
+      "question": "Ms. Vance was commended for leading a highly ______ marketing initiative in East Asia.",
+      "options": {
+        "A": "successive",
+        "B": "successful",
+        "C": "succeed",
+        "D": "success"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ \"initiative\" cần tính từ mang nghĩa \"thành công rực rỡ\" → Chọn successful.",
+      "explanationVi": "'successful initiative' = sáng kiến tiếp thị thành công. 'successive' nghĩa là liên tiếp.",
+      "targetChunk": {
+        "phrase": "a highly successful marketing initiative",
+        "meaningVi": "một sáng kiến tiếp thị hết sức thành công"
+      },
+      "skeleton": {
+        "subject": "Ms. Vance",
+        "verb": "was commended for leading",
+        "object": "an initiative"
+      }
+    },
+    {
+      "id": "conf_adv_005",
+      "level": "advanced",
+      "question": "Sales associates are reminded to remain ______ and courteous when dealing with dissatisfied clients.",
+      "options": {
+        "A": "respectable",
+        "B": "respectful",
+        "C": "respective",
+        "D": "respecting"
+      },
+      "correctAnswer": "B",
+      "clue": "Thái độ của nhân viên đối với khách hàng phải \"tôn trọng, kính cẩn\" → Chọn respectful.",
+      "explanationVi": "'respectful' = lễ phép, tôn trọng người khác (respectful and courteous). 'respectable' = đáng kính, đứng đắn, tề chỉnh. 'respective' = tương ứng (their respective offices).",
+      "targetChunk": {
+        "phrase": "remain respectful and courteous",
+        "meaningVi": "luôn giữ thái độ tôn trọng và lịch sự"
+      },
+      "skeleton": {
+        "subject": "Sales associates",
+        "verb": "are reminded to remain",
+        "object": "respectful"
+      }
+    },
+    {
+      "id": "conf_adv_006",
+      "level": "advanced",
+      "question": "After the plenary session, the delegates returned to their ______ hotel rooms to rest.",
+      "options": {
+        "A": "respectful",
+        "B": "respectable",
+        "C": "respective",
+        "D": "respected"
+      },
+      "correctAnswer": "C",
+      "clue": "Trở về phòng khách sạn \"tương ứng của riêng từng người\" → Chọn respective.",
+      "explanationVi": "'respective' = tương ứng, của riêng từng người/vật đã được nhắc đến (their respective rooms = phòng riêng của từng người). 'respectful' là lễ phép; 'respectable' là đáng kính.",
+      "targetChunk": {
+        "phrase": "returned to their respective hotel rooms",
+        "meaningVi": "trở về các phòng khách sạn riêng tương ứng của mình"
+      },
+      "skeleton": {
+        "subject": "the delegates",
+        "verb": "returned to",
+        "object": "their respective hotel rooms"
+      }
+    },
+    {
+      "id": "conf_adv_007",
+      "level": "advanced",
+      "question": "Due to his ______ handling of customer complaints, Mr. Tanaka is a candidate for promotion.",
+      "options": {
+        "A": "sensitive",
+        "B": "sensible",
+        "C": "sensibly",
+        "D": "sensitivity"
+      },
+      "correctAnswer": "B",
+      "clue": "Cách xử lý \"hợp tình hợp lý, khôn ngoan, thấu đáo\" → Chọn sensible.",
+      "explanationVi": "'sensible' = hợp lý, biết điều, khôn ngoan (sensible handling/decision). 'sensitive' = nhạy cảm, dễ tổn thương hoặc mang tính cơ mật (sensitive information).",
+      "targetChunk": {
+        "phrase": "sensible handling of customer complaints",
+        "meaningVi": "cách xử lý khôn ngoan và hợp lý đối với các khiếu nại"
+      },
+      "skeleton": {
+        "subject": "Mr. Tanaka",
+        "verb": "is",
+        "object": "a candidate"
+      }
+    },
+    {
+      "id": "conf_adv_008",
+      "level": "advanced",
+      "question": "Human resources warned that ______ employee personnel files must not be left unattended.",
+      "options": {
+        "A": "sensible",
+        "B": "sensitive",
+        "C": "sensibly",
+        "D": "sensing"
+      },
+      "correctAnswer": "B",
+      "clue": "Hồ sơ nhân sự chứa thông tin \"nhạy cảm, cơ mật\" → Chọn sensitive.",
+      "explanationVi": "'sensitive files / data' = tài liệu/dữ liệu nhạy cảm, bảo mật cao. 'sensible' là biết điều, hợp lý.",
+      "targetChunk": {
+        "phrase": "sensitive employee personnel files",
+        "meaningVi": "các hồ sơ nhân sự nhạy cảm của nhân viên"
+      },
+      "skeleton": {
+        "subject": "files",
+        "verb": "must not be left",
+        "object": "unattended"
+      }
+    },
+    {
+      "id": "conf_adv_009",
+      "level": "advanced",
+      "question": "The factory workers ______ the heavy crates onto the shipping pallets yesterday afternoon.",
+      "options": {
+        "A": "lay",
+        "B": "laid",
+        "C": "lain",
+        "D": "lied"
+      },
+      "correctAnswer": "B",
+      "clue": "Có tân ngữ \"the heavy crates\" (những chiếc thùng), thì quá khứ của ngoại động từ \"lay\" (đặt/để) → Chọn laid.",
+      "explanationVi": "'lay' (ngoại động từ: lay - laid - laid) = đặt, để cái gì xuống. 'the heavy crates' là tân ngữ, hành động diễn ra trong quá khứ nên chia 'laid'. Phân biệt với nội động từ 'lie' (nằm: lie - lay - lain) và 'lie' (nói dối: lie - lied - lied).",
+      "targetChunk": {
+        "phrase": "laid the heavy crates onto",
+        "meaningVi": "đã đặt các thùng hàng nặng lên"
+      },
+      "skeleton": {
+        "subject": "The factory workers",
+        "verb": "laid",
+        "object": "the heavy crates"
+      }
+    },
+    {
+      "id": "conf_adv_010",
+      "level": "advanced",
+      "question": "The documents had ______ unnoticed on the conference table for several days.",
+      "options": {
+        "A": "laid",
+        "B": "lain",
+        "C": "lay",
+        "D": "lied"
+      },
+      "correctAnswer": "B",
+      "clue": "Không có tân ngữ danh từ, đứng sau \"had\" (thì quá khứ hoàn thành của nội động từ lie - lay - lain) → Chọn lain.",
+      "explanationVi": "'lie' là nội động từ mang nghĩa 'nằm, ở vị trí' (không có tân ngữ theo sau). Quá khứ phân từ của 'lie' là 'lain' (had lain unnoticed = đã nằm đó mà không ai để ý). 'laid' là phân từ của ngoại động từ 'lay' (cần tân ngữ).",
+      "targetChunk": {
+        "phrase": "had lain unnoticed on the conference table",
+        "meaningVi": "đã nằm im không ai để ý trên bàn hội nghị"
+      },
+      "skeleton": {
+        "subject": "The documents",
+        "verb": "had lain",
+        "object": null
+      }
+    },
+    {
+      "id": "conf_adv_011",
+      "level": "advanced",
+      "question": "All net ______ from the charity auction will be donated to local vocational schools.",
+      "options": {
+        "A": "proceeds",
+        "B": "procedures",
+        "C": "process",
+        "D": "proceeding"
+      },
+      "correctAnswer": "A",
+      "clue": "Toàn bộ \"tiền thu được / doanh thu bán được\" từ buổi đấu giá: net proceeds.",
+      "explanationVi": "'proceeds' (danh từ luôn ở dạng số nhiều) = tiền thu được từ một sự kiện/hoạt động bán đấu giá (net proceeds). 'procedures' = các quy trình thủ tục; 'process' = quá trình.",
+      "targetChunk": {
+        "phrase": "All net proceeds from the charity auction",
+        "meaningVi": "toàn bộ tiền thu được từ buổi đấu giá từ thiện"
+      },
+      "skeleton": {
+        "subject": "All net proceeds",
+        "verb": "will be donated to",
+        "object": "vocational schools"
+      }
+    },
+    {
+      "id": "conf_adv_012",
+      "level": "advanced",
+      "question": "Please follow the standard operating ______ when logging into the internal server.",
+      "options": {
+        "A": "proceeds",
+        "B": "procedures",
+        "C": "processes",
+        "D": "proceed"
+      },
+      "correctAnswer": "B",
+      "clue": "Cụm từ tiêu chuẩn văn phòng: \"standard operating procedures\" (SOP - quy trình vận hành tiêu chuẩn).",
+      "explanationVi": "'standard operating procedures' = các quy trình vận hành tiêu chuẩn. 'proceeds' là tiền thu được.",
+      "targetChunk": {
+        "phrase": "standard operating procedures when logging into",
+        "meaningVi": "các quy trình vận hành tiêu chuẩn khi đăng nhập vào"
+      },
+      "skeleton": {
+        "subject": "You (implied)",
+        "verb": "follow",
+        "object": "standard operating procedures"
+      }
+    },
+    {
+      "id": "conf_adv_013",
+      "level": "advanced",
+      "question": "The company is becoming overly ______ on foreign suppliers for critical raw materials.",
+      "options": {
+        "A": "reliable",
+        "B": "reliant",
+        "C": "reliance",
+        "D": "reliably"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc \"reliant on\" (phụ thuộc / dựa dẫm vào) → Chọn reliant.",
+      "explanationVi": "'reliant on sth' = dựa dẫm, phụ thuộc vào cái gì. 'reliable' = đáng tin cậy (a reliable car/employee). Ngữ cảnh công ty đang quá phụ thuộc vào nhà cung ứng nước ngoài nên dùng 'overly reliant on'.",
+      "targetChunk": {
+        "phrase": "becoming overly reliant on foreign suppliers",
+        "meaningVi": "trở nên quá phụ thuộc vào các nhà cung ứng nước ngoài"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "is becoming",
+        "object": "overly reliant"
+      }
+    },
+    {
+      "id": "conf_adv_014",
+      "level": "advanced",
+      "question": "We need to find a ______ courier service to guarantee next-day delivery for urgent documents.",
+      "options": {
+        "A": "reliant",
+        "B": "reliable",
+        "C": "reliably",
+        "D": "rely"
+      },
+      "correctAnswer": "B",
+      "clue": "Dịch vụ chuyển phát nhanh \"đáng tin cậy\": reliable courier service.",
+      "explanationVi": "'reliable' = đáng tin cậy, chắc chắn (a reliable service). 'reliant' = phụ thuộc vào ai/cái gì.",
+      "targetChunk": {
+        "phrase": "find a reliable courier service to guarantee",
+        "meaningVi": "tìm một dịch vụ chuyển phát nhanh đáng tin cậy để đảm bảo"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "need to find",
+        "object": "a reliable courier service"
+      }
+    },
+    {
+      "id": "conf_adv_015",
+      "level": "advanced",
+      "question": "The consulting team conducted a ______ review of the firm's accounting systems.",
+      "options": {
+        "A": "comprehensible",
+        "B": "comprehensive",
+        "C": "comprehensibly",
+        "D": "comprehend"
+      },
+      "correctAnswer": "B",
+      "clue": "Tiến hành một cuộc rà soát \"toàn diện, bao quát mọi mặt\": comprehensive review.",
+      "explanationVi": "'comprehensive' = toàn diện, sâu rộng, bao quát hết mọi khía cạnh (comprehensive review/study/guide). 'comprehensible' = có thể hiểu được, dễ hiểu (comprehensible explanation).",
+      "targetChunk": {
+        "phrase": "conducted a comprehensive review of",
+        "meaningVi": "đã tiến hành một cuộc rà soát toàn diện về"
+      },
+      "skeleton": {
+        "subject": "The team",
+        "verb": "conducted",
+        "object": "a comprehensive review"
+      }
+    },
+    {
+      "id": "conf_adv_016",
+      "level": "advanced",
+      "question": "The instructions were written in clear language to make them easily ______ to novice users.",
+      "options": {
+        "A": "comprehensive",
+        "B": "comprehensible",
+        "C": "comprehension",
+        "D": "comprehensively"
+      },
+      "correctAnswer": "B",
+      "clue": "Làm cho tài liệu hướng dẫn trở nên \"dễ hiểu\" đối với người mới bắt đầu: easily comprehensible to.",
+      "explanationVi": "'comprehensible to sb' = dễ hiểu đối với ai. 'comprehensive' là bao quát, toàn diện.",
+      "targetChunk": {
+        "phrase": "easily comprehensible to novice users",
+        "meaningVi": "dễ dàng hiểu được đối với người dùng mới"
+      },
+      "skeleton": {
+        "subject": "instructions",
+        "verb": "were written",
+        "object": null
+      }
+    },
+    {
+      "id": "conf_adv_017",
+      "level": "advanced",
+      "question": "The guest speaker shared ______ insights into modern financial portfolio management.",
+      "options": {
+        "A": "invaluable",
+        "B": "valueless",
+        "C": "pricey",
+        "D": "worthless"
+      },
+      "correctAnswer": "A",
+      "clue": "Bẫy 990: \"invaluable\" KHÔNG PHẢI là \"không có giá trị\", mà là \"vô giá / cực kỳ quý báu\" → Chọn invaluable.",
+      "explanationVi": "'invaluable' = vô giá, quý báu vô cùng (= priceless). 'valueless' và 'worthless' = không có giá trị, vô dụng. Bài phát biểu của diễn giả chia sẻ những hiểu biết sâu sắc cực kỳ quý giá nên chọn 'invaluable'.",
+      "targetChunk": {
+        "phrase": "shared invaluable insights into",
+        "meaningVi": "đã chia sẻ những góc nhìn chuyên sâu vô giá về"
+      },
+      "skeleton": {
+        "subject": "speaker",
+        "verb": "shared",
+        "object": "invaluable insights"
+      }
+    },
+    {
+      "id": "conf_adv_018",
+      "level": "advanced",
+      "question": "The old office furniture was damaged beyond repair and deemed completely ______ .",
+      "options": {
+        "A": "invaluable",
+        "B": "valueless",
+        "C": "priceless",
+        "D": "valued"
+      },
+      "correctAnswer": "B",
+      "clue": "Đồ đạc hư hỏng không thể sửa chữa và bị coi là \"vô giá trị / không còn đáng giá đồng nào\" → Chọn valueless.",
+      "explanationVi": "'valueless' = không có giá trị (= worthless). 'invaluable' và 'priceless' đều mang nghĩa 'vô giá, cực kỳ quý báu'.",
+      "targetChunk": {
+        "phrase": "deemed completely valueless",
+        "meaningVi": "bị xem là hoàn toàn không còn giá trị"
+      },
+      "skeleton": {
+        "subject": "furniture",
+        "verb": "was deemed",
+        "object": "valueless"
+      }
+    },
+    {
+      "id": "conf_adv_019",
+      "level": "advanced",
+      "question": "The meteorologist warned that a major winter storm is ______ within the next 24 hours.",
+      "options": {
+        "A": "eminent",
+        "B": "imminent",
+        "C": "eminence",
+        "D": "imminence"
+      },
+      "correctAnswer": "B",
+      "clue": "Cơn bão mùa đông \"sắp sửa xảy ra đến nơi\" → Chọn imminent.",
+      "explanationVi": "'imminent' = sắp xảy ra tới nơi (thường dùng cho nguy cơ, bão táp, sự kiện cận kề). 'eminent' = xuất chúng, lỗi lạc, nổi tiếng (an eminent scientist).",
+      "targetChunk": {
+        "phrase": "a major winter storm is imminent",
+        "meaningVi": "một cơn bão mùa đông lớn sắp sửa ập đến"
+      },
+      "skeleton": {
+        "subject": "storm",
+        "verb": "is",
+        "object": "imminent"
+      }
+    },
+    {
+      "id": "conf_adv_020",
+      "level": "advanced",
+      "question": "Keynote remarks will be delivered by an ______ authority in artificial intelligence research.",
+      "options": {
+        "A": "imminent",
+        "B": "eminent",
+        "C": "eminently",
+        "D": "imminently"
+      },
+      "correctAnswer": "B",
+      "clue": "Một chuyên gia \"lỗi lạc, xuất chúng\" trong ngành AI → Chọn eminent.",
+      "explanationVi": "'eminent' = lỗi lạc, xuất chúng, có uy tín vượt bậc (an eminent authority / scholar). 'imminent' = sắp diễn ra.",
+      "targetChunk": {
+        "phrase": "delivered by an eminent authority in",
+        "meaningVi": "được thuyết trình bởi một chuyên gia xuất chúng trong ngành"
+      },
+      "skeleton": {
+        "subject": "remarks",
+        "verb": "will be delivered by",
+        "object": "an eminent authority"
+      }
+    },
+    {
+      "id": "conf_adv_021",
+      "level": "advanced",
+      "question": "The keynote speaker asked the audience to view the corporate transition from a broader ______ .",
+      "options": {
+        "A": "prospective",
+        "B": "perspective",
+        "C": "prospect",
+        "D": "perspectively"
+      },
+      "correctAnswer": "B",
+      "clue": "Nhìn nhận sự việc từ một \"góc nhìn / quan điểm\" rộng lớn hơn: from a broader perspective.",
+      "explanationVi": "'perspective' (danh từ) = góc nhìn, quan điểm, tầm nhìn (from a broader perspective). 'prospective' (tính từ) = triển vọng, tiềm năng (prospective clients/buyers).",
+      "targetChunk": {
+        "phrase": "from a broader perspective",
+        "meaningVi": "từ một góc nhìn rộng lớn hơn"
+      },
+      "skeleton": {
+        "subject": "speaker",
+        "verb": "asked the audience to view",
+        "object": "transition"
+      }
+    },
+    {
+      "id": "conf_adv_022",
+      "level": "advanced",
+      "question": "Sales agents gathered contact information from ______ clients attending the trade expo.",
+      "options": {
+        "A": "perspective",
+        "B": "prospective",
+        "C": "prospectively",
+        "D": "perspectives"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ \"clients\" cần tính từ mang nghĩa \"tiềm năng / tương lai\" → Chọn prospective.",
+      "explanationVi": "'prospective clients / buyers / employees' = khách hàng/người mua/nhân viên tiềm năng trong tương lai. 'perspective' là danh từ chỉ quan điểm, góc nhìn.",
+      "targetChunk": {
+        "phrase": "contact information from prospective clients",
+        "meaningVi": "thông tin liên hệ từ các khách hàng tiềm năng"
+      },
+      "skeleton": {
+        "subject": "agents",
+        "verb": "gathered",
+        "object": "contact information"
+      }
+    },
+    {
+      "id": "conf_adv_023",
+      "level": "advanced",
+      "question": "Our company adheres strictly to the fundamental ______ of transparent corporate governance.",
+      "options": {
+        "A": "principals",
+        "B": "principles",
+        "C": "principally",
+        "D": "principal"
+      },
+      "correctAnswer": "B",
+      "clue": "Tuân thủ các \"nguyên tắc, tôn chỉ\" quản trị doanh nghiệp → Chọn principles.",
+      "explanationVi": "'principle' (đuôi -ple) = nguyên tắc, đạo lý, tôn chỉ (fundamental principles). 'principal' (đuôi -pal) = hiệu trưởng, người đứng đầu, tiền vốn gốc trong ngân hàng.",
+      "targetChunk": {
+        "phrase": "adheres strictly to the fundamental principles",
+        "meaningVi": "tuân thủ nghiêm ngặt các nguyên tắc cơ bản"
+      },
+      "skeleton": {
+        "subject": "company",
+        "verb": "adheres to",
+        "object": "fundamental principles"
+      }
+    },
+    {
+      "id": "conf_adv_024",
+      "level": "advanced",
+      "question": "High operating costs are the ______ reason for the division's declining profit margin.",
+      "options": {
+        "A": "principle",
+        "B": "principal",
+        "C": "principally",
+        "D": "principles"
+      },
+      "correctAnswer": "B",
+      "clue": "Lý do \"chính yếu, quan trọng hàng đầu\": the principal reason.",
+      "explanationVi": "'principal' (tính từ) = chính, chủ yếu, quan trọng nhất (= main, primary). 'the principal reason' = nguyên nhân chủ yếu. 'principle' là danh từ chỉ nguyên tắc.",
+      "targetChunk": {
+        "phrase": "the principal reason for the declining margin",
+        "meaningVi": "nguyên nhân chính yếu dẫn tới việc biên lợi nhuận sụt giảm"
+      },
+      "skeleton": {
+        "subject": "operating costs",
+        "verb": "are",
+        "object": "the principal reason"
+      }
+    },
+    {
+      "id": "conf_adv_025",
+      "level": "advanced",
+      "question": "The research report ______ statistics from several international environmental agencies.",
+      "options": {
+        "A": "sited",
+        "B": "cited",
+        "C": "sighted",
+        "D": "citing"
+      },
+      "correctAnswer": "B",
+      "clue": "Báo cáo \"trích dẫn\" số liệu thống kê từ các cơ quan: cited statistics.",
+      "explanationVi": "'cite' (quá khứ: cited) = trích dẫn (cite statistics / sources). 'site' (động từ) = đặt tại vị trí; 'sight' = nhìn thấy.",
+      "targetChunk": {
+        "phrase": "cited statistics from several agencies",
+        "meaningVi": "đã trích dẫn các số liệu thống kê từ nhiều cơ quan"
+      },
+      "skeleton": {
+        "subject": "report",
+        "verb": "cited",
+        "object": "statistics"
+      }
+    },
+    {
+      "id": "conf_adv_026",
+      "level": "advanced",
+      "question": "Construction engineers inspected the building ______ prior to breaking ground.",
+      "options": {
+        "A": "cite",
+        "B": "site",
+        "C": "sight",
+        "D": "sited"
+      },
+      "correctAnswer": "B",
+      "clue": "\"Công trường xây dựng / địa điểm xây dựng\": building site / construction site.",
+      "explanationVi": "'building site / construction site' = địa điểm/công trường xây dựng. 'cite' = trích dẫn; 'sight' = thị lực, tầm nhìn, cảnh tượng.",
+      "targetChunk": {
+        "phrase": "inspected the building site prior to",
+        "meaningVi": "đã thanh tra công trường xây dựng trước khi"
+      },
+      "skeleton": {
+        "subject": "engineers",
+        "verb": "inspected",
+        "object": "the building site"
+      }
+    },
+    {
+      "id": "conf_adv_027",
+      "level": "advanced",
+      "question": "The department head will ______ the team on the recent modifications to the software.",
+      "options": {
+        "A": "brief",
+        "B": "short",
+        "C": "briefly",
+        "D": "brevity"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau trợ động từ \"will\" cần ngoại động từ mang nghĩa \"tóm tắt chỉ đạo / phổ biến nhanh cho ai\": brief sb on sth.",
+      "explanationVi": "'brief sb on sth' (ngoại động từ) = tóm tắt thông tin/phổ biến chỉ đạo ngắn gọn cho ai về việc gì. 'short' không làm động từ trong cấu trúc này.",
+      "targetChunk": {
+        "phrase": "brief the team on the recent modifications",
+        "meaningVi": "phổ biến tóm tắt cho cả đội về các sửa đổi gần đây"
+      },
+      "skeleton": {
+        "subject": "head",
+        "verb": "will brief",
+        "object": "the team"
+      }
+    },
+    {
+      "id": "conf_adv_028",
+      "level": "advanced",
+      "question": "The executive committee decided to ______ further discussion on the budget until next week.",
+      "options": {
+        "A": "defer",
+        "B": "differ",
+        "C": "difference",
+        "D": "deference"
+      },
+      "correctAnswer": "A",
+      "clue": "\"Trì hoãn, lùi lại\" cuộc thảo luận tới tuần sau: to defer discussion.",
+      "explanationVi": "'defer' = hoãn lại, lùi lại thời gian (= postpone, delay). 'differ' = khác biệt (differ from). Ngữ cảnh lùi cuộc thảo luận ngân sách nên dùng 'defer'.",
+      "targetChunk": {
+        "phrase": "defer further discussion on the budget until",
+        "meaningVi": "hoãn các cuộc thảo luận thêm về ngân sách cho tới"
+      },
+      "skeleton": {
+        "subject": "committee",
+        "verb": "decided to defer",
+        "object": "further discussion"
+      }
+    },
+    {
+      "id": "conf_adv_029",
+      "level": "advanced",
+      "question": "The two operating systems ______ significantly in their memory management architectures.",
+      "options": {
+        "A": "defer",
+        "B": "differ",
+        "C": "deferred",
+        "D": "difference"
+      },
+      "correctAnswer": "B",
+      "clue": "Hai hệ điều hành \"khác biệt\" nhau đáng kể về cấu trúc: differ significantly in.",
+      "explanationVi": "'differ in sth' = khác nhau về mặt nào đó. 'defer' = hoãn lại.",
+      "targetChunk": {
+        "phrase": "differ significantly in their memory architectures",
+        "meaningVi": "khác biệt đáng kể về cấu trúc quản lý bộ nhớ"
+      },
+      "skeleton": {
+        "subject": "The two operating systems",
+        "verb": "differ",
+        "object": null
+      }
+    },
+    {
+      "id": "conf_adv_030",
+      "level": "advanced",
+      "question": "The senior software architect had ______ worked at IBM before joining our development team.",
+      "options": {
+        "A": "formally",
+        "B": "formerly",
+        "C": "former",
+        "D": "formal"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước đây từng làm việc tại IBM: formerly worked at.",
+      "explanationVi": "'formerly' (phó từ chỉ thời gian) = trước đây, thuở trước (= previously). 'formally' (phó từ chỉ tính chất) = một cách trang trọng, chính thức (dress formally, formally invite).",
+      "targetChunk": {
+        "phrase": "had formerly worked at IBM before",
+        "meaningVi": "trước đây từng làm việc tại IBM trước khi"
+      },
+      "skeleton": {
+        "subject": "architect",
+        "verb": "had worked",
+        "object": null
+      }
+    }
+  ]
+}

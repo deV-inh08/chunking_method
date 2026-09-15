@@ -1,0 +1,1389 @@
+{
+  "topicId": "modals_causatives",
+  "topicName": "Động từ khiếm khuyết & Thể sai khiến",
+  "topicNameEn": "Modals & Causative Verbs",
+  "category": "verb_structures",
+  "description": "Cách dùng Modals (can, must, should, may), cấu trúc sai khiến chủ động/bị động (have/get/make/let), Modal Perfect và thể giả định (subjunctive mood).",
+  "questions": [
+    {
+      "id": "mod_std_001",
+      "level": "standard",
+      "question": "The building superintendent had the maintenance crew ______ the HVAC filters before the heatwave arrived.",
+      "options": {
+        "A": "replace",
+        "B": "to replace",
+        "C": "replacing",
+        "D": "replaced"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc sai khiến chủ động với 'have': have + sb + V-bare.",
+      "explanationVi": "'have someone do something' mang nghĩa giao việc cho ai làm gì. Tân ngữ là người thực hiện hành động ('maintenance crew') nên dùng động từ nguyên thể 'replace'.",
+      "targetChunk": {
+        "phrase": "had the crew replace the filters",
+        "meaningVi": "đã yêu cầu đội ngũ bảo trì thay thế bộ lọc"
+      },
+      "skeleton": {
+        "subject": "The building superintendent",
+        "verb": "had",
+        "object": "the maintenance crew replace the HVAC filters"
+      }
+    },
+    {
+      "id": "mod_std_002",
+      "level": "standard",
+      "question": "The office administrator managed to get the technician ______ the malfunctioning copier promptly.",
+      "options": {
+        "A": "repair",
+        "B": "to repair",
+        "C": "repaired",
+        "D": "repairing"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc sai khiến chủ động với 'get': get + sb + to-V.",
+      "explanationVi": "Động từ 'get' khi mang nghĩa nhờ ai làm gì thì động từ theo sau tân ngữ phải là To-Infinitive ('to repair').",
+      "targetChunk": {
+        "phrase": "get the technician to repair the copier",
+        "meaningVi": "nhờ kỹ thuật viên sửa chữa máy photocopy"
+      },
+      "skeleton": {
+        "subject": "The office administrator",
+        "verb": "managed to get",
+        "object": "the technician to repair the copier"
+      }
+    },
+    {
+      "id": "mod_std_003",
+      "level": "standard",
+      "question": "The factory manager had the defective parts ______ immediately to prevent further assembly line halts.",
+      "options": {
+        "A": "replace",
+        "B": "replacing",
+        "C": "replaced",
+        "D": "to replace"
+      },
+      "correctAnswer": "C",
+      "clue": "Cấu trúc sai khiến bị động: have + sth + V3/ed.",
+      "explanationVi": "Tân ngữ 'the defective parts' là vật chịu tác động, do đó dùng thể bị động 'have something done' (replaced).",
+      "targetChunk": {
+        "phrase": "had the defective parts replaced",
+        "meaningVi": "đã cho người thay thế các linh kiện lỗi"
+      },
+      "skeleton": {
+        "subject": "The factory manager",
+        "verb": "had",
+        "object": "the defective parts replaced"
+      }
+    },
+    {
+      "id": "mod_std_004",
+      "level": "standard",
+      "question": "All laboratory visitors ______ sign the visitor log before entering the testing area.",
+      "options": {
+        "A": "must",
+        "B": "ought",
+        "C": "able",
+        "D": "have"
+      },
+      "correctAnswer": "A",
+      "clue": "Động từ khiếm khuyết đi kèm V-bare chỉ quy định bắt buộc.",
+      "explanationVi": "'must + V-bare' dùng để chỉ quy định bắt buộc. 'ought' và 'have' thiếu 'to', 'able' cần 'be able to'.",
+      "targetChunk": {
+        "phrase": "must sign the visitor log",
+        "meaningVi": "phải ký vào sổ nhật ký khách thăm"
+      },
+      "skeleton": {
+        "subject": "All laboratory visitors",
+        "verb": "must sign",
+        "object": "the visitor log"
+      }
+    },
+    {
+      "id": "mod_std_005",
+      "level": "standard",
+      "question": "The HR department got all new recruits ______ the mandatory non-disclosure agreement.",
+      "options": {
+        "A": "sign",
+        "B": "to sign",
+        "C": "signed",
+        "D": "signing"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc sai khiến: get + sb + to-V.",
+      "explanationVi": "Tân ngữ 'all new recruits' trực tiếp thực hiện hành động ký, theo sau 'get' là To-V.",
+      "targetChunk": {
+        "phrase": "got recruits to sign the agreement",
+        "meaningVi": "yêu cầu nhân viên mới ký thỏa thuận"
+      },
+      "skeleton": {
+        "subject": "The HR department",
+        "verb": "got",
+        "object": "all new recruits to sign the agreement"
+      }
+    },
+    {
+      "id": "mod_std_006",
+      "level": "standard",
+      "question": "Employees ______ not park their vehicles in the loading zone reserved for delivery trucks.",
+      "options": {
+        "A": "should",
+        "B": "have",
+        "C": "ought",
+        "D": "used"
+      },
+      "correctAnswer": "A",
+      "clue": "Modal verb đưa ra khuyến nghị hoặc cảnh báo: should not + V-bare.",
+      "explanationVi": "'should not + V-bare' diễn đạt điều không nên làm. Các đáp án còn lại đều bắt buộc đi kèm 'to'.",
+      "targetChunk": {
+        "phrase": "should not park in the loading zone",
+        "meaningVi": "không nên đỗ xe ở khu vực bốc xếp"
+      },
+      "skeleton": {
+        "subject": "Employees",
+        "verb": "should not park",
+        "object": "their vehicles"
+      }
+    },
+    {
+      "id": "mod_std_007",
+      "level": "standard",
+      "question": "The supervisor let the interns ______ early because of the approaching snowstorm.",
+      "options": {
+        "A": "leave",
+        "B": "to leave",
+        "C": "left",
+        "D": "leaving"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc cho phép: let + sb + V-bare.",
+      "explanationVi": "'let' nhận động từ nguyên mẫu không 'to' theo sau tân ngữ ('the interns leave early').",
+      "targetChunk": {
+        "phrase": "let the interns leave early",
+        "meaningVi": "cho phép thực tập sinh về sớm"
+      },
+      "skeleton": {
+        "subject": "The supervisor",
+        "verb": "let",
+        "object": "the interns leave early"
+      }
+    },
+    {
+      "id": "mod_std_008",
+      "level": "standard",
+      "question": "You ______ obtain prior authorization from the finance director before incurring travel expenses.",
+      "options": {
+        "A": "must",
+        "B": "may",
+        "C": "can",
+        "D": "would"
+      },
+      "correctAnswer": "A",
+      "clue": "Chỉ yêu cầu mang tính thủ tục bắt buộc: must + V-bare.",
+      "explanationVi": "'must obtain' thể hiện sự bắt buộc theo chính sách doanh nghiệp. 'may' chỉ sự cho phép.",
+      "targetChunk": {
+        "phrase": "obtain prior authorization",
+        "meaningVi": "nhận được sự phê duyệt trước"
+      },
+      "skeleton": {
+        "subject": "You",
+        "verb": "must obtain",
+        "object": "prior authorization"
+      }
+    },
+    {
+      "id": "mod_std_009",
+      "level": "standard",
+      "question": "The marketing director made the design team ______ the promotional flyer three times.",
+      "options": {
+        "A": "revise",
+        "B": "to revise",
+        "C": "revised",
+        "D": "revising"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc bắt buộc sai khiến: make + sb + V-bare.",
+      "explanationVi": "Khi 'make' dùng với nghĩa buộc ai làm gì, động từ theo sau tân ngữ phải ở dạng nguyên mẫu không 'to'.",
+      "targetChunk": {
+        "phrase": "made the team revise the flyer",
+        "meaningVi": "bắt đội ngũ phải sửa đổi tờ rơi"
+      },
+      "skeleton": {
+        "subject": "The marketing director",
+        "verb": "made",
+        "object": "the design team revise the flyer"
+      }
+    },
+    {
+      "id": "mod_std_010",
+      "level": "standard",
+      "question": "Conference attendees ______ pick up their registration badges at the welcome booth.",
+      "options": {
+        "A": "may",
+        "B": "ought",
+        "C": "able",
+        "D": "capable"
+      },
+      "correctAnswer": "A",
+      "clue": "Chỉ sự cho phép hoặc khả năng: may + V-bare.",
+      "explanationVi": "'may' kết hợp trực tiếp với V-bare 'pick up'. Các từ khác thiếu giới từ ('ought to', 'able to').",
+      "targetChunk": {
+        "phrase": "may pick up registration badges",
+        "meaningVi": "có thể nhận thẻ đăng ký"
+      },
+      "skeleton": {
+        "subject": "Conference attendees",
+        "verb": "may pick up",
+        "object": "their registration badges"
+      }
+    },
+    {
+      "id": "mod_std_011",
+      "level": "standard",
+      "question": "We need to get the contract ______ by our legal counsel before signing it.",
+      "options": {
+        "A": "review",
+        "B": "reviewed",
+        "C": "to review",
+        "D": "reviewing"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc sai khiến bị động: get + sth + V3/ed.",
+      "explanationVi": "Tân ngữ 'the contract' là vật được xem xét nên dùng quá khứ phân từ 'reviewed'.",
+      "targetChunk": {
+        "phrase": "get the contract reviewed",
+        "meaningVi": "cho hợp đồng được xem xét"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "need to get",
+        "object": "the contract reviewed"
+      }
+    },
+    {
+      "id": "mod_std_012",
+      "level": "standard",
+      "question": "Applicants ______ submit their updated portfolios in PDF format to ensure compatibility.",
+      "options": {
+        "A": "should",
+        "B": "ought",
+        "C": "are",
+        "D": "have"
+      },
+      "correctAnswer": "A",
+      "clue": "Modal verb đưa ra hướng dẫn khuyên bảo: should + V-bare.",
+      "explanationVi": "'should' đi thẳng với V-bare 'submit'. Các phương án còn lại đều thiếu 'to'.",
+      "targetChunk": {
+        "phrase": "should submit portfolios in PDF",
+        "meaningVi": "nên nộp hồ sơ năng lực dưới định dạng PDF"
+      },
+      "skeleton": {
+        "subject": "Applicants",
+        "verb": "should submit",
+        "object": "their updated portfolios"
+      }
+    },
+    {
+      "id": "mod_std_013",
+      "level": "standard",
+      "question": "The security system does not let visitors ______ the server room unaccompanied.",
+      "options": {
+        "A": "enter",
+        "B": "to enter",
+        "C": "entering",
+        "D": "entered"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc: does not let + sb + V-bare.",
+      "explanationVi": "Sau 'let + tân ngữ', động từ chỉ hành động luôn ở dạng nguyên mẫu không 'to'.",
+      "targetChunk": {
+        "phrase": "let visitors enter the room",
+        "meaningVi": "cho phép khách bước vào phòng"
+      },
+      "skeleton": {
+        "subject": "The security system",
+        "verb": "does not let",
+        "object": "visitors enter the server room"
+      }
+    },
+    {
+      "id": "mod_std_014",
+      "level": "standard",
+      "question": "Due to scheduled track maintenance, the morning commuter train ______ experience minor delays.",
+      "options": {
+        "A": "might",
+        "B": "ought",
+        "C": "is",
+        "D": "able"
+      },
+      "correctAnswer": "A",
+      "clue": "Diễn đạt khả năng có thể xảy ra: might + V-bare.",
+      "explanationVi": "'might' là trợ động từ khiếm khuyết chỉ khả năng. 'is' không đi trực tiếp với V-bare 'experience'.",
+      "targetChunk": {
+        "phrase": "might experience minor delays",
+        "meaningVi": "có thể gặp sự chậm trễ nhẹ"
+      },
+      "skeleton": {
+        "subject": "the morning commuter train",
+        "verb": "might experience",
+        "object": "minor delays"
+      }
+    },
+    {
+      "id": "mod_std_015",
+      "level": "standard",
+      "question": "The executive director had her administrative assistant ______ hotel reservations for the visiting clients.",
+      "options": {
+        "A": "book",
+        "B": "to book",
+        "C": "booked",
+        "D": "booking"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc nhờ vả/giao việc chủ động: had + sb + V-bare.",
+      "explanationVi": "Chủ ngữ yêu cầu trợ lý thực hiện hành vi đặt phòng ('book') nên dùng nguyên mẫu không 'to'.",
+      "targetChunk": {
+        "phrase": "had her assistant book reservations",
+        "meaningVi": "yêu cầu trợ lý đặt phòng trước"
+      },
+      "skeleton": {
+        "subject": "The executive director",
+        "verb": "had",
+        "object": "her administrative assistant book reservations"
+      }
+    },
+    {
+      "id": "mod_std_016",
+      "level": "standard",
+      "question": "Staff members ______ utilize the corporate fitness center outside of regular working hours.",
+      "options": {
+        "A": "can",
+        "B": "ought",
+        "C": "able",
+        "D": "have"
+      },
+      "correctAnswer": "A",
+      "clue": "Chỉ quyền hạn hoặc khả năng được phép làm gì: can + V-bare.",
+      "explanationVi": "'can' đi trực tiếp với động từ 'utilize'. 'ought' và 'have' bắt buộc có 'to'.",
+      "targetChunk": {
+        "phrase": "can utilize the fitness center",
+        "meaningVi": "có thể sử dụng trung tâm thể dục"
+      },
+      "skeleton": {
+        "subject": "Staff members",
+        "verb": "can utilize",
+        "object": "the corporate fitness center"
+      }
+    },
+    {
+      "id": "mod_std_017",
+      "level": "standard",
+      "question": "The project supervisor will have the site survey ______ by the end of the day.",
+      "options": {
+        "A": "conduct",
+        "B": "conducted",
+        "C": "to conduct",
+        "D": "conducting"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc sai khiến bị động với vật: have + sth + V3/ed.",
+      "explanationVi": "'the site survey' không thể tự thực hiện mà được tiến hành nên chọn 'conducted'.",
+      "targetChunk": {
+        "phrase": "have the survey conducted",
+        "meaningVi": "tiến hành cuộc khảo sát"
+      },
+      "skeleton": {
+        "subject": "The project supervisor",
+        "verb": "will have",
+        "object": "the site survey conducted"
+      }
+    },
+    {
+      "id": "mod_std_018",
+      "level": "standard",
+      "question": "Guests ______ not leave their luggage unattended in the main lobby at any time.",
+      "options": {
+        "A": "must",
+        "B": "ought",
+        "C": "have",
+        "D": "used"
+      },
+      "correctAnswer": "A",
+      "clue": "Quy định cấm đoán nghiêm ngặt: must not + V-bare.",
+      "explanationVi": "'must not' chỉ điều cấm. Các phương án 'ought', 'have', 'used' đều phải có 'to'.",
+      "targetChunk": {
+        "phrase": "must not leave luggage unattended",
+        "meaningVi": "tuyệt đối không được để hành lý mà không trông coi"
+      },
+      "skeleton": {
+        "subject": "Guests",
+        "verb": "must not leave",
+        "object": "their luggage"
+      }
+    },
+    {
+      "id": "mod_std_019",
+      "level": "standard",
+      "question": "The logistics manager made the freight driver ______ the manifest before releasing the cargo.",
+      "options": {
+        "A": "sign",
+        "B": "to sign",
+        "C": "signed",
+        "D": "signing"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc: make + sb + V-bare.",
+      "explanationVi": "Sau động từ sai khiến 'made' và tân ngữ chỉ người 'the freight driver', ta dùng V-bare 'sign'.",
+      "targetChunk": {
+        "phrase": "made the driver sign the manifest",
+        "meaningVi": "bắt tài xế ký vào bảng kê hàng hóa"
+      },
+      "skeleton": {
+        "subject": "The logistics manager",
+        "verb": "made",
+        "object": "the freight driver sign the manifest"
+      }
+    },
+    {
+      "id": "mod_std_020",
+      "level": "standard",
+      "question": "You ______ check your quarterly sales figures twice to confirm that no entries were missed.",
+      "options": {
+        "A": "should",
+        "B": "ought",
+        "C": "having",
+        "D": "are"
+      },
+      "correctAnswer": "A",
+      "clue": "Lời khuyên thực hiện công việc cẩn thận: should + V-bare.",
+      "explanationVi": "'should' là trợ động từ đi trực tiếp với 'check'. 'ought' thiếu 'to'.",
+      "targetChunk": {
+        "phrase": "should check sales figures twice",
+        "meaningVi": "nên kiểm tra số liệu bán hàng hai lần"
+      },
+      "skeleton": {
+        "subject": "You",
+        "verb": "should check",
+        "object": "your quarterly sales figures"
+      }
+    },
+    {
+      "id": "mod_std_021",
+      "level": "standard",
+      "question": "The department head got the software developer ______ an automated reporting tool.",
+      "options": {
+        "A": "create",
+        "B": "to create",
+        "C": "created",
+        "D": "creating"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc sai khiến: get + sb + to-V.",
+      "explanationVi": "Khi chủ ngữ nhờ hoặc yêu cầu ai ('developer') làm việc gì qua 'get', theo sau là to-infinitive.",
+      "targetChunk": {
+        "phrase": "got the developer to create a tool",
+        "meaningVi": "nhờ lập trình viên tạo một công cụ"
+      },
+      "skeleton": {
+        "subject": "The department head",
+        "verb": "got",
+        "object": "the software developer to create a tool"
+      }
+    },
+    {
+      "id": "mod_std_022",
+      "level": "standard",
+      "question": "Severe weather conditions ______ cause delays along major suburban railway corridors.",
+      "options": {
+        "A": "could",
+        "B": "ought",
+        "C": "capable",
+        "D": "able"
+      },
+      "correctAnswer": "A",
+      "clue": "Modal verb diễn tả một khả năng có thể xảy ra: could + V-bare.",
+      "explanationVi": "'could' kết hợp với V-bare 'cause'. Các phương án khác không đi trực tiếp với V-bare.",
+      "targetChunk": {
+        "phrase": "could cause delays along corridors",
+        "meaningVi": "có thể gây ra sự chậm trễ dọc các tuyến hành lang"
+      },
+      "skeleton": {
+        "subject": "Severe weather conditions",
+        "verb": "could cause",
+        "object": "delays"
+      }
+    },
+    {
+      "id": "mod_std_023",
+      "level": "standard",
+      "question": "The facility director will let employees ______ casual attire on the last Friday of every month.",
+      "options": {
+        "A": "wear",
+        "B": "to wear",
+        "C": "wearing",
+        "D": "worn"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc cho phép: let + sb + V-bare.",
+      "explanationVi": "'let' đi kèm tân ngữ 'employees' đòi hỏi động từ nguyên mẫu không 'to' ('wear').",
+      "targetChunk": {
+        "phrase": "let employees wear casual attire",
+        "meaningVi": "cho phép nhân viên mặc trang phục thường nhật"
+      },
+      "skeleton": {
+        "subject": "The facility director",
+        "verb": "will let",
+        "object": "employees wear casual attire"
+      }
+    },
+    {
+      "id": "mod_std_024",
+      "level": "standard",
+      "question": "Please have your passport and boarding pass ______ before reaching the security gate.",
+      "options": {
+        "A": "prepare",
+        "B": "prepared",
+        "C": "to prepare",
+        "D": "preparing"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc bị động: have + sth + V3/ed.",
+      "explanationVi": "Hộ chiếu và thẻ lên máy bay cần 'được chuẩn bị sẵn' nên dùng phân từ hai 'prepared'.",
+      "targetChunk": {
+        "phrase": "have your passport prepared",
+        "meaningVi": "chuẩn bị sẵn hộ chiếu của bạn"
+      },
+      "skeleton": {
+        "subject": "(You - implied)",
+        "verb": "have",
+        "object": "your passport and boarding pass prepared"
+      }
+    },
+    {
+      "id": "mod_std_025",
+      "level": "standard",
+      "question": "All personnel ______ complete the annual online safety assessment by next Wednesday.",
+      "options": {
+        "A": "must",
+        "B": "ought",
+        "C": "able",
+        "D": "had"
+      },
+      "correctAnswer": "A",
+      "clue": "Nghĩa vụ bắt buộc hoàn thành đúng hạn: must + V-bare.",
+      "explanationVi": "'must' đứng trước động từ nguyên thể 'complete'. 'ought' thiếu 'to'.",
+      "targetChunk": {
+        "phrase": "must complete the assessment",
+        "meaningVi": "phải hoàn thành bài đánh giá"
+      },
+      "skeleton": {
+        "subject": "All personnel",
+        "verb": "must complete",
+        "object": "the annual online safety assessment"
+      }
+    },
+    {
+      "id": "mod_std_026",
+      "level": "standard",
+      "question": "The restaurant manager had the dining area ______ thoroughly after closing hours.",
+      "options": {
+        "A": "clean",
+        "B": "cleaned",
+        "C": "cleaning",
+        "D": "to clean"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc sai khiến bị động: had + sth + V3/ed.",
+      "explanationVi": "Khu vực ăn uống ('dining area') được dọn dẹp nên dùng dạng bị động 'cleaned'.",
+      "targetChunk": {
+        "phrase": "had the dining area cleaned",
+        "meaningVi": "cho dọn dẹp khu vực ăn uống"
+      },
+      "skeleton": {
+        "subject": "The restaurant manager",
+        "verb": "had",
+        "object": "the dining area cleaned"
+      }
+    },
+    {
+      "id": "mod_std_027",
+      "level": "standard",
+      "question": "Junior analysts ______ consult their mentor whenever financial discrepancies appear in the records.",
+      "options": {
+        "A": "should",
+        "B": "ought",
+        "C": "have",
+        "D": "used"
+      },
+      "correctAnswer": "A",
+      "clue": "Đưa ra khuyến nghị công việc: should + V-bare.",
+      "explanationVi": "'should' đi liền với V-bare 'consult'. 'ought' và 'have' phải có 'to'.",
+      "targetChunk": {
+        "phrase": "should consult their mentor",
+        "meaningVi": "nên tham vấn người hướng dẫn của họ"
+      },
+      "skeleton": {
+        "subject": "Junior analysts",
+        "verb": "should consult",
+        "object": "their mentor"
+      }
+    },
+    {
+      "id": "mod_std_028",
+      "level": "standard",
+      "question": "The IT team made the staff members ______ their login credentials every ninety days.",
+      "options": {
+        "A": "update",
+        "B": "to update",
+        "C": "updated",
+        "D": "updating"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc ép buộc: made + sb + V-bare.",
+      "explanationVi": "Sau động từ sai khiến 'made' và tân ngữ người ('staff members'), động từ bắt buộc nguyên mẫu không 'to'.",
+      "targetChunk": {
+        "phrase": "made staff members update credentials",
+        "meaningVi": "bắt buộc nhân viên phải cập nhật thông tin đăng nhập"
+      },
+      "skeleton": {
+        "subject": "The IT team",
+        "verb": "made",
+        "object": "the staff members update their credentials"
+      }
+    },
+    {
+      "id": "mod_std_029",
+      "level": "standard",
+      "question": "International clients ______ arrange a virtual meeting if they cannot visit our headquarters in person.",
+      "options": {
+        "A": "can",
+        "B": "ought",
+        "C": "able",
+        "D": "need to"
+      },
+      "correctAnswer": "A",
+      "clue": "Chỉ khả năng hoặc phương án có thể lựa chọn: can + V-bare.",
+      "explanationVi": "'can' là modal verb kết hợp trực tiếp với động từ 'arrange'. 'need to' thừa 'to'.",
+      "targetChunk": {
+        "phrase": "can arrange a virtual meeting",
+        "meaningVi": "có thể sắp xếp một cuộc họp trực tuyến"
+      },
+      "skeleton": {
+        "subject": "International clients",
+        "verb": "can arrange",
+        "object": "a virtual meeting"
+      }
+    },
+    {
+      "id": "mod_std_030",
+      "level": "standard",
+      "question": "The warehouse supervisor got the delivery team ______ all outgoing packages prior to dispatch.",
+      "options": {
+        "A": "weigh",
+        "B": "to weigh",
+        "C": "weighed",
+        "D": "weighing"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc: get + sb + to-V.",
+      "explanationVi": "'got the delivery team to weigh' là dạng chủ động sai khiến của động từ 'get'.",
+      "targetChunk": {
+        "phrase": "got the team to weigh packages",
+        "meaningVi": "nhờ đội ngũ cân các kiện hàng"
+      },
+      "skeleton": {
+        "subject": "The warehouse supervisor",
+        "verb": "got",
+        "object": "the delivery team to weigh all outgoing packages"
+      }
+    },
+    {
+      "id": "mod_adv_001",
+      "level": "advanced",
+      "question": "The chief legal counsel recommended that every regional branch ______ its employee grievance procedures.",
+      "options": {
+        "A": "reviews",
+        "B": "review",
+        "C": "reviewed",
+        "D": "to review"
+      },
+      "correctAnswer": "B",
+      "clue": "Thể giả định (Subjunctive Mood): recommended that + S + V-bare.",
+      "explanationVi": "Sau động từ mang tính đề xuất (recommend that), động từ trong mệnh đề danh ngữ luôn ở dạng nguyên mẫu không chia dù chủ ngữ là số ít.",
+      "targetChunk": {
+        "phrase": "recommended that every branch review",
+        "meaningVi": "khuyến nghị mọi chi nhánh phải xem xét lại"
+      },
+      "skeleton": {
+        "subject": "The chief legal counsel",
+        "verb": "recommended",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "mod_adv_002",
+      "level": "advanced",
+      "question": "It is imperative that all regulatory disclosures ______ submitted prior to the conclusion of trading hours.",
+      "options": {
+        "A": "are",
+        "B": "be",
+        "C": "were",
+        "D": "being"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc giả định với tính từ bắt buộc: It is imperative that + S + be V3/ed.",
+      "explanationVi": "Sau tính từ 'imperative', động từ to be trong mệnh đề 'that' luôn giữ nguyên thể 'be'.",
+      "targetChunk": {
+        "phrase": "imperative that disclosures be submitted",
+        "meaningVi": "cấp bách là mọi công bố phải được nộp"
+      },
+      "skeleton": {
+        "subject": "It (dummy)",
+        "verb": "is imperative",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "mod_adv_003",
+      "level": "advanced",
+      "question": "The executive board could not ______ approved the budget deficit without knowing the external financing terms.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "had",
+        "D": "having"
+      },
+      "correctAnswer": "A",
+      "clue": "Modal verb suy đoán quá khứ: could not have + V3/ed.",
+      "explanationVi": "'could not have done sth' dùng để khẳng định một việc chắc chắn không thể đã diễn ra trong quá khứ.",
+      "targetChunk": {
+        "phrase": "could not have approved the deficit",
+        "meaningVi": "lẽ ra không thể nào đã phê duyệt thâm hụt"
+      },
+      "skeleton": {
+        "subject": "The executive board",
+        "verb": "could not have approved",
+        "object": "the budget deficit"
+      }
+    },
+    {
+      "id": "mod_adv_004",
+      "level": "advanced",
+      "question": "The senior auditor suggested that the accounting director ______ additional documentation regarding overseas accounts.",
+      "options": {
+        "A": "provides",
+        "B": "provide",
+        "C": "provided",
+        "D": "to provide"
+      },
+      "correctAnswer": "B",
+      "clue": "Bàng thái cách: suggested that + S + V-bare.",
+      "explanationVi": "Theo sau 'suggest that', mệnh đề phụ sử dụng động từ nguyên mẫu không chia 'provide'.",
+      "targetChunk": {
+        "phrase": "suggested that the director provide documentation",
+        "meaningVi": "đề xuất giám đốc cung cấp thêm tài liệu"
+      },
+      "skeleton": {
+        "subject": "The senior auditor",
+        "verb": "suggested",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "mod_adv_005",
+      "level": "advanced",
+      "question": "The lead developer should ______ tested the update thoroughly before deploying it to production servers.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "had",
+        "D": "having"
+      },
+      "correctAnswer": "A",
+      "clue": "Modal Perfect chỉ sự hối tiếc / trách móc trong quá khứ: should have + V3/ed.",
+      "explanationVi": "'should have tested' nghĩa là đáng lẽ ra phải kiểm tra kỹ (nhưng thực tế đã không làm).",
+      "targetChunk": {
+        "phrase": "should have tested the update",
+        "meaningVi": "đáng lẽ ra phải kiểm tra bản cập nhật"
+      },
+      "skeleton": {
+        "subject": "The lead developer",
+        "verb": "should have tested",
+        "object": "the update"
+      }
+    },
+    {
+      "id": "mod_adv_006",
+      "level": "advanced",
+      "question": "The contract explicitly mandates that each regional franchise ______ quarterly royalty payments on time.",
+      "options": {
+        "A": "remits",
+        "B": "remit",
+        "C": "remitted",
+        "D": "remitting"
+      },
+      "correctAnswer": "B",
+      "clue": "Thể giả định với động từ 'mandates that': mandates that + S + V-bare.",
+      "explanationVi": "Dù chủ ngữ 'each franchise' là số ít, động từ theo sau cấu trúc 'mandate that' bắt buộc là V-bare 'remit'.",
+      "targetChunk": {
+        "phrase": "mandates that each franchise remit payments",
+        "meaningVi": "quy định bắt buộc mỗi chi nhánh chuyển tiền đúng hạn"
+      },
+      "skeleton": {
+        "subject": "The contract",
+        "verb": "mandates",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "mod_adv_007",
+      "level": "advanced",
+      "question": "The overseas flight was delayed, so Ms. Larson must ______ missed the opening keynote address.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "had",
+        "D": "having"
+      },
+      "correctAnswer": "A",
+      "clue": "Modal suy đoán chắc chắn 90% về sự việc trong quá khứ: must have + V3/ed.",
+      "explanationVi": "Dựa trên căn cứ chuyến bay bị hoãn, người nói kết luận 'chắc hẳn cô ấy đã bỏ lỡ' -> 'must have missed'.",
+      "targetChunk": {
+        "phrase": "must have missed the address",
+        "meaningVi": "chắc hẳn đã bỏ lỡ bài phát biểu khai mạc"
+      },
+      "skeleton": {
+        "subject": "Ms. Larson",
+        "verb": "must have missed",
+        "object": "the opening keynote address"
+      }
+    },
+    {
+      "id": "mod_adv_008",
+      "level": "advanced",
+      "question": "______ you require additional legal counsel regarding the acquisition, please notify our department immediately.",
+      "options": {
+        "A": "Should",
+        "B": "Were",
+        "C": "Had",
+        "D": "Could"
+      },
+      "correctAnswer": "A",
+      "clue": "Đảo ngữ câu điều kiện loại 1: Should + S + V-bare = If + S + V.",
+      "explanationVi": "'Should you require...' là cấu trúc đảo ngữ trang trọng thay thế cho 'If you require...'.",
+      "targetChunk": {
+        "phrase": "should you require additional counsel",
+        "meaningVi": "nếu bạn cần thêm tư vấn pháp lý"
+      },
+      "skeleton": {
+        "subject": "(You - implied)",
+        "verb": "notify",
+        "object": "our department"
+      }
+    },
+    {
+      "id": "mod_adv_009",
+      "level": "advanced",
+      "question": "It is essential that each factory worker ______ protective headgear within designated construction zones.",
+      "options": {
+        "A": "wears",
+        "B": "wear",
+        "C": "wore",
+        "D": "wearing"
+      },
+      "correctAnswer": "B",
+      "clue": "Thể giả định: It is essential that + S + V-bare.",
+      "explanationVi": "Tính từ 'essential' kích hoạt bàng thái cách, buộc động từ 'wear' giữ nguyên mẫu không chia.",
+      "targetChunk": {
+        "phrase": "essential that each worker wear headgear",
+        "meaningVi": "cần thiết là mỗi công nhân phải đội mũ bảo hộ"
+      },
+      "skeleton": {
+        "subject": "It (dummy)",
+        "verb": "is essential",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "mod_adv_010",
+      "level": "advanced",
+      "question": "The CEO insisted that the proposed merger terms ______ reevaluated by an external investment banking firm.",
+      "options": {
+        "A": "are",
+        "B": "be",
+        "C": "were",
+        "D": "being"
+      },
+      "correctAnswer": "B",
+      "clue": "Thể giả định bị động: insisted that + S + be V3/ed.",
+      "explanationVi": "Sau 'insisted that', mệnh đề bị động bắt buộc dùng nguyên mẫu 'be + reevaluated'.",
+      "targetChunk": {
+        "phrase": "insisted that terms be reevaluated",
+        "meaningVi": "khăng khăng yêu cầu các điều khoản phải được đánh giá lại"
+      },
+      "skeleton": {
+        "subject": "The CEO",
+        "verb": "insisted",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "mod_adv_011",
+      "level": "advanced",
+      "question": "The logistics director would rather the distribution center ______ shipments on weekdays than on Sundays.",
+      "options": {
+        "A": "process",
+        "B": "processed",
+        "C": "to process",
+        "D": "processing"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc giả định mong muốn ở hiện tại/tương lai: would rather + S + V2/ed.",
+      "explanationVi": "Khi 'would rather' có hai chủ ngữ khác nhau (director vs center), động từ lùi một thì về quá khứ đơn 'processed'.",
+      "targetChunk": {
+        "phrase": "would rather the center processed shipments",
+        "meaningVi": "muốn trung tâm xử lý các lô hàng vào ngày trong tuần hơn"
+      },
+      "skeleton": {
+        "subject": "The logistics director",
+        "verb": "would rather",
+        "object": "that the center processed shipments"
+      }
+    },
+    {
+      "id": "mod_adv_012",
+      "level": "advanced",
+      "question": "The operations supervisor might ______ prevented the system outage if the warning alerts had been noticed earlier.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "had",
+        "D": "having"
+      },
+      "correctAnswer": "A",
+      "clue": "Mệnh đề chính điều kiện loại 3: S + might have + V3/ed.",
+      "explanationVi": "Đi sau mệnh đề điều kiện 'if ... had been noticed' là cấu trúc 'might have prevented'.",
+      "targetChunk": {
+        "phrase": "might have prevented the outage",
+        "meaningVi": "có thể đã ngăn chặn được sự cố sập hệ thống"
+      },
+      "skeleton": {
+        "subject": "The operations supervisor",
+        "verb": "might have prevented",
+        "object": "the system outage"
+      }
+    },
+    {
+      "id": "mod_adv_013",
+      "level": "advanced",
+      "question": "The ethics committee requested that the department manager ______ from participating in the hiring review.",
+      "options": {
+        "A": "refrains",
+        "B": "refrain",
+        "C": "refrained",
+        "D": "refraining"
+      },
+      "correctAnswer": "B",
+      "clue": "Thể giả định: requested that + S + V-bare.",
+      "explanationVi": "'requested that' đòi hỏi động từ nguyên mẫu không chia 'refrain' (kiềm chế/không tham gia).",
+      "targetChunk": {
+        "phrase": "requested that the manager refrain from",
+        "meaningVi": "yêu cầu vị trưởng phòng tránh tham gia vào"
+      },
+      "skeleton": {
+        "subject": "The ethics committee",
+        "verb": "requested",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "mod_adv_014",
+      "level": "advanced",
+      "question": "The manufacturing facility can have its output capacity ______ by twenty percent through robotic automation.",
+      "options": {
+        "A": "expand",
+        "B": "expanded",
+        "C": "expanding",
+        "D": "to expand"
+      },
+      "correctAnswer": "B",
+      "clue": "Causative passive: have + sth + V3/ed.",
+      "explanationVi": "Năng lực sản xuất ('output capacity') chịu tác động mở rộng nên dùng phân từ hai 'expanded'.",
+      "targetChunk": {
+        "phrase": "have its capacity expanded",
+        "meaningVi": "mở rộng năng lực sản xuất của mình"
+      },
+      "skeleton": {
+        "subject": "The manufacturing facility",
+        "verb": "can have",
+        "object": "its output capacity expanded"
+      }
+    },
+    {
+      "id": "mod_adv_015",
+      "level": "advanced",
+      "question": "It is crucial that the newly acquired subsidiary ______ compliance with local occupational regulations.",
+      "options": {
+        "A": "demonstrates",
+        "B": "demonstrate",
+        "C": "demonstrated",
+        "D": "demonstrating"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc: It is crucial that + S + V-bare.",
+      "explanationVi": "'crucial that' kích hoạt thể giả định, động từ 'demonstrate' giữ nguyên mẫu không chia đuôi -s.",
+      "targetChunk": {
+        "phrase": "crucial that the subsidiary demonstrate compliance",
+        "meaningVi": "quan trọng là công ty con phải chứng minh sự tuân thủ"
+      },
+      "skeleton": {
+        "subject": "It (dummy)",
+        "verb": "is crucial",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "mod_adv_016",
+      "level": "advanced",
+      "question": "The flight crew could not ______ landed safely under those zero-visibility weather conditions.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "had",
+        "D": "having"
+      },
+      "correctAnswer": "A",
+      "clue": "Modal Perfect mang tính phủ định quá khứ: could not have + V3/ed.",
+      "explanationVi": "'could not have landed' phủ định một khả năng có thể hoàn tất trong quá khứ dưới thời tiết xấu.",
+      "targetChunk": {
+        "phrase": "could not have landed safely",
+        "meaningVi": "không thể nào đã hạ cánh an toàn"
+      },
+      "skeleton": {
+        "subject": "The flight crew",
+        "verb": "could not have landed",
+        "object": null
+      }
+    },
+    {
+      "id": "mod_adv_017",
+      "level": "advanced",
+      "question": "The regulatory board stipulated that the plant manager ______ all wastewater discharge logs weekly.",
+      "options": {
+        "A": "publishes",
+        "B": "publish",
+        "C": "published",
+        "D": "to publish"
+      },
+      "correctAnswer": "B",
+      "clue": "Thể giả định pháp lý: stipulated that + S + V-bare.",
+      "explanationVi": "'stipulated that' (quy định rằng) yêu cầu động từ nguyên thể 'publish' cho toàn bộ các chủ ngữ.",
+      "targetChunk": {
+        "phrase": "stipulated that the manager publish logs",
+        "meaningVi": "quy định rằng giám đốc nhà máy phải công bố nhật ký"
+      },
+      "skeleton": {
+        "subject": "The regulatory board",
+        "verb": "stipulated",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "mod_adv_018",
+      "level": "advanced",
+      "question": "The enterprise would not ______ suffered severe financial losses had it hedged against foreign currency risks.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "had",
+        "D": "having"
+      },
+      "correctAnswer": "A",
+      "clue": "Đảo ngữ điều kiện loại 3 ở vế sau ('had it hedged'): S + would not have + V3/ed.",
+      "explanationVi": "Cấu trúc câu điều kiện loại 3 dùng 'would not have suffered'.",
+      "targetChunk": {
+        "phrase": "would not have suffered losses",
+        "meaningVi": "sẽ không phải gánh chịu những tổn thất"
+      },
+      "skeleton": {
+        "subject": "The enterprise",
+        "verb": "would not have suffered",
+        "object": "severe financial losses"
+      }
+    },
+    {
+      "id": "mod_adv_019",
+      "level": "advanced",
+      "question": "It is desirable that the head architect ______ present during the municipal zoning review.",
+      "options": {
+        "A": "is",
+        "B": "be",
+        "C": "was",
+        "D": "being"
+      },
+      "correctAnswer": "B",
+      "clue": "Thể giả định: It is desirable that + S + be Adj.",
+      "explanationVi": "Sau 'desirable that', động từ to be phải ở dạng nguyên mẫu 'be'.",
+      "targetChunk": {
+        "phrase": "desirable that the architect be present",
+        "meaningVi": "mong muốn kiến trúc sư trưởng có mặt"
+      },
+      "skeleton": {
+        "subject": "It (dummy)",
+        "verb": "is desirable",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "mod_adv_020",
+      "level": "advanced",
+      "question": "The project leader had the structural drawings ______ by an accredited civil engineering firm.",
+      "options": {
+        "A": "verify",
+        "B": "verified",
+        "C": "to verify",
+        "D": "verifying"
+      },
+      "correctAnswer": "B",
+      "clue": "Causative passive: had + sth + V3/ed.",
+      "explanationVi": "Các bản vẽ ('drawings') được xác thực bởi bên thứ ba nên dùng phân từ hai 'verified'.",
+      "targetChunk": {
+        "phrase": "had drawings verified by a firm",
+        "meaningVi": "cho xác thực các bản vẽ bởi một công ty"
+      },
+      "skeleton": {
+        "subject": "The project leader",
+        "verb": "had",
+        "object": "the structural drawings verified"
+      }
+    },
+    {
+      "id": "mod_adv_021",
+      "level": "advanced",
+      "question": "The quality assurance director insisted that no compromised batch ______ shipped to global retailers.",
+      "options": {
+        "A": "is",
+        "B": "be",
+        "C": "was",
+        "D": "been"
+      },
+      "correctAnswer": "B",
+      "clue": "Thể giả định bị động: insisted that + S + be V3/ed.",
+      "explanationVi": "Sau 'insisted that', cấu trúc bị động nguyên mẫu 'be shipped' là bắt buộc.",
+      "targetChunk": {
+        "phrase": "insisted that no batch be shipped",
+        "meaningVi": "khăng khăng yêu cầu không xuất đi lô hàng lỗi nào"
+      },
+      "skeleton": {
+        "subject": "The quality assurance director",
+        "verb": "insisted",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "mod_adv_022",
+      "level": "advanced",
+      "question": "The investment firm must ______ anticipated the stock split, given their heavy purchases last week.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "had",
+        "D": "having"
+      },
+      "correctAnswer": "A",
+      "clue": "Suy luận logic chắc chắn ở quá khứ: must have + V3/ed.",
+      "explanationVi": "Hành vi gom cổ phiếu tuần trước làm bằng chứng cho thấy công ty 'chắc hẳn đã dự đoán được' -> 'must have anticipated'.",
+      "targetChunk": {
+        "phrase": "must have anticipated the stock split",
+        "meaningVi": "chắc hẳn đã đoán trước được việc chia tách cổ phiếu"
+      },
+      "skeleton": {
+        "subject": "The investment firm",
+        "verb": "must have anticipated",
+        "object": "the stock split"
+      }
+    },
+    {
+      "id": "mod_adv_023",
+      "level": "advanced",
+      "question": "The senior partners would rather the junior associate ______ the draft prior to filing it in court.",
+      "options": {
+        "A": "revise",
+        "B": "revised",
+        "C": "to revise",
+        "D": "revising"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc would rather với hai chủ ngữ: would rather + S + V2/ed.",
+      "explanationVi": "'would rather someone did something' diễn đạt mong muốn đối phương làm gì ở hiện tại/tương lai bằng thì quá khứ đơn 'revised'.",
+      "targetChunk": {
+        "phrase": "would rather the associate revised the draft",
+        "meaningVi": "muốn cộng sự sửa lại bản thảo trước"
+      },
+      "skeleton": {
+        "subject": "The senior partners",
+        "verb": "would rather",
+        "object": "the junior associate revised the draft"
+      }
+    },
+    {
+      "id": "mod_adv_024",
+      "level": "advanced",
+      "question": "______ any unexpected complications arise during transit, contact the dispatch supervisor right away.",
+      "options": {
+        "A": "Should",
+        "B": "Were",
+        "C": "Had",
+        "D": "Could"
+      },
+      "correctAnswer": "A",
+      "clue": "Đảo ngữ câu điều kiện loại 1: Should + S + V-bare.",
+      "explanationVi": "'Should any complications arise' = 'If any complications arise'.",
+      "targetChunk": {
+        "phrase": "should any complications arise",
+        "meaningVi": "nếu có bất kỳ sự cố nào nảy sinh"
+      },
+      "skeleton": {
+        "subject": "(You - implied)",
+        "verb": "contact",
+        "object": "the dispatch supervisor"
+      }
+    },
+    {
+      "id": "mod_adv_025",
+      "level": "advanced",
+      "question": "The municipal authority urged that the manufacturing complex ______ emissions by fifteen percent this fiscal year.",
+      "options": {
+        "A": "lowers",
+        "B": "lower",
+        "C": "lowered",
+        "D": "lowering"
+      },
+      "correctAnswer": "B",
+      "clue": "Bàng thái cách: urged that + S + V-bare.",
+      "explanationVi": "Sau động từ thúc giục 'urged that', mệnh đề theo sau dùng động từ nguyên mẫu không chia 'lower'.",
+      "targetChunk": {
+        "phrase": "urged that the complex lower emissions",
+        "meaningVi": "thúc giục khu phức hợp giảm phát thải"
+      },
+      "skeleton": {
+        "subject": "The municipal authority",
+        "verb": "urged",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "mod_adv_026",
+      "level": "advanced",
+      "question": "The corporate treasurer should ______ locked in the lower interest rates before the monetary policy change.",
+      "options": {
+        "A": "have",
+        "B": "has",
+        "C": "had",
+        "D": "having"
+      },
+      "correctAnswer": "A",
+      "clue": "Chỉ việc lẽ ra nên làm nhưng không làm: should have + V3/ed.",
+      "explanationVi": "'should have locked in' thể hiện sự hối tiếc vì thủ quỹ đã không chốt lãi suất thấp kịp thời.",
+      "targetChunk": {
+        "phrase": "should have locked in lower rates",
+        "meaningVi": "đáng lẽ ra nên chốt mức lãi suất thấp hơn"
+      },
+      "skeleton": {
+        "subject": "The corporate treasurer",
+        "verb": "should have locked in",
+        "object": "the lower interest rates"
+      }
+    },
+    {
+      "id": "mod_adv_027",
+      "level": "advanced",
+      "question": "It is recommended that every international delegate ______ proof of vaccination at the entry border.",
+      "options": {
+        "A": "carries",
+        "B": "carry",
+        "C": "carried",
+        "D": "carrying"
+      },
+      "correctAnswer": "B",
+      "clue": "Thể giả định: It is recommended that + S + V-bare.",
+      "explanationVi": "Dù chủ ngữ là đại từ số ít 'every delegate', động từ bàng thái cách vẫn là nguyên mẫu 'carry'.",
+      "targetChunk": {
+        "phrase": "recommended that every delegate carry proof",
+        "meaningVi": "khuyến nghị mỗi đại biểu mang theo bằng chứng"
+      },
+      "skeleton": {
+        "subject": "It (dummy)",
+        "verb": "is recommended",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "mod_adv_028",
+      "level": "advanced",
+      "question": "The operations head got the independent auditing group ______ the inventory records unannounced.",
+      "options": {
+        "A": "inspect",
+        "B": "to inspect",
+        "C": "inspected",
+        "D": "inspecting"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc sai khiến chủ động: get + sb + to-V.",
+      "explanationVi": "Chủ ngữ yêu cầu nhóm kiểm toán thực hiện thanh tra qua 'got', theo sau là 'to inspect'.",
+      "targetChunk": {
+        "phrase": "got the group to inspect records",
+        "meaningVi": "nhờ nhóm kiểm toán thanh tra sổ sách"
+      },
+      "skeleton": {
+        "subject": "The operations head",
+        "verb": "got",
+        "object": "the group to inspect the records"
+      }
+    },
+    {
+      "id": "mod_adv_029",
+      "level": "advanced",
+      "question": "The contractor was bound to have the hazardous chemical spill ______ within twenty-four hours.",
+      "options": {
+        "A": "clean",
+        "B": "cleaned",
+        "C": "cleaning",
+        "D": "to clean"
+      },
+      "correctAnswer": "B",
+      "clue": "Causative passive: have + sth + V3/ed.",
+      "explanationVi": "Sự cố tràn hóa chất ('spill') cần được dọn sạch nên dùng phân từ hai 'cleaned'.",
+      "targetChunk": {
+        "phrase": "have the chemical spill cleaned",
+        "meaningVi": "cho dọn sạch sự cố tràn hóa chất"
+      },
+      "skeleton": {
+        "subject": "The contractor",
+        "verb": "was bound to have",
+        "object": "the hazardous chemical spill cleaned"
+      }
+    },
+    {
+      "id": "mod_adv_030",
+      "level": "advanced",
+      "question": "It is mandatory that every financial analyst ______ the strict insider trading protocols.",
+      "options": {
+        "A": "observes",
+        "B": "observe",
+        "C": "observed",
+        "D": "observing"
+      },
+      "correctAnswer": "B",
+      "clue": "Thể giả định: It is mandatory that + S + V-bare.",
+      "explanationVi": "Sau tính từ mang tính ép buộc 'mandatory that', động từ theo sau là V-bare 'observe' (tuân thủ).",
+      "targetChunk": {
+        "phrase": "mandatory that every analyst observe protocols",
+        "meaningVi": "bắt buộc mỗi chuyên viên phân tích phải tuân thủ quy chuẩn"
+      },
+      "skeleton": {
+        "subject": "It (dummy)",
+        "verb": "is mandatory",
+        "object": "that clause"
+      }
+    }
+  ]
+}

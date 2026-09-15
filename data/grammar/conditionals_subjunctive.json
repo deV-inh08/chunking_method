@@ -1,0 +1,1389 @@
+{
+  "topicId": "conditionals_subjunctive",
+  "topicName": "Câu điều kiện & Thức giả định",
+  "topicNameEn": "Conditionals & Subjunctive Mood",
+  "category": "clauses_syntax",
+  "description": "Câu điều kiện loại 1, 2, 3 và hỗn hợp; các từ nối thay thế If (unless, provided that, in case of); đảo ngữ câu điều kiện (Should / Were / Had); và thức giả định với động từ/tính từ yêu cầu (recommend, suggest, essential that S + V-bare).",
+  "questions": [
+    {
+      "id": "cond_std_001",
+      "level": "standard",
+      "question": "If the shipment ______ by Friday, the client will cancel the overseas delivery agreement.",
+      "options": {
+        "A": "does not arrive",
+        "B": "will not arrive",
+        "C": "had not arrived",
+        "D": "did not arrive"
+      },
+      "correctAnswer": "A",
+      "clue": "CÂU ĐIỀU KIỆN LOẠI 1: Mệnh đề chính có 'will cancel' → Mệnh đề If chia thì Hiện tại đơn: does not arrive.",
+      "explanationVi": "Trong mệnh đề điều kiện loại 1 (If + S + V hiện tại đơn, S + will + V), không bao giờ dùng 'will' trong mệnh đề If.",
+      "targetChunk": {
+        "phrase": "If the shipment does not arrive",
+        "meaningVi": "Nếu lô hàng không đến nơi"
+      },
+      "skeleton": {
+        "subject": "the client",
+        "verb": "will cancel",
+        "object": "the delivery agreement"
+      }
+    },
+    {
+      "id": "cond_std_002",
+      "level": "standard",
+      "question": "The director suggested that Mr. Yamamoto ______ the executive conference in Singapore next week.",
+      "options": {
+        "A": "attend",
+        "B": "attends",
+        "C": "attended",
+        "D": "attending"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH (Subjunctive Mood): Sau động từ 'suggest that + S', động từ luôn ở dạng NGUYÊN MẪU KHÔNG 'TO' (V-bare): attend.",
+      "explanationVi": "Cấu trúc: suggest that + S + (should) + V-bare. Dù chủ ngữ là Mr. Yamamoto (ngôi 3 số ít), động từ vẫn giữ nguyên là 'attend'.",
+      "targetChunk": {
+        "phrase": "suggested that Mr. Yamamoto attend",
+        "meaningVi": "đề xuất rằng ông Yamamoto tham dự"
+      },
+      "skeleton": {
+        "subject": "The director",
+        "verb": "suggested",
+        "object": "that Mr. Yamamoto attend the conference"
+      }
+    },
+    {
+      "id": "cond_std_003",
+      "level": "standard",
+      "question": "If our team ______ more preparation time, we would have submitted a far more competitive tender.",
+      "options": {
+        "A": "had had",
+        "B": "have had",
+        "C": "had",
+        "D": "would have"
+      },
+      "correctAnswer": "A",
+      "clue": "CÂU ĐIỀU KIỆN LOẠI 3: Mệnh đề chính có 'would have submitted' → Mệnh đề If chia Quá khứ hoàn thành: had had.",
+      "explanationVi": "Cấu trúc loại 3 diễn tả điều trái ngược trong quá khứ: If + S + had + V3/ed, S + would have + V3/ed.",
+      "targetChunk": {
+        "phrase": "If our team had had more time",
+        "meaningVi": "Nếu nhóm chúng tôi có nhiều thời gian hơn"
+      },
+      "skeleton": {
+        "subject": "we",
+        "verb": "would have submitted",
+        "object": "a competitive tender"
+      }
+    },
+    {
+      "id": "cond_std_004",
+      "level": "standard",
+      "question": "It is essential that every new employee ______ the mandatory cybersecurity orientation.",
+      "options": {
+        "A": "complete",
+        "B": "completes",
+        "C": "completed",
+        "D": "completing"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH SAU TÍNH TỪ: It is essential that + S + (should) + V-bare → complete.",
+      "explanationVi": "Sau tính từ chỉ sự cấp thiết (essential, vital, crucial, mandatory), mệnh đề 'that' dùng động từ nguyên mẫu không chia.",
+      "targetChunk": {
+        "phrase": "essential that every employee complete",
+        "meaningVi": "thiết yếu là mọi nhân viên phải hoàn thành"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "is essential",
+        "object": "that every employee complete orientation"
+      }
+    },
+    {
+      "id": "cond_std_005",
+      "level": "standard",
+      "question": "The merger agreement will be finalized ______ all regulatory authorities grant written approval.",
+      "options": {
+        "A": "provided that",
+        "B": "in case of",
+        "C": "unless",
+        "D": "due to"
+      },
+      "correctAnswer": "A",
+      "clue": "TỪ NỐI THAY THẾ CHO IF: 'provided that + S + V' = with the condition that (với điều kiện là / miễn là).",
+      "explanationVi": "'provided that' đóng vai trò như liên từ điều kiện chỉ sự chấp thuận bắt buộc.",
+      "targetChunk": {
+        "phrase": "provided that authorities grant approval",
+        "meaningVi": "miễn là các cơ quan chức năng phê duyệt"
+      },
+      "skeleton": {
+        "subject": "agreement",
+        "verb": "will be finalized",
+        "object": null
+      }
+    },
+    {
+      "id": "cond_std_006",
+      "level": "standard",
+      "question": "If the board ______ the budget allocation yesterday, construction could begin on schedule.",
+      "options": {
+        "A": "had approved",
+        "B": "approves",
+        "C": "approved",
+        "D": "would approve"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐIỀU KIỆN HỖN HỢP: Mệnh đề If có thời gian quá khứ 'yesterday' (chia QK hoàn thành: had approved), mệnh đề chính chỉ hiện tại (could begin).",
+      "explanationVi": "Hành động phê duyệt diễn ra trong quá khứ (yesterday) nên dùng 'had approved'.",
+      "targetChunk": {
+        "phrase": "If the board had approved yesterday",
+        "meaningVi": "Nếu hội đồng đã thông qua vào ngày hôm qua"
+      },
+      "skeleton": {
+        "subject": "construction",
+        "verb": "could begin",
+        "object": "on schedule"
+      }
+    },
+    {
+      "id": "cond_std_007",
+      "level": "standard",
+      "question": "The human resources policy mandates that all expense claims ______ by the direct supervisor.",
+      "options": {
+        "A": "be approved",
+        "B": "are approved",
+        "C": "is approved",
+        "D": "were approved"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH BỊ ĐỘNG: mandates that + S + (should) + BE + V3/ed → be approved.",
+      "explanationVi": "Sau động từ bắt buộc 'mandate that', thể bị động giữ nguyên 'be + V3/ed'.",
+      "targetChunk": {
+        "phrase": "mandates that claims be approved",
+        "meaningVi": "quy định rằng các bản kê khai chi phí phải được phê duyệt"
+      },
+      "skeleton": {
+        "subject": "policy",
+        "verb": "mandates",
+        "object": "that claims be approved"
+      }
+    },
+    {
+      "id": "cond_std_008",
+      "level": "standard",
+      "question": "The shipment will not be dispatched on Monday ______ payment is received in full beforehand.",
+      "options": {
+        "A": "unless",
+        "B": "provided",
+        "C": "if",
+        "D": "in case"
+      },
+      "correctAnswer": "A",
+      "clue": "LIÊN TỪ PHỦ ĐỊNH: 'unless + S + V' = if not (trừ khi / nếu không).",
+      "explanationVi": "Lô hàng sẽ không được gửi đi 'trừ phi' tiền thanh toán được nhận đủ trước.",
+      "targetChunk": {
+        "phrase": "unless payment is received in full",
+        "meaningVi": "trừ khi khoản thanh toán được nhận đầy đủ"
+      },
+      "skeleton": {
+        "subject": "shipment",
+        "verb": "will not be dispatched",
+        "object": null
+      }
+    },
+    {
+      "id": "cond_std_009",
+      "level": "standard",
+      "question": "It is imperative that the lead architect ______ on site during the foundation pouring.",
+      "options": {
+        "A": "be",
+        "B": "is",
+        "C": "was",
+        "D": "are"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH VỚI TO BE: It is imperative that + S + BE (nguyên mẫu).",
+      "explanationVi": "Sau 'imperative that', động từ 'to be' chia ở dạng nguyên thể là 'be'.",
+      "targetChunk": {
+        "phrase": "imperative that the architect be on site",
+        "meaningVi": "cấp bách là vị kiến trúc sư trưởng phải có mặt tại công trường"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "is imperative",
+        "object": "that the architect be on site"
+      }
+    },
+    {
+      "id": "cond_std_010",
+      "level": "standard",
+      "question": "If the economy ______ to deteriorate, the central bank would likely reduce interest rates further.",
+      "options": {
+        "A": "were",
+        "B": "is",
+        "C": "will be",
+        "D": "has been"
+      },
+      "correctAnswer": "A",
+      "clue": "CÂU ĐIỀU KIỆN LOẠI 2: Mệnh đề chính có 'would reduce' → Mệnh đề If dùng 'were to V' (giả định tương lai/hiện tại).",
+      "explanationVi": "Trong câu điều kiện loại 2, động từ to be luôn là 'were' cho mọi ngôi.",
+      "targetChunk": {
+        "phrase": "If the economy were to deteriorate",
+        "meaningVi": "Nếu nền kinh tế suy giảm xấu đi"
+      },
+      "skeleton": {
+        "subject": "the central bank",
+        "verb": "would reduce",
+        "object": "interest rates"
+      }
+    },
+    {
+      "id": "cond_std_011",
+      "level": "standard",
+      "question": "The chairman requested that each department head ______ a five-year strategic development roadmap.",
+      "options": {
+        "A": "prepare",
+        "B": "prepares",
+        "C": "prepared",
+        "D": "preparing"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH: requested that + S + V-bare → prepare.",
+      "explanationVi": "Sau 'requested that', động từ giữ nguyên mẫu 'prepare' dù chủ ngữ là 'each department head'.",
+      "targetChunk": {
+        "phrase": "requested that each head prepare a roadmap",
+        "meaningVi": "yêu cầu mỗi trưởng phòng chuẩn bị lộ trình"
+      },
+      "skeleton": {
+        "subject": "The chairman",
+        "verb": "requested",
+        "object": "that each head prepare a roadmap"
+      }
+    },
+    {
+      "id": "cond_std_012",
+      "level": "standard",
+      "question": "You can attend the global tech symposium remotely ______ that you register by Wednesday.",
+      "options": {
+        "A": "as long",
+        "B": "providing",
+        "C": "unless",
+        "D": "so"
+      },
+      "correctAnswer": "B",
+      "clue": "Liên từ điều kiện: 'providing that' = provided that / as long as (với điều kiện là).",
+      "explanationVi": "'providing that' đóng vai trò liên từ chỉ điều kiện.",
+      "targetChunk": {
+        "phrase": "providing that you register by Wednesday",
+        "meaningVi": "với điều kiện là bạn đăng ký trước thứ Tư"
+      },
+      "skeleton": {
+        "subject": "You",
+        "verb": "can attend",
+        "object": "the symposium"
+      }
+    },
+    {
+      "id": "cond_std_013",
+      "level": "standard",
+      "question": "It is crucial that the newly acquired medical equipment ______ thoroughly before use.",
+      "options": {
+        "A": "be calibrated",
+        "B": "is calibrated",
+        "C": "calibrated",
+        "D": "calibrates"
+      },
+      "correctAnswer": "A",
+      "clue": "Thức giả định bị động: It is crucial that + S + BE + V3/ed → be calibrated.",
+      "explanationVi": "Thiết bị y tế 'phải được hiệu chuẩn kỹ càng' (be calibrated).",
+      "targetChunk": {
+        "phrase": "crucial that equipment be calibrated",
+        "meaningVi": "tối quan trọng là thiết bị phải được hiệu chuẩn"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "is crucial",
+        "object": "that equipment be calibrated"
+      }
+    },
+    {
+      "id": "cond_std_014",
+      "level": "standard",
+      "question": "If we ______ the regional marketing rights earlier, our market penetration would be far higher.",
+      "options": {
+        "A": "had secured",
+        "B": "secure",
+        "C": "secured",
+        "D": "have secured"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐIỀU KIỆN HỖN HỢP: Quá khứ giả định 'earlier' (had secured) dẫn đến kết quả hiện tại 'would be'.",
+      "explanationVi": "Có 'earlier' chỉ hành động trong quá khứ nên mệnh đề If chia Quá khứ hoàn thành 'had secured'.",
+      "targetChunk": {
+        "phrase": "If we had secured the rights earlier",
+        "meaningVi": "Nếu chúng ta giành được quyền phân phối sớm hơn"
+      },
+      "skeleton": {
+        "subject": "market penetration",
+        "verb": "would be",
+        "object": "higher"
+      }
+    },
+    {
+      "id": "cond_std_015",
+      "level": "standard",
+      "question": "The corporate legal counsel insisted that the non-disclosure terms ______ unchanged.",
+      "options": {
+        "A": "remain",
+        "B": "remains",
+        "C": "remained",
+        "D": "remaining"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH: insisted that + S + V-bare → remain.",
+      "explanationVi": "Sau 'insisted that', động từ giữ nguyên mẫu 'remain'.",
+      "targetChunk": {
+        "phrase": "insisted that terms remain unchanged",
+        "meaningVi": "khăng khăng rằng các điều khoản phải giữ nguyên"
+      },
+      "skeleton": {
+        "subject": "counsel",
+        "verb": "insisted",
+        "object": "that terms remain unchanged"
+      }
+    },
+    {
+      "id": "cond_std_016",
+      "level": "standard",
+      "question": "______ the event of severe weather, the outdoor corporate picnic will be relocated to Hall C.",
+      "options": {
+        "A": "In",
+        "B": "On",
+        "C": "At",
+        "D": "For"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm giới từ chỉ điều kiện: 'In the event of + Noun' = If there is (Trong trường hợp xảy ra...).",
+      "explanationVi": "'In the event of' là cụm cố định trong thông báo sự kiện.",
+      "targetChunk": {
+        "phrase": "In the event of severe weather",
+        "meaningVi": "Trong trường hợp thời tiết xấu"
+      },
+      "skeleton": {
+        "subject": "the picnic",
+        "verb": "will be relocated",
+        "object": null
+      }
+    },
+    {
+      "id": "cond_std_017",
+      "level": "standard",
+      "question": "The director recommended that the marketing team ______ consumer testing before the product launch.",
+      "options": {
+        "A": "conduct",
+        "B": "conducts",
+        "C": "conducted",
+        "D": "conducting"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH: recommended that + S + V-bare → conduct.",
+      "explanationVi": "Sau 'recommended that', động từ ở dạng nguyên thể.",
+      "targetChunk": {
+        "phrase": "recommended that the team conduct testing",
+        "meaningVi": "khuyến nghị nhóm tiến hành thử nghiệm"
+      },
+      "skeleton": {
+        "subject": "The director",
+        "verb": "recommended",
+        "object": "that the team conduct testing"
+      }
+    },
+    {
+      "id": "cond_std_018",
+      "level": "standard",
+      "question": "The construction project will stay on schedule ______ long as raw material shipments arrive on time.",
+      "options": {
+        "A": "as",
+        "B": "so",
+        "C": "too",
+        "D": "more"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm liên từ chỉ điều kiện: 'as long as' (miễn là / chừng nào mà...).",
+      "explanationVi": "'as long as' đóng vai trò liên từ chỉ điều kiện tiên quyết.",
+      "targetChunk": {
+        "phrase": "as long as shipments arrive on time",
+        "meaningVi": "miễn là các chuyến hàng đến đúng hạn"
+      },
+      "skeleton": {
+        "subject": "The project",
+        "verb": "will stay",
+        "object": "on schedule"
+      }
+    },
+    {
+      "id": "cond_std_019",
+      "level": "standard",
+      "question": "It is mandatory that all visitors ______ their government identification at the reception desk.",
+      "options": {
+        "A": "present",
+        "B": "presents",
+        "C": "presented",
+        "D": "presenting"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH: It is mandatory that + S + V-bare → present.",
+      "explanationVi": "Sau tính từ 'mandatory that', động từ giữ nguyên mẫu.",
+      "targetChunk": {
+        "phrase": "mandatory that visitors present identification",
+        "meaningVi": "bắt buộc khách tham quan phải xuất trình giấy tờ tùy thân"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "is mandatory",
+        "object": "that visitors present identification"
+      }
+    },
+    {
+      "id": "cond_std_020",
+      "level": "standard",
+      "question": "If the manufacturer ______ the defective components promptly, the recall would not have been necessary.",
+      "options": {
+        "A": "had replaced",
+        "B": "replaces",
+        "C": "replaced",
+        "D": "would replace"
+      },
+      "correctAnswer": "A",
+      "clue": "CÂU ĐIỀU KIỆN LOẠI 3: Mệnh đề chính có 'would not have been' → Mệnh đề If chia Quá khứ hoàn thành: had replaced.",
+      "explanationVi": "Diễn tả sự tiếc nuối về việc đã không diễn ra trong quá khứ.",
+      "targetChunk": {
+        "phrase": "If the manufacturer had replaced components",
+        "meaningVi": "Nếu nhà sản xuất đã thay thế các linh kiện kịp thời"
+      },
+      "skeleton": {
+        "subject": "the recall",
+        "verb": "would not have been",
+        "object": "necessary"
+      }
+    },
+    {
+      "id": "cond_std_021",
+      "level": "standard",
+      "question": "The supervisor demands that safety goggles ______ in all chemical processing wings.",
+      "options": {
+        "A": "be worn",
+        "B": "are worn",
+        "C": "were worn",
+        "D": "worn"
+      },
+      "correctAnswer": "A",
+      "clue": "Thức giả định bị động: demands that + S + BE + V3/ed → be worn.",
+      "explanationVi": "Kính bảo hộ 'phải được đeo' (be worn).",
+      "targetChunk": {
+        "phrase": "demands that safety goggles be worn",
+        "meaningVi": "yêu cầu kính bảo hộ phải được đeo"
+      },
+      "skeleton": {
+        "subject": "The supervisor",
+        "verb": "demands",
+        "object": "that goggles be worn"
+      }
+    },
+    {
+      "id": "cond_std_022",
+      "level": "standard",
+      "question": "Take an umbrella ______ it begins to rain during the facility tour this afternoon.",
+      "options": {
+        "A": "in case",
+        "B": "in case of",
+        "C": "unless",
+        "D": "provided"
+      },
+      "correctAnswer": "A",
+      "clue": "CỤM PHÒNG NGỪA: 'in case + Mệnh đề S-V' (đề phòng trường hợp trời mưa). Phân biệt với 'in case of + Danh từ'.",
+      "explanationVi": "Phía sau có mệnh đề hoàn chỉnh (it begins to rain), nên dùng liên từ 'in case'.",
+      "targetChunk": {
+        "phrase": "in case it begins to rain",
+        "meaningVi": "phòng khi trời đổ mưa"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "Take",
+        "object": "an umbrella in case it rains"
+      }
+    },
+    {
+      "id": "cond_std_023",
+      "level": "standard",
+      "question": "It is vital that the software engineer ______ the server backup before the system update.",
+      "options": {
+        "A": "initiate",
+        "B": "initiates",
+        "C": "initiated",
+        "D": "initiating"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH: It is vital that + S + V-bare → initiate.",
+      "explanationVi": "Sau 'vital that', động từ giữ nguyên thể không chia.",
+      "targetChunk": {
+        "phrase": "vital that the engineer initiate backup",
+        "meaningVi": "vô cùng quan trọng là kỹ sư phải khởi động việc sao lưu"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "is vital",
+        "object": "that the engineer initiate backup"
+      }
+    },
+    {
+      "id": "cond_std_024",
+      "level": "standard",
+      "question": "If interest rates ______ to increase, commercial borrowing will slow down substantially.",
+      "options": {
+        "A": "continue",
+        "B": "will continue",
+        "C": "continued",
+        "D": "would continue"
+      },
+      "correctAnswer": "A",
+      "clue": "CÂU ĐIỀU KIỆN LOẠI 1: Mệnh đề chính có 'will slow down' → Mệnh đề If chia thì Hiện tại đơn: continue.",
+      "explanationVi": "Trong mệnh đề If loại 1, chia hiện tại đơn 'continue' tương ứng với chủ ngữ số nhiều 'rates'.",
+      "targetChunk": {
+        "phrase": "If interest rates continue to increase",
+        "meaningVi": "Nếu lãi suất tiếp tục tăng"
+      },
+      "skeleton": {
+        "subject": "borrowing",
+        "verb": "will slow down",
+        "object": null
+      }
+    },
+    {
+      "id": "cond_std_025",
+      "level": "standard",
+      "question": "The director proposed that the company ______ additional funds into artificial intelligence research.",
+      "options": {
+        "A": "invest",
+        "B": "invests",
+        "C": "invested",
+        "D": "investing"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH: proposed that + S + V-bare → invest.",
+      "explanationVi": "Sau 'proposed that', động từ ở dạng nguyên mẫu không chia.",
+      "targetChunk": {
+        "phrase": "proposed that the company invest funds",
+        "meaningVi": "đề xuất công ty đầu tư thêm ngân sách"
+      },
+      "skeleton": {
+        "subject": "The director",
+        "verb": "proposed",
+        "object": "that the company invest funds"
+      }
+    },
+    {
+      "id": "cond_std_026",
+      "level": "standard",
+      "question": "The contract will automatically renew ______ either party gives thirty days' written notice of termination.",
+      "options": {
+        "A": "unless",
+        "B": "provided",
+        "C": "if",
+        "D": "in case"
+      },
+      "correctAnswer": "A",
+      "clue": "Điều khoản hợp đồng chuẩn: 'unless + S + V' (trừ phi một trong hai bên gửi thông báo chấm dứt bằng văn bản).",
+      "explanationVi": "Hợp đồng tự động gia hạn TRỪ KHI có thông báo hủy.",
+      "targetChunk": {
+        "phrase": "unless either party gives notice",
+        "meaningVi": "trừ khi có một bên gửi thông báo"
+      },
+      "skeleton": {
+        "subject": "The contract",
+        "verb": "will automatically renew",
+        "object": null
+      }
+    },
+    {
+      "id": "cond_std_027",
+      "level": "standard",
+      "question": "It is advisable that travel reservations ______ well in advance of the high holiday season.",
+      "options": {
+        "A": "be made",
+        "B": "are made",
+        "C": "were made",
+        "D": "made"
+      },
+      "correctAnswer": "A",
+      "clue": "Thức giả định bị động: It is advisable that + S + BE + V3/ed → be made.",
+      "explanationVi": "Đặt chỗ du lịch 'nên được thực hiện' trước (be made).",
+      "targetChunk": {
+        "phrase": "advisable that reservations be made",
+        "meaningVi": "khuyến nghị rằng việc đặt chỗ cần được thực hiện"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "is advisable",
+        "object": "that reservations be made"
+      }
+    },
+    {
+      "id": "cond_std_028",
+      "level": "standard",
+      "question": "If we ______ about the shipping delay earlier, we would have contacted an alternative freight carrier.",
+      "options": {
+        "A": "had known",
+        "B": "knew",
+        "C": "know",
+        "D": "have known"
+      },
+      "correctAnswer": "A",
+      "clue": "CÂU ĐIỀU KIỆN LOẠI 3: Mệnh đề chính 'would have contacted' → Mệnh đề If chia Quá khứ hoàn thành: had known.",
+      "explanationVi": "Giả định trái với quá khứ (earlier) dùng 'had known'.",
+      "targetChunk": {
+        "phrase": "If we had known about the delay earlier",
+        "meaningVi": "Nếu chúng tôi biết về sự chậm trễ sớm hơn"
+      },
+      "skeleton": {
+        "subject": "we",
+        "verb": "would have contacted",
+        "object": "an alternative carrier"
+      }
+    },
+    {
+      "id": "cond_std_029",
+      "level": "standard",
+      "question": "The executive committee insisted that every employee ______ the confidentiality agreement.",
+      "options": {
+        "A": "sign",
+        "B": "signs",
+        "C": "signed",
+        "D": "signing"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH: insisted that + S + V-bare → sign.",
+      "explanationVi": "Sau 'insisted that', động từ giữ nguyên mẫu 'sign'.",
+      "targetChunk": {
+        "phrase": "insisted that every employee sign",
+        "meaningVi": "khăng khăng yêu cầu mỗi nhân viên phải ký"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "insisted",
+        "object": "that every employee sign agreement"
+      }
+    },
+    {
+      "id": "cond_std_030",
+      "level": "standard",
+      "question": "Please keep this receipt ______ you need to exchange the merchandise within the thirty-day window.",
+      "options": {
+        "A": "in case",
+        "B": "in case of",
+        "C": "unless",
+        "D": "providing"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm liên từ: 'in case + S + V' (đề phòng trường hợp bạn cần đổi trả hàng).",
+      "explanationVi": "Phía sau là mệnh đề có chủ ngữ 'you' và động từ 'need' → dùng 'in case'.",
+      "targetChunk": {
+        "phrase": "in case you need to exchange merchandise",
+        "meaningVi": "phòng khi quý khách cần đổi hàng"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "keep",
+        "object": "this receipt in case you need to exchange"
+      }
+    },
+    {
+      "id": "cond_adv_001",
+      "level": "advanced",
+      "question": "______ you require any further clarification regarding the tender, please do not hesitate to contact us.",
+      "options": {
+        "A": "Should",
+        "B": "If",
+        "C": "Were",
+        "D": "Had"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐẢO NGỮ ĐIỀU KIỆN LOẠI 1 (TOEIC 990): 'Should + S + V-bare, Mệnh lệnh / S + will + V' = If you require...",
+      "explanationVi": "Cấu trúc đảo ngữ loại 1 bỏ 'If', đảo trợ động từ 'Should' lên đầu câu: Should you require = If you require.",
+      "targetChunk": {
+        "phrase": "Should you require further clarification",
+        "meaningVi": "Nếu quý vị cần làm rõ thêm bất kỳ điều gì"
+      },
+      "skeleton": {
+        "subject": "Should you require clarification",
+        "verb": "do not hesitate",
+        "object": "to contact us"
+      }
+    },
+    {
+      "id": "cond_adv_002",
+      "level": "advanced",
+      "question": "______ we known about the impending customs strike, we would have rerouted the cargo shipments via air.",
+      "options": {
+        "A": "Had",
+        "B": "If",
+        "C": "Should",
+        "D": "Were"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐẢO NGỮ ĐIỀU KIỆN LOẠI 3: 'Had + S + V3/ed, S + would have + V3/ed' = If we had known...",
+      "explanationVi": "Bỏ 'If', đảo 'Had' lên trước chủ ngữ 'we'. Vế sau có 'would have rerouted'.",
+      "targetChunk": {
+        "phrase": "Had we known about the strike",
+        "meaningVi": "Giá như chúng tôi biết trước về cuộc đình công"
+      },
+      "skeleton": {
+        "subject": "Had we known about the strike",
+        "verb": "we would have rerouted",
+        "object": "the cargo"
+      }
+    },
+    {
+      "id": "cond_adv_003",
+      "level": "advanced",
+      "question": "______ the board to authorize the acquisition, the corporation would become the largest distributor in Asia.",
+      "options": {
+        "A": "Were",
+        "B": "Should",
+        "C": "Had",
+        "D": "If"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐẢO NGỮ ĐIỀU KIỆN LOẠI 2: 'Were + S + to-V, S + would + V' = If the board were to authorize...",
+      "explanationVi": "Cấu trúc đảo ngữ điều kiện loại 2 dạng 'to-V': Were + S + to-V.",
+      "targetChunk": {
+        "phrase": "Were the board to authorize the acquisition",
+        "meaningVi": "Nếu hội đồng chấp thuận việc thâu tóm"
+      },
+      "skeleton": {
+        "subject": "the corporation",
+        "verb": "would become",
+        "object": "the largest distributor"
+      }
+    },
+    {
+      "id": "cond_adv_004",
+      "level": "advanced",
+      "question": "______ for the generous endowment from the foundation, the university laboratory could not have expanded.",
+      "options": {
+        "A": "But",
+        "B": "Without",
+        "C": "Except",
+        "D": "Barring"
+      },
+      "correctAnswer": "A",
+      "clue": "THÀNH NGỮ ĐIỀU KIỆN LOẠI 3: 'But for + Noun' = If it had not been for (Nếu không nhờ có khoản tài trợ...).",
+      "explanationVi": "'But for' đi kèm với 'the generous endowment', tương đương 'If it had not been for'.",
+      "targetChunk": {
+        "phrase": "But for the generous endowment",
+        "meaningVi": "Nếu không nhờ có khoản tài trợ hào phóng"
+      },
+      "skeleton": {
+        "subject": "the laboratory",
+        "verb": "could not have expanded",
+        "object": null
+      }
+    },
+    {
+      "id": "cond_adv_005",
+      "level": "advanced",
+      "question": "______ for the dedicated intervention of our legal counsel, the lawsuit would still be ongoing today.",
+      "options": {
+        "A": "Were it not",
+        "B": "Had it not",
+        "C": "Should it not",
+        "D": "If it not"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐẢO NGỮ ĐIỀU KIỆN LOẠI 2 VỚI 'WERE IT NOT FOR': 'Were it not for + Noun' = If it were not for (Nếu không vì...).",
+      "explanationVi": "Vế sau chỉ hiện tại (would still be ongoing today), đảo ngữ điều kiện loại 2 là 'Were it not for'.",
+      "targetChunk": {
+        "phrase": "Were it not for the intervention",
+        "meaningVi": "Nếu không vì sự can thiệp tận tâm của cố vấn pháp lý"
+      },
+      "skeleton": {
+        "subject": "the lawsuit",
+        "verb": "would be ongoing",
+        "object": null
+      }
+    },
+    {
+      "id": "cond_adv_006",
+      "level": "advanced",
+      "question": "______ it not been for the vigilant actions of the night guard, the facility would have suffered catastrophic losses.",
+      "options": {
+        "A": "Had",
+        "B": "Were",
+        "C": "Should",
+        "D": "If"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐẢO NGỮ ĐIỀU KIỆN LOẠI 3: 'Had it not been for + Noun' = If it had not been for (Giá như không có...).",
+      "explanationVi": "Đảo 'Had' lên đầu câu trong cấu trúc phủ định: Had it not been for.",
+      "targetChunk": {
+        "phrase": "Had it not been for the actions of the guard",
+        "meaningVi": "Nếu không có hành động cảnh giác của người bảo vệ"
+      },
+      "skeleton": {
+        "subject": "the facility",
+        "verb": "would have suffered",
+        "object": "losses"
+      }
+    },
+    {
+      "id": "cond_adv_007",
+      "level": "advanced",
+      "question": "The executive committee recommended that the factory expansion ______ temporarily pending environmental review.",
+      "options": {
+        "A": "be suspended",
+        "B": "is suspended",
+        "C": "was suspended",
+        "D": "suspended"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH BỊ ĐỘNG: recommended that + S + BE + V3/ed → be suspended.",
+      "explanationVi": "Việc mở rộng nhà máy 'phải bị tạm hoãn' (be suspended).",
+      "targetChunk": {
+        "phrase": "recommended that expansion be suspended",
+        "meaningVi": "khuyến nghị việc mở rộng phải tạm hoãn"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "recommended",
+        "object": "that expansion be suspended"
+      }
+    },
+    {
+      "id": "cond_adv_008",
+      "level": "advanced",
+      "question": "______ you encounter difficulties accessing the intranet portal, please notify the IT helpdesk immediately.",
+      "options": {
+        "A": "Should",
+        "B": "If",
+        "C": "Were",
+        "D": "Had"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐẢO NGỮ LOẠI 1: Should + S + V-bare, câu mệnh lệnh 'please notify...'.",
+      "explanationVi": "Should you encounter = If you encounter.",
+      "targetChunk": {
+        "phrase": "Should you encounter difficulties",
+        "meaningVi": "Nếu quý vị gặp phải khó khăn"
+      },
+      "skeleton": {
+        "subject": "Should you encounter difficulties",
+        "verb": "please notify",
+        "object": "the IT helpdesk"
+      }
+    },
+    {
+      "id": "cond_adv_009",
+      "level": "advanced",
+      "question": "The director insisted that all proprietary research data ______ encrypted using military-grade software.",
+      "options": {
+        "A": "be",
+        "B": "is",
+        "C": "was",
+        "D": "are"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH BỊ ĐỘNG: insisted that + S + BE + V3/ed (encrypted).",
+      "explanationVi": "Dữ liệu phải được mã hóa: 'be encrypted'.",
+      "targetChunk": {
+        "phrase": "insisted that data be encrypted",
+        "meaningVi": "khăng khăng yêu cầu dữ liệu phải được mã hóa"
+      },
+      "skeleton": {
+        "subject": "The director",
+        "verb": "insisted",
+        "object": "that data be encrypted"
+      }
+    },
+    {
+      "id": "cond_adv_010",
+      "level": "advanced",
+      "question": "______ the municipal council to approve the rezoning petition, the commercial mall could open by December.",
+      "options": {
+        "A": "Were",
+        "B": "Should",
+        "C": "Had",
+        "D": "If"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐẢO NGỮ LOẠI 2: Were + S + to-V (Were the council to approve...).",
+      "explanationVi": "Cấu trúc đảo ngữ 'Were + S + to-V' diễn tả điều kiện giả định trong tương lai.",
+      "targetChunk": {
+        "phrase": "Were the council to approve the petition",
+        "meaningVi": "Nếu hội đồng phê chuẩn đơn kiến nghị"
+      },
+      "skeleton": {
+        "subject": "the mall",
+        "verb": "could open",
+        "object": "by December"
+      }
+    },
+    {
+      "id": "cond_adv_011",
+      "level": "advanced",
+      "question": "The contract stipulates that any party in breach ______ the other party for all consequential damages.",
+      "options": {
+        "A": "compensate",
+        "B": "compensates",
+        "C": "compensated",
+        "D": "compensating"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH VỚI 'STIPULATE THAT': Động từ giữ nguyên mẫu không chia: compensate.",
+      "explanationVi": "Sau 'stipulates that' (quy định rằng), động từ chia ở dạng nguyên mẫu 'compensate' dù chủ ngữ là 'any party' (số ít).",
+      "targetChunk": {
+        "phrase": "stipulates that any party compensate",
+        "meaningVi": "quy định rằng bất kỳ bên nào vi phạm phải bồi thường"
+      },
+      "skeleton": {
+        "subject": "The contract",
+        "verb": "stipulates",
+        "object": "that any party compensate the other"
+      }
+    },
+    {
+      "id": "cond_adv_012",
+      "level": "advanced",
+      "question": "______ the emergency generator not kicked in automatically, vital laboratory samples would have spoiled.",
+      "options": {
+        "A": "Had",
+        "B": "Were",
+        "C": "Should",
+        "D": "If"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐẢO NGỮ LOẠI 3 PHỦ ĐỊNH: 'Had + S + not + V3/ed' = If the generator had not kicked in...",
+      "explanationVi": "Đảo 'Had' lên đầu câu, trạng từ phủ định 'not' đứng sau chủ ngữ.",
+      "targetChunk": {
+        "phrase": "Had the generator not kicked in",
+        "meaningVi": "Nếu máy phát điện dự phòng đã không tự khởi động"
+      },
+      "skeleton": {
+        "subject": "samples",
+        "verb": "would have spoiled",
+        "object": null
+      }
+    },
+    {
+      "id": "cond_adv_013",
+      "level": "advanced",
+      "question": "It is urgently requested that every project deliverable ______ to the client portal by midnight.",
+      "options": {
+        "A": "be uploaded",
+        "B": "is uploaded",
+        "C": "was uploaded",
+        "D": "uploads"
+      },
+      "correctAnswer": "A",
+      "clue": "Thức giả định bị động: requested that + S + BE + V3/ed → be uploaded.",
+      "explanationVi": "Mỗi sản phẩm bàn giao 'phải được tải lên' (be uploaded).",
+      "targetChunk": {
+        "phrase": "requested that deliverable be uploaded",
+        "meaningVi": "yêu cầu sản phẩm bàn giao phải được tải lên"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "is requested",
+        "object": "that deliverable be uploaded"
+      }
+    },
+    {
+      "id": "cond_adv_014",
+      "level": "advanced",
+      "question": "The firm would have avoided the crippling antitrust fine ______ legal counsel been consulted beforehand.",
+      "options": {
+        "A": "had",
+        "B": "were",
+        "C": "should",
+        "D": "if"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐẢO NGỮ ĐỨNG Ở VẾ THỨ HAI: '...had legal counsel been consulted beforehand' = if legal counsel had been consulted.",
+      "explanationVi": "Mệnh đề đảo ngữ loại 3 đặt ở vế sau câu.",
+      "targetChunk": {
+        "phrase": "had legal counsel been consulted",
+        "meaningVi": "giá như cố vấn pháp lý đã được tham vấn từ trước"
+      },
+      "skeleton": {
+        "subject": "The firm",
+        "verb": "would have avoided",
+        "object": "the fine had counsel been consulted"
+      }
+    },
+    {
+      "id": "cond_adv_015",
+      "level": "advanced",
+      "question": "The chief financial officer demanded that the accounting error ______ investigated with absolute urgency.",
+      "options": {
+        "A": "be",
+        "B": "is",
+        "C": "was",
+        "D": "are"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH: demanded that + S + BE + V3/ed (investigated).",
+      "explanationVi": "Lỗi kế toán phải được điều tra: 'be investigated'.",
+      "targetChunk": {
+        "phrase": "demanded that error be investigated",
+        "meaningVi": "yêu cầu lỗi sai phải được điều tra"
+      },
+      "skeleton": {
+        "subject": "The CFO",
+        "verb": "demanded",
+        "object": "that error be investigated"
+      }
+    },
+    {
+      "id": "cond_adv_016",
+      "level": "advanced",
+      "question": "______ the delivery deadlines met, the contract will be renewed for an additional three years.",
+      "options": {
+        "A": "Provided",
+        "B": "Providing",
+        "C": "As long",
+        "D": "Unless"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm phân từ rút gọn: 'Provided the delivery deadlines are met...' (Miễn là các thời hạn giao hàng được đáp ứng).",
+      "explanationVi": "'Provided' đứng đầu câu mang nghĩa điều kiện giả định.",
+      "targetChunk": {
+        "phrase": "Provided the deadlines are met",
+        "meaningVi": "Miễn là các thời hạn được đáp ứng"
+      },
+      "skeleton": {
+        "subject": "the contract",
+        "verb": "will be renewed",
+        "object": null
+      }
+    },
+    {
+      "id": "cond_adv_017",
+      "level": "advanced",
+      "question": "______ you fail to submit the credential renewal documents, your laboratory clearance will be revoked.",
+      "options": {
+        "A": "Should",
+        "B": "Had",
+        "C": "Were",
+        "D": "Could"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐẢO NGỮ LOẠI 1: Should you fail to submit = If you fail to submit.",
+      "explanationVi": "Đảo ngữ loại 1 cảnh báo nguy cơ trong tương lai.",
+      "targetChunk": {
+        "phrase": "Should you fail to submit documents",
+        "meaningVi": "Nếu quý vị không nộp các giấy tờ gia hạn"
+      },
+      "skeleton": {
+        "subject": "clearance",
+        "verb": "will be revoked",
+        "object": null
+      }
+    },
+    {
+      "id": "cond_adv_018",
+      "level": "advanced",
+      "question": "The corporate restructuring committee recommended that the vice president ______ the logistics division.",
+      "options": {
+        "A": "oversee",
+        "B": "oversees",
+        "C": "oversaw",
+        "D": "overseeing"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH: recommended that + S + V-bare → oversee.",
+      "explanationVi": "Sau 'recommended that', động từ giữ nguyên mẫu 'oversee' (giám sát).",
+      "targetChunk": {
+        "phrase": "recommended that the VP oversee division",
+        "meaningVi": "khuyến nghị phó chủ tịch giám sát bộ phận"
+      },
+      "skeleton": {
+        "subject": "committee",
+        "verb": "recommended",
+        "object": "that the VP oversee division"
+      }
+    },
+    {
+      "id": "cond_adv_019",
+      "level": "advanced",
+      "question": "______ it not for overseas government subsidies, the green energy startup would not survive.",
+      "options": {
+        "A": "Were",
+        "B": "Had",
+        "C": "Should",
+        "D": "If"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐẢO NGỮ LOẠI 2: 'Were it not for + Noun' = If it were not for (Nếu không vì các khoản trợ cấp).",
+      "explanationVi": "Vế sau có 'would not survive' chỉ hiện tại, dùng đảo ngữ loại 2 'Were it not for'.",
+      "targetChunk": {
+        "phrase": "Were it not for government subsidies",
+        "meaningVi": "Nếu không nhờ các khoản trợ cấp của chính phủ"
+      },
+      "skeleton": {
+        "subject": "startup",
+        "verb": "would not survive",
+        "object": null
+      }
+    },
+    {
+      "id": "cond_adv_020",
+      "level": "advanced",
+      "question": "The auditor insisted that the finance department ______ all expense records dating back five fiscal years.",
+      "options": {
+        "A": "retain",
+        "B": "retains",
+        "C": "retained",
+        "D": "retaining"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH: insisted that + S + V-bare → retain.",
+      "explanationVi": "Giữ nguyên mẫu không 'to': retain.",
+      "targetChunk": {
+        "phrase": "insisted that department retain records",
+        "meaningVi": "khăng khăng yêu cầu phòng ban phải lưu giữ hồ sơ"
+      },
+      "skeleton": {
+        "subject": "The auditor",
+        "verb": "insisted",
+        "object": "that department retain records"
+      }
+    },
+    {
+      "id": "cond_adv_021",
+      "level": "advanced",
+      "question": "______ the emergency measures prove inadequate, the municipal government will declare a state of emergency.",
+      "options": {
+        "A": "Should",
+        "B": "Had",
+        "C": "Were",
+        "D": "Could"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐẢO NGỮ LOẠI 1: Should + S + V-bare (Should the emergency measures prove inadequate).",
+      "explanationVi": "Should = If. Mệnh đề chính có 'will declare'.",
+      "targetChunk": {
+        "phrase": "Should the measures prove inadequate",
+        "meaningVi": "Nếu các biện pháp khẩn cấp tỏ ra không đủ"
+      },
+      "skeleton": {
+        "subject": "government",
+        "verb": "will declare",
+        "object": "a state of emergency"
+      }
+    },
+    {
+      "id": "cond_adv_022",
+      "level": "advanced",
+      "question": "The arbitration committee stipulated that both corporate parties ______ in good faith throughout discussions.",
+      "options": {
+        "A": "act",
+        "B": "acts",
+        "C": "acted",
+        "D": "acting"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH: stipulated that + S + V-bare → act.",
+      "explanationVi": "Sau 'stipulated that', động từ giữ nguyên mẫu 'act'.",
+      "targetChunk": {
+        "phrase": "stipulated that both parties act in good faith",
+        "meaningVi": "quy định cả hai bên phải hành động trên tinh thần thiện chí"
+      },
+      "skeleton": {
+        "subject": "committee",
+        "verb": "stipulated",
+        "object": "that both parties act in good faith"
+      }
+    },
+    {
+      "id": "cond_adv_023",
+      "level": "advanced",
+      "question": "______ the senior researcher not verified the laboratory calibrations, the test results would have been flawed.",
+      "options": {
+        "A": "Had",
+        "B": "Were",
+        "C": "Should",
+        "D": "If"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐẢO NGỮ LOẠI 3 PHỦ ĐỊNH: Had the researcher not verified... = If the researcher had not verified...",
+      "explanationVi": "Vế sau có 'would have been flawed', dùng đảo ngữ loại 3 'Had'.",
+      "targetChunk": {
+        "phrase": "Had the researcher not verified calibrations",
+        "meaningVi": "Nếu nhà nghiên cứu đã không kiểm tra lại các hiệu chuẩn"
+      },
+      "skeleton": {
+        "subject": "results",
+        "verb": "would have been flawed",
+        "object": null
+      }
+    },
+    {
+      "id": "cond_adv_024",
+      "level": "advanced",
+      "question": "It is mandatory that all incoming visitors ______ their credentials to the front desk security personnel.",
+      "options": {
+        "A": "surrender",
+        "B": "surrenders",
+        "C": "surrendered",
+        "D": "surrendering"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH: It is mandatory that + S + V-bare → surrender.",
+      "explanationVi": "Động từ giữ nguyên thể sau 'mandatory that'.",
+      "targetChunk": {
+        "phrase": "mandatory that visitors surrender credentials",
+        "meaningVi": "bắt buộc khách phải nộp lại thẻ ra vào"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "is mandatory",
+        "object": "that visitors surrender credentials"
+      }
+    },
+    {
+      "id": "cond_adv_025",
+      "level": "advanced",
+      "question": "______ for the patent dispute, the pharmaceutical corporation would currently dominate the global market.",
+      "options": {
+        "A": "Were it not",
+        "B": "Had it not",
+        "C": "Should it not",
+        "D": "If it not"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐIỀU KIỆN LOẠI 2 HỖN HỢP: 'Were it not for + Noun' dẫn đến kết quả hiện tại 'would currently dominate'.",
+      "explanationVi": "Kết quả hiện tại (currently dominate) dùng 'Were it not for'.",
+      "targetChunk": {
+        "phrase": "Were it not for the patent dispute",
+        "meaningVi": "Nếu không có vụ tranh chấp bằng sáng chế"
+      },
+      "skeleton": {
+        "subject": "corporation",
+        "verb": "would dominate",
+        "object": "the market"
+      }
+    },
+    {
+      "id": "cond_adv_026",
+      "level": "advanced",
+      "question": "The director required that the comprehensive audit report ______ directly to the executive board.",
+      "options": {
+        "A": "be delivered",
+        "B": "is delivered",
+        "C": "was delivered",
+        "D": "delivered"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH BỊ ĐỘNG: required that + S + BE + V3/ed → be delivered.",
+      "explanationVi": "Báo cáo kiểm toán 'phải được chuyển thẳng' tới ban điều hành (be delivered).",
+      "targetChunk": {
+        "phrase": "required that the report be delivered",
+        "meaningVi": "yêu cầu báo cáo phải được gửi thẳng"
+      },
+      "skeleton": {
+        "subject": "The director",
+        "verb": "required",
+        "object": "that report be delivered"
+      }
+    },
+    {
+      "id": "cond_adv_027",
+      "level": "advanced",
+      "question": "______ the currency exchange rate to fluctuate wildly, international import costs would surge.",
+      "options": {
+        "A": "Were",
+        "B": "Should",
+        "C": "Had",
+        "D": "If"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐẢO NGỮ LOẠI 2: Were + S + to-V (Were the rate to fluctuate...).",
+      "explanationVi": "Mệnh đề chính có 'would surge', đảo ngữ điều kiện loại 2 dùng 'Were'.",
+      "targetChunk": {
+        "phrase": "Were the exchange rate to fluctuate",
+        "meaningVi": "Nếu tỷ giá hối đoái biến động dữ dội"
+      },
+      "skeleton": {
+        "subject": "costs",
+        "verb": "would surge",
+        "object": null
+      }
+    },
+    {
+      "id": "cond_adv_028",
+      "level": "advanced",
+      "question": "The chief executive officer urged that the executive committee ______ immediate corrective countermeasures.",
+      "options": {
+        "A": "adopt",
+        "B": "adopts",
+        "C": "adopted",
+        "D": "adopting"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH: urged that + S + V-bare → adopt.",
+      "explanationVi": "Sau 'urged that' (thúc giục rằng), động từ chia ở dạng nguyên thể 'adopt'.",
+      "targetChunk": {
+        "phrase": "urged that the committee adopt countermeasures",
+        "meaningVi": "thúc giục ủy ban áp dụng các biện pháp khắc phục ngay"
+      },
+      "skeleton": {
+        "subject": "The CEO",
+        "verb": "urged",
+        "object": "that the committee adopt countermeasures"
+      }
+    },
+    {
+      "id": "cond_adv_029",
+      "level": "advanced",
+      "question": "______ had the contract signed earlier, the assembly line would already be manufacturing units.",
+      "options": {
+        "A": "Had we",
+        "B": "If we",
+        "C": "Should we",
+        "D": "Were we"
+      },
+      "correctAnswer": "A",
+      "clue": "ĐẢO NGỮ LOẠI 3: 'Had we had the contract signed' (Nếu chúng ta đã ký hợp đồng sớm hơn).",
+      "explanationVi": "Đảo ngữ loại 3 'Had we + V3/ed'.",
+      "targetChunk": {
+        "phrase": "Had we had the contract signed earlier",
+        "meaningVi": "Nếu chúng ta đã ký hợp đồng sớm hơn"
+      },
+      "skeleton": {
+        "subject": "the assembly line",
+        "verb": "would be manufacturing",
+        "object": "units"
+      }
+    },
+    {
+      "id": "cond_adv_030",
+      "level": "advanced",
+      "question": "It is crucial that the lead scientist ______ available during the government safety audit.",
+      "options": {
+        "A": "be",
+        "B": "is",
+        "C": "was",
+        "D": "are"
+      },
+      "correctAnswer": "A",
+      "clue": "THỨC GIẢ ĐỊNH: It is crucial that + S + BE (nguyên mẫu).",
+      "explanationVi": "Sau 'crucial that', động từ to be giữ nguyên mẫu là 'be'.",
+      "targetChunk": {
+        "phrase": "crucial that the scientist be available",
+        "meaningVi": "tối quan trọng là nhà khoa học phải có mặt"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "is crucial",
+        "object": "that the scientist be available"
+      }
+    }
+  ]
+}

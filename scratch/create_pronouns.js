@@ -1,0 +1,684 @@
+import fs from 'fs';
+
+const topic = {
+  topicId: "pronouns",
+  topicName: "Đại từ",
+  topicNameEn: "Pronouns & Possessives",
+  category: "word_forms",
+  description: "Đại từ nhân xưng, tân ngữ, tính từ sở hữu, đại từ sở hữu, đại từ phản thân (by oneself / on one's own), và đại từ chỉ định thay thế (that/those of).",
+  questions: []
+};
+
+// 30 Standard Questions (pron_std_001 -> pron_std_030)
+const standardQuestions = [
+  {
+    id: "pron_std_001",
+    level: "standard",
+    question: "Ms. Tanaka submitted ______ expense report to the accounting department yesterday morning.",
+    options: { A: "she", B: "her", C: "hers", D: "herself" },
+    correctAnswer: "B",
+    clue: "Đứng trước cụm danh từ 'expense report' bắt buộc là Tính từ sở hữu: her + Noun.",
+    explanationVi: "'her' đóng vai trò tính từ sở hữu bổ nghĩa cho danh từ 'expense report'. 'hers' là đại từ sở hữu đứng độc lập.",
+    targetChunk: { phrase: "submitted her expense report", meaningVi: "đã nộp báo cáo chi phí của cô ấy" },
+    skeleton: { subject: "Ms. Tanaka", verb: "submitted", object: "her expense report" }
+  },
+  {
+    id: "pron_std_002",
+    level: "standard",
+    question: "The regional sales representatives exceeded ______ quarterly targets by nearly fifteen percent.",
+    options: { A: "their", B: "theirs", C: "them", D: "they" },
+    correctAnswer: "A",
+    clue: "Đứng trước danh từ số nhiều 'quarterly targets' cần Tính từ sở hữu: their + Noun.",
+    explanationVi: "'their' là tính từ sở hữu tương ứng với chủ ngữ số nhiều 'representatives'.",
+    targetChunk: { phrase: "exceeded their quarterly targets", meaningVi: "đã vượt chỉ tiêu quý của họ" },
+    skeleton: { subject: "The regional sales representatives", verb: "exceeded", object: "their quarterly targets" }
+  },
+  {
+    id: "pron_std_003",
+    level: "standard",
+    question: "Mr. Henderson completed the financial projection model entirely by ______ over the weekend.",
+    options: { A: "him", B: "his", C: "himself", D: "he" },
+    correctAnswer: "C",
+    clue: "Cụm thành ngữ cố định chỉ sự tự thân thực hiện: 'by himself' = on his own (tự mình làm).",
+    explanationVi: "By + Đại từ phản thân (himself) mang nghĩa tự mình làm việc gì mà không có ai trợ giúp.",
+    targetChunk: { phrase: "completed the model by himself", meaningVi: "tự mình hoàn thành mô hình" },
+    skeleton: { subject: "Mr. Henderson", verb: "completed", object: "the model" }
+  },
+  {
+    id: "pron_std_004",
+    level: "standard",
+    question: "Although our marketing strategy was effective, ______ was significantly more innovative.",
+    options: { A: "their", B: "theirs", C: "them", D: "they" },
+    correctAnswer: "B",
+    clue: "Đại từ sở hữu đứng làm Chủ ngữ độc lập thay thế cho 'their strategy': theirs = their strategy.",
+    explanationVi: "Đứng đầu mệnh đề làm chủ ngữ và không có danh từ theo sau, cần dùng Đại từ sở hữu 'theirs'.",
+    targetChunk: { phrase: "theirs was significantly more innovative", meaningVi: "chiến lược của họ sáng tạo hơn đáng kể" },
+    skeleton: { subject: "theirs", verb: "was", object: "significantly more innovative" }
+  },
+  {
+    id: "pron_std_005",
+    level: "standard",
+    question: "The human resources director invited ______ to attend the leadership development workshop.",
+    options: { A: "we", B: "us", C: "our", D: "ours" },
+    correctAnswer: "B",
+    clue: "Làm tân ngữ đứng sau ngoại động từ 'invited' cần Đại từ tân ngữ: us.",
+    explanationVi: "Đại từ đóng vai trò tân ngữ trực tiếp của động từ 'invited' phải là 'us' (chúng tôi).",
+    targetChunk: { phrase: "invited us to attend the workshop", meaningVi: "mời chúng tôi tham dự hội thảo" },
+    skeleton: { subject: "The director", verb: "invited", object: "us" }
+  },
+  {
+    id: "pron_std_006",
+    level: "standard",
+    question: "Every technician must clean ______ assigned workstation prior to leaving the laboratory.",
+    options: { A: "his or her", B: "theirs", C: "they", D: "them" },
+    correctAnswer: "A",
+    clue: "Chủ ngữ là 'Every technician' (số ít) → Tính từ sở hữu tương ứng là 'his or her' đứng trước cụm danh từ 'workstation'.",
+    explanationVi: "'Every + N số ít' đi với tính từ sở hữu số ít 'his or her' bổ nghĩa cho danh từ.",
+    targetChunk: { phrase: "clean his or her assigned workstation", meaningVi: "dọn dẹp bàn làm việc được phân công của mình" },
+    skeleton: { subject: "Every technician", verb: "must clean", object: "his or her assigned workstation" }
+  },
+  {
+    id: "pron_std_007",
+    level: "standard",
+    question: "Please contact ______ immediately if there are any discrepancies in the shipping invoice.",
+    options: { A: "I", B: "me", C: "my", D: "mine" },
+    correctAnswer: "B",
+    clue: "Làm tân ngữ sau ngoại động từ 'contact' cần Đại từ tân ngữ: contact me.",
+    explanationVi: "Sau động từ mệnh lệnh 'contact' cần tân ngữ ngôi thứ nhất số ít 'me'.",
+    targetChunk: { phrase: "contact me immediately", meaningVi: "liên hệ với tôi ngay lập tức" },
+    skeleton: { subject: "(You)", verb: "contact", object: "me" }
+  },
+  {
+    id: "pron_std_008",
+    level: "standard",
+    question: "Our laptop computers are durable, but ______ are remarkably lightweight and portable.",
+    options: { A: "they", B: "them", C: "their", D: "themselves" },
+    correctAnswer: "A",
+    clue: "Làm chủ ngữ đứng trước động từ 'are' cần Đại từ nhân xưng chủ ngữ: they.",
+    explanationVi: "'they' là đại từ chủ ngữ thay thế cho danh từ số nhiều 'laptop computers'.",
+    targetChunk: { phrase: "they are remarkably lightweight", meaningVi: "chúng nhẹ và cơ động một cách đáng nể" },
+    skeleton: { subject: "they", verb: "are", object: "remarkably lightweight" }
+  },
+  {
+    id: "pron_std_009",
+    level: "standard",
+    question: "Dr. Evans designed the revolutionary pharmaceutical formula all on ______ own.",
+    options: { A: "he", B: "him", C: "his", D: "himself" },
+    correctAnswer: "C",
+    clue: "Cấu trúc thành ngữ cố định: 'on one's own' = on his own (tự thân làm lấy).",
+    explanationVi: "Cụm 'on + tính từ sở hữu (his/her/my) + own' mang nghĩa tự lập, tự mình làm.",
+    targetChunk: { phrase: "all on his own", meaningVi: "hoàn toàn tự mình làm" },
+    skeleton: { subject: "Dr. Evans", verb: "designed", object: "the formula" }
+  },
+  {
+    id: "pron_std_010",
+    level: "standard",
+    question: "The executive committee will announce ______ final decision regarding the acquisition tomorrow.",
+    options: { A: "it", B: "its", C: "it's", D: "itself" },
+    correctAnswer: "B",
+    clue: "Bẫy 'its' (tính từ sở hữu: của nó) vs 'it's' (viết tắt của it is / it has). Cần tính từ sở hữu trước 'decision'.",
+    explanationVi: "'committee' là danh từ tập hợp số ít chỉ tổ chức, tính từ sở hữu tương ứng là 'its' (không có dấu nháy đơn).",
+    targetChunk: { phrase: "announce its final decision", meaningVi: "công bố quyết định cuối cùng của mình" },
+    skeleton: { subject: "The committee", verb: "will announce", object: "its final decision" }
+  },
+  {
+    id: "pron_std_011",
+    level: "standard",
+    question: "All conference participants are requested to keep ______ personal belongings with them at all times.",
+    options: { A: "they", B: "their", C: "theirs", D: "them" },
+    correctAnswer: "B",
+    clue: "Đứng trước cụm danh từ 'personal belongings' cần Tính từ sở hữu: their + Noun.",
+    explanationVi: "'their' bổ nghĩa cho 'belongings' (đồ đạc cá nhân của họ).",
+    targetChunk: { phrase: "keep their personal belongings", meaningVi: "giữ đồ đạc cá nhân của họ" },
+    skeleton: { subject: "All participants", verb: "are requested", object: "to keep their belongings" }
+  },
+  {
+    id: "pron_std_012",
+    level: "standard",
+    question: "The supervisor commended the two interns because ______ consistently arrived early.",
+    options: { A: "they", B: "them", C: "their", D: "themselves" },
+    correctAnswer: "A",
+    clue: "Đứng trước động từ 'arrived' trong mệnh đề phụ 'because...' cần Đại từ chủ ngữ: they.",
+    explanationVi: "'they' đóng vai trò chủ ngữ của mệnh đề nguyên nhân sau liên từ 'because'.",
+    targetChunk: { phrase: "because they consistently arrived early", meaningVi: "bởi vì họ luôn luôn đến sớm" },
+    skeleton: { subject: "they", verb: "arrived", object: null }
+  },
+  {
+    id: "pron_std_013",
+    level: "standard",
+    question: "The software application automatically updates ______ whenever a reliable internet connection is detected.",
+    options: { A: "it", B: "its", C: "itself", D: "it's" },
+    correctAnswer: "C",
+    clue: "Chủ ngữ và tân ngữ cùng là một đối tượng (phần mềm tự cập nhật chính nó) → Đại từ phản thân 'itself'.",
+    explanationVi: "Khi chủ ngữ thực hiện hành động lên chính bản thân nó, dùng đại từ phản thân 'itself'.",
+    targetChunk: { phrase: "automatically updates itself", meaningVi: "tự động cập nhật chính nó" },
+    skeleton: { subject: "The software application", verb: "updates", object: "itself" }
+  },
+  {
+    id: "pron_std_014",
+    level: "standard",
+    question: "The customer expressed profound dissatisfaction with ______ order, requesting an immediate refund.",
+    options: { A: "his", B: "him", C: "he", D: "himself" },
+    correctAnswer: "A",
+    clue: "Đứng trước danh từ 'order' cần Tính từ sở hữu: his order.",
+    explanationVi: "'his' đóng vai trò tính từ sở hữu bổ nghĩa cho danh từ đơn hàng.",
+    targetChunk: { phrase: "dissatisfaction with his order", meaningVi: "sự không hài lòng với đơn hàng của anh ấy" },
+    skeleton: { subject: "The customer", verb: "expressed", object: "profound dissatisfaction" }
+  },
+  {
+    id: "pron_std_015",
+    level: "standard",
+    question: "Because of a scheduling conflict, Ms. Gomez was unable to attend the summit, so Mr. Lee went in ______ place.",
+    options: { A: "she", B: "her", C: "hers", D: "herself" },
+    correctAnswer: "B",
+    clue: "Cụm cố định: in one's place (thay thế vào vị trí của ai) → in her place.",
+    explanationVi: "Trước danh từ 'place' cần tính từ sở hữu 'her'.",
+    targetChunk: { phrase: "went in her place", meaningVi: "đã đi thay thế vào vị trí của cô ấy" },
+    skeleton: { subject: "Mr. Lee", verb: "went", object: "in her place" }
+  },
+  {
+    id: "pron_std_016",
+    level: "standard",
+    question: "The board members thanked the volunteers for assisting ______ during the annual charity banquet.",
+    options: { A: "they", B: "them", C: "their", D: "theirs" },
+    correctAnswer: "B",
+    clue: "Làm tân ngữ sau danh động từ 'assisting' cần Đại từ tân ngữ: them.",
+    explanationVi: "Assisting them: giúp đỡ họ. 'them' là tân ngữ của 'assisting'.",
+    targetChunk: { phrase: "assisting them during the banquet", meaningVi: "giúp đỡ họ trong suốt buổi tiệc" },
+    skeleton: { subject: "The board members", verb: "thanked", object: "the volunteers" }
+  },
+  {
+    id: "pron_std_017",
+    level: "standard",
+    question: "Your digital portfolio is impressive, but ______ requires additional case studies before submission.",
+    options: { A: "mine", B: "my", C: "me", D: "myself" },
+    correctAnswer: "A",
+    clue: "Đại từ sở hữu 'mine' làm chủ ngữ độc lập thay thế cho 'my portfolio'.",
+    explanationVi: "'mine' = my portfolio. Đứng độc lập làm chủ ngữ mà không cần danh từ đi kèm.",
+    targetChunk: { phrase: "mine requires additional studies", meaningVi: "hồ sơ của tôi cần thêm các nghiên cứu trường hợp" },
+    skeleton: { subject: "mine", verb: "requires", object: "additional case studies" }
+  },
+  {
+    id: "pron_std_018",
+    level: "standard",
+    question: "The CEO ______ presented the prestigious employee of the year trophy at the ceremony.",
+    options: { A: "himself", B: "him", C: "his", D: "he" },
+    correctAnswer: "A",
+    clue: "Đại từ phản thân dùng để nhấn mạnh chủ ngữ đứng ngay sau S: The CEO himself (Đích thân vị CEO).",
+    explanationVi: "'himself' ở vị trí này có tác dụng nhấn mạnh 'chính đích thân CEO đã trao cúp'.",
+    targetChunk: { phrase: "The CEO himself presented the trophy", meaningVi: "Đích thân Tổng giám đốc đã trao cúp" },
+    skeleton: { subject: "The CEO himself", verb: "presented", object: "the trophy" }
+  },
+  {
+    id: "pron_std_019",
+    level: "standard",
+    question: "If you have questions about the insurance coverage, you may direct ______ to the benefits coordinator.",
+    options: { A: "they", B: "them", C: "their", D: "theirs" },
+    correctAnswer: "B",
+    clue: "Tân ngữ đứng sau ngoại động từ 'direct' thay cho danh từ số nhiều 'questions': direct them to sb.",
+    explanationVi: "'them' đóng vai trò tân ngữ trực tiếp của động từ 'direct' (chuyển chúng tới...).",
+    targetChunk: { phrase: "direct them to the coordinator", meaningVi: "chuyển các câu hỏi đó tới người điều phối" },
+    skeleton: { subject: "you", verb: "may direct", object: "them" }
+  },
+  {
+    id: "pron_std_020",
+    level: "standard",
+    question: "Both department supervisors reminded ______ staff members to complete the mandatory cybersecurity training.",
+    options: { A: "their", B: "theirs", C: "they", D: "them" },
+    correctAnswer: "A",
+    clue: "Đứng trước danh từ 'staff members' cần Tính từ sở hữu: their + Noun.",
+    explanationVi: "'their' là tính từ sở hữu bổ nghĩa cho nhân viên của họ.",
+    targetChunk: { phrase: "reminded their staff members", meaningVi: "đã nhắc nhở các nhân viên của họ" },
+    skeleton: { subject: "Both department supervisors", verb: "reminded", object: "their staff members" }
+  },
+  {
+    id: "pron_std_021",
+    level: "standard",
+    question: "The new accounting software is user-friendly, allowing employees to generate balance sheets by ______.",
+    options: { A: "they", B: "them", C: "themselves", D: "their" },
+    correctAnswer: "C",
+    clue: "By + Đại từ phản thân số nhiều: by themselves = on their own (tự họ làm được).",
+    explanationVi: "Chủ ngữ ngầm là 'employees' (số nhiều) nên đại từ phản thân là 'themselves'.",
+    targetChunk: { phrase: "generate sheets by themselves", meaningVi: "tự mình lập các bảng cân đối" },
+    skeleton: { subject: "employees", verb: "generate", object: "balance sheets" }
+  },
+  {
+    id: "pron_std_022",
+    level: "standard",
+    question: "Neither the design firm nor ______ subcontractors will be held liable for unanticipated shipping delays.",
+    options: { A: "its", B: "it", C: "it's", D: "itself" },
+    correctAnswer: "A",
+    clue: "Đứng trước danh từ 'subcontractors' cần Tính từ sở hữu 'its' (của công ty đó).",
+    explanationVi: "'its' thay thế cho danh từ số ít chỉ công ty 'the design firm'.",
+    targetChunk: { phrase: "nor its subcontractors", meaningVi: "lẫn các nhà thầu phụ của công ty đó" },
+    skeleton: { subject: "Neither the firm nor its subcontractors", verb: "will be held liable", object: null }
+  },
+  {
+    id: "pron_std_023",
+    level: "standard",
+    question: "Our graphic design team works closely with ______ to ensure consistent corporate branding.",
+    options: { A: "us", B: "we", C: "our", D: "ourselves" },
+    correctAnswer: "A",
+    clue: "Sau giới từ 'with' cần Đại từ tân ngữ: with us.",
+    explanationVi: "Sau giới từ luôn là đại từ ở dạng tân ngữ 'us'.",
+    targetChunk: { phrase: "works closely with us", meaningVi: "hợp tác chặt chẽ với chúng tôi" },
+    skeleton: { subject: "Our team", verb: "works", object: "with us" }
+  },
+  {
+    id: "pron_std_024",
+    level: "standard",
+    question: "The graphic designer purchased ______ a top-tier drawing tablet for digital illustration work.",
+    options: { A: "himself", B: "him", C: "his", D: "he" },
+    correctAnswer: "A",
+    clue: "Mua cho CHÍNH MÌNH (chủ ngữ tự mua đồ cho bản thân) → Đại từ phản thân: buy oneself sth.",
+    explanationVi: "The designer purchased himself a tablet: nhà thiết kế tự mua cho chính mình chiếc máy tính bảng.",
+    targetChunk: { phrase: "purchased himself a drawing tablet", meaningVi: "tự mua cho chính mình một chiếc bảng vẽ" },
+    skeleton: { subject: "The graphic designer", verb: "purchased", object: "himself a tablet" }
+  },
+  {
+    id: "pron_std_025",
+    level: "standard",
+    question: "After testing several models, the committee selected ______ that offered the highest energy efficiency.",
+    options: { A: "the one", B: "ones", C: "them", D: "these" },
+    correctAnswer: "A",
+    clue: "Đại từ thay thế số ít xác định kết hợp mệnh đề quan hệ 'that offered...': the one that.",
+    explanationVi: "'the one' dùng để thay thế cho một danh từ số ít xác định (mẫu máy đã chọn) được bổ nghĩa bởi mệnh đề quan hệ.",
+    targetChunk: { phrase: "selected the one that offered efficiency", meaningVi: "chọn mẫu máy mang lại hiệu suất cao nhất" },
+    skeleton: { subject: "the committee", verb: "selected", object: "the one that offered efficiency" }
+  },
+  {
+    id: "pron_std_026",
+    level: "standard",
+    question: "Dr. Aris presented ______ latest findings on renewable biofuel at the international symposium.",
+    options: { A: "her", B: "hers", C: "she", D: "herself" },
+    correctAnswer: "A",
+    clue: "Đứng trước cụm danh từ 'latest findings' cần Tính từ sở hữu: her + Noun.",
+    explanationVi: "'her' là tính từ sở hữu đứng trước danh từ 'findings'.",
+    targetChunk: { phrase: "presented her latest findings", meaningVi: "trình bày những phát hiện mới nhất của cô ấy" },
+    skeleton: { subject: "Dr. Aris", verb: "presented", object: "her latest findings" }
+  },
+  {
+    id: "pron_std_027",
+    level: "standard",
+    question: "Please let ______ know as soon as the revised blueprints have been approved by the client.",
+    options: { A: "us", B: "we", C: "our", D: "ours" },
+    correctAnswer: "A",
+    clue: "Cụm quen thuộc: Let us know / Please let me know. Sau động từ 'let' cần tân ngữ.",
+    explanationVi: "'us' là đại từ tân ngữ đứng sau động từ sai khiến 'let'.",
+    targetChunk: { phrase: "Please let us know", meaningVi: "Xin vui lòng cho chúng tôi biết" },
+    skeleton: { subject: "(You)", verb: "let", object: "us know" }
+  },
+  {
+    id: "pron_std_028",
+    level: "standard",
+    question: "The legal department instructed employees not to share ______ network passwords under any circumstances.",
+    options: { A: "their", B: "theirs", C: "them", D: "they" },
+    correctAnswer: "A",
+    clue: "Đứng trước danh từ ghép 'network passwords' cần Tính từ sở hữu: their passwords.",
+    explanationVi: "'their' bổ nghĩa cho mật khẩu mạng của các nhân viên.",
+    targetChunk: { phrase: "not to share their network passwords", meaningVi: "không được chia sẻ mật khẩu mạng của họ" },
+    skeleton: { subject: "The legal department", verb: "instructed", object: "employees" }
+  },
+  {
+    id: "pron_std_029",
+    level: "standard",
+    question: "The two partner companies agreed to support ______ throughout the overseas market expansion.",
+    options: { A: "each other", B: "the other", C: "another", D: "other" },
+    correctAnswer: "A",
+    clue: "Hai đối tác hỗ trợ 'lẫn nhau' (2 đối tượng) → Đại từ tương hỗ 'each other'.",
+    explanationVi: "'each other' dùng cho 2 đối tượng tương tác qua lại (hỗ trợ lẫn nhau).",
+    targetChunk: { phrase: "support each other throughout expansion", meaningVi: "hỗ trợ lẫn nhau trong suốt quá trình mở rộng" },
+    skeleton: { subject: "The two partner companies", verb: "agreed to support", object: "each other" }
+  },
+  {
+    id: "pron_std_030",
+    level: "standard",
+    question: "All passengers must remain in ______ seats while the fasten seatbelt sign is illuminated.",
+    options: { A: "their", B: "theirs", C: "them", D: "they" },
+    correctAnswer: "A",
+    clue: "Đứng trước danh từ 'seats' cần Tính từ sở hữu: their seats.",
+    explanationVi: "Chủ ngữ là 'All passengers' (số nhiều), tính từ sở hữu tương ứng là 'their'.",
+    targetChunk: { phrase: "remain in their seats", meaningVi: "ngồi yên tại chỗ ngồi của họ" },
+    skeleton: { subject: "All passengers", verb: "must remain", object: "in their seats" }
+  }
+];
+
+// 30 Advanced Questions (pron_adv_001 -> pron_adv_030)
+const advancedQuestions = [
+  {
+    id: "pron_adv_001",
+    level: "advanced",
+    question: "The operating efficiency of the new turbine is significantly higher than ______ of the previous model.",
+    options: { A: "that", B: "those", C: "this", D: "these" },
+    correctAnswer: "A",
+    clue: "BẪY ĐẠI TỪ SO SÁNH: 'that of' thay thế cho danh từ số ít không đếm được 'operating efficiency' phía trước.",
+    explanationVi: "Để tránh lặp lại 'operating efficiency' trong cấu trúc so sánh hơn, dùng đại từ 'that' (số ít). Nếu là danh từ số nhiều sẽ dùng 'those of'.",
+    targetChunk: { phrase: "higher than that of the previous model", meaningVi: "cao hơn hiệu suất của mẫu máy trước" },
+    skeleton: { subject: "The efficiency", verb: "is", object: "higher than that of the previous model" }
+  },
+  {
+    id: "pron_adv_002",
+    level: "advanced",
+    question: "Consumer ratings for the domestic models were considerably higher than ______ for the imported units.",
+    options: { A: "that", B: "those", C: "this", D: "them" },
+    correctAnswer: "B",
+    clue: "BẪY 'THOSE OF': Thay thế cho danh từ số nhiều 'Consumer ratings' trong so sánh.",
+    explanationVi: "'those' thay cho danh từ số nhiều 'ratings' đã nêu ở vế trước. Không dùng 'them' khi có giới từ 'for' bổ nghĩa phía sau.",
+    targetChunk: { phrase: "higher than those for imported units", meaningVi: "cao hơn đánh giá dành cho các sản phẩm nhập khẩu" },
+    skeleton: { subject: "Consumer ratings", verb: "were", object: "higher than those for imported units" }
+  },
+  {
+    id: "pron_adv_003",
+    level: "advanced",
+    question: "______ who are interested in volunteering for the charity marathon should register online by noon.",
+    options: { A: "Those", B: "They", C: "These", D: "Whomever" },
+    correctAnswer: "A",
+    clue: "CẤU TRÚC KINH ĐIỂN TOEIC 990: 'Those who...' = Những người mà... (không dùng 'They who').",
+    explanationVi: "'Those who' là đại từ chỉ người số nhiều đi kèm đại từ quan hệ 'who'. 'They' không đi trực tiếp với 'who' trong văn cảnh này.",
+    targetChunk: { phrase: "Those who are interested", meaningVi: "Những người quan tâm" },
+    skeleton: { subject: "Those who are interested", verb: "should register", object: "online" }
+  },
+  {
+    id: "pron_adv_004",
+    level: "advanced",
+    question: "______ who arrives after the designated commencement time will be asked to wait until the intermission.",
+    options: { A: "Anyone", B: "Those", C: "These", D: "Whomever" },
+    correctAnswer: "A",
+    clue: "BẪY SỐ ÍT: Động từ 'arrives' chia số ít, do đó bắt buộc chọn đại từ số ít 'Anyone who' (bất kỳ ai mà).",
+    explanationVi: "'Anyone who + V(số ít)' = bất kỳ ai mà. 'Those who' đòi hỏi động từ số nhiều (arrive).",
+    targetChunk: { phrase: "Anyone who arrives late", meaningVi: "Bất cứ ai đến muộn" },
+    skeleton: { subject: "Anyone who arrives after the time", verb: "will be asked", object: "to wait" }
+  },
+  {
+    id: "pron_adv_005",
+    level: "advanced",
+    question: "The lead auditor analyzed all the invoices and reported that none of ______ contained discrepancies.",
+    options: { A: "they", B: "them", C: "their", D: "theirs" },
+    correctAnswer: "B",
+    clue: "Sau cụm giới từ 'none of' cần Đại từ tân ngữ số nhiều: none of them (không có hóa đơn nào trong số chúng).",
+    explanationVi: "None of + đại từ tân ngữ (them/us/you).",
+    targetChunk: { phrase: "none of them contained discrepancies", meaningVi: "không có hóa đơn nào trong số chúng chứa sự sai sót" },
+    skeleton: { subject: "none of them", verb: "contained", object: "discrepancies" }
+  },
+  {
+    id: "pron_adv_006",
+    level: "advanced",
+    question: "Ms. O'Connor established an independent consulting firm of ______ own after leaving the bank.",
+    options: { A: "her", B: "hers", C: "herself", D: "she" },
+    correctAnswer: "A",
+    clue: "Cấu trúc: 'of one's own' (của riêng ai đó) = of her own.",
+    explanationVi: "Sau giới từ 'of' và trước 'own' cần tính từ sở hữu 'her'. (Khác với on her own = by herself).",
+    targetChunk: { phrase: "consulting firm of her own", meaningVi: "công ty tư vấn của riêng cô ấy" },
+    skeleton: { subject: "Ms. O'Connor", verb: "established", object: "an independent firm of her own" }
+  },
+  {
+    id: "pron_adv_007",
+    level: "advanced",
+    question: "Neither of the two candidates ______ adequately prepared to assume the executive responsibilities.",
+    options: { A: "was", B: "were", C: "are", D: "have been" },
+    correctAnswer: "A",
+    clue: "BẪY CHIA ĐỘNG TỪ VỚI ĐẠI TỪ 'NEITHER OF': 'Neither of + N số nhiều' luôn chia động từ ở dạng SỐ ÍT (was).",
+    explanationVi: "Trong ngữ pháp chuẩn TOEIC, 'Neither of' mang nghĩa 'không ai trong hai người', chủ ngữ thực tế là số ít nên chia 'was'.",
+    targetChunk: { phrase: "Neither of the two candidates was prepared", meaningVi: "Không ai trong số hai ứng viên có sự chuẩn bị kỹ càng" },
+    skeleton: { subject: "Neither of the two candidates", verb: "was", object: "adequately prepared" }
+  },
+  {
+    id: "pron_adv_008",
+    level: "advanced",
+    question: "The five branch managers have been collaborating closely with ______ to streamline supply routes.",
+    options: { A: "each other", B: "one another", C: "the other", D: "another" },
+    correctAnswer: "B",
+    clue: "BẪY TƯƠNG HỖ: Từ 3 đối tượng trở lên (The five branch managers) dùng 'one another'; 2 đối tượng dùng 'each other'.",
+    explanationVi: "Ngữ pháp chuẩn: each other (2 người/vật) vs one another (từ 3 người/vật trở lên).",
+    targetChunk: { phrase: "collaborating closely with one another", meaningVi: "hợp tác chặt chẽ với nhau (nhiều bên)" },
+    skeleton: { subject: "The five branch managers", verb: "have been collaborating", object: "with one another" }
+  },
+  {
+    id: "pron_adv_009",
+    level: "advanced",
+    question: "The vice president insisted that the legal department review the draft contract ______ before signing.",
+    options: { A: "itself", B: "himself", C: "themselves", D: "it" },
+    correctAnswer: "A",
+    clue: "Đại từ phản thân 'itself' nhấn mạnh cho danh từ tập hợp chỉ tổ chức/bộ phận 'the legal department'.",
+    explanationVi: "Bộ phận pháp lý là tổ chức số ít (department) nên đại từ phản thân tương ứng là 'itself' (đích thân phòng pháp lý).",
+    targetChunk: { phrase: "review the draft contract itself", meaningVi: "đích thân rà soát lại bản thảo hợp đồng" },
+    skeleton: { subject: "the legal department", verb: "review", object: "the draft contract" }
+  },
+  {
+    id: "pron_adv_010",
+    level: "advanced",
+    question: "Each of the regional representatives ______ required to file a comprehensive quarterly performance summary.",
+    options: { A: "is", B: "are", C: "were", D: "have been" },
+    correctAnswer: "A",
+    clue: "BẪY HÒA HỢP S-V: 'Each of + N số nhiều' luôn luôn chia động từ ở dạng SỐ ÍT (is).",
+    explanationVi: "Chủ ngữ thực sự là 'Each' (mỗi một), mang nghĩa số ít nên động từ phải chia là 'is'.",
+    targetChunk: { phrase: "Each of the representatives is required", meaningVi: "Mỗi một đại diện đều được yêu cầu" },
+    skeleton: { subject: "Each of the representatives", verb: "is required", object: "to file a summary" }
+  },
+  {
+    id: "pron_adv_011",
+    level: "advanced",
+    question: "The director asked Ms. Park to represent ______ at the regional chamber of commerce summit.",
+    options: { A: "he", B: "him", C: "himself", D: "his" },
+    correctAnswer: "B",
+    clue: "BẪY TÂN NGỮ VS PHẢN THÂN: Chủ thể thực hiện hành động đại diện là Ms. Park, đại diện cho AI? Đại diện cho vị giám đốc (khác chủ ngữ) → dùng 'him', không dùng 'himself'.",
+    explanationVi: "Chủ ngữ của hành động 'represent' là Ms. Park (người khác), do đó tân ngữ chỉ vị giám đốc phải là 'him'.",
+    targetChunk: { phrase: "asked Ms. Park to represent him", meaningVi: "yêu cầu cô Park đại diện cho ông ấy" },
+    skeleton: { subject: "The director", verb: "asked", object: "Ms. Park" }
+  },
+  {
+    id: "pron_adv_012",
+    level: "advanced",
+    question: "The warranty covers manufacturing defects, but damage caused by improper usage is ______ responsibility.",
+    options: { A: "your", B: "yours", C: "yourself", D: "you" },
+    correctAnswer: "A",
+    clue: "Đứng trước danh từ 'responsibility' cần Tính từ sở hữu: your responsibility.",
+    explanationVi: "'your' là tính từ sở hữu bổ nghĩa cho danh từ trách nhiệm.",
+    targetChunk: { phrase: "is your responsibility", meaningVi: "là trách nhiệm của quý khách" },
+    skeleton: { subject: "damage", verb: "is", object: "your responsibility" }
+  },
+  {
+    id: "pron_adv_023",
+    level: "advanced",
+    question: "While both marketing proposals have merit, ______ appears more feasible under current fiscal realities.",
+    options: { A: "the former", B: "former", C: "the formerly", D: "formers" },
+    correctAnswer: "A",
+    clue: "Đại từ chỉ định trang trọng: 'the former' (cái được nhắc đến trước trong số hai cái) vs 'the latter' (cái nhắc đến sau).",
+    explanationVi: "'the former' đóng vai trò đại từ làm chủ ngữ trong câu mang nghĩa đề xuất được nêu tên đầu tiên.",
+    targetChunk: { phrase: "the former appears more feasible", meaningVi: "phương án đầu tiên có vẻ khả thi hơn" },
+    skeleton: { subject: "the former", verb: "appears", object: "more feasible" }
+  },
+  {
+    id: "pron_adv_014",
+    level: "advanced",
+    question: "The research team found that employees who manage ______ time effectively exhibit lower stress levels.",
+    options: { A: "their", B: "theirs", C: "them", D: "themselves" },
+    correctAnswer: "A",
+    clue: "Đứng trước danh từ 'time' cần Tính từ sở hữu: their time.",
+    explanationVi: "'their' bổ nghĩa cho danh từ thời gian (quản lý thời gian của họ).",
+    targetChunk: { phrase: "manage their time effectively", meaningVi: "quản lý thời gian của họ một cách hiệu quả" },
+    skeleton: { subject: "employees who manage their time", verb: "exhibit", object: "lower stress levels" }
+  },
+  {
+    id: "pron_adv_015",
+    level: "advanced",
+    question: "The financial data in this year's annual report is far more accurate than ______ in last year's draft.",
+    options: { A: "that", B: "those", C: "these", D: "it" },
+    correctAnswer: "A",
+    clue: "BẪY SO SÁNH: 'The financial data' ở đây được tính là danh từ không đếm được/số ít, nên dùng đại từ thay thế 'that'.",
+    explanationVi: "'that' thay thế cho 'the financial data' phía trước để tránh lặp từ trong câu so sánh.",
+    targetChunk: { phrase: "more accurate than that in last year's draft", meaningVi: "chính xác hơn nhiều so với số liệu trong bản thảo năm ngoái" },
+    skeleton: { subject: "The financial data", verb: "is", object: "more accurate than that in last year's draft" }
+  },
+  {
+    id: "pron_adv_016",
+    level: "advanced",
+    question: "All staff members are expected to conduct ______ with the utmost professionalism at the gala.",
+    options: { A: "themselves", B: "them", C: "their", D: "theirs" },
+    correctAnswer: "A",
+    clue: "Cụm cố định: conduct oneself (cư xử, hành xử đúng mực) → conduct themselves.",
+    explanationVi: "Chủ ngữ là 'All staff members' (số nhiều), khi đi với động từ 'conduct' chỉ hành vi bản thân dùng 'themselves'.",
+    targetChunk: { phrase: "conduct themselves with professionalism", meaningVi: "cư xử với tính chuyên nghiệp cao nhất" },
+    skeleton: { subject: "All staff members", verb: "are expected to conduct", object: "themselves" }
+  },
+  {
+    id: "pron_adv_017",
+    level: "advanced",
+    question: "______ who wish to submit a seminar proposal must do so through the online portal by Friday.",
+    options: { A: "Those", B: "They", C: "Them", D: "This" },
+    correctAnswer: "A",
+    clue: "Cấu trúc kinh điển 'Those who + V(số nhiều)': Những ai có nguyện vọng nộp đề án hội thảo.",
+    explanationVi: "'Those who' làm chủ ngữ thay thế cho những người.",
+    targetChunk: { phrase: "Those who wish to submit a proposal", meaningVi: "Những ai có nguyện vọng nộp đề án" },
+    skeleton: { subject: "Those who wish to submit a proposal", verb: "must do", object: "so" }
+  },
+  {
+    id: "pron_adv_018",
+    level: "advanced",
+    question: "The newly created committee has officially completed ______ first phase of environmental evaluations.",
+    options: { A: "its", B: "it's", C: "their", D: "itself" },
+    correctAnswer: "A",
+    clue: "Ủy ban 'the newly created committee' là tổ chức danh từ số ít → Tính từ sở hữu là 'its' (không có dấu nháy).",
+    explanationVi: "'its' là tính từ sở hữu của danh từ số ít chỉ thực thể tổ chức.",
+    targetChunk: { phrase: "completed its first phase", meaningVi: "đã hoàn thành giai đoạn đầu tiên của mình" },
+    skeleton: { subject: "The committee", verb: "has completed", object: "its first phase" }
+  },
+  {
+    id: "pron_adv_019",
+    level: "advanced",
+    question: "The firm's legal representatives advised the directors to keep the sensitive details to ______.",
+    options: { A: "themselves", B: "them", C: "their", D: "theirs" },
+    correctAnswer: "A",
+    clue: "Thành ngữ: keep sth to oneself (giữ kín điều gì cho riêng mình) → keep details to themselves.",
+    explanationVi: "Chủ thể giữ bí mật là 'the directors' (số nhiều) nên dùng đại từ phản thân 'themselves'.",
+    targetChunk: { phrase: "keep the sensitive details to themselves", meaningVi: "giữ kín các chi tiết nhạy cảm cho riêng mình" },
+    skeleton: { subject: "representatives", verb: "advised", object: "the directors" }
+  },
+  {
+    id: "pron_adv_020",
+    level: "advanced",
+    question: "None of the newly hired laboratory technicians had ever operated an electron microscope by ______.",
+    options: { A: "himself", B: "themselves", C: "them", D: "their" },
+    correctAnswer: "B",
+    clue: "Chủ ngữ là 'technicians' (số nhiều) → Cụm by + đại từ phản thân là 'by themselves'.",
+    explanationVi: "By themselves = tự tay họ vận hành.",
+    targetChunk: { phrase: "operated a microscope by themselves", meaningVi: "tự mình vận hành kính hiển vi" },
+    skeleton: { subject: "None of the technicians", verb: "had operated", object: "a microscope" }
+  },
+  {
+    id: "pron_adv_021",
+    level: "advanced",
+    question: "The quarterly bonus allocations will be distributed among ______ who exceeded their sales quotas.",
+    options: { A: "those", B: "them", C: "they", D: "these" },
+    correctAnswer: "A",
+    clue: "Đứng sau giới từ 'among' và trước mệnh đề quan hệ 'who exceeded...' là đại từ 'those' (những người mà).",
+    explanationVi: "Among those who: trong số những người mà... 'Them who' là sai ngữ pháp.",
+    targetChunk: { phrase: "distributed among those who exceeded quotas", meaningVi: "phân phối cho những ai đã vượt chỉ tiêu" },
+    skeleton: { subject: "The bonus allocations", verb: "will be distributed", object: "among those who exceeded quotas" }
+  },
+  {
+    id: "pron_adv_022",
+    level: "advanced",
+    question: "The chief technology officer reminded the developers that the decision rested solely with ______.",
+    options: { A: "them", B: "themselves", C: "they", D: "their" },
+    correctAnswer: "A",
+    clue: "Chủ thể quyết định là 'the developers' (đối tượng khác với người nói CTO), sau giới từ 'with' cần Đại từ tân ngữ 'them'.",
+    explanationVi: "Không có sự phản thân ở đây, sau giới từ 'with' chỉ người nhận quyết định là 'them'.",
+    targetChunk: { phrase: "decision rested solely with them", meaningVi: "quyết định phụ thuộc hoàn toàn vào họ" },
+    skeleton: { subject: "the decision", verb: "rested", object: "with them" }
+  },
+  {
+    id: "pron_adv_013",
+    level: "advanced",
+    question: "One of the primary benefits of telecommuting is that it allows workers to schedule ______ hours.",
+    options: { A: "their", B: "theirs", C: "them", D: "they" },
+    correctAnswer: "A",
+    clue: "Đứng trước danh từ 'hours' cần Tính từ sở hữu: their hours.",
+    explanationVi: "'their' bổ nghĩa cho danh từ chỉ giờ giấc làm việc của người lao động.",
+    targetChunk: { phrase: "schedule their hours", meaningVi: "tự sắp xếp giờ làm việc của họ" },
+    skeleton: { subject: "it", verb: "allows", object: "workers" }
+  },
+  {
+    id: "pron_adv_024",
+    level: "advanced",
+    question: "The software's intuitive dashboard allows executives to analyze complex metrics all by ______.",
+    options: { A: "themselves", B: "them", C: "their", D: "theirs" },
+    correctAnswer: "A",
+    clue: "All by themselves = hoàn toàn tự mình làm (chỉ executives số nhiều).",
+    explanationVi: "By themselves nhấn mạnh việc các nhà quản lý tự mình phân tích số liệu mà không cần chuyên viên hỗ trợ.",
+    targetChunk: { phrase: "analyze complex metrics all by themselves", meaningVi: "tự mình phân tích các chỉ số phức tạp" },
+    skeleton: { subject: "dashboard", verb: "allows", object: "executives to analyze metrics" }
+  },
+  {
+    id: "pron_adv_025",
+    level: "advanced",
+    question: "While our shipping charges are higher, the speed of delivery is superior to ______ of our competitors.",
+    options: { A: "that", B: "those", C: "it", D: "this" },
+    correctAnswer: "A",
+    clue: "BẪY SO SÁNH 'THAT OF': Thay thế cho danh từ không đếm được / số ít 'the speed of delivery'.",
+    explanationVi: "'that of our competitors' = the speed of our competitors.",
+    targetChunk: { phrase: "superior to that of our competitors", meaningVi: "vượt trội hơn tốc độ của các đối thủ" },
+    skeleton: { subject: "the speed of delivery", verb: "is", object: "superior to that of our competitors" }
+  },
+  {
+    id: "pron_adv_026",
+    level: "advanced",
+    question: "Neither of the proposed merger terms ______ acceptable to the minority shareholders.",
+    options: { A: "was", B: "were", C: "have been", D: "are" },
+    correctAnswer: "A",
+    clue: "Neither of + N số nhiều chia động từ SỐ ÍT: was acceptable.",
+    explanationVi: "'Neither of' xem chủ ngữ là đơn nhất (không điều khoản nào trong hai điều khoản), do đó chọn động từ số ít 'was'.",
+    targetChunk: { phrase: "Neither of the proposed terms was acceptable", meaningVi: "Không điều khoản nào trong số các điều khoản đề xuất được chấp thuận" },
+    skeleton: { subject: "Neither of the proposed merger terms", verb: "was", object: "acceptable" }
+  },
+  {
+    id: "pron_adv_027",
+    level: "advanced",
+    question: "The human resources manager expects every employee to comport ______ honorably at company banquets.",
+    options: { A: "himself or herself", B: "themselves", C: "theirs", D: "their" },
+    correctAnswer: "A",
+    clue: "Every employee là danh từ số ít → Đại từ phản thân tương ứng là 'himself or herself'.",
+    explanationVi: "'comport oneself' nghĩa là cư xử đúng mực. 'every employee' là số ít nên đi với 'himself or herself'.",
+    targetChunk: { phrase: "comport himself or herself honorably", meaningVi: "cư xử một cách đúng mực và đàng hoàng" },
+    skeleton: { subject: "every employee", verb: "to comport", object: "himself or herself" }
+  },
+  {
+    id: "pron_adv_028",
+    level: "advanced",
+    question: "The executive committee members found ______ in complete agreement concerning the factory expansion.",
+    options: { A: "themselves", B: "them", C: "their", D: "theirs" },
+    correctAnswer: "A",
+    clue: "Cụm 'find oneself in agreement' (thấy chính bản thân mình đồng tình với điều gì) → find themselves.",
+    explanationVi: "Chủ ngữ và tân ngữ cùng là các thành viên ủy ban (committee members), do đó dùng đại từ phản thân 'themselves'.",
+    targetChunk: { phrase: "found themselves in complete agreement", meaningVi: "thấy bản thân hoàn toàn đồng thuận" },
+    skeleton: { subject: "The committee members", verb: "found", object: "themselves" }
+  },
+  {
+    id: "pron_adv_029",
+    level: "advanced",
+    question: "The features of the premium software package are remarkably similar to ______ of the enterprise edition.",
+    options: { A: "those", B: "that", C: "this", D: "these" },
+    correctAnswer: "A",
+    clue: "BẪY SO SÁNH 'THOSE OF': Thay thế cho danh từ số nhiều 'The features' phía trước.",
+    explanationVi: "Để tránh lặp lại 'The features', dùng 'those of'.",
+    targetChunk: { phrase: "similar to those of the enterprise edition", meaningVi: "tương tự như các tính năng của phiên bản doanh nghiệp" },
+    skeleton: { subject: "The features", verb: "are", object: "similar to those of the enterprise edition" }
+  },
+  {
+    id: "pron_adv_030",
+    level: "advanced",
+    question: "Customers ______ encounter technical difficulties while ordering are encouraged to call the hotline.",
+    options: { A: "who", B: "whom", C: "whose", D: "which" },
+    correctAnswer: "A",
+    clue: "Đại từ quan hệ làm Chủ ngữ chỉ người 'Customers who encounter...'.",
+    explanationVi: "'who' làm chủ ngữ thay cho danh từ chỉ người 'Customers' đứng trước động từ 'encounter'.",
+    targetChunk: { phrase: "Customers who encounter difficulties", meaningVi: "Những khách hàng gặp phải trục trặc kỹ thuật" },
+    skeleton: { subject: "Customers who encounter difficulties", verb: "are encouraged", object: "to call the hotline" }
+  }
+];
+
+topic.questions = [...standardQuestions, ...advancedQuestions];
+
+fs.writeFileSync('./data/grammar/pronouns.json', JSON.stringify(topic, null, 2), 'utf8');
+console.log('pronouns.json created successfully! Total questions:', topic.questions.length);
+console.log('Standard:', standardQuestions.length, 'Advanced:', advancedQuestions.length);

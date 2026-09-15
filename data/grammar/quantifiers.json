@@ -1,0 +1,1389 @@
+{
+  "topicId": "quantifiers",
+  "titleVi": "Lượng từ & Từ Hạn định (Determiners)",
+  "totalQuestions": 60,
+  "standardCount": 30,
+  "advancedCount": 30,
+  "questions": [
+    {
+      "id": "quant_std_001",
+      "level": "standard",
+      "question": "The marketing team decided to hire ______ consultant to help with the European campaign.",
+      "options": {
+        "A": "other",
+        "B": "another",
+        "C": "others",
+        "D": "the others"
+      },
+      "correctAnswer": "B",
+      "clue": "Sau chỗ trống là danh từ đếm được số ít (consultant) → Chọn another.",
+      "explanationVi": "'another' đi với danh từ đếm được số ít (another consultant = một tư vấn viên khác). 'other' thường đi với danh từ số nhiều, 'others' và 'the others' là đại từ đứng độc lập không đi kèm danh từ.",
+      "targetChunk": {
+        "phrase": "hire another consultant",
+        "meaningVi": "thuê thêm một chuyên gia tư vấn khác"
+      },
+      "skeleton": {
+        "subject": "The marketing team",
+        "verb": "decided to hire",
+        "object": "another consultant"
+      }
+    },
+    {
+      "id": "quant_std_002",
+      "level": "standard",
+      "question": "Please make sure that ______ employee submits their timesheet before Friday afternoon.",
+      "options": {
+        "A": "all",
+        "B": "several",
+        "C": "every",
+        "D": "many"
+      },
+      "correctAnswer": "C",
+      "clue": "'employee' là danh từ số ít, động từ 'submits' chia số ít → Chọn every.",
+      "explanationVi": "'every' đi với danh từ đếm được số ít và động từ số ít. 'all', 'several', 'many' đều đi với danh từ số nhiều (employees).",
+      "targetChunk": {
+        "phrase": "every employee submits",
+        "meaningVi": "mỗi nhân viên nộp"
+      },
+      "skeleton": {
+        "subject": "every employee",
+        "verb": "submits",
+        "object": "their timesheet"
+      }
+    },
+    {
+      "id": "quant_std_003",
+      "level": "standard",
+      "question": "The manager reviewed ______ applications before shortlisting the final three candidates.",
+      "options": {
+        "A": "much",
+        "B": "several",
+        "C": "each",
+        "D": "little"
+      },
+      "correctAnswer": "B",
+      "clue": "'applications' là danh từ đếm được số nhiều → Chọn several.",
+      "explanationVi": "'several' (một vài, một số) đi với danh từ đếm được số nhiều. 'much' và 'little' đi với danh từ không đếm được. 'each' đi với danh từ số ít.",
+      "targetChunk": {
+        "phrase": "reviewed several applications",
+        "meaningVi": "đã xem xét một vài hồ sơ ứng tuyển"
+      },
+      "skeleton": {
+        "subject": "The manager",
+        "verb": "reviewed",
+        "object": "several applications"
+      }
+    },
+    {
+      "id": "quant_std_004",
+      "level": "standard",
+      "question": "Due to severe budget constraints, there is very ______ room for salary increases this fiscal year.",
+      "options": {
+        "A": "few",
+        "B": "little",
+        "C": "many",
+        "D": "several"
+      },
+      "correctAnswer": "B",
+      "clue": "'room' ở đây là danh từ không đếm được (chỗ trống, không gian/khả năng) → Chọn little.",
+      "explanationVi": "'very little room' (rất ít khả năng/khoảng trống). 'room' với nghĩa không gian/khả năng là danh từ không đếm được nên đi với 'little', không dùng 'few/many/several'.",
+      "targetChunk": {
+        "phrase": "very little room for",
+        "meaningVi": "rất ít cơ hội/dư địa cho"
+      },
+      "skeleton": {
+        "subject": "there",
+        "verb": "is",
+        "object": "very little room"
+      }
+    },
+    {
+      "id": "quant_std_005",
+      "level": "standard",
+      "question": "Some participants requested physical copies of the handouts, while ______ preferred digital versions.",
+      "options": {
+        "A": "other",
+        "B": "another",
+        "C": "others",
+        "D": "the other"
+      },
+      "correctAnswer": "C",
+      "clue": "Đóng vai trò chủ ngữ đại từ số nhiều đứng độc lập đối ứng với Some participants → Chọn others.",
+      "explanationVi": "Cặp cấu trúc kinh điển: 'Some... while others...' (Một số người... trong khi những người khác...). 'others' là đại từ đứng một mình không cần danh từ theo sau.",
+      "targetChunk": {
+        "phrase": "while others preferred",
+        "meaningVi": "trong khi những người khác thì thích"
+      },
+      "skeleton": {
+        "subject": "others",
+        "verb": "preferred",
+        "object": "digital versions"
+      }
+    },
+    {
+      "id": "quant_std_006",
+      "level": "standard",
+      "question": "The technician spent a great deal of ______ diagnosing the connectivity issues.",
+      "options": {
+        "A": "time",
+        "B": "hours",
+        "C": "days",
+        "D": "minutes"
+      },
+      "correctAnswer": "A",
+      "clue": "'a great deal of' chỉ đi với danh từ không đếm được → Chọn time.",
+      "explanationVi": "'a great deal of' = nhiều (đi với danh từ không đếm được như time, money, effort). 'hours', 'days', 'minutes' đều là danh từ đếm được số nhiều.",
+      "targetChunk": {
+        "phrase": "a great deal of time",
+        "meaningVi": "rất nhiều thời gian"
+      },
+      "skeleton": {
+        "subject": "The technician",
+        "verb": "spent",
+        "object": "a great deal of time"
+      }
+    },
+    {
+      "id": "quant_std_007",
+      "level": "standard",
+      "question": "______ participants in the survey expressed satisfaction with the new health benefits.",
+      "options": {
+        "A": "Much",
+        "B": "Every",
+        "C": "Most",
+        "D": "Almost"
+      },
+      "correctAnswer": "C",
+      "clue": "Phía sau là danh từ số nhiều 'participants' → Chọn Most.",
+      "explanationVi": "'Most' + danh từ số nhiều (Most participants = hầu hết người tham gia). 'Much' đi với danh từ không đếm được; 'Every' đi với danh từ số ít; 'Almost' là trạng từ nên phải là 'Almost all participants'.",
+      "targetChunk": {
+        "phrase": "Most participants in the survey",
+        "meaningVi": "hầu hết người tham gia cuộc khảo sát"
+      },
+      "skeleton": {
+        "subject": "Most participants",
+        "verb": "expressed",
+        "object": "satisfaction"
+      }
+    },
+    {
+      "id": "quant_std_008",
+      "level": "standard",
+      "question": "Neither of the two proposed designs ______ the safety requirements outlined by the board.",
+      "options": {
+        "A": "meets",
+        "B": "meet",
+        "C": "are meeting",
+        "D": "have met"
+      },
+      "correctAnswer": "A",
+      "clue": "'Neither of + N số nhiều' làm chủ ngữ thì động từ chia số ít → Chọn meets.",
+      "explanationVi": "'Neither of + N số nhiều' mang nghĩa 'không ai/không cái nào trong hai', quy chuẩn ngữ pháp TOEIC chia động từ ở ngôi thứ ba số ít (meets).",
+      "targetChunk": {
+        "phrase": "Neither of the two proposed designs meets",
+        "meaningVi": "không có mẫu thiết kế nào trong hai mẫu đáp ứng"
+      },
+      "skeleton": {
+        "subject": "Neither of the two proposed designs",
+        "verb": "meets",
+        "object": "the safety requirements"
+      }
+    },
+    {
+      "id": "quant_std_009",
+      "level": "standard",
+      "question": "We still have ______ tickets available for the keynote speech on Thursday.",
+      "options": {
+        "A": "a little",
+        "B": "a few",
+        "C": "much",
+        "D": "little"
+      },
+      "correctAnswer": "B",
+      "clue": "'tickets' là danh từ đếm được số nhiều mang nghĩa khẳng định (còn một vài) → Chọn a few.",
+      "explanationVi": "'a few' đi với danh từ đếm được số nhiều mang nghĩa khẳng định 'có một vài'. 'a little' và 'little' đi với danh từ không đếm được; 'much' đi với danh từ không đếm được.",
+      "targetChunk": {
+        "phrase": "have a few tickets available",
+        "meaningVi": "vẫn còn vài tấm vé"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "have",
+        "object": "a few tickets"
+      }
+    },
+    {
+      "id": "quant_std_010",
+      "level": "standard",
+      "question": "Mr. Alvarez was offered ______ position at the regional headquarters in Singapore.",
+      "options": {
+        "A": "other",
+        "B": "another",
+        "C": "others",
+        "D": "much"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ đếm được số ít 'position' → Chọn another.",
+      "explanationVi": "'another position' = một vị trí khác (another + singular countable noun). 'other' cần danh từ số nhiều, 'others' là đại từ.",
+      "targetChunk": {
+        "phrase": "offered another position",
+        "meaningVi": "được đề bạt một vị trí khác"
+      },
+      "skeleton": {
+        "subject": "Mr. Alvarez",
+        "verb": "was offered",
+        "object": "another position"
+      }
+    },
+    {
+      "id": "quant_std_011",
+      "level": "standard",
+      "question": "______ candidates who applied for the managerial opening have extensive experience in finance.",
+      "options": {
+        "A": "Much",
+        "B": "Each",
+        "C": "Many",
+        "D": "Every"
+      },
+      "correctAnswer": "C",
+      "clue": "'candidates' và 'have' đều ở dạng số nhiều → Chọn Many.",
+      "explanationVi": "'Many' đi với danh từ số nhiều và động từ số nhiều. 'Each' và 'Every' đi với danh từ số ít; 'Much' đi với danh từ không đếm được.",
+      "targetChunk": {
+        "phrase": "Many candidates who applied",
+        "meaningVi": "nhiều ứng viên đã nộp hồ sơ"
+      },
+      "skeleton": {
+        "subject": "Many candidates",
+        "verb": "have",
+        "object": "extensive experience"
+      }
+    },
+    {
+      "id": "quant_std_012",
+      "level": "standard",
+      "question": "The committee found ______ evidence to support the allegation of copyright infringement.",
+      "options": {
+        "A": "no",
+        "B": "not",
+        "C": "none",
+        "D": "any"
+      },
+      "correctAnswer": "A",
+      "clue": "Cần từ hạn định mang nghĩa phủ định đứng trực tiếp trước danh từ 'evidence' → Chọn no.",
+      "explanationVi": "'no' là determiner đứng trước danh từ (no evidence = không có bằng chứng nào). 'not' là trạng từ (thường đi sau to be/trợ động từ), 'none' là đại từ (không đi kèm danh từ trực tiếp).",
+      "targetChunk": {
+        "phrase": "found no evidence to support",
+        "meaningVi": "không tìm thấy bằng chứng nào để chứng minh"
+      },
+      "skeleton": {
+        "subject": "The committee",
+        "verb": "found",
+        "object": "no evidence"
+      }
+    },
+    {
+      "id": "quant_std_013",
+      "level": "standard",
+      "question": "______ of the directors agreed that expanding into online retail was the best strategy.",
+      "options": {
+        "A": "Both",
+        "B": "Every",
+        "C": "Another",
+        "D": "Almost"
+      },
+      "correctAnswer": "A",
+      "clue": "Cấu trúc '______ of the directors agreed' (đại từ chỉ 2 người hoặc nhóm) → Chọn Both.",
+      "explanationVi": "'Both of the directors' (Cả hai vị giám đốc). 'Every' và 'Another' không đứng trực tiếp trước 'of the + plural noun' theo cách này (phải là 'Every one of' hoặc 'Each of'). 'Almost' là phó từ không làm đại từ.",
+      "targetChunk": {
+        "phrase": "Both of the directors agreed",
+        "meaningVi": "cả hai vị giám đốc đều đồng ý rằng"
+      },
+      "skeleton": {
+        "subject": "Both of the directors",
+        "verb": "agreed",
+        "object": "that clause"
+      }
+    },
+    {
+      "id": "quant_std_014",
+      "level": "standard",
+      "question": "Please return ______ borrowed equipment to the storage room at the end of the shift.",
+      "options": {
+        "A": "all",
+        "B": "every",
+        "C": "each",
+        "D": "much"
+      },
+      "correctAnswer": "A",
+      "clue": "'equipment' là danh từ không đếm được, mang nghĩa toàn bộ → Chọn all.",
+      "explanationVi": "'all' có thể đi với danh từ không đếm được (all equipment = toàn bộ thiết bị). 'every' và 'each' chỉ đi với danh từ đếm được số ít.",
+      "targetChunk": {
+        "phrase": "return all borrowed equipment",
+        "meaningVi": "trả lại toàn bộ thiết bị đã mượn"
+      },
+      "skeleton": {
+        "subject": "You (implied)",
+        "verb": "return",
+        "object": "all borrowed equipment"
+      }
+    },
+    {
+      "id": "quant_std_015",
+      "level": "standard",
+      "question": "The hotel offers two types of rooms, and ______ comes with complimentary breakfast.",
+      "options": {
+        "A": "both",
+        "B": "each",
+        "C": "all",
+        "D": "some"
+      },
+      "correctAnswer": "B",
+      "clue": "Động từ 'comes' chia số ít (có đuôi -s) → Chọn each.",
+      "explanationVi": "'each' là đại từ số ít đi với động từ số ít 'comes' (từng phòng một đều đi kèm...). 'both', 'all', 'some' đều đi với động từ số nhiều 'come'.",
+      "targetChunk": {
+        "phrase": "each comes with complimentary breakfast",
+        "meaningVi": "mỗi phòng đều kèm theo bữa sáng miễn phí"
+      },
+      "skeleton": {
+        "subject": "each",
+        "verb": "comes with",
+        "object": "complimentary breakfast"
+      }
+    },
+    {
+      "id": "quant_std_016",
+      "level": "standard",
+      "question": "If you have ______ questions regarding your benefits package, please contact HR.",
+      "options": {
+        "A": "any",
+        "B": "every",
+        "C": "much",
+        "D": "little"
+      },
+      "correctAnswer": "A",
+      "clue": "Trong câu điều kiện if với danh từ đếm được số nhiều 'questions' → Chọn any.",
+      "explanationVi": "'any' dùng trong câu hỏi, câu điều kiện (If you have any questions = nếu bạn có bất kỳ câu hỏi nào). 'every' đi với danh từ số ít; 'much/little' đi với danh từ không đếm được.",
+      "targetChunk": {
+        "phrase": "have any questions regarding",
+        "meaningVi": "có bất kỳ thắc mắc nào liên quan đến"
+      },
+      "skeleton": {
+        "subject": "you",
+        "verb": "have",
+        "object": "any questions"
+      }
+    },
+    {
+      "id": "quant_std_017",
+      "level": "standard",
+      "question": "The survey showed that ______ employees prefer working from home at least two days a week.",
+      "options": {
+        "A": "much",
+        "B": "most",
+        "C": "almost",
+        "D": "every"
+      },
+      "correctAnswer": "B",
+      "clue": "Trước danh từ số nhiều 'employees' không có mạo từ → Chọn Most.",
+      "explanationVi": "'Most employees' = Hầu hết nhân viên. 'Almost' là trạng từ bổ nghĩa cho tính từ/lượng từ (Almost all employees), 'much' đi với không đếm được, 'every' đi với số ít.",
+      "targetChunk": {
+        "phrase": "most employees prefer",
+        "meaningVi": "đa số nhân viên thích"
+      },
+      "skeleton": {
+        "subject": "most employees",
+        "verb": "prefer",
+        "object": "working from home"
+      }
+    },
+    {
+      "id": "quant_std_018",
+      "level": "standard",
+      "question": "One of the laptops is being repaired, and ______ is in the conference room.",
+      "options": {
+        "A": "other",
+        "B": "the other",
+        "C": "another",
+        "D": "others"
+      },
+      "correctAnswer": "B",
+      "clue": "Có 2 chiếc máy tính ('One of the laptops...'), cái còn lại xác định → Chọn the other.",
+      "explanationVi": "Khi chỉ còn 1 đối tượng còn lại trong tổng số 2 đối tượng, ta dùng 'the other' (cái còn lại). 'another' là một cái khác bất kỳ; 'others' là số nhiều.",
+      "targetChunk": {
+        "phrase": "and the other is in",
+        "meaningVi": "và chiếc còn lại thì ở trong"
+      },
+      "skeleton": {
+        "subject": "the other",
+        "verb": "is",
+        "object": null
+      }
+    },
+    {
+      "id": "quant_std_019",
+      "level": "standard",
+      "question": "The company does not have ______ intention of closing the suburban branch.",
+      "options": {
+        "A": "no",
+        "B": "any",
+        "C": "some",
+        "D": "none"
+      },
+      "correctAnswer": "B",
+      "clue": "Câu phủ định 'does not have' → Chọn any.",
+      "explanationVi": "Trong câu phủ định (not), ta dùng 'any' (does not have any intention = không có bất kỳ ý định nào). Không dùng double negative với 'no/none'.",
+      "targetChunk": {
+        "phrase": "not have any intention of",
+        "meaningVi": "không có bất kỳ ý định nào về việc"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "does not have",
+        "object": "any intention"
+      }
+    },
+    {
+      "id": "quant_std_020",
+      "level": "standard",
+      "question": "There were very ______ errors found in the final draft of the annual report.",
+      "options": {
+        "A": "little",
+        "B": "few",
+        "C": "much",
+        "D": "less"
+      },
+      "correctAnswer": "B",
+      "clue": "'errors' là danh từ đếm được số nhiều → Chọn few.",
+      "explanationVi": "'very few errors' = rất ít lỗi. 'few' bổ nghĩa cho danh từ đếm được số nhiều. 'little/less/much' chỉ dùng cho danh từ không đếm được.",
+      "targetChunk": {
+        "phrase": "very few errors found in",
+        "meaningVi": "rất ít sai sót được tìm thấy trong"
+      },
+      "skeleton": {
+        "subject": "There",
+        "verb": "were",
+        "object": "very few errors"
+      }
+    },
+    {
+      "id": "quant_std_021",
+      "level": "standard",
+      "question": "The team spent ______ hours testing the new software before the official launch.",
+      "options": {
+        "A": "much",
+        "B": "many",
+        "C": "every",
+        "D": "little"
+      },
+      "correctAnswer": "B",
+      "clue": "'hours' là danh từ đếm được số nhiều → Chọn many.",
+      "explanationVi": "'many hours' = nhiều giờ đồng hồ. 'much' và 'little' đi với danh từ không đếm được; 'every' đi với danh từ số ít.",
+      "targetChunk": {
+        "phrase": "spent many hours testing",
+        "meaningVi": "dành nhiều giờ đồng hồ kiểm thử"
+      },
+      "skeleton": {
+        "subject": "The team",
+        "verb": "spent",
+        "object": "many hours"
+      }
+    },
+    {
+      "id": "quant_std_022",
+      "level": "standard",
+      "question": "______ member of the sales team exceeded their quarterly quota this period.",
+      "options": {
+        "A": "All",
+        "B": "Each",
+        "C": "Both",
+        "D": "Several"
+      },
+      "correctAnswer": "B",
+      "clue": "'member' là danh từ số ít đếm được → Chọn Each.",
+      "explanationVi": "'Each member' = Từng thành viên. 'All', 'Both', 'Several' đều yêu cầu danh từ đếm được ở dạng số nhiều (members).",
+      "targetChunk": {
+        "phrase": "Each member of the sales team",
+        "meaningVi": "từng thành viên trong đội ngũ kinh doanh"
+      },
+      "skeleton": {
+        "subject": "Each member",
+        "verb": "exceeded",
+        "object": "their quarterly quota"
+      }
+    },
+    {
+      "id": "quant_std_023",
+      "level": "standard",
+      "question": "We need to order ______ printer paper because the supply cabinet is almost empty.",
+      "options": {
+        "A": "more",
+        "B": "many",
+        "C": "few",
+        "D": "a few"
+      },
+      "correctAnswer": "A",
+      "clue": "'paper' là danh từ không đếm được → Chọn more.",
+      "explanationVi": "'more printer paper' = thêm giấy in. 'more' dùng được cho cả danh từ đếm được và không đếm được. 'many', 'few', 'a few' chỉ đi với danh từ đếm được số nhiều.",
+      "targetChunk": {
+        "phrase": "order more printer paper",
+        "meaningVi": "đặt thêm giấy in"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "need to order",
+        "object": "more printer paper"
+      }
+    },
+    {
+      "id": "quant_std_024",
+      "level": "standard",
+      "question": "The two partners have a great deal of respect for ______ .",
+      "options": {
+        "A": "each other",
+        "B": "one another",
+        "C": "the other",
+        "D": "others"
+      },
+      "correctAnswer": "A",
+      "clue": "Nói về mối quan hệ qua lại giữa 2 đối tượng ('The two partners') → Chọn each other.",
+      "explanationVi": "'each other' dùng cho 2 đối tượng (hai đối tác tôn trọng lẫn nhau). 'one another' thường dùng cho từ 3 đối tượng trở lên.",
+      "targetChunk": {
+        "phrase": "respect for each other",
+        "meaningVi": "sự tôn trọng lẫn nhau"
+      },
+      "skeleton": {
+        "subject": "The two partners",
+        "verb": "have",
+        "object": "a great deal of respect"
+      }
+    },
+    {
+      "id": "quant_std_025",
+      "level": "standard",
+      "question": "______ of the conference attendees received a welcome packet upon registration.",
+      "options": {
+        "A": "Every",
+        "B": "All",
+        "C": "Almost",
+        "D": "Another"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc '______ of the + plural noun' → Chọn All.",
+      "explanationVi": "'All of the conference attendees' = Tất cả những người tham dự hội nghị. 'Every' không đi trực tiếp với 'of the' (phải là Every one of the), 'Almost' là trạng từ.",
+      "targetChunk": {
+        "phrase": "All of the conference attendees received",
+        "meaningVi": "tất cả người tham dự hội nghị đều nhận được"
+      },
+      "skeleton": {
+        "subject": "All of the conference attendees",
+        "verb": "received",
+        "object": "a welcome packet"
+      }
+    },
+    {
+      "id": "quant_std_026",
+      "level": "standard",
+      "question": "You can choose ______ the morning session or the afternoon workshop.",
+      "options": {
+        "A": "both",
+        "B": "either",
+        "C": "neither",
+        "D": "whether"
+      },
+      "correctAnswer": "B",
+      "clue": "Cặp liên từ tương hỗ đi với 'or' → Chọn either.",
+      "explanationVi": "Cấu trúc 'either... or...' (hoặc cái này hoặc cái kia). 'both... and...', 'neither... nor...'.",
+      "targetChunk": {
+        "phrase": "choose either the morning session or",
+        "meaningVi": "chọn hoặc phiên buổi sáng hoặc"
+      },
+      "skeleton": {
+        "subject": "You",
+        "verb": "can choose",
+        "object": "either A or B"
+      }
+    },
+    {
+      "id": "quant_std_027",
+      "level": "standard",
+      "question": "The company has ______ offices located throughout North America and Europe.",
+      "options": {
+        "A": "much",
+        "B": "several",
+        "C": "every",
+        "D": "another"
+      },
+      "correctAnswer": "B",
+      "clue": "'offices' là danh từ đếm được số nhiều → Chọn several.",
+      "explanationVi": "'several offices' = một số văn phòng. 'much' đi với không đếm được; 'every' và 'another' đi với danh từ số ít.",
+      "targetChunk": {
+        "phrase": "has several offices located throughout",
+        "meaningVi": "có một vài văn phòng đặt tại khắp"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "has",
+        "object": "several offices"
+      }
+    },
+    {
+      "id": "quant_std_028",
+      "level": "standard",
+      "question": "There is ______ information available online about the upcoming merger.",
+      "options": {
+        "A": "many",
+        "B": "few",
+        "C": "little",
+        "D": "a few"
+      },
+      "correctAnswer": "C",
+      "clue": "'information' là danh từ không đếm được và động từ là 'is' → Chọn little.",
+      "explanationVi": "'information' là danh từ không đếm được, nên chỉ có thể đi với 'little' (có ít thông tin). 'many', 'few', 'a few' đều đi với danh từ số nhiều.",
+      "targetChunk": {
+        "phrase": "little information available online",
+        "meaningVi": "ít thông tin có sẵn trực tuyến"
+      },
+      "skeleton": {
+        "subject": "There",
+        "verb": "is",
+        "object": "little information"
+      }
+    },
+    {
+      "id": "quant_std_029",
+      "level": "standard",
+      "question": "Dr. Kim suggested that we explore ______ alternative methods before finalizing the plan.",
+      "options": {
+        "A": "other",
+        "B": "another",
+        "C": "others",
+        "D": "much"
+      },
+      "correctAnswer": "A",
+      "clue": "'methods' là danh từ đếm được số nhiều → Chọn other.",
+      "explanationVi": "'other' + danh từ số nhiều (other alternative methods = những phương pháp thay thế khác). 'another' + danh từ số ít, 'others' là đại từ.",
+      "targetChunk": {
+        "phrase": "explore other alternative methods",
+        "meaningVi": "khám phá những phương pháp thay thế khác"
+      },
+      "skeleton": {
+        "subject": "we",
+        "verb": "explore",
+        "object": "other alternative methods"
+      }
+    },
+    {
+      "id": "quant_std_030",
+      "level": "standard",
+      "question": "The factory produced a large ______ of automotive components this quarter.",
+      "options": {
+        "A": "amount",
+        "B": "number",
+        "C": "deal",
+        "D": "quantity"
+      },
+      "correctAnswer": "B",
+      "clue": "'components' là danh từ đếm được số nhiều → 'a large number of'.",
+      "explanationVi": "'a large number of' + danh từ đếm được số nhiều (một số lượng lớn linh kiện ô tô). 'a large amount of' / 'a great deal of' chỉ đi với danh từ không đếm được.",
+      "targetChunk": {
+        "phrase": "a large number of automotive components",
+        "meaningVi": "một số lượng lớn các linh kiện ô tô"
+      },
+      "skeleton": {
+        "subject": "The factory",
+        "verb": "produced",
+        "object": "a large number of components"
+      }
+    },
+    {
+      "id": "quant_adv_001",
+      "level": "advanced",
+      "question": "The construction project has been delayed for ______ two weeks due to adverse weather.",
+      "options": {
+        "A": "other",
+        "B": "another",
+        "C": "others",
+        "D": "the others"
+      },
+      "correctAnswer": "B",
+      "clue": "Bẫy 990: 'another + con số + danh từ số nhiều' (thêm ... nữa) → Chọn another.",
+      "explanationVi": "Quy tắc đặc biệt trong TOEIC: 'another' đi được với danh từ số nhiều KHI CÓ CON SỐ CHỈ KHOẢNG THỜI GIAN/SỐ LƯỢNG đứng giữa (another two weeks = thêm 2 tuần nữa). Không dùng 'other two weeks'.",
+      "targetChunk": {
+        "phrase": "delayed for another two weeks",
+        "meaningVi": "bị trì hoãn thêm hai tuần nữa"
+      },
+      "skeleton": {
+        "subject": "The project",
+        "verb": "has been delayed",
+        "object": null
+      }
+    },
+    {
+      "id": "quant_adv_002",
+      "level": "advanced",
+      "question": "The board voted unanimously to provide the startup with ______ $500,000 in seed capital.",
+      "options": {
+        "A": "other",
+        "B": "another",
+        "C": "the other",
+        "D": "others"
+      },
+      "correctAnswer": "B",
+      "clue": "'another + số tiền' mang nghĩa 'thêm một khoản ... nữa' → Chọn another.",
+      "explanationVi": "'another $500,000' = thêm 500.000 đô la nữa. 'another' đi với các biểu thức số lượng đo lường gộp thành một khối (khoảng tiền, khoảng thời gian).",
+      "targetChunk": {
+        "phrase": "provide the startup with another $500,000",
+        "meaningVi": "cấp cho công ty khởi nghiệp thêm 500.000 USD nữa"
+      },
+      "skeleton": {
+        "subject": "The board",
+        "verb": "voted to provide",
+        "object": "the startup"
+      }
+    },
+    {
+      "id": "quant_adv_003",
+      "level": "advanced",
+      "question": "______ all the senior engineers attended the seminar on machine learning applications.",
+      "options": {
+        "A": "Most",
+        "B": "Almost",
+        "C": "Mostly",
+        "D": "As most"
+      },
+      "correctAnswer": "B",
+      "clue": "Bẫy 990: Đứng trước 'all / every / any' phải là phó từ 'Almost' → Chọn Almost.",
+      "explanationVi": "'Almost all' = Hầu như tất cả. 'Almost' là trạng từ bổ nghĩa cho từ hạn định 'all'. 'Most' không đi trực tiếp trước 'all' (không có Most all). 'Mostly' mang nghĩa 'chủ yếu là'.",
+      "targetChunk": {
+        "phrase": "Almost all the senior engineers attended",
+        "meaningVi": "hầu như tất cả các kỹ sư cấp cao đã tham dự"
+      },
+      "skeleton": {
+        "subject": "Almost all the senior engineers",
+        "verb": "attended",
+        "object": "the seminar"
+      }
+    },
+    {
+      "id": "quant_adv_004",
+      "level": "advanced",
+      "question": "The CEO emphasized that ______ member of the advisory committee holds a distinct perspective.",
+      "options": {
+        "A": "every",
+        "B": "all",
+        "C": "most",
+        "D": "whole"
+      },
+      "correctAnswer": "A",
+      "clue": "Danh từ 'member' và động từ 'holds' đều ở ngôi thứ ba số ít → Chọn every.",
+      "explanationVi": "'every member... holds' (mỗi thành viên... nắm giữ). 'all' và 'most' đòi hỏi danh từ số nhiều (members... hold). 'whole' cần mạo từ phía trước (the whole committee).",
+      "targetChunk": {
+        "phrase": "every member of the advisory committee holds",
+        "meaningVi": "mỗi thành viên của ủy ban cố vấn đều nắm giữ"
+      },
+      "skeleton": {
+        "subject": "every member",
+        "verb": "holds",
+        "object": "a distinct perspective"
+      }
+    },
+    {
+      "id": "quant_adv_005",
+      "level": "advanced",
+      "question": "The number of defective units returned by consumers ______ significantly lower this quarter.",
+      "options": {
+        "A": "were",
+        "B": "was",
+        "C": "are",
+        "D": "have been"
+      },
+      "correctAnswer": "B",
+      "clue": "Bẫy kinh điển: 'The number of + N số nhiều' chia động từ SỐ ÍT; 'A number of' mới chia số nhiều → Chọn was.",
+      "explanationVi": "Chủ ngữ là 'The number' (con số/số lượng) là danh từ số ít, nên động từ phải chia số ít ở quá khứ: 'was'. (Trái lại, 'A number of' mang nghĩa 'nhiều' thì chia số nhiều).",
+      "targetChunk": {
+        "phrase": "The number of defective units was significantly lower",
+        "meaningVi": "số lượng sản phẩm lỗi đã thấp hơn đáng kể"
+      },
+      "skeleton": {
+        "subject": "The number of defective units",
+        "verb": "was",
+        "object": "lower"
+      }
+    },
+    {
+      "id": "quant_adv_006",
+      "level": "advanced",
+      "question": "A substantial number of employees ______ expressed an interest in taking the management course.",
+      "options": {
+        "A": "has",
+        "B": "have",
+        "C": "is",
+        "D": "was"
+      },
+      "correctAnswer": "B",
+      "clue": "'A substantial number of + N số nhiều' đi với động từ số nhiều → Chọn have.",
+      "explanationVi": "'A number of / A substantial number of' (= nhiều / một lượng đáng kể) đi kèm danh từ số nhiều và động từ chia ở dạng số nhiều: 'have expressed'.",
+      "targetChunk": {
+        "phrase": "A substantial number of employees have expressed",
+        "meaningVi": "một lượng đáng kể nhân viên đã bày tỏ"
+      },
+      "skeleton": {
+        "subject": "A substantial number of employees",
+        "verb": "have expressed",
+        "object": "an interest"
+      }
+    },
+    {
+      "id": "quant_adv_007",
+      "level": "advanced",
+      "question": "The auditorium is ______ larger than the meeting hall we rented last year.",
+      "options": {
+        "A": "very",
+        "B": "much",
+        "C": "more",
+        "D": "so"
+      },
+      "correctAnswer": "B",
+      "clue": "Bổ nghĩa nhấn mạnh cho tính từ so sánh hơn 'larger' → Chọn much.",
+      "explanationVi": "Các trạng từ dùng để bổ nghĩa cho so sánh hơn: much, far, significantly, substantially, way. Không dùng 'very' trước so sánh hơn (không có very larger).",
+      "targetChunk": {
+        "phrase": "is much larger than",
+        "meaningVi": "lớn hơn rất nhiều so với"
+      },
+      "skeleton": {
+        "subject": "The auditorium",
+        "verb": "is",
+        "object": "larger"
+      }
+    },
+    {
+      "id": "quant_adv_008",
+      "level": "advanced",
+      "question": "Management gave ______ indication that layoffs were imminent despite rumors in the press.",
+      "options": {
+        "A": "little",
+        "B": "few",
+        "C": "a few",
+        "D": "any"
+      },
+      "correctAnswer": "A",
+      "clue": "'indication' là danh từ không đếm được; ý câu mang nghĩa phủ định (hầu như không có dấu hiệu) → Chọn little.",
+      "explanationVi": "'give little indication that' = hầu như không để lộ dấu hiệu nào cho thấy. 'little' (không có 'a') mang sắc thái phủ định (gần như bằng zero) bổ nghĩa cho danh từ không đếm được.",
+      "targetChunk": {
+        "phrase": "gave little indication that",
+        "meaningVi": "hầu như không để lộ dấu hiệu nào cho thấy"
+      },
+      "skeleton": {
+        "subject": "Management",
+        "verb": "gave",
+        "object": "little indication"
+      }
+    },
+    {
+      "id": "quant_adv_009",
+      "level": "advanced",
+      "question": "Unlike ______ competitors in the region, NexaTech manufactures all components in-house.",
+      "options": {
+        "A": "most",
+        "B": "almost",
+        "C": "mostly",
+        "D": "the most"
+      },
+      "correctAnswer": "A",
+      "clue": "Trước danh từ số nhiều không có mạo từ 'competitors' → Chọn most.",
+      "explanationVi": "'most competitors' = hầu hết các đối thủ. 'almost' là phó từ (almost all competitors); 'mostly' là phó từ (chủ yếu); 'the most' dùng trong so sánh nhất.",
+      "targetChunk": {
+        "phrase": "Unlike most competitors in the region",
+        "meaningVi": "không giống như hầu hết đối thủ trong khu vực"
+      },
+      "skeleton": {
+        "subject": "NexaTech",
+        "verb": "manufactures",
+        "object": "all components"
+      }
+    },
+    {
+      "id": "quant_adv_010",
+      "level": "advanced",
+      "question": "The safety inspector noted that ______ the fire extinguishers had passed their expiration date.",
+      "options": {
+        "A": "every",
+        "B": "each",
+        "C": "none of",
+        "D": "neither"
+      },
+      "correctAnswer": "C",
+      "clue": "Cấu trúc '______ the fire extinguishers' (danh từ số nhiều đếm được) → Chọn none of.",
+      "explanationVi": "'none of the + plural noun' (không có cái nào trong số các bình cứu hỏa). 'every' không đi trực tiếp với 'the', 'neither' chỉ dùng cho 2 đối tượng.",
+      "targetChunk": {
+        "phrase": "none of the fire extinguishers had passed",
+        "meaningVi": "không có bình cứu hỏa nào bị quá hạn"
+      },
+      "skeleton": {
+        "subject": "none of the fire extinguishers",
+        "verb": "had passed",
+        "object": "their expiration date"
+      }
+    },
+    {
+      "id": "quant_adv_011",
+      "level": "advanced",
+      "question": "The conference organizers provided headsets to ______ participant needing simultaneous translation.",
+      "options": {
+        "A": "any",
+        "B": "all",
+        "C": "several",
+        "D": "some"
+      },
+      "correctAnswer": "A",
+      "clue": "'participant' là danh từ đếm được số ít mang nghĩa 'bất kỳ ai' → Chọn any.",
+      "explanationVi": "'any' có thể đi với danh từ đếm được số ít trong câu khẳng định với ý nghĩa 'bất kỳ ai / bất cứ người nào' (any participant = bất kỳ người tham dự nào). 'all', 'several', 'some' đi với danh từ số nhiều.",
+      "targetChunk": {
+        "phrase": "to any participant needing",
+        "meaningVi": "cho bất kỳ người tham dự nào có nhu cầu"
+      },
+      "skeleton": {
+        "subject": "The organizers",
+        "verb": "provided",
+        "object": "headsets"
+      }
+    },
+    {
+      "id": "quant_adv_012",
+      "level": "advanced",
+      "question": "The merger will offer greater financial stability than ______ previous business venture.",
+      "options": {
+        "A": "any other",
+        "B": "other",
+        "C": "another",
+        "D": "others"
+      },
+      "correctAnswer": "A",
+      "clue": "Trong câu so sánh hơn với danh từ số ít 'venture': 'than any other + N số ít' → Chọn any other.",
+      "explanationVi": "Cấu trúc so sánh hơn loại trừ chính bản thân đối tượng: 'so sánh hơn + than any other + danh từ số ít' (hơn bất kỳ dự án liên doanh nào khác).",
+      "targetChunk": {
+        "phrase": "greater financial stability than any other",
+        "meaningVi": "sự ổn định tài chính lớn hơn bất kỳ... nào khác"
+      },
+      "skeleton": {
+        "subject": "The merger",
+        "verb": "will offer",
+        "object": "greater financial stability"
+      }
+    },
+    {
+      "id": "quant_adv_013",
+      "level": "advanced",
+      "question": "Although the team encountered ______ technical obstacles, they met the deployment deadline.",
+      "options": {
+        "A": "few",
+        "B": "a few",
+        "C": "little",
+        "D": "a little"
+      },
+      "correctAnswer": "B",
+      "clue": "Mệnh đề 'Although' biểu thị sự đối lập: dù gặp 'một vài khó khăn' (khẳng định) nhưng vẫn kịp hạn → Chọn a few.",
+      "explanationVi": "'a few technical obstacles' = một vài trở ngại kỹ thuật (mang nghĩa khẳng định: thực tế có gặp phải). 'few' mang nghĩa hầu như không gặp trở ngại thì sẽ vô nghĩa khi đi với 'Although'. 'obstacles' là số nhiều nên không dùng 'little/a little'.",
+      "targetChunk": {
+        "phrase": "encountered a few technical obstacles",
+        "meaningVi": "đã gặp phải một vài trở ngại kỹ thuật"
+      },
+      "skeleton": {
+        "subject": "the team",
+        "verb": "encountered",
+        "object": "a few technical obstacles"
+      }
+    },
+    {
+      "id": "quant_adv_014",
+      "level": "advanced",
+      "question": "Our logistics center can ship products to ______ domestic or international destinations.",
+      "options": {
+        "A": "both",
+        "B": "either",
+        "C": "neither",
+        "D": "every"
+      },
+      "correctAnswer": "B",
+      "clue": "Đi kèm với liên từ tương hỗ 'or' → Chọn either.",
+      "explanationVi": "Cấu trúc tương hỗ 'either A or B' (hoặc các điểm đến nội địa hoặc quốc tế). 'both' đi với 'and', 'neither' đi với 'nor'.",
+      "targetChunk": {
+        "phrase": "ship products to either domestic or international",
+        "meaningVi": "giao sản phẩm tới hoặc các điểm đến nội địa hoặc quốc tế"
+      },
+      "skeleton": {
+        "subject": "center",
+        "verb": "can ship",
+        "object": "products"
+      }
+    },
+    {
+      "id": "quant_adv_015",
+      "level": "advanced",
+      "question": "The firm has retained ______ percentage of its clients over the past decade than rival agencies.",
+      "options": {
+        "A": "a higher",
+        "B": "highest",
+        "C": "more high",
+        "D": "the higher"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm danh từ so sánh hơn trước 'than': 'a higher percentage of' → Chọn a higher.",
+      "explanationVi": "Cấu trúc so sánh hơn của cụm danh từ: 'a higher percentage of its clients... than'. 'percentage' là danh từ đếm được số ít cần mạo từ 'a'.",
+      "targetChunk": {
+        "phrase": "retained a higher percentage of its clients",
+        "meaningVi": "giữ chân được tỷ lệ khách hàng cao hơn"
+      },
+      "skeleton": {
+        "subject": "The firm",
+        "verb": "has retained",
+        "object": "a higher percentage"
+      }
+    },
+    {
+      "id": "quant_adv_016",
+      "level": "advanced",
+      "question": "______ of the research team members was given an individual award for innovation.",
+      "options": {
+        "A": "Every",
+        "B": "Each",
+        "C": "All",
+        "D": "Both"
+      },
+      "correctAnswer": "B",
+      "clue": "'Each of the + N số nhiều' đi với động từ số ít 'was given' → Chọn Each.",
+      "explanationVi": "'Each of the members was given' (mỗi một thành viên đều được trao...). 'Every' không đứng trước 'of the'; 'All' và 'Both' đòi hỏi động từ số nhiều 'were given'.",
+      "targetChunk": {
+        "phrase": "Each of the research team members was given",
+        "meaningVi": "mỗi một thành viên của nhóm nghiên cứu đều được trao"
+      },
+      "skeleton": {
+        "subject": "Each of the research team members",
+        "verb": "was given",
+        "object": "an individual award"
+      }
+    },
+    {
+      "id": "quant_adv_017",
+      "level": "advanced",
+      "question": "The factory requires regular maintenance checks every ______ months to ensure optimal performance.",
+      "options": {
+        "A": "other",
+        "B": "three",
+        "C": "of three",
+        "D": "third"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc 'every + số đếm + danh từ số nhiều' (cứ mỗi ... lần) → Chọn three.",
+      "explanationVi": "Cấu trúc chỉ tần suất định kỳ: 'every three months' = cứ mỗi 3 tháng một lần. 'every' đi với số đếm + danh từ số nhiều chỉ chu kỳ.",
+      "targetChunk": {
+        "phrase": "checks every three months to ensure",
+        "meaningVi": "kiểm tra định kỳ 3 tháng một lần để đảm bảo"
+      },
+      "skeleton": {
+        "subject": "The factory",
+        "verb": "requires",
+        "object": "regular maintenance checks"
+      }
+    },
+    {
+      "id": "quant_adv_018",
+      "level": "advanced",
+      "question": "There is ______ reason to doubt the accuracy of the audited financial statements.",
+      "options": {
+        "A": "no",
+        "B": "not",
+        "C": "none",
+        "D": "any"
+      },
+      "correctAnswer": "A",
+      "clue": "Đứng trước danh từ đếm được số ít 'reason' trong câu khẳng định mang nghĩa phủ định → Chọn no.",
+      "explanationVi": "'There is no reason to do sth' = Không có lý do gì để làm gì. 'no' là từ hạn định bổ nghĩa cho danh từ. 'not' là phó từ, 'none' là đại từ.",
+      "targetChunk": {
+        "phrase": "There is no reason to doubt",
+        "meaningVi": "không có lý do gì để nghi ngờ"
+      },
+      "skeleton": {
+        "subject": "There",
+        "verb": "is",
+        "object": "no reason to doubt"
+      }
+    },
+    {
+      "id": "quant_adv_019",
+      "level": "advanced",
+      "question": "The committee members respected ______ and worked collaboratively toward a resolution.",
+      "options": {
+        "A": "one another",
+        "B": "each others",
+        "C": "one other",
+        "D": "the other"
+      },
+      "correctAnswer": "A",
+      "clue": "Nhóm người từ 3 người trở lên tôn trọng lẫn nhau → Chọn one another.",
+      "explanationVi": "'one another' dùng cho 3 đối tượng trở lên (các ủy viên ủy ban tôn trọng lẫn nhau). 'each other' thường dùng cho 2 người, nhưng 'one another' là dạng chuẩn cho tập thể. Không có dạng 'each others'.",
+      "targetChunk": {
+        "phrase": "respected one another and worked collaboratively",
+        "meaningVi": "tôn trọng lẫn nhau và hợp tác cùng nhau"
+      },
+      "skeleton": {
+        "subject": "The committee members",
+        "verb": "respected",
+        "object": "one another"
+      }
+    },
+    {
+      "id": "quant_adv_020",
+      "level": "advanced",
+      "question": "The new regulation applies to ______ organizations that process sensitive customer data.",
+      "options": {
+        "A": "such",
+        "B": "all such",
+        "C": "such all",
+        "D": "every such"
+      },
+      "correctAnswer": "B",
+      "clue": "Thứ tự từ hạn định bổ nghĩa cho danh từ số nhiều 'organizations': 'all such + N số nhiều' → Chọn all such.",
+      "explanationVi": "'all such organizations' = tất cả các tổ chức như vậy. 'all' là pre-determiner đứng trước 'such', bổ nghĩa cho danh từ số nhiều. 'every such' chỉ đi với danh từ số ít.",
+      "targetChunk": {
+        "phrase": "applies to all such organizations that",
+        "meaningVi": "áp dụng cho tất cả các tổ chức như vậy mà"
+      },
+      "skeleton": {
+        "subject": "The regulation",
+        "verb": "applies to",
+        "object": "all such organizations"
+      }
+    },
+    {
+      "id": "quant_adv_021",
+      "level": "advanced",
+      "question": "The new machinery consumes significantly ______ electricity than the legacy model.",
+      "options": {
+        "A": "fewer",
+        "B": "less",
+        "C": "least",
+        "D": "fewest"
+      },
+      "correctAnswer": "B",
+      "clue": "'electricity' là danh từ không đếm được trong cấu trúc so sánh hơn với 'than' → Chọn less.",
+      "explanationVi": "'less' là dạng so sánh hơn của 'little', dùng cho danh từ không đếm được (significantly less electricity = ít điện năng hơn đáng kể). 'fewer' chỉ dùng cho danh từ đếm được số nhiều.",
+      "targetChunk": {
+        "phrase": "consumes significantly less electricity than",
+        "meaningVi": "tiêu thụ ít điện năng hơn đáng kể so với"
+      },
+      "skeleton": {
+        "subject": "The machinery",
+        "verb": "consumes",
+        "object": "less electricity"
+      }
+    },
+    {
+      "id": "quant_adv_022",
+      "level": "advanced",
+      "question": "During the system outage, ______ of our cloud servers remained fully operational.",
+      "options": {
+        "A": "not one",
+        "B": "no one",
+        "C": "anyone",
+        "D": "someone"
+      },
+      "correctAnswer": "A",
+      "clue": "Nhấn mạnh 'không một máy chủ nào': cấu trúc 'not one of the + N số nhiều' → Chọn not one.",
+      "explanationVi": "'not one of + N số nhiều' mang nghĩa nhấn mạnh tuyệt đối 'không một cái nào trong số...'. 'no one' chỉ dùng cho người và không đi với 'of our servers'.",
+      "targetChunk": {
+        "phrase": "not one of our cloud servers remained",
+        "meaningVi": "không một máy chủ đám mây nào của chúng tôi còn"
+      },
+      "skeleton": {
+        "subject": "not one of our cloud servers",
+        "verb": "remained",
+        "object": null
+      }
+    },
+    {
+      "id": "quant_adv_023",
+      "level": "advanced",
+      "question": "The pharmaceutical trial produced results that were consistent with ______ previous studies.",
+      "options": {
+        "A": "almost",
+        "B": "most",
+        "C": "mostly",
+        "D": "the most"
+      },
+      "correctAnswer": "B",
+      "clue": "Đứng trước danh từ số nhiều 'previous studies' mà không có mạo từ 'the' → Chọn most.",
+      "explanationVi": "'most previous studies' = hầu hết các nghiên cứu trước đây. 'almost' là phó từ không bổ nghĩa trực tiếp cho danh từ (phải là almost all). 'mostly' là phó từ mang nghĩa 'chủ yếu'.",
+      "targetChunk": {
+        "phrase": "consistent with most previous studies",
+        "meaningVi": "nhất quán với đa số các nghiên cứu trước đây"
+      },
+      "skeleton": {
+        "subject": "The trial",
+        "verb": "produced",
+        "object": "results"
+      }
+    },
+    {
+      "id": "quant_adv_024",
+      "level": "advanced",
+      "question": "The customer service representative offered ______ fifty-dollar coupon as a goodwill gesture.",
+      "options": {
+        "A": "other",
+        "B": "another",
+        "C": "the other",
+        "D": "others"
+      },
+      "correctAnswer": "B",
+      "clue": "Cụm danh từ đếm được số ít 'fifty-dollar coupon' → Chọn another.",
+      "explanationVi": "'another fifty-dollar coupon' = thêm một phiếu giảm giá 50 đô la khác. 'another' đi với danh từ số ít.",
+      "targetChunk": {
+        "phrase": "offered another fifty-dollar coupon",
+        "meaningVi": "đã tặng thêm một phiếu giảm giá 50 đô la khác"
+      },
+      "skeleton": {
+        "subject": "The representative",
+        "verb": "offered",
+        "object": "another fifty-dollar coupon"
+      }
+    },
+    {
+      "id": "quant_adv_025",
+      "level": "advanced",
+      "question": "The firm has had ______ success marketing its premium subscription services overseas.",
+      "options": {
+        "A": "few",
+        "B": "little",
+        "C": "many",
+        "D": "several"
+      },
+      "correctAnswer": "B",
+      "clue": "'success' là danh từ không đếm được → Chọn little.",
+      "explanationVi": "'little success' = ít thành công (gần như không thành công). 'success' (sự thành công) là danh từ không đếm được, loại 'few/many/several' vốn chỉ đi với danh từ số nhiều.",
+      "targetChunk": {
+        "phrase": "has had little success marketing",
+        "meaningVi": "đã gặt hái rất ít thành công trong việc tiếp thị"
+      },
+      "skeleton": {
+        "subject": "The firm",
+        "verb": "has had",
+        "object": "little success"
+      }
+    },
+    {
+      "id": "quant_adv_026",
+      "level": "advanced",
+      "question": "The vice president instructed ______ department head to prepare an annual forecast.",
+      "options": {
+        "A": "every",
+        "B": "all",
+        "C": "several",
+        "D": "both"
+      },
+      "correctAnswer": "A",
+      "clue": "'department head' là danh từ đếm được số ít (trưởng bộ phận) → Chọn every.",
+      "explanationVi": "'every department head' = mỗi trưởng bộ phận. 'all', 'several', 'both' bắt buộc đi với danh từ số nhiều (department heads).",
+      "targetChunk": {
+        "phrase": "instructed every department head to prepare",
+        "meaningVi": "chỉ đạo từng trưởng bộ phận chuẩn bị"
+      },
+      "skeleton": {
+        "subject": "The vice president",
+        "verb": "instructed",
+        "object": "every department head"
+      }
+    },
+    {
+      "id": "quant_adv_027",
+      "level": "advanced",
+      "question": "We received two bids for the renovation, but ______ met our budgetary guidelines.",
+      "options": {
+        "A": "none",
+        "B": "neither",
+        "C": "no one",
+        "D": "nothing"
+      },
+      "correctAnswer": "B",
+      "clue": "Nói về việc phủ định cả 2 hồ sơ thầu ('two bids') → Chọn neither.",
+      "explanationVi": "'neither' là đại từ đại diện cho 'không ai/không cái nào trong hai' (neither met our guidelines = cả hai hồ sơ đều không đáp ứng). 'none' dùng cho từ 3 đối tượng trở lên.",
+      "targetChunk": {
+        "phrase": "two bids, but neither met our budgetary guidelines",
+        "meaningVi": "hai gói thầu, nhưng cả hai đều không đạt mức ngân sách"
+      },
+      "skeleton": {
+        "subject": "neither",
+        "verb": "met",
+        "object": "our budgetary guidelines"
+      }
+    },
+    {
+      "id": "quant_adv_028",
+      "level": "advanced",
+      "question": "The warehouse holds a large ______ of spare parts to minimize downtime for clients.",
+      "options": {
+        "A": "amount",
+        "B": "number",
+        "C": "deal",
+        "D": "much"
+      },
+      "correctAnswer": "B",
+      "clue": "'spare parts' là danh từ đếm được số nhiều → 'a large number of'.",
+      "explanationVi": "'a large number of + N số nhiều' (một số lượng lớn phụ tùng thay thế). 'a large amount of' chỉ đi với danh từ không đếm được.",
+      "targetChunk": {
+        "phrase": "a large number of spare parts",
+        "meaningVi": "một số lượng lớn phụ tùng thay thế"
+      },
+      "skeleton": {
+        "subject": "The warehouse",
+        "verb": "holds",
+        "object": "a large number of spare parts"
+      }
+    },
+    {
+      "id": "quant_adv_029",
+      "level": "advanced",
+      "question": "______ employee who wishes to enroll in the certification course should notify HR by noon.",
+      "options": {
+        "A": "Any",
+        "B": "All",
+        "C": "Some",
+        "D": "Few"
+      },
+      "correctAnswer": "A",
+      "clue": "'employee' và 'wishes' đều ở dạng số ít, câu mang nghĩa bất kỳ ai muốn → Chọn Any.",
+      "explanationVi": "'Any employee who wishes' = Bất kỳ nhân viên nào có nguyện vọng... 'Any' có thể đi với danh từ số ít mang nghĩa 'bất kỳ'. 'All', 'Some', 'Few' đều đi với danh từ số nhiều.",
+      "targetChunk": {
+        "phrase": "Any employee who wishes to enroll",
+        "meaningVi": "bất kỳ nhân viên nào mong muốn đăng ký"
+      },
+      "skeleton": {
+        "subject": "Any employee",
+        "verb": "should notify",
+        "object": "HR"
+      }
+    },
+    {
+      "id": "quant_adv_030",
+      "level": "advanced",
+      "question": "A ______ majority of shareholders voted in favor of the proposed acquisition.",
+      "options": {
+        "A": "vast",
+        "B": "mostly",
+        "C": "most",
+        "D": "broadly"
+      },
+      "correctAnswer": "A",
+      "clue": "Cụm danh từ cố định: 'a vast majority of' (đại đa số) → Chọn vast.",
+      "explanationVi": "Collocation trọng điểm: 'a vast majority of / an overwhelming majority of' = đại đa số. Cần một tính từ 'vast' đứng sau mạo từ 'a' và trước danh từ 'majority'.",
+      "targetChunk": {
+        "phrase": "A vast majority of shareholders voted",
+        "meaningVi": "đại đa số các cổ đông đã bỏ phiếu"
+      },
+      "skeleton": {
+        "subject": "A vast majority of shareholders",
+        "verb": "voted",
+        "object": null
+      }
+    }
+  ]
+}

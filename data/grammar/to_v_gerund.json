@@ -1,0 +1,1389 @@
+{
+  "topicId": "to_v_gerund",
+  "topicName": "To-V vs V-ing",
+  "topicNameEn": "To-Infinitive and Gerund",
+  "category": "verb_forms",
+  "description": "Động từ theo sau bởi To-V hoặc V-ing, các động từ đổi nghĩa tùy cấu trúc, và các cụm giới từ cố định đi với Gerund.",
+  "questions": [
+    {
+      "id": "tov_std_001",
+      "level": "standard",
+      "question": "The board of directors decided ______ the construction of the overseas distribution hub.",
+      "options": {
+        "A": "postpone",
+        "B": "to postpone",
+        "C": "postponing",
+        "D": "postponed"
+      },
+      "correctAnswer": "B",
+      "clue": "Động từ 'decide' bắt buộc đi kèm với To-Infinitive: decide to do sth.",
+      "explanationVi": "'decide' nằm trong nhóm động từ chỉ ý định/quyết định luôn kết hợp với To-V.",
+      "targetChunk": {
+        "phrase": "decided to postpone the construction",
+        "meaningVi": "đã quyết định hoãn lại việc xây dựng"
+      },
+      "skeleton": {
+        "subject": "The board of directors",
+        "verb": "decided",
+        "object": "to postpone the construction"
+      }
+    },
+    {
+      "id": "tov_std_002",
+      "level": "standard",
+      "question": "All laboratory personnel must avoid ______ exposed containers near electrical outlets.",
+      "options": {
+        "A": "leave",
+        "B": "to leave",
+        "C": "leaving",
+        "D": "left"
+      },
+      "correctAnswer": "C",
+      "clue": "Động từ 'avoid' bắt buộc theo sau bởi Danh động từ: avoid + V-ing.",
+      "explanationVi": "'avoid' thuộc nhóm ngoại động từ chỉ sự né tránh, luôn nhận V-ing làm tân ngữ trực tiếp.",
+      "targetChunk": {
+        "phrase": "avoid leaving exposed containers",
+        "meaningVi": "tránh để lại các bình chứa hở nắp"
+      },
+      "skeleton": {
+        "subject": "All laboratory personnel",
+        "verb": "must avoid",
+        "object": "leaving exposed containers"
+      }
+    },
+    {
+      "id": "tov_std_003",
+      "level": "standard",
+      "question": "We look forward to ______ the finalized partnership terms at next week's summit.",
+      "options": {
+        "A": "discuss",
+        "B": "discussing",
+        "C": "discussion",
+        "D": "discussed"
+      },
+      "correctAnswer": "B",
+      "clue": "Cụm cố định kết thúc bằng giới từ 'to': look forward to + V-ing.",
+      "explanationVi": "Từ 'to' ở đây là giới từ chỉ hướng, do đó hành động theo sau bắt buộc ở dạng Gerund (V-ing) có kèm tân ngữ 'the finalized partnership terms'.",
+      "targetChunk": {
+        "phrase": "look forward to discussing the terms",
+        "meaningVi": "mong chờ được thảo luận các điều khoản"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "look forward to",
+        "object": "discussing the finalized partnership terms"
+      }
+    },
+    {
+      "id": "tov_std_004",
+      "level": "standard",
+      "question": "The enterprise aims ______ its carbon footprint by forty percent over the coming decade.",
+      "options": {
+        "A": "reduce",
+        "B": "to reduce",
+        "C": "reducing",
+        "D": "reduction"
+      },
+      "correctAnswer": "B",
+      "clue": "Động từ chỉ mục tiêu 'aim' đi kèm To-V: aim to do sth.",
+      "explanationVi": "Cấu trúc 'aim to V' mang nghĩa đặt mục tiêu thực hiện hành động gì.",
+      "targetChunk": {
+        "phrase": "aims to reduce its carbon footprint",
+        "meaningVi": "đặt mục tiêu cắt giảm lượng phát thải carbon"
+      },
+      "skeleton": {
+        "subject": "The enterprise",
+        "verb": "aims",
+        "object": "to reduce its carbon footprint"
+      }
+    },
+    {
+      "id": "tov_std_005",
+      "level": "standard",
+      "question": "Management considers ______ an independent auditor to examine the bookkeeping practices.",
+      "options": {
+        "A": "hire",
+        "B": "to hire",
+        "C": "hiring",
+        "D": "hired"
+      },
+      "correctAnswer": "C",
+      "clue": "Động từ 'consider' (cân nhắc) nhận tân ngữ là V-ing: consider + V-ing.",
+      "explanationVi": "'consider' đi kèm danh động từ khi mang nghĩa cân nhắc làm việc gì.",
+      "targetChunk": {
+        "phrase": "considers hiring an independent auditor",
+        "meaningVi": "cân nhắc thuê một kiểm toán viên độc lập"
+      },
+      "skeleton": {
+        "subject": "Management",
+        "verb": "considers",
+        "object": "hiring an independent auditor"
+      }
+    },
+    {
+      "id": "tov_std_006",
+      "level": "standard",
+      "question": "Please remember ______ all equipment off before leaving the workstation.",
+      "options": {
+        "A": "turn",
+        "B": "to turn",
+        "C": "turning",
+        "D": "turned"
+      },
+      "correctAnswer": "B",
+      "clue": "Hành động chưa xảy ra trong tương lai cần nhớ phải làm: remember + to-V.",
+      "explanationVi": "'remember to V' nghĩa là nhớ phải làm gì trong tương lai; khác với 'remember V-ing' là nhớ đã làm gì trong quá khứ.",
+      "targetChunk": {
+        "phrase": "remember to turn all equipment off",
+        "meaningVi": "nhớ tắt toàn bộ thiết bị"
+      },
+      "skeleton": {
+        "subject": "(You - implied)",
+        "verb": "remember",
+        "object": "to turn all equipment off"
+      }
+    },
+    {
+      "id": "tov_std_007",
+      "level": "standard",
+      "question": "The marketing director offered ______ our team with the product launch campaign.",
+      "options": {
+        "A": "assist",
+        "B": "assisting",
+        "C": "to assist",
+        "D": "assisted"
+      },
+      "correctAnswer": "C",
+      "clue": "Động từ 'offer' luôn đi kèm To-V: offer to do sth (đề nghị giúp làm gì).",
+      "explanationVi": "'offer' thuộc nhóm động từ chỉ sự ngỏ lời/đề nghị, luôn đi cùng động từ nguyên mẫu có 'to'.",
+      "targetChunk": {
+        "phrase": "offered to assist our team",
+        "meaningVi": "đề nghị giúp đỡ nhóm chúng tôi"
+      },
+      "skeleton": {
+        "subject": "The marketing director",
+        "verb": "offered",
+        "object": "to assist our team"
+      }
+    },
+    {
+      "id": "tov_std_008",
+      "level": "standard",
+      "question": "Management plans ______ a new branch in Singapore by the third quarter of this year.",
+      "options": {
+        "A": "open",
+        "B": "to open",
+        "C": "opening",
+        "D": "opened"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc plan to do sth (lên kế hoạch làm gì).",
+      "explanationVi": "Sau 'plan' luôn sử dụng động từ nguyên mẫu có 'to' để diễn tả kế hoạch tương lai.",
+      "targetChunk": {
+        "phrase": "plans to open a new branch",
+        "meaningVi": "lên kế hoạch mở chi nhánh mới"
+      },
+      "skeleton": {
+        "subject": "Management",
+        "verb": "plans",
+        "object": "to open a new branch"
+      }
+    },
+    {
+      "id": "tov_std_009",
+      "level": "standard",
+      "question": "We cannot afford ______ any more delays if we want to meet the client's deadline.",
+      "options": {
+        "A": "experience",
+        "B": "experiencing",
+        "C": "to experience",
+        "D": "experienced"
+      },
+      "correctAnswer": "C",
+      "clue": "Cấu trúc afford to do sth (có đủ khả năng/điều kiện để làm gì).",
+      "explanationVi": "'cannot afford to do sth' là cấu trúc cố định chỉ việc không thể chịu đựng thêm điều gì.",
+      "targetChunk": {
+        "phrase": "cannot afford to experience delays",
+        "meaningVi": "không thể để xảy ra thêm sự chậm trễ"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "cannot afford",
+        "object": "to experience any more delays"
+      }
+    },
+    {
+      "id": "tov_std_010",
+      "level": "standard",
+      "question": "The supplier failed ______ the customized components on the agreed delivery date.",
+      "options": {
+        "A": "deliver",
+        "B": "to deliver",
+        "C": "delivering",
+        "D": "delivered"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc fail to do sth (không thể làm được việc gì / thất bại trong việc gì).",
+      "explanationVi": "'fail' luôn kết hợp với To-V khi nói về việc không thực hiện được một nghĩa vụ.",
+      "targetChunk": {
+        "phrase": "failed to deliver the components",
+        "meaningVi": "đã không giao được các linh kiện"
+      },
+      "skeleton": {
+        "subject": "The supplier",
+        "verb": "failed",
+        "object": "to deliver the customized components"
+      }
+    },
+    {
+      "id": "tov_std_011",
+      "level": "standard",
+      "question": "Several senior engineers suggested ______ the testing phase by an additional two weeks.",
+      "options": {
+        "A": "extend",
+        "B": "to extend",
+        "C": "extending",
+        "D": "extended"
+      },
+      "correctAnswer": "C",
+      "clue": "Động từ 'suggest' luôn đi trực tiếp với V-ing (suggest doing sth).",
+      "explanationVi": "'suggest' không bao giờ đi với 'to V' khi có tân ngữ trực tiếp là hành động, phải dùng V-ing.",
+      "targetChunk": {
+        "phrase": "suggested extending the testing phase",
+        "meaningVi": "đã đề xuất kéo dài giai đoạn thử nghiệm"
+      },
+      "skeleton": {
+        "subject": "Several senior engineers",
+        "verb": "suggested",
+        "object": "extending the testing phase"
+      }
+    },
+    {
+      "id": "tov_std_012",
+      "level": "standard",
+      "question": "Mr. Henderson hopes ______ the regional sales conference scheduled for next Thursday.",
+      "options": {
+        "A": "attend",
+        "B": "to attend",
+        "C": "attending",
+        "D": "attended"
+      },
+      "correctAnswer": "B",
+      "clue": "Động từ 'hope' chỉ hy vọng điều gì trong tương lai luôn đi với To-V.",
+      "explanationVi": "hope to do sth: hy vọng làm được việc gì.",
+      "targetChunk": {
+        "phrase": "hopes to attend the conference",
+        "meaningVi": "hy vọng tham dự hội nghị"
+      },
+      "skeleton": {
+        "subject": "Mr. Henderson",
+        "verb": "hopes",
+        "object": "to attend the regional sales conference"
+      }
+    },
+    {
+      "id": "tov_std_013",
+      "level": "standard",
+      "question": "Employees are encouraged ______ any workplace hazards to their direct supervisors.",
+      "options": {
+        "A": "report",
+        "B": "to report",
+        "C": "reporting",
+        "D": "reported"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc bị động: be encouraged to do sth (được khuyến khích làm gì).",
+      "explanationVi": "Chủ động: encourage sb to do sth → Bị động: be encouraged to do sth.",
+      "targetChunk": {
+        "phrase": "are encouraged to report hazards",
+        "meaningVi": "được khuyến khích báo cáo các mối nguy"
+      },
+      "skeleton": {
+        "subject": "Employees",
+        "verb": "are encouraged",
+        "object": "to report any workplace hazards"
+      }
+    },
+    {
+      "id": "tov_std_014",
+      "level": "standard",
+      "question": "The finance team finished ______ the quarterly expense reports late yesterday afternoon.",
+      "options": {
+        "A": "audit",
+        "B": "to audit",
+        "C": "auditing",
+        "D": "audited"
+      },
+      "correctAnswer": "C",
+      "clue": "Động từ 'finish' luôn đi kèm Danh động từ: finish + V-ing.",
+      "explanationVi": "'finish' chỉ hành động hoàn tất, luôn đòi hỏi tân ngữ là V-ing.",
+      "targetChunk": {
+        "phrase": "finished auditing the expense reports",
+        "meaningVi": "đã hoàn tất kiểm toán báo cáo chi phí"
+      },
+      "skeleton": {
+        "subject": "The finance team",
+        "verb": "finished",
+        "object": "auditing the quarterly expense reports"
+      }
+    },
+    {
+      "id": "tov_std_015",
+      "level": "standard",
+      "question": "Please do not hesitate ______ our customer service hotline if you require further assistance.",
+      "options": {
+        "A": "call",
+        "B": "to call",
+        "C": "calling",
+        "D": "called"
+      },
+      "correctAnswer": "B",
+      "clue": "Cụm câu cửa miệng thư từ TOEIC: do not hesitate to do sth (đừng ngần ngại làm gì).",
+      "explanationVi": "'hesitate' luôn đi với To-Infinitive.",
+      "targetChunk": {
+        "phrase": "do not hesitate to call",
+        "meaningVi": "đừng ngần ngại gọi điện"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "do not hesitate",
+        "object": "to call our customer service hotline"
+      }
+    },
+    {
+      "id": "tov_std_016",
+      "level": "standard",
+      "question": "The firm is currently considering ______ its manufacturing facility to an industrial park.",
+      "options": {
+        "A": "relocate",
+        "B": "to relocate",
+        "C": "relocating",
+        "D": "relocated"
+      },
+      "correctAnswer": "C",
+      "clue": "Động từ 'consider' theo sau bởi V-ing: consider doing sth (cân nhắc làm gì).",
+      "explanationVi": "consider + V-ing diễn tả việc đang suy tính, cân nhắc thực hiện một hành động.",
+      "targetChunk": {
+        "phrase": "considering relocating its facility",
+        "meaningVi": "đang cân nhắc di dời cơ sở sản xuất"
+      },
+      "skeleton": {
+        "subject": "The firm",
+        "verb": "is currently considering",
+        "object": "relocating its manufacturing facility"
+      }
+    },
+    {
+      "id": "tov_std_017",
+      "level": "standard",
+      "question": "All passengers must remain seated until the aircraft has come ______ a complete stop.",
+      "options": {
+        "A": "at",
+        "B": "to",
+        "C": "into",
+        "D": "for"
+      },
+      "correctAnswer": "B",
+      "clue": "Cụm cố định: come to a complete stop (dừng hẳn lại).",
+      "explanationVi": "'come to a stop' là collocation quen thuộc trong thông báo sân bay/tàu xe.",
+      "targetChunk": {
+        "phrase": "come to a complete stop",
+        "meaningVi": "dừng lại hoàn toàn"
+      },
+      "skeleton": {
+        "subject": "the aircraft",
+        "verb": "has come",
+        "object": "to a complete stop"
+      }
+    },
+    {
+      "id": "tov_std_018",
+      "level": "standard",
+      "question": "The human resources manager refused ______ on the pending employee promotions.",
+      "options": {
+        "A": "comment",
+        "B": "to comment",
+        "C": "commenting",
+        "D": "commented"
+      },
+      "correctAnswer": "B",
+      "clue": "Động từ 'refuse' đi với To-V: refuse to do sth (từ chối làm gì).",
+      "explanationVi": "'refuse' chỉ việc khước từ làm gì, luôn kết hợp với To-Infinitive.",
+      "targetChunk": {
+        "phrase": "refused to comment on the promotions",
+        "meaningVi": "từ chối bình luận về đợt thăng chức"
+      },
+      "skeleton": {
+        "subject": "The human resources manager",
+        "verb": "refused",
+        "object": "to comment on the pending promotions"
+      }
+    },
+    {
+      "id": "tov_std_019",
+      "level": "standard",
+      "question": "Ms. Diaz is responsible for ______ the weekly logistics operations across three warehouses.",
+      "options": {
+        "A": "coordinate",
+        "B": "to coordinate",
+        "C": "coordinating",
+        "D": "coordinated"
+      },
+      "correctAnswer": "C",
+      "clue": "Sau giới từ 'for' bắt buộc phải là Danh từ hoặc Danh động từ V-ing.",
+      "explanationVi": "responsible for + V-ing/Noun: chịu trách nhiệm về việc gì.",
+      "targetChunk": {
+        "phrase": "responsible for coordinating operations",
+        "meaningVi": "chịu trách nhiệm điều phối hoạt động"
+      },
+      "skeleton": {
+        "subject": "Ms. Diaz",
+        "verb": "is responsible",
+        "object": "for coordinating the weekly operations"
+      }
+    },
+    {
+      "id": "tov_std_020",
+      "level": "standard",
+      "question": "The executive committee agreed ______ the annual budget proposed by the marketing department.",
+      "options": {
+        "A": "approve",
+        "B": "to approve",
+        "C": "approving",
+        "D": "approved"
+      },
+      "correctAnswer": "B",
+      "clue": "Động từ 'agree' đi với To-V: agree to do sth (đồng ý làm gì).",
+      "explanationVi": "'agree' thuộc nhóm động từ cam kết/thống nhất, luôn kết hợp với To-V.",
+      "targetChunk": {
+        "phrase": "agreed to approve the annual budget",
+        "meaningVi": "đã đồng ý phê duyệt ngân sách hàng năm"
+      },
+      "skeleton": {
+        "subject": "The executive committee",
+        "verb": "agreed",
+        "object": "to approve the annual budget"
+      }
+    },
+    {
+      "id": "tov_std_021",
+      "level": "standard",
+      "question": "Would you mind ______ the air conditioner down, as the conference room is quite warm?",
+      "options": {
+        "A": "turn",
+        "B": "to turn",
+        "C": "turning",
+        "D": "turned"
+      },
+      "correctAnswer": "C",
+      "clue": "Cấu trúc lịch sự 'Would you mind + V-ing?' (Bạn có phiền làm gì không?).",
+      "explanationVi": "Sau 'mind' hoặc cụm 'Would you mind' luôn luôn là V-ing.",
+      "targetChunk": {
+        "phrase": "mind turning the air conditioner down",
+        "meaningVi": "phiền hạ nhiệt độ điều hòa"
+      },
+      "skeleton": {
+        "subject": "You",
+        "verb": "mind",
+        "object": "turning the air conditioner down"
+      }
+    },
+    {
+      "id": "tov_std_022",
+      "level": "standard",
+      "question": "The research team managed ______ all laboratory tests well ahead of the anticipated schedule.",
+      "options": {
+        "A": "complete",
+        "B": "to complete",
+        "C": "completing",
+        "D": "completed"
+      },
+      "correctAnswer": "B",
+      "clue": "Động từ 'manage' đi với To-V: manage to do sth (xoay xở hoàn thành được việc gì).",
+      "explanationVi": "manage to V: thành công trong việc thực hiện điều gì đó khó khăn.",
+      "targetChunk": {
+        "phrase": "managed to complete all tests",
+        "meaningVi": "đã xoay xở hoàn thành mọi xét nghiệm"
+      },
+      "skeleton": {
+        "subject": "The research team",
+        "verb": "managed",
+        "object": "to complete all laboratory tests"
+      }
+    },
+    {
+      "id": "tov_std_023",
+      "level": "standard",
+      "question": "In addition to ______ a discount, the supplier promised expedited international shipping.",
+      "options": {
+        "A": "provide",
+        "B": "to provide",
+        "C": "providing",
+        "D": "provided"
+      },
+      "correctAnswer": "C",
+      "clue": "'In addition to' ở đây 'to' là giới từ, do đó theo sau là Danh động từ V-ing.",
+      "explanationVi": "in addition to + V-ing/N: ngoài việc làm gì thì...",
+      "targetChunk": {
+        "phrase": "In addition to providing a discount",
+        "meaningVi": "Bên cạnh việc cung cấp chiết khấu"
+      },
+      "skeleton": {
+        "subject": "the supplier",
+        "verb": "promised",
+        "object": "expedited international shipping"
+      }
+    },
+    {
+      "id": "tov_std_024",
+      "level": "standard",
+      "question": "The company aims ______ its carbon emissions by forty percent over the next decade.",
+      "options": {
+        "A": "reduce",
+        "B": "to reduce",
+        "C": "reducing",
+        "D": "reduced"
+      },
+      "correctAnswer": "B",
+      "clue": "Động từ 'aim' đi với To-V: aim to do sth (đặt mục tiêu làm gì).",
+      "explanationVi": "'aim' chỉ phương hướng/mục tiêu hành động, luôn kết hợp với To-Infinitive.",
+      "targetChunk": {
+        "phrase": "aims to reduce its carbon emissions",
+        "meaningVi": "đặt mục tiêu giảm phát thải carbon"
+      },
+      "skeleton": {
+        "subject": "The company",
+        "verb": "aims",
+        "object": "to reduce its carbon emissions"
+      }
+    },
+    {
+      "id": "tov_std_025",
+      "level": "standard",
+      "question": "We recommend ______ a digital copy of your receipt for reimbursement purposes.",
+      "options": {
+        "A": "keep",
+        "B": "to keep",
+        "C": "keeping",
+        "D": "kept"
+      },
+      "correctAnswer": "C",
+      "clue": "Động từ 'recommend' khi không có tân ngữ người theo sau sẽ đi trực tiếp với V-ing: recommend + V-ing.",
+      "explanationVi": "recommend doing sth: khuyến nghị làm việc gì.",
+      "targetChunk": {
+        "phrase": "recommend keeping a digital copy",
+        "meaningVi": "khuyến nghị lưu giữ một bản sao điện tử"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "recommend",
+        "object": "keeping a digital copy of your receipt"
+      }
+    },
+    {
+      "id": "tov_std_026",
+      "level": "standard",
+      "question": "The new interns volunteered ______ the registration desk during the annual orientation.",
+      "options": {
+        "A": "staff",
+        "B": "to staff",
+        "C": "staffing",
+        "D": "staffed"
+      },
+      "correctAnswer": "B",
+      "clue": "Động từ 'volunteer' đi với To-V: volunteer to do sth (tình nguyện làm gì).",
+      "explanationVi": "'volunteer' thuộc nhóm động từ thể hiện ý chí tự nguyện, luôn đi với To-Infinitive.",
+      "targetChunk": {
+        "phrase": "volunteered to staff the registration desk",
+        "meaningVi": "tình nguyện trực bàn đăng ký"
+      },
+      "skeleton": {
+        "subject": "The new interns",
+        "verb": "volunteered",
+        "object": "to staff the registration desk"
+      }
+    },
+    {
+      "id": "tov_std_027",
+      "level": "standard",
+      "question": "Before ______ the premises, please ensure that all computer terminals are turned off.",
+      "options": {
+        "A": "leave",
+        "B": "to leave",
+        "C": "leaving",
+        "D": "left"
+      },
+      "correctAnswer": "C",
+      "clue": "Sau giới từ/liên từ 'Before' lược bỏ chủ ngữ, động từ biến thành Danh động từ V-ing.",
+      "explanationVi": "before + V-ing: trước khi làm hành động gì.",
+      "targetChunk": {
+        "phrase": "Before leaving the premises",
+        "meaningVi": "Trước khi rời khỏi cơ sở làm việc"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "please ensure",
+        "object": "that terminals are turned off"
+      }
+    },
+    {
+      "id": "tov_std_028",
+      "level": "standard",
+      "question": "The board promised ______ the feedback submitted by the union representatives.",
+      "options": {
+        "A": "review",
+        "B": "to review",
+        "C": "reviewing",
+        "D": "reviewed"
+      },
+      "correctAnswer": "B",
+      "clue": "Động từ 'promise' luôn đi kèm To-V: promise to do sth (hứa làm gì).",
+      "explanationVi": "'promise' chỉ lời hứa hẹn trong tương lai nên nhận To-V làm tân ngữ.",
+      "targetChunk": {
+        "phrase": "promised to review the feedback",
+        "meaningVi": "hứa sẽ xem xét phản hồi"
+      },
+      "skeleton": {
+        "subject": "The board",
+        "verb": "promised",
+        "object": "to review the feedback"
+      }
+    },
+    {
+      "id": "tov_std_029",
+      "level": "standard",
+      "question": "By ______ energy-efficient lighting, the hotel reduced its utility expenses considerably.",
+      "options": {
+        "A": "install",
+        "B": "to install",
+        "C": "installing",
+        "D": "installed"
+      },
+      "correctAnswer": "C",
+      "clue": "Sau giới từ 'By' chỉ phương tiện/cách thức luôn là V-ing (By + V-ing: bằng cách làm gì).",
+      "explanationVi": "by doing sth: bằng cách thực hiện điều gì.",
+      "targetChunk": {
+        "phrase": "By installing energy-efficient lighting",
+        "meaningVi": "Bằng việc lắp đặt hệ thống chiếu sáng tiết kiệm điện"
+      },
+      "skeleton": {
+        "subject": "the hotel",
+        "verb": "reduced",
+        "object": "its utility expenses"
+      }
+    },
+    {
+      "id": "tov_std_030",
+      "level": "standard",
+      "question": "The director demanded ______ a thorough investigation into the security breach immediately.",
+      "options": {
+        "A": "conduct",
+        "B": "to conduct",
+        "C": "conducting",
+        "D": "conducted"
+      },
+      "correctAnswer": "B",
+      "clue": "Động từ 'demand' đi với To-V: demand to do sth (yêu cầu được làm gì).",
+      "explanationVi": "'demand' khi đi với động từ nguyên mẫu luôn có 'to' (demand to V).",
+      "targetChunk": {
+        "phrase": "demanded to conduct an investigation",
+        "meaningVi": "yêu cầu tiến hành một cuộc điều tra"
+      },
+      "skeleton": {
+        "subject": "The director",
+        "verb": "demanded",
+        "object": "to conduct a thorough investigation"
+      }
+    },
+    {
+      "id": "tov_adv_001",
+      "level": "advanced",
+      "question": "The lead engineer regrets ______ the committee that the safety certification test was not completed.",
+      "options": {
+        "A": "inform",
+        "B": "to inform",
+        "C": "informing",
+        "D": "informed"
+      },
+      "correctAnswer": "B",
+      "clue": "Động từ 'regret' đi với To-V khi truyền đạt tin buồn hoặc thông báo chính thức: regret to inform.",
+      "explanationVi": "'regret to inform/say' là cụm trang trọng chuyên dùng trong thư từ kinh doanh mang nghĩa 'lấy làm tiếc phải thông báo rằng...'. 'regret V-ing' mang nghĩa hối tiếc vì đã làm điều gì trong quá khứ.",
+      "targetChunk": {
+        "phrase": "regrets to inform the committee",
+        "meaningVi": "lấy làm tiếc phải thông báo tới ủy ban"
+      },
+      "skeleton": {
+        "subject": "The lead engineer",
+        "verb": "regrets",
+        "object": "to inform the committee"
+      }
+    },
+    {
+      "id": "tov_adv_002",
+      "level": "advanced",
+      "question": "The contractor is committed to ______ the industrial complex strictly in accordance with local codes.",
+      "options": {
+        "A": "erect",
+        "B": "to erect",
+        "C": "erecting",
+        "D": "erection"
+      },
+      "correctAnswer": "C",
+      "clue": "Cụm tính từ/động từ cố định: be committed to + V-ing (trong đó 'to' là giới từ).",
+      "explanationVi": "Sau cụm 'be committed to' bắt buộc dùng V-ing vì có tân ngữ 'the industrial complex' phía sau. Không chọn danh từ 'erection' vì không gắn kết trực tiếp với tân ngữ.",
+      "targetChunk": {
+        "phrase": "committed to erecting the complex",
+        "meaningVi": "cam kết xây dựng khu phức hợp"
+      },
+      "skeleton": {
+        "subject": "The contractor",
+        "verb": "is committed to",
+        "object": "erecting the industrial complex"
+      }
+    },
+    {
+      "id": "tov_adv_003",
+      "level": "advanced",
+      "question": "The restructuring plan involves ______ several regional branches into a unified operational center.",
+      "options": {
+        "A": "consolidate",
+        "B": "to consolidate",
+        "C": "consolidating",
+        "D": "consolidation"
+      },
+      "correctAnswer": "C",
+      "clue": "Động từ 'involve' (bao gồm/liên quan đến) bắt buộc nhận V-ing: involve + V-ing.",
+      "explanationVi": "'involve' đi với V-ing đóng vai trò tân ngữ mang nghĩa đòi hỏi/liên quan đến việc làm gì đó.",
+      "targetChunk": {
+        "phrase": "involves consolidating regional branches",
+        "meaningVi": "bao gồm việc hợp nhất các chi nhánh khu vực"
+      },
+      "skeleton": {
+        "subject": "The restructuring plan",
+        "verb": "involves",
+        "object": "consolidating several regional branches"
+      }
+    },
+    {
+      "id": "tov_adv_004",
+      "level": "advanced",
+      "question": "It is customary for international delegates ______ official credentials upon arrival at the consulate.",
+      "options": {
+        "A": "present",
+        "B": "to present",
+        "C": "presenting",
+        "D": "presented"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc chủ ngữ giả với tính từ: It is + Adj + for sb + to-V.",
+      "explanationVi": "Cấu trúc chuẩn mực 'It is customary for sb to do sth' chỉ việc ai đó có thói quen hoặc quy ước phải thực hiện việc gì.",
+      "targetChunk": {
+        "phrase": "customary for delegates to present credentials",
+        "meaningVi": "là thông lệ để các đại biểu xuất trình giấy ủy nhiệm"
+      },
+      "skeleton": {
+        "subject": "It (dummy)",
+        "verb": "is",
+        "object": "to present official credentials (real subject)"
+      }
+    },
+    {
+      "id": "tov_adv_005",
+      "level": "advanced",
+      "question": "The supervisor distinctly remembered ______ the warehouse doors, so the break-in was shocking.",
+      "options": {
+        "A": "lock",
+        "B": "to lock",
+        "C": "locking",
+        "D": "locked"
+      },
+      "correctAnswer": "C",
+      "clue": "Bẫy nhớ việc ĐÃ LÀM trong quá khứ: remember + V-ing (nhớ đã làm gì) vs remember + To-V (nhớ phải làm).",
+      "explanationVi": "Người giám sát nhớ rõ hành động 'đã khóa cửa' trong quá khứ, nên dùng 'remember locking'.",
+      "targetChunk": {
+        "phrase": "distinctly remembered locking the doors",
+        "meaningVi": "nhớ rõ mồn một là đã khóa các cửa"
+      },
+      "skeleton": {
+        "subject": "The supervisor",
+        "verb": "distinctly remembered",
+        "object": "locking the warehouse doors"
+      }
+    },
+    {
+      "id": "tov_adv_006",
+      "level": "advanced",
+      "question": "Please remember ______ your badge to the security officer before entering the restricted laboratory.",
+      "options": {
+        "A": "show",
+        "B": "to show",
+        "C": "showing",
+        "D": "showed"
+      },
+      "correctAnswer": "B",
+      "clue": "Bẫy nhớ một việc PHẢI LÀM: remember to do sth (nhớ phải làm gì như một nhiệm vụ).",
+      "explanationVi": "Lời nhắc nhở hành động trong tương lai cần dùng 'remember to show'.",
+      "targetChunk": {
+        "phrase": "remember to show your badge",
+        "meaningVi": "nhớ xuất trình thẻ của bạn"
+      },
+      "skeleton": {
+        "subject": "(You)",
+        "verb": "remember",
+        "object": "to show your badge to the security officer"
+      }
+    },
+    {
+      "id": "tov_adv_007",
+      "level": "advanced",
+      "question": "We deeply regret ______ all passengers that flight OZ-402 has been canceled due to severe weather.",
+      "options": {
+        "A": "inform",
+        "B": "to inform",
+        "C": "informing",
+        "D": "informed"
+      },
+      "correctAnswer": "B",
+      "clue": "Bẫy 'regret': regret to inform/announce (lấy làm tiếc khi phải thông báo tin xấu) vs regret V-ing (hối tiếc đã làm gì).",
+      "explanationVi": "Cụm trang trọng cố định trong TOEIC: regret to inform sb (rất tiếc phải báo tin cho ai).",
+      "targetChunk": {
+        "phrase": "regret to inform all passengers",
+        "meaningVi": "rất tiếc khi phải thông báo tới quý hành khách"
+      },
+      "skeleton": {
+        "subject": "We",
+        "verb": "deeply regret",
+        "object": "to inform all passengers"
+      }
+    },
+    {
+      "id": "tov_adv_008",
+      "level": "advanced",
+      "question": "The former CEO now regrets ______ the merger agreement without conducting a comprehensive audit.",
+      "options": {
+        "A": "sign",
+        "B": "to sign",
+        "C": "signing",
+        "D": "signed"
+      },
+      "correctAnswer": "C",
+      "clue": "regret + V-ing: hối hận vì một việc ĐÃ LÀM trong quá khứ.",
+      "explanationVi": "Vị cựu CEO hối hận vì trong quá khứ 'đã ký hợp đồng sáp nhập' mà không kiểm toán kỹ.",
+      "targetChunk": {
+        "phrase": "regrets signing the merger agreement",
+        "meaningVi": "hối hận vì đã ký thỏa thuận sáp nhập"
+      },
+      "skeleton": {
+        "subject": "The former CEO",
+        "verb": "now regrets",
+        "object": "signing the merger agreement"
+      }
+    },
+    {
+      "id": "tov_adv_009",
+      "level": "advanced",
+      "question": "On their way to the manufacturing plant, the auditors stopped ______ lunch at a local bistro.",
+      "options": {
+        "A": "have",
+        "B": "to have",
+        "C": "having",
+        "D": "had"
+      },
+      "correctAnswer": "B",
+      "clue": "Bẫy 'stop': stop to do sth (dừng lại để làm việc khác) vs stop doing sth (từ bỏ/ngừng hẳn việc đang làm).",
+      "explanationVi": "Đoàn kiểm toán dừng việc đi đường 'để ăn trưa' (chỉ mục đích), nên chọn 'to have'.",
+      "targetChunk": {
+        "phrase": "stopped to have lunch",
+        "meaningVi": "đã dừng lại để ăn trưa"
+      },
+      "skeleton": {
+        "subject": "the auditors",
+        "verb": "stopped",
+        "object": "to have lunch at a local bistro"
+      }
+    },
+    {
+      "id": "tov_adv_010",
+      "level": "advanced",
+      "question": "The manufacturing facility stopped ______ single-use plastics after new environmental laws took effect.",
+      "options": {
+        "A": "use",
+        "B": "to use",
+        "C": "using",
+        "D": "used"
+      },
+      "correctAnswer": "C",
+      "clue": "stop doing sth: chấm dứt hẳn một thói quen hoặc hành động đang diễn ra.",
+      "explanationVi": "Nhà máy 'chấm dứt việc sử dụng' đồ nhựa dùng một lần, do đó phải chọn 'using'.",
+      "targetChunk": {
+        "phrase": "stopped using single-use plastics",
+        "meaningVi": "ngừng sử dụng nhựa dùng một lần"
+      },
+      "skeleton": {
+        "subject": "The manufacturing facility",
+        "verb": "stopped",
+        "object": "using single-use plastics"
+      }
+    },
+    {
+      "id": "tov_adv_011",
+      "level": "advanced",
+      "question": "When the primary server crashed, the IT staff tried ______ the secondary backup drive.",
+      "options": {
+        "A": "reboot",
+        "B": "to reboot",
+        "C": "rebooting",
+        "D": "rebooted"
+      },
+      "correctAnswer": "C",
+      "clue": "try + V-ing: thử làm một giải pháp xem có hiệu quả không vs try to V: cố gắng vượt qua khó khăn.",
+      "explanationVi": "Đội ngũ IT 'thử khởi động lại' ổ đĩa dự phòng như một biện pháp giải quyết vấn đề (try + V-ing).",
+      "targetChunk": {
+        "phrase": "tried rebooting the backup drive",
+        "meaningVi": "thử khởi động lại ổ đĩa dự phòng"
+      },
+      "skeleton": {
+        "subject": "the IT staff",
+        "verb": "tried",
+        "object": "rebooting the secondary backup drive"
+      }
+    },
+    {
+      "id": "tov_adv_012",
+      "level": "advanced",
+      "question": "Despite numerous supply chain disruptions, the team tried ______ the launch deadline.",
+      "options": {
+        "A": "meet",
+        "B": "to meet",
+        "C": "meeting",
+        "D": "met"
+      },
+      "correctAnswer": "B",
+      "clue": "try to do sth: nỗ lực, cố gắng hết sức để đạt mục tiêu.",
+      "explanationVi": "Nhóm đã 'cố gắng đáp ứng' thời hạn ra mắt dù gặp nhiều trở ngại.",
+      "targetChunk": {
+        "phrase": "tried to meet the deadline",
+        "meaningVi": "đã cố gắng đáp ứng thời hạn"
+      },
+      "skeleton": {
+        "subject": "the team",
+        "verb": "tried",
+        "object": "to meet the launch deadline"
+      }
+    },
+    {
+      "id": "tov_adv_013",
+      "level": "advanced",
+      "question": "The senior analyst has the remarkable ability ______ complex financial data into concise charts.",
+      "options": {
+        "A": "synthesize",
+        "B": "to synthesize",
+        "C": "synthesizing",
+        "D": "synthesized"
+      },
+      "correctAnswer": "B",
+      "clue": "Danh từ trừu tượng chỉ khả năng 'ability' luôn đi với To-V: ability to do sth.",
+      "explanationVi": "Bổ nghĩa cho danh từ 'ability' là một To-Infinitive chỉ năng lực làm việc gì.",
+      "targetChunk": {
+        "phrase": "ability to synthesize complex data",
+        "meaningVi": "khả năng tổng hợp dữ liệu phức tạp"
+      },
+      "skeleton": {
+        "subject": "The senior analyst",
+        "verb": "has",
+        "object": "the remarkable ability to synthesize data"
+      }
+    },
+    {
+      "id": "tov_adv_014",
+      "level": "advanced",
+      "question": "Attending the global leadership symposium offers an unparalleled opportunity ______ with peers.",
+      "options": {
+        "A": "network",
+        "B": "to network",
+        "C": "networking",
+        "D": "networked"
+      },
+      "correctAnswer": "B",
+      "clue": "Danh từ 'opportunity' luôn nhận To-Infinitive làm thành phần bổ nghĩa: opportunity to do sth.",
+      "explanationVi": "opportunity to V: cơ hội để thực hiện việc gì.",
+      "targetChunk": {
+        "phrase": "opportunity to network with peers",
+        "meaningVi": "cơ hội kết nối mạng lưới với đồng nghiệp"
+      },
+      "skeleton": {
+        "subject": "Attending the symposium",
+        "verb": "offers",
+        "object": "an unparalleled opportunity to network"
+      }
+    },
+    {
+      "id": "tov_adv_015",
+      "level": "advanced",
+      "question": "The corporation announced its definitive decision ______ its global headquarters to Frankfurt.",
+      "options": {
+        "A": "relocate",
+        "B": "to relocate",
+        "C": "relocating",
+        "D": "relocated"
+      },
+      "correctAnswer": "B",
+      "clue": "Danh từ 'decision' bắt buộc theo sau bởi To-V: decision to do sth (quyết định làm gì).",
+      "explanationVi": "decision to V là cấu trúc danh từ đi với To-Infinitive phổ biến nhất trong đề thi TOEIC.",
+      "targetChunk": {
+        "phrase": "decision to relocate headquarters",
+        "meaningVi": "quyết định di dời trụ sở chính"
+      },
+      "skeleton": {
+        "subject": "The corporation",
+        "verb": "announced",
+        "object": "its definitive decision to relocate"
+      }
+    },
+    {
+      "id": "tov_adv_016",
+      "level": "advanced",
+      "question": "Our technical support team is fully committed to ______ customer inquiries within two hours.",
+      "options": {
+        "A": "resolve",
+        "B": "to resolve",
+        "C": "resolving",
+        "D": "resolved"
+      },
+      "correctAnswer": "C",
+      "clue": "Bẫy 'to' là giới từ: be committed to + V-ing/Noun (cam kết làm gì).",
+      "explanationVi": "Trong cụm 'be committed to', chữ 'to' là giới từ chứ không phải To-Infinitive, do đó động từ phải là V-ing.",
+      "targetChunk": {
+        "phrase": "committed to resolving customer inquiries",
+        "meaningVi": "cam kết giải quyết các thắc mắc của khách hàng"
+      },
+      "skeleton": {
+        "subject": "Our technical support team",
+        "verb": "is fully committed",
+        "object": "to resolving customer inquiries"
+      }
+    },
+    {
+      "id": "tov_adv_017",
+      "level": "advanced",
+      "question": "The organization is dedicated to ______ sustainable agricultural methods across rural communities.",
+      "options": {
+        "A": "promote",
+        "B": "to promote",
+        "C": "promoting",
+        "D": "promoted"
+      },
+      "correctAnswer": "C",
+      "clue": "Bẫy giới từ: be dedicated to + V-ing (tận tâm, cống hiến cho việc gì).",
+      "explanationVi": "'dedicated to' nhận Danh từ hoặc V-ing làm tân ngữ cho giới từ 'to'.",
+      "targetChunk": {
+        "phrase": "dedicated to promoting sustainable methods",
+        "meaningVi": "tận tâm thúc đẩy các phương pháp bền vững"
+      },
+      "skeleton": {
+        "subject": "The organization",
+        "verb": "is dedicated",
+        "object": "to promoting sustainable agricultural methods"
+      }
+    },
+    {
+      "id": "tov_adv_018",
+      "level": "advanced",
+      "question": "Several senior shareholders strongly object to ______ additional shares at this current valuation.",
+      "options": {
+        "A": "issue",
+        "B": "to issue",
+        "C": "issuing",
+        "D": "issued"
+      },
+      "correctAnswer": "C",
+      "clue": "Cụm 'object to' (phản đối việc gì) có 'to' là giới từ → object to + V-ing.",
+      "explanationVi": "object to + V-ing: kịch liệt phản đối hành động gì.",
+      "targetChunk": {
+        "phrase": "object to issuing additional shares",
+        "meaningVi": "phản đối việc phát hành thêm cổ phiếu"
+      },
+      "skeleton": {
+        "subject": "Several senior shareholders",
+        "verb": "object",
+        "object": "to issuing additional shares"
+      }
+    },
+    {
+      "id": "tov_adv_019",
+      "level": "advanced",
+      "question": "Having worked in Tokyo for six years, Mr. Sato is accustomed to ______ high-pressure negotiations.",
+      "options": {
+        "A": "conduct",
+        "B": "to conduct",
+        "C": "conducting",
+        "D": "conducted"
+      },
+      "correctAnswer": "C",
+      "clue": "Cấu trúc quen với việc gì: be accustomed to + V-ing.",
+      "explanationVi": "'accustomed to' luôn đi kèm Danh động từ V-ing (đồng nghĩa với be used to + V-ing).",
+      "targetChunk": {
+        "phrase": "accustomed to conducting negotiations",
+        "meaningVi": "đã quen với việc tiến hành đàm phán"
+      },
+      "skeleton": {
+        "subject": "Mr. Sato",
+        "verb": "is accustomed",
+        "object": "to conducting high-pressure negotiations"
+      }
+    },
+    {
+      "id": "tov_adv_020",
+      "level": "advanced",
+      "question": "The senior architect spent nearly three months ______ the blueprints for the commercial complex.",
+      "options": {
+        "A": "revise",
+        "B": "to revise",
+        "C": "revising",
+        "D": "revised"
+      },
+      "correctAnswer": "C",
+      "clue": "Cấu trúc spend time + V-ing: spend three months revising.",
+      "explanationVi": "spend + [khoảng thời gian/tiền bạc] + V-ing (dành thời gian làm việc gì).",
+      "targetChunk": {
+        "phrase": "spent three months revising blueprints",
+        "meaningVi": "dành ba tháng sửa đổi bản thiết kế"
+      },
+      "skeleton": {
+        "subject": "The senior architect",
+        "verb": "spent",
+        "object": "nearly three months revising the blueprints"
+      }
+    },
+    {
+      "id": "tov_adv_021",
+      "level": "advanced",
+      "question": "The foreign delegates had great difficulty ______ affordable accommodations near the convention center.",
+      "options": {
+        "A": "find",
+        "B": "to find",
+        "C": "finding",
+        "D": "found"
+      },
+      "correctAnswer": "C",
+      "clue": "Cấu trúc have difficulty/trouble + (in) + V-ing (gặp khó khăn khi làm gì).",
+      "explanationVi": "have difficulty + V-ing là cấu trúc ngữ pháp nâng cao rất hay bị đánh bẫy bằng 'to find'.",
+      "targetChunk": {
+        "phrase": "had difficulty finding accommodations",
+        "meaningVi": "gặp khó khăn trong việc tìm chỗ ở"
+      },
+      "skeleton": {
+        "subject": "The foreign delegates",
+        "verb": "had",
+        "object": "great difficulty finding accommodations"
+      }
+    },
+    {
+      "id": "tov_adv_022",
+      "level": "advanced",
+      "question": "There is no point in ______ for a rate reduction since raw material costs have risen globally.",
+      "options": {
+        "A": "ask",
+        "B": "to ask",
+        "C": "asking",
+        "D": "asked"
+      },
+      "correctAnswer": "C",
+      "clue": "Thành ngữ: There is no point in + V-ing (chẳng có ích lợi gì khi làm việc gì).",
+      "explanationVi": "there is no point (in) + V-ing = it is no use + V-ing.",
+      "targetChunk": {
+        "phrase": "no point in asking for a reduction",
+        "meaningVi": "chẳng có ích lợi gì khi yêu cầu giảm giá"
+      },
+      "skeleton": {
+        "subject": "There",
+        "verb": "is",
+        "object": "no point in asking for a rate reduction"
+      }
+    },
+    {
+      "id": "tov_adv_023",
+      "level": "advanced",
+      "question": "Ms. Alvarez deserves ______ for her tireless efforts in securing the multimillion-dollar account.",
+      "options": {
+        "A": "promote",
+        "B": "to promote",
+        "C": "to be promoted",
+        "D": "promoting"
+      },
+      "correctAnswer": "C",
+      "clue": "Bẫy bị động của To-V: deserve to be + V3/ed (xứng đáng ĐƯỢC thăng chức).",
+      "explanationVi": "Chủ ngữ là người được thăng chức (bị động), nên cấu trúc phải là 'deserve to be promoted'.",
+      "targetChunk": {
+        "phrase": "deserves to be promoted",
+        "meaningVi": "xứng đáng được thăng chức"
+      },
+      "skeleton": {
+        "subject": "Ms. Alvarez",
+        "verb": "deserves",
+        "object": "to be promoted"
+      }
+    },
+    {
+      "id": "tov_adv_024",
+      "level": "advanced",
+      "question": "Celebrity spokespersons frequently take private exits to avoid ______ by press reporters.",
+      "options": {
+        "A": "interview",
+        "B": "to interview",
+        "C": "being interviewed",
+        "D": "interviewing"
+      },
+      "correctAnswer": "C",
+      "clue": "Bẫy bị động của Gerund: avoid being + V3/ed (tránh BỊ phỏng vấn).",
+      "explanationVi": "avoid + V-ing, kết hợp dạng bị động 'being + V3' vì có tác nhân 'by press reporters'.",
+      "targetChunk": {
+        "phrase": "avoid being interviewed by reporters",
+        "meaningVi": "tránh bị các phóng viên phỏng vấn"
+      },
+      "skeleton": {
+        "subject": "Celebrity spokespersons",
+        "verb": "take",
+        "object": "private exits"
+      }
+    },
+    {
+      "id": "tov_adv_025",
+      "level": "advanced",
+      "question": "With a view to ______ employee morale, the firm introduced flexible remote working arrangements.",
+      "options": {
+        "A": "boost",
+        "B": "to boost",
+        "C": "boosting",
+        "D": "boosted"
+      },
+      "correctAnswer": "C",
+      "clue": "Cụm thành ngữ TOEIC điểm cao: with a view to + V-ing (với mục đích/ý định làm gì).",
+      "explanationVi": "'to' trong 'with a view to' là giới từ, bắt buộc đi kèm với V-ing.",
+      "targetChunk": {
+        "phrase": "With a view to boosting morale",
+        "meaningVi": "Với mục đích nâng cao tinh thần nhân viên"
+      },
+      "skeleton": {
+        "subject": "the firm",
+        "verb": "introduced",
+        "object": "flexible remote working arrangements"
+      }
+    },
+    {
+      "id": "tov_adv_026",
+      "level": "advanced",
+      "question": "The contract specifically forbids subcontractors from ______ proprietary software codes to third parties.",
+      "options": {
+        "A": "disclose",
+        "B": "to disclose",
+        "C": "disclosing",
+        "D": "disclosed"
+      },
+      "correctAnswer": "C",
+      "clue": "Cấu trúc forbid/prohibit sb from + V-ing (cấm ai làm việc gì).",
+      "explanationVi": "Sau giới từ 'from' là Danh động từ V-ing chỉ hành vi bị ngăn cấm.",
+      "targetChunk": {
+        "phrase": "forbids subcontractors from disclosing codes",
+        "meaningVi": "cấm các nhà thầu phụ tiết lộ mã nguồn"
+      },
+      "skeleton": {
+        "subject": "The contract",
+        "verb": "specifically forbids",
+        "object": "subcontractors"
+      }
+    },
+    {
+      "id": "tov_adv_027",
+      "level": "advanced",
+      "question": "The director's primary objective is ______ international market share by fifteen percent next year.",
+      "options": {
+        "A": "increase",
+        "B": "to increase",
+        "C": "increased",
+        "D": "increases"
+      },
+      "correctAnswer": "B",
+      "clue": "To-V đóng vai trò làm Bổ ngữ cho Chủ ngữ (Subject Complement) sau động từ 'is'.",
+      "explanationVi": "Khi chủ ngữ là danh từ chỉ mục tiêu (objective, goal, aim, purpose, duty), bổ ngữ sau 'is' thường là To-V.",
+      "targetChunk": {
+        "phrase": "objective is to increase market share",
+        "meaningVi": "mục tiêu là gia tăng thị phần"
+      },
+      "skeleton": {
+        "subject": "The director's primary objective",
+        "verb": "is",
+        "object": "to increase international market share"
+      }
+    },
+    {
+      "id": "tov_adv_028",
+      "level": "advanced",
+      "question": "It is essential for all lab technicians ______ protective eyewear at all times inside the facility.",
+      "options": {
+        "A": "wear",
+        "B": "to wear",
+        "C": "wearing",
+        "D": "worn"
+      },
+      "correctAnswer": "B",
+      "clue": "Cấu trúc giả chủ ngữ: It is + Adj + for sb + To-V.",
+      "explanationVi": "It is essential for technicians to wear: việc các kỹ thuật viên đeo kính bảo hộ là thiết yếu.",
+      "targetChunk": {
+        "phrase": "essential for technicians to wear eyewear",
+        "meaningVi": "thiết yếu để các kỹ thuật viên đeo kính bảo hộ"
+      },
+      "skeleton": {
+        "subject": "It",
+        "verb": "is",
+        "object": "essential for technicians to wear protective eyewear"
+      }
+    },
+    {
+      "id": "tov_adv_029",
+      "level": "advanced",
+      "question": "He admitted ______ an unauthorized software patch without consulting the systems administrator.",
+      "options": {
+        "A": "install",
+        "B": "to install",
+        "C": "installing",
+        "D": "installed"
+      },
+      "correctAnswer": "C",
+      "clue": "Động từ 'admit' theo sau bởi V-ing: admit doing sth (thừa nhận đã làm việc gì).",
+      "explanationVi": "'admit' đi với V-ing để diễn đạt việc thừa nhận hành vi sai sót trong quá khứ.",
+      "targetChunk": {
+        "phrase": "admitted installing an unauthorized patch",
+        "meaningVi": "thừa nhận đã cài đặt bản vá chưa được phép"
+      },
+      "skeleton": {
+        "subject": "He",
+        "verb": "admitted",
+        "object": "installing an unauthorized software patch"
+      }
+    },
+    {
+      "id": "tov_adv_030",
+      "level": "advanced",
+      "question": "The logistics manager cannot help ______ that the new shipping vendor is far more reliable.",
+      "options": {
+        "A": "feel",
+        "B": "to feel",
+        "C": "feeling",
+        "D": "felt"
+      },
+      "correctAnswer": "C",
+      "clue": "Thành ngữ: cannot help + V-ing (không thể không cảm thấy / không thể kiềm chế được việc gì).",
+      "explanationVi": "'cannot help doing sth' là thành ngữ cố định luôn nhận V-ing làm tân ngữ.",
+      "targetChunk": {
+        "phrase": "cannot help feeling that vendor is reliable",
+        "meaningVi": "không thể không cảm thấy rằng nhà vận chuyển mới đáng tin cậy hơn nhiều"
+      },
+      "skeleton": {
+        "subject": "The logistics manager",
+        "verb": "cannot help feeling",
+        "object": "that the new vendor is reliable"
+      }
+    }
+  ]
+}

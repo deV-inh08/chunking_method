@@ -1,0 +1,1390 @@
+{
+    "topicId": "prepositions",
+    "topicName": "Giới từ & Cụm giới từ",
+    "topicNameEn": "Prepositions & Prepositional Phrases",
+    "category": "word_forms",
+    "description": "Giới từ chỉ thời gian, nơi chốn, nguyên nhân/mục đích, và các cụm giới từ cố định thường gặp trong đề thi TOEIC.",
+    "questions": [
+        {
+            "id": "prep_std_001",
+            "level": "standard",
+            "question": "The newly hired branch manager will assume office ______ Monday, October 14.",
+            "options": {
+                "A": "at",
+                "B": "in",
+                "C": "on",
+                "D": "to"
+            },
+            "correctAnswer": "C",
+            "clue": "Đứng trước ngày cụ thể trong tuần hoặc ngày tháng cố định luôn dùng giới từ 'on'.",
+            "explanationVi": "'on' được dùng trước các mốc ngày cụ thể ('on Monday', 'on October 14'). 'in' dùng cho tháng/năm, 'at' dùng cho giờ.",
+            "targetChunk": {
+                "phrase": "assume office on Monday",
+                "meaningVi": "nhậm chức vào thứ Hai"
+            },
+            "skeleton": {
+                "subject": "The newly hired branch manager",
+                "verb": "will assume",
+                "object": "office"
+            }
+        },
+        {
+            "id": "prep_std_002",
+            "level": "standard",
+            "question": "All expense reimbursement requests must be submitted ______ Friday afternoon.",
+            "options": {
+                "A": "by",
+                "B": "until",
+                "C": "for",
+                "D": "during"
+            },
+            "correctAnswer": "A",
+            "clue": "Hành động nộp yêu cầu diễn ra một lần trước hoặc đúng hạn chót (deadline) dùng 'by'.",
+            "explanationVi": "'by' chỉ thời hạn hoàn tất công việc muộn nhất vào lúc nào ('trước/vào lúc'). 'until' dùng cho hành động liên tục kéo dài đến một thời điểm.",
+            "targetChunk": {
+                "phrase": "submitted by Friday afternoon",
+                "meaningVi": "được nộp muộn nhất vào chiều thứ Sáu"
+            },
+            "skeleton": {
+                "subject": "All expense reimbursement requests",
+                "verb": "must be submitted",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_003",
+            "level": "standard",
+            "question": "The human resources orientation session will take place ______ conference room B.",
+            "options": {
+                "A": "at",
+                "B": "in",
+                "C": "on",
+                "D": "by"
+            },
+            "correctAnswer": "B",
+            "clue": "Chỉ vị trí bên trong một không gian kín, phòng ốc (room) dùng giới từ 'in'.",
+            "explanationVi": "'in' dùng cho vị trí trong không gian phòng kín ('in conference room B').",
+            "targetChunk": {
+                "phrase": "take place in conference room B",
+                "meaningVi": "diễn ra tại phòng hội nghị B"
+            },
+            "skeleton": {
+                "subject": "The human resources orientation session",
+                "verb": "will take place",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_004",
+            "level": "standard",
+            "question": "The annual shareholders meeting is scheduled to begin ______ 9:00 A.M. sharp.",
+            "options": {
+                "A": "on",
+                "B": "at",
+                "C": "in",
+                "D": "with"
+            },
+            "correctAnswer": "B",
+            "clue": "Đứng trước mốc thời gian cụ thể (giờ giấc) luôn dùng giới từ 'at'.",
+            "explanationVi": "'at' dùng trước các mốc giờ cố định ('at 9:00 A.M.').",
+            "targetChunk": {
+                "phrase": "scheduled to begin at 9:00 A.M.",
+                "meaningVi": "dự kiến bắt đầu lúc 9 giờ sáng"
+            },
+            "skeleton": {
+                "subject": "The annual shareholders meeting",
+                "verb": "is scheduled to begin",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_005",
+            "level": "standard",
+            "question": "The outdoor music festival was postponed ______ severe weather warnings issued by the meteorology department.",
+            "options": {
+                "A": "due to",
+                "B": "because",
+                "C": "although",
+                "D": "in spite"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng trước cụm danh từ chỉ nguyên nhân ('severe weather warnings') cần cụm giới từ chỉ lý do.",
+            "explanationVi": "'due to' là cụm giới từ đi với danh từ/cụm danh từ. 'because' và 'although' là liên từ đi với mệnh đề (S+V). 'in spite' thiếu 'of'.",
+            "targetChunk": {
+                "phrase": "postponed due to severe weather",
+                "meaningVi": "bị hoãn lại do thời tiết khắc nghiệt"
+            },
+            "skeleton": {
+                "subject": "The outdoor music festival",
+                "verb": "was postponed",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_006",
+            "level": "standard",
+            "question": "Mr. Jenkins will serve as interim director ______ Ms. Chen returns from maternity leave.",
+            "options": {
+                "A": "until",
+                "B": "by",
+                "C": "during",
+                "D": "between"
+            },
+            "prepAnswer": "A",
+            "correctAnswer": "A",
+            "clue": "Hành động giữ chức diễn ra liên tục kéo dài cho tới thời điểm đối tượng trở lại.",
+            "explanationVi": "'until' vừa là giới từ vừa là liên từ chỉ tính liên tục cho tới một mốc. 'by' chỉ hạn chót cho hành động xảy ra một lần.",
+            "targetChunk": {
+                "phrase": "serve as interim director until",
+                "meaningVi": "giữ chức quyền giám đốc cho đến khi"
+            },
+            "skeleton": {
+                "subject": "Mr. Jenkins",
+                "verb": "will serve",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_007",
+            "level": "standard",
+            "question": "The training seminar covers effective communication techniques ______ the workplace.",
+            "options": {
+                "A": "in",
+                "B": "at",
+                "C": "to",
+                "D": "from"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm danh từ chỉ nơi chốn thông dụng: 'in the workplace' (tại nơi làm việc).",
+            "explanationVi": "Cụm cố định 'in the workplace' mang nghĩa tại nơi làm việc / trong môi trường làm việc.",
+            "targetChunk": {
+                "phrase": "in the workplace",
+                "meaningVi": "tại nơi làm việc"
+            },
+            "skeleton": {
+                "subject": "The training seminar",
+                "verb": "covers",
+                "object": "effective communication techniques"
+            }
+        },
+        {
+            "id": "prep_std_008",
+            "level": "standard",
+            "question": "Please keep your mobile phones on silent mode ______ the presentation.",
+            "options": {
+                "A": "during",
+                "B": "while",
+                "C": "since",
+                "D": "for"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng trước danh từ chỉ sự kiện/khoảng thời gian diễn ra sự việc ('the presentation') dùng 'during'.",
+            "explanationVi": "'during + N' chỉ hành động xảy ra trong suốt khoảng thời gian diễn ra sự kiện. 'while' là liên từ đi với S+V.",
+            "targetChunk": {
+                "phrase": "during the presentation",
+                "meaningVi": "trong suốt bài thuyết trình"
+            },
+            "skeleton": {
+                "subject": "(You - implied)",
+                "verb": "keep",
+                "object": "your mobile phones"
+            }
+        },
+        {
+            "id": "prep_std_009",
+            "level": "standard",
+            "question": "The new safety manual will be distributed ______ all assembly line workers next week.",
+            "options": {
+                "A": "to",
+                "B": "at",
+                "C": "on",
+                "D": "by"
+            },
+            "correctAnswer": "A",
+            "clue": "Cấu trúc phân phối: distribute something to somebody.",
+            "explanationVi": "Động từ 'distribute' đi với giới từ 'to' chỉ đối tượng tiếp nhận phân phối.",
+            "targetChunk": {
+                "phrase": "distribute something to all workers",
+                "meaningVi": "phân phát cái gì đến toàn bộ công nhân"
+            },
+            "skeleton": {
+                "subject": "The new safety manual",
+                "verb": "will be distributed",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_010",
+            "level": "standard",
+            "question": "Mr. Davies has been leading the market research initiative ______ last November.",
+            "options": {
+                "A": "for",
+                "B": "since",
+                "C": "in",
+                "D": "at"
+            },
+            "correctAnswer": "B",
+            "clue": "Thì hiện tại hoàn thành tiếp diễn đi kèm mốc thời gian trong quá khứ dùng 'since'.",
+            "explanationVi": "'since' đi với mốc thời gian bắt đầu ('last November') trong các thì hoàn thành. 'for' đi với khoảng thời gian.",
+            "targetChunk": {
+                "phrase": "has been leading the initiative since",
+                "meaningVi": "đã và đang dẫn dắt sáng kiến kể từ"
+            },
+            "skeleton": {
+                "subject": "Mr. Davies",
+                "verb": "has been leading",
+                "object": "the market research initiative"
+            }
+        },
+        {
+            "id": "prep_std_011",
+            "level": "standard",
+            "question": "The warranty certificate is included ______ the product packaging box.",
+            "options": {
+                "A": "inside",
+                "B": "among",
+                "C": "onto",
+                "D": "between"
+            },
+            "correctAnswer": "A",
+            "clue": "Chỉ vị trí nằm ở phía bên trong đồ vật hoặc bao bì hộp kín dùng 'inside'.",
+            "explanationVi": "'inside' nghĩa là bên trong hộp. 'among' đi với 3 đối tượng trở lên, 'between' đi với 2 đối tượng.",
+            "targetChunk": {
+                "phrase": "included inside the packaging",
+                "meaningVi": "được bao gồm bên trong bao bì"
+            },
+            "skeleton": {
+                "subject": "The warranty certificate",
+                "verb": "is included",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_012",
+            "level": "standard",
+            "question": "The corporation plans to open five new retail stores ______ the next three fiscal years.",
+            "options": {
+                "A": "within",
+                "B": "between",
+                "C": "among",
+                "D": "on"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng trước khoảng thời gian mang nghĩa 'trong vòng / nội trong' dùng 'within'.",
+            "explanationVi": "'within + khoảng thời gian' thể hiện một sự việc sẽ xảy ra trước khi khoảng thời gian đó kết thúc.",
+            "targetChunk": {
+                "phrase": "within the next three fiscal years",
+                "meaningVi": "trong vòng ba năm tài chính tới"
+            },
+            "skeleton": {
+                "subject": "The corporation",
+                "verb": "plans to open",
+                "object": "five new retail stores"
+            }
+        },
+        {
+            "id": "prep_std_013",
+            "level": "standard",
+            "question": "Customers can choose ______ home delivery and in-store pickup at checkout.",
+            "options": {
+                "A": "between",
+                "B": "among",
+                "C": "from",
+                "D": "with"
+            },
+            "correctAnswer": "A",
+            "clue": "Cấu trúc lựa chọn giữa 2 đối tượng: between A and B.",
+            "explanationVi": "Cấu trúc cố định 'between... and...' dùng để liên kết 2 phương án hoặc đối tượng.",
+            "targetChunk": {
+                "phrase": "choose between home delivery and in-store pickup",
+                "meaningVi": "chọn giữa giao hàng tận nhà và nhận tại cửa hàng"
+            },
+            "skeleton": {
+                "subject": "Customers",
+                "verb": "can choose",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_014",
+            "level": "standard",
+            "question": "The research facility was recognized ______ its innovative contributions to renewable energy.",
+            "options": {
+                "A": "for",
+                "B": "to",
+                "C": "at",
+                "D": "with"
+            },
+            "correctAnswer": "A",
+            "clue": "Cấu trúc được công nhận/khen ngợi vì điều gì: be recognized for sth.",
+            "explanationVi": "Cụm cố định 'be recognized for' chỉ lý do được ghi nhận, vinh danh.",
+            "targetChunk": {
+                "phrase": "be recognized for its innovative contributions",
+                "meaningVi": "được ghi nhận vì những đóng góp mang tính đổi mới"
+            },
+            "skeleton": {
+                "subject": "The research facility",
+                "verb": "was recognized",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_015",
+            "level": "standard",
+            "question": "The factory operates continuously ______ Monday through Saturday each week.",
+            "options": {
+                "A": "from",
+                "B": "between",
+                "C": "at",
+                "D": "until"
+            },
+            "correctAnswer": "A",
+            "clue": "Cấu trúc mốc thời gian bắt đầu đến kết thúc: from... through/to...",
+            "explanationVi": "'from... through...' mang nghĩa từ thứ Hai đến hết thứ Bảy liên tục.",
+            "targetChunk": {
+                "phrase": "operates from Monday through Saturday",
+                "meaningVi": "hoạt động từ thứ Hai đến hết thứ Bảy"
+            },
+            "skeleton": {
+                "subject": "The factory",
+                "verb": "operates",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_016",
+            "level": "standard",
+            "question": "Flight passengers are requested to remain seated ______ the seatbelt sign is illuminated.",
+            "options": {
+                "A": "while",
+                "B": "during",
+                "C": "throughout",
+                "D": "despite"
+            },
+            "correctAnswer": "A",
+            "clue": "Đứng trước mệnh đề hoàn chỉnh có động từ chia thì ('the seatbelt sign is illuminated') cần liên từ thời gian 'while'.",
+            "explanationVi": "Bẫy phân biệt giới từ và liên từ: 'during' + N, còn 'while' + S + V.",
+            "targetChunk": {
+                "phrase": "remain seated while the sign is illuminated",
+                "meaningVi": "ngồi yên tại chỗ trong khi đèn hiệu còn sáng"
+            },
+            "skeleton": {
+                "subject": "Flight passengers",
+                "verb": "are requested to remain",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_017",
+            "level": "standard",
+            "question": "The corporate headquarters building is located ______ Elm Street and 5th Avenue.",
+            "options": {
+                "A": "at the corner of",
+                "B": "along with",
+                "C": "next",
+                "D": "inside of"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm giới từ chỉ vị trí giao lộ ngã tư: at the corner of...",
+            "explanationVi": "'at the corner of + tên 2 con đường' diễn đạt vị trí nằm ở góc giao giữa hai tuyến phố.",
+            "targetChunk": {
+                "phrase": "located at the corner of",
+                "meaningVi": "tọa lạc ngay góc ngã tư của"
+            },
+            "skeleton": {
+                "subject": "The corporate headquarters building",
+                "verb": "is located",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_018",
+            "level": "standard",
+            "question": "Staff members with questions ______ the revised insurance policy may consult HR.",
+            "options": {
+                "A": "regarding",
+                "B": "regard",
+                "C": "regards",
+                "D": "regardless"
+            },
+            "correctAnswer": "A",
+            "clue": "Giới từ mang nghĩa liên quan đến / về: regarding = about.",
+            "explanationVi": "'regarding' đóng vai trò giới từ mang nghĩa 'về, liên quan tới'. Các dạng khác là động từ hoặc phó từ.",
+            "targetChunk": {
+                "phrase": "questions regarding the revised policy",
+                "meaningVi": "những câu hỏi liên quan đến chính sách sửa đổi"
+            },
+            "skeleton": {
+                "subject": "Staff members with questions regarding the revised insurance policy",
+                "verb": "may consult",
+                "object": "HR"
+            }
+        },
+        {
+            "id": "prep_std_019",
+            "level": "standard",
+            "question": "Orders placed after 4:00 P.M. will not be processed ______ the following business day.",
+            "options": {
+                "A": "until",
+                "B": "by",
+                "C": "since",
+                "D": "for"
+            },
+            "correctAnswer": "A",
+            "clue": "Cấu trúc phủ định kết hợp thời điểm: not... until (mãi cho đến khi... mới làm).",
+            "explanationVi": "'not... until' biểu thị hành động xử lý đơn hàng sẽ không bắt đầu trước ngày làm việc tiếp theo.",
+            "targetChunk": {
+                "phrase": "not be processed until the following business day",
+                "meaningVi": "không được xử lý cho mãi đến ngày làm việc kế tiếp"
+            },
+            "skeleton": {
+                "subject": "Orders placed after 4:00 P.M.",
+                "verb": "will not be processed",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_020",
+            "level": "standard",
+            "question": "The software engineer worked ______ this software update project for three consecutive months.",
+            "options": {
+                "A": "on",
+                "B": "to",
+                "C": "at",
+                "D": "by"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm động từ - giới từ: work on sth (làm việc, tập trung giải quyết việc gì).",
+            "explanationVi": "'work on a project' là cụm cố định chỉ việc dành thời gian và nỗ lực thực hiện một dự án cụ thể.",
+            "targetChunk": {
+                "phrase": "worked on this software update project",
+                "meaningVi": "đã làm việc trên dự án nâng cấp phần mềm này"
+            },
+            "skeleton": {
+                "subject": "The software engineer",
+                "verb": "worked",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_021",
+            "level": "standard",
+            "question": "The contract was finalized ______ the mutual agreement of both executive parties.",
+            "options": {
+                "A": "with",
+                "B": "at",
+                "C": "to",
+                "D": "on"
+            },
+            "correctAnswer": "A",
+            "clue": "Giới từ 'with' chỉ trạng thái có được sự đồng thuận/đi kèm.",
+            "explanationVi": "'with the mutual agreement of' mang nghĩa với sự đồng thuận chung của đôi bên.",
+            "targetChunk": {
+                "phrase": "with the mutual agreement of",
+                "meaningVi": "với sự đồng thuận chung từ"
+            },
+            "skeleton": {
+                "subject": "The contract",
+                "verb": "was finalized",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_022",
+            "level": "standard",
+            "question": "Visitors must obtain a temporary security badge ______ entering the laboratory building.",
+            "options": {
+                "A": "prior to",
+                "B": "ahead",
+                "C": "previous",
+                "D": "in advance"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm giới từ tương đương 'before', đi kèm với danh động từ V-ing ('entering').",
+            "explanationVi": "'prior to + V-ing/N' = before (trước khi). 'in advance' là phó từ, 'previous' là tính từ.",
+            "targetChunk": {
+                "phrase": "prior to entering the laboratory",
+                "meaningVi": "trước khi bước vào phòng thí nghiệm"
+            },
+            "skeleton": {
+                "subject": "Visitors",
+                "verb": "must obtain",
+                "object": "a temporary security badge"
+            }
+        },
+        {
+            "id": "prep_std_023",
+            "level": "standard",
+            "question": "The company provides complimentary shuttle service ______ the airport and the conference resort.",
+            "options": {
+                "A": "between",
+                "B": "from",
+                "C": "among",
+                "D": "through"
+            },
+            "correctAnswer": "A",
+            "clue": "Cặp địa điểm kết nối bởi liên từ 'and': between X and Y.",
+            "explanationVi": "Dùng 'between... and...' để mô tả dịch vụ trung chuyển chạy qua lại giữa 2 địa điểm xác định.",
+            "targetChunk": {
+                "phrase": "shuttle service between the airport and the resort",
+                "meaningVi": "dịch vụ xe đưa đón giữa sân bay và khu nghỉ dưỡng"
+            },
+            "skeleton": {
+                "subject": "The company",
+                "verb": "provides",
+                "object": "complimentary shuttle service"
+            }
+        },
+        {
+            "id": "prep_std_024",
+            "level": "standard",
+            "question": "The budget proposal was rejected ______ concerns over high production costs.",
+            "options": {
+                "A": "because of",
+                "B": "in spite of",
+                "C": "according to",
+                "D": "even though"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm giới từ chỉ nguyên nhân đi với danh từ 'concerns'.",
+            "explanationVi": "'because of + N' giải thích lý do (do những lo ngại về chi phí cao). 'even though' là liên từ cần S+V.",
+            "targetChunk": {
+                "phrase": "rejected because of concerns over",
+                "meaningVi": "bị bác bỏ do những lo ngại về"
+            },
+            "skeleton": {
+                "subject": "The budget proposal",
+                "verb": "was rejected",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_025",
+            "level": "standard",
+            "question": "All personnel must complete cybersecurity training ______ two weeks of being hired.",
+            "options": {
+                "A": "within",
+                "B": "under",
+                "C": "between",
+                "D": "among"
+            },
+            "correctAnswer": "A",
+            "clue": "Cấu trúc giới hạn kỳ hạn thời gian: within + khoảng thời gian + of V-ing.",
+            "explanationVi": "'within two weeks of' nghĩa là trong vòng 2 tuần tính từ mốc được tuyển dụng.",
+            "targetChunk": {
+                "phrase": "within two weeks of being hired",
+                "meaningVi": "trong vòng hai tuần kể từ khi được tuyển dụng"
+            },
+            "skeleton": {
+                "subject": "All personnel",
+                "verb": "must complete",
+                "object": "cybersecurity training"
+            }
+        },
+        {
+            "id": "prep_std_026",
+            "level": "standard",
+            "question": "The regional sales conference will be held ______ Toronto this coming autumn.",
+            "options": {
+                "A": "in",
+                "B": "at",
+                "C": "on",
+                "D": "to"
+            },
+            "correctAnswer": "A",
+            "clue": "Tên thành phố, quốc gia lớn luôn đi với giới từ 'in'.",
+            "explanationVi": "'in Toronto' chỉ địa điểm là một thành phố lớn.",
+            "targetChunk": {
+                "phrase": "held in Toronto this autumn",
+                "meaningVi": "tổ chức tại Toronto vào mùa thu này"
+            },
+            "skeleton": {
+                "subject": "The regional sales conference",
+                "verb": "will be held",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_027",
+            "level": "standard",
+            "question": "The warehouse is situated directly ______ the central railway depot for rapid cargo dispatch.",
+            "options": {
+                "A": "opposite",
+                "B": "against",
+                "C": "onto",
+                "D": "toward"
+            },
+            "correctAnswer": "A",
+            "clue": "Giới từ chỉ vị trí 'đối diện': opposite = across from.",
+            "explanationVi": "'opposite the central railway depot' chỉ vị trí đối diện ga hàng hải/xe lửa.",
+            "targetChunk": {
+                "phrase": "situated directly opposite the depot",
+                "meaningVi": "tọa lạc trực tiếp đối diện nhà ga"
+            },
+            "skeleton": {
+                "subject": "The warehouse",
+                "verb": "is situated",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_028",
+            "level": "standard",
+            "question": "The warranty on this photocopier remains valid ______ three years from the date of purchase.",
+            "options": {
+                "A": "for",
+                "B": "during",
+                "C": "since",
+                "D": "in"
+            },
+            "correctAnswer": "A",
+            "clue": "Giới từ chỉ độ dài một khoảng thời gian liên tục: for + khoảng thời gian.",
+            "explanationVi": "'for three years' chỉ độ dài hiệu lực kéo dài suốt 3 năm. 'during' đi với danh từ chỉ sự kiện ('during the holiday').",
+            "targetChunk": {
+                "phrase": "valid for three years",
+                "meaningVi": "có hiệu lực trong vòng ba năm"
+            },
+            "skeleton": {
+                "subject": "The warranty on this photocopier",
+                "verb": "remains",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_029",
+            "level": "standard",
+            "question": "The new manager walked ______ the factory floor to observe standard assembly operations.",
+            "options": {
+                "A": "through",
+                "B": "out",
+                "C": "between",
+                "D": "among"
+            },
+            "correctAnswer": "A",
+            "clue": "Hành động di chuyển xuyên qua một không gian/khu vực: walk through...",
+            "explanationVi": "'walk through the factory floor' nghĩa là đi xuyên qua khắp sàn phân xưởng.",
+            "targetChunk": {
+                "phrase": "walk through the factory floor",
+                "meaningVi": "đi thị sát qua sàn nhà xưởng"
+            },
+            "skeleton": {
+                "subject": "The new manager",
+                "verb": "walked",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_std_030",
+            "level": "standard",
+            "question": "The chief financial officer spoke ______ length regarding current market volatility.",
+            "options": {
+                "A": "at",
+                "B": "in",
+                "C": "by",
+                "D": "for"
+            },
+            "correctAnswer": "A",
+            "clue": "Thành ngữ cố định: at length = chi tiết, trong một khoảng thời gian dài.",
+            "explanationVi": "Cụm 'speak at length' mang nghĩa phát biểu rất kỹ lưỡng và chi tiết trong thời gian dài.",
+            "targetChunk": {
+                "phrase": "spoke at length regarding",
+                "meaningVi": "phát biểu chi tiết và kéo dài về"
+            },
+            "skeleton": {
+                "subject": "The chief financial officer",
+                "verb": "spoke",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_001",
+            "level": "advanced",
+            "question": "The plant expansion was completed ahead of schedule ______ unforeseen supply line disruptions.",
+            "options": {
+                "A": "notwithstanding",
+                "B": "regarding",
+                "C": "concerning",
+                "D": "excepting"
+            },
+            "correctAnswer": "A",
+            "clue": "Giới từ trang trọng mang nghĩa tương phản nhượng bộ: notwithstanding = despite / in spite of.",
+            "explanationVi": "'Notwithstanding' là giới từ cao cấp trong TOEIC chỉ sự đối lập (mặc cho sự gián đoạn chuỗi cung ứng).",
+            "targetChunk": {
+                "phrase": "notwithstanding unforeseen disruptions",
+                "meaningVi": "bất chấp những sự gián đoạn không lường trước"
+            },
+            "skeleton": {
+                "subject": "The plant expansion",
+                "verb": "was completed",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_002",
+            "level": "advanced",
+            "question": "Please submit your reimbursement documents ______ thirty days of completing corporate travel.",
+            "options": {
+                "A": "within",
+                "B": "beforehand",
+                "C": "inside",
+                "D": "by"
+            },
+            "correctAnswer": "A",
+            "clue": "Cấu trúc hạn mức thời gian kèm mốc sự kiện: within + [number] days of + V-ing.",
+            "explanationVi": "'within 30 days of completing...' nghĩa là trong vòng 30 ngày kể từ khi kết thúc chuyến công tác.",
+            "targetChunk": {
+                "phrase": "within thirty days of completing",
+                "meaningVi": "trong vòng ba mươi ngày kể từ khi hoàn tất"
+            },
+            "skeleton": {
+                "subject": "(You - implied)",
+                "verb": "submit",
+                "object": "your reimbursement documents"
+            }
+        },
+        {
+            "id": "prep_adv_003",
+            "level": "advanced",
+            "question": "The company updated the emergency exit protocols ______ the municipal safety audit findings.",
+            "options": {
+                "A": "in light of",
+                "B": "in charge of",
+                "C": "in place of",
+                "D": "in favor of"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm giới từ mang nghĩa 'dựa trên cơ sở / xét đến': in light of = considering.",
+            "explanationVi": "'in light of' mang ý nghĩa sau khi xem xét những phát hiện từ đợt kiểm toán an toàn.",
+            "targetChunk": {
+                "phrase": "in light of the audit findings",
+                "meaningVi": "dựa trên những phát hiện từ đợt kiểm toán"
+            },
+            "skeleton": {
+                "subject": "The company",
+                "verb": "updated",
+                "object": "the emergency exit protocols"
+            }
+        },
+        {
+            "id": "prep_adv_004",
+            "level": "advanced",
+            "question": "All personnel must wear flame-retardant suits throughout the facility, ______ exceptions permitted.",
+            "options": {
+                "A": "with no",
+                "B": "without no",
+                "C": "in no",
+                "D": "for no"
+            },
+            "correctAnswer": "A",
+            "clue": "Thành ngữ giới từ tuyệt đối: with no exceptions (hoàn toàn không có ngoại lệ).",
+            "explanationVi": "'with no exceptions' là cụm giới từ cố định chỉ sự bắt buộc tuyệt đối, không chấp nhận ngoại lệ nào.",
+            "targetChunk": {
+                "phrase": "with no exceptions permitted",
+                "meaningVi": "không cho phép bất kỳ ngoại lệ nào"
+            },
+            "skeleton": {
+                "subject": "All personnel",
+                "verb": "must wear",
+                "object": "flame-retardant suits"
+            }
+        },
+        {
+            "id": "prep_adv_005",
+            "level": "advanced",
+            "question": "The chief executive officer accepted the civic leadership award on ______ the entire workforce.",
+            "options": {
+                "A": "behalf of",
+                "B": "account of",
+                "C": "respect of",
+                "D": "regard of"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm thành ngữ trang trọng: on behalf of = thay mặt cho.",
+            "explanationVi": "'on behalf of somebody' nghĩa là nhân danh, thay mặt cho tập thể người lao động.",
+            "targetChunk": {
+                "phrase": "on behalf of the entire workforce",
+                "meaningVi": "thay mặt toàn thể đội ngũ nhân viên"
+            },
+            "skeleton": {
+                "subject": "The chief executive officer",
+                "verb": "accepted",
+                "object": "the civic leadership award"
+            }
+        },
+        {
+            "id": "prep_adv_006",
+            "level": "advanced",
+            "question": "Production remained uninterrupted throughout July, ______ minor recalibrations on conveyor line four.",
+            "options": {
+                "A": "barring",
+                "B": "providing",
+                "C": "granting",
+                "D": "assuming"
+            },
+            "correctAnswer": "A",
+            "clue": "Giới từ mang nghĩa 'ngoại trừ': barring = except for.",
+            "explanationVi": "'Barring' đóng vai trò giới từ mang nghĩa loại trừ một sự việc ngoại lệ.",
+            "targetChunk": {
+                "phrase": "barring minor recalibrations",
+                "meaningVi": "ngoại trừ những hiệu chỉnh nhỏ"
+            },
+            "skeleton": {
+                "subject": "Production",
+                "verb": "remained",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_007",
+            "level": "advanced",
+            "question": "The restructuring proposal was carried out ______ the recommendations of the consulting group.",
+            "options": {
+                "A": "in accordance with",
+                "B": "in addition with",
+                "C": "in comparison to",
+                "D": "in regard with"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm giới từ: in accordance with = phù hợp với / theo đúng như hướng dẫn.",
+            "explanationVi": "'in accordance with' dùng để chỉ sự tuân theo các khuyến nghị hoặc quy chuẩn đã đặt ra.",
+            "targetChunk": {
+                "phrase": "in accordance with the recommendations",
+                "meaningVi": "theo đúng như các khuyến nghị của"
+            },
+            "skeleton": {
+                "subject": "The restructuring proposal",
+                "verb": "was carried out",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_008",
+            "level": "advanced",
+            "question": "The contractor was penalised for failing to build the support beams ______ architectural plans.",
+            "options": {
+                "A": "as per",
+                "B": "such as",
+                "C": "in terms",
+                "D": "on account"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm giới từ trang trọng văn bản thương mại: as per = theo như.",
+            "explanationVi": "'as per' (theo như bản vẽ thiết kế) là giới từ thương mại rất phổ biến trong đề thi 990.",
+            "targetChunk": {
+                "phrase": "as per architectural plans",
+                "meaningVi": "theo đúng các bản vẽ kiến trúc"
+            },
+            "skeleton": {
+                "subject": "The contractor",
+                "verb": "was penalised",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_009",
+            "level": "advanced",
+            "question": "Staff training sessions are scheduled ______ Wednesdays throughout the upcoming autumn quarter.",
+            "options": {
+                "A": "for",
+                "B": "at",
+                "C": "by",
+                "D": "to"
+            },
+            "correctAnswer": "A",
+            "clue": "Cấu trúc lên lịch hẹn cho một khoảng thời gian: schedule something for + mốc thời gian.",
+            "explanationVi": "'be scheduled for + ngày' mang nghĩa được ấn định tổ chức vào những ngày thứ Tư.",
+            "targetChunk": {
+                "phrase": "scheduled for Wednesdays",
+                "meaningVi": "được lên lịch vào các ngày thứ Tư"
+            },
+            "skeleton": {
+                "subject": "Staff training sessions",
+                "verb": "are scheduled",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_010",
+            "level": "advanced",
+            "question": "The legal department cautioned management ______ signing the exclusivity contract prematurely.",
+            "options": {
+                "A": "against",
+                "B": "from",
+                "C": "with",
+                "D": "off"
+            },
+            "correctAnswer": "A",
+            "clue": "Cấu trúc cảnh báo ai không nên làm gì: caution / warn someone against + V-ing.",
+            "explanationVi": "'caution sb against doing sth' nghĩa là cảnh báo ai đó về rủi ro và khuyên không nên thực hiện việc ký kết.",
+            "targetChunk": {
+                "phrase": "cautioned management against signing",
+                "meaningVi": "cảnh báo ban quản lý không nên ký kết"
+            },
+            "skeleton": {
+                "subject": "The legal department",
+                "verb": "cautioned",
+                "object": "management"
+            }
+        },
+        {
+            "id": "prep_adv_011",
+            "level": "advanced",
+            "question": "The enterprise is ______ the verge of finalizing a groundbreaking international joint venture.",
+            "options": {
+                "A": "on",
+                "B": "at",
+                "C": "in",
+                "D": "to"
+            },
+            "correctAnswer": "A",
+            "clue": "Thành ngữ giới từ cố định: on the verge of + V-ing/N = sắp sửa đạt được.",
+            "explanationVi": "'on the verge of' mang ý nghĩa đang ở trên bờ vực / sắp sửa hoàn tất một cột mốc lớn.",
+            "targetChunk": {
+                "phrase": "on the verge of finalizing",
+                "meaningVi": "đang bên bờ vực sắp sửa hoàn tất"
+            },
+            "skeleton": {
+                "subject": "The enterprise",
+                "verb": "is",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_012",
+            "level": "advanced",
+            "question": "The logistics network operated smoothly ______ extreme weather conditions in northern territories.",
+            "options": {
+                "A": "irrespective of",
+                "B": "in case of",
+                "C": "as for",
+                "D": "by means of"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm giới từ tương đương 'regardless of': irrespective of = bất chấp, không phân biệt.",
+            "explanationVi": "'irrespective of' đi kèm cụm danh từ chỉ tính đối lập độc lập với các yếu tố khách quan thời tiết.",
+            "targetChunk": {
+                "phrase": "irrespective of extreme weather",
+                "meaningVi": "bất chấp điều kiện thời tiết khắc nghiệt"
+            },
+            "skeleton": {
+                "subject": "The logistics network",
+                "verb": "operated",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_013",
+            "level": "advanced",
+            "question": "The new environmental protection regulation comes ______ effect starting next Monday.",
+            "options": {
+                "A": "into",
+                "B": "onto",
+                "C": "with",
+                "D": "at"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm thành ngữ cố định về hiệu lực luật pháp: come into effect.",
+            "explanationVi": "'come into effect' mang nghĩa chính thức có hiệu lực thi hành.",
+            "targetChunk": {
+                "phrase": "comes into effect starting",
+                "meaningVi": "có hiệu lực bắt đầu từ"
+            },
+            "skeleton": {
+                "subject": "The new environmental protection regulation",
+                "verb": "comes",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_014",
+            "level": "advanced",
+            "question": "The company will proceed with the merger ______ that all regulatory conditions are satisfied.",
+            "options": {
+                "A": "contingent on",
+                "B": "provided",
+                "C": "prior",
+                "D": "as to"
+            },
+            "correctAnswer": "B",
+            "clue": "Phân biệt liên từ / giới từ điều kiện: provided that + mệnh đề (S + V).",
+            "explanationVi": "Đứng trước mệnh đề danh từ 'that all regulatory conditions are satisfied', 'provided that' hoạt động như một liên từ điều kiện.",
+            "targetChunk": {
+                "phrase": "provided that all conditions are satisfied",
+                "meaningVi": "với điều kiện là mọi yêu cầu đều được đáp ứng"
+            },
+            "skeleton": {
+                "subject": "The company",
+                "verb": "will proceed",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_015",
+            "level": "advanced",
+            "question": "The CEO decided to step down from his post ______ ongoing market pressures and health concerns.",
+            "options": {
+                "A": "owing to",
+                "B": "in view",
+                "C": "thanks",
+                "D": "because"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm giới từ chỉ nguyên nhân đi với danh từ: owing to = because of.",
+            "explanationVi": "'owing to' là giới từ nguyên nhân chuẩn. 'in view' phải có 'of', 'thanks' phải có 'to'.",
+            "targetChunk": {
+                "phrase": "owing to ongoing market pressures",
+                "meaningVi": "bởi vì những áp lực thị trường liên tục"
+            },
+            "skeleton": {
+                "subject": "The CEO",
+                "verb": "decided to step down",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_016",
+            "level": "advanced",
+            "question": "The board resolved the trade dispute ______ direct mediation between the executive representatives.",
+            "options": {
+                "A": "by means of",
+                "B": "in case of",
+                "C": "in place of",
+                "D": "with respect"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm giới từ chỉ phương thức, phương tiện: by means of = bằng cách, thông qua.",
+            "explanationVi": "'by means of' giải thích cách thức giải quyết tranh chấp thông qua đàm phán trực tiếp.",
+            "targetChunk": {
+                "phrase": "by means of direct mediation",
+                "meaningVi": "bằng phương thức hòa giải trực tiếp"
+            },
+            "skeleton": {
+                "subject": "The board",
+                "verb": "resolved",
+                "object": "the trade dispute"
+            }
+        },
+        {
+            "id": "prep_adv_017",
+            "level": "advanced",
+            "question": "______ to the corporate policy revisions, all telecommuting requests must be submitted monthly.",
+            "options": {
+                "A": "Pursuant",
+                "B": "According",
+                "C": "Following",
+                "D": "Related"
+            },
+            "correctAnswer": "A",
+            "clue": "Giới từ pháp lý cao cấp: pursuant to = chiếu theo / căn cứ theo.",
+            "explanationVi": "'Pursuant to' là cấu trúc chuyên biệt trong các văn bản quy định và pháp lý thương mại.",
+            "targetChunk": {
+                "phrase": "pursuant to corporate policy revisions",
+                "meaningVi": "chiếu theo các sửa đổi chính sách của công ty"
+            },
+            "skeleton": {
+                "subject": "all telecommuting requests",
+                "verb": "must be submitted",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_018",
+            "level": "advanced",
+            "question": "The budget was reallocated ______ improving the enterprise customer relationship software.",
+            "options": {
+                "A": "toward",
+                "B": "against",
+                "C": "upon",
+                "D": "under"
+            },
+            "correctAnswer": "A",
+            "clue": "Giới từ chỉ đích hướng phân bổ nguồn vốn: allocate/reallocate sth toward + V-ing/N.",
+            "explanationVi": "'toward' được dùng để chỉ mục tiêu mà dòng tiền hoặc ngân sách hướng tới hoàn thành.",
+            "targetChunk": {
+                "phrase": "reallocated toward improving software",
+                "meaningVi": "được tái phân bổ hướng đến việc cải thiện phần mềm"
+            },
+            "skeleton": {
+                "subject": "The budget",
+                "verb": "was reallocated",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_019",
+            "level": "advanced",
+            "question": "The lead auditor will remain on site ______ the conclusion of the comprehensive annual inspection.",
+            "options": {
+                "A": "pending",
+                "B": "during",
+                "C": "across",
+                "D": "following"
+            },
+            "correctAnswer": "A",
+            "clue": "Giới từ cao cấp chỉ sự chờ đợi kết quả: pending = cho đến khi / chờ đợi cho tới khi.",
+            "explanationVi": "'pending + N' có nghĩa là trong khi chờ đợi điều gì xảy ra hoặc cho tới lúc việc đó hoàn thành.",
+            "targetChunk": {
+                "phrase": "remain on site pending the conclusion",
+                "meaningVi": "ở lại hiện trường cho đến khi có kết luận"
+            },
+            "skeleton": {
+                "subject": "The lead auditor",
+                "verb": "will remain",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_020",
+            "level": "advanced",
+            "question": "______ the five major commercial banks evaluated, Apex Financial provided the lowest interest rate.",
+            "options": {
+                "A": "Of",
+                "B": "For",
+                "C": "To",
+                "D": "Between"
+            },
+            "correctAnswer": "A",
+            "clue": "Giới từ chỉ tập hợp chọn lựa đứng đầu câu trong cấu trúc so sánh nhất: 'Of + nhóm đối tượng'.",
+            "explanationVi": "'Of the five banks...' được dùng để khoanh vùng nhóm đối tượng được rút ra so sánh hơn nhất.",
+            "targetChunk": {
+                "phrase": "of the five banks evaluated",
+                "meaningVi": "trong số năm ngân hàng được đánh giá"
+            },
+            "skeleton": {
+                "subject": "Apex Financial",
+                "verb": "provided",
+                "object": "the lowest interest rate"
+            }
+        },
+        {
+            "id": "prep_adv_021",
+            "level": "advanced",
+            "question": "The contractor agreed to furnish all necessary construction permits ______ additional cost to the client.",
+            "options": {
+                "A": "at no",
+                "B": "in no",
+                "C": "with no",
+                "D": "by no"
+            },
+            "correctAnswer": "A",
+            "clue": "Thành ngữ chi phí thương mại: at no additional cost (hoàn toàn không tính thêm chi phí).",
+            "explanationVi": "Chi phí luôn đi với giới từ 'at' ('at no cost', 'at a low price').",
+            "targetChunk": {
+                "phrase": "at no additional cost",
+                "meaningVi": "mà không tính thêm chi phí nào"
+            },
+            "skeleton": {
+                "subject": "The contractor",
+                "verb": "agreed to furnish",
+                "object": "all necessary construction permits"
+            }
+        },
+        {
+            "id": "prep_adv_022",
+            "level": "advanced",
+            "question": "The updated environmental protection guidelines were developed ______ consultation with marine biologists.",
+            "options": {
+                "A": "in",
+                "B": "on",
+                "C": "at",
+                "D": "with"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm giới từ cố định: in consultation with = dưới sự tham vấn của.",
+            "explanationVi": "'in consultation with' là cụm từ trang trọng chỉ quy trình tham vấn chuyên gia.",
+            "targetChunk": {
+                "phrase": "in consultation with experts",
+                "meaningVi": "dưới sự tham vấn của các chuyên gia"
+            },
+            "skeleton": {
+                "subject": "The updated environmental protection guidelines",
+                "verb": "were developed",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_023",
+            "level": "advanced",
+            "question": "The firm operates twenty production facilities ______ the Asia-Pacific territory.",
+            "options": {
+                "A": "throughout",
+                "B": "alongside",
+                "C": "amongst",
+                "D": "amidst"
+            },
+            "correctAnswer": "A",
+            "clue": "Giới từ chỉ sự phân bố rộng khắp một lãnh thổ địa lý: throughout.",
+            "explanationVi": "'throughout the territory' nghĩa là rải rác khắp toàn bộ khu vực lãnh thổ.",
+            "targetChunk": {
+                "phrase": "facilities throughout the territory",
+                "meaningVi": "các cơ sở trên khắp toàn bộ vùng lãnh thổ"
+            },
+            "skeleton": {
+                "subject": "The firm",
+                "verb": "operates",
+                "object": "twenty production facilities"
+            }
+        },
+        {
+            "id": "prep_adv_024",
+            "level": "advanced",
+            "question": "All proprietary formulas must be kept strictly ______ security vault boundaries.",
+            "options": {
+                "A": "within",
+                "B": "between",
+                "C": "under",
+                "D": "amid"
+            },
+            "correctAnswer": "A",
+            "clue": "Chỉ phạm vi giới hạn bên trong một ranh giới nhất định: within + boundaries.",
+            "explanationVi": "'within boundaries' chỉ không gian giới hạn không được vượt quá.",
+            "targetChunk": {
+                "phrase": "kept strictly within boundaries",
+                "meaningVi": "được lưu giữ nghiêm ngặt trong ranh giới"
+            },
+            "skeleton": {
+                "subject": "All proprietary formulas",
+                "verb": "must be kept",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_025",
+            "level": "advanced",
+            "question": "The spokesperson declined to offer further clarification ______ ongoing international litigation.",
+            "options": {
+                "A": "as to",
+                "B": "so as",
+                "C": "in order",
+                "D": "as well"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm giới từ đồng nghĩa với 'about / regarding': as to.",
+            "explanationVi": "'as to + N' đóng vai trò giới từ mang nghĩa về vấn đề gì.",
+            "targetChunk": {
+                "phrase": "clarification as to ongoing litigation",
+                "meaningVi": "lời làm rõ liên quan đến vụ kiện đang tiếp diễn"
+            },
+            "skeleton": {
+                "subject": "The spokesperson",
+                "verb": "declined to offer",
+                "object": "further clarification"
+            }
+        },
+        {
+            "id": "prep_adv_026",
+            "level": "advanced",
+            "question": "The company managed to increase operational margins ______ rising energy costs.",
+            "options": {
+                "A": "in the face of",
+                "B": "in front of",
+                "C": "in place of",
+                "D": "in charge of"
+            },
+            "correctAnswer": "A",
+            "clue": "Cụm giới từ thành ngữ: in the face of = khi phải đối mặt với / bất chấp khó khăn.",
+            "explanationVi": "'in the face of' diễn tả nghị lực vượt qua tình huống nghịch cảnh tiêu cực.",
+            "targetChunk": {
+                "phrase": "in the face of rising costs",
+                "meaningVi": "khi đối mặt với việc chi phí tăng cao"
+            },
+            "skeleton": {
+                "subject": "The company",
+                "verb": "managed to increase",
+                "object": "operational margins"
+            }
+        },
+        {
+            "id": "prep_adv_027",
+            "level": "advanced",
+            "question": "The warehouse property was transferred to the buyer ______ payment in full.",
+            "options": {
+                "A": "upon",
+                "B": "into",
+                "C": "during",
+                "D": "toward"
+            },
+            "correctAnswer": "A",
+            "clue": "Giới từ chỉ mốc thời điểm ngay sau khi một việc xảy ra: upon + N = ngay khi.",
+            "explanationVi": "'upon payment' có nghĩa là ngay sau khi việc thanh toán được hoàn tất toàn bộ.",
+            "targetChunk": {
+                "phrase": "transferred upon payment in full",
+                "meaningVi": "được chuyển giao ngay khi thanh toán đầy đủ"
+            },
+            "skeleton": {
+                "subject": "The warehouse property",
+                "verb": "was transferred",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_028",
+            "level": "advanced",
+            "question": "Sales figures dropped significantly ______ the sudden departure of key marketing personnel.",
+            "options": {
+                "A": "in the wake of",
+                "B": "in regard to",
+                "C": "with a view to",
+                "D": "on top of"
+            },
+            "correctAnswer": "A",
+            "clue": "Thành ngữ giới từ cao cấp chỉ hệ quả sau một biến cố: in the wake of = theo sau / sau sự việc.",
+            "explanationVi": "'in the wake of' biểu thị kết quả tiêu cực xảy ra ngay sau sự biến động nào đó.",
+            "targetChunk": {
+                "phrase": "in the wake of the departure",
+                "meaningVi": "ngay sau sự rời đi của"
+            },
+            "skeleton": {
+                "subject": "Sales figures",
+                "verb": "dropped",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_029",
+            "level": "advanced",
+            "question": "The manufacturing line was suspended ______ compliance verification tests conducted by inspectors.",
+            "options": {
+                "A": "pending",
+                "B": "excepting",
+                "C": "throughout",
+                "D": "concerning"
+            },
+            "correctAnswer": "A",
+            "clue": "Giới từ chỉ việc chờ đợi quy trình hoàn thành: pending = trong lúc chờ xét duyệt/thử nghiệm.",
+            "explanationVi": "'pending tests' nghĩa là dây chuyền tạm ngừng trong khoảng thời gian chờ kết quả kiểm tra tuân thủ.",
+            "targetChunk": {
+                "phrase": "suspended pending compliance verification",
+                "meaningVi": "bị tạm đình chỉ trong khi chờ xác minh tuân thủ"
+            },
+            "skeleton": {
+                "subject": "The manufacturing line",
+                "verb": "was suspended",
+                "object": null
+            }
+        },
+        {
+            "id": "prep_adv_030",
+            "level": "advanced",
+            "question": "The executive committee reaffirmed its commitment ______ environmental conservation goals.",
+            "options": {
+                "A": "to",
+                "B": "with",
+                "C": "at",
+                "D": "for"
+            },
+            "correctAnswer": "A",
+            "clue": "Danh từ trừu tượng đi với giới từ cố định: commitment to + N/V-ing.",
+            "explanationVi": "'commitment to something' mang nghĩa cam kết gắn bó với mục tiêu bảo tồn môi trường.",
+            "targetChunk": {
+                "phrase": "commitment to environmental conservation",
+                "meaningVi": "cam kết hướng tới việc bảo tồn môi trường"
+            },
+            "skeleton": {
+                "subject": "The executive committee",
+                "verb": "reaffirmed",
+                "object": "its commitment"
+            }
+        }
+    ]
+}
