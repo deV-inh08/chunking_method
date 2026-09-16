@@ -46,6 +46,7 @@ export default function App() {
   const [showSettings, setShowSettings] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showAiSpeakingModal, setShowAiSpeakingModal] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [guestMode, setGuestMode]       = useState(() => {
     try {
       return localStorage.getItem('toeic_guest_mode') === 'true';
@@ -366,9 +367,18 @@ export default function App() {
   }, [addToast]);
 
   // ── Nav badge counts ─────────────────────────────────────────
+  const learnedVocabCount = useMemo(() => {
+    try {
+      return Object.keys(storage.getLearnedVocab()).length;
+    } catch {
+      return 0;
+    }
+  }, []);
+
   const counts = {
     ai_listening: transcripts.length,
     reading:      24,
+    vocab:        learnedVocabCount,
     chunks:       allChunks.length,
     practice:     selectedChunks.size,
     progress:     Object.keys(allProgress).length,
@@ -434,6 +444,7 @@ export default function App() {
       <Sidebar
         activePage={page}
         onNavigate={(p) => {
+          setMobileMenuOpen(false);
           if (p === 'ai_speaking') {
             setShowAiSpeakingModal(true);
           } else {
@@ -446,6 +457,8 @@ export default function App() {
         onSignOut={handleSignOut}
         onLoginClick={() => setShowAuthModal(true)}
         onSettingsClick={() => setShowSettings(true)}
+        mobileOpen={mobileMenuOpen}
+        onCloseMobile={() => setMobileMenuOpen(false)}
       />
 
       <div className="main-content">
@@ -455,6 +468,7 @@ export default function App() {
           dueCount={dueChunks.length}
           onDueClick={handleStartDueReview}
           onOpenAiSpeaking={() => setShowAiSpeakingModal(true)}
+          onOpenMobileDrawer={() => setMobileMenuOpen(true)}
           onSignOut={handleSignOut}
           onLoginClick={() => setShowAuthModal(true)}
           onSettingsClick={() => setShowSettings(true)}
@@ -598,19 +612,6 @@ export default function App() {
         </main>
       </div>
 
-      {/* Mobile bottom navigation */}
-      <BottomNav
-        activePage={page}
-        onNavigate={(p) => {
-          if (p === 'ai_speaking') {
-            setShowAiSpeakingModal(true);
-          } else {
-            setPage(p);
-          }
-        }}
-        counts={counts}
-        dueCount={dueChunks.length}
-      />
 
       {/* Modals */}
       {showSettings && (
