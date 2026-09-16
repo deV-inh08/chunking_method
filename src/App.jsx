@@ -4,6 +4,7 @@ import { ListeningAiModule } from './components/ListeningAiModule';
 import { ReadingModule } from './components/ReadingModule';
 import { ChunkModule } from './components/ChunkModule';
 import { VocabModule } from './components/VocabModule';
+import { VisualVocabModule } from './components/VisualVocabModule';
 import { PracticeModule } from './components/PracticeModule';
 import { ProgressModule } from './components/ProgressModule';
 import { SettingsModal } from './components/Settings';
@@ -379,6 +380,7 @@ export default function App() {
     ai_listening: transcripts.length,
     reading:      24,
     vocab:        learnedVocabCount,
+    visual_vocab: 10,
     chunks:       allChunks.length,
     practice:     selectedChunks.size,
     progress:     Object.keys(allProgress).length,
@@ -583,7 +585,20 @@ export default function App() {
             {/* VocabModule: luôn mounted, chỉ ẩn bằng CSS khi không active
                 → giữ nguyên state sinh chunk khi user đổi tab rồi quay lại */}
             <div style={{ display: page === 'vocab' ? 'block' : 'none' }}>
-              <VocabModule onToast={addToast} onStartPractice={handleStartVocabPractice} />
+              <VocabModule
+                onToast={addToast}
+                onStartPractice={handleStartVocabPractice}
+                onNavigate={setPage}
+              />
+            </div>
+
+            {/* VisualVocabModule: luôn mounted, giữ nguyên state khám phá khi chuyển tab */}
+            <div style={{ display: page === 'visual_vocab' ? 'block' : 'none' }}>
+              <VisualVocabModule
+                onToast={addToast}
+                onStartPractice={handleStartVocabPractice}
+                onNavigate={setPage}
+              />
             </div>
 
             {/* PracticeModule: luôn mounted, chỉ ẩn bằng CSS khi không active

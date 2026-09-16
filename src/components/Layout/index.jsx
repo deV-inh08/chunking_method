@@ -2,13 +2,14 @@ import React from 'react';
 import {
   Headphones, BookOpen, BrainCircuit, Zap,
   Target, Mic2, BarChart3, Settings, ChevronRight, LogOut,
-  Flame, Sparkles, Search, CircleHelp, Menu, X
+  Flame, Sparkles, Search, CircleHelp, Menu, X, Eye
 } from 'lucide-react';
 
 export const NAV_ITEMS = [
   { id: 'ai_listening', label: 'Listening Lab',  shortLabel: 'Nghe',      icon: Headphones },
   { id: 'reading',      label: 'Reading Lab',    shortLabel: 'Đọc',       icon: BookOpen   },
   { id: 'vocab',        label: 'Vocabulary',     shortLabel: 'Từ vựng',   icon: Zap },
+  { id: 'visual_vocab', label: 'Không gian thị giác', shortLabel: 'Thị giác', icon: Eye, isNew: true },
   { id: 'chunks',       label: 'Chunk Library',  shortLabel: 'Chunks',    icon: BrainCircuit },
   { id: 'practice',     label: 'Practice Sets',  shortLabel: 'Luyện tập', icon: Target },
   { id: 'ai_speaking',  label: 'AI Speaking',    shortLabel: 'Nói AI',    icon: Mic2, isNew: true },
@@ -19,6 +20,7 @@ export const PAGE_TITLES = {
   ai_listening: { title: 'Listening Lab', shortTitle: 'Listening', subtitle: 'Luyện nghe phản xạ, chép chính tả Dictation & phân tích hội thoại' },
   reading:      { title: 'Reading Lab',   shortTitle: 'Reading',   subtitle: 'Ngữ pháp chuyên sâu TOEIC Part 5 & 6 cùng giải thích chi tiết' },
   vocab:        { title: 'Vocabulary',    shortTitle: 'Vocab',     subtitle: 'Học từ vựng Flashcard 3D & trích xuất Chunks ngữ cảnh' },
+  visual_vocab: { title: 'Không gian thị giác', shortTitle: 'Thị giác', subtitle: 'Khám phá từ vựng & phản xạ bối cảnh qua hình ảnh thực tế (Visual Learning)' },
   chunks:       { title: 'Chunk Library', shortTitle: 'Chunk',     subtitle: 'Kho lưu trữ cụm từ Collocation & Functional Chunks khoa học' },
   practice:     { title: 'Practice Sets', shortTitle: 'Practice',  subtitle: 'Luyện dịch câu đa cấp độ & chấm điểm phản hồi tức thì' },
   ai_speaking:  { title: 'AI Speaking',   shortTitle: 'Speaking',  subtitle: 'Phòng luyện nói giao tiếp 2 chiều & đánh giá âm học GOP' },

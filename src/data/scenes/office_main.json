@@ -1,0 +1,333 @@
+{
+  "sceneId": "office_main",
+  "title": "Văn phòng & Công sở",
+  "topic": "Business & Work",
+  "description": "Không gian làm việc công sở hiện đại tiêu chuẩn TOEIC với 4 khu vực chức năng chính.",
+  "image": "/scenes/office_main.jpg",
+  "canvasWidth": 1000,
+  "canvasHeight": 562.5,
+  "fullViewBox": "0 0 1000 562.5",
+  "zones": [
+    {
+      "zoneId": "zone_desk_area",
+      "order": 1,
+      "label": "Khu bàn làm việc",
+      "labelEn": "Desk Workstation",
+      "viewBox": "20 200 360 350",
+      "center": {
+        "x": 0.2,
+        "y": 0.65
+      },
+      "items": [
+        {
+          "id": "item_desk",
+          "word": "desk",
+          "ipa": "/desk/",
+          "meaningVi": "bàn làm việc",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.19,
+            "y": 0.68
+          },
+          "example": "Please keep your desk clean and well-organized.",
+          "collocation": "at one's desk"
+        },
+        {
+          "id": "item_monitor",
+          "word": "monitor",
+          "ipa": "/ˈmɑːnɪtər/",
+          "meaningVi": "màn hình máy tính",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.23,
+            "y": 0.55
+          },
+          "example": "The IT team replaced the damaged computer monitor.",
+          "collocation": "adjust the monitor"
+        },
+        {
+          "id": "item_keyboard",
+          "word": "keyboard",
+          "ipa": "/ˈkiːbɔːrd/",
+          "meaningVi": "bàn phím",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.17,
+            "y": 0.66
+          },
+          "example": "He typed quickly on the wireless keyboard.",
+          "collocation": "type on a keyboard"
+        },
+        {
+          "id": "item_chair",
+          "word": "chair",
+          "ipa": "/tʃer/",
+          "meaningVi": "ghế văn phòng",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.11,
+            "y": 0.74
+          },
+          "example": "The company purchased ergonomic office chairs.",
+          "collocation": "sit on an office chair"
+        },
+        {
+          "id": "item_type_email",
+          "word": "type an email",
+          "ipa": "/taɪp ən ˈiːmeɪl/",
+          "meaningVi": "soạn thảo / gửi email",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.13,
+            "y": 0.58
+          },
+          "example": "She is typing an urgent email to the department head.",
+          "collocation": "type an email"
+        }
+      ]
+    },
+    {
+      "zoneId": "zone_stationery",
+      "order": 2,
+      "label": "Khu máy in & Tài liệu",
+      "labelEn": "Printer & Archive Area",
+      "viewBox": "280 230 290 320",
+      "center": {
+        "x": 0.42,
+        "y": 0.66
+      },
+      "items": [
+        {
+          "id": "item_printer",
+          "word": "printer",
+          "ipa": "/ˈprɪntər/",
+          "meaningVi": "máy in",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.42,
+            "y": 0.64
+          },
+          "example": "The multifunction printer needs a new ink cartridge.",
+          "collocation": "jammed printer"
+        },
+        {
+          "id": "item_filing_cabinet",
+          "word": "filing cabinet",
+          "ipa": "/ˈfaɪlɪŋ ˌkæbɪnət/",
+          "meaningVi": "tủ đựng tài liệu",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.35,
+            "y": 0.76
+          },
+          "example": "Confidential customer contracts are stored in the filing cabinet.",
+          "collocation": "lock the filing cabinet"
+        },
+        {
+          "id": "item_paper_tray",
+          "word": "paper tray",
+          "ipa": "/ˈpeɪpər treɪ/",
+          "meaningVi": "khay đựng giấy",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.42,
+            "y": 0.74
+          },
+          "example": "Remember to reload sheets into the paper tray.",
+          "collocation": "empty paper tray"
+        },
+        {
+          "id": "item_shredder",
+          "word": "shredder",
+          "ipa": "/ˈʃredər/",
+          "meaningVi": "máy hủy giấy",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.5,
+            "y": 0.78
+          },
+          "example": "All outdated sensitive records were destroyed in the paper shredder.",
+          "collocation": "run files through the shredder"
+        },
+        {
+          "id": "item_print_document",
+          "word": "print a document",
+          "ipa": "/prɪnt ə ˈdɑːkjumənt/",
+          "meaningVi": "in tài liệu / văn bản",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.43,
+            "y": 0.56
+          },
+          "example": "He printed a multi-page document for the client review.",
+          "collocation": "print a document"
+        }
+      ]
+    },
+    {
+      "zoneId": "zone_meeting",
+      "order": 3,
+      "label": "Khu họp & Thuyết trình",
+      "labelEn": "Conference & Meeting",
+      "viewBox": "470 70 330 360",
+      "center": {
+        "x": 0.63,
+        "y": 0.45
+      },
+      "items": [
+        {
+          "id": "item_whiteboard",
+          "word": "whiteboard",
+          "ipa": "/ˈwaɪtbɔːrd/",
+          "meaningVi": "bảng trắng viết bút dạ",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.58,
+            "y": 0.42
+          },
+          "example": "The presenter wrote key financial metrics on the whiteboard.",
+          "collocation": "write on the whiteboard"
+        },
+        {
+          "id": "item_projector",
+          "word": "projector",
+          "ipa": "/prəˈdʒektər/",
+          "meaningVi": "máy chiếu",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.67,
+            "y": 0.21
+          },
+          "example": "Please turn off the projector after concluding the slide show.",
+          "collocation": "overhead projector"
+        },
+        {
+          "id": "item_conference_table",
+          "word": "conference table",
+          "ipa": "/ˈkɑːnfərəns ˈteɪbl/",
+          "meaningVi": "bàn họp dài",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.66,
+            "y": 0.62
+          },
+          "example": "Team leaders gathered around the central conference table.",
+          "collocation": "gather around the conference table"
+        },
+        {
+          "id": "item_colleague",
+          "word": "colleague",
+          "ipa": "/ˈkɑːliːɡ/",
+          "meaningVi": "đồng nghiệp",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.59,
+            "y": 0.54
+          },
+          "example": "She collaborated closely with colleagues on the marketing campaign.",
+          "collocation": "work with colleagues"
+        },
+        {
+          "id": "item_give_presentation",
+          "word": "give a presentation",
+          "ipa": "/ɡɪv ə ˌpreznˈteɪʃn/",
+          "meaningVi": "thuyết trình / trình bày",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.58,
+            "y": 0.3
+          },
+          "example": "The marketing manager is giving a presentation on annual sales.",
+          "collocation": "give a presentation"
+        }
+      ]
+    },
+    {
+      "zoneId": "zone_pantry",
+      "order": 4,
+      "label": "Khu pantry & Nghỉ ngơi",
+      "labelEn": "Breakroom & Pantry",
+      "viewBox": "780 180 220 370",
+      "center": {
+        "x": 0.91,
+        "y": 0.56
+      },
+      "items": [
+        {
+          "id": "item_coffee_maker",
+          "word": "coffee maker",
+          "ipa": "/ˈkɔːfi ˌmeɪkər/",
+          "meaningVi": "máy pha cà phê",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.9,
+            "y": 0.51
+          },
+          "example": "The company pantry provides an automatic espresso coffee maker.",
+          "collocation": "automatic coffee maker"
+        },
+        {
+          "id": "item_mug",
+          "word": "mug",
+          "ipa": "/mʌɡ/",
+          "meaningVi": "ly cốc có quai",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.96,
+            "y": 0.43
+          },
+          "example": "He washed his ceramic coffee mug after lunch.",
+          "collocation": "a mug of coffee"
+        },
+        {
+          "id": "item_water_dispenser",
+          "word": "water dispenser",
+          "ipa": "/ˈwɔːtər dɪˈspensər/",
+          "meaningVi": "cây nước nóng lạnh",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.97,
+            "y": 0.68
+          },
+          "example": "Staff can refill their reusable bottles at the water dispenser.",
+          "collocation": "water dispenser refill"
+        },
+        {
+          "id": "item_take_break",
+          "word": "take a break",
+          "ipa": "/teɪk ə breɪk/",
+          "meaningVi": "nghỉ giải lao giữa giờ",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.88,
+            "y": 0.64
+          },
+          "example": "Employees are encouraged to take a short break after long meetings.",
+          "collocation": "take a break"
+        }
+      ]
+    }
+  ],
+  "dayNumber": 3,
+  "dayTitle": "Day 03: Công việc văn phòng (1)",
+  "category": "Công việc văn phòng (1)"
+}

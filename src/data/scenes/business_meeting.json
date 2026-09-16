@@ -1,0 +1,347 @@
+{
+  "sceneId": "business_meeting",
+  "dayNumber": 5,
+  "dayTitle": "Day 05: Công việc văn phòng (3)",
+  "category": "Công việc văn phòng (3)",
+  "title": "Họp chiến lược & Thuyết trình",
+  "topic": "Business Meeting & Strategy",
+  "description": "Báo cáo công tác, điều phối phòng ban, deadline và tiến độ dự án nội bộ.",
+  "image": "/scenes/business_meeting.jpg",
+  "canvasWidth": 1000,
+  "canvasHeight": 562.5,
+  "fullViewBox": "0 0 1000 562.5",
+  "zones": [
+    {
+      "zoneId": "zone_presenter_screen",
+      "order": 1,
+      "label": "Màn hình thuyết trình số",
+      "labelEn": "Presentation Display",
+      "viewBox": "500 150 450 350",
+      "center": {
+        "x": 0.65,
+        "y": 0.4
+      },
+      "items": [
+        {
+          "id": "bm_screen",
+          "word": "interactive display",
+          "ipa": "/ˌɪntərˈæktɪv dɪˈspleɪ/",
+          "meaningVi": "màn hình thuyết trình tương tác",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.66,
+            "y": 0.38
+          },
+          "example": "The quarterly revenue growth was illustrated on the large interactive display.",
+          "collocation": "on the display"
+        },
+        {
+          "id": "bm_presenter",
+          "word": "keynote presenter",
+          "ipa": "/ˈkiːnoʊt prɪˈzentər/",
+          "meaningVi": "người thuyết trình chính",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.62,
+            "y": 0.48
+          },
+          "example": "The keynote presenter summarized performance targets for the upcoming quarter.",
+          "collocation": "listen to the presenter"
+        },
+        {
+          "id": "bm_chart",
+          "word": "bar chart",
+          "ipa": "/bɑːr tʃɑːrt/",
+          "meaningVi": "biểu đồ cột phân tích",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.58,
+            "y": 0.42
+          },
+          "example": "The bar chart indicated a significant surge in international sales volume.",
+          "collocation": "illustrate with a chart"
+        },
+        {
+          "id": "bm_pie_chart",
+          "word": "pie graph",
+          "ipa": "/paɪ ɡræf/",
+          "meaningVi": "biểu đồ tròn thị phần",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.7,
+            "y": 0.47
+          },
+          "example": "A circular pie graph broke down expenditures across four major departments.",
+          "collocation": "pie graph data"
+        },
+        {
+          "id": "bm_give_presentation",
+          "word": "deliver a presentation",
+          "ipa": "/dɪˈlɪvər ə ˌpreznˈteɪʃn/",
+          "meaningVi": "trình bày bài thuyết trình",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.68,
+            "y": 0.42
+          },
+          "example": "She delivered an insightful presentation on market diversification.",
+          "collocation": "deliver a presentation"
+        }
+      ]
+    },
+    {
+      "zoneId": "zone_conference_table",
+      "order": 2,
+      "label": "Bàn họp & Thiết bị máy tính",
+      "labelEn": "Boardroom Table & Tech",
+      "viewBox": "100 300 800 262.5",
+      "center": {
+        "x": 0.5,
+        "y": 0.75
+      },
+      "items": [
+        {
+          "id": "bm_table",
+          "word": "conference table",
+          "ipa": "/ˈkɑːnfərəns ˈteɪbl/",
+          "meaningVi": "bàn họp gỗ dài",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.48,
+            "y": 0.78
+          },
+          "example": "Ten executives gathered around the polished mahogany conference table.",
+          "collocation": "sit around the table"
+        },
+        {
+          "id": "bm_laptop",
+          "word": "laptop computer",
+          "ipa": "/ˈlæptɑːp kəmˈpjuːtər/",
+          "meaningVi": "máy tính xách tay",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.38,
+            "y": 0.68
+          },
+          "example": "He referenced updated project spreadsheets on his slim laptop computer.",
+          "collocation": "open a laptop"
+        },
+        {
+          "id": "bm_notebook",
+          "word": "executive notebook",
+          "ipa": "/ɪɡˈzekjətɪv ˈnoʊtbʊk/",
+          "meaningVi": "sổ tay ghi chép biên bản",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.28,
+            "y": 0.79
+          },
+          "example": "She opened her executive notebook to record key action items.",
+          "collocation": "take notes in notebook"
+        },
+        {
+          "id": "bm_water_glass",
+          "word": "drinking glass",
+          "ipa": "/ˈdrɪŋkɪŋ ɡlæs/",
+          "meaningVi": "ly uống nước của đại biểu",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.4,
+            "y": 0.75
+          },
+          "example": "Fresh drinking glasses and a lemon water pitcher were provided.",
+          "collocation": "glass of water"
+        },
+        {
+          "id": "bm_take_minutes",
+          "word": "take meeting minutes",
+          "ipa": "/teɪk ˈmiːtɪŋ ˈmɪnɪts/",
+          "meaningVi": "ghi biên bản cuộc họp",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.22,
+            "y": 0.77
+          },
+          "example": "The secretary is taking meeting minutes to email to all team leads.",
+          "collocation": "take meeting minutes"
+        }
+      ]
+    },
+    {
+      "zoneId": "zone_attendees_left",
+      "order": 3,
+      "label": "Đoàn đại biểu phía trái",
+      "labelEn": "Attendees & Directors",
+      "viewBox": "0 200 450 362.5",
+      "center": {
+        "x": 0.22,
+        "y": 0.6
+      },
+      "items": [
+        {
+          "id": "bm_executive",
+          "word": "board director",
+          "ipa": "/bɔːrd dəˈrektər/",
+          "meaningVi": "thành viên ban giám đốc",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.14,
+            "y": 0.68
+          },
+          "example": "The board director listened attentively to the sales forecast.",
+          "collocation": "board director"
+        },
+        {
+          "id": "bm_colleague",
+          "word": "team colleague",
+          "ipa": "/tiːm ˈkɑːliːɡ/",
+          "meaningVi": "đồng nghiệp dự án",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.26,
+            "y": 0.6
+          },
+          "example": "He conferred with his team colleague before voting on the proposal.",
+          "collocation": "consult with a colleague"
+        },
+        {
+          "id": "bm_project_manager",
+          "word": "project manager",
+          "ipa": "/ˈprɑːdʒekt ˈmænɪdʒər/",
+          "meaningVi": "quản lý dự án",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.38,
+            "y": 0.58
+          },
+          "example": "The project manager answered questions regarding resource allocation.",
+          "collocation": "project manager"
+        },
+        {
+          "id": "bm_chair",
+          "word": "conference chair",
+          "ipa": "/ˈkɑːnfərəns tʃer/",
+          "meaningVi": "ghế họp xoay nệm cao cấp",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.11,
+            "y": 0.85
+          },
+          "example": "Ergonomic conference chairs were arranged uniformly along the table.",
+          "collocation": "sit in conference chair"
+        },
+        {
+          "id": "bm_listen_attentively",
+          "word": "listen attentively",
+          "ipa": "/ˈlɪsn əˈtentɪvli/",
+          "meaningVi": "chú ý lắng nghe bài nói",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.3,
+            "y": 0.55
+          },
+          "example": "All participants listened attentively to the financial briefing.",
+          "collocation": "listen attentively"
+        }
+      ]
+    },
+    {
+      "zoneId": "zone_attendees_right",
+      "order": 4,
+      "label": "Đoàn đại biểu phía phải",
+      "labelEn": "Discussion & Strategic Review",
+      "viewBox": "650 200 350 362.5",
+      "center": {
+        "x": 0.82,
+        "y": 0.6
+      },
+      "items": [
+        {
+          "id": "bm_senior_analyst",
+          "word": "financial analyst",
+          "ipa": "/faɪˈnænʃl ˈænəlɪst/",
+          "meaningVi": "chuyên viên phân tích tài chính",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.77,
+            "y": 0.55
+          },
+          "example": "The financial analyst verified the projected profit margins.",
+          "collocation": "financial analyst"
+        },
+        {
+          "id": "bm_delegate_female",
+          "word": "department head",
+          "ipa": "/dɪˈpɑːrtmənt hed/",
+          "meaningVi": "trưởng bộ phận chuyên môn",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.84,
+            "y": 0.68
+          },
+          "example": "The marketing department head proposed an expanded digital campaign.",
+          "collocation": "department head"
+        },
+        {
+          "id": "bm_pitcher",
+          "word": "water pitcher",
+          "ipa": "/ˈwɔːtər ˈpɪtʃər/",
+          "meaningVi": "bình thủy tinh đựng nước lọc",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.56,
+            "y": 0.8
+          },
+          "example": "A tall glass water pitcher was placed in reach of all participants.",
+          "collocation": "pour from a pitcher"
+        },
+        {
+          "id": "bm_glass_wall",
+          "word": "curtain wall",
+          "ipa": "/ˈkɜːrtn wɔːl/",
+          "meaningVi": "vách kính ngoại thất nhìn ra phố",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.08,
+            "y": 0.35
+          },
+          "example": "The glass curtain wall offers striking views of downtown traffic below.",
+          "collocation": "glass curtain wall"
+        },
+        {
+          "id": "bm_discuss_strategy",
+          "word": "discuss business strategy",
+          "ipa": "/dɪˈskʌs ˈbɪznəs ˈstrætədʒi/",
+          "meaningVi": "thảo luận chiến lược kinh doanh",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.92,
+            "y": 0.6
+          },
+          "example": "The board members met to discuss corporate expansion strategy.",
+          "collocation": "discuss business strategy"
+        }
+      ]
+    }
+  ]
+}

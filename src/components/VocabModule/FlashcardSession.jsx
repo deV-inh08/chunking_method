@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef, useLayoutEffect } from 'react';
 import {
   ChevronLeft, RotateCw, RotateCcw, Volume2, CheckCircle2,
   AlertCircle, Trophy, Sparkles, BookOpen, Layers, ArrowRight,
@@ -7,6 +7,7 @@ import {
 import { Badge } from '../ui';
 import { wordToIPA, formatIPA } from '../../services/phonetics';
 import { getVocabChunks } from '../../store/storage';
+import { normalizeTypingInput, alignToTargetSpacing, isSpellingMatch, resolveTypingInput } from '../../utils/keyboardHelper';
 
 const POS_COLORS = {
   noun: 'part3',
@@ -46,7 +47,30 @@ export function FlashcardSession({
   const [isFinished, setIsFinished] = useState(false);
 
   const inputRef = useRef(null);
+  const typedInputRef = useRef('');
   const currentWord = studyQueue[currentIndex] || null;
+
+  // Sync ref with state
+  useEffect(() => {
+    typedInputRef.current = typedInput;
+  }, [typedInput]);
+
+  // Ensure DOM caret is pinned to the end of input
+  const ensureCaretAtEnd = useCallback(() => {
+    if (inputRef.current) {
+      const len = inputRef.current.value.length;
+      try {
+        inputRef.current.setSelectionRange(len, len);
+      } catch (_) {}
+    }
+  }, []);
+
+  // Synchronously lock caret to the end of input after every render of typedInput
+  useLayoutEffect(() => {
+    if (stage === 'spelling') {
+      ensureCaretAtEnd();
+    }
+  }, [typedInput, stage, ensureCaretAtEnd]);
 
   // Helper to normalize characters by removing diacritics / accents (e.g. résumé -> resume)
   const stripAccents = (str) => {
@@ -96,6 +120,7 @@ export function FlashcardSession({
   useEffect(() => {
     setIsFlipped(false);
     setStage('card');
+    typedInputRef.current = '';
     setTypedInput('');
     setSpellShake(false);
     setIsSuccess(false);
@@ -114,11 +139,12 @@ export function FlashcardSession({
       const timer = setTimeout(() => {
         if (inputRef.current) {
           inputRef.current.focus();
+          ensureCaretAtEnd();
         }
       }, 100);
       return () => clearTimeout(timer);
     }
-  }, [stage]);
+  }, [stage, ensureCaretAtEnd]);
 
   // Flip card in Stage 1
   const handleFlip = useCallback(() => {
@@ -171,6 +197,7 @@ export function FlashcardSession({
       if (currentIndex + 1 < studyQueue.length) {
         setCurrentIndex(i => i + 1);
         setStage('card');
+        typedInputRef.current = '';
         setTypedInput('');
         setIsSuccess(false);
       } else {
@@ -195,36 +222,33 @@ export function FlashcardSession({
 
   // Handle typing input change in Stage 2
   const handleInputChange = useCallback((newVal) => {
-    // Only accept length up to target length
-    let sliced = newVal.slice(0, targetLetters.length);
+    const prevVal = typedInputRef.current;
+    // Resolve mobile caret inversion, Telex decomposition, backspace, and spacing
+    const resolved = resolveTypingInput(newVal, prevVal, targetLetters);
 
-    // Auto-advance if next target character is hyphen or space
-    if (sliced.length < targetLetters.length) {
-      const nextTargetChar = targetLetters[sliced.length];
-      if (nextTargetChar === '-' || nextTargetChar === ' ') {
-        sliced = sliced + nextTargetChar;
-      }
+    typedInputRef.current = resolved;
+    setTypedInput(resolved);
+
+    // Keep DOM caret at the end
+    if (inputRef.current) {
+      const len = resolved.length;
+      try {
+        inputRef.current.setSelectionRange(len, len);
+      } catch (_) {}
     }
 
-    setTypedInput(sliced);
-
-    // If typed letters reach target word length, check accuracy
-    if (sliced.length === targetLetters.length) {
-      const cleanInput = stripAccents(sliced.trim()).toLowerCase();
-      const cleanTarget = stripAccents(targetWord).toLowerCase();
-
-      if (cleanInput === cleanTarget) {
-        handleSpellingSuccess();
-      } else {
-        setSpellShake(true);
-        setTimeout(() => setSpellShake(false), 500);
-      }
+    // Verify match
+    if (isSpellingMatch(resolved, targetWord)) {
+      handleSpellingSuccess();
+    } else if (resolved.length === targetLetters.length) {
+      setSpellShake(true);
+      setTimeout(() => setSpellShake(false), 500);
     }
   }, [targetLetters, targetWord, handleSpellingSuccess]);
 
   // Hint button: clean any trailing incorrect characters and reveal next correct letter
   const handleHint = useCallback(() => {
-    let base = typedInput;
+    let base = typedInputRef.current;
     while (base.length > 0) {
       const lastIdx = base.length - 1;
       const typed = stripAccents(base[lastIdx]).toLowerCase();
@@ -237,8 +261,9 @@ export function FlashcardSession({
       const updated = base + nextChar;
       handleInputChange(updated);
       inputRef.current?.focus();
+      ensureCaretAtEnd();
     }
-  }, [typedInput, targetLetters, handleInputChange]);
+  }, [targetLetters, handleInputChange, ensureCaretAtEnd]);
 
   // Skip and review later (user forgot spelling)
   const handleSkipAndReview = useCallback(() => {
@@ -246,6 +271,7 @@ export function FlashcardSession({
     const wordId = currentWord.id;
 
     // Reveal correct word in input
+    typedInputRef.current = normalizedTarget;
     setTypedInput(normalizedTarget);
     setReviewIds(prev => new Set(prev).add(wordId));
     setMasteredIds(prev => {
@@ -258,24 +284,26 @@ export function FlashcardSession({
       if (currentIndex + 1 < studyQueue.length) {
         setCurrentIndex(i => i + 1);
         setStage('card');
+        typedInputRef.current = '';
         setTypedInput('');
       } else {
         setIsFinished(true);
       }
     }, 750);
-  }, [currentWord, targetWord, currentIndex, studyQueue.length]);
+  }, [currentWord, normalizedTarget, currentIndex, studyQueue.length]);
 
   // Button "Đã thuộc" in Stage 1 -> Transitions to Stage 2
   const handleMasteredClick = useCallback(() => {
     if (stage === 'card') {
       setStage('spelling');
+      typedInputRef.current = '';
       setTypedInput('');
       setSpellShake(false);
       setIsSuccess(false);
     } else {
-      verifySpelling(typedInput);
+      verifySpelling(typedInputRef.current);
     }
-  }, [stage, typedInput, verifySpelling]);
+  }, [stage, verifySpelling]);
 
   // Keyboard navigation shortcuts
   useEffect(() => {
@@ -313,11 +341,14 @@ export function FlashcardSession({
           setStage('card');
         } else if (e.key === 'Backspace') {
           e.preventDefault();
-          setTypedInput(prev => prev.slice(0, -1));
+          const next = typedInputRef.current.slice(0, -1);
+          typedInputRef.current = next;
+          setTypedInput(next);
           inputRef.current?.focus();
+          ensureCaretAtEnd();
         } else if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey && /[a-zA-Z\s\-']/.test(e.key)) {
           e.preventDefault();
-          handleInputChange(typedInput + e.key);
+          handleInputChange(typedInputRef.current + e.key);
           inputRef.current?.focus();
         }
       }
@@ -325,7 +356,7 @@ export function FlashcardSession({
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isFinished, stage, currentWord, typedInput, handleFlip, handleNeedReview, handleMasteredClick, playAudio, handleInputChange]);
+  }, [isFinished, stage, currentWord, handleFlip, handleNeedReview, handleMasteredClick, playAudio, handleInputChange, ensureCaretAtEnd]);
 
   // Restart only review words
   const handleRestartReview = useCallback(() => {
@@ -735,9 +766,55 @@ export function FlashcardSession({
             {/* Dots / Slots displaying corresponding number of letters */}
             <div
               className={`flashcard-slots-wrapper ${spellShake ? 'shake' : ''}`}
-              onClick={() => inputRef.current?.focus()}
               title="Chạm vào đây để gõ chữ cái"
+              style={{ position: 'relative' }}
+              onClick={() => {
+                if (inputRef.current) {
+                  inputRef.current.focus();
+                  ensureCaretAtEnd();
+                }
+              }}
+              onTouchEnd={() => {
+                if (inputRef.current) {
+                  inputRef.current.focus();
+                  ensureCaretAtEnd();
+                }
+              }}
             >
+              {/* Native hidden input overlaying the slots container for zero-friction mobile typing */}
+              <input
+                ref={inputRef}
+                type="text"
+                lang="en-US"
+                dir="ltr"
+                inputMode="text"
+                className="flashcard-hidden-input"
+                value={typedInput}
+                onChange={(e) => handleInputChange(e.target.value)}
+                onSelect={(e) => {
+                  const len = e.currentTarget.value.length;
+                  if (e.currentTarget.selectionStart !== len || e.currentTarget.selectionEnd !== len) {
+                    try {
+                      e.currentTarget.setSelectionRange(len, len);
+                    } catch (_) {}
+                  }
+                }}
+                onClick={ensureCaretAtEnd}
+                onTouchEnd={() => {
+                  if (inputRef.current) {
+                    inputRef.current.focus();
+                    ensureCaretAtEnd();
+                  }
+                }}
+                onFocus={ensureCaretAtEnd}
+                autoFocus
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="none"
+                spellCheck={false}
+                aria-label="Nhập từ chính xác"
+              />
+
               {targetLetters.map((char, idx) => {
                 const isSpace = char === ' ';
                 const isHyphen = char === '-';
@@ -773,33 +850,14 @@ export function FlashcardSession({
                   <div
                     key={idx}
                     className={slotClass}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setTypedInput(typedInput.slice(0, idx));
-                      inputRef.current?.focus();
-                    }}
-                    title={isFilled ? 'Bấm để sửa từ vị trí này' : 'Gõ chữ cái'}
+                    title={isFilled ? 'Chữ cái đã điền' : 'Gõ chữ cái'}
+                    style={{ position: 'relative', zIndex: 1 }}
                   >
                     {isFilled ? (isMatch ? expectedChar.toLowerCase() : typedChar.toLowerCase()) : null}
                   </div>
                 );
               })}
             </div>
-
-            {/* Hidden native input for mobile virtual keyboard and IME support */}
-            <input
-              ref={inputRef}
-              type="text"
-              className="flashcard-hidden-input"
-              value={typedInput}
-              onChange={(e) => handleInputChange(e.target.value)}
-              autoFocus
-              autoComplete="off"
-              autoCorrect="off"
-              autoCapitalize="off"
-              spellCheck="false"
-              aria-label="Nhập từ chính xác"
-            />
 
             {/* Helper guide */}
             <div className="flashcard-spelling-guide">

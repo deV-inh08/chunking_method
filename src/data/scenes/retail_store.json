@@ -1,0 +1,347 @@
+{
+  "sceneId": "retail_store",
+  "dayNumber": 10,
+  "dayTitle": "Day 10: Mua sắm & Siêu thị",
+  "category": "Mua sắm & Bán lẻ",
+  "title": "Mua sắm bán lẻ & Siêu thị",
+  "topic": "Retail & Supermarket",
+  "description": "Xe đẩy siêu thị, quầy thanh toán, quét mã vạch và mua sắm tiêu dùng hàng ngày.",
+  "image": "/scenes/retail_store.jpg",
+  "canvasWidth": 1000,
+  "canvasHeight": 562.5,
+  "fullViewBox": "0 0 1000 562.5",
+  "zones": [
+    {
+      "zoneId": "zone_checkout_counter",
+      "order": 1,
+      "label": "Quầy thu ngân & Quét mã",
+      "labelEn": "Checkout Register",
+      "viewBox": "600 240 400 322.5",
+      "center": {
+        "x": 0.85,
+        "y": 0.65
+      },
+      "items": [
+        {
+          "id": "rs_cashier",
+          "word": "store cashier",
+          "ipa": "/stɔːr kæˈʃɪr/",
+          "meaningVi": "nhân viên thu ngân siêu thị",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.89,
+            "y": 0.54
+          },
+          "example": "The store cashier greeted the customer with a pleasant smile.",
+          "collocation": "pay the cashier"
+        },
+        {
+          "id": "rs_pos",
+          "word": "checkout register screen",
+          "ipa": "/ˈtʃekaʊt ˈredʒɪstər skriːn/",
+          "meaningVi": "màn hình máy tính tiền POS",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.95,
+            "y": 0.65
+          },
+          "example": "The total purchase amount appeared on the checkout register screen.",
+          "collocation": "cash register screen"
+        },
+        {
+          "id": "rs_scanner",
+          "word": "barcode scanner",
+          "ipa": "/ˈbɑːrkoʊd ˈskænər/",
+          "meaningVi": "máy quét mã vạch cầm tay",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.83,
+            "y": 0.63
+          },
+          "example": "The clerk used a wireless barcode scanner to register each item's price.",
+          "collocation": "scan with barcode scanner"
+        },
+        {
+          "id": "rs_card_terminal",
+          "word": "card payment terminal",
+          "ipa": "/kɑːrd ˈpeɪmənt ˈtɜːrmɪnl/",
+          "meaningVi": "máy quẹt thẻ thanh toán",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.89,
+            "y": 0.73
+          },
+          "example": "Insert your credit card into the chip card payment terminal.",
+          "collocation": "card payment terminal"
+        },
+        {
+          "id": "rs_scan_items",
+          "word": "scan grocery items",
+          "ipa": "/skæn ˈɡroʊsəri ˈaɪtəmz/",
+          "meaningVi": "quét mã hàng hóa tạp hóa",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.86,
+            "y": 0.6
+          },
+          "example": "She efficiently scanned grocery items and bagged them for the shopper.",
+          "collocation": "scan items"
+        }
+      ]
+    },
+    {
+      "zoneId": "zone_shopping_cart",
+      "order": 2,
+      "label": "Xe đẩy & Giỏ mua sắm",
+      "labelEn": "Shopping Carts & Baskets",
+      "viewBox": "100 300 550 262.5",
+      "center": {
+        "x": 0.35,
+        "y": 0.7
+      },
+      "items": [
+        {
+          "id": "rs_cart",
+          "word": "metal shopping cart",
+          "ipa": "/ˈmetl ˈʃɑːpɪŋ kɑːrt/",
+          "meaningVi": "xe đẩy mua hàng kim loại",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.28,
+            "y": 0.75
+          },
+          "example": "She filled her metal shopping cart with fresh produce and groceries.",
+          "collocation": "push a shopping cart"
+        },
+        {
+          "id": "rs_basket",
+          "word": "handheld shopping basket",
+          "ipa": "/ˈhændheld ˈʃɑːpɪŋ ˈbæskɪt/",
+          "meaningVi": "giỏ xách mua hàng cầm tay",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.56,
+            "y": 0.75
+          },
+          "example": "For quick purchases, customers prefer using a handheld shopping basket.",
+          "collocation": "carry a basket"
+        },
+        {
+          "id": "rs_shopper",
+          "word": "shopper",
+          "ipa": "/ˈʃɑːpər/",
+          "meaningVi": "người đi mua sắm",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.16,
+            "y": 0.6
+          },
+          "example": "The shopper checked her handwritten grocery list before choosing products.",
+          "collocation": "frequent shopper"
+        },
+        {
+          "id": "rs_customer_basket",
+          "word": "customer in aisle",
+          "ipa": "/ˈkʌstəmər ɪn aɪl/",
+          "meaningVi": "khách hàng đứng giữa lối đi",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.62,
+            "y": 0.62
+          },
+          "example": "A customer walked along the center aisle looking for breakfast cereal.",
+          "collocation": "in the aisle"
+        },
+        {
+          "id": "rs_push_cart",
+          "word": "push a shopping cart",
+          "ipa": "/pʊʃ ə ˈʃɑːpɪŋ kɑːrt/",
+          "meaningVi": "đẩy xe mua hàng",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.2,
+            "y": 0.72
+          },
+          "example": "She pushed the shopping cart along the wide clean supermarket aisles.",
+          "collocation": "push a cart"
+        }
+      ]
+    },
+    {
+      "zoneId": "zone_shelves_aisles",
+      "order": 3,
+      "label": "Kệ trưng bày & Lối đi",
+      "labelEn": "Display Shelves & Aisles",
+      "viewBox": "0 200 400 362.5",
+      "center": {
+        "x": 0.18,
+        "y": 0.45
+      },
+      "items": [
+        {
+          "id": "rs_shelves",
+          "word": "display shelf unit",
+          "ipa": "/dɪˈspleɪ ʃelf ˈjuːnɪt/",
+          "meaningVi": "kệ trưng bày hàng hóa nhiều tầng",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.08,
+            "y": 0.5
+          },
+          "example": "Beverages were neatly lined up on the sturdy display shelf unit.",
+          "collocation": "on the shelf"
+        },
+        {
+          "id": "rs_bottles",
+          "word": "bottled goods",
+          "ipa": "/ˈbɑːtld ɡʊdz/",
+          "meaningVi": "sản phẩm đóng chai",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.08,
+            "y": 0.62
+          },
+          "example": "The store stocked premium imported juices and bottled goods.",
+          "collocation": "bottled goods"
+        },
+        {
+          "id": "rs_price_tag",
+          "word": "shelf price tag",
+          "ipa": "/ʃelf praɪs tæɡ/",
+          "meaningVi": "tem nhãn giá dán mép kệ",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.08,
+            "y": 0.78
+          },
+          "example": "Compare unit costs shown on the yellow shelf price tags.",
+          "collocation": "check the price tag"
+        },
+        {
+          "id": "rs_aisle_floor",
+          "word": "aisle walkway",
+          "ipa": "/aɪl ˈwɔːkweɪ/",
+          "meaningVi": "lối đi giữa hai dãy kệ hàng",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.38,
+            "y": 0.72
+          },
+          "example": "Keep the wide supermarket aisle walkway free of unattended carts.",
+          "collocation": "walk down the aisle"
+        },
+        {
+          "id": "rs_browse",
+          "word": "browse merchandise",
+          "ipa": "/braʊz ˈmɜːrtʃəndaɪs/",
+          "meaningVi": "xem lướt qua hàng hóa",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.38,
+            "y": 0.5
+          },
+          "example": "Shoppers browsed the newly arrived seasonal merchandise.",
+          "collocation": "browse merchandise"
+        }
+      ]
+    },
+    {
+      "zoneId": "zone_produce_department",
+      "order": 4,
+      "label": "Khu rau quả & Biển ngành hàng",
+      "labelEn": "Department Signage & Produce",
+      "viewBox": "300 100 500 300",
+      "center": {
+        "x": 0.55,
+        "y": 0.35
+      },
+      "items": [
+        {
+          "id": "rs_produce_sign",
+          "word": "department signage",
+          "ipa": "/dɪˈpɑːrtmənt ˈsaɪnɪdʒ/",
+          "meaningVi": "biển tên phân loại gian hàng",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.48,
+            "y": 0.34
+          },
+          "example": "Clear overhead department signage marked 'Fresh Produce' and 'Bakery'.",
+          "collocation": "store signage"
+        },
+        {
+          "id": "rs_produce_stand",
+          "word": "produce display counter",
+          "ipa": "/ˈprɑːduːs dɪˈspleɪ ˈkaʊntər/",
+          "meaningVi": "quầy rau củ quả tươi",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.51,
+            "y": 0.45
+          },
+          "example": "Crisp organic apples and oranges were stacked in the produce display counter.",
+          "collocation": "fresh produce counter"
+        },
+        {
+          "id": "rs_overhead_lights",
+          "word": "linear fluorescent fixture",
+          "ipa": "/ˈlɪniər ˈflɔːrənt ˈfɪkstʃər/",
+          "meaningVi": "dãy đèn dài chiếu sáng siêu thị",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.16,
+            "y": 0.1
+          },
+          "example": "Long linear fluorescent light fixtures provide bright, uniform illumination.",
+          "collocation": "overhead lighting"
+        },
+        {
+          "id": "rs_grocery_bag",
+          "word": "paper grocery bag",
+          "ipa": "/ˈpeɪpər ˈɡroʊsəri bæɡ/",
+          "meaningVi": "túi giấy đựng hàng hóa",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.69,
+            "y": 0.62
+          },
+          "example": "The cashier packed dry goods into recyclable paper grocery bags.",
+          "collocation": "pack in a bag"
+        },
+        {
+          "id": "rs_pay_cashier",
+          "word": "settle the bill at checkout",
+          "ipa": "/ˈsetl ðə bɪl æt ˈtʃekaʊt/",
+          "meaningVi": "thanh toán hóa đơn tại quầy",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.7,
+            "y": 0.52
+          },
+          "example": "Customers can settle the bill at checkout using contactless mobile pay.",
+          "collocation": "settle the bill"
+        }
+      ]
+    }
+  ]
+}

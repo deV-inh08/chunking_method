@@ -1,0 +1,347 @@
+{
+  "sceneId": "conference_hall",
+  "dayNumber": 9,
+  "dayTitle": "Day 09: Hội nghị & Thuyết trình",
+  "category": "Hội nghị & Sự kiện",
+  "title": "Hội nghị & Thuyết trình diễn giả",
+  "topic": "Conference & Presentation",
+  "description": "Hội thảo quốc tế, bục diễn giả chính, slide thị phần thị trường và thính phòng.",
+  "image": "/scenes/conference_hall.jpg",
+  "canvasWidth": 1000,
+  "canvasHeight": 562.5,
+  "fullViewBox": "0 0 1000 562.5",
+  "zones": [
+    {
+      "zoneId": "zone_stage_podium",
+      "order": 1,
+      "label": "Bục diễn giả & Diễn văn",
+      "labelEn": "Speaker Podium",
+      "viewBox": "550 200 450 362.5",
+      "center": {
+        "x": 0.78,
+        "y": 0.6
+      },
+      "items": [
+        {
+          "id": "ch_lectern",
+          "word": "acrylic lectern",
+          "ipa": "/əˈkrɪlɪk ˈlektərn/",
+          "meaningVi": "bục phát biểu trong suốt",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.72,
+            "y": 0.7
+          },
+          "example": "The CEO stepped up to the modern transparent acrylic lectern.",
+          "collocation": "step to the lectern"
+        },
+        {
+          "id": "ch_mic",
+          "word": "gooseneck microphone",
+          "ipa": "/ˈɡuːsnek ˈmaɪkrəfoʊn/",
+          "meaningVi": "micro cổ ngỗng phát biểu",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.72,
+            "y": 0.52
+          },
+          "example": "Speak directly into the gooseneck microphone so the audience can hear.",
+          "collocation": "speak into microphone"
+        },
+        {
+          "id": "ch_speaker",
+          "word": "keynote speaker",
+          "ipa": "/ˈkiːnoʊt ˈspiːkər/",
+          "meaningVi": "diễn giả chính của hội nghị",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.81,
+            "y": 0.52
+          },
+          "example": "The distinguished keynote speaker addressed innovative market trends.",
+          "collocation": "listen to the keynote speaker"
+        },
+        {
+          "id": "ch_stage",
+          "word": "stage platform",
+          "ipa": "/steɪdʒ ˈplætfɔːrm/",
+          "meaningVi": "sân khấu biểu diễn hội trường",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.82,
+            "y": 0.85
+          },
+          "example": "Spotlights illuminated the speaker walking across the stage platform.",
+          "collocation": "on the stage"
+        },
+        {
+          "id": "ch_address_audience",
+          "word": "address the audience",
+          "ipa": "/əˈdres ði ˈɔːdiəns/",
+          "meaningVi": "phát biểu trước cử tọa",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.83,
+            "y": 0.65
+          },
+          "example": "The guest speaker addressed an audience of over one thousand delegates.",
+          "collocation": "address the audience"
+        }
+      ]
+    },
+    {
+      "zoneId": "zone_giant_screen",
+      "order": 2,
+      "label": "Màn hình LED thị trường",
+      "labelEn": "LED Display & Analytics",
+      "viewBox": "550 0 450 340",
+      "center": {
+        "x": 0.8,
+        "y": 0.25
+      },
+      "items": [
+        {
+          "id": "ch_led_screen",
+          "word": "jumbotron LED screen",
+          "ipa": "/ˈdʒʌmboʊtrɑːn ˌel iː ˈdiː skriːn/",
+          "meaningVi": "màn hình LED khổng lồ sân khấu",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.82,
+            "y": 0.28
+          },
+          "example": "Key statistical graphics were projected onto the high-resolution LED screen.",
+          "collocation": "on the LED screen"
+        },
+        {
+          "id": "ch_statistics",
+          "word": "market share analytics",
+          "ipa": "/ˈmɑːrkɪt ʃer ˌænəˈlɪtɪks/",
+          "meaningVi": "số liệu thống kê thị phần",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.88,
+            "y": 0.28
+          },
+          "example": "The slide presented market share analytics showing a 32% growth margin.",
+          "collocation": "market analytics"
+        },
+        {
+          "id": "ch_banner",
+          "word": "conference banner",
+          "ipa": "/ˈkɑːnfərəns ˈbænər/",
+          "meaningVi": "biển hiệu chủ đề diễn đàn",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.58,
+            "y": 0.38
+          },
+          "example": "The banner announced the Global Innovation Forum 2024.",
+          "collocation": "conference banner"
+        },
+        {
+          "id": "ch_truss",
+          "word": "lighting truss rig",
+          "ipa": "/ˈlaɪtɪŋ trʌs rɪɡ/",
+          "meaningVi": "giàn khung đèn sân khấu",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.62,
+            "y": 0.1
+          },
+          "example": "Heavy spotlights were securely mounted to the aluminum lighting truss.",
+          "collocation": "lighting rig"
+        },
+        {
+          "id": "ch_explain_slides",
+          "word": "explain statistical data",
+          "ipa": "/ɪkˈspleɪn stəˈtɪstɪkl ˈdeɪtə/",
+          "meaningVi": "giải thích số liệu thống kê",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.76,
+            "y": 0.44
+          },
+          "example": "He paused to clearly explain the statistical data to the attendees.",
+          "collocation": "explain data"
+        }
+      ]
+    },
+    {
+      "zoneId": "zone_delegates_front",
+      "order": 3,
+      "label": "Hàng ghế đại biểu VIP",
+      "labelEn": "VIP Delegates & Front Rows",
+      "viewBox": "0 300 550 262.5",
+      "center": {
+        "x": 0.28,
+        "y": 0.78
+      },
+      "items": [
+        {
+          "id": "ch_vip_delegate",
+          "word": "conference delegate",
+          "ipa": "/ˈkɑːnfərəns ˈdelɪɡət/",
+          "meaningVi": "đại biểu tham dự hội nghị",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.23,
+            "y": 0.78
+          },
+          "example": "Delegates from thirty nations convened at the opening assembly.",
+          "collocation": "registered delegate"
+        },
+        {
+          "id": "ch_name_tag",
+          "word": "credentials badge",
+          "ipa": "/krəˈdenʃlz bædʒ/",
+          "meaningVi": "thẻ đeo đại biểu chính thức",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.08,
+            "y": 0.9
+          },
+          "example": "All participants wore printed credentials badges for security clearance.",
+          "collocation": "wear a badge"
+        },
+        {
+          "id": "ch_business_attire",
+          "word": "formal attire",
+          "ipa": "/ˈfɔːrml əˈtaɪər/",
+          "meaningVi": "trang phục dự hội nghị trang trọng",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.35,
+            "y": 0.76
+          },
+          "example": "Attendees maintained business professional formal attire throughout the event.",
+          "collocation": "formal attire"
+        },
+        {
+          "id": "ch_monitor_speaker",
+          "word": "stage monitor wedge",
+          "ipa": "/steɪdʒ ˈmɑːnɪtər wedʒ/",
+          "meaningVi": "loa kiểm âm sân khấu",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.57,
+            "y": 0.85
+          },
+          "example": "Audio monitor speakers ensured clear playback for speakers on stage.",
+          "collocation": "stage speaker"
+        },
+        {
+          "id": "ch_applaud",
+          "word": "applaud the presentation",
+          "ipa": "/əˈplɔːd ðə ˌpreznˈteɪʃn/",
+          "meaningVi": "vỗ tay tán thưởng bài nói",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.28,
+            "y": 0.84
+          },
+          "example": "The delegates applauded warmly at the conclusion of the keynote talk.",
+          "collocation": "applaud the speaker"
+        }
+      ]
+    },
+    {
+      "zoneId": "zone_auditorium_hall",
+      "order": 4,
+      "label": "Khán phòng & Khán giả",
+      "labelEn": "Auditorium & Seating Tier",
+      "viewBox": "0 0 550 350",
+      "center": {
+        "x": 0.25,
+        "y": 0.3
+      },
+      "items": [
+        {
+          "id": "ch_tiered_seating",
+          "word": "tiered auditorium",
+          "ipa": "/tɪrd ˌɔːdɪˈtɔːriəm/",
+          "meaningVi": "khán phòng bậc thang xếp tầng",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.2,
+            "y": 0.4
+          },
+          "example": "The grand tiered auditorium accommodated a full house of guests.",
+          "collocation": "tiered auditorium"
+        },
+        {
+          "id": "ch_ceiling_panels",
+          "word": "acoustic ceiling baffles",
+          "ipa": "/əˈkuːstɪk ˈsiːlɪŋ ˈbæflz/",
+          "meaningVi": "tấm tiêu âm ốp trần",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.25,
+            "y": 0.08
+          },
+          "example": "Acoustic ceiling baffles eliminate reverberation and enhance sound clarity.",
+          "collocation": "acoustic panels"
+        },
+        {
+          "id": "ch_balcony",
+          "word": "mezzanine balcony",
+          "ipa": "/ˈmezəniːn ˈbælkəni/",
+          "meaningVi": "tầng lửng khán đài",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.25,
+            "y": 0.28
+          },
+          "example": "Spectators seated on the mezzanine balcony had an expansive view.",
+          "collocation": "balcony seating"
+        },
+        {
+          "id": "ch_spotlights",
+          "word": "halogen spotlight",
+          "ipa": "/ˈhælədʒən ˈspɑːtlaɪt/",
+          "meaningVi": "đèn chiếu rọi sân khấu",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": {
+            "x": 0.41,
+            "y": 0.06
+          },
+          "example": "Bright halogen spotlights focused directly upon the presenter's podium.",
+          "collocation": "spotlight beam"
+        },
+        {
+          "id": "ch_attend_summit",
+          "word": "attend a global summit",
+          "ipa": "/əˈtend ə ˈɡloʊbl ˈsʌmɪt/",
+          "meaningVi": "tham dự hội nghị thượng đỉnh",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": {
+            "x": 0.4,
+            "y": 0.65
+          },
+          "example": "Over eight hundred specialists attended the annual technology summit.",
+          "collocation": "attend a summit"
+        }
+      ]
+    }
+  ]
+}

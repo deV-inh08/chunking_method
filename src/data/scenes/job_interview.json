@@ -1,0 +1,275 @@
+{
+  "sceneId": "job_interview",
+  "dayNumber": 1,
+  "dayTitle": "Day 01: Tuyển dụng",
+  "category": "Tuyển dụng",
+  "title": "Tuyển dụng & Phỏng vấn",
+  "topic": "Recruitment & Job Interview",
+  "description": "Hồ sơ xin việc, ứng tuyển, tiêu chuẩn nhân sự và phỏng vấn công sở tiêu chuẩn TOEIC Part 1 & 3.",
+  "image": "/scenes/job_interview.jpg",
+  "canvasWidth": 1000,
+  "canvasHeight": 562.5,
+  "fullViewBox": "0 0 1000 562.5",
+  "zones": [
+    {
+      "zoneId": "zone_candidate_side",
+      "order": 1,
+      "label": "Khu ứng viên phỏng vấn",
+      "labelEn": "Candidate Side",
+      "viewBox": "500 160 500 400",
+      "center": { "x": 0.75, "y": 0.58 },
+      "items": [
+        {
+          "id": "ji_candidate",
+          "word": "candidate",
+          "ipa": "/ˈkændɪdət/",
+          "meaningVi": "ứng viên xin việc",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.76, "y": 0.52 },
+          "example": "The promising candidate answered the technical questions with confidence.",
+          "collocation": "qualified candidate"
+        },
+        {
+          "id": "ji_suit",
+          "word": "business suit",
+          "ipa": "/ˈbɪznəs suːt/",
+          "meaningVi": "bộ âu phục công sở",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.77, "y": 0.65 },
+          "example": "All attendees at the interview wore formal business suits.",
+          "collocation": "wear a business suit"
+        },
+        {
+          "id": "ji_resume",
+          "word": "resume",
+          "ipa": "/ˈrezəmeɪ/",
+          "meaningVi": "hồ sơ xin việc, sơ yếu lý lịch",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.64, "y": 0.66 },
+          "example": "Please submit your updated resume along with two references.",
+          "collocation": "submit a resume"
+        },
+        {
+          "id": "ji_chair",
+          "word": "leather chair",
+          "ipa": "/ˈleðər tʃer/",
+          "meaningVi": "ghế đệm da văn phòng",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.83, "y": 0.68 },
+          "example": "The applicant sat comfortably in an executive leather chair.",
+          "collocation": "sit in a chair"
+        },
+        {
+          "id": "ji_gesture",
+          "word": "gesture with hands",
+          "ipa": "/ˈdʒestʃər wɪð hændz/",
+          "meaningVi": "dùng tay ra hiệu diễn đạt",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": { "x": 0.65, "y": 0.58 },
+          "example": "She gestured with her hands while describing her past project experience.",
+          "collocation": "gesture with hands"
+        }
+      ]
+    },
+    {
+      "zoneId": "zone_interviewers",
+      "order": 2,
+      "label": "Bàn hội đồng tuyển dụng",
+      "labelEn": "Hiring Committee",
+      "viewBox": "120 160 480 400",
+      "center": { "x": 0.32, "y": 0.56 },
+      "items": [
+        {
+          "id": "ji_interviewer",
+          "word": "interviewer",
+          "ipa": "/ˈɪntərvjuːər/",
+          "meaningVi": "người phỏng vấn, nhà tuyển dụng",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.37, "y": 0.50 },
+          "example": "The head interviewer carefully noted the candidate's strengths.",
+          "collocation": "face the interviewer"
+        },
+        {
+          "id": "ji_hr_manager",
+          "word": "HR manager",
+          "ipa": "/ˌeɪtʃ ˈɑːr ˈmænɪdʒər/",
+          "meaningVi": "trưởng phòng nhân sự",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.23, "y": 0.62 },
+          "example": "The HR manager explained the health insurance and vacation benefits.",
+          "collocation": "consult the HR manager"
+        },
+        {
+          "id": "ji_notepad",
+          "word": "notepad",
+          "ipa": "/ˈnoʊtpæd/",
+          "meaningVi": "sổ tay ghi chép",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.39, "y": 0.70 },
+          "example": "He jotted down test scores on his spiral notepad.",
+          "collocation": "write in a notepad"
+        },
+        {
+          "id": "ji_water_glass",
+          "word": "water tumbler",
+          "ipa": "/ˈwɔːtər ˈtʌmblər/",
+          "meaningVi": "cốc thủy tinh đựng nước",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.47, "y": 0.72 },
+          "example": "Glasses of fresh ice water were placed on the conference table.",
+          "collocation": "a glass of water"
+        },
+        {
+          "id": "ji_conduct_interview",
+          "word": "conduct an interview",
+          "ipa": "/kənˈdʌkt ən ˈɪntərvjuː/",
+          "meaningVi": "tiến hành phỏng vấn",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": { "x": 0.35, "y": 0.44 },
+          "example": "The committee conducted six in-person interviews this morning.",
+          "collocation": "conduct an interview"
+        }
+      ]
+    },
+    {
+      "zoneId": "zone_documents",
+      "order": 3,
+      "label": "Khu hồ sơ & Đơn ứng tuyển",
+      "labelEn": "Dossier & Application",
+      "viewBox": "260 300 480 260",
+      "center": { "x": 0.48, "y": 0.78 },
+      "items": [
+        {
+          "id": "ji_folder",
+          "word": "manila folder",
+          "ipa": "/məˈnɪlə ˈfoʊldər/",
+          "meaningVi": "bìa kẹp tài liệu hồ sơ",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.51, "y": 0.90 },
+          "example": "Each applicant's credentials were kept inside a yellow manila folder.",
+          "collocation": "open a folder"
+        },
+        {
+          "id": "ji_application",
+          "word": "application form",
+          "ipa": "/ˌæplɪˈkeɪʃn fɔːrm/",
+          "meaningVi": "đơn xin việc, phiếu ứng tuyển",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.39, "y": 0.78 },
+          "example": "All applicants must sign the formal employment application form.",
+          "collocation": "fill out an application"
+        },
+        {
+          "id": "ji_pen",
+          "word": "ballpoint pen",
+          "ipa": "/ˈbɔːlpɔɪnt pen/",
+          "meaningVi": "bút bi ký tài liệu",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.44, "y": 0.60 },
+          "example": "The interviewer picked up a black ballpoint pen to sign the evaluation.",
+          "collocation": "sign with a pen"
+        },
+        {
+          "id": "ji_pitcher",
+          "word": "water carafe",
+          "ipa": "/ˈwɔːtər kəˈræf/",
+          "meaningVi": "bình thủy tinh rót nước",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.52, "y": 0.55 },
+          "example": "A chilled water carafe was set in the middle of the table.",
+          "collocation": "pour from a carafe"
+        },
+        {
+          "id": "ji_review_qual",
+          "word": "review qualifications",
+          "ipa": "/rɪˈvjuː ˌkwɑːlɪfɪˈkeɪʃnz/",
+          "meaningVi": "rà soát năng lực / bằng cấp",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": { "x": 0.45, "y": 0.82 },
+          "example": "The hiring manager reviewed the candidate's professional qualifications.",
+          "collocation": "review qualifications"
+        }
+      ]
+    },
+    {
+      "zoneId": "zone_office_view",
+      "order": 4,
+      "label": "Khung kính & Phòng họp cao ốc",
+      "labelEn": "Glass Boardroom & Skyline",
+      "viewBox": "400 0 600 360",
+      "center": { "x": 0.70, "y": 0.28 },
+      "items": [
+        {
+          "id": "ji_window",
+          "word": "window pane",
+          "ipa": "/ˈwɪndoʊ peɪn/",
+          "meaningVi": "vách kính lớn kịch trần",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.88, "y": 0.38 },
+          "example": "Natural sunlight poured through the floor-to-ceiling window pane.",
+          "collocation": "look through the window"
+        },
+        {
+          "id": "ji_skyline",
+          "word": "city skyline",
+          "ipa": "/ˈsɪti ˈskaɪlaɪn/",
+          "meaningVi": "toàn cảnh thành phố nhìn từ trên cao",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.74, "y": 0.30 },
+          "example": "The corner office provides a panoramic view of the bustling city skyline.",
+          "collocation": "view the city skyline"
+        },
+        {
+          "id": "ji_partition",
+          "word": "glass partition",
+          "ipa": "/ɡlæs pɑːrˈtɪʃn/",
+          "meaningVi": "vách ngăn kính cách âm",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.15, "y": 0.35 },
+          "example": "The modern office uses transparent glass partitions to separate meeting rooms.",
+          "collocation": "glass partition wall"
+        },
+        {
+          "id": "ji_plant",
+          "word": "potted plant",
+          "ipa": "/ˈpɑːtɪd plænt/",
+          "meaningVi": "chậu cây cảnh văn phòng",
+          "pos": "noun",
+          "visualType": "object",
+          "hotspot": { "x": 0.49, "y": 0.38 },
+          "example": "Potted plants were placed near the windows to enhance the workplace environment.",
+          "collocation": "indoor potted plant"
+        },
+        {
+          "id": "ji_negotiate",
+          "word": "negotiate salary",
+          "ipa": "/nɪˈɡoʊʃieɪt ˈsæləri/",
+          "meaningVi": "thương lượng mức lương & đãi ngộ",
+          "pos": "phrase",
+          "visualType": "action",
+          "hotspot": { "x": 0.58, "y": 0.46 },
+          "example": "The final round allows candidates to negotiate their starting salary.",
+          "collocation": "negotiate starting salary"
+        }
+      ]
+    }
+  ]
+}

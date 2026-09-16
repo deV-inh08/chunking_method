@@ -1,0 +1,373 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600" id="svg_office_main">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="55%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="floorGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a2234" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="deskTopGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <linearGradient id="metalGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#64748b" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+    <linearGradient id="whiteboardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    <linearGradient id="beamGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(147, 197, 253, 0.25)" />
+      <stop offset="100%" stop-color="rgba(147, 197, 253, 0.02)" />
+    </linearGradient>
+
+    <!-- Zone Glow Filters -->
+    <filter id="glow-teal" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glow-amber" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Architecture -->
+  <rect width="1000" height="600" fill="url(#bgGrad)" />
+
+  <!-- Back Wall & Windows -->
+  <rect x="0" y="0" width="1000" height="380" fill="#1e293b" />
+  
+  <!-- Modern Window looking at City Skyline -->
+  <g opacity="0.35">
+    <rect x="80" y="40" width="220" height="150" rx="8" fill="#090d16" stroke="#334155" stroke-width="2" />
+    <!-- City silhouette -->
+    <path d="M90,190 L90,120 L110,120 L110,95 L135,95 L135,140 L160,140 L160,80 L185,80 L185,130 L210,130 L210,105 L235,105 L235,150 L260,150 L260,70 L285,70 L285,190 Z" fill="#1e293b" />
+    <!-- Stars/Lights -->
+    <circle cx="100" cy="65" r="1.5" fill="#38bdf8" />
+    <circle cx="170" cy="55" r="1.5" fill="#38bdf8" />
+    <circle cx="250" cy="60" r="1.5" fill="#38bdf8" />
+    <!-- Window dividers -->
+    <line x1="190" y1="40" x2="190" y2="190" stroke="#334155" stroke-width="2" />
+    <line x1="80" y1="115" x2="300" y2="115" stroke="#334155" stroke-width="2" />
+  </g>
+
+  <!-- Office Floor Line -->
+  <polygon points="0,380 1000,380 1000,600 0,600" fill="url(#floorGrad)" />
+  <line x1="0" y1="380" x2="1000" y2="380" stroke="#334155" stroke-width="2" opacity="0.7" />
+
+  <!-- Perspective floor grids -->
+  <g stroke="#334155" stroke-width="1" opacity="0.25">
+    <line x1="0" y1="420" x2="1000" y2="420" />
+    <line x1="0" y1="480" x2="1000" y2="480" />
+    <line x1="0" y1="550" x2="1000" y2="550" />
+    <line x1="200" y1="380" x2="100" y2="600" />
+    <line x1="450" y1="380" x2="380" y2="600" />
+    <line x1="700" y1="380" x2="720" y2="600" />
+    <line x1="880" y1="380" x2="940" y2="600" />
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- ZONE 1: WORKSTATION / DESK AREA (x: 60-440, y: 160-550)   -->
+  <!-- ======================================================== -->
+  <g id="zone_desk_area" class="scene-zone">
+    <!-- Zone Ambient Light / Mat -->
+    <ellipse cx="230" cy="510" rx="140" ry="40" fill="#38bdf8" opacity="0.05" />
+
+    <!-- Desk Structure -->
+    <!-- Legs -->
+    <rect x="110" y="380" width="12" height="120" rx="3" fill="url(#metalGrad)" />
+    <rect x="330" y="380" width="12" height="120" rx="3" fill="url(#metalGrad)" />
+    <!-- Desk Surface Top -->
+    <polygon points="90,360 360,360 380,390 70,390" fill="url(#deskTopGrad)" stroke="#475569" stroke-width="2" />
+    <polygon points="70,390 380,390 380,400 70,400" fill="#1e293b" />
+
+    <!-- Computer Monitor -->
+    <!-- Stand -->
+    <rect x="215" y="310" width="10" height="50" rx="2" fill="url(#metalGrad)" />
+    <polygon points="195,358 245,358 250,362 190,362" fill="url(#metalGrad)" />
+    <!-- Screen Frame & Glass -->
+    <rect x="160" y="210" width="120" height="85" rx="6" fill="#090d16" stroke="#475569" stroke-width="3" />
+    <rect x="166" y="216" width="108" height="73" rx="3" fill="url(#screenGrad)" />
+    <!-- Screen Content: Code / Dashboard lines -->
+    <line x1="174" y1="230" x2="210" y2="230" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" />
+    <line x1="174" y1="242" x2="250" y2="242" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.8" />
+    <line x1="174" y1="254" x2="230" y2="254" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" />
+    <rect x="235" y="260" width="30" height="20" rx="2" fill="rgba(255,255,255,0.2)" />
+
+    <!-- Keyboard on Desk -->
+    <polygon points="175,372 265,372 270,385 170,385" fill="#0f172a" stroke="#64748b" stroke-width="1.5" rx="2" />
+    <!-- Key Rows -->
+    <line x1="178" y1="376" x2="263" y2="376" stroke="#475569" stroke-width="1.5" stroke-dasharray="3,2" />
+    <line x1="176" y1="381" x2="266" y2="381" stroke="#475569" stroke-width="1.5" stroke-dasharray="3,2" />
+    
+    <!-- Mouse & Pad -->
+    <rect x="285" y="371" width="32" height="15" rx="2" fill="#1e293b" />
+    <ellipse cx="300" cy="378" rx="6" ry="4" fill="#64748b" />
+
+    <!-- Office Chair -->
+    <g id="chair_group">
+      <!-- Chair Base & Wheels -->
+      <line x1="220" y1="480" x2="220" y2="440" stroke="#64748b" stroke-width="8" stroke-linecap="round" />
+      <line x1="180" y1="500" x2="220" y2="480" stroke="#475569" stroke-width="5" />
+      <line x1="260" y1="500" x2="220" y2="480" stroke="#475569" stroke-width="5" />
+      <circle cx="180" cy="503" r="4" fill="#0f172a" />
+      <circle cx="260" cy="503" r="4" fill="#0f172a" />
+      <circle cx="220" cy="506" r="4" fill="#0f172a" />
+      <!-- Seat Cushion -->
+      <ellipse cx="220" cy="440" rx="42" ry="14" fill="#2563eb" stroke="#1d4ed8" stroke-width="2" />
+      <!-- Chair Mesh Backrest -->
+      <path d="M190,430 C190,370 195,350 220,350 C245,350 250,370 250,430 Z" fill="#1e40af" stroke="#3b82f6" stroke-width="2" opacity="0.9" />
+      <!-- Lumbar support band -->
+      <path d="M195,390 Q220,400 245,390" stroke="#60a5fa" stroke-width="3" fill="none" />
+      <!-- Armrests -->
+      <path d="M185,420 L175,410 L175,395" stroke="#64748b" stroke-width="4" stroke-linecap="round" fill="none" />
+      <path d="M255,420 L265,410 L265,395" stroke="#64748b" stroke-width="4" stroke-linecap="round" fill="none" />
+    </g>
+
+    <!-- Action Graphic: Type an email (motion email icon) -->
+    <g id="action_type_email" transform="translate(295, 270)">
+      <rect x="0" y="0" width="46" height="32" rx="4" fill="#7c3aed" opacity="0.9" stroke="#c084fc" stroke-width="1.5" />
+      <path d="M4,4 L23,20 L42,4" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" />
+      <!-- Speed lines -->
+      <line x1="-8" y1="10" x2="-2" y2="10" stroke="#c084fc" stroke-width="2" stroke-linecap="round" />
+      <line x1="-12" y1="18" x2="-2" y2="18" stroke="#c084fc" stroke-width="2" stroke-linecap="round" />
+      <line x1="-6" y1="26" x2="-2" y2="26" stroke="#c084fc" stroke-width="2" stroke-linecap="round" />
+    </g>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- ZONE 2: STATIONERY / PRINTER / ARCHIVE (x: 320-560)       -->
+  <!-- ======================================================== -->
+  <g id="zone_stationery" class="scene-zone">
+    <!-- Filing Cabinet -->
+    <g id="filing_cabinet_group">
+      <rect x="400" y="140" width="85" height="150" rx="4" fill="#334155" stroke="#64748b" stroke-width="2" />
+      <!-- Drawer 1 -->
+      <rect x="408" y="150" width="69" height="38" rx="2" fill="#1e293b" stroke="#475569" stroke-width="1" />
+      <rect x="430" y="165" width="25" height="6" rx="2" fill="#94a3b8" />
+      <rect x="445" y="155" width="18" height="6" rx="1" fill="#f8fafc" opacity="0.7" />
+      <!-- Drawer 2 -->
+      <rect x="408" y="196" width="69" height="38" rx="2" fill="#1e293b" stroke="#475569" stroke-width="1" />
+      <rect x="430" y="211" width="25" height="6" rx="2" fill="#94a3b8" />
+      <!-- Drawer 3 -->
+      <rect x="408" y="242" width="69" height="38" rx="2" fill="#1e293b" stroke="#475569" stroke-width="1" />
+      <rect x="430" y="257" width="25" height="6" rx="2" fill="#94a3b8" />
+    </g>
+
+    <!-- Printer Table -->
+    <rect x="390" y="320" width="130" height="8" rx="2" fill="#475569" />
+    <line x1="400" y1="328" x2="400" y2="420" stroke="#334155" stroke-width="6" />
+    <line x1="510" y1="328" x2="510" y2="420" stroke="#334155" stroke-width="6" />
+
+    <!-- Multifunction Office Printer -->
+    <g id="printer_group">
+      <!-- Main body -->
+      <rect x="405" y="240" width="100" height="78" rx="6" fill="#0f172a" stroke="#64748b" stroke-width="2" />
+      <!-- Scanner Lid Top -->
+      <polygon points="410,230 495,230 505,240 405,240" fill="#1e293b" stroke="#475569" stroke-width="1" />
+      <rect x="420" y="222" width="60" height="8" rx="2" fill="#334155" />
+      <!-- Display screen -->
+      <rect x="415" y="248" width="26" height="16" rx="2" fill="#3b82f6" />
+      <!-- Buttons -->
+      <circle cx="452" cy="252" r="3" fill="#22c55e" />
+      <circle cx="462" cy="252" r="3" fill="#ef4444" />
+      <circle cx="472" cy="252" r="3" fill="#cbd5e1" />
+      <!-- Paper Exit Slot -->
+      <rect x="415" y="274" width="80" height="8" rx="2" fill="#000000" />
+      <!-- Paper Tray Extension & Printed Sheet -->
+      <polygon points="420,282 490,282 505,296 410,296" fill="#334155" stroke="#64748b" stroke-width="1" />
+      <polygon points="428,278 482,278 492,292 422,292" fill="#ffffff" opacity="0.9" />
+      <line x1="435" y1="285" x2="475" y2="285" stroke="#94a3b8" stroke-width="1" />
+    </g>
+
+    <!-- Paper Shredder -->
+    <g id="shredder_group">
+      <rect x="345" y="340" width="48" height="60" rx="4" fill="#1e293b" stroke="#475569" stroke-width="2" />
+      <rect x="350" y="345" width="38" height="6" rx="1" fill="#090d16" />
+      <!-- Paper entering shredder slot -->
+      <rect x="358" y="335" width="22" height="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" />
+      <!-- Transparent Window with shredded strips -->
+      <rect x="353" y="360" width="32" height="32" rx="2" fill="#0f172a" stroke="#334155" stroke-width="1" />
+      <line x1="360" y1="368" x2="360" y2="386" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2" />
+      <line x1="366" y1="365" x2="366" y2="388" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2" />
+      <line x1="372" y1="370" x2="372" y2="384" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2" />
+    </g>
+
+    <!-- Action Graphic: Print a Document -->
+    <g id="action_print_document" transform="translate(465, 195)">
+      <circle cx="16" cy="16" r="18" fill="#7c3aed" opacity="0.9" stroke="#c084fc" stroke-width="1.5" />
+      <!-- Document icon -->
+      <rect x="8" y="7" width="16" height="18" rx="2" fill="#ffffff" />
+      <polygon points="18,7 24,13 18,13" fill="#cbd5e1" />
+      <line x1="11" y1="15" x2="20" y2="15" stroke="#7c3aed" stroke-width="1.5" />
+      <line x1="11" y1="19" x2="18" y2="19" stroke="#7c3aed" stroke-width="1.5" />
+      <!-- Outward arrow -->
+      <path d="M26,24 L32,24 M32,24 L29,21 M32,24 L29,27" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- ZONE 3: MEETING ROOM & PRESENTATION (x: 580-920, y: 80-450)-->
+  <!-- ======================================================== -->
+  <g id="zone_meeting" class="scene-zone">
+    <!-- Whiteboard on Wall -->
+    <g id="whiteboard_group">
+      <rect x="630" y="80" width="180" height="110" rx="4" fill="url(#whiteboardGrad)" stroke="#64748b" stroke-width="3" />
+      <rect x="634" y="84" width="172" height="102" fill="#ffffff" />
+      <!-- Whiteboard Presentation Chart & Notes -->
+      <line x1="650" y1="165" x2="780" y2="165" stroke="#94a3b8" stroke-width="2" />
+      <line x1="650" y1="105" x2="650" y2="165" stroke="#94a3b8" stroke-width="2" />
+      <!-- Growth Trend Bar / Line -->
+      <polyline points="660,155 690,140 720,145 750,115 780,105" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="780" cy="105" r="3" fill="#ef4444" />
+      <!-- Whiteboard Tray & Markers -->
+      <rect x="670" y="190" width="80" height="6" rx="2" fill="#475569" />
+      <line x1="685" y1="188" x2="705" y2="188" stroke="#ef4444" stroke-width="3" stroke-linecap="round" />
+      <line x1="715" y1="188" x2="735" y2="188" stroke="#2563eb" stroke-width="3" stroke-linecap="round" />
+    </g>
+
+    <!-- Ceiling Projector -->
+    <g id="projector_group">
+      <!-- Ceiling Mount Pole -->
+      <line x1="820" y1="0" x2="820" y2="90" stroke="#64748b" stroke-width="4" />
+      <!-- Projector body -->
+      <rect x="790" y="90" width="60" height="24" rx="4" fill="#0f172a" stroke="#475569" stroke-width="2" />
+      <!-- Lens -->
+      <ellipse cx="800" cy="102" rx="4" ry="7" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5" />
+      <!-- Projection Light Beam Cone -->
+      <polygon points="796,102 630,90 630,190" fill="url(#beamGrad)" />
+    </g>
+
+    <!-- Conference Table -->
+    <g id="conference_table_group">
+      <!-- Legs -->
+      <rect x="670" y="320" width="14" height="70" rx="2" fill="#334155" />
+      <rect x="830" y="320" width="14" height="70" rx="2" fill="#334155" />
+      <!-- Oval Table Top in Perspective -->
+      <ellipse cx="760" cy="320" rx="140" ry="32" fill="#1e293b" stroke="#475569" stroke-width="3" />
+      <ellipse cx="760" cy="317" rx="134" ry="28" fill="#334155" opacity="0.6" />
+      <!-- Laptop on Table -->
+      <polygon points="745,308 775,308 778,318 742,318" fill="#0f172a" />
+      <rect x="748" y="296" width="24" height="13" rx="1" fill="#60a5fa" />
+    </g>
+
+    <!-- Colleague / Presenter Figure -->
+    <g id="colleague_group" transform="translate(620, 210)">
+      <!-- Head -->
+      <circle cx="28" cy="22" r="14" fill="#fbbf24" />
+      <!-- Hair -->
+      <path d="M14,18 C14,8 42,8 42,18 C38,10 18,10 14,18 Z" fill="#451a03" />
+      <!-- Body / Suit -->
+      <path d="M10,48 C10,38 20,36 28,36 C36,36 46,38 46,48 L50,90 L6,90 Z" fill="#1e3a8a" stroke="#172554" stroke-width="1" />
+      <!-- Shirt Collar & Tie -->
+      <polygon points="24,36 32,36 28,46" fill="#ffffff" />
+      <polygon points="27,42 29,42 30,58 28,62 26,58" fill="#dc2626" />
+      <!-- Right Arm raised pointing to whiteboard -->
+      <path d="M44,42 Q65,30 75,10" stroke="#1e3a8a" stroke-width="8" stroke-linecap="round" fill="none" />
+      <circle cx="77" cy="8" r="4" fill="#fbbf24" />
+      <!-- Left Arm resting -->
+      <path d="M12,42 Q2,60 10,75" stroke="#1e3a8a" stroke-width="7" stroke-linecap="round" fill="none" />
+    </g>
+
+    <!-- Action Graphic: Give a presentation -->
+    <g id="action_give_presentation" transform="translate(715, 175)">
+      <circle cx="18" cy="18" r="18" fill="#7c3aed" opacity="0.95" stroke="#c084fc" stroke-width="1.5" />
+      <!-- Megaphone / Presentation Icon -->
+      <path d="M12,18 L20,13 L20,23 Z" fill="#ffffff" />
+      <rect x="9" y="16" width="4" height="4" fill="#ffffff" />
+      <path d="M23,14 C25,16 25,20 23,22" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" />
+      <path d="M26,11 C29,15 29,21 26,25" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" />
+    </g>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- ZONE 4: BREAKROOM / PANTRY (x: 740-980, y: 300-580)       -->
+  <!-- ======================================================== -->
+  <g id="zone_pantry" class="scene-zone">
+    <!-- Pantry Counter Base -->
+    <rect x="760" y="420" width="220" height="150" fill="#1e293b" stroke="#334155" stroke-width="2" />
+    <!-- Countertop -->
+    <polygon points="745,410 990,410 980,425 745,425" fill="#475569" stroke="#64748b" stroke-width="2" />
+    <!-- Cabinet doors -->
+    <rect x="770" y="440" width="60" height="110" rx="3" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <circle cx="820" cy="495" r="4" fill="#94a3b8" />
+    <rect x="845" y="440" width="60" height="110" rx="3" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <circle cx="855" cy="495" r="4" fill="#94a3b8" />
+
+    <!-- Coffee Maker on Counter -->
+    <g id="coffee_maker_group">
+      <rect x="835" y="340" width="55" height="70" rx="6" fill="#0f172a" stroke="#ef4444" stroke-width="1.5" />
+      <!-- Top Bean Hopper -->
+      <rect x="842" y="332" width="40" height="10" rx="2" fill="#334155" />
+      <!-- Brew head -->
+      <rect x="848" y="355" width="28" height="14" rx="2" fill="#475569" />
+      <polygon points="858,369 866,369 864,374 860,374" fill="#94a3b8" />
+      <!-- Drip Tray & Cup -->
+      <rect x="840" y="398" width="45" height="8" rx="2" fill="#334155" />
+      <rect x="854" y="380" width="16" height="18" rx="2" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" />
+      <!-- Steam lines -->
+      <path d="M858,375 Q855,370 858,365" stroke="#94a3b8" stroke-width="1.5" fill="none" opacity="0.6" />
+      <path d="M864,375 Q867,370 864,365" stroke="#94a3b8" stroke-width="1.5" fill="none" opacity="0.6" />
+    </g>
+
+    <!-- Coffee Mug -->
+    <g id="mug_group" transform="translate(790, 420)">
+      <rect x="8" y="2" width="24" height="26" rx="4" fill="#f59e0b" stroke="#d97706" stroke-width="1.5" />
+      <!-- Mug Handle -->
+      <path d="M8,8 C0,8 0,22 8,22" stroke="#d97706" stroke-width="3" fill="none" />
+      <line x1="12" y1="12" x2="28" y2="12" stroke="#fef3c7" stroke-width="2" stroke-linecap="round" />
+    </g>
+
+    <!-- Water Dispenser Cooler -->
+    <g id="water_dispenser_group">
+      <!-- Body Tower -->
+      <rect x="915" y="315" width="55" height="135" rx="5" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+      <!-- Top Water Gallon Jug (Inverted Bottle) -->
+      <path d="M925,315 C925,270 960,270 960,315 Z" fill="#38bdf8" opacity="0.85" stroke="#0284c7" stroke-width="2" />
+      <rect x="935" y="312" width="15" height="6" fill="#0284c7" />
+      <!-- Dispensing Alcove -->
+      <rect x="925" y="340" width="35" height="38" rx="3" fill="#1e293b" />
+      <!-- Hot & Cold Taps -->
+      <rect x="932" y="344" width="6" height="10" rx="1" fill="#ef4444" />
+      <rect x="944" y="344" width="6" height="10" rx="1" fill="#3b82f6" />
+      <!-- Water Droplet -->
+      <circle cx="947" cy="362" r="2" fill="#38bdf8" />
+    </g>
+
+    <!-- Action Graphic: Take a Break -->
+    <g id="action_take_break" transform="translate(850, 445)">
+      <circle cx="18" cy="18" r="18" fill="#7c3aed" opacity="0.95" stroke="#c084fc" stroke-width="1.5" />
+      <!-- Coffee cup icon -->
+      <path d="M12,14 L24,14 L23,24 L13,24 Z" fill="#ffffff" />
+      <path d="M24,16 C27,16 27,21 24,21" stroke="#ffffff" stroke-width="1.5" fill="none" />
+      <!-- Zzz restful symbols -->
+      <text x="25" y="11" font-size="10" font-weight="bold" fill="#38bdf8" font-family="sans-serif">z</text>
+      <text x="31" y="8" font-size="8" font-weight="bold" fill="#38bdf8" font-family="sans-serif">z</text>
+    </g>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- ZONE BOUNDARY HIGHLIGHT OVERLAYS                         -->
+  <!-- ======================================================== -->
+  <g id="zone_boundaries" pointer-events="none">
+    <!-- Zone 1 Border -->
+    <rect id="rect_zone_desk_area" x="60" y="160" width="380" height="390" rx="16" fill="none" stroke="rgba(56, 189, 248, 0.4)" stroke-width="2" stroke-dasharray="6,6" opacity="0" class="zone-border" />
+    <!-- Zone 2 Border -->
+    <rect id="rect_zone_stationery" x="310" y="110" width="330" height="400" rx="16" fill="none" stroke="rgba(56, 189, 248, 0.4)" stroke-width="2" stroke-dasharray="6,6" opacity="0" class="zone-border" />
+    <!-- Zone 3 Border -->
+    <rect id="rect_zone_meeting" x="570" y="90" width="350" height="400" rx="16" fill="none" stroke="rgba(56, 189, 248, 0.4)" stroke-width="2" stroke-dasharray="6,6" opacity="0" class="zone-border" />
+    <!-- Zone 4 Border -->
+    <rect id="rect_zone_pantry" x="730" y="290" width="260" height="290" rx="16" fill="none" stroke="rgba(56, 189, 248, 0.4)" stroke-width="2" stroke-dasharray="6,6" opacity="0" class="zone-border" />
+  </g>
+</svg>

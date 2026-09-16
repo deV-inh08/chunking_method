@@ -1100,6 +1100,13 @@ export function VocabModule({ onToast, onStartPractice }) {
     }));
   }, [activeCourse]);
 
+  // Clean up legacy visual mode state from localStorage so VocabModule always stays in Flashcard/Course mode
+  useEffect(() => {
+    try {
+      localStorage.removeItem('speaking_chunk_vocab_mode');
+    } catch { /* ignore */ }
+  }, []);
+
   const [screen, setScreen] = useState('topics'); // 'topics' | 'selector' | 'learning'
   const [selectedTopic, setSelectedTopic] = useState(null);
   const [wordsToLearn, setWordsToLearn] = useState([]);

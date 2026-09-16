@@ -21,6 +21,7 @@ const KEYS = {
   vocabLearned:     'toeic_vocab_learned', // { [wordId]: { learnedAt, word, topic } }
   vocabDailySession:'toeic_vocab_daily',   // { date: 'YYYY-MM-DD', wordIds: [] }
   practiceDrafts:   'toeic_practice_drafts', // { [chunkId]: { inputs, gradingResults, showSamples } }
+  visualProgress:   'toeic_visual_progress', // { [sceneId]: { unlockedZoneIds, completedZones, completedHotspots } }
 };
 
 // ─── Helpers ──────────────────────────────────────────────────
@@ -843,3 +844,59 @@ export function clearPracticeDraft(chunkId) {
   delete all[chunkId];
   set(KEYS.practiceDrafts, all);
 }
+
+// ─── Visual Vocab Progress ──────────────────────────────────────────
+
+/**
+ * Lấy tiến độ học Visual Scene (các zone đã mở khoá, level đã hoàn thành)
+ */
+export function getVisualProgress(sceneId) {
+  const all = get(KEYS.visualProgress) || {};
+  if (sceneId) {
+    return all[sceneId] || {
+      unlockedZoneIds: ['zone_desk_area'],
+      completedZones: {},
+      completedHotspots: {},
+    };
+  }
+  return all;
+}
+
+/**
+ * Lưu tiến độ học Visual Scene
+ */
+export function saveVisualProgress(sceneId, data) {
+  if (!sceneId) return;
+  const all = get(KEYS.visualProgress) || {};
+  all[sceneId] = {
+    ...(all[sceneId] || {
+      unlockedZoneIds: ['zone_desk_area'],
+      completedZones: {},
+      completedHotspots: {},
+    }),
+    ...data,
+    updatedAt: Date.now(),
+  };
+  set(KEYS.visualProgress, all);
+}
+
+/**
+ * Ghi nhận một từ hoàn thành ở Level 2 (Active Recall)
+ * - Tự động cập nhật markVocabLearned
+ * - Tự động tạo/cập nhật SRS progress SM-2
+ */
+export function recordVisualRecallSuccess(wordId, word, topic, collocation = null) {
+  if (!wordId) return;
+  // 1. Đánh dấu từ đã học trong kho Vocab
+  markVocabLearned(wordId, word, topic);
+
+  // 2. Kích hoạt bản ghi SRS SM-2
+  const chunkId = `visual_${wordId}`;
+  updateProgress(chunkId, true, 95, {
+    source: 'visual_vocabulary',
+    collocation: collocation || word,
+    masteredAt: Date.now(),
+    note: `Đã phản xạ thị giác thành thạo tại Visual Mode (${word})`,
+  });
+}
+
