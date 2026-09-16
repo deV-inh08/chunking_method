@@ -38,7 +38,7 @@ export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick, 
         </div>
       </div>
 
-      <nav className="sidebar-nav">
+      <nav className="sidebar-nav" aria-label="Điều hướng học tập">
         {NAV_ITEMS.map(({ id, label, icon: Icon, isNew }) => (
           <button
             key={id}
