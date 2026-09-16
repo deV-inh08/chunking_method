@@ -325,7 +325,7 @@ input, textarea {
   padding: var(--space-6);
 }
 
-/* ═══════════════════════════════════════════
+/* ═══════════════════════════════��═══════════
    BUTTONS
 ═══════════════════════════════════════════ */
 .btn {
@@ -1086,7 +1086,7 @@ input, textarea {
     -webkit-overflow-scrolling: touch;
   }
 
-  /* ── Bottom navigation bar ─────────────── */
+  /* ── Bottom navigation bar ──────��──────── */
   .bottom-nav {
     display: flex;
     position: fixed;
@@ -1283,3 +1283,17 @@ input, textarea {
   .page-content        { padding: var(--space-5); }
   .grid-3              { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* Enterprise education refinements */
+:focus-visible { outline: 2px solid var(--accent-300); outline-offset: 2px; }
+.ds-button, .btn { min-height: 38px; }
+.auth-page { position: relative; overflow: auto; background: radial-gradient(circle at 15% 20%, rgba(99,102,241,.12), transparent 34%), var(--bg-base) !important; }
+.auth-page::after { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(90deg, rgba(0,0,0,.7), transparent 72%); }
+.auth-panel { z-index: 1; }
+.auth-card { box-shadow: 0 24px 70px rgba(0,0,0,.32); border-color: rgba(255,255,255,.12); }
+.auth-page-rail { position: absolute; left: max(32px, calc(50% - 520px)); top: 50%; transform: translateY(-50%); width: 260px; display: flex; flex-direction: column; gap: 16px; color: var(--text-secondary); z-index: 1; }
+.auth-page-rail span { color: var(--accent-300); font-size: 10px; font-weight: 800; letter-spacing: .14em; }
+.auth-page-rail strong { color: var(--text-primary); font-size: 30px; line-height: 1.12; letter-spacing: -.04em; }
+.auth-page-rail small { font-size: 13px; line-height: 1.7; color: var(--text-muted); }
+@media (max-width: 760px) { .auth-page-rail { display: none; } .auth-page { padding: 16px !important; } .auth-panel { max-width: 460px !important; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }

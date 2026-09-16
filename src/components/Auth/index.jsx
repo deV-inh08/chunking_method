@@ -380,7 +380,7 @@ export function AuthScreen({ onSignIn, onSignUp, onResendConfirm, onResetPasswor
     );
   }
 
-  // ── Màn quên mật khẩu ───────────────────────────────────────
+  // ── Màn quên mật khẩu ──────────��────────────────────────────
   if (mode === 'forgot-password') {
     const forgotContent = (
       <ForgotPasswordScreen
@@ -413,7 +413,7 @@ export function AuthScreen({ onSignIn, onSignUp, onResendConfirm, onResetPasswor
 
   // ── Màn đăng nhập / đăng ký ──────────────────────────────────
   const content = (
-    <div style={{ width: '100%', maxWidth: 420, animation: 'fadeIn 0.4s ease', position: 'relative' }}>
+    <div className="auth-panel" style={{ width: '100%', maxWidth: 420, animation: 'fadeIn 0.4s ease', position: 'relative' }}>
 
       {/* Logo */}
       <div style={{ textAlign: 'center', marginBottom: 28 }}>
@@ -677,11 +677,12 @@ export function AuthScreen({ onSignIn, onSignUp, onResendConfirm, onResetPasswor
   }
 
   return (
-    <div style={{
+    <div className="auth-page" style={{
       minHeight: '100vh',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       background: 'var(--bg-base)', padding: 20,
     }}>
+      <div className="auth-page-rail" aria-hidden="true"><span>PERSONAL LEARNING WORKSPACE</span><strong>Build fluency<br />one chunk at a time.</strong><small>Structured practice for confident TOEIC communication.</small></div>
       {content}
     </div>
   );
@@ -729,7 +730,7 @@ export function ResetPasswordModal({ onUpdatePassword, onSuccess, onClose }) {
       style={{ zIndex: 1200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}
     >
       <div style={{ width: '100%', maxWidth: 420, animation: 'fadeIn 0.3s ease' }}>
-        <div className="card" style={{ padding: '28px 24px', position: 'relative' }}>
+<div className="card auth-card" style={{ padding: '28px 24px', position: 'relative' }}>
           {onClose && (
             <button
               type="button"
