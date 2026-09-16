@@ -657,7 +657,7 @@ input, textarea {
   margin-top: var(--space-6);
 }
 
-/* ══════════════════════════════════════════���
+/* ═════════════════════════════════════════������
    EMPTY STATE
 ═══════════════════════════════════════════ */
 .empty-state {
@@ -795,6 +795,35 @@ input, textarea {
   color: var(--text-secondary);
   margin-top: 2px;
 }
+
+/* Shared component states: validation, score, audio and resilient feedback */
+.field-control { width: 100%; }
+.field-error { display: flex; align-items: center; gap: 5px; margin: 6px 0 0; color: var(--error-text); font-size: 12px; }
+.input-error { border-color: var(--error-text) !important; }
+.draft-save-indicator { display: inline-flex; align-items: center; gap: 5px; min-height: 20px; color: var(--success-text); font-size: 12px; opacity: 0; transition: opacity 220ms ease; }
+.draft-save-indicator.is-visible { opacity: .72; }
+.score-ring { position: relative; display: inline-grid; place-items: center; }
+.score-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.score-ring circle { fill: none; stroke-width: 9; }
+.score-ring-track { stroke: var(--bg-elevated); }
+.score-ring-value { stroke: var(--accent-400); stroke-dasharray: 289; stroke-dashoffset: var(--score-progress); stroke-linecap: round; }
+.score-ring-success .score-ring-value { stroke: var(--success-text); }
+.score-ring-warning .score-ring-value { stroke: var(--warning-text); }
+.score-ring-error .score-ring-value { stroke: var(--error-text); }
+.score-ring-label { position: absolute; display: grid; place-items: center; color: var(--text-primary); font-weight: 800; font-size: 21px; line-height: 1; }
+.score-ring-label span { display: inline-flex; align-items: center; gap: 4px; }
+.score-ring-label small { margin-top: 4px; color: var(--text-muted); font-size: 10px; font-weight: 600; }
+.audio-wave-wrap { display: grid; gap: 7px; }
+.audio-wave-visualizer { display: flex; align-items: center; justify-content: center; gap: 3px; height: 42px; }
+.audio-wave-visualizer span { width: 3px; height: 35%; border-radius: 99px; background: var(--accent-400); animation: audioWave 850ms ease-in-out infinite alternate; animation-delay: var(--wave-delay); }
+.audio-wave-hint { margin: 0; color: var(--warning-text); font-size: 12px; text-align: center; }
+.toast-loading { border-color: var(--accent-400); }
+.toast-warning { border-color: var(--warning-border); }
+.toast-message { flex: 1; }
+.toast-retry, .toast-dismiss { border: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; }
+.toast-retry { color: var(--accent-300); font-size: 12px; font-weight: 700; }
+.toast-dismiss { display: grid; place-items: center; padding: 2px; opacity: .7; }
+@keyframes audioWave { from { transform: scaleY(.45); } to { transform: scaleY(1); } }
 
 /* ═══════════════════════════════════════════
    CHIP / FILTER
@@ -1086,7 +1115,7 @@ input, textarea {
     -webkit-overflow-scrolling: touch;
   }
 
-  /* ── Bottom navigation bar ─────����──────── */
+  /* ── Bottom navigation bar ──��──����──────── */
   .bottom-nav {
     display: flex;
     position: fixed;

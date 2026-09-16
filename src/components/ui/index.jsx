@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useRef } from 'react';
-import { X, AlertTriangle, RotateCcw, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
+import { X, AlertTriangle, RotateCcw, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, AlertCircle, Check, CheckCircle2, XCircle, Link2, MessageSquare, ArrowRightLeft, Loader2 } from 'lucide-react';
 
 export class ErrorBoundary extends Component {
   constructor(props) {
@@ -102,6 +102,80 @@ export function Spinner({ size = 20, className = '' }) {
   );
 }
 
+export function Button({ variant = 'primary', size = 'md', loading = false, className = '', children, disabled, style, ...props }) {
+  return (
+    <button
+      type="button"
+      className={`btn btn-${variant} btn-${size} ${className}`}
+      disabled={disabled || loading}
+      aria-busy={loading || undefined}
+      {...props}
+      style={{ minWidth: loading ? '6rem' : undefined, ...style }}
+    >
+      {loading ? <Spinner size={16} /> : children}
+    </button>
+  );
+}
+
+export function Input({ error, className = '', id, ...props }) {
+  return (
+    <div className="field-control">
+      <input id={id} className={`input-field ${error ? 'input-error' : ''} ${className}`} aria-invalid={Boolean(error)} aria-describedby={error ? `${id || 'input'}-error` : undefined} {...props} />
+      {error && <p id={`${id || 'input'}-error`} className="field-error"><AlertCircle size={14} />{error}</p>}
+    </div>
+  );
+}
+
+export function Textarea({ error, className = '', id, ...props }) {
+  return (
+    <div className="field-control">
+      <textarea id={id} className={`textarea-field ${error ? 'input-error' : ''} ${className}`} aria-invalid={Boolean(error)} aria-describedby={error ? `${id || 'textarea'}-error` : undefined} {...props} />
+      {error && <p id={`${id || 'textarea'}-error`} className="field-error"><AlertCircle size={14} />{error}</p>}
+    </div>
+  );
+}
+
+export function DraftSaveIndicator({ visible = false }) {
+  const [shown, setShown] = React.useState(visible);
+  useEffect(() => {
+    setShown(visible);
+    if (!visible) return undefined;
+    const timer = window.setTimeout(() => setShown(false), 1500);
+    return () => window.clearTimeout(timer);
+  }, [visible]);
+  return <span className={`draft-save-indicator ${shown ? 'is-visible' : ''}`} aria-live="polite"><Check size={14} /> Đã lưu bản nháp</span>;
+}
+
+export function ScoreRing({ score = 0, size = 112 }) {
+  const normalized = Math.min(100, Math.max(0, score));
+  const tone = normalized >= 80 ? 'success' : normalized >= 60 ? 'warning' : 'error';
+  const Icon = tone === 'success' ? CheckCircle2 : tone === 'warning' ? AlertTriangle : XCircle;
+  const radius = 46;
+  const circumference = 2 * Math.PI * radius;
+  return <div className={`score-ring score-ring-${tone}`} style={{ width: size, height: size, '--score-progress': `${circumference - (normalized / 100) * circumference}px` }} role="img" aria-label={`Điểm ${normalized} trên 100`}>
+    <svg viewBox="0 0 112 112" aria-hidden="true"><circle className="score-ring-track" cx="56" cy="56" r={radius} /><circle className="score-ring-value" cx="56" cy="56" r={radius} /></svg>
+    <span className="score-ring-label"><span><Icon size={14} />{normalized}</span><small>/ 100</small></span>
+  </div>;
+}
+
+export function AudioWaveVisualizer({ analyser, isRecording = false, className = '' }) {
+  const [quiet, setQuiet] = React.useState(false);
+  const quietSince = useRef(null);
+  useEffect(() => {
+    if (!isRecording || !analyser) { quietSince.current = null; setQuiet(false); return undefined; }
+    const data = new Uint8Array(analyser.fftSize);
+    const check = () => {
+      analyser.getByteTimeDomainData(data);
+      const amplitude = data.reduce((max, value) => Math.max(max, Math.abs(value - 128)), 0);
+      if (amplitude < 4) { quietSince.current ??= Date.now(); if (Date.now() - quietSince.current >= 3000) setQuiet(true); }
+      else { quietSince.current = null; setQuiet(false); }
+    };
+    const timer = window.setInterval(check, 250);
+    return () => window.clearInterval(timer);
+  }, [analyser, isRecording]);
+  return <div className={`audio-wave-wrap ${className}`}><div className="audio-wave-visualizer" aria-label={isRecording ? 'Đang ghi âm' : 'Trình hiển thị âm thanh'}>{Array.from({ length: 24 }, (_, i) => <span key={i} style={{ '--wave-delay': `${i * 35}ms` }} />)}</div>{quiet && <p className="audio-wave-hint">Không nghe thấy giọng nói, hãy nói to hơn</p>}</div>;
+}
+
 export function EmptyState({ icon, title, description, action }) {
   return (
     <div className="empty-state">
@@ -140,20 +214,24 @@ export function Badge({ type, children }) {
     part4:       'badge-part4',
   }[type] || 'badge-neutral';
 
-  return <span className={`badge ${cls}`}>{children}</span>;
+  const icons = { collocation: Link2, functional: MessageSquare, connector: ArrowRightLeft };
+  const Icon = icons[type];
+  return <span className={`badge ${cls}`}>{Icon && <Icon size={12} aria-hidden="true" />}{children}</span>;
 }
 
-export function Toast({ toasts, removeToast }) {
+export function Toast({ toasts = [], removeToast }) {
+  const icons = { success: CheckCircle2, error: XCircle, warning: AlertTriangle, loading: Loader2 };
   return (
-    <div className="toast-container">
-      {toasts.map((t) => (
-        <div key={t.id} className={`toast toast-${t.type}`} onClick={() => removeToast(t.id)}>
-          <span style={{ fontSize: 16 }}>
-            {t.type === 'success' ? '✅' : t.type === 'error' ? '❌' : 'ℹ️'}
-          </span>
-          <span>{t.message}</span>
-        </div>
-      ))}
+    <div className="toast-container" aria-live="polite">
+      {toasts.map((t) => {
+        const Icon = icons[t.type] || AlertCircle;
+        return <div key={t.id} className={`toast toast-${t.type}`}>
+          <Icon size={17} className={t.type === 'loading' ? 'animate-spin' : ''} aria-hidden="true" />
+          <span className="toast-message">{t.message}</span>
+          {t.type === 'error' && t.onRetry && <button type="button" className="toast-retry" onClick={t.onRetry}>Thử lại</button>}
+          <button type="button" className="toast-dismiss" onClick={() => removeToast?.(t.id)} aria-label="Đóng thông báo"><X size={14} /></button>
+        </div>;
+      })}
     </div>
   );
 }
