@@ -6,7 +6,9 @@ import {
   Briefcase, Cpu, HeartPulse, Plane,
   Utensils, Leaf, Palette, Landmark,
   Home, BookText, TrendingUp, BookOpen,
-  AlertCircle, Search, Layers,
+  AlertCircle, Search, Layers, Flame,
+  ShoppingBag, Headphones, FileCheck, Compass,
+  Users,
 } from 'lucide-react';
 import { Badge, Spinner } from '../ui';
 import { generateChunksBatch } from '../../services/ai';
@@ -16,9 +18,11 @@ import {
   saveTodaySession, getChunks,
 } from '../../store/storage';
 import { getChunkIPA, formatIPA } from '../../services/phonetics';
+import { FlashcardSession } from './FlashcardSession';
 
 // ── Tải vocab từ JSON tĩnh (không cần Supabase/script) ──────────
 import VOCAB_RAW from '../../../data/vocab_5000.json';
+import HACKERS_RAW from '../../../data/hackers_toeic_30days.json';
 
 // ── Helpers ──────────────────────────────────────────────────────
 function makeWordId(word, topic) {
@@ -46,6 +50,39 @@ const POS_COLORS = {
 
 const MIN_WORDS = 20;
 const MAX_WORDS = 50;
+
+const HACKERS_DAY_METADATA = {
+  1: { desc: 'Hồ sơ xin việc, ứng tuyển, tiêu chuẩn nhân sự và phỏng vấn công sở.', Icon: Briefcase, accentColor: '#3b82f6', accentBg: 'rgba(59, 130, 246, 0.14)' },
+  2: { desc: 'Nội quy công ty, kỷ luật, quy tắc đạo đức nghề nghiệp và pháp chế tuân thủ.', Icon: Landmark, accentColor: '#6366f1', accentBg: 'rgba(99, 102, 241, 0.14)' },
+  3: { desc: 'Tác vụ văn phòng, quản lý hồ sơ, công văn thư tín và giao tiếp đồng nghiệp.', Icon: BookText, accentColor: '#8b5cf6', accentBg: 'rgba(139, 92, 246, 0.14)' },
+  4: { desc: 'Thiết bị văn phòng, xử lý tài liệu, công việc thường nhật và phân công nhiệm vụ.', Icon: BookText, accentColor: '#a855f7', accentBg: 'rgba(168, 85, 247, 0.14)' },
+  5: { desc: 'Báo cáo công tác, điều phối phòng ban, deadline và tiến độ dự án nội bộ.', Icon: BookText, accentColor: '#d946ef', accentBg: 'rgba(217, 70, 239, 0.14)' },
+  6: { desc: 'Hoạt động giải trí sau giờ làm, giao lưu cộng đồng, sự kiện thiện nguyện.', Icon: Sparkles, accentColor: '#ec4899', accentBg: 'rgba(236, 72, 153, 0.14)' },
+  7: { desc: 'Chiến dịch tiếp thị, quảng bá thương hiệu, tiếp cận và thu hút khách hàng tiềm năng.', Icon: TrendingUp, accentColor: '#f43f5e', accentBg: 'rgba(244, 63, 94, 0.14)' },
+  8: { desc: 'Nghiên cứu thị trường, khảo sát hành vi tiêu dùng, phân tích đối thủ cạnh tranh.', Icon: TrendingUp, accentColor: '#ef4444', accentBg: 'rgba(239, 68, 68, 0.14)' },
+  9: { desc: 'Tình hình kinh tế vĩ mô, lạm phát, tỷ giá, chu kỳ tăng trưởng và suy thoái.', Icon: TrendingUp, accentColor: '#f97316', accentBg: 'rgba(249, 115, 22, 0.14)' },
+  10: { desc: 'Mua sắm bán lẻ, giỏ hàng, chương trình giảm giá khuyến mãi và bảo hành.', Icon: ShoppingBag, accentColor: '#f59e0b', accentBg: 'rgba(245, 158, 11, 0.14)' },
+  11: { desc: 'Nghiên cứu phát triển (R&D), mẫu thử nghiệm, sáng chế và cải tiến tính năng.', Icon: Cpu, accentColor: '#eab308', accentBg: 'rgba(234, 179, 8, 0.14)' },
+  12: { desc: 'Dây chuyền lắp ráp, chế tạo nhà máy, quy trình gia công và kiểm chuẩn chất lượng.', Icon: Cpu, accentColor: '#84cc16', accentBg: 'rgba(132, 204, 22, 0.14)' },
+  13: { desc: 'Hỗ trợ khách hàng, giải quyết khiếu nại, dịch vụ hậu mãi và sự hài lòng.', Icon: Headphones, accentColor: '#22c55e', accentBg: 'rgba(34, 197, 94, 0.14)' },
+  14: { desc: 'Thủ tục sân bay, vé máy bay, đặt phòng khách sạn, hải quan và chuyển tiếp.', Icon: Plane, accentColor: '#10b981', accentBg: 'rgba(16, 185, 129, 0.14)' },
+  15: { desc: 'Đàm phán hợp đồng thương mại, điều khoản pháp lý, thỏa thuận và chữ ký.', Icon: FileCheck, accentColor: '#14b8a6', accentBg: 'rgba(20, 184, 166, 0.14)' },
+  16: { desc: 'Ký kết thương vụ, giao dịch thanh toán, trao đổi thương phẩm và chuyển giao.', Icon: TrendingUp, accentColor: '#06b6d4', accentBg: 'rgba(6, 182, 212, 0.14)' },
+  17: { desc: 'Xuất nhập khẩu hàng hóa, vận tải đường biển/hàng không, kho bãi và logistics.', Icon: Plane, accentColor: '#0ea5e9', accentBg: 'rgba(14, 165, 233, 0.14)' },
+  18: { desc: 'Khách sạn, khu nghỉ dưỡng, phục vụ ăn uống và đặt bàn tiệc hội nghị.', Icon: Utensils, accentColor: '#38bdf8', accentBg: 'rgba(56, 189, 248, 0.14)' },
+  19: { desc: 'Số liệu doanh số, lợi nhuận ròng, dòng tiền và chỉ tiêu tăng trưởng tài chính.', Icon: TrendingUp, accentColor: '#3b82f6', accentBg: 'rgba(59, 130, 246, 0.14)' },
+  20: { desc: 'Hạch toán chi phí, bảng cân đối kế toán, biên lai thuế và kiểm toán độc lập.', Icon: BookText, accentColor: '#6366f1', accentBg: 'rgba(99, 102, 241, 0.14)' },
+  21: { desc: 'Chiến lược tái cơ cấu, xu hướng ngành, sáp nhập doanh nghiệp và tầm nhìn dài hạn.', Icon: Compass, accentColor: '#8b5cf6', accentBg: 'rgba(139, 92, 246, 0.14)' },
+  22: { desc: 'Hội nghị ban giám đốc, lịch họp giao ban, thuyết trình dự án và biên bản cuộc họp.', Icon: Users, accentColor: '#a855f7', accentBg: 'rgba(168, 85, 247, 0.14)' },
+  23: { desc: 'Chế độ đãi ngộ, bảo hiểm y tế xã hội, ngày phép năm và thưởng hiệu suất.', Icon: HeartPulse, accentColor: '#ec4899', accentBg: 'rgba(236, 72, 153, 0.14)' },
+  24: { desc: 'Tuyển dụng nội bộ, thăng tiến, chuyển giao công tác và quản lý biến động nhân sự.', Icon: Users, accentColor: '#f43f5e', accentBg: 'rgba(244, 63, 94, 0.14)' },
+  25: { desc: 'Hệ thống giao thông đô thị, giờ cao điểm, định tuyến đường và an toàn lưu thông.', Icon: Compass, accentColor: '#f97316', accentBg: 'rgba(249, 115, 22, 0.14)' },
+  26: { desc: 'Giao dịch ngân hàng, khoản vay thế chấp, lãi suất tiết kiệm và thẻ tín dụng.', Icon: Landmark, accentColor: '#f59e0b', accentBg: 'rgba(245, 158, 11, 0.14)' },
+  27: { desc: 'Đầu tư chứng khoán, danh mục tài sản, quản trị rủi ro vốn và lợi tức cổ phiếu.', Icon: TrendingUp, accentColor: '#10b981', accentBg: 'rgba(16, 185, 129, 0.14)' },
+  28: { desc: 'Thuê văn phòng, quản lý tòa nhà thương mại, bảo dưỡng hạ tầng và bất động sản.', Icon: Home, accentColor: '#0ea5e9', accentBg: 'rgba(14, 165, 233, 0.14)' },
+  29: { desc: 'Bảo vệ sinh thái, năng lượng tái tạo, quản lý chất thải và tiêu chuẩn xanh.', Icon: Leaf, accentColor: '#22c55e', accentBg: 'rgba(34, 197, 94, 0.14)' },
+  30: { desc: 'Chăm sóc sức khỏe y tế, triệu chứng điều trị, thể lực và lối sống lành mạnh.', Icon: HeartPulse, accentColor: '#ef4444', accentBg: 'rgba(239, 68, 68, 0.14)' },
+};
 
 const TOPIC_METADATA = {
   'Daily Life & Family': {
@@ -149,8 +186,33 @@ const TOPIC_METADATA = {
 };
 
 function getTopicMeta(topic) {
-  if (TOPIC_METADATA[topic]) return TOPIC_METADATA[topic];
+  // Check if topic is a Hackers TOEIC day e.g. "Day 01: Tuyển dụng"
+  const match = topic.match(/^Day\s*(\d+):\s*(.+)$/i);
+  if (match) {
+    const dayNum = parseInt(match[1], 10);
+    const dayTitle = match[2];
+    const meta = HACKERS_DAY_METADATA[dayNum] || {};
+    return {
+      titleEn: `Day ${String(dayNum).padStart(2, '0')}`,
+      titleVi: dayTitle,
+      desc: meta.desc || `Từ vựng trọng tâm chuyên đề ${dayTitle} trong đề thi TOEIC.`,
+      Icon: meta.Icon || BookOpen,
+      accentColor: meta.accentColor || '#3b82f6',
+      accentBg: meta.accentBg || 'rgba(59, 130, 246, 0.14)',
+      isHackersDay: true,
+      dayNum,
+    };
+  }
+
+  if (TOPIC_METADATA[topic]) {
+    return {
+      titleEn: topic,
+      ...TOPIC_METADATA[topic],
+    };
+  }
+
   return {
+    titleEn: topic,
     titleVi: 'Chủ đề chuyên sâu',
     desc: 'Từ vựng trọng điểm và cụm chunking theo ngữ cảnh thực tế.',
     Icon: BookOpen,
@@ -160,7 +222,13 @@ function getTopicMeta(topic) {
 }
 
 // ─── Screen 1: Topic Browser ─────────────────────────────────────
-function TopicBrowser({ words, learnedVocab, onSelectTopic }) {
+function TopicBrowser({
+  words,
+  learnedVocab,
+  activeCourse,
+  onCourseChange,
+  onSelectTopic,
+}) {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all'); // 'all' | 'in_progress' | 'completed'
 
@@ -175,10 +243,26 @@ function TopicBrowser({ words, learnedVocab, onSelectTopic }) {
     return map;
   }, [words, learnedVocab]);
 
-  const topics = useMemo(() => Object.keys(topicStats).sort(), [topicStats]);
-  const totalLearned = Object.values(learnedVocab).length;
+  const topics = useMemo(() => Object.keys(topicStats).sort((a, b) => {
+    const matchA = a.match(/^Day\s*(\d+)/i);
+    const matchB = b.match(/^Day\s*(\d+)/i);
+    if (matchA && matchB) {
+      return parseInt(matchA[1], 10) - parseInt(matchB[1], 10);
+    }
+    return a.localeCompare(b);
+  }), [topicStats]);
+
   const totalWords = words.length;
-  const overallPct = totalWords > 0 ? Math.round((totalLearned / totalWords) * 100) : 0;
+  const totalLearnedInCourse = useMemo(() => {
+    let count = 0;
+    words.forEach(w => {
+      const wid = makeWordId(w.word, w.topic);
+      if (learnedVocab[wid]) count++;
+    });
+    return count;
+  }, [words, learnedVocab]);
+
+  const overallPct = totalWords > 0 ? Math.round((totalLearnedInCourse / totalWords) * 100) : 0;
 
   // Topic filter counts
   const completedTopicsCount = useMemo(() => {
@@ -221,31 +305,77 @@ function TopicBrowser({ words, learnedVocab, onSelectTopic }) {
 
   return (
     <div className="vocab-container">
+      {/* Course Switcher */}
+      <div className="vocab-course-tabs">
+        <button
+          className={`vocab-course-tab ${activeCourse === 'hackers_toeic' ? 'active' : ''}`}
+          onClick={() => onCourseChange('hackers_toeic')}
+        >
+          <div className="vocab-tab-icon-box">
+            <Flame size={20} />
+          </div>
+          <div className="vocab-tab-text">
+            <span className="vocab-tab-title">Lộ trình Hackers TOEIC 30 Ngày</span>
+            <span className="vocab-tab-sub">30 ngày chuyên đề · 5.980 từ bám sát đề thi</span>
+          </div>
+          <span className="vocab-badge-highlight">Khuyên dùng</span>
+        </button>
+
+        <button
+          className={`vocab-course-tab ${activeCourse === 'vocab_5000' ? 'active' : ''}`}
+          onClick={() => onCourseChange('vocab_5000')}
+        >
+          <div className="vocab-tab-icon-box">
+            <BookOpen size={20} />
+          </div>
+          <div className="vocab-tab-text">
+            <span className="vocab-tab-title">Thư viện 5.000 Từ vựng Cốt lõi</span>
+            <span className="vocab-tab-sub">14 chủ đề đời sống & giao tiếp thực tế</span>
+          </div>
+        </button>
+      </div>
+
       {/* Hero Header Banner */}
       <div className="vocab-hero-card">
         <div className="vocab-hero-content">
           <div className="vocab-hero-badge">
-            <GraduationCap size={13} /> Thư viện từ vựng chuẩn hóa
+            {activeCourse === 'hackers_toeic' ? (
+              <>
+                <Flame size={13} /> Lộ trình bám sát đề thi chuẩn Hackers TOEIC
+              </>
+            ) : (
+              <>
+                <GraduationCap size={13} /> Thư viện từ vựng chuẩn hóa
+              </>
+            )}
           </div>
-          <h2 className="vocab-hero-title">Từ vựng TOEIC & Giao tiếp</h2>
+          <h2 className="vocab-hero-title">
+            {activeCourse === 'hackers_toeic'
+              ? 'Lộ trình Hackers TOEIC 30 Ngày'
+              : 'Từ vựng TOEIC & Giao tiếp'}
+          </h2>
           <p className="vocab-hero-desc">
-            {words.length.toLocaleString()} từ vựng trọng tâm phân loại theo {topics.length} chủ đề thực chiến, tích hợp trích xuất cụm chunking phản xạ.
+            {activeCourse === 'hackers_toeic'
+              ? `${words.length.toLocaleString()} từ vựng trọng điểm bám sát format đề thi TOEIC mới nhất, phân chia theo lộ trình 30 ngày tập trung cùng cụm chunking phản xạ.`
+              : `${words.length.toLocaleString()} từ vựng trọng tâm phân loại theo ${topics.length} chủ đề thực chiến, tích hợp trích xuất cụm chunking phản xạ.`}
           </p>
         </div>
 
         {/* 3 Metric cards */}
         <div className="vocab-hero-stats">
           <div className="vocab-stat-card">
-            <div className="vocab-stat-value">{totalLearned.toLocaleString()}</div>
+            <div className="vocab-stat-value">{totalLearnedInCourse.toLocaleString()}</div>
             <div className="vocab-stat-label">Từ đã thành thạo</div>
           </div>
           <div className="vocab-stat-card">
             <div className="vocab-stat-value" style={{ color: '#38bdf8' }}>{overallPct}%</div>
-            <div className="vocab-stat-label">Độ phủ từ vựng</div>
+            <div className="vocab-stat-label">Độ phủ lộ trình</div>
           </div>
           <div className="vocab-stat-card">
             <div className="vocab-stat-value" style={{ color: '#818cf8' }}>{topics.length}</div>
-            <div className="vocab-stat-label">Chủ đề thực chiến</div>
+            <div className="vocab-stat-label">
+              {activeCourse === 'hackers_toeic' ? 'Ngày học' : 'Chủ đề'}
+            </div>
           </div>
         </div>
       </div>
@@ -257,7 +387,11 @@ function TopicBrowser({ words, learnedVocab, onSelectTopic }) {
           <input
             type="text"
             className="vocab-search-input"
-            placeholder="Tìm kiếm theo chủ đề, lĩnh vực..."
+            placeholder={
+              activeCourse === 'hackers_toeic'
+                ? 'Tìm kiếm theo ngày (Day 01..), chuyên đề, từ khóa...'
+                : 'Tìm kiếm theo chủ đề, lĩnh vực...'
+            }
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -354,7 +488,9 @@ function TopicBrowser({ words, learnedVocab, onSelectTopic }) {
                 </div>
 
                 <h3 className="vocab-topic-title-en">{topic}</h3>
-                <div className="vocab-topic-title-vi">{meta.titleVi}</div>
+                <div className="vocab-topic-title-vi">
+                  {meta.isHackersDay ? `Chuyên đề: ${meta.titleVi}` : meta.titleVi}
+                </div>
                 <p className="vocab-topic-desc">{meta.desc}</p>
 
                 <div className="vocab-card-footer">
@@ -392,7 +528,7 @@ function TopicBrowser({ words, learnedVocab, onSelectTopic }) {
 }
 
 // ─── Screen 2: Word Selector ──────────────────────────────────────
-function WordSelector({ topic, words, learnedVocab, onStartLearning, onBack }) {
+function WordSelector({ topic, words, learnedVocab, activeCourse, onStartLearning, onStartFlashcard, onBack }) {
   // Tách từ chưa học và đã học
   const unlearnedWords = useMemo(() =>
     words.filter(w => !learnedVocab[makeWordId(w.word, w.topic)]),
@@ -431,7 +567,7 @@ function WordSelector({ topic, words, learnedVocab, onStartLearning, onBack }) {
       <div className="flex items-center gap-3 mb-5">
         <button id="back-to-topics" className="btn btn-ghost btn-sm" onClick={onBack}
           style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-          <ChevronLeft size={14} /> Chủ đề
+          <ChevronLeft size={14} /> {activeCourse === 'hackers_toeic' ? '30 Ngày TOEIC' : 'Chủ đề'}
         </button>
         <div style={{ fontWeight: 700, fontSize: 16, color: 'var(--text-primary)', flex: 1 }}>
           {topic}
@@ -560,14 +696,40 @@ function WordSelector({ topic, words, learnedVocab, onStartLearning, onBack }) {
             })}
           </div>
 
-          {/* Start learning button */}
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          {/* Start learning buttons */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 14, flexWrap: 'wrap' }}>
+            <button
+              id="start-flashcard-btn"
+              className="btn btn-primary"
+              onClick={() => onStartFlashcard && onStartFlashcard(selectedWords)}
+              disabled={!canLearn}
+              style={{
+                padding: '12px 28px',
+                fontSize: 15,
+                fontWeight: 700,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                boxShadow: '0 4px 14px rgba(59, 130, 246, 0.35)',
+              }}
+            >
+              <Layers size={18} />
+              Học Flashcard ({selectedWords.length} từ)
+            </button>
+
             <button
               id="start-chunking-btn"
-              className="btn btn-primary"
+              className="btn btn-secondary"
               onClick={() => onStartLearning(selectedWords)}
               disabled={!canLearn}
-              style={{ padding: '12px 32px', fontSize: 15, gap: 8 }}
+              style={{
+                padding: '12px 24px',
+                fontSize: 14,
+                fontWeight: 600,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+              }}
             >
               <Sparkles size={16} />
               Học theo chunking ({selectedWords.length} từ)
@@ -666,7 +828,7 @@ function WordLearningCard({
 
 
 // ─── Screen 3: Learning Session ────────────────────────────────────
-function LearningSession({ topic, selectedWords, learnedVocab, onBack, onToast, onStartPractice }) {
+function LearningSession({ topic, selectedWords, learnedVocab, onBack, onToast, onStartPractice, onStartFlashcard }) {
   // chunks per wordId: { [wordId]: chunk[] }
   const [chunkMap, setChunkMap] = useState(() => {
     const initial = {};
@@ -807,6 +969,16 @@ function LearningSession({ topic, selectedWords, learnedVocab, onBack, onToast, 
           Học từ vựng – {topic}
         </div>
         <Badge type="success">{learnedToday}/{selectedWords.length} đã học</Badge>
+        {onStartFlashcard && (
+          <button
+            className="btn btn-ghost btn-sm"
+            onClick={() => onStartFlashcard(selectedWords)}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
+            title="Chuyển sang học lật thẻ Flashcard"
+          >
+            <Layers size={13} /> Học Flashcard
+          </button>
+        )}
         {allSessionChunks.length > 0 && !isLoading && (
           <button
             id="practice-all-vocab-btn"
@@ -915,16 +1087,30 @@ function LearningSession({ topic, selectedWords, learnedVocab, onBack, onToast, 
 
 // ─── VocabModule (main export) ────────────────────────────────────
 export function VocabModule({ onToast, onStartPractice }) {
-  // Parse vocab from static JSON
-  const words = useMemo(() => VOCAB_RAW.map(w => ({
-    ...w,
-    id: makeWordId(w.word, w.topic),
-  })), []);
+  const [activeCourse, setActiveCourse] = useState(() => {
+    return localStorage.getItem('speaking_chunk_vocab_course') || 'hackers_toeic';
+  });
+
+  // Parse vocab from static JSON depending on activeCourse
+  const words = useMemo(() => {
+    const rawList = activeCourse === 'hackers_toeic' ? HACKERS_RAW : VOCAB_RAW;
+    return rawList.map(w => ({
+      ...w,
+      id: makeWordId(w.word, w.topic),
+    }));
+  }, [activeCourse]);
 
   const [screen, setScreen] = useState('topics'); // 'topics' | 'selector' | 'learning'
   const [selectedTopic, setSelectedTopic] = useState(null);
   const [wordsToLearn, setWordsToLearn] = useState([]);
   const [learnedVocab, setLearnedVocab] = useState(() => getLearnedVocab());
+
+  const handleCourseChange = useCallback((c) => {
+    setActiveCourse(c);
+    localStorage.setItem('speaking_chunk_vocab_course', c);
+    setSelectedTopic(null);
+    setScreen('topics');
+  }, []);
 
   const handleSelectTopic = useCallback((topic) => {
     setSelectedTopic(topic);
@@ -936,6 +1122,13 @@ export function VocabModule({ onToast, onStartPractice }) {
     // Save today's session
     saveTodaySession(words.map(w => makeWordId(w.word, w.topic)));
     setScreen('learning');
+  }, []);
+
+  const handleStartFlashcard = useCallback((words) => {
+    setWordsToLearn(words);
+    // Save today's session
+    saveTodaySession(words.map(w => makeWordId(w.word, w.topic)));
+    setScreen('flashcard');
   }, []);
 
   const handleMarkLearned = useCallback((wordId, word, topic) => {
@@ -955,6 +1148,8 @@ export function VocabModule({ onToast, onStartPractice }) {
         <TopicBrowser
           words={words}
           learnedVocab={learnedVocab}
+          activeCourse={activeCourse}
+          onCourseChange={handleCourseChange}
           onSelectTopic={handleSelectTopic}
         />
       )}
@@ -963,7 +1158,9 @@ export function VocabModule({ onToast, onStartPractice }) {
           topic={selectedTopic}
           words={topicWords}
           learnedVocab={learnedVocab}
+          activeCourse={activeCourse}
           onStartLearning={handleStartLearning}
+          onStartFlashcard={handleStartFlashcard}
           onBack={() => setScreen('topics')}
         />
       )}
@@ -973,6 +1170,18 @@ export function VocabModule({ onToast, onStartPractice }) {
           selectedWords={wordsToLearn}
           learnedVocab={learnedVocab}
           onBack={() => setScreen('selector')}
+          onToast={onToast}
+          onStartPractice={onStartPractice}
+          onStartFlashcard={handleStartFlashcard}
+        />
+      )}
+      {screen === 'flashcard' && (
+        <FlashcardSession
+          topic={selectedTopic}
+          selectedWords={wordsToLearn}
+          learnedVocab={learnedVocab}
+          onBack={() => setScreen('selector')}
+          onMarkLearned={handleMarkLearned}
           onToast={onToast}
           onStartPractice={onStartPractice}
         />
