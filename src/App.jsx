@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { Sidebar, Header, BottomNav } from './components/Layout';
+import { OverviewModule } from './components/OverviewModule';
 import { ListeningAiModule } from './components/ListeningAiModule';
 import { ReadingModule } from './components/ReadingModule';
 import { ChunkModule } from './components/ChunkModule';
@@ -38,9 +39,9 @@ export default function App() {
     try {
       const p = localStorage.getItem('toeic_active_page');
       if (p === 'transcripts') return 'ai_listening';
-      return p || 'ai_listening';
+      return p || 'overview';
     } catch {
-      return 'ai_listening';
+      return 'overview';
     }
   });
   const [showSettings, setShowSettings] = useState(false);
@@ -367,7 +368,9 @@ export default function App() {
 
   // ── Nav badge counts ─────────────────────────────────────────
   const counts = {
+    overview:     0,
     ai_listening: transcripts.length,
+    reading:      24,
     chunks:       allChunks.length,
     practice:     selectedChunks.size,
     progress:     Object.keys(allProgress).length,
@@ -470,20 +473,20 @@ export default function App() {
         {autoGenerating && (
           <div style={{
             position: 'sticky', top: 0, zIndex: 50,
-            background: 'linear-gradient(135deg, rgba(99,102,241,0.15), rgba(67,56,202,0.12))',
-            borderBottom: '1px solid rgba(99,102,241,0.3)',
+            background: 'linear-gradient(135deg, rgba(53,106,230,0.15), rgba(37,99,235,0.12))',
+            borderBottom: '1px solid rgba(53,106,230,0.3)',
             padding: '10px 24px',
             display: 'flex', alignItems: 'center', gap: 12,
           }}>
             <Spinner size={16} />
-            <span style={{ fontSize: 13, color: 'var(--accent-300)', fontWeight: 600 }}>
+            <span style={{ fontSize: 13, color: 'var(--accent-400)', fontWeight: 600 }}>
               Đang sinh bài luyện viết…
             </span>
             <div style={{ flex: 1, height: 4, background: 'rgba(255,255,255,0.1)', borderRadius: 99 }}>
               <div style={{
                 height: '100%',
                 width: `${(autoGenProgress.done / autoGenProgress.total) * 100}%`,
-                background: 'linear-gradient(90deg, var(--accent-500), var(--accent-400))',
+                background: 'var(--primary)',
                 borderRadius: 99,
                 transition: 'width 0.3s ease',
               }} />
@@ -496,6 +499,25 @@ export default function App() {
 
         <main className="page-content">
           <ErrorBoundary>
+            {page === 'overview' && (
+              <OverviewModule
+                user={user}
+                transcripts={transcripts}
+                chunks={allChunks}
+                allProgress={allProgress}
+                dueCount={dueChunks.length}
+                onNavigate={(targetPage) => {
+                  if (targetPage === 'ai_speaking') {
+                    setShowAiSpeakingModal(true);
+                  } else {
+                    setPage(targetPage);
+                  }
+                }}
+                onStartPractice={handleStartPractice}
+                onOpenAiSpeaking={() => setShowAiSpeakingModal(true)}
+              />
+            )}
+
             {(page === 'ai_listening' || page === 'transcripts') && (
               <ListeningAiModule
                 transcripts={transcripts}

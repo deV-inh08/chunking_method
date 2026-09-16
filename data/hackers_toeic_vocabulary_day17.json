@@ -1,0 +1,1250 @@
+[
+  {
+    "word": "fragile",
+    "meaningVi": "dễ vỡ, mỏng manh",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "perishable",
+    "meaningVi": "dễ hỏng, dễ thối",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "perish",
+    "meaningVi": "hỏng, tàn lụi",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "deliver",
+    "meaningVi": "giao, phát; phát biểu, bày tỏ",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "delivery",
+    "meaningVi": "sự vận chuyển",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ensure",
+    "meaningVi": "bảo đảm, quả quyết",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "courier",
+    "meaningVi": "người đưa thư, công ty vận chuyển",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "carton",
+    "meaningVi": "giấy bìa, hộp/thùng bìa cứng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "address",
+    "meaningVi": "địa chỉ; xử lý, giải quyết",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "shipment",
+    "meaningVi": "việc gửi hàng, việc vận chuyển; lô hàng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "particularly",
+    "meaningVi": "đặc biệt, cả biệt, đặc biệt là",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "particular",
+    "meaningVi": "đặc biệt, cụ thể",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "adequately",
+    "meaningVi": "tương xứng, thích đáng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "adequate",
+    "meaningVi": "đủ, tương xứng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "article",
+    "meaningVi": "vật phẩm, đồ; bài báo, điều khoản",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "efficient",
+    "meaningVi": "có hiệu quả, có năng lực",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "efficiency",
+    "meaningVi": "hiệu quả, tính hữu hiệu",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "efficiently",
+    "meaningVi": "một cách hiệu quả",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "agency",
+    "meaningVi": "đại lý, cơ quan, hãng, sở",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "enclose",
+    "meaningVi": "bao gồm, gửi kèm theo; vây quanh",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "enclosure",
+    "meaningVi": "sự rào lại, tài liệu đính kèm",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "careful",
+    "meaningVi": "cẩn thận, kỹ lưỡng, chu đáo",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "carefully",
+    "meaningVi": "cẩn thận, thận trọng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "pick up",
+    "meaningVi": "nhặt lên, đến lấy; đón",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "carry",
+    "meaningVi": "mang, vác, đem theo; có",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "attach",
+    "meaningVi": "đính kèm, gắn vào",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "attached",
+    "meaningVi": "được đính kèm",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "attachment",
+    "meaningVi": "tài liệu đính kèm",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "formerly",
+    "meaningVi": "trước đây",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "package",
+    "meaningVi": "gói hàng, kiện hàng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "react",
+    "meaningVi": "phản ứng, tác động trở lại",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reaction",
+    "meaningVi": "sự phản ứng/phản hồi",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "content",
+    "meaningVi": "nội dung, đồ đựng bên trong",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "convenience",
+    "meaningVi": "sự tiện lợi/thuận tiện",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "convenient",
+    "meaningVi": "thuận tiện",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "acknowledge",
+    "meaningVi": "ghi nhận, thừa nhận; báo xác nhận, tỏ lòng biết ơn",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "acknowledgement",
+    "meaningVi": "sự công nhận",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "caution",
+    "meaningVi": "sự cẩn trọng, lời cảnh cáo; báo trước, cảnh cáo",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cautious",
+    "meaningVi": "thận trọng, cẩn thận",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "correspondence",
+    "meaningVi": "thư từ, quan hệ thư từ",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "correspond",
+    "meaningVi": "tương ứng, đối nhau",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "correspondent",
+    "meaningVi": "phóng viên, người viết thư",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "separate",
+    "meaningVi": "tách rời ra, chia tay; phân loại; riêng, tách rời",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "separately",
+    "meaningVi": "tách biệt, riêng biệt",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "separation",
+    "meaningVi": "sự chia rẽ, sự tách biệt",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "remarkable",
+    "meaningVi": "đáng chú ý, xuất sắc, đặc biệt",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "remarkably",
+    "meaningVi": "đáng chú ý, đặc biệt",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "handle",
+    "meaningVi": "điều khiển, xử lý",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "handling",
+    "meaningVi": "sự điều khiển",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "warehouse",
+    "meaningVi": "nhà kho",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "impose",
+    "meaningVi": "đánh, áp (thuế)",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "imposition",
+    "meaningVi": "sự đánh thuế",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "storage",
+    "meaningVi": "kho, sự tích trữ",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "detach",
+    "meaningVi": "gỡ, tháo, tách ra",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "envelope",
+    "meaningVi": "phong bì",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "exclusion",
+    "meaningVi": "sự không tính vào, sự loại trừ",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "exclude",
+    "meaningVi": "ngăn chặn, loại trừ",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "exclusive",
+    "meaningVi": "không kể, độc quyền",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "exclusively",
+    "meaningVi": "dành riêng, độc quyền",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "recipient",
+    "meaningVi": "người nhận",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "affix",
+    "meaningVi": "đóng (dấu), dán (tem), ký (tên)",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "incorrect",
+    "meaningVi": "không đúng, sai",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "incorrectly",
+    "meaningVi": "sai, không đúng đắn",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "oblige",
+    "meaningVi": "bắt buộc, giao trách nhiệm",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "obligation",
+    "meaningVi": "nghĩa vụ, bổn phận",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "obligatory",
+    "meaningVi": "bắt buộc, cưỡng bách",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "step",
+    "meaningVi": "bước đi, bước; biện pháp, bước tiến",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "butcher's shop",
+    "meaningVi": "cửa hàng thịt",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cargo",
+    "meaningVi": "hàng hóa (vận tải)",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "clinic",
+    "meaningVi": "phòng khám",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "crate",
+    "meaningVi": "thùng thưa, sọt",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "flow",
+    "meaningVi": "dòng chảy, luồng; chảy, ùa tới",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "following week",
+    "meaningVi": "tuần tiếp theo",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "get a ticket",
+    "meaningVi": "lấy vé/mua vé",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "in storage",
+    "meaningVi": "trong kho",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "load",
+    "meaningVi": "vật nặng, gánh nặng, tải trọng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "mail",
+    "meaningVi": "thư, bưu phẩm; gửi (qua đường bưu điện)",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "museum",
+    "meaningVi": "bảo tàng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "parcel",
+    "meaningVi": "bưu kiện",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pick up packages",
+    "meaningVi": "lấy hàng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pottery",
+    "meaningVi": "đồ gốm",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "public park",
+    "meaningVi": "công viên công cộng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stamp",
+    "meaningVi": "dán tem, đóng dấu; con tem",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "van",
+    "meaningVi": "xe tải nhỏ",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "venue",
+    "meaningVi": "địa điểm",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "weight",
+    "meaningVi": "khối lượng, cân nặng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "barrier",
+    "meaningVi": "hàng rào, chướng ngại vật",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "base",
+    "meaningVi": "căn cứ",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "delay",
+    "meaningVi": "trì hoãn, chậm trễ; sự chậm trễ",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "due date",
+    "meaningVi": "thời hạn, ngày đáo hạn",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "instructor",
+    "meaningVi": "người dạy, giáo viên",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "offload",
+    "meaningVi": "dỡ hàng, trút gánh nặng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "parking pass",
+    "meaningVi": "thẻ đỗ xe",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "shipping",
+    "meaningVi": "việc vận chuyển",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "trade",
+    "meaningVi": "thương mại, sự buôn bán",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "as of now",
+    "meaningVi": "ngay bây giờ, từ nay trở đi",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "broker",
+    "meaningVi": "người môi giới",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "canal",
+    "meaningVi": "kênh, ống",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "carry a large parcel",
+    "meaningVi": "mang một bưu kiện lớn",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "closing",
+    "meaningVi": "sự kết thúc, kết thúc, cuối cùng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "courier service",
+    "meaningVi": "dịch vụ chuyển phát",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "door-to-door delivery",
+    "meaningVi": "giao hàng tận nơi",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "drive off",
+    "meaningVi": "lái xe đi",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "drop off",
+    "meaningVi": "thả xuống (xe), giảm sút",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "drycleaner",
+    "meaningVi": "cửa hàng giặt khô",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "floor manager",
+    "meaningVi": "quản lý tầng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "hold onto the handrail",
+    "meaningVi": "bám vào lan can",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "in transit",
+    "meaningVi": "trong khi vận chuyển",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "inn",
+    "meaningVi": "nhà trọ",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lab report",
+    "meaningVi": "báo cáo thí nghiệm",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lab technician",
+    "meaningVi": "kỹ thuật viên phòng thí nghiệm",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lace",
+    "meaningVi": "dây buộc, ren; thắt, buộc",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "legal department",
+    "meaningVi": "bộ phận pháp lý",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "load A onto B",
+    "meaningVi": "chất A lên B",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "load a truck",
+    "meaningVi": "chất hàng lên xe tải",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "loaded with",
+    "meaningVi": "được chất đầy",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "loading",
+    "meaningVi": "sự chất hàng, hàng trên xe",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lost in delivery",
+    "meaningVi": "thất lạc khi vận chuyển",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "mailing list",
+    "meaningVi": "danh sách gửi thư",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "make a delivery",
+    "meaningVi": "giao hàng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "packing tape",
+    "meaningVi": "băng dính gói hàng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pass over",
+    "meaningVi": "bỏ qua, lỡ đi",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pavement",
+    "meaningVi": "vỉa hè",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "people on foot",
+    "meaningVi": "người đi bộ",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "pick up passengers",
+    "meaningVi": "đón khách",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pier",
+    "meaningVi": "bến tàu, cầu tàu",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pile up",
+    "meaningVi": "chất đống, chồng chất",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "postal",
+    "meaningVi": "(thuộc) bưu điện",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "strap",
+    "meaningVi": "buộc, băng; dây, đai",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "time limit",
+    "meaningVi": "thời hạn",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "waterway",
+    "meaningVi": "đường thủy",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "weigh",
+    "meaningVi": "cân, cân nhắc",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "weight limit",
+    "meaningVi": "giới hạn trọng lượng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "wrap up",
+    "meaningVi": "gói lại",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "correction",
+    "meaningVi": "sự sửa chữa, hiệu chỉnh",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "delivery option",
+    "meaningVi": "phương thức giao hàng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "discard",
+    "meaningVi": "bỏ, loại bỏ",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "express mail",
+    "meaningVi": "thư chuyển phát nhanh",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fortunately",
+    "meaningVi": "may thay",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "ideally",
+    "meaningVi": "lý tưởng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "load size",
+    "meaningVi": "mức tải",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "marginally",
+    "meaningVi": "một chút",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "ordered",
+    "meaningVi": "có trật tự",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "ordering",
+    "meaningVi": "sự đặt hàng, sự sắp xếp",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ordinarily",
+    "meaningVi": "thông thường",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "packaging",
+    "meaningVi": "bao bì",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "provided (that)",
+    "meaningVi": "miễn là",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "conjunction"
+  },
+  {
+    "word": "respond to",
+    "meaningVi": "đáp lại",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "sizable",
+    "meaningVi": "to, có kích cỡ lớn",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "society",
+    "meaningVi": "xã hội, đoàn thể",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "accelerate",
+    "meaningVi": "tăng tốc",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "additional charge",
+    "meaningVi": "phí phải trả thêm",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ahead of schedule",
+    "meaningVi": "trước thời hạn",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "at the last minute",
+    "meaningVi": "vào phút cuối",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "by hand",
+    "meaningVi": "thủ công",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "car maintenance",
+    "meaningVi": "bảo dưỡng xe",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "city official",
+    "meaningVi": "quan chức thành phố",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "free of charge",
+    "meaningVi": "miễn phí",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "postage",
+    "meaningVi": "bưu phí",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "trade negotiation",
+    "meaningVi": "đàm phán thương mại",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "trade show",
+    "meaningVi": "triển lãm thương mại",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "without delay",
+    "meaningVi": "không chậm trễ",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "freight",
+    "meaningVi": "hàng hóa (được vận chuyển)",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "heritage",
+    "meaningVi": "tài sản thừa kế, di sản",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "janitor",
+    "meaningVi": "người gác cổng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "loading dock",
+    "meaningVi": "khu vực bốc dỡ",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "logistics",
+    "meaningVi": "hậu cần, kho vận, giao nhận",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "realtor",
+    "meaningVi": "người môi giới bất động sản",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "registered mail",
+    "meaningVi": "thư bảo đảm",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "wheelbarrow",
+    "meaningVi": "xe cút kít",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "classified",
+    "meaningVi": "đã được phân loại",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "consulate",
+    "meaningVi": "lãnh sự quán",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "decidedly",
+    "meaningVi": "kiên quyết, dứt khoát",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "inaugurate",
+    "meaningVi": "khai mạc, khánh thành",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "institute",
+    "meaningVi": "viện, học viện",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "institution",
+    "meaningVi": "tổ chức, cơ quan",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "openly",
+    "meaningVi": "công khai, thẳng thắn",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "oversight",
+    "meaningVi": "sự giám sát",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "province",
+    "meaningVi": "tỉnh",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "selective",
+    "meaningVi": "có chọn lọc",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "transportable",
+    "meaningVi": "có thể vận chuyển được",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "alumni association",
+    "meaningVi": "hội cựu sinh viên",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "bilateral",
+    "meaningVi": "hai bên, song phương",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "diplomat",
+    "meaningVi": "nhà ngoại giao",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "embargo",
+    "meaningVi": "lệnh cấm vận; sự đình chỉ hoạt động",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expatriate",
+    "meaningVi": "người nước ngoài; đày biệt xứ",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expedite",
+    "meaningVi": "xúc tiến, giải quyết",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "import license",
+    "meaningVi": "giấy phép nhập khẩu",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "intended recipient",
+    "meaningVi": "người nhận",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "progression",
+    "meaningVi": "sự tiến triển, sự tiến hành",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reciprocal",
+    "meaningVi": "lẫn nhau, cả đôi bên",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "stow",
+    "meaningVi": "cất giữ",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "surplus",
+    "meaningVi": "số dư, số thừa",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "perishable goods/items",
+    "meaningVi": "hàng hóa/đồ đạc dễ hư hỏng",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "efficient + processing/administration",
+    "meaningVi": "việc xử lý/quản lý hiệu quả",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "a real estate agency",
+    "meaningVi": "đại lý bất động sản",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "a travel agency",
+    "meaningVi": "đại lý du lịch",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "an employment agency",
+    "meaningVi": "văn phòng môi giới việc làm",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "an advertising agency",
+    "meaningVi": "cửa hàng quảng cáo",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "a car rental agency",
+    "meaningVi": "cửa hàng cho thuê xe hơi",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "attach A to B",
+    "meaningVi": "đính kèm/dán A vào B",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "for your convenience",
+    "meaningVi": "để thuận tiện cho bạn",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "at your earliest convenience",
+    "meaningVi": "sớm nhất khi bạn có thể",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "with caution",
+    "meaningVi": "cẩn thận",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "impose A on B",
+    "meaningVi": "áp đặt A lên B",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "affix A to B",
+    "meaningVi": "dán/gắn A vào B",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be obliged to do",
+    "meaningVi": "bị buộc phải làm",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take steps",
+    "meaningVi": "thực hiện/áp dụng các biện pháp",
+    "topic": "Thương mại - Vận chuyển",
+    "partOfSpeech": "verb"
+  }
+]

@@ -5,20 +5,21 @@ import {
   Award, Play, AlertCircle, Square,
   Settings, Check, X, Sparkles,
 } from 'lucide-react';
+import { Spinner } from '../ui';
 import { getPracticeDraft, getSettings, saveSettings } from '../../store/storage';
 import { transcribeAudioWithGemini, assessPronunciationWithGemini } from '../../services/ai';
-import { getChunkIPA, getSentenceIPA, formatIPA, wordToIPA, getPhoneticTip, getWordPhonemes, splitIpaToPhonemes } from '../../services/phonetics';
+import { getChunkIPA, getSentenceIPA, formatIPA, wordToIPA, getPhoneticTip, getWordPhonemes } from '../../services/phonetics';
 import { extractAcousticFeatures } from '../../services/sherpaOnnxService';
 import { playTextWithTts, stopAudio, fetchAudioUrl } from '../../services/ttsService';
 
 // ─── AI Voice Candidates (Microsoft Edge Neural Voices - Chuẩn người bản xứ 100%) ─────
 export const AI_VOICES = [
-  { id: 'en-US-female', label: '👩 🇺🇸 Anh - Mỹ (Nữ: Jenny)', neuralVoice: 'en-US-JennyNeural', lang: 'en-US', gender: 'female', sample: "Hello! Let's practice American English pronunciation." },
-  { id: 'en-US-male', label: '👨 🇺🇸 Anh - Mỹ (Nam: Guy)', neuralVoice: 'en-US-GuyNeural', lang: 'en-US', gender: 'male', sample: "Hi there! Welcome to American English speaking practice." },
-  { id: 'en-GB-female', label: '👩 🇬🇧 Anh - Anh (Nữ: Sonia)', neuralVoice: 'en-GB-SoniaNeural', lang: 'en-GB', gender: 'female', sample: "Good day! Let's practise British English pronunciation." },
-  { id: 'en-GB-male', label: '👨 🇬🇧 Anh - Anh (Nam: Ryan)', neuralVoice: 'en-GB-RyanNeural', lang: 'en-GB', gender: 'male', sample: "Hello! Ready to practise your British accent?" },
-  { id: 'en-AU-female', label: '👩 🇦🇺 Anh - Úc (Nữ: Natasha)', neuralVoice: 'en-AU-NatashaNeural', lang: 'en-AU', gender: 'female', sample: "G'day mate! Let's improve your English speaking skills." },
-  { id: 'en-AU-male', label: '👨 🇦🇺 Anh - Úc (Nam: William)', neuralVoice: 'en-AU-WilliamNeural', lang: 'en-AU', gender: 'male', sample: "G'day! Ready to improve your Australian pronunciation?" },
+  { id: 'en-US-female', label: 'US • Jenny (Nữ - American)', neuralVoice: 'en-US-JennyNeural', lang: 'en-US', gender: 'female', sample: "Hello! Let's practice American English pronunciation." },
+  { id: 'en-US-male', label: 'US • Guy (Nam - American)', neuralVoice: 'en-US-GuyNeural', lang: 'en-US', gender: 'male', sample: "Hi there! Welcome to American English speaking practice." },
+  { id: 'en-GB-female', label: 'UK • Sonia (Nữ - British)', neuralVoice: 'en-GB-SoniaNeural', lang: 'en-GB', gender: 'female', sample: "Good day! Let's practise British English pronunciation." },
+  { id: 'en-GB-male', label: 'UK • Ryan (Nam - British)', neuralVoice: 'en-GB-RyanNeural', lang: 'en-GB', gender: 'male', sample: "Hello! Ready to practise your British accent?" },
+  { id: 'en-AU-female', label: 'AU • Natasha (Nữ - Australian)', neuralVoice: 'en-AU-NatashaNeural', lang: 'en-AU', gender: 'female', sample: "G'day mate! Let's improve your English speaking skills." },
+  { id: 'en-AU-male', label: 'AU • William (Nam - Australian)', neuralVoice: 'en-AU-WilliamNeural', lang: 'en-AU', gender: 'male', sample: "G'day! Ready to improve your Australian pronunciation?" },
 ];
 
 // ─── ScoreRing Component ───────────────────────────────────────
@@ -66,9 +67,9 @@ function AudioWaveVisualizer({ volume = 0, isRecording = false, isAiSpeaking = f
           : 0.15;
         const barHeight = Math.max(6, Math.min(46, Math.round(baseHeight * factor)));
         const barColor = isAiSpeaking
-          ? 'linear-gradient(180deg, #38bdf8, #818cf8)'
+          ? 'linear-gradient(180deg, #38bdf8, #60a5fa)'
           : isRecording
-          ? 'linear-gradient(180deg, #ef4444, #f97316)'
+          ? 'linear-gradient(180deg, #356ae6, #60a5fa)'
           : 'rgba(255, 255, 255, 0.12)';
 
         return (
@@ -376,6 +377,27 @@ export function SpeakingSession({
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [volume, setVolume] = useState(0);
   const [liveSpokenText, setLiveSpokenText] = useState('');
+  const [recordingSeconds, setRecordingSeconds] = useState(0);
+
+  // Timer while recording
+  useEffect(() => {
+    if (!isRecording) {
+      setRecordingSeconds(0);
+      return;
+    }
+    const interval = setInterval(() => {
+      setRecordingSeconds(prev => prev + 1);
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isRecording]);
+
+  const formatDuration = useCallback((sec) => {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  }, []);
 
   // AI Voice Selection
   const [selectedVoiceId, setSelectedVoiceId] = useState(() => {
@@ -1350,9 +1372,13 @@ export function SpeakingSession({
               style={{
                 padding: '24px 16px',
                 textAlign: 'center',
-                background: 'rgba(15, 23, 42, 0.85)',
+                background: 'var(--bg-elevated)',
                 borderRadius: 'var(--radius-lg)',
-                border: isRecording ? '1px solid #ef4444' : isAiSpeaking ? '1px solid #38bdf8' : '1px solid rgba(255,255,255,0.1)',
+                border: isRecording
+                  ? '1px solid var(--primary)'
+                  : isAiSpeaking
+                  ? '1px solid var(--accent-400)'
+                  : '1px solid var(--border-default)',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -1361,68 +1387,94 @@ export function SpeakingSession({
             >
               <AudioWaveVisualizer volume={volume} isRecording={isRecording} isAiSpeaking={isAiSpeaking} />
 
-              {/* Nút Microphone Chính - Nhấn để nói / Nhấn để dừng */}
-              <button
-                type="button"
-                onClick={() => {
-                  if (isRecording) {
-                    stopRecordingAndGrade();
-                  } else {
-                    startRecording();
-                  }
-                }}
-                disabled={isAiSpeaking || isEvaluating}
-                style={{
-                  width: 84,
-                  height: 84,
-                  borderRadius: '50%',
-                  border: 'none',
-                  background: isRecording
-                    ? 'linear-gradient(135deg, #ef4444, #dc2626)'
-                    : isAiSpeaking
-                    ? 'linear-gradient(135deg, #0284c7, #38bdf8)'
-                    : 'linear-gradient(135deg, #10b981, #059669)',
-                  boxShadow: isRecording
-                    ? '0 0 35px rgba(239, 68, 68, 0.7)'
-                    : isAiSpeaking
-                    ? '0 0 25px rgba(56, 189, 248, 0.5)'
-                    : '0 0 25px rgba(16, 185, 129, 0.4)',
-                  color: '#fff',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: isAiSpeaking || isEvaluating ? 'not-allowed' : 'pointer',
-                  transition: 'transform 0.15s ease, box-shadow 0.2s ease',
-                  transform: isRecording && volume > 10 ? 'scale(1.08)' : 'scale(1)',
-                }}
-                title={isRecording ? 'Bấm để dừng & chấm bài' : 'Bấm để nói'}
-              >
-                {isEvaluating ? (
-                  <div className="animate-spin" style={{ width: 28, height: 28, border: '3px solid #fff', borderTopColor: 'transparent', borderRadius: '50%' }} />
-                ) : isRecording ? (
-                  <Square size={32} fill="#fff" />
-                ) : isAiSpeaking ? (
-                  <Volume2 size={34} className="animate-pulse" />
-                ) : (
-                  <Mic size={36} />
-                )}
-              </button>
-
-              {/* Hướng dẫn thao tác rõ ràng */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
-                <div style={{ fontSize: 15, fontWeight: 800 }}>
+              {/* Nút Microphone Chính - Chuẩn Enterprise Calm */}
+              <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (isRecording) {
+                      stopRecordingAndGrade();
+                    } else {
+                      startRecording();
+                    }
+                  }}
+                  disabled={isAiSpeaking || isEvaluating}
+                  className={isRecording ? 'mic-recording-active' : ''}
+                  style={{
+                    width: 72,
+                    height: 72,
+                    borderRadius: '50%',
+                    border: 'none',
+                    background: isRecording
+                      ? 'var(--primary)'
+                      : isAiSpeaking
+                      ? '#0284c7'
+                      : 'var(--primary)',
+                    boxShadow: '0 4px 14px rgba(0, 0, 0, 0.25)',
+                    color: '#fff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: isAiSpeaking || isEvaluating ? 'not-allowed' : 'pointer',
+                    transition: 'transform 0.15s ease, background-color 0.2s ease',
+                    transform: isRecording && volume > 10 ? 'scale(1.05)' : 'scale(1)',
+                  }}
+                  title={isRecording ? 'Bấm để dừng & chấm bài' : 'Bấm để nói'}
+                >
                   {isEvaluating ? (
-                    <span style={{ color: '#fbbf24' }}>⏳ Đang chấm phát âm câu của bạn…</span>
+                    <Spinner size={24} />
                   ) : isRecording ? (
-                    <span style={{ color: '#ef4444' }}>🔴 Đang thu âm... Bấm nút vuông để hoàn thành & chấm bài</span>
+                    <Square size={26} fill="#fff" />
                   ) : isAiSpeaking ? (
-                    <span style={{ color: '#38bdf8' }}>🔊 AI đang phát âm mẫu...</span>
+                    <Volume2 size={28} className="animate-pulse" />
                   ) : (
-                    <span style={{ color: '#4ade80' }}>🎙️ Bấm vào Micro để bắt đầu nói</span>
+                    <Mic size={30} strokeWidth={1.75} />
+                  )}
+                </button>
+
+                {/* Duration Timer Badge */}
+                {isRecording && (
+                  <div
+                    style={{
+                      fontSize: 12,
+                      fontWeight: 700,
+                      fontFamily: 'var(--font-mono, monospace)',
+                      color: 'var(--text-primary)',
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      padding: '2px 8px',
+                      borderRadius: 4,
+                      letterSpacing: '0.05em',
+                    }}
+                  >
+                    {formatDuration(recordingSeconds)}
+                  </div>
+                )}
+              </div>
+
+              {/* Hướng dẫn thao tác rõ ràng chuẩn Enterprise */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
+                <div style={{ fontSize: 14, fontWeight: 700 }}>
+                  {isEvaluating ? (
+                    <span style={{ color: 'var(--warning-text)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                      <Spinner size={14} /> Đang phân tích âm học...
+                    </span>
+                  ) : isRecording ? (
+                    <span style={{ color: 'var(--accent-400)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#ef4444' }} />
+                      Đang nghe... Bấm nút vuông để chấm điểm
+                    </span>
+                  ) : isAiSpeaking ? (
+                    <span style={{ color: 'var(--accent-300)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                      <Volume2 size={15} strokeWidth={1.75} /> AI đang phát âm mẫu...
+                    </span>
+                  ) : (
+                    <span style={{ color: 'var(--text-secondary)' }}>
+                      Bấm vào microphone để bắt đầu
+                    </span>
                   )}
                 </div>
                 <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
-                  {isRecording ? 'Hãy đọc to câu tiếng Anh trên' : 'Nhấn nút mic ➔ Đọc câu tiếng Anh ➔ Nhấn lại nút vuông để chấm điểm'}
+                  {isRecording ? 'Đọc to câu tiếng Anh ở trên' : 'Nhấn mic ➔ Đọc câu ➔ Nhấn dừng để chấm điểm'}
                 </div>
               </div>
 
@@ -1439,7 +1491,7 @@ export function SpeakingSession({
                     maxWidth: '90%',
                   }}
                 >
-                  Đang nghe: "{liveSpokenText}"
+                  Đang nghe: &ldquo;{liveSpokenText}&rdquo;
                 </div>
               )}
             </div>
@@ -1468,16 +1520,16 @@ export function SpeakingSession({
                     )}
                   </div>
 
-                  {/* Chú thích màu sắc 3 cấp độ (Không còn phân biệt Chunk) */}
+                  {/* Chú thích màu sắc 3 cấp độ chuẩn Calm */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 11.5, flexWrap: 'wrap' }}>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: 5, color: '#22c55e', fontWeight: 700 }}>
-                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e' }} /> 🟢 Tốt (≥ 80đ)
+                    <span style={{ display: 'flex', alignItems: 'center', gap: 5, color: '#22c55e', fontWeight: 600 }}>
+                      <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#22c55e' }} /> Tốt (≥ 80)
                     </span>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: 5, color: '#f59e0b', fontWeight: 700 }}>
-                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#f59e0b' }} /> 🟡 Trung bình (60 - 79đ)
+                    <span style={{ display: 'flex', alignItems: 'center', gap: 5, color: '#f59e0b', fontWeight: 600 }}>
+                      <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#f59e0b' }} /> Trung bình (60 - 79)
                     </span>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: 5, color: '#ef4444', fontWeight: 700 }}>
-                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#ef4444' }} /> 🔴 Cần sửa (&lt; 60đ)
+                    <span style={{ display: 'flex', alignItems: 'center', gap: 5, color: '#ef4444', fontWeight: 600 }}>
+                      <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#ef4444' }} /> Cần sửa (&lt; 60)
                     </span>
                   </div>
                 </div>
@@ -1691,11 +1743,14 @@ export function SpeakingSession({
                               border: 'none',
                               color: 'var(--text-muted)',
                               cursor: 'pointer',
-                              padding: '2px 6px',
-                              fontSize: 14,
+                              padding: '2px 4px',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
                             }}
+                            aria-label="Đóng chi tiết từ"
                           >
-                            ✕
+                            <X size={15} />
                           </button>
                         </div>
                       </div>
@@ -1704,7 +1759,7 @@ export function SpeakingSession({
                       {Array.isArray(selectedWordDetail.phonemes) && selectedWordDetail.phonemes.length > 0 && (
                         <div>
                           <div style={{ fontSize: 11.5, color: '#94a3b8', fontWeight: 600, marginBottom: 7, display: 'flex', alignItems: 'center', gap: 5 }}>
-                            <span>🎯</span> Chấm điểm từng âm vị (Phonemes):
+                            Chấm điểm từng âm vị (Phonemes):
                           </div>
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
                             {selectedWordDetail.phonemes.map((p, pIdx) => {
@@ -1779,7 +1834,7 @@ export function SpeakingSession({
                             lineHeight: 1.4,
                           }}
                         >
-                          💡 <strong>Nhận xét:</strong> {selectedWordDetail.feedback || selectedWordDetail.note}
+                          <strong>Nhận xét:</strong> {selectedWordDetail.feedback || selectedWordDetail.note}
                         </div>
                       )}
 
@@ -1796,7 +1851,7 @@ export function SpeakingSession({
                             lineHeight: 1.4,
                           }}
                         >
-                          👅 <strong>Mẹo phát âm ({selectedWordDetail.tip.title}):</strong> {selectedWordDetail.tip.tip}
+                          <strong>Mẹo phát âm ({selectedWordDetail.tip.title}):</strong> {selectedWordDetail.tip.tip}
                         </div>
                       )}
                     </div>

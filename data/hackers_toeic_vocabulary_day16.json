@@ -1,0 +1,1232 @@
+[
+  {
+    "word": "completely",
+    "meaningVi": "hoàn toàn, trọn vẹn",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "complete",
+    "meaningVi": "hoàn thành; hoàn toàn",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "completion",
+    "meaningVi": "sự hoàn thành",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "refuse",
+    "meaningVi": "từ chối",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "refusal",
+    "meaningVi": "sự từ chối",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "temporarily",
+    "meaningVi": "tạm thời, nhất thời",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "temporary",
+    "meaningVi": "tạm thời",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dealer",
+    "meaningVi": "người buôn bán, lái buôn",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dealership",
+    "meaningVi": "đại lý, hàng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "bulk",
+    "meaningVi": "lớn, nhiều; khổng lồ, số lượng lớn",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "inventory",
+    "meaningVi": "hàng tồn kho",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "short",
+    "meaningVi": "ngắn; thiếu, không đủ",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "shortage",
+    "meaningVi": "sự thiếu, số lượng thiếu",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "shorten",
+    "meaningVi": "làm ngắn đi",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "shortly",
+    "meaningVi": "ngắn gọn, trong thời gian ngắn",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "cost",
+    "meaningVi": "phí, chi phí; trị giá, đòi hỏi, tốn",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "selection",
+    "meaningVi": "sự chọn lựa, lựa chọn",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "commercial",
+    "meaningVi": "(thuộc) thương mại; quảng cáo",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "order",
+    "meaningVi": "đặt hàng, yêu cầu; đơn đặt hàng, hàng đặt mua",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "provide",
+    "meaningVi": "cung cấp, dự phòng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "provision",
+    "meaningVi": "sự cung cấp, đồ cung cấp",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "provider",
+    "meaningVi": "người cung cấp, nhà cung cấp",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "contact",
+    "meaningVi": "liên lạc, liên hệ; sự liên lạc, người liên hệ",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "invoice",
+    "meaningVi": "hóa đơn",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "move",
+    "meaningVi": "chuyển động, di chuyển; sự chuyển/di chuyển; động thái, biện pháp",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "supply",
+    "meaningVi": "cung cấp, trang bị; sự cung cấp; thiết bị, vật tư",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "supplier",
+    "meaningVi": "nhà cung cấp",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "discount",
+    "meaningVi": "sự giảm, tiền chiết khấu",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "distribute",
+    "meaningVi": "phân phối, phân phát",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "distribution",
+    "meaningVi": "sự phân phối/phân phát",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "distributor",
+    "meaningVi": "nhà phân phối",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "acquisition",
+    "meaningVi": "sự tiếp nhận, sự mua lại; vật được mua",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "assure",
+    "meaningVi": "đảm bảo, cam đoan",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "assurance",
+    "meaningVi": "sự đảm bảo, bảo hiểm",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "subject",
+    "meaningVi": "dễ bị, khó tránh khỏi; lệ thuộc, tùy theo, phải chịu; xâm chiếm, chinh phục; bắt phải chịu",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "seek",
+    "meaningVi": "tìm kiếm, theo đuổi",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "satisfactory",
+    "meaningVi": "vừa lòng, thỏa mãn, thỏa đáng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "satisfied",
+    "meaningVi": "hài lòng, vừa ý",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "confirmation",
+    "meaningVi": "sự xác nhận, sự thừa nhận",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "confirm",
+    "meaningVi": "xác nhận, chứng thực",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "unable",
+    "meaningVi": "không thể, không có khả năng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "payment",
+    "meaningVi": "việc trả tiền, khoản thanh toán",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "measure",
+    "meaningVi": "phương sách, biện pháp; đo đạc, tính toán",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "bargain",
+    "meaningVi": "sự mặc cả, món hời",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stock",
+    "meaningVi": "kho hàng, nguồn hàng; cổ phần; tích trữ, cung cấp",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "affordability",
+    "meaningVi": "tính hợp lý về giá cả",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "affordable",
+    "meaningVi": "vừa túi tiền, có thể chi trả",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "clientele",
+    "meaningVi": "nhóm khách hàng, khách quen",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "acclaim",
+    "meaningVi": "tiếng hoan hô, sự ngợi khen",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "acclaimed",
+    "meaningVi": "được hoan nghênh, có tiếng vang",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "represent",
+    "meaningVi": "đại diện cho, tiêu biểu cho",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "representation",
+    "meaningVi": "sự đại diện",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "representative",
+    "meaningVi": "người đại diện, đại biểu",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rating",
+    "meaningVi": "sự đánh giá, thứ bậc",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "encompass",
+    "meaningVi": "bao quanh, bao gồm",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "finalize",
+    "meaningVi": "hoàn thành, thông qua lần cuối",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "market",
+    "meaningVi": "thị trường; đưa ra thị trường",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "retail",
+    "meaningVi": "sự bán lẻ, việc bán lẻ",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "retailer",
+    "meaningVi": "người bán lẻ",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "commodity",
+    "meaningVi": "hàng hóa, mặt hàng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "quote",
+    "meaningVi": "báo giá; trích dẫn, định giá",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "consignment",
+    "meaningVi": "sự gửi hàng, sự ký gửi (để bán)",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "consign",
+    "meaningVi": "gửi (hàng, tiền), ký gửi",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "checklist",
+    "meaningVi": "bảng liệt kê các mục cần kiểm tra",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "client",
+    "meaningVi": "khách hàng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "communicate",
+    "meaningVi": "giao tiếp, truyền đạt",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "exchange",
+    "meaningVi": "sự trao đổi; đổi, trao đổi",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "film studio",
+    "meaningVi": "phim trường",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "journal",
+    "meaningVi": "tạp chí, báo",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "journalist",
+    "meaningVi": "nhà báo",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "magazine",
+    "meaningVi": "tạp chí",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "newspaper",
+    "meaningVi": "báo",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "newsstand",
+    "meaningVi": "quầy báo, sạp báo",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "parade",
+    "meaningVi": "cuộc diễu hành",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "publisher",
+    "meaningVi": "nhà xuất bản",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reader",
+    "meaningVi": "người đọc, độc giả",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reporter",
+    "meaningVi": "phóng viên, người báo cáo",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sales trend",
+    "meaningVi": "xu hướng doanh thu",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "comforting",
+    "meaningVi": "có thể an ủi",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "excellently",
+    "meaningVi": "tuyệt vời, xuất sắc",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "export",
+    "meaningVi": "xuất khẩu; hàng xuất khẩu",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "former",
+    "meaningVi": "trước, cũ",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "govern",
+    "meaningVi": "quản lý, cai trị",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "government",
+    "meaningVi": "chính quyền, sự cai trị",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "import",
+    "meaningVi": "nhập khẩu; hàng nhập khẩu",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "politician",
+    "meaningVi": "chính trị gia",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "politics",
+    "meaningVi": "chính trị, quan điểm chính trị",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "start",
+    "meaningVi": "bắt đầu; buổi đầu, sự khởi đầu",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "unlikely",
+    "meaningVi": "không chắc, không có thực",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "back away from",
+    "meaningVi": "lùi xa khỏi",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be closed for the day",
+    "meaningVi": "đóng cửa (hết giờ làm việc)",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be determined to do",
+    "meaningVi": "quyết tâm làm gì",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "business day",
+    "meaningVi": "ngày làm việc",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "commercial space",
+    "meaningVi": "không gian/mặt bằng kinh doanh",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "day after tomorrow",
+    "meaningVi": "ngày kia",
+    "topic": "Giao dịch",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "front-page story",
+    "meaningVi": "câu chuyện trên trang nhất",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "give a good price",
+    "meaningVi": "đưa ra một mức giá tốt",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "headline",
+    "meaningVi": "tiêu đề, dòng tít",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "in stock",
+    "meaningVi": "có hàng (còn trong kho)",
+    "topic": "Giao dịch",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "lead (up/down) to",
+    "meaningVi": "dẫn đến",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make a recording",
+    "meaningVi": "ghi âm",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "normal operating hours",
+    "meaningVi": "giờ làm việc bình thường",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "on sale",
+    "meaningVi": "bán giảm giá",
+    "topic": "Giao dịch",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "on the market",
+    "meaningVi": "trên thị trường",
+    "topic": "Giao dịch",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "out of print",
+    "meaningVi": "không xuất bản nữa",
+    "topic": "Giao dịch",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "out of stock",
+    "meaningVi": "hết hàng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "overcharge",
+    "meaningVi": "bán quá đắt, nói thách",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "payment option",
+    "meaningVi": "phương thức thanh toán",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "place an order",
+    "meaningVi": "đặt hàng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "put A out for sale",
+    "meaningVi": "đưa A ra bán",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "retail store",
+    "meaningVi": "cửa hàng bán lẻ",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "run out of",
+    "meaningVi": "hết, cạn kiệt",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "sales presentation",
+    "meaningVi": "bài thuyết trình bán hàng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "salesperson",
+    "meaningVi": "nhân viên bán hàng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sold out",
+    "meaningVi": "hết hàng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "stay open late",
+    "meaningVi": "mở cửa muộn",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "stockroom",
+    "meaningVi": "nhà kho",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "storage facility",
+    "meaningVi": "kho hàng, kho lưu trữ",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "storeroom",
+    "meaningVi": "kho hàng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "take inventory",
+    "meaningVi": "kiểm kê",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "accordingly",
+    "meaningVi": "vì vậy, cho nên",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "adaptable",
+    "meaningVi": "có thể thích nghi",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "along with",
+    "meaningVi": "cùng với, kèm theo",
+    "topic": "Giao dịch",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "at the latest",
+    "meaningVi": "muộn nhất là",
+    "topic": "Giao dịch",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "compliant",
+    "meaningVi": "mềm mỏng, phục tùng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "correspond",
+    "meaningVi": "tương xứng, đối nhau",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "cultivation",
+    "meaningVi": "sự trồng trọt, sự nuôi dưỡng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "do business with",
+    "meaningVi": "buôn bán/giao dịch với",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "had better do",
+    "meaningVi": "tốt hơn nên",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "honorable",
+    "meaningVi": "đáng kính trọng, vinh dự",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "perceptive",
+    "meaningVi": "(thuộc) nhận thức, nhận thức được",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reasonably",
+    "meaningVi": "hợp lý, vừa phải",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "transformation",
+    "meaningVi": "sự biến đổi",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "attain",
+    "meaningVi": "đạt được",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "barter",
+    "meaningVi": "đổi, đổi chác; sự đổi chác",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "boycott",
+    "meaningVi": "tẩy chay; sự tẩy chay",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "capitalize on",
+    "meaningVi": "lợi dụng, tranh thủ cơ hội",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "council",
+    "meaningVi": "hội đồng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "Department of Commerce",
+    "meaningVi": "Bộ Thương mại",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "depot",
+    "meaningVi": "kho chứa, kho hàng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "diminish",
+    "meaningVi": "giảm, bớt",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "duty-free",
+    "meaningVi": "miễn thuế",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "election",
+    "meaningVi": "cuộc bầu cử",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "exercise one's right",
+    "meaningVi": "sử dụng quyền của",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "federal",
+    "meaningVi": "(thuộc) liên bang",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "hold power",
+    "meaningVi": "cầm quyền, nắm quyền",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "inclination",
+    "meaningVi": "sự nghiêng, độ nghiêng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inevitable",
+    "meaningVi": "không thể tránh được",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "loyal customer",
+    "meaningVi": "khách hàng trung thành",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "outside provider",
+    "meaningVi": "nhà cung cấp bên ngoài",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "poll",
+    "meaningVi": "cuộc thăm dò ý kiến",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "possession",
+    "meaningVi": "quyền sở hữu, sự chiếm hữu",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "scarce",
+    "meaningVi": "khan hiếm, khó tìm",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "status",
+    "meaningVi": "trạng thái, tình trạng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "switch A to B",
+    "meaningVi": "chuyển A sang B",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "wholesaler",
+    "meaningVi": "người bán buôn",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "withstand",
+    "meaningVi": "chịu đựng, chống lại",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be closed to the public",
+    "meaningVi": "không mở cửa cho công chúng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "breaking news",
+    "meaningVi": "tin mới nhất",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "run an article",
+    "meaningVi": "cho in một bài báo",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "step down",
+    "meaningVi": "từ chức",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "write up",
+    "meaningVi": "viết ra, viết tường trình",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "diversified",
+    "meaningVi": "đa dạng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "engrave",
+    "meaningVi": "khắc, chạm",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "facilitator",
+    "meaningVi": "người cố vấn",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "itemized",
+    "meaningVi": "được ghi thành từng mục",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "keep track of",
+    "meaningVi": "theo dõi",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "predominantly",
+    "meaningVi": "phần lớn, chủ yếu là",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "profoundly",
+    "meaningVi": "sâu sắc, hết sức",
+    "topic": "Giao dịch",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "barring",
+    "meaningVi": "trừ ra",
+    "topic": "Giao dịch",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "bureaucracy",
+    "meaningVi": "sự quan liêu, thói quan liêu",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cast a ballot",
+    "meaningVi": "bỏ phiếu",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "come to power",
+    "meaningVi": "lên nắm quyền",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "constituency",
+    "meaningVi": "người đi bỏ phiếu, đơn vị bầu cử",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "contend with",
+    "meaningVi": "đương đầu với",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "drawback",
+    "meaningVi": "mặt hạn chế, điều trở ngại",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "in place of",
+    "meaningVi": "thay cho",
+    "topic": "Giao dịch",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "in the prepaid envelope",
+    "meaningVi": "trong phong bì đã được trả phí",
+    "topic": "Giao dịch",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "nationalize",
+    "meaningVi": "quốc hữu hóa",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "parliament",
+    "meaningVi": "nghị viện, quốc hội",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "peddler",
+    "meaningVi": "người bán rong",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "price quote",
+    "meaningVi": "báo giá",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "protocol",
+    "meaningVi": "nghi thức ngoại giao",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "scarcity",
+    "meaningVi": "sự khan hiếm",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "summit",
+    "meaningVi": "hội nghị thượng đỉnh",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "surrender",
+    "meaningVi": "đầu hàng, từ bỏ",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take an action against",
+    "meaningVi": "hành động chống lại",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "third party",
+    "meaningVi": "bên/đảng phái thứ ba",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unsuccessful candidate",
+    "meaningVi": "ứng viên không trúng cử",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "in bulk",
+    "meaningVi": "với số lượng lớn",
+    "topic": "Giao dịch",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "run short",
+    "meaningVi": "gần hết, còn rất ít",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be short of",
+    "meaningVi": "bị thiếu",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "a wide selection of",
+    "meaningVi": "rất nhiều sự lựa chọn",
+    "topic": "Giao dịch",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "provide A with B",
+    "meaningVi": "cung cấp B cho A",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be provided with",
+    "meaningVi": "được cung cấp, được trang bị",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "supply A with B",
+    "meaningVi": "cung cấp B cho A",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "distribute A to B",
+    "meaningVi": "phân phối A tới/cho B",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "assure A of B",
+    "meaningVi": "đảm bảo với A về B",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "assure A that",
+    "meaningVi": "cam đoan với A rằng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be subject to",
+    "meaningVi": "dễ bị / phải chịu",
+    "topic": "Giao dịch",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "confirmation of",
+    "meaningVi": "sự xác nhận/giấy xác nhận về",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "in stock",
+    "meaningVi": "có hàng, còn hàng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "out of stock",
+    "meaningVi": "hết hàng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "price quote",
+    "meaningVi": "báo giá",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "custom quote",
+    "meaningVi": "báo giá đơn hàng",
+    "topic": "Giao dịch",
+    "partOfSpeech": "noun"
+  }
+]

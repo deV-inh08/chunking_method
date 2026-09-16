@@ -1,0 +1,1298 @@
+[
+  {
+    "word": "appoint",
+    "meaningVi": "chỉ định, bổ nhiệm",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "appointment",
+    "meaningVi": "sự chỉ định",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "appraisal",
+    "meaningVi": "sự đánh giá, sự thẩm định",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "appraise",
+    "meaningVi": "đánh giá",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "assessment",
+    "meaningVi": "sự đánh giá",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "evaluation",
+    "meaningVi": "sự đánh giá",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "promote",
+    "meaningVi": "thăng chức, đề bạt; khuyến khích, thúc đẩy",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "promotion",
+    "meaningVi": "sự thăng chức, sự xúc tiến",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "promotional",
+    "meaningVi": "(thuộc) quảng cáo",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "demote",
+    "meaningVi": "giáng chức",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "skilled",
+    "meaningVi": "lành nghề, thành thạo",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "skill",
+    "meaningVi": "kỹ năng",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "radically",
+    "meaningVi": "căn bản, tận gốc, triệt để",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "radical",
+    "meaningVi": "gốc rễ, căn bản",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "exceptional",
+    "meaningVi": "xuất chúng, đặc biệt",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "exceptionally",
+    "meaningVi": "đặc biệt, khác thường",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "remarkable",
+    "meaningVi": "phi thường, xuất sắc",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "appreciation",
+    "meaningVi": "sự đánh giá cao, sự cảm kích",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "appreciate",
+    "meaningVi": "đánh giá cao, cảm kích",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "evaluate",
+    "meaningVi": "đánh giá",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "evaluation",
+    "meaningVi": "sự đánh giá",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "judge",
+    "meaningVi": "đánh giá",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "suggest",
+    "meaningVi": "đề xuất, kiến nghị",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "preference",
+    "meaningVi": "sự thích hơn, sở thích",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "management",
+    "meaningVi": "sự quản lý, ban quản lý",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "predict",
+    "meaningVi": "dự đoán",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "prediction",
+    "meaningVi": "sự dự đoán",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "transfer",
+    "meaningVi": "chuyển, đổi; thuyên chuyển; sự di chuyển, sự thuyên chuyển",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "move",
+    "meaningVi": "chuyển, đổi",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "award",
+    "meaningVi": "giải thưởng, phần thưởng; tặng, trao thưởng",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "mandatory",
+    "meaningVi": "bắt buộc",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "competent",
+    "meaningVi": "có khả năng, giỏi",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "performance",
+    "meaningVi": "thành quả, hiệu suất; phần biểu diễn",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "perform",
+    "meaningVi": "trình diễn",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "performer",
+    "meaningVi": "người biểu diễn",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "execution",
+    "meaningVi": "sự thể hiện, sự biểu diễn",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reward",
+    "meaningVi": "thưởng; sự thưởng, phần thưởng",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "rewarding",
+    "meaningVi": "đáng khen thưởng, đáng giá",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "search",
+    "meaningVi": "sự tìm kiếm, sự điều tra; tìm kiếm",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inexperienced",
+    "meaningVi": "thiếu kinh nghiệm",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "early",
+    "meaningVi": "sớm, gần đây",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "late",
+    "meaningVi": "muộn",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "previous",
+    "meaningVi": "trước đây",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "designate",
+    "meaningVi": "chỉ định, bổ nhiệm",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "designation",
+    "meaningVi": "sự chỉ định",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "executive",
+    "meaningVi": "(thuộc) sự thi hành, điều hành",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dedication",
+    "meaningVi": "sự cống hiến",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dedicate",
+    "meaningVi": "cống hiến",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dedicated",
+    "meaningVi": "tận tâm",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "unanimously",
+    "meaningVi": "đồng thuận, nhất trí",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "progress",
+    "meaningVi": "sự tiến hành, quá trình, sự tiến bộ; tiến hành, tiến triển",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "progressive",
+    "meaningVi": "tiến bộ, phát triển không ngừng",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "congratulate",
+    "meaningVi": "chúc mừng",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "congratulation",
+    "meaningVi": "sự chúc mừng, lời chúc mừng",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dismiss",
+    "meaningVi": "cho nghỉ, sa thải",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dismissal",
+    "meaningVi": "sự sa thải",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "independence",
+    "meaningVi": "sự độc lập, nền độc lập",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "participation",
+    "meaningVi": "sự tham gia, sự tham dự",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "participate",
+    "meaningVi": "tham gia, góp phần",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "participant",
+    "meaningVi": "người tham dự",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "involvement",
+    "meaningVi": "sự tham gia",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "praise",
+    "meaningVi": "sự khen ngợi, lời tán dương; ca ngợi, tán thưởng",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "compliment",
+    "meaningVi": "lời khen",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "accomplishment",
+    "meaningVi": "thành quả, thành tích, sự hoàn thành",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "deliberation",
+    "meaningVi": "sự suy xét, cân nhắc, cuộc bàn cãi",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "leadership",
+    "meaningVi": "sự lãnh đạo, khả năng lãnh đạo",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "retire",
+    "meaningVi": "thôi việc, về hưu",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "retirement",
+    "meaningVi": "sự về hưu",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "nomination",
+    "meaningVi": "sự bổ nhiệm, sự đề cử",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "nominate",
+    "meaningVi": "bổ nhiệm, đề cử",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "nominee",
+    "meaningVi": "người được đề cử",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "appointment",
+    "meaningVi": "sự chỉ định, bổ nhiệm",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reorganize",
+    "meaningVi": "tổ chức lại, cải tổ lại",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reorganization",
+    "meaningVi": "sự tổ chức lại",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "restructuring",
+    "meaningVi": "sự tái cấu trúc",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "serve",
+    "meaningVi": "phục vụ, phụ trách, đảm nhiệm",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "service",
+    "meaningVi": "dịch vụ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "act",
+    "meaningVi": "đóng vai trò",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "encouragement",
+    "meaningVi": "sự khuyến khích, sự động viên",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "encourage",
+    "meaningVi": "khuyến khích, khích lệ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "encouraging",
+    "meaningVi": "đáng khích lệ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "resignation",
+    "meaningVi": "sự từ chức",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "resign",
+    "meaningVi": "từ chức",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "step down",
+    "meaningVi": "từ chức",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "strictly",
+    "meaningVi": "nghiêm khắc, hoàn toàn",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "strict",
+    "meaningVi": "nghiêm ngặt, nghiêm khắc",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "severely",
+    "meaningVi": "cứng rắn, nghiêm khắc",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "sternly",
+    "meaningVi": "cứng rắn, nghiêm khắc",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "accept an award",
+    "meaningVi": "nhận một giải thưởng",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "anniversary celebration",
+    "meaningVi": "lễ kỷ niệm",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fire",
+    "meaningVi": "sa thải",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "flash",
+    "meaningVi": "ánh sáng lóe lên, đèn nháy",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "go downstairs",
+    "meaningVi": "đi xuống tầng dưới",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "greenhouse",
+    "meaningVi": "nhà kính",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "gymnasium",
+    "meaningVi": "phòng tập thể dục",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "job title",
+    "meaningVi": "chức vụ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "knob",
+    "meaningVi": "tay nắm cửa",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ladder",
+    "meaningVi": "cái thang",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lengthy",
+    "meaningVi": "dài, lâu, dông dài",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "move around",
+    "meaningVi": "đi loanh quanh",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "plan",
+    "meaningVi": "kế hoạch; lên kế hoạch, dự kiến",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "point at",
+    "meaningVi": "chỉa vào, nhắm vào",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "scale",
+    "meaningVi": "quy mô",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "scatter",
+    "meaningVi": "gieo, rắc, vãi",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "send out",
+    "meaningVi": "gửi đi, phân phát",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "yell",
+    "meaningVi": "kêu la, la hét",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "appointment",
+    "meaningVi": "cuộc hẹn, sự bổ nhiệm",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "characteristic",
+    "meaningVi": "đặc điểm, đặc tính",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "helping",
+    "meaningVi": "có ích; sự giúp đỡ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "hopeful",
+    "meaningVi": "đầy hy vọng, hứa hẹn",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "level",
+    "meaningVi": "mức, cấp, trình độ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "resign",
+    "meaningVi": "từ chức, xin thôi",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "role",
+    "meaningVi": "vai trò",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "safeguard",
+    "meaningVi": "bộ phận an ninh, sự bảo vệ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "throughout the day",
+    "meaningVi": "suốt cả ngày",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "view",
+    "meaningVi": "tầm nhìn, quan điểm; nhìn, xem",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "arm in arm",
+    "meaningVi": "khoác tay nhau",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "experienced employee",
+    "meaningVi": "nhân viên giàu kinh nghiệm",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "face away from",
+    "meaningVi": "ngoảnh mặt khỏi",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fill in for",
+    "meaningVi": "thế chỗ cho",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "get a promotion",
+    "meaningVi": "được thăng chức",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "give A an advance",
+    "meaningVi": "trả trước tiền cho A",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "kneel",
+    "meaningVi": "quỳ, quỳ xuống",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "language acquisition",
+    "meaningVi": "sự tiếp thu ngôn ngữ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "move over one seat",
+    "meaningVi": "chuyển sang một ghế nữa",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "move up",
+    "meaningVi": "thăng chức",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "newly arrived",
+    "meaningVi": "mới được bổ nhiệm",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "obviously qualified",
+    "meaningVi": "rõ ràng có trình độ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "pavilion",
+    "meaningVi": "gian hàng",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "personnel management",
+    "meaningVi": "quản lý nhân sự",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rear",
+    "meaningVi": "phía sau",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "regional director",
+    "meaningVi": "giám đốc khu vực",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reposition",
+    "meaningVi": "sắp xếp lại vị trí",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "retiree",
+    "meaningVi": "người nghỉ hưu",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "retirement",
+    "meaningVi": "sự nghỉ hưu",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "senior executive",
+    "meaningVi": "quan chức cấp cao",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "spare key",
+    "meaningVi": "chìa khóa dự phòng",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "take early retirement",
+    "meaningVi": "nghỉ hưu sớm",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take note",
+    "meaningVi": "ghi chép",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take one's place",
+    "meaningVi": "ngồi vào chỗ của",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take over",
+    "meaningVi": "tiếp quản",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "achiever",
+    "meaningVi": "người thành công",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "admired",
+    "meaningVi": "đáng ngưỡng mộ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "as a result of",
+    "meaningVi": "là kết quả của",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "elect",
+    "meaningVi": "chọn, bầu",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "incompetent",
+    "meaningVi": "thiếu khả năng, bất tài",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "knowledgeable",
+    "meaningVi": "hiểu biết, thông thạo",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "namely",
+    "meaningVi": "là, ấy là",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "nearby",
+    "meaningVi": "gần",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "nominate",
+    "meaningVi": "đề cử, giới thiệu",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "promotion",
+    "meaningVi": "sự thăng chức",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "put in for",
+    "meaningVi": "đăng ký, nộp đơn cho",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "recommendable",
+    "meaningVi": "có thể tiến cử",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "specially",
+    "meaningVi": "đặc biệt",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "stand in for",
+    "meaningVi": "thay thế tạm thời",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "state",
+    "meaningVi": "trạng thái, tình trạng; phát biểu",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "tech-savvy",
+    "meaningVi": "am hiểu công nghệ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "undoubtedly",
+    "meaningVi": "không nghi ngờ, rõ ràng, chắc chắn",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "aspire to",
+    "meaningVi": "khao khát, mong mỏi",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dismissal",
+    "meaningVi": "sự sa thải",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "empower",
+    "meaningVi": "trao quyền",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "go forward",
+    "meaningVi": "tiến tới, tiến triển",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "heighten",
+    "meaningVi": "tôn lên, làm cao hơn",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "immigrant",
+    "meaningVi": "người nhập cư",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "initiative",
+    "meaningVi": "sự khởi xướng, sáng kiến",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inter-department",
+    "meaningVi": "liên vụ, liên bộ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "job cutback",
+    "meaningVi": "cắt giảm nhân sự",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lay off",
+    "meaningVi": "cho thôi việc",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "named representative",
+    "meaningVi": "đại diện được đề cử",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "new appointment",
+    "meaningVi": "sự bổ nhiệm mới",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "official title",
+    "meaningVi": "chức danh chính thức",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "on the recommendation of",
+    "meaningVi": "theo sự tiến cử của",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "pass up",
+    "meaningVi": "từ chối, bỏ qua",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "preach",
+    "meaningVi": "thuyết giáo, khuyên răn",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "predecessor",
+    "meaningVi": "người tiền nhiệm",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "provincial",
+    "meaningVi": "(thuộc) tỉnh",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "push back",
+    "meaningVi": "trì hoãn, lùi lại",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "ritual",
+    "meaningVi": "nghi thức",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "run for",
+    "meaningVi": "tranh cử, chạy đua vào",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "speck",
+    "meaningVi": "đốm, vết",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "supervisory",
+    "meaningVi": "giám sát",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "turn away",
+    "meaningVi": "quay đi, khước từ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "underestimate",
+    "meaningVi": "đánh giá thấp",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "understaffed",
+    "meaningVi": "thiếu nhân viên",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "plunge",
+    "meaningVi": "nhúng vào, nhấn chìm",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "salute",
+    "meaningVi": "chào",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "scheme",
+    "meaningVi": "kế hoạch, ý đồ, sơ đồ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cordially",
+    "meaningVi": "thân ái, chân thành",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "delicate",
+    "meaningVi": "thanh tú, tinh tế",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "designation",
+    "meaningVi": "sự chỉ định, sự bổ nhiệm",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "intent",
+    "meaningVi": "ý định, mục đích",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "irreversible",
+    "meaningVi": "không thể đảo ngược",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "lingering",
+    "meaningVi": "kéo dài, còn sót lại",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "lose oneself in",
+    "meaningVi": "đắm chìm trong",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "perpetual",
+    "meaningVi": "vĩnh viễn, bất diệt",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "tolerant",
+    "meaningVi": "khoan dung, vị tha",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "degrade",
+    "meaningVi": "hạ thấp, làm giảm giá trị",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "demote",
+    "meaningVi": "giáng chức",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "deploy",
+    "meaningVi": "dàn trận, triển khai",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dignitary",
+    "meaningVi": "người có chức sắc",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "disorient",
+    "meaningVi": "làm mất phương hướng",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "extraordinary feat",
+    "meaningVi": "thành tựu phi thường",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "forage",
+    "meaningVi": "thu lượm, gặt hái",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "gratis",
+    "meaningVi": "cho không, không mất tiền",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "hurdle",
+    "meaningVi": "rào, chướng ngại vật",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "immensity",
+    "meaningVi": "sự mênh mông, sự rộng lớn",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "in defiance of",
+    "meaningVi": "bất chấp, chống lại",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "in one's grasp",
+    "meaningVi": "trong tầm tay, trong khả năng",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "incumbent",
+    "meaningVi": "là phận sự của",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "miscellaneous",
+    "meaningVi": "pha tạp, hỗn hợp",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reinstate",
+    "meaningVi": "phục hồi, sắp đặt lại",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "scuff",
+    "meaningVi": "làm trầy da, làm xơ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "shred",
+    "meaningVi": "cắt nhỏ, xé vụn",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "underpass",
+    "meaningVi": "đường chui",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unwind",
+    "meaningVi": "nới lỏng (căng thẳng)",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "upbeat",
+    "meaningVi": "lạc quan, vui vẻ",
+    "topic": "Luân chuyển nhân sự",
+    "partOfSpeech": "adjective"
+  }
+]

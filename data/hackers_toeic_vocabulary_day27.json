@@ -1,0 +1,1298 @@
+[
+  {
+    "word": "investment",
+    "meaningVi": "sự đầu tư, vốn đầu tư",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "investor",
+    "meaningVi": "nhà đầu tư",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lucrative",
+    "meaningVi": "có lợi, sinh lời",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "inherently",
+    "meaningVi": "vốn dĩ, về bản chất",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "inherent",
+    "meaningVi": "vốn có, cố hữu",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "essentially",
+    "meaningVi": "về bản chất",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "secure",
+    "meaningVi": "đạt được; bảo đảm, bảo vệ; thắt, buộc; chắc chắn, kiên cố",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "obtain",
+    "meaningVi": "đạt được",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fasten",
+    "meaningVi": "thắt chặt",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "foreseeable",
+    "meaningVi": "thấy trước được, dự đoán được",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "foresee",
+    "meaningVi": "đoán trước, biết trước",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "predictable",
+    "meaningVi": "có thể dự đoán",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "innate",
+    "meaningVi": "bẩm sinh",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "innately",
+    "meaningVi": "bẩm sinh, sinh ra đã",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "property",
+    "meaningVi": "quyền sở hữu, tài sản",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "on behalf of",
+    "meaningVi": "thay mặt, đại diện",
+    "topic": "Đầu tư",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "lease",
+    "meaningVi": "hợp đồng cho thuê; thuê, cho thuê",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sponsor",
+    "meaningVi": "tài trợ, bảo trợ; nhà tài trợ, người bảo trợ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "sponsorship",
+    "meaningVi": "việc bảo trợ/tài trợ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "propose",
+    "meaningVi": "đề xuất, đề nghị",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "support",
+    "meaningVi": "sự hỗ trợ, sự ủng hộ; hỗ trợ, ủng hộ; nuôi dưỡng, cấp dưỡng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "supporter",
+    "meaningVi": "người ủng hộ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "supportive",
+    "meaningVi": "hỗ trợ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "aid",
+    "meaningVi": "giúp đỡ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "oppose",
+    "meaningVi": "chống đối",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "distribution",
+    "meaningVi": "sự phân phối, phân bổ, phân chia",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "consider",
+    "meaningVi": "cân nhắc, suy xét",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "considerate",
+    "meaningVi": "ân cần, chu đáo",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "consideration",
+    "meaningVi": "sự cân nhắc, suy xét",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "nearly",
+    "meaningVi": "gần, sắp, suýt",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "near",
+    "meaningVi": "ở gần, sắp tới; gần, cận",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "almost",
+    "meaningVi": "gần",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "consent",
+    "meaningVi": "sự đồng ý, sự tán thành; đồng ý, tán thành",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "approval",
+    "meaningVi": "sự chấp thuận",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "permission",
+    "meaningVi": "sự cho phép",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dissent",
+    "meaningVi": "sự bất đồng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "objection",
+    "meaningVi": "sự phản đối",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "gratitude",
+    "meaningVi": "lòng biết ơn, sự nhớ ơn",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "consult",
+    "meaningVi": "hỏi ý kiến, bàn bạc, tham khảo",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "advice",
+    "meaningVi": "lời khuyên, sự tư vấn",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "advise",
+    "meaningVi": "khuyên, hỏi ý kiến",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "partially",
+    "meaningVi": "một phần, cục bộ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "evident",
+    "meaningVi": "hiển nhiên, rõ ràng, rõ rệt",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reliability",
+    "meaningVi": "sự đáng tin cậy",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cautious",
+    "meaningVi": "thận trọng, cẩn thận",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "cautiously",
+    "meaningVi": "thận trọng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "caution",
+    "meaningVi": "sự thận trọng, lời cảnh báo",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "careless",
+    "meaningVi": "bất cẩn",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "insight",
+    "meaningVi": "sự hiểu thấu, cái nhìn sâu sắc, sự sáng suốt",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "portfolio",
+    "meaningVi": "cặp (hồ sơ, giấy tờ), danh mục vốn đầu tư",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "possible",
+    "meaningVi": "có thể, khả thi",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "possibly",
+    "meaningVi": "có thể, có lẽ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "possibility",
+    "meaningVi": "khả năng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "impossible",
+    "meaningVi": "không thể",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "speculation",
+    "meaningVi": "sự suy đoán, đồn đoán",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "speculate",
+    "meaningVi": "suy đoán",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "solely",
+    "meaningVi": "duy nhất, độc nhất",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "sole",
+    "meaningVi": "độc nhất",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "exclusively",
+    "meaningVi": "dành riêng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "entrepreneur",
+    "meaningVi": "doanh nhân",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "enterprise",
+    "meaningVi": "doanh nghiệp",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "eventually",
+    "meaningVi": "cuối cùng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "eventual",
+    "meaningVi": "cuối cùng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "finally",
+    "meaningVi": "cuối cùng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "ultimately",
+    "meaningVi": "cuối cùng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "shareholder",
+    "meaningVi": "cổ đông",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "outlook",
+    "meaningVi": "viễn cảnh, triển vọng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prospect",
+    "meaningVi": "triển vọng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stability",
+    "meaningVi": "sự ổn định, sự vững chắc",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stable",
+    "meaningVi": "ổn định, vững vàng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "stabilize",
+    "meaningVi": "làm ổn định",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bond",
+    "meaningVi": "trái phiếu",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "depreciation",
+    "meaningVi": "sự sụt giá",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "depreciate",
+    "meaningVi": "sụt giá, làm sụt giá",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "increasing",
+    "meaningVi": "ngày càng tăng, tăng dần",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "increase",
+    "meaningVi": "tăng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "increasingly",
+    "meaningVi": "ngày càng tăng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "prevalent",
+    "meaningVi": "phổ biến, thịnh hành",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "prevail",
+    "meaningVi": "chiếm ưu thế",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "prevalence",
+    "meaningVi": "sự phổ biến",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "widespread",
+    "meaningVi": "rộng rãi",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "popular",
+    "meaningVi": "phổ biến",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "leading",
+    "meaningVi": "chỉ đạo, dẫn đầu",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "rapid",
+    "meaningVi": "nhanh, nhanh chóng, mau lẹ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "rapidly",
+    "meaningVi": "nhanh chóng, mau lẹ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "rapidity",
+    "meaningVi": "sự nhanh chóng, mau lẹ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unprecedented",
+    "meaningVi": "chưa từng có, chưa từng thấy",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "yield",
+    "meaningVi": "tạo ra, sinh lợi; sản lượng, lợi nhuận",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "challenge",
+    "meaningVi": "sự thách thức; thách thức",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "comfort",
+    "meaningVi": "an ủi, dỗ dành; sự/lời an ủi",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "compact",
+    "meaningVi": "đặc, chặt, súc tích",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "data",
+    "meaningVi": "dữ liệu",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "distance",
+    "meaningVi": "khoảng cách",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "elementary",
+    "meaningVi": "cơ bản",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "extra",
+    "meaningVi": "thêm, phụ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fake",
+    "meaningVi": "giả, giả mạo; đồ giả mạo",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "joint",
+    "meaningVi": "chung",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "listen to",
+    "meaningVi": "lắng nghe",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "mentor",
+    "meaningVi": "người cố vấn/hướng dẫn",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "network",
+    "meaningVi": "mạng lưới, hệ thống",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "relaxing",
+    "meaningVi": "làm thư giãn",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "rental car",
+    "meaningVi": "xe cho thuê",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "single",
+    "meaningVi": "đơn, một mình",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "soon",
+    "meaningVi": "sớm, chẳng mấy chốc",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "spot",
+    "meaningVi": "dấu, đốm, vết",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "accuracy",
+    "meaningVi": "sự/độ chính xác",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "goal",
+    "meaningVi": "đích, mục tiêu",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lose",
+    "meaningVi": "mất, thua",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "owner",
+    "meaningVi": "người chủ, người sở hữu",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "risky",
+    "meaningVi": "đầy rủi ro, mạo hiểm",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "somewhat",
+    "meaningVi": "hơi, một chút",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "tight",
+    "meaningVi": "chặt, căng, khó khăn",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "truly",
+    "meaningVi": "thực sự, thật vậy",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "usual",
+    "meaningVi": "thường, thông dụng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "wait",
+    "meaningVi": "đợi, chờ; sự chờ đợi",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "worry",
+    "meaningVi": "lo, lo nghĩ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "at one's disposal",
+    "meaningVi": "có sẵn để ai đó dùng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "be reluctant to do",
+    "meaningVi": "miễn cưỡng làm gì",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "believe it or not",
+    "meaningVi": "dù tin hay không",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "blame A on B",
+    "meaningVi": "đổ lỗi việc gì cho ai",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "call an urgent meeting",
+    "meaningVi": "triệu tập một cuộc họp khẩn cấp",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "call for some assistance",
+    "meaningVi": "kêu gọi trợ giúp",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "circumstances",
+    "meaningVi": "hoàn cảnh, tình huống",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cutback",
+    "meaningVi": "sự cắt giảm",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "emergency evacuation",
+    "meaningVi": "sơ tán khẩn cấp",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "festive",
+    "meaningVi": "thuộc lễ hội, tiệc tùng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "frustrate",
+    "meaningVi": "làm thất bại/thất vọng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "get rid of",
+    "meaningVi": "loại bỏ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "give it a try",
+    "meaningVi": "cứ thử đi",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "have reason to do",
+    "meaningVi": "có lý do để",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "hazardous",
+    "meaningVi": "mạo hiểm, nguy hiểm",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "in private",
+    "meaningVi": "riêng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "in the distant past",
+    "meaningVi": "cách đây rất lâu, ở thời xa xưa",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "intake",
+    "meaningVi": "sự tiếp nhận",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "leaky",
+    "meaningVi": "bị rò, bị thủng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "look for",
+    "meaningVi": "tìm kiếm",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "organize a picnic",
+    "meaningVi": "tổ chức một buổi dã ngoại",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pair up with",
+    "meaningVi": "ghép đôi với",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reflection",
+    "meaningVi": "sự phản chiếu, sự phản ánh",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "self-esteem",
+    "meaningVi": "lòng tự trọng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "show off",
+    "meaningVi": "khoe khoang, phô trương",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "sponsored by",
+    "meaningVi": "được tài trợ bởi",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "stock market",
+    "meaningVi": "thị trường chứng khoán",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "supporting",
+    "meaningVi": "chống, đỡ, là hậu phương",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "tear",
+    "meaningVi": "xé, làm rách",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "unconditionally",
+    "meaningVi": "vô điều kiện",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "abundantly",
+    "meaningVi": "nhiều, dư dả",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "additionally",
+    "meaningVi": "ngoài ra, thêm nữa",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "ambitious",
+    "meaningVi": "tham vọng, nhiều hoài bão",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "cautiously",
+    "meaningVi": "cẩn thận, thận trọng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "considerate",
+    "meaningVi": "ân cần, chu đáo",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "consultation",
+    "meaningVi": "sự tham khảo, sự hỏi ý kiến",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "effectively",
+    "meaningVi": "có hiệu quả, có kết quả",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "favored",
+    "meaningVi": "được ưa chuộng, ưu ái",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "impractical",
+    "meaningVi": "không thực tế",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "improper",
+    "meaningVi": "không phù hợp, không đúng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "insecure",
+    "meaningVi": "không an toàn, bấp bênh",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "insecurely",
+    "meaningVi": "không chắc chắn, bấp bênh",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "justify",
+    "meaningVi": "bào chữa, biện hộ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reduced",
+    "meaningVi": "bị giảm",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reluctance",
+    "meaningVi": "sự miễn cưỡng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reviewer",
+    "meaningVi": "nhà phê bình",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "take pride in",
+    "meaningVi": "tự hào, hãnh diện về",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "threaten",
+    "meaningVi": "dọa, đe dọa",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "venture",
+    "meaningVi": "sự đầu cơ; liều, mạo hiểm",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "branch office",
+    "meaningVi": "văn phòng chi nhánh",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "confusion",
+    "meaningVi": "sự lộn xộn, sự mập mờ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "controversy",
+    "meaningVi": "sự tranh luận, cuộc luận chiến",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cost analysis",
+    "meaningVi": "phân tích chi phí",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "faintly",
+    "meaningVi": "yếu ớt, mờ nhạt",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "input",
+    "meaningVi": "đầu vào",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "investor",
+    "meaningVi": "nhà đầu tư",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "legacy",
+    "meaningVi": "tài sản thừa kế, di sản",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "meet the expenses",
+    "meaningVi": "thanh toán chi phí",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "on a regular basis",
+    "meaningVi": "đều đặn",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "on one's own account",
+    "meaningVi": "tự mình, vì lợi ích của mình",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "pioneer",
+    "meaningVi": "người tiên phong",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "projected",
+    "meaningVi": "có kế hoạch, có mục tiêu",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reexamine",
+    "meaningVi": "xem xét lại",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "repetitive",
+    "meaningVi": "lặp lại",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "set up a business",
+    "meaningVi": "mở một cơ sở kinh doanh",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "strength",
+    "meaningVi": "sức mạnh",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "take precautions",
+    "meaningVi": "phòng ngừa, ngăn chặn",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "throw out",
+    "meaningVi": "từ bỏ, vứt đi",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "cost estimate",
+    "meaningVi": "ước tính chi phí",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dispatch",
+    "meaningVi": "gửi đi (thư, thông điệp)",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "faithfully",
+    "meaningVi": "trung thành, trung thực",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "impair",
+    "meaningVi": "làm suy yếu",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "in the vicinity of",
+    "meaningVi": "ở gần, xấp xỉ bằng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "outlying",
+    "meaningVi": "ở xa, ngoài rìa",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "play a role in",
+    "meaningVi": "đóng vai trò trong",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "approximation",
+    "meaningVi": "sự gần, sự xấp xỉ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "attainable",
+    "meaningVi": "có thể đạt được",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "courteousness",
+    "meaningVi": "sự lịch sự, sự nhã nhặn",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "devalued",
+    "meaningVi": "bị mất giá",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dividend",
+    "meaningVi": "cổ tức",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fictitious",
+    "meaningVi": "hư cấu, giả",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "overhaul",
+    "meaningVi": "sự kiểm tra kỹ; xem xét toàn bộ",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "speculate",
+    "meaningVi": "suy đoán",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "unbeatable",
+    "meaningVi": "không thể đánh bại",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "unbiased",
+    "meaningVi": "không thiên vị",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "untimely",
+    "meaningVi": "không hợp thời, không đúng lúc",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "accredit",
+    "meaningVi": "chứng nhận, phê duyệt",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "deflate",
+    "meaningVi": "giảm giá, làm xẹp",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "deliberately",
+    "meaningVi": "cố ý, chủ tâm",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "devastate",
+    "meaningVi": "tàn phá, phá hủy",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "disparately",
+    "meaningVi": "khác nhau, tạp nham",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "evoke",
+    "meaningVi": "gợi lên, khơi gợi (kỷ niệm)",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "manipulation",
+    "meaningVi": "sự thao túng",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "outweigh",
+    "meaningVi": "nặng hơn, chiếm ưu thế hơn",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "property line",
+    "meaningVi": "ranh giới khu đất",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "set aside",
+    "meaningVi": "gạt sang một bên, để dành",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "start-up cost",
+    "meaningVi": "chi phí khởi nghiệp",
+    "topic": "Đầu tư",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "take steps",
+    "meaningVi": "hành động, thực hiện các biện pháp",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "well-balanced",
+    "meaningVi": "cân bằng, ổn định",
+    "topic": "Đầu tư",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "wipe off",
+    "meaningVi": "lau sạch, xóa sạch",
+    "topic": "Đầu tư",
+    "partOfSpeech": "verb"
+  }
+]

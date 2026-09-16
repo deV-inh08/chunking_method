@@ -1,0 +1,770 @@
+[
+  {
+    "word": "agenda",
+    "meaningVi": "đề tài thảo luận, chương trình nghị sự",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "convene",
+    "meaningVi": "triệu tập (cuộc họp), họp, nhóm họp",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "convention",
+    "meaningVi": "cuộc họp",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "refute",
+    "meaningVi": "bác bỏ, bẻ lại",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "refutation",
+    "meaningVi": "sự bác bỏ",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "coordination",
+    "meaningVi": "sự phối hợp, sự điều phối",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "coordinate",
+    "meaningVi": "phối hợp",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "coordinator",
+    "meaningVi": "điều phối viên",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unanimous",
+    "meaningVi": "nhất trí, nhất tâm",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "unanimously",
+    "meaningVi": "nhất trí, đồng lòng",
+    "topic": "Hội họp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "convince",
+    "meaningVi": "thuyết phục, làm cho tin",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "convincing",
+    "meaningVi": "có sức thuyết phục",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "convinced",
+    "meaningVi": "tin chắc",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "consensus",
+    "meaningVi": "sự đồng thuận, sự nhất trí",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "consent",
+    "meaningVi": "ủng thuận, tán thành; sự đồng ý, sự ủng thuận",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "defer",
+    "meaningVi": "hoãn, trì hoãn",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "usually",
+    "meaningVi": "thường xuyên",
+    "topic": "Hội họp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "usual",
+    "meaningVi": "thường, thông thường",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reschedule",
+    "meaningVi": "đổi lịch, dời lịch",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "meeting",
+    "meaningVi": "cuộc họp, cuộc gặp",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "determine",
+    "meaningVi": "xác định; quyết định",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "determination",
+    "meaningVi": "sự xác định, sự quyết định",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "determined",
+    "meaningVi": "đã được xác định, quả quyết",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "report",
+    "meaningVi": "báo cáo, thông báo, đưa tin; trình diện, có mặt; bản báo cáo; bản tin",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reportable",
+    "meaningVi": "phải báo cáo, đáng báo cáo",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reportedly",
+    "meaningVi": "theo báo cáo",
+    "topic": "Hội họp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "comment",
+    "meaningVi": "bình luận, đưa ra ý kiến; lời bình luận, chú thích",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "phase",
+    "meaningVi": "bước, giai đoạn",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "approve",
+    "meaningVi": "chấp thuận, phê chuẩn",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "approved",
+    "meaningVi": "được ủng hộ",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "enclosed",
+    "meaningVi": "được gửi kèm, kèm theo",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "enclose",
+    "meaningVi": "đóng hộp, bao gồm",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "easy",
+    "meaningVi": "dễ dàng, đơn giản",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "easily",
+    "meaningVi": "dễ dàng",
+    "topic": "Hội họp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "record",
+    "meaningVi": "kỷ lục; hồ sơ, sổ sách ghi chép, lý lịch; ghi chép, thu âm, ghi hình",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "suggestion",
+    "meaningVi": "sự đề nghị, đề xuất",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "suggest",
+    "meaningVi": "gợi ý, đề nghị",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "attention",
+    "meaningVi": "sự chú ý, sự chăm sóc",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "attentive",
+    "meaningVi": "chăm chú, chu đáo",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "attentively",
+    "meaningVi": "chăm chú",
+    "topic": "Hội họp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "object",
+    "meaningVi": "phản đối, chống; vật thể, đối tượng",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "objection",
+    "meaningVi": "sự phản đối",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "objective",
+    "meaningVi": "khách quan",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "coincidentally",
+    "meaningVi": "trùng hợp, ngẫu nhiên",
+    "topic": "Hội họp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "crowded",
+    "meaningVi": "đông đúc, chật ních",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "undergo",
+    "meaningVi": "trải qua, chịu đựng",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "outcome",
+    "meaningVi": "kết quả, hậu quả",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "narrowly",
+    "meaningVi": "hẹp hòi, hạn chế; kỹ lưỡng, tỉ mỉ",
+    "topic": "Hội họp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "narrow",
+    "meaningVi": "thu hẹp",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "differ",
+    "meaningVi": "khác, không giống, bất đồng",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "difference",
+    "meaningVi": "sự khác biệt",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "different",
+    "meaningVi": "khác nhau",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "differently",
+    "meaningVi": "khác nhau, khác biệt",
+    "topic": "Hội họp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "discuss",
+    "meaningVi": "thảo luận, tranh cãi, nói đến",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "discussion",
+    "meaningVi": "sự thảo luận",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "give",
+    "meaningVi": "đưa ra, cho, tặng",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "brief",
+    "meaningVi": "tóm tắt lại, nói vắn tắt; ngắn gọn",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "briefly",
+    "meaningVi": "ngắn gọn, vắn tắt",
+    "topic": "Hội họp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "distract",
+    "meaningVi": "làm sao lãng, gây phân tâm",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "distraction",
+    "meaningVi": "sự làm sao lãng",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "emphasis",
+    "meaningVi": "sự nhấn mạnh",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "emphasize",
+    "meaningVi": "nhấn mạnh",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "emphatic",
+    "meaningVi": "mạnh mẽ, dứt khoát",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "press",
+    "meaningVi": "báo chí; ấn, nhấn",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pressure",
+    "meaningVi": "áp lực, áp suất",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "organize",
+    "meaningVi": "tổ chức, thiết lập",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "organization",
+    "meaningVi": "tổ chức",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "organizer",
+    "meaningVi": "người tổ chức",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "mention",
+    "meaningVi": "nói đến, đề cập đến; sự đề cập",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "persuasive",
+    "meaningVi": "có sức thuyết phục",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "persuade",
+    "meaningVi": "thuyết phục",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "persuasion",
+    "meaningVi": "sự thuyết phục",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "persuasively",
+    "meaningVi": "đầy thuyết phục",
+    "topic": "Hội họp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "understanding",
+    "meaningVi": "hiểu biết, sáng dạ, thông cảm; sự am hiểu, tri tuệ",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "understand",
+    "meaningVi": "hiểu",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "understandable",
+    "meaningVi": "có thể hiểu được",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "adjourn",
+    "meaningVi": "hoãn lại, ngừng",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "constructive",
+    "meaningVi": "mang tính xây dựng",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "construct",
+    "meaningVi": "xây dựng",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "construction",
+    "meaningVi": "việc xây dựng",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "constructively",
+    "meaningVi": "một cách xây dựng",
+    "topic": "Hội họp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "preside",
+    "meaningVi": "chủ trì, chủ tọa",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "president",
+    "meaningVi": "chủ tịch",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "presidency",
+    "meaningVi": "chức chủ tịch, nhiệm kỳ chủ tịch/tổng thống",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "irrelevant",
+    "meaningVi": "không liên quan",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "constraint",
+    "meaningVi": "sự ràng buộc, sự hạn chế, sự eo hẹp",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "constrain",
+    "meaningVi": "bắt ép, thúc ép",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "annual meeting",
+    "meaningVi": "cuộc họp thường niên",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "conference room",
+    "meaningVi": "phòng họp, hội trường",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "guest speaker",
+    "meaningVi": "diễn giả khách mời",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "hand out",
+    "meaningVi": "phát, phân phát",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "holiday",
+    "meaningVi": "ngày nghỉ, ngày lễ",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "let's end",
+    "meaningVi": "hãy kết thúc",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "meeting time",
+    "meaningVi": "giờ họp",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "scan",
+    "meaningVi": "đọc lướt, nhìn lướt, quét",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "shake hands",
+    "meaningVi": "bắt tay",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "speech",
+    "meaningVi": "bài phát biểu",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "teammate",
+    "meaningVi": "đồng đội",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "water",
+    "meaningVi": "nước; tưới nước",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "write down",
+    "meaningVi": "viết ra",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "advise A of B",
+    "meaningVi": "khuyên A về B",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "be held",
+    "meaningVi": "được tổ chức",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "be scheduled for",
+    "meaningVi": "được lên lịch để",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "business talk",
+    "meaningVi": "chuyện công việc",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "conversation",
+    "meaningVi": "cuộc chuyện trò/hội thoại",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "debate",
+    "meaningVi": "tranh luận",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "express",
+    "meaningVi": "diễn tả, biểu lộ",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "gathering",
+    "meaningVi": "sự hội họp",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "judge",
+    "meaningVi": "đánh giá, phán xét",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "local time",
+    "meaningVi": "giờ địa phương",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "result in",
+    "meaningVi": "gây ra, dẫn đến",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "seating chart",
+    "meaningVi": "sơ đồ chỗ ngồi",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "seminar",
+    "meaningVi": "hội thảo",
+    "topic": "Hội họp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "vote",
+    "meaningVi": "bầu, bỏ phiếu; sự bầu cử, lá phiếu",
+    "topic": "Hội họp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "weekly",
+    "meaningVi": "hàng tuần",
+    "topic": "Hội họp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "on the agenda",
+    "meaningVi": "nằm trong chương trình",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "unanimous support",
+    "meaningVi": "sự nhất trí ủng hộ",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "convince A of B",
+    "meaningVi": "thuyết phục A về B",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "convince A that",
+    "meaningVi": "thuyết phục A rằng",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "general consensus",
+    "meaningVi": "sự nhất trí chung",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "reach a consensus on",
+    "meaningVi": "đạt được sự đồng thuận về",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "pay attention to",
+    "meaningVi": "chú ý tới",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "object to -ing",
+    "meaningVi": "phản đối làm gì",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "preside over",
+    "meaningVi": "chủ trì, chủ tọa",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "give a speech",
+    "meaningVi": "phát biểu",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "give a presentation",
+    "meaningVi": "thuyết trình",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "brief A on B",
+    "meaningVi": "giải thích ngắn gọn cho A về B",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "place an emphasis on",
+    "meaningVi": "nhấn mạnh vào",
+    "topic": "Hội họp",
+    "partOfSpeech": "phrase"
+  }
+]

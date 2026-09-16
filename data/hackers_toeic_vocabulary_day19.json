@@ -1,0 +1,626 @@
+[
+  {
+    "word": "decline",
+    "meaningVi": "sự giảm, sự sụt giảm; từ chối (lời mời, đơn xin)",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "markedly",
+    "meaningVi": "rõ ràng, rõ rệt",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "marked",
+    "meaningVi": "rõ ràng, dễ thấy",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "increase",
+    "meaningVi": "sự tăng, sự tăng thêm; gia tăng, tăng",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "increasing",
+    "meaningVi": "ngày càng tăng",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "increasingly",
+    "meaningVi": "càng ngày càng",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "revenue",
+    "meaningVi": "thu nhập, doanh thu",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "projection",
+    "meaningVi": "sự dự đoán, sự đặt kế hoạch",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "project",
+    "meaningVi": "dự kiến, đặt kế hoạch",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "substantial",
+    "meaningVi": "lớn, quan trọng, có giá trị",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "substantially",
+    "meaningVi": "về thực chất, về căn bản",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "anticipate",
+    "meaningVi": "đoán trước, lường trước",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "anticipation",
+    "meaningVi": "sự đoán trước",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "significantly",
+    "meaningVi": "đáng kể, có ý nghĩa",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "significant",
+    "meaningVi": "quan trọng, đáng kể",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "significance",
+    "meaningVi": "sự quan trọng, ý nghĩa",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "estimate",
+    "meaningVi": "ước tính, ước lượng; sự ước lượng, sự đánh giá",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "shift",
+    "meaningVi": "chuyển, thay đổi; sự thay đổi, sự luân phiên; ca làm việc",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fee",
+    "meaningVi": "lệ phí, tiền thù lao",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "production",
+    "meaningVi": "sự sản xuất, sản lượng",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sale",
+    "meaningVi": "(s) lượng bán ra, doanh số; sự bán, việc bán (giảm giá)",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "impressive",
+    "meaningVi": "đầy ấn tượng",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "impressed",
+    "meaningVi": "có ấn tượng, cảm động",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "impression",
+    "meaningVi": "ấn tượng",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "impress",
+    "meaningVi": "gây ấn tượng",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "representative",
+    "meaningVi": "người đại diện, người đại lý; đại biểu",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "recent",
+    "meaningVi": "gần đây, mới xảy ra",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "recently",
+    "meaningVi": "gần đây",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "exceed",
+    "meaningVi": "vượt quá, trội hơn",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "excess",
+    "meaningVi": "sự quá mức, số lượng thừa",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "excessive",
+    "meaningVi": "quá mức, thừa",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "exceedingly",
+    "meaningVi": "cực kỳ, quá chừng",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "improvement",
+    "meaningVi": "sự cải thiện, sự cải tiến",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "employer",
+    "meaningVi": "chủ, người sử dụng lao động",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "regular",
+    "meaningVi": "thường kỳ; thường xuyên, đều đặn",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "regularly",
+    "meaningVi": "thường xuyên",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "summarize",
+    "meaningVi": "tóm tắt, tổng kết",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "summary",
+    "meaningVi": "bản tóm tắt",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "typically",
+    "meaningVi": "điển hình, thông thường",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "whole",
+    "meaningVi": "toàn bộ, đầy đủ",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "growth",
+    "meaningVi": "sự tăng trưởng, sự lớn mạnh",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "figure",
+    "meaningVi": "con số, số liệu",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "steady",
+    "meaningVi": "đều đều, đều đặn; ổn định",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "frequent",
+    "meaningVi": "thường xuyên",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "achieve",
+    "meaningVi": "đạt được, giành được",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "achievement",
+    "meaningVi": "thành tích, thành tựu",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "assumption",
+    "meaningVi": "nhận định, điều giả định",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "share",
+    "meaningVi": "chia sẻ, phân phát; phần, cổ phần",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "encouraging",
+    "meaningVi": "mang tính khích lệ, động viên",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "encourage",
+    "meaningVi": "động viên, khích lệ",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "encouragement",
+    "meaningVi": "sự động viên",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "incur",
+    "meaningVi": "chịu, gánh, mắc, bị",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "slightly",
+    "meaningVi": "hơi, không đáng kể",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "slight",
+    "meaningVi": "nhỏ, nhẹ",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "profit",
+    "meaningVi": "lợi nhuận, tiền lãi",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "profitable",
+    "meaningVi": "có lời, sinh lãi",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "profitability",
+    "meaningVi": "sự có lãi, khả năng có lãi",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reliant",
+    "meaningVi": "dựa vào, nhờ vào",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reliance",
+    "meaningVi": "sự tin cậy, nơi nương tựa",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "illustrate",
+    "meaningVi": "minh họa, làm rõ ý",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "illustration",
+    "meaningVi": "sự minh họa",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "illustrator",
+    "meaningVi": "người vẽ minh họa",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inaccurate",
+    "meaningVi": "không chính xác, sai",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "percentage",
+    "meaningVi": "tỷ lệ, tỷ lệ phần trăm",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reduce",
+    "meaningVi": "giảm, giảm bớt, hạ",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reduction",
+    "meaningVi": "sự giảm bớt",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "tend",
+    "meaningVi": "có xu hướng, hướng tới",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "tendency",
+    "meaningVi": "xu hướng, khuynh hướng",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "booklet",
+    "meaningVi": "tập sách nhỏ",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "by telephone",
+    "meaningVi": "bằng điện thoại",
+    "topic": "Doanh thu",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "from now",
+    "meaningVi": "tính từ lúc này",
+    "topic": "Doanh thu",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "frying pan",
+    "meaningVi": "chảo rán",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "go shopping",
+    "meaningVi": "đi mua sắm",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "goods",
+    "meaningVi": "hàng hóa",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lesson",
+    "meaningVi": "bài học",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "midday",
+    "meaningVi": "trưa, buổi trưa",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "miss",
+    "meaningVi": "bỏ lỡ, bỏ sót, trượt",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "rent",
+    "meaningVi": "cho thuê",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "save",
+    "meaningVi": "để dành, tiết kiệm",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "unbelievable",
+    "meaningVi": "không thể tin được",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "upset",
+    "meaningVi": "buồn bã, bực bội; làm bối rối/khó chịu",
+    "topic": "Doanh thu",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "win",
+    "meaningVi": "thắng, thắng cuộc",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "work on",
+    "meaningVi": "thực hiện, tiến hành",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "change",
+    "meaningVi": "sự thay đổi",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "decrease",
+    "meaningVi": "sự giảm; giảm",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "gain",
+    "meaningVi": "đạt được",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "height",
+    "meaningVi": "chiều cao, độ cao",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "income",
+    "meaningVi": "thu nhập",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "liquid",
+    "meaningVi": "chất lỏng; lỏng",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "loss",
+    "meaningVi": "sự mất, tổn thất, thua lỗ",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "model",
+    "meaningVi": "mô hình, mẫu; làm mẫu, đắp khuôn",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pace",
+    "meaningVi": "bước đi, tốc độ",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "range",
+    "meaningVi": "dãy, phạm vi; sắp hàng, xếp loại",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "refrigerator",
+    "meaningVi": "tủ lạnh",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rely on",
+    "meaningVi": "trông cậy vào",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "send",
+    "meaningVi": "gửi",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "the rate of decline",
+    "meaningVi": "tỷ lệ sụt giảm",
+    "topic": "Doanh thu",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "decline in",
+    "meaningVi": "sụt giảm về",
+    "topic": "Doanh thu",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "spending and income projections",
+    "meaningVi": "kế hoạch thu chi",
+    "topic": "Doanh thu",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "substantial + amount/increase/reduction",
+    "meaningVi": "số lượng/sự gia tăng/sự sụt giảm đáng kể",
+    "topic": "Doanh thu",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "retail sales figures",
+    "meaningVi": "số liệu doanh số bán lẻ",
+    "topic": "Doanh thu",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "sales representative",
+    "meaningVi": "đại diện bán hàng",
+    "topic": "Doanh thu",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "regular + meeting/schedule/assessment",
+    "meaningVi": "cuộc họp/kế hoạch/đánh giá thường kỳ",
+    "topic": "Doanh thu",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "tend to do",
+    "meaningVi": "có xu hướng làm gì",
+    "topic": "Doanh thu",
+    "partOfSpeech": "verb"
+  }
+]

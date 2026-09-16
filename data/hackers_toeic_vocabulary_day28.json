@@ -1,0 +1,1316 @@
+[
+  {
+    "word": "furnished",
+    "meaningVi": "có sẵn đồ đạc",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "furnish",
+    "meaningVi": "trang bị đồ đạc",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "furniture",
+    "meaningVi": "đồ đạc, nội thất",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "furnishing",
+    "meaningVi": "sự trang bị đồ đạc",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unfurnished",
+    "meaningVi": "không có đồ đạc",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "residence",
+    "meaningVi": "nơi cư trú, nhà ở",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reside",
+    "meaningVi": "ở tại, cư trú",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "resident",
+    "meaningVi": "cư dân",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "residential",
+    "meaningVi": "thuộc nhà ở",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "spacious",
+    "meaningVi": "rộng lớn, rộng rãi",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "spaciously",
+    "meaningVi": "rộng rãi",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "roomy",
+    "meaningVi": "rộng rãi",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "drape",
+    "meaningVi": "treo màn, che rèm; màn, rèm",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "unoccupied",
+    "meaningVi": "bỏ trống, không có người ở",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "occupy",
+    "meaningVi": "chiếm, ở",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "occupant",
+    "meaningVi": "người ở, người thuê (nhà)",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "vacant",
+    "meaningVi": "bỏ không, trống",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "occupied",
+    "meaningVi": "đang được sử dụng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "renovation",
+    "meaningVi": "sự cải tạo, sửa sang",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "renovate",
+    "meaningVi": "làm mới, sửa sang",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "refurbish",
+    "meaningVi": "làm mới, sửa sang",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "remodel",
+    "meaningVi": "làm mới, sửa sang",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "appropriate",
+    "meaningVi": "thích hợp, thích đáng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "delay",
+    "meaningVi": "trì hoãn, làm chậm trễ; sự trì hoãn, sự chậm trễ",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "community",
+    "meaningVi": "cộng đồng, dân chúng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "construction",
+    "meaningVi": "sự xây dựng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "construct",
+    "meaningVi": "xây dựng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "constructive",
+    "meaningVi": "có tính xây dựng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "demolition",
+    "meaningVi": "sự phá hủy",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "destruction",
+    "meaningVi": "sự phá hủy",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "repair",
+    "meaningVi": "sửa, sửa chữa",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "repairable",
+    "meaningVi": "có thể sửa",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "repairman",
+    "meaningVi": "thợ sửa chữa",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "currently",
+    "meaningVi": "hiện tại, hiện nay",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "current",
+    "meaningVi": "hiện tại, hiện hành",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "regularly",
+    "meaningVi": "đều đặn, thường xuyên",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "arrange",
+    "meaningVi": "sắp xếp, sắp đặt",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "arrangement",
+    "meaningVi": "sự sắp xếp",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "location",
+    "meaningVi": "vị trí, địa điểm",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "locate",
+    "meaningVi": "định vị",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "restore",
+    "meaningVi": "phục hồi, sửa chữa lại",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "restoration",
+    "meaningVi": "sự phục hồi",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "presently",
+    "meaningVi": "hiện giờ, chẳng mấy chốc",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "present",
+    "meaningVi": "hiện nay; hiện thời, quà",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "numerous",
+    "meaningVi": "nhiều, đông đảo",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "number",
+    "meaningVi": "số",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "numerously",
+    "meaningVi": "nhiều",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "numerically",
+    "meaningVi": "bằng số, về số",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "multiple",
+    "meaningVi": "nhiều",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "countless",
+    "meaningVi": "vô số",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "abandon",
+    "meaningVi": "bỏ, từ bỏ",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "contractor",
+    "meaningVi": "nhà thầu",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "develop",
+    "meaningVi": "phát triển, mở mang",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "maintain",
+    "meaningVi": "duy trì, bảo quản",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "maintenance",
+    "meaningVi": "sự duy trì",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "keep",
+    "meaningVi": "giữ",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "densely",
+    "meaningVi": "dày đặc, rậm rạp",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "dense",
+    "meaningVi": "dày đặc, đông đúc",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "density",
+    "meaningVi": "mật độ",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prepare",
+    "meaningVi": "chuẩn bị, sửa soạn",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "finally",
+    "meaningVi": "cuối cùng, sau cùng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "final",
+    "meaningVi": "cuối cùng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "finalize",
+    "meaningVi": "làm xong, hoàn thành",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "district",
+    "meaningVi": "quận, khu vực",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "area",
+    "meaningVi": "khu vực",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "renewal",
+    "meaningVi": "sự đổi mới, sự phục hồi",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "renew",
+    "meaningVi": "làm mới",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "compulsory",
+    "meaningVi": "bắt buộc, cưỡng bách",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "compel",
+    "meaningVi": "buộc, bắt phải",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "compulsion",
+    "meaningVi": "sự ép buộc",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "obligatory",
+    "meaningVi": "bắt buộc",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "interfere",
+    "meaningVi": "can thiệp, quấy rầy",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "interference",
+    "meaningVi": "sự can thiệp",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "relocation",
+    "meaningVi": "sự chuyển chỗ",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "totally",
+    "meaningVi": "hoàn toàn",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "actually",
+    "meaningVi": "thực sự, quả là, thực ra",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "architect",
+    "meaningVi": "kiến trúc sư",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "architecture",
+    "meaningVi": "công trình kiến trúc",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "enlarge",
+    "meaningVi": "mở rộng, khuếch trương",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "install",
+    "meaningVi": "đặt, lắp đặt, cài đặt",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "installation",
+    "meaningVi": "sự lắp đặt",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "set up",
+    "meaningVi": "lắp đặt",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "permanent",
+    "meaningVi": "lâu dài, thường trực, vĩnh cửu",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "permanently",
+    "meaningVi": "mãi mãi, thường xuyên",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "temporary",
+    "meaningVi": "tạm thời",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "suppose",
+    "meaningVi": "giả sử, cho rằng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "adjacent",
+    "meaningVi": "liền kề, sát",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "consist",
+    "meaningVi": "bao gồm, gồm có",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "utility",
+    "meaningVi": "phương tiện dịch vụ công (điện, nước, gas); phí dịch vụ công",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "utilize",
+    "meaningVi": "sử dụng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "armchair",
+    "meaningVi": "ghế bành",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ceiling",
+    "meaningVi": "trần nhà",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cleanup",
+    "meaningVi": "sự dọn dẹp",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "decoration",
+    "meaningVi": "sự trang hoàng, đồ trang trí",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fence",
+    "meaningVi": "hàng rào",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "floor",
+    "meaningVi": "sàn nhà, tầng nhà",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "frame",
+    "meaningVi": "khung, khung ảnh",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "furniture",
+    "meaningVi": "đồ đạc, đồ nội thất",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "garage",
+    "meaningVi": "nhà để ô tô",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "heating system",
+    "meaningVi": "hệ thống lò sưởi",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lobby",
+    "meaningVi": "hành lang",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "remodeling",
+    "meaningVi": "sự sửa đổi, tu sửa lại",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rooftop",
+    "meaningVi": "mái nhà",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rope",
+    "meaningVi": "dây thừng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stick",
+    "meaningVi": "gậy, que",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "tank",
+    "meaningVi": "thùng, két, bể",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "veranda",
+    "meaningVi": "mái hiên",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "desktop",
+    "meaningVi": "thiết kế để bàn; máy tính để bàn",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dwell",
+    "meaningVi": "ở, ngụ, dừng lại ở",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fireplace",
+    "meaningVi": "lò sưởi",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "heat",
+    "meaningVi": "nhiệt, sức nóng; đốt nóng, đun",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "homemade",
+    "meaningVi": "làm tại nhà",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "homeowner",
+    "meaningVi": "chủ nhà",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inhabit",
+    "meaningVi": "ở, sống ở",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "lighten",
+    "meaningVi": "chiếu sáng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "neighbor",
+    "meaningVi": "hàng xóm",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "urban",
+    "meaningVi": "thành thị, thuộc thành phố",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "rural",
+    "meaningVi": "nông thôn",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "washing machine",
+    "meaningVi": "máy giặt",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "architecture",
+    "meaningVi": "công trình kiến trúc, kiểu kiến trúc",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "canopy",
+    "meaningVi": "vòm, mái che",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cast a shadow",
+    "meaningVi": "phủ bóng đen",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "column",
+    "meaningVi": "cột, hàng dọc",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "courtyard",
+    "meaningVi": "sân trong",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cupboard",
+    "meaningVi": "tủ chén",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cut the grass",
+    "meaningVi": "cắt cỏ",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dedication ceremony",
+    "meaningVi": "lễ khánh thành",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "doorway",
+    "meaningVi": "cửa, ô cửa, lối vào",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dresser",
+    "meaningVi": "tủ ngăn kéo",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "emergency exit",
+    "meaningVi": "lối thoát hiểm",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "erect",
+    "meaningVi": "thẳng, dựng đứng; vươn lên",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "every hour on the hour",
+    "meaningVi": "cứ mỗi giờ",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "faucet",
+    "meaningVi": "vòi nước",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "floor plan",
+    "meaningVi": "sơ đồ mặt sàn",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "flooring",
+    "meaningVi": "sự làm sàn nhà",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "front door",
+    "meaningVi": "cửa trước",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "hallway",
+    "meaningVi": "hành lang ở cửa ra vào",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "hammering",
+    "meaningVi": "sự nện búa, trận đòn",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "handrail",
+    "meaningVi": "tay vịn, lan can",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "home-improvement",
+    "meaningVi": "sự nâng cấp nhà",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lamppost",
+    "meaningVi": "cột đèn",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lean against the fence",
+    "meaningVi": "dựa vào hàng rào",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "light bulb",
+    "meaningVi": "bóng đèn",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "make repairs",
+    "meaningVi": "sửa chữa",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make the bed",
+    "meaningVi": "dọn giường",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "multistory",
+    "meaningVi": "nhiều tầng, cao tầng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "outdoor wall",
+    "meaningVi": "tường ngoài",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "plug in",
+    "meaningVi": "cắm phích điện",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pole",
+    "meaningVi": "cột, cọc, sào",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "private residence",
+    "meaningVi": "dinh thự riêng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "put away",
+    "meaningVi": "cất đi, gác lại",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "rebuild",
+    "meaningVi": "xây lại",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "repairperson",
+    "meaningVi": "thợ sửa chữa",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "spread on",
+    "meaningVi": "trải, lan trên",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "staircase",
+    "meaningVi": "cầu thang (có lan can)",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stairway",
+    "meaningVi": "bậc thang",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "storage cabinet",
+    "meaningVi": "tủ cất giữ",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "switch on",
+    "meaningVi": "bật lên",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "turn on its side",
+    "meaningVi": "lật nghiêng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "undergo renovation",
+    "meaningVi": "đang được cải tạo",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "windowsill",
+    "meaningVi": "bậu cửa sổ",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "construct",
+    "meaningVi": "xây dựng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "describe",
+    "meaningVi": "miêu tả, mô tả",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "desirable",
+    "meaningVi": "đáng mơ ước, đáng khao khát",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "structure",
+    "meaningVi": "cấu trúc, kết cấu",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "access road",
+    "meaningVi": "đường nối",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "arrange the furniture",
+    "meaningVi": "sắp xếp đồ đạc",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be arranged on the patio",
+    "meaningVi": "được sắp xếp ở ngoài hiên",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "built-in",
+    "meaningVi": "gắn liền, tích hợp",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "carpentry",
+    "meaningVi": "nghề mộc",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fire alarm",
+    "meaningVi": "chuông báo cháy",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fire extinguisher",
+    "meaningVi": "bình cứu hỏa",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fitting room",
+    "meaningVi": "phòng thử đồ",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fixture",
+    "meaningVi": "vật/đồ đạc cố định",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "homebuilder",
+    "meaningVi": "thợ xây, công ty xây dựng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "housekeeping",
+    "meaningVi": "công việc nội trợ",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "housewares",
+    "meaningVi": "đồ gia dụng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "housing development",
+    "meaningVi": "sự phát triển nhà ở",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "in error",
+    "meaningVi": "vì nhầm lẫn/sai sót",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "overprice",
+    "meaningVi": "bán đắt",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reinforce",
+    "meaningVi": "tăng cường, củng cố",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "resident",
+    "meaningVi": "cư dân",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "restoration",
+    "meaningVi": "sự khôi phục, sự sửa chữa",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "scrubbing",
+    "meaningVi": "sự chà xát",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "skyscraper",
+    "meaningVi": "tòa nhà chọc trời",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "space-saving",
+    "meaningVi": "tiết kiệm không gian",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "tenant",
+    "meaningVi": "người thuê nhà",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "archway",
+    "meaningVi": "lối đi có mái vòm",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be mounted on",
+    "meaningVi": "được lắp, được gắn vào",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dig with a shovel",
+    "meaningVi": "đào bằng xẻng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "drain",
+    "meaningVi": "rút, tháo, làm cạn (nước)",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "hedge",
+    "meaningVi": "hàng rào",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "landlord",
+    "meaningVi": "chủ nhà",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ledge",
+    "meaningVi": "gờ, rìa (tường)",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lock oneself out of one's house",
+    "meaningVi": "tự khóa mình bên ngoài",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "plumber",
+    "meaningVi": "thợ sửa ống nước",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "porch",
+    "meaningVi": "hiên nhà",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "run the tap",
+    "meaningVi": "mở vòi",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "saw",
+    "meaningVi": "cái cưa; cưa, xẻ",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "scaffolding",
+    "meaningVi": "giàn giáo",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "screw",
+    "meaningVi": "đinh vít",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "symmetrically",
+    "meaningVi": "đối xứng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "tear down",
+    "meaningVi": "tháo dỡ, phá",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "uninhabited",
+    "meaningVi": "không có người ở, bỏ không",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "woodwork",
+    "meaningVi": "đồ gỗ, nghề mộc",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "complex",
+    "meaningVi": "khu phức hợp; phức tạp, rắc rối",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "constructively",
+    "meaningVi": "có tính xây dựng",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "locale",
+    "meaningVi": "địa điểm, bối cảnh",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "maintenance",
+    "meaningVi": "sự bảo trì, bảo quản",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reconfiguration",
+    "meaningVi": "sự tái cấu trúc",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "startle",
+    "meaningVi": "làm giật mình",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "annex",
+    "meaningVi": "nhà phụ",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "demolish",
+    "meaningVi": "phá bỏ, phá hủy",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "demolition",
+    "meaningVi": "sự phá hủy",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "for lease",
+    "meaningVi": "cho thuê",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "insulation",
+    "meaningVi": "sự cách nhiệt/cách âm",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "premises",
+    "meaningVi": "nhà cửa, vườn tược",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rack",
+    "meaningVi": "giá đỡ",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "shockproof",
+    "meaningVi": "chịu va đập",
+    "topic": "Tòa nhà - Nhà",
+    "partOfSpeech": "adjective"
+  }
+]

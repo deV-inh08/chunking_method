@@ -1,0 +1,1520 @@
+[
+  {
+    "word": "research",
+    "meaningVi": "sự nghiên cứu, điều tra; nghiên cứu, điều tra",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "researcher",
+    "meaningVi": "nhà nghiên cứu",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "study",
+    "meaningVi": "nghiên cứu",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "devise",
+    "meaningVi": "phát minh, chế tạo",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "device",
+    "meaningVi": "thiết bị",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "contrive",
+    "meaningVi": "nghĩ ra, sáng chế ra",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "invent",
+    "meaningVi": "sáng chế",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "revolutionary",
+    "meaningVi": "mang tính cách mạng, cải cách",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "revolution",
+    "meaningVi": "cuộc cách mạng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "innovative",
+    "meaningVi": "tân tiến, đổi mới",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "innovate",
+    "meaningVi": "đổi mới, cách tân",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "innovation",
+    "meaningVi": "sự đổi mới, sự cách tân",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "feature",
+    "meaningVi": "đặc điểm, tính năng; có tính năng, đặc trưng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "characteristic",
+    "meaningVi": "đặc điểm",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inspiration",
+    "meaningVi": "cảm hứng, nguồn cảm hứng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inspire",
+    "meaningVi": "truyền cảm hứng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "inspirational",
+    "meaningVi": "thuộc cảm hứng, gây cảm hứng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "sufficiently",
+    "meaningVi": "đủ, đầy đủ, thỏa đáng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "sufficient",
+    "meaningVi": "đủ, thích đáng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "sufficiency",
+    "meaningVi": "sự đầy đủ, lượng đủ",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "deficiently",
+    "meaningVi": "thiếu hụt, kém cỏi, bất tài",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "patent",
+    "meaningVi": "bằng sáng chế, giấy đăng ký; lấy bằng sáng chế, cấp bằng sáng chế",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "envision",
+    "meaningVi": "hình dung, mường tượng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "extend",
+    "meaningVi": "mở rộng, kéo dài, gia hạn, giơ ra, tỏ ra",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "extent",
+    "meaningVi": "quy mô, phạm vi",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "extension",
+    "meaningVi": "sự gia hạn, sự mở rộng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "extensive",
+    "meaningVi": "rộng lớn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "lengthen",
+    "meaningVi": "kéo dài",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "offer",
+    "meaningVi": "bày tỏ (sự cảm kích, tôn trọng)",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "following",
+    "meaningVi": "sau, tiếp theo; tiếp theo, sau đây, theo sau",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "intend",
+    "meaningVi": "định, có ý định",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "intention",
+    "meaningVi": "mong muốn, ý định",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "intent",
+    "meaningVi": "ý định, mục đích",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "grant",
+    "meaningVi": "ban, cấp, thừa nhận, công nhận; sự ban, sự cấp cho, sự chuyển nhượng, trợ cấp",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "allowance",
+    "meaningVi": "sự cho phép",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "allow",
+    "meaningVi": "cho phép, phê duyệt, chấp thuận",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "allowable",
+    "meaningVi": "có thể cho phép/thừa nhận/chấp thuận",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "allowed",
+    "meaningVi": "được cho phép, được phê duyệt",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "inspect",
+    "meaningVi": "kiểm tra, thanh tra",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "inspection",
+    "meaningVi": "sự xem xét, sự kiểm tra",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inspector",
+    "meaningVi": "người giám định, thanh tra viên",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "improve",
+    "meaningVi": "cải thiện, cải tiến, nâng cấp",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "improvement",
+    "meaningVi": "sự tiến bộ, sự cải thiện",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "upgrade",
+    "meaningVi": "nâng cấp, cải tiến; sự cải tiến, sự nâng cấp",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "increasingly",
+    "meaningVi": "ngày càng tăng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "increase",
+    "meaningVi": "tăng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "increasing",
+    "meaningVi": "ngày càng tăng, tăng dần",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "invest",
+    "meaningVi": "đầu tư",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "various",
+    "meaningVi": "nhiều, đa dạng, khác nhau",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "vary",
+    "meaningVi": "làm cho khác nhau, khác với",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "variety",
+    "meaningVi": "sự đa dạng, tính khác nhau, loại",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "manual",
+    "meaningVi": "sổ tay, sách hướng dẫn; (thuộc) tay, làm bằng tay",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "explore",
+    "meaningVi": "thám hiểm, tìm tòi, khám phá",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "response",
+    "meaningVi": "sự phản hồi, câu trả lời, sự hưởng ứng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "respond",
+    "meaningVi": "trả lời, phản hồi, phản ứng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "appearance",
+    "meaningVi": "sự xuất hiện, vẻ ngoài, diện mạo",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "appear",
+    "meaningVi": "xuất hiện, ra mắt",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "apparently",
+    "meaningVi": "hiển nhiên, rõ ràng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "outlook",
+    "meaningVi": "quang cảnh, viễn cảnh",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "successful",
+    "meaningVi": "thành công, thành đạt",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "succeed",
+    "meaningVi": "thành công",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "success",
+    "meaningVi": "sự thành công",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "successfully",
+    "meaningVi": "thành công",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "hold",
+    "meaningVi": "cầm, giữ, tổ chức",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "contain",
+    "meaningVi": "chứa đựng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "conduct",
+    "meaningVi": "tiến hành, tổ chức",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "advance",
+    "meaningVi": "thành tựu, sự tiến bộ, sự thăng tiến",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "advancement",
+    "meaningVi": "sự cải tiến, sự thúc đẩy",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "advanced",
+    "meaningVi": "tiến bộ, cấp tiến, cao cấp",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "setback",
+    "meaningVi": "sự giảm sút, sự thoái trào",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reliable",
+    "meaningVi": "đáng tin cậy",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "rely",
+    "meaningVi": "tin vào",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reliability",
+    "meaningVi": "sự đáng tin, độ tin cậy",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "trustworthy",
+    "meaningVi": "đáng tin cậy",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dependable",
+    "meaningVi": "đáng tin cậy",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reliant",
+    "meaningVi": "dựa vào, nhờ cậy, phụ thuộc vào",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "quality",
+    "meaningVi": "chất lượng; có chất lượng cao",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "qualify",
+    "meaningVi": "đủ tư cách/khả năng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "domestic",
+    "meaningVi": "trong nước, nội địa, (thuộc) việc nhà",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "development",
+    "meaningVi": "sự phát triển, sự tiến triển",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "develop",
+    "meaningVi": "phát triển",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "developer",
+    "meaningVi": "người phát triển",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "developed",
+    "meaningVi": "đã phát triển",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "developing",
+    "meaningVi": "đang phát triển",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "availability",
+    "meaningVi": "sự có sẵn, có thể mua được, sự có hiệu lực",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "available",
+    "meaningVi": "có sẵn, sẵn sàng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "update",
+    "meaningVi": "sự cập nhật, sự nâng cấp; cập nhật, nâng cấp",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "updated",
+    "meaningVi": "được nâng cấp",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "accurate",
+    "meaningVi": "đúng, chính xác",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "accuracy",
+    "meaningVi": "sự chính xác, độ chuẩn xác",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "accurately",
+    "meaningVi": "chính xác, xác đáng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "inaccurate",
+    "meaningVi": "không chính xác",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "complicated",
+    "meaningVi": "phức tạp, rắc rối",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "complicate",
+    "meaningVi": "làm phức tạp, làm rắc rối",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "accomplished",
+    "meaningVi": "đã hoàn thành, trọn vẹn, hoàn hảo, có tài năng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "accomplish",
+    "meaningVi": "hoàn thành, đạt tới (mục đích)",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "accomplishment",
+    "meaningVi": "sự hoàn thành, việc đạt được (mục đích)",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inquiry",
+    "meaningVi": "sự điều tra, sự thẩm vấn, câu hỏi, sự đòi hỏi",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inquire",
+    "meaningVi": "đòi hỏi, yêu cầu",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "indication",
+    "meaningVi": "biểu hiện, dấu hiệu",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "indicate",
+    "meaningVi": "chỉ, tỏ ra, biểu thị",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "indicative",
+    "meaningVi": "tỏ ra, ngụ ý",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "show",
+    "meaningVi": "sự thể hiện",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "manufacturer",
+    "meaningVi": "nhà sản xuất, chủ xưởng, chủ xí nghiệp",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "manufacture",
+    "meaningVi": "sự sản xuất; sản xuất",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "compatible",
+    "meaningVi": "tương thích, thích hợp",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "compatibility",
+    "meaningVi": "tính tương thích",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "superior",
+    "meaningVi": "cao, cao cấp, tốt hơn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "superiority",
+    "meaningVi": "sự vượt trội, tính ưu việt",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "excellent",
+    "meaningVi": "tuyệt vời",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "inferior",
+    "meaningVi": "dưới, thấp hơn, kém hơn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "incomparable",
+    "meaningVi": "không thể so sánh được, có một không hai",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "absolute",
+    "meaningVi": "tuyệt đối, hoàn toàn, thuần túy",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "absolutely",
+    "meaningVi": "tuyệt đối, hoàn toàn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "complete",
+    "meaningVi": "hoàn toàn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "utter",
+    "meaningVi": "hoàn toàn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "broaden",
+    "meaningVi": "mở rộng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "broad",
+    "meaningVi": "rộng lớn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "breadth",
+    "meaningVi": "bề rộng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "widen",
+    "meaningVi": "mở rộng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "expand",
+    "meaningVi": "mở rộng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "multiply",
+    "meaningVi": "mở rộng, nhân lên",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "corrosion",
+    "meaningVi": "sự ăn mòn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "corrode",
+    "meaningVi": "bào mòn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "erosion",
+    "meaningVi": "sự xói mòn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "brand new",
+    "meaningVi": "hoàn toàn mới",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "break down",
+    "meaningVi": "hỏng, trục trặc",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "developer",
+    "meaningVi": "nhà phát triển",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "handmade",
+    "meaningVi": "thủ công",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "in a row",
+    "meaningVi": "xếp hàng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "late",
+    "meaningVi": "muộn, chậm, trễ",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "lid",
+    "meaningVi": "nắp, vung",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sample",
+    "meaningVi": "mẫu, vật mẫu; lấy mẫu, thử",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "shape",
+    "meaningVi": "tạo hình, định hướng; hình dáng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "switch off",
+    "meaningVi": "tắt, ngắt",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "turn off",
+    "meaningVi": "tắt",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be known for",
+    "meaningVi": "được biết đến bởi, nổi tiếng vì",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be made of",
+    "meaningVi": "được làm từ",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "catalog",
+    "meaningVi": "danh mục",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "chemist",
+    "meaningVi": "nhà hóa học",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "close down",
+    "meaningVi": "đóng cửa, ngừng hoạt động",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "control",
+    "meaningVi": "kiểm soát, điều khiển; sự kiểm soát",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "design",
+    "meaningVi": "thiết kế; bản thiết kế",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "discovery",
+    "meaningVi": "sự khám phá",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "historic",
+    "meaningVi": "được ghi vào lịch sử, có tính lịch sử",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "invention",
+    "meaningVi": "phát minh, sáng chế",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "original",
+    "meaningVi": "đầu tiên, gốc; nguyên bản",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "receive",
+    "meaningVi": "nhận",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "repeat",
+    "meaningVi": "lặp lại",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "request form",
+    "meaningVi": "phiếu yêu cầu",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sensor",
+    "meaningVi": "thiết bị cảm biến",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "technique",
+    "meaningVi": "công nghệ",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "test",
+    "meaningVi": "bài kiểm tra; kiểm tra",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "a series of",
+    "meaningVi": "một chuỗi",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "check the manual",
+    "meaningVi": "xem sổ tay hướng dẫn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "come up with",
+    "meaningVi": "nghĩ ra, tạo ra (một ý tưởng)",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "enter a contest",
+    "meaningVi": "tham gia một cuộc thi",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "give a demonstration of",
+    "meaningVi": "thực hiện, minh họa (cái gì)",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "go straight to",
+    "meaningVi": "đi thẳng đến",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "laboratory",
+    "meaningVi": "phòng thí nghiệm",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "latest work",
+    "meaningVi": "tác phẩm mới nhất",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lightweight",
+    "meaningVi": "nhẹ, không quan trọng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "out-of-date",
+    "meaningVi": "cũ, lỗi thời",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "product designer",
+    "meaningVi": "người thiết kế sản phẩm",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "product display",
+    "meaningVi": "việc trưng bày sản phẩm",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "redesign",
+    "meaningVi": "sự thiết kế lại",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "trial period",
+    "meaningVi": "thời gian thử nghiệm",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "try out",
+    "meaningVi": "thử",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "unplug the equipment",
+    "meaningVi": "rút phích cắm thiết bị",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "up-to-date",
+    "meaningVi": "cập nhật, hiện đại, hợp thời",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "user's guide",
+    "meaningVi": "hướng dẫn sử dụng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "waterproof",
+    "meaningVi": "chống nước",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "well-prepared",
+    "meaningVi": "được chuẩn bị tốt",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "with the lights on",
+    "meaningVi": "đang bật đèn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "advancement",
+    "meaningVi": "sự tiến bộ, sự thúc đẩy",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "appliance",
+    "meaningVi": "thiết bị, dụng cụ",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "aside from",
+    "meaningVi": "ngoại trừ",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "certified",
+    "meaningVi": "được chứng nhận",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "complementary",
+    "meaningVi": "bù, bổ sung",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "composition",
+    "meaningVi": "sự cấu thành, cấu tạo",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "consist of",
+    "meaningVi": "bao gồm",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "cooperative",
+    "meaningVi": "mang tính tập thể, hợp tác",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "delighted",
+    "meaningVi": "vui mừng, vui lòng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "designed",
+    "meaningVi": "được thiết kế",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "durable",
+    "meaningVi": "bền, chắc chắn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "electronics",
+    "meaningVi": "điện tử",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "except for",
+    "meaningVi": "ngoại trừ",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "exploration",
+    "meaningVi": "sự thăm dò, sự thám hiểm",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "imaginable",
+    "meaningVi": "có thể tưởng tượng được",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "innovate",
+    "meaningVi": "đổi mới, cách tân",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "interpretation",
+    "meaningVi": "sự giải thích, cách hiểu",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "licensed",
+    "meaningVi": "được cấp phép",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "mechanical",
+    "meaningVi": "(thuộc) cơ khí, máy móc",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "prediction",
+    "meaningVi": "sự dự đoán, dự báo",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prototype",
+    "meaningVi": "mẫu đầu tiên, nguyên mẫu",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "quantity",
+    "meaningVi": "số lượng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "remnant",
+    "meaningVi": "vật còn lại, tàn dư",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "screen",
+    "meaningVi": "màn hình; kiểm tra",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "suspend",
+    "meaningVi": "treo, đình chỉ",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "technical",
+    "meaningVi": "thuộc về kỹ thuật",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "unfavorable",
+    "meaningVi": "bất lợi, không được ưa thích",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "vulnerable to",
+    "meaningVi": "mỏng manh, dễ bị tổn thương",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "be carried out",
+    "meaningVi": "được thực hiện",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be designed to do",
+    "meaningVi": "được thiết kế để",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "breakthrough",
+    "meaningVi": "sự đột phá",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "by the time",
+    "meaningVi": "vào lúc, khi",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "collaboration",
+    "meaningVi": "sự cộng tác",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "copyright",
+    "meaningVi": "bản quyền",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "custom-built",
+    "meaningVi": "được sản xuất theo đơn đặt hàng riêng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "customize",
+    "meaningVi": "tùy chỉnh",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "disruption",
+    "meaningVi": "sự gián đoạn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "energy efficiency",
+    "meaningVi": "tiết kiệm năng lượng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "energy source",
+    "meaningVi": "nguồn năng lượng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expand into",
+    "meaningVi": "mở rộng thành",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fuel consumption",
+    "meaningVi": "việc tiêu thụ nhiên liệu",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "guidance",
+    "meaningVi": "sự hướng dẫn, sự chỉ đạo",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "keep one's eye on",
+    "meaningVi": "để mắt tới",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "limited edition",
+    "meaningVi": "phiên bản có giới hạn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "long-lasting",
+    "meaningVi": "bền, lâu dài",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "plenty of",
+    "meaningVi": "rất nhiều",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "smoke detector",
+    "meaningVi": "bộ cảm biến khói",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be stacked on top of each other",
+    "meaningVi": "được xếp chồng lên nhau",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "hectic",
+    "meaningVi": "cuống nhiệt, sôi nổi",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "intently",
+    "meaningVi": "chăm chú, chú tâm",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "ornamental",
+    "meaningVi": "để trang trí",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reassign",
+    "meaningVi": "tái chỉ định, tái bổ nhiệm",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "specimen",
+    "meaningVi": "mẫu, vật mẫu",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "achievable",
+    "meaningVi": "có thể đạt được, trong tầm tay",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "apparatus",
+    "meaningVi": "dụng cụ, bộ máy",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "concession",
+    "meaningVi": "sự nhượng bộ, sự hạ giá",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "concurrently",
+    "meaningVi": "đồng thời, kiêm",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "configuration",
+    "meaningVi": "hình thế, hình dạng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "detectable",
+    "meaningVi": "có thể dò ra, có thể tìm ra",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "distill",
+    "meaningVi": "chưng cất",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dysfunction",
+    "meaningVi": "rối loạn chức năng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "embedded",
+    "meaningVi": "được gắn vào",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "evolve",
+    "meaningVi": "tiến triển, tiến hóa",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "flammable",
+    "meaningVi": "dễ bén lửa, dễ cháy",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "implant",
+    "meaningVi": "cấy dưới da, ghi khắc, in sâu",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "patronize",
+    "meaningVi": "bảo trợ, hạ cố, đỡ đầu",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "staple",
+    "meaningVi": "ghim dập",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "steer",
+    "meaningVi": "lái, hướng dẫn, hướng theo",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "sturdily",
+    "meaningVi": "cứng cáp, khỏe mạnh",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "transparent",
+    "meaningVi": "trong suốt, rõ ràng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "be geared to",
+    "meaningVi": "cho khớp với",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bewildering",
+    "meaningVi": "gây bối rối, khiến hoang mang",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "bring out",
+    "meaningVi": "đưa ra, mang đến",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "cutting-edge",
+    "meaningVi": "vượt trội, tiên tiến",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "obsolete",
+    "meaningVi": "cổ xưa, lỗi thời, quá hạn",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "quality control standards",
+    "meaningVi": "tiêu chuẩn kiểm soát chất lượng",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "state-of-the-art",
+    "meaningVi": "tiên tiến, hiện đại",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "streamline",
+    "meaningVi": "tạo dáng thuôn dài, hợp lý hóa",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "top-of-the-line",
+    "meaningVi": "tối ưu nhất, đỉnh nhất",
+    "topic": "Phát triển sản phẩm",
+    "partOfSpeech": "adjective"
+  }
+]

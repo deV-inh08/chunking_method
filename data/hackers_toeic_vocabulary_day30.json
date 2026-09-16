@@ -1,0 +1,668 @@
+[
+  {
+    "word": "fatigue",
+    "meaningVi": "sự mệt mỏi, công việc mệt nhọc",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "checkup",
+    "meaningVi": "khám sức khỏe",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "symptom",
+    "meaningVi": "triệu chứng",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "physician",
+    "meaningVi": "bác sĩ",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "diagnosis",
+    "meaningVi": "sự chẩn đoán, lời chẩn đoán",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "diagnose",
+    "meaningVi": "chẩn đoán",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "prescribe",
+    "meaningVi": "cho thuốc, kê đơn",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "prescription",
+    "meaningVi": "đơn thuốc",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "recovery",
+    "meaningVi": "sự bình phục, sự khỏi bệnh",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "recover",
+    "meaningVi": "phục hồi",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "recognize",
+    "meaningVi": "nhận ra, công nhận",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "recognizable",
+    "meaningVi": "có thể công nhận",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "join",
+    "meaningVi": "nối liền, gia nhập, tham gia",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "joint",
+    "meaningVi": "chung",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "jointly",
+    "meaningVi": "cùng nhau, cùng chung",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "comprehensive",
+    "meaningVi": "bao hàm toàn diện, thông minh, sáng ý",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "comprehend",
+    "meaningVi": "bao hàm, lĩnh hội",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "comprehension",
+    "meaningVi": "sự bao hàm, sự nhận thức",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "comprehensible",
+    "meaningVi": "có thể lĩnh hội, có thể nhận thức",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "comprehensively",
+    "meaningVi": "hoàn toàn, toàn diện",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "participate",
+    "meaningVi": "tham gia, tham dự, góp phần",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "recommend",
+    "meaningVi": "khuyên, giới thiệu, tiến cử",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "recommendation",
+    "meaningVi": "sự khuyến dùng",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "necessary",
+    "meaningVi": "cần thiết, thiết yếu",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "ability",
+    "meaningVi": "khả năng, năng lực",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "operation",
+    "meaningVi": "sự phẫu thuật, ca mổ",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cleanliness",
+    "meaningVi": "sự sạch sẽ, tính sạch sẽ",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "duration",
+    "meaningVi": "thời gian, khoảng thời gian, thời gian diễn tiến",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "examination",
+    "meaningVi": "sự kiểm tra, sự thăm khám",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "eliminate",
+    "meaningVi": "loại ra, bài tiết",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "elimination",
+    "meaningVi": "sự loại ra, sự bài tiết",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "easily",
+    "meaningVi": "dễ dàng, thoải mái",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "dental",
+    "meaningVi": "thuộc về răng/nha khoa",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dietary",
+    "meaningVi": "thuộc chế độ ăn uống/ăn kiêng",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "related",
+    "meaningVi": "có liên quan, có quan hệ với",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "transmit",
+    "meaningVi": "chuyển giao, truyền",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "transmission",
+    "meaningVi": "sự truyền",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "periodically",
+    "meaningVi": "một cách định kỳ",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "periodic",
+    "meaningVi": "thuộc chu kỳ, định kỳ",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reaction",
+    "meaningVi": "sự phản ứng",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "react",
+    "meaningVi": "phản ứng",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "simple",
+    "meaningVi": "đơn giản",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "coverage",
+    "meaningVi": "phạm vi bảo hiểm; sự đưa tin (báo chí)",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "exposure",
+    "meaningVi": "sự phơi bày, sự bóc trần",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expose",
+    "meaningVi": "phơi bày ra",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pharmaceutical",
+    "meaningVi": "thuộc dược phẩm",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "premium",
+    "meaningVi": "tiền thưởng, phí bảo hiểm; thượng hạng, cao cấp",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "relieve",
+    "meaningVi": "làm dịu, làm giảm bớt",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "relief",
+    "meaningVi": "sự giảm nhẹ",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "combination",
+    "meaningVi": "sự kết hợp",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "combine",
+    "meaningVi": "kết hợp",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "conscious",
+    "meaningVi": "biết rõ, có ý thức",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "consciousness",
+    "meaningVi": "ý thức, sự hiểu biết",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "consciously",
+    "meaningVi": "có ý thức, có ý",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "deprivation",
+    "meaningVi": "sự mất, sự thiếu hụt",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "deprive",
+    "meaningVi": "lấy đi, tước đoạt",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "health",
+    "meaningVi": "sức khỏe, y tế; sự thịnh vượng, sự phát triển",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "healthy",
+    "meaningVi": "lành mạnh",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "healthful",
+    "meaningVi": "có lợi cho sức khỏe",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "induce",
+    "meaningVi": "gây ra, đem lại",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "inducement",
+    "meaningVi": "điều xui khiến",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "insurance",
+    "meaningVi": "sự bảo hiểm",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "nutrition",
+    "meaningVi": "sự nuôi dưỡng, dinh dưỡng",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "nutritious",
+    "meaningVi": "bổ dưỡng",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "nutritionist",
+    "meaningVi": "chuyên gia dinh dưỡng",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prevention",
+    "meaningVi": "sự ngăn ngừa, sự phòng ngừa",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prevent",
+    "meaningVi": "ngăn ngừa",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "preventive",
+    "meaningVi": "mang tính phòng ngừa",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "preventable",
+    "meaningVi": "có thể phòng tránh",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "susceptible",
+    "meaningVi": "nhạy cảm, dễ bị, dễ mắc",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "susceptibility",
+    "meaningVi": "tính nhạy cảm",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "allergic",
+    "meaningVi": "dị ứng",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "blind",
+    "meaningVi": "mù, mù quáng",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "cavity",
+    "meaningVi": "ổ, khoang",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cold",
+    "meaningVi": "cảm lạnh; lạnh",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cosmetic",
+    "meaningVi": "để làm đẹp, trang điểm",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "feel sick",
+    "meaningVi": "cảm thấy ốm yếu",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "fitness",
+    "meaningVi": "sự cân đối, tình trạng sung sức",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "gym",
+    "meaningVi": "phòng tập",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "have an injection",
+    "meaningVi": "bị tiêm",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "medical facility",
+    "meaningVi": "cơ sở y tế",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "raincoat",
+    "meaningVi": "áo mưa",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "surgery",
+    "meaningVi": "sự phẫu thuật, việc mổ xẻ",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "toothache",
+    "meaningVi": "đau răng",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "treat",
+    "meaningVi": "điều trị, chữa bệnh",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "vision",
+    "meaningVi": "thị lực",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "workout",
+    "meaningVi": "buổi tập luyện",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "beat",
+    "meaningVi": "đập (tim, mạch)",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "blink",
+    "meaningVi": "nháy mắt, chớp mắt",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "cure",
+    "meaningVi": "cách điều trị, phương thuốc",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "disease",
+    "meaningVi": "bệnh, bệnh tật",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "healing",
+    "meaningVi": "đang lành lại, đang hồi phục",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "internal",
+    "meaningVi": "bên trong, nội bộ",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "lung",
+    "meaningVi": "phổi",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "organ",
+    "meaningVi": "cơ quan (trong cơ thể)",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "remedy",
+    "meaningVi": "phương thuốc, cách điều trị",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stomachache",
+    "meaningVi": "bệnh đau dạ dày",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "well-being",
+    "meaningVi": "sự khỏe mạnh, sung sức",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fill a prescription",
+    "meaningVi": "bán/mua thuốc theo đơn",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "join a club",
+    "meaningVi": "tham gia câu lạc bộ",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "be strongly recommended that",
+    "meaningVi": "tha thiết đề nghị",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "on the recommendation of",
+    "meaningVi": "theo lời khuyên của",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "allergic reactions",
+    "meaningVi": "phản ứng dị ứng",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "reaction to sth",
+    "meaningVi": "sự phản ứng với",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "exposure to",
+    "meaningVi": "sự phơi bày ra với",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "be exposed to",
+    "meaningVi": "bị phơi bày ra trước",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "in combination with",
+    "meaningVi": "kết hợp với",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "susceptible to",
+    "meaningVi": "dễ mắc",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "health insurance",
+    "meaningVi": "bảo hiểm sức khỏe",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "insurance company",
+    "meaningVi": "công ty bảo hiểm",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "insurance policy",
+    "meaningVi": "chính sách bảo hiểm",
+    "topic": "Sức khỏe",
+    "partOfSpeech": "phrase"
+  }
+]

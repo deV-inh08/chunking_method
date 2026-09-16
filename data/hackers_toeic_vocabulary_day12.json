@@ -1,0 +1,1418 @@
+[
+  {
+    "word": "equipment",
+    "meaningVi": "máy móc, trang thiết bị",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "equip",
+    "meaningVi": "trang bị",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "automate",
+    "meaningVi": "tự động hóa",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "automation",
+    "meaningVi": "sự tự động hóa, kỹ thuật tự động",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "automatic",
+    "meaningVi": "tự động",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "specification",
+    "meaningVi": "chi tiết, đặc điểm, chỉ dẫn/yêu cầu kỹ thuật, sự chỉ rõ",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "specify",
+    "meaningVi": "cụ thể hóa, chỉ rõ, ghi rõ",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "specific",
+    "meaningVi": "cụ thể, chi tiết",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "properly",
+    "meaningVi": "đúng đắn, thích đáng, hợp lệ",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "proper",
+    "meaningVi": "đúng, thích hợp, thích đáng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "safety",
+    "meaningVi": "sự an toàn, tính an toàn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "safe",
+    "meaningVi": "an toàn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "safely",
+    "meaningVi": "an toàn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "precaution",
+    "meaningVi": "sự phòng ngừa, sự đề phòng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "precautious",
+    "meaningVi": "thận trọng, phòng xa",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "operate",
+    "meaningVi": "vận hành, hoạt động",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "operation",
+    "meaningVi": "sự vận hành",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "operational",
+    "meaningVi": "thuộc quá trình vận hành",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "operable",
+    "meaningVi": "có thể vận hành/thi hành",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "processing",
+    "meaningVi": "sự chế biến, sự gia công",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "process",
+    "meaningVi": "quá trình, quy trình, sự tiến hành; tiến triển",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "capacity",
+    "meaningVi": "sức chứa, năng lực, tư cách",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "capacious",
+    "meaningVi": "rộng lớn, dung tích lớn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "assemble",
+    "meaningVi": "lắp ráp; triệu tập, triệu hồi",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "assembly",
+    "meaningVi": "sự lắp ráp, bộ phận lắp ráp",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "disassemble",
+    "meaningVi": "tháo rời",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "utilize",
+    "meaningVi": "dùng, sử dụng; tận dụng, khai thác",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "utilization",
+    "meaningVi": "sự sử dụng, sự tận dụng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "place",
+    "meaningVi": "đặt, để, sắp xếp; đặt (hàng)",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "placement",
+    "meaningVi": "sự sắp xếp",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fill",
+    "meaningVi": "lấp đầy, đổ đầy; đáp ứng (theo yêu cầu)",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "manufacturing",
+    "meaningVi": "sự sản xuất, chế tạo; thuộc sản xuất, chế tạo",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "renovate",
+    "meaningVi": "nâng cấp, cải tạo (nhà cửa, nội thất)",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "decision",
+    "meaningVi": "quyết định",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "material",
+    "meaningVi": "chất liệu, tài liệu, nguyên liệu",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "success",
+    "meaningVi": "sự thành công, thắng lợi",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "attribute",
+    "meaningVi": "quy cho, gán cho",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "efficiency",
+    "meaningVi": "hiệu quả, năng lực, năng suất",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "efficient",
+    "meaningVi": "hiệu quả",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "efficiently",
+    "meaningVi": "có hiệu quả",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "limit",
+    "meaningVi": "giới hạn, ranh giới; hạn chế",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "limitation",
+    "meaningVi": "sự hạn chế, sự giới hạn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "limited",
+    "meaningVi": "bị hạn chế, bị giới hạn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "tailored",
+    "meaningVi": "được tùy chỉnh, điều chỉnh (theo nhu cầu)",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "tailor",
+    "meaningVi": "may, biến đổi, điều chỉnh",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "component",
+    "meaningVi": "thành phần, bộ phận",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "capable",
+    "meaningVi": "có khả năng, có năng lực",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "capability",
+    "meaningVi": "khả năng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "capably",
+    "meaningVi": "thành thạo",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "incapable",
+    "meaningVi": "không đủ khả năng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "economize",
+    "meaningVi": "tiết kiệm",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "flexible",
+    "meaningVi": "mềm, dẻo; dễ thuyết phục; linh hoạt",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "flexibility",
+    "meaningVi": "tính linh hoạt",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "comparable",
+    "meaningVi": "có thể so sánh",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "compare",
+    "meaningVi": "so sánh",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "comparison",
+    "meaningVi": "sự so sánh",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "incomparable",
+    "meaningVi": "không thể so sánh, có một không hai",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "produce",
+    "meaningVi": "sản xuất, chế tạo",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "product",
+    "meaningVi": "sản phẩm",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "production",
+    "meaningVi": "sự sản xuất",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "productivity",
+    "meaningVi": "năng suất",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "respectively",
+    "meaningVi": "riêng từng cái, tương ứng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "device",
+    "meaningVi": "máy móc, thiết bị",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "devise",
+    "meaningVi": "nghĩ ra, sáng chế",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "trim",
+    "meaningVi": "cắt, tỉa, loại bỏ; sắp xếp, thu dọn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "launch",
+    "meaningVi": "ra mắt (sản phẩm mới); buổi giới thiệu",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "separately",
+    "meaningVi": "tách biệt, riêng rẽ, khác nhau",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "separate",
+    "meaningVi": "riêng lẻ",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "separation",
+    "meaningVi": "sự chia cắt",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expiration",
+    "meaningVi": "sự hết hạn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "maneuver",
+    "meaningVi": "diễn tập, điều động",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "coming",
+    "meaningVi": "sắp tới",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "damaged",
+    "meaningVi": "bị phá hủy, bị hư hại, hỏng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "damage",
+    "meaningVi": "sự phá hủy, sự thiệt hại",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prevent",
+    "meaningVi": "ngăn chặn, ngăn ngừa",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "prevention",
+    "meaningVi": "sự ngăn cản",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "preventive",
+    "meaningVi": "nhằm ngăn ngừa, thận trọng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "power",
+    "meaningVi": "sức mạnh, năng lượng/điện",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "powerful",
+    "meaningVi": "mạnh mẽ, uy quyền",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "empower",
+    "meaningVi": "trao quyền, cho phép",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "chemical",
+    "meaningVi": "chất hóa học; thuộc hóa học",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "chemist",
+    "meaningVi": "nhà hóa học",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "chemistry",
+    "meaningVi": "môn hóa học",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "clothing line",
+    "meaningVi": "dây phơi quần áo; dòng sản phẩm may mặc",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "craft",
+    "meaningVi": "tay nghề, tài năng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "crop",
+    "meaningVi": "vụ mùa, cây trồng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "curved",
+    "meaningVi": "cong",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "cyclist",
+    "meaningVi": "người đi xe đạp",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "firewood",
+    "meaningVi": "củi",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "iron",
+    "meaningVi": "bàn là; là/ủi (quần áo)",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "look up",
+    "meaningVi": "tra cứu, tìm kiếm",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "machinery",
+    "meaningVi": "máy móc, thiết bị",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "not at all",
+    "meaningVi": "không có gì, không hề",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "not far from",
+    "meaningVi": "không xa",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "plant",
+    "meaningVi": "cây, thực vật; trồng (cây); nhà máy",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "publication company",
+    "meaningVi": "công ty xuất bản",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "scratch",
+    "meaningVi": "cào, gãi",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "tool belt",
+    "meaningVi": "đai đeo dụng cụ",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "watering can",
+    "meaningVi": "bình tưới nước",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "a number of",
+    "meaningVi": "một vài, một số",
+    "topic": "Sản xuất",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "be composed of",
+    "meaningVi": "được cấu thành bởi, bao gồm",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be filled with",
+    "meaningVi": "được lấp đầy bằng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be made up of",
+    "meaningVi": "được tạo thành bởi",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "facility",
+    "meaningVi": "trang thiết bị, cơ sở",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fasten",
+    "meaningVi": "cài, thắt",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "incredible",
+    "meaningVi": "không thể tin được, lạ thường",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "modification",
+    "meaningVi": "sự sửa đổi",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rank",
+    "meaningVi": "hàng, thứ hạng; xếp hạng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "raw material",
+    "meaningVi": "nguyên liệu thô",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "shortage",
+    "meaningVi": "sự thiếu hụt",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "underground",
+    "meaningVi": "ngầm, dưới mặt đất",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "assembly",
+    "meaningVi": "sự lắp ráp, bộ phận lắp ráp",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fasten the strap",
+    "meaningVi": "cài dây đeo",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "give a hand",
+    "meaningVi": "giúp đỡ",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "go out of production",
+    "meaningVi": "ngừng sản xuất",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "in a moment",
+    "meaningVi": "trong giây lát, ngay",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "maintenance cost",
+    "meaningVi": "chi phí bảo dưỡng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "makeup",
+    "meaningVi": "bộ phận, thành phần",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "much to one's surprise",
+    "meaningVi": "trước sự ngạc nhiên của",
+    "topic": "Sản xuất",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "not only A but also B",
+    "meaningVi": "không chỉ A mà còn B",
+    "topic": "Sản xuất",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "pack away",
+    "meaningVi": "cất gọn đi",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "remarkably",
+    "meaningVi": "đáng chú ý, xuất sắc",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "scale model",
+    "meaningVi": "mô hình thu nhỏ",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "squeaking sound",
+    "meaningVi": "tiếng kêu cót két",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "wearable",
+    "meaningVi": "mặc được, thích hợp để mặc",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "workbench",
+    "meaningVi": "bàn thợ",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "adapted",
+    "meaningVi": "thích nghi, phù hợp",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "automatically",
+    "meaningVi": "tự động",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "carelessly",
+    "meaningVi": "cẩu thả, bất cẩn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "combustible",
+    "meaningVi": "dễ cháy, bỗng bột",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "evidently",
+    "meaningVi": "hiển nhiên, rõ ràng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "fitted",
+    "meaningVi": "vừa vặn, cố định",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "priced",
+    "meaningVi": "có giá, có ghi giá",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reform",
+    "meaningVi": "sự cải cách; cải cách, sửa đổi",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "representation",
+    "meaningVi": "sự đại diện, sự tượng trưng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "technically",
+    "meaningVi": "về mặt kỹ thuật, về mặt lý thuyết",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "technician",
+    "meaningVi": "nhân viên kỹ thuật",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "adversely",
+    "meaningVi": "bất lợi",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "agricultural",
+    "meaningVi": "thuộc nông nghiệp",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "artificial",
+    "meaningVi": "nhân tạo, giả",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "be irrelevant to",
+    "meaningVi": "không liên quan tới",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "crude",
+    "meaningVi": "nguyên, thô, chưa qua xử lý",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "crude oil",
+    "meaningVi": "dầu thô",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "custom-made",
+    "meaningVi": "được đặt làm, thiết kế riêng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "downsize",
+    "meaningVi": "cắt giảm (nhân sự)",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "gadget",
+    "meaningVi": "đồ dùng, dụng cụ",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "gem",
+    "meaningVi": "đá quý",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "generator",
+    "meaningVi": "máy phát điện",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "grease",
+    "meaningVi": "mỡ, dầu mỡ",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "identically",
+    "meaningVi": "tương tự, y hệt",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "in the event of",
+    "meaningVi": "trong trường hợp",
+    "topic": "Sản xuất",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "in the process of",
+    "meaningVi": "trong quá trình",
+    "topic": "Sản xuất",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "individually tailored",
+    "meaningVi": "thiết kế riêng, cá nhân hóa",
+    "topic": "Sản xuất",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "integration",
+    "meaningVi": "sự tích hợp, hội nhập",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "line worker",
+    "meaningVi": "công nhân trong dây chuyền",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "made-to-order",
+    "meaningVi": "được làm theo đặt hàng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "make an arrangement",
+    "meaningVi": "sắp đặt, chuẩn bị",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make an exception",
+    "meaningVi": "đưa ra một ngoại lệ",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make public",
+    "meaningVi": "công khai",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "market awareness",
+    "meaningVi": "hiểu biết về thị trường",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "neatly",
+    "meaningVi": "gọn gàng, ngăn nắp",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "on call",
+    "meaningVi": "luôn sẵn sàng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "on the edge of",
+    "meaningVi": "bên bờ vực, ở mép",
+    "topic": "Sản xuất",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "on the spot",
+    "meaningVi": "tại chỗ, lập tức",
+    "topic": "Sản xuất",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "outlast",
+    "meaningVi": "tồn tại lâu hơn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "output",
+    "meaningVi": "sản lượng, hiệu suất",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "put in place",
+    "meaningVi": "thiết lập, đưa ra",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "query",
+    "meaningVi": "câu hỏi, thắc mắc",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ready-made",
+    "meaningVi": "có sẵn, may sẵn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reassemble",
+    "meaningVi": "tập hợp lại, lắp ráp lại",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "refine",
+    "meaningVi": "lọc, tinh chế, trau chuốt",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reproduction",
+    "meaningVi": "sự tái sản xuất, sự sinh sản",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sector",
+    "meaningVi": "khu vực, lĩnh vực",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "settle on",
+    "meaningVi": "đồng ý, quyết định",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "sort out",
+    "meaningVi": "phân loại, tuyển chọn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "synthetic",
+    "meaningVi": "tổng hợp, nhân tạo",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "tailor-made",
+    "meaningVi": "may đo, làm theo yêu cầu",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "upon -ing",
+    "meaningVi": "ngay khi",
+    "topic": "Sản xuất",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "wear and tear",
+    "meaningVi": "khấu hao, hao mòn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "come apart",
+    "meaningVi": "tan rã, đổ vỡ",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "flow chart",
+    "meaningVi": "lưu đồ, sơ đồ luồng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "production quota",
+    "meaningVi": "chỉ tiêu/định mức sản xuất",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "tie up",
+    "meaningVi": "thắt chặt, chốt lại",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "void",
+    "meaningVi": "chỗ trống, chân không; trống, không có",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "discontinue",
+    "meaningVi": "ngừng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "halt",
+    "meaningVi": "sự tạm nghỉ, nghỉ chân",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "occurrence",
+    "meaningVi": "sự xảy ra",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "operating",
+    "meaningVi": "thuộc về điều hành, vận hành",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "predicted",
+    "meaningVi": "được đoán trước, tiên đoán",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "welding",
+    "meaningVi": "kỹ thuật hàn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "arable",
+    "meaningVi": "trồng trọt được (đất)",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "broadly",
+    "meaningVi": "rộng rãi, đại khái",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "continuity",
+    "meaningVi": "sự tiếp tục, tính liên tục",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "disassemble",
+    "meaningVi": "tháo rời",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "excavation",
+    "meaningVi": "sự khai quật",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fabricate",
+    "meaningVi": "bịa đặt, làm giả",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "involuntarily",
+    "meaningVi": "không cố ý, vô tình",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "liquidity",
+    "meaningVi": "tính thanh khoản",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "nimble",
+    "meaningVi": "nhanh nhẹn, lanh lợi",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "obfuscate",
+    "meaningVi": "gây khó hiểu, làm bối rối",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pertinent",
+    "meaningVi": "đúng chỗ, phù hợp",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "perturbed",
+    "meaningVi": "bị nhiễu",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "pragmatic",
+    "meaningVi": "thực tế, thực dụng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "precede",
+    "meaningVi": "đi trước, đứng trước",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "prevail",
+    "meaningVi": "thịnh hành, thắng thế",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "procurement",
+    "meaningVi": "sự thu mua được, kiếm được",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "provoke",
+    "meaningVi": "kích động, thúc đẩy",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "recede",
+    "meaningVi": "lùi lại, rút lui",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "tolerance",
+    "meaningVi": "sự khoan dung",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unfailingly",
+    "meaningVi": "luôn luôn, lúc nào cũng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "unmet",
+    "meaningVi": "không thỏa mãn (mục đích)",
+    "topic": "Sản xuất",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "office equipment",
+    "meaningVi": "thiết bị văn phòng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "operate properly",
+    "meaningVi": "hoạt động ổn định/đúng chức năng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "safety precautions",
+    "meaningVi": "các biện pháp an toàn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "safety regulations",
+    "meaningVi": "các quy tắc an toàn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "assembly line",
+    "meaningVi": "dây chuyền lắp ráp",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "assembly plant",
+    "meaningVi": "nhà máy lắp ráp",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "place A on standby",
+    "meaningVi": "đặt A vào trạng thái sẵn sàng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fill an order",
+    "meaningVi": "đáp ứng đơn đặt hàng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fill the position",
+    "meaningVi": "bổ nhiệm vị trí/chức vụ",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make a decision about",
+    "meaningVi": "đưa ra quyết định về",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "attribute A to B",
+    "meaningVi": "cho rằng A là do B",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "energy efficiency",
+    "meaningVi": "việc sử dụng năng lượng hiệu quả",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "office efficiency",
+    "meaningVi": "hiệu quả làm việc ở văn phòng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be capable of -ing",
+    "meaningVi": "có khả năng làm gì",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be comparable to",
+    "meaningVi": "được so sánh với",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be made separately",
+    "meaningVi": "được làm riêng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be ordered separately",
+    "meaningVi": "được đặt hàng riêng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "prevent A from -ing",
+    "meaningVi": "phòng tránh A khỏi",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "power supply",
+    "meaningVi": "nguồn cung cấp năng lượng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "power plant",
+    "meaningVi": "nhà máy điện",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "power outage",
+    "meaningVi": "mất điện",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be filled to capacity",
+    "meaningVi": "đầy ắp",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "expand the capacity",
+    "meaningVi": "làm tăng sức chứa/dung lượng",
+    "topic": "Sản xuất",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "limited capacity",
+    "meaningVi": "sức chứa nhỏ/có hạn",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "storage capacity",
+    "meaningVi": "sức chứa",
+    "topic": "Sản xuất",
+    "partOfSpeech": "noun"
+  }
+]

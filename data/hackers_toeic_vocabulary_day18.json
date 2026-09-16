@@ -1,0 +1,326 @@
+[
+  {
+    "word": "check in",
+    "meaningVi": "làm thủ tục vào (nhận phòng, lên máy bay)",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "check out",
+    "meaningVi": "làm thủ tục ra (trả phòng, xuống máy bay)",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "compensate",
+    "meaningVi": "bù, đền bù, bồi thường",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "compensation",
+    "meaningVi": "sự đền bù",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "compensatory",
+    "meaningVi": "bù, bồi thường",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "complimentary",
+    "meaningVi": "miễn phí, biếu, tặng",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "chef",
+    "meaningVi": "đầu bếp",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "container",
+    "meaningVi": "đồ để chứa (bình, lọ, hộp, thùng)",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "contain",
+    "meaningVi": "chứa đựng, bao hàm",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "elegant",
+    "meaningVi": "thanh lịch, tao nhã",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "elegance",
+    "meaningVi": "sự thanh lịch, sự tao nhã",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "flavor",
+    "meaningVi": "vị, mùi vị",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "accommodate",
+    "meaningVi": "cung cấp nơi ở; đáp ứng (điều kiện, yêu cầu)",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "accommodation",
+    "meaningVi": "nơi ở",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "available",
+    "meaningVi": "có, có sẵn (vật); có mặt (người)",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "availability",
+    "meaningVi": "tính sẵn sàng, sự khả dụng",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unavailable",
+    "meaningVi": "không có sẵn",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reception",
+    "meaningVi": "sự đón tiếp, sự tiếp nhận",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "receptionist",
+    "meaningVi": "nhân viên lễ tân",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "receive",
+    "meaningVi": "nhận",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bite",
+    "meaningVi": "cắn; miếng cắn, vết cắn",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "buffet",
+    "meaningVi": "tiệc đứng",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cafeteria",
+    "meaningVi": "quán ăn tự phục vụ",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cereal",
+    "meaningVi": "ngũ cốc",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cookbook",
+    "meaningVi": "sách dạy nấu ăn",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "delicious",
+    "meaningVi": "ngon",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dessert",
+    "meaningVi": "món tráng miệng",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dine",
+    "meaningVi": "ăn cơm, thết cơm",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dining room",
+    "meaningVi": "phòng ăn",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dish",
+    "meaningVi": "món ăn, đĩa (đựng đồ ăn)",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dishwasher",
+    "meaningVi": "máy rửa bát",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dry dishes",
+    "meaningVi": "lau khô đĩa",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "garlic",
+    "meaningVi": "tỏi",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "meal",
+    "meaningVi": "bữa ăn",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "plate",
+    "meaningVi": "đĩa",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pot",
+    "meaningVi": "nồi",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prepare a meal",
+    "meaningVi": "chuẩn bị bữa ăn",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "seafood",
+    "meaningVi": "hải sản",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "spicy",
+    "meaningVi": "cay",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "spill",
+    "meaningVi": "tràn ra, chảy ra",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "tasty",
+    "meaningVi": "ngon miệng",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "whipped cream",
+    "meaningVi": "kem tươi",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "blend",
+    "meaningVi": "trộn lẫn, pha trộn",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "clean",
+    "meaningVi": "sạch sẽ; lau chùi, làm sạch",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fresh",
+    "meaningVi": "tươi, mới",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "recipe",
+    "meaningVi": "công thức, cách làm",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "spice",
+    "meaningVi": "gia vị",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "taste",
+    "meaningVi": "nếm, thưởng thức",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "a glass of",
+    "meaningVi": "một ly",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "appetizer",
+    "meaningVi": "món khai vị",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "bottle",
+    "meaningVi": "đóng chai",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "chop",
+    "meaningVi": "chặt, bổ, chẻ",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "compensate A for B",
+    "meaningVi": "bồi thường cho A vì B",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "complimentary + breakfast/service",
+    "meaningVi": "bữa sáng/dịch vụ miễn phí",
+    "topic": "Nơi lưu trú - Nhà hàng",
+    "partOfSpeech": "phrase"
+  }
+]

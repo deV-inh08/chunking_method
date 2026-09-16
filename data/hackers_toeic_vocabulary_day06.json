@@ -1,0 +1,1340 @@
+[
+  {
+    "word": "collection",
+    "meaningVi": "bộ sưu tập, sự thu thập, sự quyên góp",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "collect",
+    "meaningVi": "thu thập, gom",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "collector",
+    "meaningVi": "người sưu tầm",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "collectable",
+    "meaningVi": "đối tượng sưu tầm",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "exhibition",
+    "meaningVi": "cuộc triển lãm, sự trưng bày",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "exhibit",
+    "meaningVi": "trưng bày; vật trưng bày",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "celebrity",
+    "meaningVi": "người nổi tiếng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "live",
+    "meaningVi": "phát sóng trực tiếp (radio, TV), sống",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "living",
+    "meaningVi": "đang tồn tại",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "alive",
+    "meaningVi": "đang sống",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "improvise",
+    "meaningVi": "ứng biến, ngẫu hứng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "improvisation",
+    "meaningVi": "sự ứng biến",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "popular",
+    "meaningVi": "nổi tiếng, phổ biến",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "popularity",
+    "meaningVi": "sự phổ biến",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "likable",
+    "meaningVi": "có cảm tình",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "preferred",
+    "meaningVi": "được thích hơn, được ưa hơn",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "favorite",
+    "meaningVi": "được thích nhất",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "donation",
+    "meaningVi": "sự quyên góp, từ thiện, sự tặng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "donate",
+    "meaningVi": "quyên góp",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "donor",
+    "meaningVi": "người quyên góp",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "contribution",
+    "meaningVi": "sự đóng góp",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "alumni",
+    "meaningVi": "cựu sinh viên",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "present",
+    "meaningVi": "trình bày, giới thiệu; có mặt, hiện diện, hiện tại, hiện thời; quà tặng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "presentation",
+    "meaningVi": "bài thuyết trình",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "presenter",
+    "meaningVi": "diễn giả",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "presently",
+    "meaningVi": "bây giờ, hiện thời",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "admission",
+    "meaningVi": "sự thú nhận, sự nhận vào, sự thu nạp",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "admit",
+    "meaningVi": "nhận vào, thú nhận",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "banquet",
+    "meaningVi": "bữa tiệc lớn",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "anniversary",
+    "meaningVi": "lễ kỷ niệm, ngày kỷ niệm",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "required",
+    "meaningVi": "cần thiết, được yêu cầu, phải có",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "succeed",
+    "meaningVi": "nối tiếp, kế tiếp; thành công",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "success",
+    "meaningVi": "sự thành công",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "successful",
+    "meaningVi": "thành công, thành đạt",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "successive",
+    "meaningVi": "liên tục, lần lượt",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "successively",
+    "meaningVi": "liên tục, lần lượt",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "rest",
+    "meaningVi": "nghỉ ngơi, thư giãn; sự thư giãn, nghỉ ngơi; phần còn lại",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "remainder",
+    "meaningVi": "người còn lại, vật còn lại, phần còn lại",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fund-raising",
+    "meaningVi": "việc gây quỹ",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "resume",
+    "meaningVi": "lấy lại, giành lại, bắt đầu lại, lại tiếp tục",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "issue",
+    "meaningVi": "sự xuất bản, số báo, lần in; vấn đề; phát hành, cho ra mắt",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "edition",
+    "meaningVi": "sự xuất bản, lần xuất bản",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "subscription",
+    "meaningVi": "sự đăng ký, sự thuê bao, mua định kỳ (báo, tạp chí)",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "subscribe",
+    "meaningVi": "đăng ký, đặt mua",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "appear",
+    "meaningVi": "xuất hiện, trình diện",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "appearance",
+    "meaningVi": "vẻ ngoài, ngoại hình",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "disappear",
+    "meaningVi": "biến mất",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "accompany",
+    "meaningVi": "đi cùng ai đó, kèm theo",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "specifically",
+    "meaningVi": "cụ thể, rõ ràng, đặc trưng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "anonymous",
+    "meaningVi": "giấu tên, ẩn danh, nặc danh",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "commit",
+    "meaningVi": "giao phó, ủy thác, cam kết, hứa",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "commitment",
+    "meaningVi": "sự tận tâm, sự cam kết",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dedicate",
+    "meaningVi": "hiến dâng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "devote",
+    "meaningVi": "cống hiến",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "informative",
+    "meaningVi": "nhiều thông tin, có kiến thức, bổ ích",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "inform",
+    "meaningVi": "thông báo",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "informed",
+    "meaningVi": "có hiểu biết, am hiểu",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "information",
+    "meaningVi": "thông tin",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "audience",
+    "meaningVi": "khán giả, thính giả",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "author",
+    "meaningVi": "tác giả",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "note",
+    "meaningVi": "ghi chú, lưu ý; bản ghi nhớ",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "notable",
+    "meaningVi": "đáng kể, đáng chú ý",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "state",
+    "meaningVi": "phát biểu, viết rõ (chính thức)",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "antique",
+    "meaningVi": "đồ cổ",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "manuscript",
+    "meaningVi": "bản viết tay, bản thảo",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "beneficial",
+    "meaningVi": "có lợi, có ích",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "benefit",
+    "meaningVi": "lợi ích",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "harmful",
+    "meaningVi": "có hại",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "upcoming",
+    "meaningVi": "sắp đến, sắp tới",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "forthcoming",
+    "meaningVi": "sắp đến",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "lend",
+    "meaningVi": "cho mượn, cho vay",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "borrow",
+    "meaningVi": "mượn",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "rent",
+    "meaningVi": "thuê",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "current",
+    "meaningVi": "hiện thời, đang lưu hành",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "currently",
+    "meaningVi": "hiện thời",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "contemporary",
+    "meaningVi": "đương thời",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "valid",
+    "meaningVi": "có hiệu lực",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "local",
+    "meaningVi": "địa phương, cục bộ",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "locality",
+    "meaningVi": "vị trí, địa phương",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "locally",
+    "meaningVi": "mang tính địa phương",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "localized",
+    "meaningVi": "khoanh vùng, khu biệt",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "variety",
+    "meaningVi": "sự đa dạng, trạng thái khác nhau, giống, loại",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "various",
+    "meaningVi": "đa dạng, khác nhau",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "vary",
+    "meaningVi": "thay đổi, biến đổi",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "range",
+    "meaningVi": "loại",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "advocate",
+    "meaningVi": "người ủng hộ, người biện hộ; ủng hộ",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "opponent",
+    "meaningVi": "đối thủ",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "contributor",
+    "meaningVi": "người cống hiến, người đóng góp",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "contribute",
+    "meaningVi": "cống hiến, đóng góp",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "contribution",
+    "meaningVi": "sự cống hiến, sự đóng góp",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "defy",
+    "meaningVi": "thách thức, không tuân theo, bất chấp tất cả",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "defiance",
+    "meaningVi": "sự thách thức, sự chống lại",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fascinating",
+    "meaningVi": "hấp dẫn, lôi cuốn, quyến rũ",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fascinate",
+    "meaningVi": "mê hoặc",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fascination",
+    "meaningVi": "sự mê hoặc, sức quyến rũ",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fascinated",
+    "meaningVi": "bị thu hút, bị lôi cuốn",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "showing",
+    "meaningVi": "sự trình diễn; chứng cứ",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "backpack",
+    "meaningVi": "ba lô",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "bike",
+    "meaningVi": "xe đạp",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cabin",
+    "meaningVi": "buồng, buồng lái",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "climb a mountain",
+    "meaningVi": "leo núi",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "film festival",
+    "meaningVi": "liên hoan phim",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fishing",
+    "meaningVi": "câu cá",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "gallery",
+    "meaningVi": "phòng trưng bày (nghệ thuật)",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "invitation",
+    "meaningVi": "lời mời, giấy mời",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lawn",
+    "meaningVi": "bãi cỏ",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "paint",
+    "meaningVi": "sơn; vẽ",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "painting",
+    "meaningVi": "bức tranh",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "play cards",
+    "meaningVi": "chơi bài",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "public library",
+    "meaningVi": "thư viện công cộng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "race",
+    "meaningVi": "cuộc đua; đua xe, chạy đua",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "resort",
+    "meaningVi": "khu nghỉ dưỡng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "theater",
+    "meaningVi": "nhà hát",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "watch a film",
+    "meaningVi": "xem một bộ phim",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "adventure",
+    "meaningVi": "cuộc phiêu lưu",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "art museum",
+    "meaningVi": "bảo tàng nghệ thuật",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "begin",
+    "meaningVi": "bắt đầu",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bring",
+    "meaningVi": "mang tới, mang lại",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "care for",
+    "meaningVi": "quan tâm đến, chăm sóc cho",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "concert",
+    "meaningVi": "buổi hòa nhạc",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "length",
+    "meaningVi": "chiều dài",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "leisure",
+    "meaningVi": "thời gian rảnh rỗi",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "librarian",
+    "meaningVi": "thủ thư, người quản lý thư viện",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "menu",
+    "meaningVi": "thực đơn",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sightseeing",
+    "meaningVi": "sự tham quan, cuộc tham quan",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "amusement park",
+    "meaningVi": "công viên giải trí",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ancient history",
+    "meaningVi": "lịch sử cổ đại",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "artifact",
+    "meaningVi": "đồ tạo tác",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "auditorium",
+    "meaningVi": "khán phòng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be booked up",
+    "meaningVi": "đã bán hết (vé, phòng)",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "box office",
+    "meaningVi": "phòng vé",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cheerful",
+    "meaningVi": "vui mừng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "choir",
+    "meaningVi": "đội hợp xướng, đội đồng ca",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "entertain",
+    "meaningVi": "giải trí, tiêu khiển",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "flower arrangement",
+    "meaningVi": "cắm hoa",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "flower bed",
+    "meaningVi": "luống hoa",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "go to a film",
+    "meaningVi": "đi xem phim",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "grip",
+    "meaningVi": "nắm chặt, nắm vững",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "have a race",
+    "meaningVi": "đua",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "jog along the street",
+    "meaningVi": "chạy bộ dọc phố",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "musical instrument",
+    "meaningVi": "nhạc cụ",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "oar",
+    "meaningVi": "mái chèo; chèo thuyền; can thiệp",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "oil painting",
+    "meaningVi": "tranh sơn dầu",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "outdoor",
+    "meaningVi": "ngoài trời",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "paddle",
+    "meaningVi": "chèo thuyền; mái chèo",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "premiere",
+    "meaningVi": "buổi ra mắt",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rake leaves",
+    "meaningVi": "cào lá",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "recreational activity",
+    "meaningVi": "hoạt động giải trí",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "right",
+    "meaningVi": "quyền, lẽ phải; đúng, phải",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "running time",
+    "meaningVi": "thời gian thực hiện",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sail a boat",
+    "meaningVi": "chèo thuyền",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "slide down",
+    "meaningVi": "trượt xuống",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "splash",
+    "meaningVi": "bắn lên, tóe lên",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "sport tournament",
+    "meaningVi": "giải thi đấu thể thao",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stadium",
+    "meaningVi": "sân vận động",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stay up",
+    "meaningVi": "thức",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "stroll",
+    "meaningVi": "đi dạo",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take a break",
+    "meaningVi": "nghỉ ngơi",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take A for a walk",
+    "meaningVi": "đi dạo cùng A",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take a photograph",
+    "meaningVi": "chụp một tấm ảnh",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take a walk",
+    "meaningVi": "đi dạo, tản bộ",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take great pleasure",
+    "meaningVi": "thích, tận hưởng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "touch up a photograph",
+    "meaningVi": "chỉnh sửa ảnh",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "vacation package",
+    "meaningVi": "gói du lịch",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "wait for seats",
+    "meaningVi": "chờ tới lượt",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "wait in line",
+    "meaningVi": "xếp hàng chờ",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "water the plants",
+    "meaningVi": "tưới cây",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "amuse",
+    "meaningVi": "làm cho ai đó thích thú, giải trí",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "artistic",
+    "meaningVi": "liên quan đến nghệ thuật, có khiếu nghệ thuật",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "even though",
+    "meaningVi": "mặc dù",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "conjunction"
+  },
+  {
+    "word": "exist",
+    "meaningVi": "tồn tại",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "free admission",
+    "meaningVi": "miễn phí vào cửa",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "make oneself at home",
+    "meaningVi": "cứ tự nhiên như ở nhà",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "municipal",
+    "meaningVi": "thuộc thành phố, đô thị",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "several",
+    "meaningVi": "vài, một số",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "spectator",
+    "meaningVi": "người xem, khán giả",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "usher",
+    "meaningVi": "người chỉ chỗ (trong rạp)",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "win a contest",
+    "meaningVi": "thắng cuộc thi",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "admission to",
+    "meaningVi": "được nhận vào",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "contestant",
+    "meaningVi": "thí sinh",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "delight",
+    "meaningVi": "sự vui sướng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "do one's hair",
+    "meaningVi": "làm tóc cho ai đó",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "enjoyable",
+    "meaningVi": "thích thú, thú vị",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "group rate",
+    "meaningVi": "mức giá theo nhóm",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "head for",
+    "meaningVi": "đi đến, hướng tới",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "out of order",
+    "meaningVi": "bị hỏng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "periodical",
+    "meaningVi": "ấn phẩm định kỳ; định kỳ",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "playing field",
+    "meaningVi": "sân bóng, sân thể thao",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "register for",
+    "meaningVi": "ghi danh, đăng ký",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "show up",
+    "meaningVi": "xuất hiện",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take a tour",
+    "meaningVi": "đi tham quan",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be in line",
+    "meaningVi": "xếp hàng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "for a change",
+    "meaningVi": "để thay đổi",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "pass the time",
+    "meaningVi": "qua thời gian",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pose",
+    "meaningVi": "tạo dáng; tư thế",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "stay tuned",
+    "meaningVi": "đừng chuyển kênh, tiếp tục theo dõi",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "vacate",
+    "meaningVi": "bỏ trống, bỏ, xin thôi",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "appreciative",
+    "meaningVi": "biết thưởng thức",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "casually",
+    "meaningVi": "tình cờ, ngẫu nhiên",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "enlightening",
+    "meaningVi": "khai sáng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "enthusiastically",
+    "meaningVi": "nhiệt tình, hăng hái",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "excellence",
+    "meaningVi": "sự xuất sắc, sự vượt trội",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "excursion",
+    "meaningVi": "cuộc du ngoạn",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "festivity",
+    "meaningVi": "ngày hội",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "flock",
+    "meaningVi": "tụ tập; đám đông, bầy, đàn",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "intriguingly",
+    "meaningVi": "thích thú, tò mò",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "leg room",
+    "meaningVi": "không gian để chân (trên ô tô)",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "mural",
+    "meaningVi": "bích họa",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "portrait",
+    "meaningVi": "chân dung",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "publication",
+    "meaningVi": "ấn phẩm, sự xuất bản",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sculpture",
+    "meaningVi": "nghệ thuật điêu khắc, tác phẩm điêu khắc",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "transferable",
+    "meaningVi": "có thể dịch chuyển, có thể chuyển nhượng",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "unsanitary",
+    "meaningVi": "không hợp vệ sinh",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "be in the mood for -ing",
+    "meaningVi": "muốn làm gì đó",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "botanical garden",
+    "meaningVi": "vườn bách thảo",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "censorship",
+    "meaningVi": "công tác kiểm duyệt",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "have yet to do",
+    "meaningVi": "vẫn chưa làm gì",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "intermission",
+    "meaningVi": "giờ giải lao",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "memoirs",
+    "meaningVi": "hồi ký",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "must-see",
+    "meaningVi": "đáng xem, nhất định phải xem",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "rally",
+    "meaningVi": "đại hội",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ridiculous",
+    "meaningVi": "lố bịch",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "roam around",
+    "meaningVi": "đi loanh quanh",
+    "topic": "Thời gian rảnh - Cộng đồng",
+    "partOfSpeech": "verb"
+  }
+]

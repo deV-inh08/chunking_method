@@ -1,0 +1,1346 @@
+[
+  {
+    "word": "purchase",
+    "meaningVi": "mua; việc mua hàng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "buy",
+    "meaningVi": "mua",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "installment",
+    "meaningVi": "sự trả góp",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "affordable",
+    "meaningVi": "(giá cả) phải chăng, có thể chi trả được",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "afford",
+    "meaningVi": "có đủ khả năng, cấp cho",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "affordability",
+    "meaningVi": "tính hợp lý (về giá cả)",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "affordably",
+    "meaningVi": "phải chăng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "reasonable",
+    "meaningVi": "hợp lý",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "expensive",
+    "meaningVi": "đắt tiền",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "exactly",
+    "meaningVi": "chính xác, đúng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "exact",
+    "meaningVi": "chính xác",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "precisely",
+    "meaningVi": "đúng, chính xác",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "auction",
+    "meaningVi": "cuộc đấu giá, sự bán đấu giá",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "authentic",
+    "meaningVi": "thật, đích thực, đáng tin",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "genuine",
+    "meaningVi": "thật, chính cống",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fake",
+    "meaningVi": "giả",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "charge",
+    "meaningVi": "tiền phải trả, phí; nhiệm vụ, trách nhiệm; thu phí, tính phí; ghi nợ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expense",
+    "meaningVi": "chi phí",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "notice",
+    "meaningVi": "thông báo, yết thị; chú ý, nhận biết",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "notify",
+    "meaningVi": "báo tin",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "notification",
+    "meaningVi": "thông báo",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "noticeable",
+    "meaningVi": "đáng chú ý",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "experienced",
+    "meaningVi": "có kinh nghiệm, lão luyện",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "instruction",
+    "meaningVi": "lời chỉ dẫn, hướng dẫn",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "instructional",
+    "meaningVi": "(thuộc) hướng dẫn, chỉ bảo",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "expert",
+    "meaningVi": "chuyên gia; về mặt chuyên môn, thành thạo, lão luyện",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expertly",
+    "meaningVi": "thành thạo, thông thạo",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "warranty",
+    "meaningVi": "giấy bảo hành, sự bảo hành",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "refund",
+    "meaningVi": "sự hoàn tiền, sự hoàn trả lại; hoàn lại, hoàn tiền",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "refundable",
+    "meaningVi": "có thể hoàn trả",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "subscriber",
+    "meaningVi": "người đăng ký, người theo dõi, người đặt mua dài hạn (báo, tạp chí)",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "subscription",
+    "meaningVi": "sự đăng ký (định kỳ)",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "delivery",
+    "meaningVi": "sự giao hàng, sự phân phát",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "deliver",
+    "meaningVi": "giao, phân phối",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "price",
+    "meaningVi": "giá, giá cả; đặt giá, định giá",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "receipt",
+    "meaningVi": "biên lai",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "receive",
+    "meaningVi": "nhận",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "offer",
+    "meaningVi": "cung cấp, tạo cơ hội, tặng; lời đề nghị, đề xuất, ưu đãi",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "provide",
+    "meaningVi": "cung cấp",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "carefully",
+    "meaningVi": "một cách cẩn thận, thận trọng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "care",
+    "meaningVi": "sự chăm sóc, sự thận trọng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "careful",
+    "meaningVi": "cẩn thận",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "carelessly",
+    "meaningVi": "bất cẩn",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "benefit",
+    "meaningVi": "lợi ích, tác dụng, ưu đãi; được hưởng lợi, giúp ích cho",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "beneficial",
+    "meaningVi": "có lợi",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "beneficiary",
+    "meaningVi": "người thụ hưởng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "disadvantage",
+    "meaningVi": "sự bất lợi, nhược điểm",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "exclusively",
+    "meaningVi": "riêng, dành riêng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "exclusive",
+    "meaningVi": "dành riêng, độc quyền",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "exclude",
+    "meaningVi": "ngăn chặn, loại trừ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "solely",
+    "meaningVi": "đơn độc, độc quyền",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "description",
+    "meaningVi": "sự miêu tả, sự mô tả",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "describe",
+    "meaningVi": "miêu tả, mô tả",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "account",
+    "meaningVi": "bản báo cáo, sự miêu tả",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "information",
+    "meaningVi": "thông tin",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "specification",
+    "meaningVi": "đặc điểm kỹ thuật, thông số kỹ thuật",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "relatively",
+    "meaningVi": "có liên quan, tương đối, vừa phải",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "relative",
+    "meaningVi": "có liên quan, cân xứng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "relate",
+    "meaningVi": "liên quan",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "spare",
+    "meaningVi": "để dành, miễn cho, không cần đến; dự trữ, dự phòng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "preparation",
+    "meaningVi": "sự chuẩn bị",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "area",
+    "meaningVi": "khu vực, vùng, lĩnh vực",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "site",
+    "meaningVi": "bãi đất, lô đất (để xây dựng)",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "clearance",
+    "meaningVi": "giấy phép, sự cho phép; sự dọn quang, khoảng trống",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "authorization",
+    "meaningVi": "sự cho phép, cấp phép",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "alter",
+    "meaningVi": "thay đổi, sửa đổi",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "alteration",
+    "meaningVi": "sự thay đổi, sự biến đổi",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "change",
+    "meaningVi": "thay đổi, sửa đổi",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "modify",
+    "meaningVi": "thay đổi, sửa đổi",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "apply",
+    "meaningVi": "nộp đơn, ứng tuyển, áp dụng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "application",
+    "meaningVi": "đơn xin, sự áp dụng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "applicant",
+    "meaningVi": "ứng viên, người xin việc",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "applicable",
+    "meaningVi": "có thể ứng dụng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "mutually",
+    "meaningVi": "với nhau, lẫn nhau, qua lại",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "method",
+    "meaningVi": "phương pháp, cách thức",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "approach",
+    "meaningVi": "phương pháp",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "acceptable",
+    "meaningVi": "có thể chấp nhận được, tạm được, ổn",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fine",
+    "meaningVi": "được, ổn",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "desire",
+    "meaningVi": "niềm mong muốn, khát khao; ao ước, mơ ước, thèm muốn",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "desirable",
+    "meaningVi": "đáng khao khát",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "undesirable",
+    "meaningVi": "không mong muốn",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "redeemable",
+    "meaningVi": "có thể cứu được, có thể quy đổi, có thể chuộc lại",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "redeem",
+    "meaningVi": "mua lại, quy đổi",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "officially",
+    "meaningVi": "chính thức, trịnh trọng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "official",
+    "meaningVi": "chính thức",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "formally",
+    "meaningVi": "chính thức",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "consumption",
+    "meaningVi": "sự tiêu thụ, sự tiêu dùng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "qualify",
+    "meaningVi": "đủ điều kiện, đủ khả năng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "qualification",
+    "meaningVi": "năng lực, trình độ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "qualified",
+    "meaningVi": "đủ khả năng/trình độ/điều kiện",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fabric",
+    "meaningVi": "vải",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "valid",
+    "meaningVi": "có hiệu lực, hợp lý, hợp lệ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "effective",
+    "meaningVi": "có hiệu quả",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "good",
+    "meaningVi": "tốt",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "invalid",
+    "meaningVi": "không có hiệu lực, không hợp lệ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "vendor",
+    "meaningVi": "người bán hàng rong, máy bán hàng, đại lý cung cấp",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "bakery",
+    "meaningVi": "tiệm bánh, lò bánh mỳ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "best-selling",
+    "meaningVi": "bán chạy nhất",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "cashier",
+    "meaningVi": "nhân viên thu ngân",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "clothing",
+    "meaningVi": "quần áo, y phục",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "corner",
+    "meaningVi": "góc, lối rẽ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "costume",
+    "meaningVi": "trang phục",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "free",
+    "meaningVi": "rảnh rỗi, tự do, miễn phí",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "label",
+    "meaningVi": "nhãn, nhãn hiệu",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "necklace",
+    "meaningVi": "vòng cổ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "photography equipment",
+    "meaningVi": "thiết bị chụp ảnh",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "shelf",
+    "meaningVi": "giá, kệ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "shop",
+    "meaningVi": "cửa hàng, cửa hiệu",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "shopper",
+    "meaningVi": "người mua hàng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "size",
+    "meaningVi": "kích cỡ, kích thước",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sunglasses",
+    "meaningVi": "kính râm",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "supermarket",
+    "meaningVi": "siêu thị",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "wear",
+    "meaningVi": "mang, đeo, mặc, đội",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "basis",
+    "meaningVi": "nền tảng, cơ sở",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "brand",
+    "meaningVi": "thương hiệu",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "department store",
+    "meaningVi": "cửa hàng bách hóa, trung tâm thương mại",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "discount store",
+    "meaningVi": "cửa hàng giảm giá",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "display",
+    "meaningVi": "trưng bày, biểu lộ; sự trưng bày",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fit",
+    "meaningVi": "hợp, xứng, ăn khớp",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fully",
+    "meaningVi": "đầy",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "grocery",
+    "meaningVi": "cửa hàng tạp hóa",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "keep",
+    "meaningVi": "giữ, bảo quản, chăm sóc",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "store",
+    "meaningVi": "cửa hàng; lưu trữ, tích trữ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "tax",
+    "meaningVi": "thuế",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "at the moment",
+    "meaningVi": "vào thời điểm hiện tại",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "celebrate",
+    "meaningVi": "kỷ niệm, làm lễ kỷ niệm",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "decorative item",
+    "meaningVi": "vật trang trí",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "discounted coupon",
+    "meaningVi": "phiếu giảm giá",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "for sale",
+    "meaningVi": "để bán",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "half price",
+    "meaningVi": "một nửa giá",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "have A strapped to one's shoulder",
+    "meaningVi": "gánh vác A trên vai",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "instead",
+    "meaningVi": "thay vì",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "make a purchase",
+    "meaningVi": "mua hàng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make no difference",
+    "meaningVi": "không có sự khác biệt",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make payment",
+    "meaningVi": "thanh toán",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "Not that I'm aware of.",
+    "meaningVi": "Đó không phải là những gì mà tôi biết.",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "out of town",
+    "meaningVi": "đi vắng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "overcoat",
+    "meaningVi": "áo măng tô, áo choàng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pay in cash",
+    "meaningVi": "thanh toán bằng tiền mặt",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "put out for display",
+    "meaningVi": "đưa ra trưng bày",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "shoelace",
+    "meaningVi": "dây giày",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "shopkeeper",
+    "meaningVi": "người chủ hiệu",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "showroom",
+    "meaningVi": "phòng trưng bày (hàng hóa)",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sleeve",
+    "meaningVi": "tay áo",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "souvenir",
+    "meaningVi": "đồ lưu niệm, vật kỷ niệm",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stack",
+    "meaningVi": "cụm, chùm, đống; chất thành đống",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stand in line",
+    "meaningVi": "xếp hàng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "storefront",
+    "meaningVi": "mặt trước cửa hàng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stylish",
+    "meaningVi": "hợp thời trang, kiểu cách",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "tag",
+    "meaningVi": "nhãn, mác, thẻ tên",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "take the order",
+    "meaningVi": "nhận đơn đặt hàng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "try on",
+    "meaningVi": "mặc thử, đi thử, mang thử",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "underline",
+    "meaningVi": "gạch chân, nhấn mạnh",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "watch band",
+    "meaningVi": "dây đeo đồng hồ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "window-shopping",
+    "meaningVi": "ngắm hàng hóa qua cửa sổ, việc xem hàng hóa nhưng không mua",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "afford to do",
+    "meaningVi": "đủ sức, đủ khả năng làm gì",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "apparel",
+    "meaningVi": "trang phục, quần áo",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dairy products",
+    "meaningVi": "các sản phẩm từ sữa",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "elsewhere",
+    "meaningVi": "ở một nơi nào khác, đâu đó",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "gift certificate",
+    "meaningVi": "phiếu quà tặng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "glassware",
+    "meaningVi": "đồ thủy tinh",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inexpensive",
+    "meaningVi": "rẻ, không đắt",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "lately",
+    "meaningVi": "gần đây",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "latest",
+    "meaningVi": "mới nhất",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "luxury",
+    "meaningVi": "sự xa xỉ, hàng xa xỉ; sang trọng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "outerwear",
+    "meaningVi": "áo khoác ngoài",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "outlet",
+    "meaningVi": "lối thoát, lối ra, cửa hàng tiêu thụ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "portable",
+    "meaningVi": "có thể mang theo, xách tay",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "readership",
+    "meaningVi": "(cộng đồng) độc giả",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "readily",
+    "meaningVi": "sẵn sàng, sẵn lòng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "refundable",
+    "meaningVi": "có thể hoàn trả lại",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "value",
+    "meaningVi": "giá trị, giá cả",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "a selection of",
+    "meaningVi": "bộ sưu tập",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "a variety of (= various)",
+    "meaningVi": "nhiều",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "at a discounted price",
+    "meaningVi": "với giá chiết khấu",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "by check",
+    "meaningVi": "bằng séc",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "by credit card",
+    "meaningVi": "bằng thẻ tín dụng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "by no means",
+    "meaningVi": "không chút nào, tuyệt nhiên không",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "extra charge",
+    "meaningVi": "phụ phí",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "get in line",
+    "meaningVi": "xếp hàng",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "give a discount",
+    "meaningVi": "giảm giá",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "in cash",
+    "meaningVi": "bằng tiền mặt",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "merchandise",
+    "meaningVi": "hàng hóa",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "no later than",
+    "meaningVi": "muộn nhất là",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "showcase",
+    "meaningVi": "buổi biểu diễn giới thiệu",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "textile",
+    "meaningVi": "vải dệt, đồ dệt may",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "thrifty",
+    "meaningVi": "tiết kiệm, tằn tiện",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "under warranty",
+    "meaningVi": "được bảo hành",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "valid for",
+    "meaningVi": "hợp lệ cho, có hiệu lực với",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "voucher",
+    "meaningVi": "phiếu quà tặng (đã được thanh toán trước)",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "wholesale",
+    "meaningVi": "bán buôn, bán sỉ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "wrap a present",
+    "meaningVi": "gói quà",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "automotive repair shop",
+    "meaningVi": "xưởng sửa chữa ô tô",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "awning",
+    "meaningVi": "tấm vải bạt, mái hiên",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cash register",
+    "meaningVi": "máy đếm tiền",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cooking utensil (= cookware)",
+    "meaningVi": "dụng cụ nấu ăn",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "display case",
+    "meaningVi": "kệ trưng bày",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "garment",
+    "meaningVi": "quần áo, đồ may mặc",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "look different",
+    "meaningVi": "nhìn khác biệt",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "tailor",
+    "meaningVi": "thợ may",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "wind a watch",
+    "meaningVi": "lên dây đồng hồ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "collectable",
+    "meaningVi": "có thể sưu tầm được, đáng được sưu tầm",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "conversely",
+    "meaningVi": "ngược lại, đảo lại",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "dilute",
+    "meaningVi": "loãng, nhạt đi, giảm bớt",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "exposition",
+    "meaningVi": "sự phơi bày, sự bộc lộ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "generic",
+    "meaningVi": "có đặc điểm giống loài, (thuộc) giống loài",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "high-end",
+    "meaningVi": "cao cấp",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "merchant",
+    "meaningVi": "thương gia; buôn, buôn bán",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "observably",
+    "meaningVi": "đáng chú ý, đáng kể",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "predictably",
+    "meaningVi": "có thể dự báo, đoán trước",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "secondhand",
+    "meaningVi": "cũ, dùng lại (đồ vật)",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "stylishly",
+    "meaningVi": "hợp thời trang, kiểu cách",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "at a substantial discount",
+    "meaningVi": "mức giảm giá đáng kể",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "bargain over prices",
+    "meaningVi": "mặc cả về giá",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "embellish",
+    "meaningVi": "làm đẹp, thêm thắt, trang trí",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "embroider",
+    "meaningVi": "thêu, thêu dệt",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "equivalent",
+    "meaningVi": "tương đương",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "exhilarating",
+    "meaningVi": "làm vui vẻ, gây phấn chấn",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "exorbitant price",
+    "meaningVi": "giá cắt cổ",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "exquisite",
+    "meaningVi": "tinh tế, trang nhã",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "extravagance",
+    "meaningVi": "tính quá mức, sự phung phí",
+    "topic": "Mua sắm",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lavish",
+    "meaningVi": "lãng phí, phung phí",
+    "topic": "Mua sắm",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "redeem",
+    "meaningVi": "quy đổi, chuộc lại",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "undercharge",
+    "meaningVi": "định giá quá thấp",
+    "topic": "Mua sắm",
+    "partOfSpeech": "verb"
+  }
+]

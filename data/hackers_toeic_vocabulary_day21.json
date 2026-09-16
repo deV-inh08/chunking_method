@@ -1,0 +1,650 @@
+[
+  {
+    "word": "announce",
+    "meaningVi": "thông báo, tuyên bố",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "announcement",
+    "meaningVi": "thông cáo, lời tuyên bố",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "interested",
+    "meaningVi": "quan tâm; có hứng thú",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "interest",
+    "meaningVi": "sự quan tâm/hứng thú",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "interesting",
+    "meaningVi": "thú vị",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "active",
+    "meaningVi": "tích cực, chủ động",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "activation",
+    "meaningVi": "sự kích hoạt",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "actively",
+    "meaningVi": "lành lợi, tích cực",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "accept",
+    "meaningVi": "chấp nhận, thừa nhận",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "acceptable",
+    "meaningVi": "chấp nhận được",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "acceptance",
+    "meaningVi": "sự chấp nhận",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "foresee",
+    "meaningVi": "đoán trước, thấy trước",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "foreseeable",
+    "meaningVi": "thấy trước được",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "unforeseen",
+    "meaningVi": "không lường trước được",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "expansion",
+    "meaningVi": "sự mở rộng, sự bành trướng",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expand",
+    "meaningVi": "mở rộng",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "expansive",
+    "meaningVi": "rộng rãi",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "relocate",
+    "meaningVi": "chuyển chỗ",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "relocation",
+    "meaningVi": "sự chuyển chỗ",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "competitor",
+    "meaningVi": "đối thủ, người cạnh tranh",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "competitiveness",
+    "meaningVi": "tính cạnh tranh",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "asset",
+    "meaningVi": "tài sản, của cải",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "contribute",
+    "meaningVi": "đóng góp, góp phần",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "contribution",
+    "meaningVi": "sự đóng góp",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "contributor",
+    "meaningVi": "người đóng góp",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dedicated",
+    "meaningVi": "tận tâm, tận tình, cống hiến",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dedicate",
+    "meaningVi": "cống hiến",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dedication",
+    "meaningVi": "sự cống hiến",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "misplace",
+    "meaningVi": "đặt nhầm chỗ, làm thất lạc",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "considerable",
+    "meaningVi": "đáng kể",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "consider",
+    "meaningVi": "cân nhắc, xem xét",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "consideration",
+    "meaningVi": "sự cân nhắc",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "considerably",
+    "meaningVi": "đáng kể, lớn lao",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "last",
+    "meaningVi": "kéo dài, tồn tại; vừa qua, gần đây, cuối cùng",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "emerge",
+    "meaningVi": "nổi lên, nảy ra",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "emergence",
+    "meaningVi": "sự nổi lên",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "emergent",
+    "meaningVi": "nổi bật, rõ nét",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "grow",
+    "meaningVi": "mọc lên, lớn lên, phát triển",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "growth",
+    "meaningVi": "sự phát triển",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "select",
+    "meaningVi": "lựa chọn, tuyển chọn",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "selection",
+    "meaningVi": "sự lựa chọn",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "merge",
+    "meaningVi": "kết hợp, hợp nhất, sáp nhập",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "merger",
+    "meaningVi": "sự sáp nhập",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "imply",
+    "meaningVi": "ý nói, ngụ ý",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "vital",
+    "meaningVi": "sống còn, quan trọng",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "vitally",
+    "meaningVi": "vô cùng quan trọng",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "persist",
+    "meaningVi": "kiên trì, vẫn còn",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "persistent",
+    "meaningVi": "kiên định",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "persistence",
+    "meaningVi": "sự kiên định",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "independent",
+    "meaningVi": "độc lập, không lệ thuộc",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "force",
+    "meaningVi": "ép buộc, bắt buộc; lực, quyền lực",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "establish",
+    "meaningVi": "thành lập, thiết lập",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "establishment",
+    "meaningVi": "sự thành lập",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "established",
+    "meaningVi": "đã thiết lập, có uy tín",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "initiate",
+    "meaningVi": "khởi đầu, bắt đầu",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "initial",
+    "meaningVi": "ban đầu",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "initially",
+    "meaningVi": "lúc ban đầu",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "enhance",
+    "meaningVi": "tăng cường, nâng cao",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "enhancement",
+    "meaningVi": "sự nâng cao",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "renowned",
+    "meaningVi": "nổi tiếng, có tiếng",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "informed",
+    "meaningVi": "có hiểu biết, am hiểu",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "inform",
+    "meaningVi": "thông báo",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "informative",
+    "meaningVi": "nhiều thông tin",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "minutes",
+    "meaningVi": "biên bản",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "waive",
+    "meaningVi": "miễn, từ bỏ",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reach",
+    "meaningVi": "đạt tới; đi tới",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reachable",
+    "meaningVi": "có thể với tới",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "authority",
+    "meaningVi": "quyền hạn; nhà cầm quyền, người có thẩm quyền",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "authorize",
+    "meaningVi": "cấp quyền",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "acquire",
+    "meaningVi": "giành được, thu được",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "acquired",
+    "meaningVi": "có được, mắc phải",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "acquisition",
+    "meaningVi": "sự giành được",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "branch",
+    "meaningVi": "cành, nhánh, chi nhánh",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "critic",
+    "meaningVi": "nhà phê bình",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "end up",
+    "meaningVi": "kết thúc, kết cục, đến đích",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "in the past",
+    "meaningVi": "trong quá khứ",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "indoors",
+    "meaningVi": "ở trong nhà",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "inward",
+    "meaningVi": "phía trong",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "lean",
+    "meaningVi": "dựa, tựa",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "lift",
+    "meaningVi": "nhấc, nâng",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "partnership",
+    "meaningVi": "quan hệ đối tác, sự cộng tác",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "plaza",
+    "meaningVi": "quảng trường",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "relax",
+    "meaningVi": "thư giãn, làm dịu đi",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "staff",
+    "meaningVi": "nhân viên; làm nhân viên, bố trí nhân viên",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stretch",
+    "meaningVi": "kéo ra, duỗi ra; quãng (đường, thời gian)",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "switch",
+    "meaningVi": "chuyển, xoay, quay",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "as long as",
+    "meaningVi": "miễn là, chừng nào",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "correctly",
+    "meaningVi": "đúng đắn, phù hợp",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "expressly",
+    "meaningVi": "riêng để, rõ ràng",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "fever",
+    "meaningVi": "cơn sốt, bệnh sốt",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "founder",
+    "meaningVi": "nhà sáng lập, người thành lập",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "in spite of",
+    "meaningVi": "mặc dù, bất chấp",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "individual",
+    "meaningVi": "cá nhân; riêng lẻ, cá nhân",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ironing",
+    "meaningVi": "sự là/ủi",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "minor",
+    "meaningVi": "nhỏ, không quan trọng",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "poorly",
+    "meaningVi": "nghèo nàn, xoàng, tồi",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "region",
+    "meaningVi": "khu vực",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sharply",
+    "meaningVi": "sắc, sắc bén, mạnh mẽ",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "surface",
+    "meaningVi": "bề mặt",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unit",
+    "meaningVi": "đơn vị",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be interested in",
+    "meaningVi": "quan tâm tới/hứng thú với",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "accept responsibility for",
+    "meaningVi": "nhận trách nhiệm về",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "expansion project",
+    "meaningVi": "dự án mở rộng",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "be dedicated to",
+    "meaningVi": "tận tâm, hết lòng với",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "emerge as",
+    "meaningVi": "nổi lên như",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "mergers and acquisitions",
+    "meaningVi": "sáp nhập và mua lại",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "independent agency",
+    "meaningVi": "cơ quan độc lập",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "informed decision",
+    "meaningVi": "quyết định sáng suốt",
+    "topic": "Xu hướng của doanh nghiệp",
+    "partOfSpeech": "phrase"
+  }
+]

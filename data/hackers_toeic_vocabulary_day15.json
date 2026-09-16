@@ -1,0 +1,1346 @@
+[
+  {
+    "word": "proposal",
+    "meaningVi": "sự đề xuất, lời đề nghị",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "propose",
+    "meaningVi": "đề nghị, đưa ra",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "proposition",
+    "meaningVi": "sự đề nghị, lời gợi ý",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "alliance",
+    "meaningVi": "sự liên minh, khối liên minh",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ally",
+    "meaningVi": "liên kết, liên minh",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "stipulation",
+    "meaningVi": "sự quy định, điều khoản quy định",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stipulate",
+    "meaningVi": "quy định, đặt điều kiện",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "term",
+    "meaningVi": "điều khoản; thời hạn",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "compromise",
+    "meaningVi": "sự thỏa hiệp; dàn xếp, thỏa hiệp",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "negotiation",
+    "meaningVi": "sự đàm phán, sự thương lượng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "negotiate",
+    "meaningVi": "đàm phán",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "negotiator",
+    "meaningVi": "người đàm phán",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "negotiable",
+    "meaningVi": "có thể thương lượng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "agreement",
+    "meaningVi": "sự đồng ý; hợp đồng, thỏa thuận",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "agree",
+    "meaningVi": "đồng ý",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "disagreement",
+    "meaningVi": "sự phản đối",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "deadlock",
+    "meaningVi": "sự bế tắc, sự đình trệ",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "review",
+    "meaningVi": "xem xét, duyệt lại, phê bình; sự xem xét, bài phê bình",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "contract",
+    "meaningVi": "hợp đồng; ký hợp đồng, ký giao kèo; thu nhỏ lại, rút gọn",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "contractor",
+    "meaningVi": "nhà thầu, người đấu thầu",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "contraction",
+    "meaningVi": "sự rút gọn, sự thu nhỏ",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "signature",
+    "meaningVi": "chữ ký",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "originally",
+    "meaningVi": "ban đầu, khởi đầu",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "origin",
+    "meaningVi": "xuất xứ, nguồn gốc",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "original",
+    "meaningVi": "gốc, nguyên bản, đầu tiên",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "originate",
+    "meaningVi": "có nguồn gốc, bắt đầu từ",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "direction",
+    "meaningVi": "sự điều khiển, lời chỉ dẫn, phương hướng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "initially",
+    "meaningVi": "lúc đầu, ban đầu",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "initial",
+    "meaningVi": "ban đầu",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "initiate",
+    "meaningVi": "bắt đầu, đề xướng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "expire",
+    "meaningVi": "hết hạn, hết hiệu lực",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "expiration",
+    "meaningVi": "sự hết hiệu lực, sự hết hạn",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expiry",
+    "meaningVi": "sự hết hạn, sự kết thúc",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "collaborate",
+    "meaningVi": "cộng tác, hợp tác",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "collaboration",
+    "meaningVi": "sự cộng tác",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "collaborator",
+    "meaningVi": "người cộng tác",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "collaborative",
+    "meaningVi": "hợp tác, chung",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dedicate",
+    "meaningVi": "cống hiến, tận tâm, dành cho",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "revised",
+    "meaningVi": "đã được hiệu đính, đã được duyệt lại",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "revise",
+    "meaningVi": "sửa đổi, duyệt lại, hiệu đính",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "imperative",
+    "meaningVi": "bắt buộc, rất quan trọng, khẩn cấp",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "cooperatively",
+    "meaningVi": "hợp tác",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "cooperate",
+    "meaningVi": "hợp tác",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "cooperation",
+    "meaningVi": "sự hợp tác",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cooperative",
+    "meaningVi": "mang tính hợp tác",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "commission",
+    "meaningVi": "tiền hoa hồng; hội đồng, ủy ban; giao nhiệm vụ, ủy thác",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "omit",
+    "meaningVi": "bỏ sót, bỏ qua, lơ là",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "omission",
+    "meaningVi": "sự bỏ sót/bỏ qua",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "conflict",
+    "meaningVi": "cuộc xung đột, sự mâu thuẫn",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "renew",
+    "meaningVi": "làm mới, gia hạn (hợp đồng)",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "renewal",
+    "meaningVi": "sự khôi phục, sự đổi mới",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "renewable",
+    "meaningVi": "có thể phục hồi/đổi mới",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "proficient",
+    "meaningVi": "giỏi giang, thành thạo",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "confidentiality",
+    "meaningVi": "bí mật, việc bảo mật",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dispute",
+    "meaningVi": "cuộc tranh luận, sự bất đồng; tranh luận, tranh chấp",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "objection",
+    "meaningVi": "sự phản đối, sự bất bình",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "define",
+    "meaningVi": "định nghĩa, xác định",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "impression",
+    "meaningVi": "ấn tượng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "impress",
+    "meaningVi": "gây ấn tượng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "impressive",
+    "meaningVi": "đầy ấn tượng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "security",
+    "meaningVi": "an ninh, sự bảo vệ",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "option",
+    "meaningVi": "lựa chọn, quyền lựa chọn",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "optionally",
+    "meaningVi": "tùy chọn, không bắt buộc",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "proceed",
+    "meaningVi": "tiến hành, tiếp tục",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "procedure",
+    "meaningVi": "thủ tục",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "proceeds",
+    "meaningVi": "doanh thu",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "modify",
+    "meaningVi": "sửa đổi, điều chỉnh",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "modification",
+    "meaningVi": "sự sửa đổi",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "narrow",
+    "meaningVi": "thu hẹp, giảm bớt; hẹp, chặt hẹp",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bid",
+    "meaningVi": "sự đặt giá, sự bỏ thầu; đặt giá, thầu",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "settle",
+    "meaningVi": "giải quyết, dàn xếp",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "settlement",
+    "meaningVi": "sự giải quyết, sự dàn xếp",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "settled",
+    "meaningVi": "ổn định, đã lắng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "terminate",
+    "meaningVi": "chấm dứt, hoàn thành",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "termination",
+    "meaningVi": "sự chấm dứt",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "terminal",
+    "meaningVi": "cuối, chót",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "challenging",
+    "meaningVi": "đầy thách thức, khó khăn",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "challenge",
+    "meaningVi": "sự thách thức, thử thách; đòi hỏi, thử thách",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "foundation",
+    "meaningVi": "nền tảng, sự thành lập",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "found",
+    "meaningVi": "sáng lập",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "founder",
+    "meaningVi": "người sáng lập",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "backseat",
+    "meaningVi": "ghế sau",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "borrow",
+    "meaningVi": "vay, mượn",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bother",
+    "meaningVi": "làm phiền",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "ceiling",
+    "meaningVi": "trần nhà",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "empty",
+    "meaningVi": "trống, rỗng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "exit",
+    "meaningVi": "lối ra",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fashion photographer",
+    "meaningVi": "nhiếp ảnh gia thời trang",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "look after",
+    "meaningVi": "trông nom, chăm sóc",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pair",
+    "meaningVi": "ghép đôi; đôi, cặp",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "per day",
+    "meaningVi": "mỗi ngày",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "professor",
+    "meaningVi": "giáo sư",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "proof",
+    "meaningVi": "bằng chứng, chứng cớ",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "put on",
+    "meaningVi": "mặc vào",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "spray",
+    "meaningVi": "phun, xịt; bình phun",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "think of",
+    "meaningVi": "nghĩ về",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "wear",
+    "meaningVi": "mặc, mang, đeo",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "climb",
+    "meaningVi": "trèo, leo trèo",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "deny",
+    "meaningVi": "phủ định",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "escape",
+    "meaningVi": "trốn thoát, thoát ra",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "final",
+    "meaningVi": "cuối cùng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "generally",
+    "meaningVi": "nói chung, thông thường",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "loose",
+    "meaningVi": "lỏng, lung lay",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "meaning",
+    "meaningVi": "nghĩa, ý nghĩa",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "off-season",
+    "meaningVi": "mùa thấp điểm",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "once",
+    "meaningVi": "trước đây, đã từng; một khi",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "product",
+    "meaningVi": "sản phẩm",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "quit",
+    "meaningVi": "từ bỏ, thôi",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "volume",
+    "meaningVi": "âm lượng, tập (sách)",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "close a deal",
+    "meaningVi": "chốt một giao dịch",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "complicate",
+    "meaningVi": "làm phức tạp, làm rắc rối",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dial a number",
+    "meaningVi": "quay số, gọi điện thoại",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "disadvantage",
+    "meaningVi": "sự bất lợi",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "focus on",
+    "meaningVi": "tập trung vào",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "for ages",
+    "meaningVi": "rất lâu",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "household",
+    "meaningVi": "hộ, gia đình",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "I have no idea.",
+    "meaningVi": "Tôi không biết.",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "lock up",
+    "meaningVi": "khóa lại, cất giữ",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make a deposit",
+    "meaningVi": "đặt cọc",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make a mistake",
+    "meaningVi": "phạm lỗi",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "peak",
+    "meaningVi": "đỉnh, chỏm, chóp",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rain check",
+    "meaningVi": "phiếu mua hàng sau, để dịp sau",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rent out",
+    "meaningVi": "cho thuê",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "rental agreement",
+    "meaningVi": "hợp đồng cho thuê",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rough",
+    "meaningVi": "khó khăn, gian khổ",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "royalty",
+    "meaningVi": "hoàng gia",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "run in several directions",
+    "meaningVi": "mở rộng theo nhiều hướng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "scare",
+    "meaningVi": "dọa, làm kinh hãi",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "sign a contract",
+    "meaningVi": "ký hợp đồng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "under a contract",
+    "meaningVi": "theo hợp đồng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "win a contract",
+    "meaningVi": "giành được hợp đồng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "agreeable",
+    "meaningVi": "dễ chịu, sẵn sàng đồng ý",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "call out",
+    "meaningVi": "ra lệnh, kêu gọi",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "convincing",
+    "meaningVi": "có sức thuyết phục",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "diplomatic",
+    "meaningVi": "có tính ngoại giao",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "equality",
+    "meaningVi": "sự cân bằng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ethical",
+    "meaningVi": "thuộc về đạo đức",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "hesitate",
+    "meaningVi": "do dự, ngập ngừng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "in contrast",
+    "meaningVi": "đối lập",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "instrumental",
+    "meaningVi": "thuộc nhạc cụ/dụng cụ",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "lengthen",
+    "meaningVi": "kéo dài",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make a move",
+    "meaningVi": "hành động, ra tay",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "offend",
+    "meaningVi": "xúc phạm, vi phạm",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "opposing",
+    "meaningVi": "trái ngược, đối kháng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "rational",
+    "meaningVi": "có lý, thỏa đáng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "recognition",
+    "meaningVi": "sự công nhận",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "refusal",
+    "meaningVi": "sự từ chối",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sarcastic",
+    "meaningVi": "chế nhạo, châm biếm",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "selected",
+    "meaningVi": "được lựa chọn, kén chọn",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "sort of",
+    "meaningVi": "có phần, phần nào",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "surely",
+    "meaningVi": "chắc chắn, rõ ràng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "surprise",
+    "meaningVi": "gây ngạc nhiên; sự/điều ngạc nhiên",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "uninterested",
+    "meaningVi": "không quan tâm, thờ ơ",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "verbal",
+    "meaningVi": "bằng lời nói",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "virtual",
+    "meaningVi": "ảo",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "within reason",
+    "meaningVi": "vừa phải, hợp lý",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "be in agreement",
+    "meaningVi": "đồng ý với",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "draw up a new agreement",
+    "meaningVi": "soạn thảo một hợp đồng mới",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "enclosure",
+    "meaningVi": "sự gửi kèm (tài liệu)",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "generation gap",
+    "meaningVi": "khoảng cách thế hệ",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "have difficulty (in) -ing",
+    "meaningVi": "gặp khó khăn trong việc",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "in an attempt to",
+    "meaningVi": "trong nỗ lực để",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "in appreciation of",
+    "meaningVi": "với sự cảm kích dành cho",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "in print",
+    "meaningVi": "trên văn bản/trên giấy",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "in summary",
+    "meaningVi": "tóm lại",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "lifetime employment",
+    "meaningVi": "công việc lâu dài",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "low-income resident",
+    "meaningVi": "khu dân cư thu nhập thấp",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "make a bid",
+    "meaningVi": "bỏ thầu",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make a contract with",
+    "meaningVi": "làm hợp đồng với",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "on hand",
+    "meaningVi": "có sẵn, hiện có",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "replica",
+    "meaningVi": "mô hình, bản sao",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rigid",
+    "meaningVi": "cứng rắn, cứng nhắc",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "security deposit",
+    "meaningVi": "tiền bảo chứng, tiền đặt cọc",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sequential",
+    "meaningVi": "liên tục, tiếp sau",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "successful candidate",
+    "meaningVi": "ứng cử viên được chọn",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "take A seriously",
+    "meaningVi": "xem A là quan trọng, làm A một cách nghiêm túc",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "It is no wonder (that)",
+    "meaningVi": "Không có gì lạ khi",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "portray",
+    "meaningVi": "vẽ, miêu tả (người, cảnh)",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reinstall",
+    "meaningVi": "cài đặt lại, phục chức",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "repave",
+    "meaningVi": "lát lại (đường)",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "run the risk of",
+    "meaningVi": "có nguy cơ",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "think over",
+    "meaningVi": "nghĩ lại",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "affiliation",
+    "meaningVi": "sự liên kết, sự sáp nhập",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "arbitration",
+    "meaningVi": "sự phân xử, trọng tài",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "beside the point",
+    "meaningVi": "không quan trọng, lạc đề",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "foil",
+    "meaningVi": "đánh bại, làm thất bại",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "impartially",
+    "meaningVi": "vô tư, công bằng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "inconclusively",
+    "meaningVi": "bỏ lửng, mập mờ",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "originate in",
+    "meaningVi": "bắt nguồn từ",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "preferential treatment",
+    "meaningVi": "đối xử ưu ái",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "recollection",
+    "meaningVi": "sự nhớ lại, hồi ức",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reconcile",
+    "meaningVi": "giảng hòa, hòa giải",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "relinquish",
+    "meaningVi": "từ bỏ",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "remembrance",
+    "meaningVi": "sự hồi tưởng, ký ức",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "solicit",
+    "meaningVi": "gạ gẫm, khẩn khoản",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "subcontract",
+    "meaningVi": "hợp đồng thầu phụ; thầu lại",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "subcontractor",
+    "meaningVi": "nhà thầu phụ",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "trustworthy",
+    "meaningVi": "đáng tin cậy",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "annotated",
+    "meaningVi": "được chú thích",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "commercial relations",
+    "meaningVi": "quan hệ thương mại",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "credit limit",
+    "meaningVi": "giới hạn tín dụng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "down payment",
+    "meaningVi": "tiền đặt cọc",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "embark",
+    "meaningVi": "tham gia vào, dấn thân",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "mediation",
+    "meaningVi": "sự điều chỉnh, hòa giải",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "moderator",
+    "meaningVi": "người hòa giải/trung gian",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "provision",
+    "meaningVi": "sự cung cấp, điều khoản",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rocky",
+    "meaningVi": "lung lay, không chắc chắn",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "terms and conditions",
+    "meaningVi": "các điều khoản (hợp đồng/khoản thanh toán)",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "in terms of",
+    "meaningVi": "liên quan đến, xét về mặt",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "long-term",
+    "meaningVi": "dài hạn",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "come to/reach an agreement",
+    "meaningVi": "đi tới/đạt được thỏa thuận",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "contract out",
+    "meaningVi": "giao thầu A cho B",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "expiration date",
+    "meaningVi": "hạn sử dụng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "collaborate on",
+    "meaningVi": "hợp tác về",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "collaborate with",
+    "meaningVi": "hợp tác với ai",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be dedicated to",
+    "meaningVi": "cống hiến cho",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "in cooperation with",
+    "meaningVi": "hợp tác cùng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "dispute over",
+    "meaningVi": "tranh cãi về",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "proceed with",
+    "meaningVi": "tiếp tục với",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "narrow down A to B",
+    "meaningVi": "giảm A xuống B, thu hẹp A thành B",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "put in a bid for",
+    "meaningVi": "bỏ thầu cho, trả giá cho",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bid for",
+    "meaningVi": "bỏ thầu",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "serve as the foundation",
+    "meaningVi": "là nền tảng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "lay the foundation",
+    "meaningVi": "đặt nền móng",
+    "topic": "Hợp đồng",
+    "partOfSpeech": "verb"
+  }
+]

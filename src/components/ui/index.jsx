@@ -1,5 +1,8 @@
 import React, { Component, useEffect, useRef } from 'react';
-import { X, AlertTriangle, RotateCcw, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
+import {
+  X, AlertTriangle, RotateCcw, ChevronLeft, ChevronRight,
+  ChevronsLeft, ChevronsRight, CheckCircle2, AlertCircle, Info,
+} from 'lucide-react';
 
 export class ErrorBoundary extends Component {
   constructor(props) {
@@ -19,7 +22,7 @@ export class ErrorBoundary extends Component {
     if (this.state.hasError) {
       return (
         <div style={{ padding: 24, textAlign: 'center', maxWidth: 480, margin: '40px auto' }} className="card">
-          <AlertTriangle size={36} color="var(--error-text)" style={{ margin: '0 auto 12px' }} />
+          <AlertTriangle size={32} color="var(--error-text)" style={{ margin: '0 auto 12px' }} />
           <h3 style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 8 }}>
             Đã có lỗi xảy ra trong phần này
           </h3>
@@ -27,7 +30,7 @@ export class ErrorBoundary extends Component {
             {this.state.error?.message || 'Lỗi không xác định'}
           </p>
           <button
-            className="btn btn-primary btn-sm"
+            className="btn btn-secondary btn-sm"
             onClick={() => {
               this.setState({ hasError: false, error: null });
               if (this.props.onReset) this.props.onReset();
@@ -35,7 +38,7 @@ export class ErrorBoundary extends Component {
             }}
             style={{ margin: '0 auto', display: 'inline-flex', alignItems: 'center', gap: 6 }}
           >
-            <RotateCcw size={14} /> Thử lại / Tải lại
+            <RotateCcw size={14} /> Thử lại
           </button>
         </div>
       );
@@ -67,14 +70,14 @@ export function Modal({ title, description, children, footer, onClose, maxWidth,
         }}
       >
         <div className="flex items-center justify-between mb-2" style={{ flexShrink: 0 }}>
-          <h2 className="modal-title" style={{ margin: 0 }}>{title}</h2>
+          <h2 className="modal-title" style={{ margin: 0, fontSize: 17, fontWeight: 700 }}>{title}</h2>
           {onClose && (
-            <button className="btn btn-ghost btn-icon" onClick={onClose} aria-label="Close">
-              <X size={18} />
+            <button className="icon-button" onClick={onClose} aria-label="Close">
+              <X size={17} />
             </button>
           )}
         </div>
-        {description && <p className="modal-description" style={{ flexShrink: 0 }}>{description}</p>}
+        {description && <p className="modal-description" style={{ flexShrink: 0, fontSize: 13, marginBottom: 16 }}>{description}</p>}
         <div style={{ flex: '1 1 auto', overflowY: 'auto', minHeight: 0, paddingRight: 4 }}>
           {children}
         </div>
@@ -88,16 +91,17 @@ export function Modal({ title, description, children, footer, onClose, maxWidth,
   );
 }
 
-export function Spinner({ size = 20, className = '' }) {
+export function Spinner({ size = 18, className = '' }) {
   return (
     <svg
       width={size} height={size}
       viewBox="0 0 24 24" fill="none"
       className={`animate-spin ${className}`}
-      style={{ color: 'var(--accent-400)' }}
+      style={{ color: 'var(--accent-400)', flexShrink: 0 }}
+      aria-label="Đang tải..."
     >
-      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeOpacity="0.2" />
-      <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2.5" strokeOpacity="0.18" />
+      <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
     </svg>
   );
 }
@@ -107,21 +111,73 @@ export function EmptyState({ icon, title, description, action }) {
     <div className="empty-state">
       <div className="empty-state-icon">{icon}</div>
       <div>
-        <p className="empty-state-title">{title}</p>
-        {description && <p className="empty-state-description mt-2">{description}</p>}
+        <p className="empty-state-title" style={{ fontSize: 15, fontWeight: 600 }}>{title}</p>
+        {description && <p className="empty-state-description mt-1" style={{ fontSize: 12.5 }}>{description}</p>}
       </div>
-      {action}
+      {action && <div style={{ marginTop: 8 }}>{action}</div>}
     </div>
   );
 }
 
+export function SkeletonLine({ width = '100%', height = 14, style }) {
+  return <div className="skeleton" style={{ width, height, borderRadius: 4, ...style }} />;
+}
+
 export function SkeletonCard({ lines = 3 }) {
   return (
-    <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-      <div className="skeleton" style={{ height: 18, width: '60%' }} />
-      <div className="skeleton" style={{ height: 13, width: '40%' }} />
+    <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: 20 }}>
+      <div className="skeleton" style={{ height: 18, width: '45%', borderRadius: 6 }} />
+      <div className="skeleton" style={{ height: 13, width: '80%', borderRadius: 4 }} />
       {Array.from({ length: lines - 2 }).map((_, i) => (
-        <div key={i} className="skeleton" style={{ height: 13, width: `${80 - i * 10}%` }} />
+        <div key={i} className="skeleton" style={{ height: 12, width: `${60 - i * 15}%`, borderRadius: 4 }} />
+      ))}
+      <div className="skeleton" style={{ height: 32, width: '100%', marginTop: 8, borderRadius: 6 }} />
+    </div>
+  );
+}
+
+export function SkeletonMetric() {
+  return (
+    <div className="metric-card">
+      <div className="skeleton" style={{ width: 38, height: 38, borderRadius: 10, flexShrink: 0 }} />
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <div className="skeleton" style={{ height: 11, width: '50%', borderRadius: 4 }} />
+        <div className="skeleton" style={{ height: 22, width: '35%', borderRadius: 4 }} />
+        <div className="skeleton" style={{ height: 10, width: '70%', borderRadius: 4 }} />
+      </div>
+    </div>
+  );
+}
+
+export function SkeletonLessonCard() {
+  return (
+    <div className="lesson-card" style={{ gap: 12 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="skeleton" style={{ width: 34, height: 34, borderRadius: 9 }} />
+        <div className="skeleton" style={{ width: 60, height: 18, borderRadius: 12 }} />
+      </div>
+      <div className="skeleton" style={{ height: 16, width: '70%', borderRadius: 4 }} />
+      <div className="skeleton" style={{ height: 12, width: '90%', borderRadius: 4 }} />
+      <div className="skeleton" style={{ height: 10, width: '40%', borderRadius: 4 }} />
+      <div className="skeleton" style={{ height: 5, width: '100%', borderRadius: 9, marginTop: 8 }} />
+      <div className="skeleton" style={{ height: 34, width: '100%', borderRadius: 7, marginTop: 8 }} />
+    </div>
+  );
+}
+
+export function SkeletonWaveform({ bars = 16 }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, height: 36 }}>
+      {Array.from({ length: bars }).map((_, i) => (
+        <div
+          key={i}
+          className="skeleton"
+          style={{
+            width: 3,
+            height: `${10 + ((i * 13) % 22)}px`,
+            borderRadius: 3,
+          }}
+        />
       ))}
     </div>
   );
@@ -145,15 +201,38 @@ export function Badge({ type, children }) {
 
 export function Toast({ toasts, removeToast }) {
   return (
-    <div className="toast-container">
-      {toasts.map((t) => (
-        <div key={t.id} className={`toast toast-${t.type}`} onClick={() => removeToast(t.id)}>
-          <span style={{ fontSize: 16 }}>
-            {t.type === 'success' ? '✅' : t.type === 'error' ? '❌' : 'ℹ️'}
-          </span>
-          <span>{t.message}</span>
-        </div>
-      ))}
+    <div className="toast-container" role="region" aria-label="Thông báo hệ thống">
+      {toasts.map((t) => {
+        const Icon = t.type === 'success' ? CheckCircle2 : t.type === 'error' ? AlertCircle : Info;
+        return (
+          <div
+            key={t.id}
+            className={`toast toast-${t.type}`}
+            onClick={() => removeToast(t.id)}
+            role="status"
+          >
+            <Icon size={16} className="toast-icon" style={{ flexShrink: 0 }} />
+            <span className="toast-message">{t.message}</span>
+            <button
+              className="toast-close"
+              onClick={(e) => { e.stopPropagation(); removeToast(t.id); }}
+              aria-label="Đóng"
+              style={{
+                marginLeft: 'auto',
+                background: 'transparent',
+                border: 'none',
+                color: 'var(--text-muted)',
+                cursor: 'pointer',
+                padding: 2,
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <X size={13} />
+            </button>
+          </div>
+        );
+      })}
     </div>
   );
 }

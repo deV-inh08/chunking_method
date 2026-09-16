@@ -1,0 +1,1394 @@
+[
+  {
+    "word": "complaint",
+    "meaningVi": "lời than phiền, lời phàn nàn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "complain",
+    "meaningVi": "phàn nàn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "deal",
+    "meaningVi": "giải quyết; buôn bán; phân phối; sự thỏa thuận mua bán",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "deal with",
+    "meaningVi": "giải quyết, xử lý",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "argumentative",
+    "meaningVi": "thích tranh cãi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "argue",
+    "meaningVi": "tranh cãi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "argument",
+    "meaningVi": "cuộc tranh cãi, lý lẽ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "appropriately",
+    "meaningVi": "thích hợp, thích đáng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "appropriate",
+    "meaningVi": "thích hợp, thích đáng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "respond",
+    "meaningVi": "phản ứng, phản hồi, trả lời",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "response",
+    "meaningVi": "sự phản hồi, câu trả lời",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "responsive",
+    "meaningVi": "phản ứng nhanh, nhiệt tình",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "infuriate",
+    "meaningVi": "làm tức điên lên",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "infuriating",
+    "meaningVi": "gây tức giận",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "courteous",
+    "meaningVi": "lịch sự, nhã nhặn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "courtesy",
+    "meaningVi": "sự lịch sự, tác phong nhã nhặn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "courteously",
+    "meaningVi": "lịch sự, nhã nhặn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "satisfaction",
+    "meaningVi": "sự hài lòng/thỏa mãn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "satisfy",
+    "meaningVi": "làm hài lòng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "satisfactory",
+    "meaningVi": "thỏa đáng, tốt đẹp",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dissatisfaction",
+    "meaningVi": "sự không hài lòng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inconvenience",
+    "meaningVi": "sự bất lợi, bất tiện; làm phiền, quấy rầy",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inconvenient",
+    "meaningVi": "không thuận tiện, bất tiện",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "convenience",
+    "meaningVi": "sự tiện lợi, thuận lợi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "complete",
+    "meaningVi": "hoàn thiện, hoàn thành; đầy đủ, hoàn toàn, trọn vẹn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "completion",
+    "meaningVi": "sự hoàn thành",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "completely",
+    "meaningVi": "hoàn toàn, trọn vẹn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "specific",
+    "meaningVi": "cụ thể, chi tiết, đặc thù",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "return",
+    "meaningVi": "trở lại, quay về; sự quay trở lại",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "replace",
+    "meaningVi": "thay thế, thay chỗ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "replacement",
+    "meaningVi": "sự thay thế, vật/người thay thế",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "replaceable",
+    "meaningVi": "có thể thay thế",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "presentation",
+    "meaningVi": "bài thuyết trình, sự trình bày",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "present",
+    "meaningVi": "đưa ra, nộp, giới thiệu",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "evaluation",
+    "meaningVi": "sự đánh giá, sự ước lượng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "evaluate",
+    "meaningVi": "đánh giá",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "evaluator",
+    "meaningVi": "người đánh giá",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "confident",
+    "meaningVi": "tự tin",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "confidently",
+    "meaningVi": "tự tin",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "confidence",
+    "meaningVi": "sự tự tin",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cause",
+    "meaningVi": "gây ra, tạo ra; nguyên nhân, lý do",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "commentary",
+    "meaningVi": "bài bình luận, lời chú thích",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "notification",
+    "meaningVi": "thông báo, sự thông báo",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "notify",
+    "meaningVi": "thông báo, lưu ý",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "apologize",
+    "meaningVi": "xin lỗi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "apology",
+    "meaningVi": "lời xin lỗi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "interact",
+    "meaningVi": "tương tác, tác động qua lại",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "interactive",
+    "meaningVi": "có tương tác, tương hỗ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "certain",
+    "meaningVi": "chắc, chắc chắn; nhất định",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "commitment",
+    "meaningVi": "sự cam kết, sự tận tâm",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "commit",
+    "meaningVi": "cam kết",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "committed",
+    "meaningVi": "tận tâm",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "applaud",
+    "meaningVi": "hoan nghênh, tán thưởng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "biography",
+    "meaningVi": "tiểu sử, lý lịch",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "critical",
+    "meaningVi": "phê bình, chỉ trích; có tính quyết định; nguy cấp",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "depend on",
+    "meaningVi": "phụ thuộc/lệ thuộc vào",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dependent",
+    "meaningVi": "phụ thuộc, lệ thuộc",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dependable",
+    "meaningVi": "đáng tin cậy",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "combine",
+    "meaningVi": "kết hợp",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "combination",
+    "meaningVi": "sự kết hợp",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "combined",
+    "meaningVi": "hỗn hợp, kết hợp",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "priority",
+    "meaningVi": "sự ưu tiên, ưu thế",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prior",
+    "meaningVi": "trước, ưu tiên",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "prioritize",
+    "meaningVi": "dành ưu tiên",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "observe",
+    "meaningVi": "theo dõi, tiến hành; tuân thủ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "observance",
+    "meaningVi": "sự tuân thủ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "observation",
+    "meaningVi": "sự quan sát, năng lực quan sát",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "observant",
+    "meaningVi": "tinh ý, tinh mắt",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "defective",
+    "meaningVi": "có lỗi, có thiếu sót, nhược điểm",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "defect",
+    "meaningVi": "lỗi, khuyết điểm",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reflect",
+    "meaningVi": "phản chiếu, phản ánh",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "attitude",
+    "meaningVi": "thái độ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "disappoint",
+    "meaningVi": "làm thất vọng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "disappointed",
+    "meaningVi": "thất vọng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "disappointing",
+    "meaningVi": "đáng thất vọng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "disappointment",
+    "meaningVi": "nỗi thất vọng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inquire",
+    "meaningVi": "hỏi, điều tra, thẩm vấn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "inquiry",
+    "meaningVi": "sự điều tra, câu hỏi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "insert",
+    "meaningVi": "chèn vào, đưa vào",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "disclose",
+    "meaningVi": "phơi bày, vạch trần, để lộ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "disclosure",
+    "meaningVi": "sự phơi bày; cái bị phơi bày",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "guarantee",
+    "meaningVi": "cam đoan, đảm bảo, chắc chắn; sự bảo đảm",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "politely",
+    "meaningVi": "lịch sự, lễ phép",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "polite",
+    "meaningVi": "lịch sự",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "politeness",
+    "meaningVi": "sự lịch thiệp",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "seriously",
+    "meaningVi": "nghiêm túc, nghiêm trọng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "serious",
+    "meaningVi": "nghiêm trọng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "a couple of",
+    "meaningVi": "một vài, một số",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "athlete",
+    "meaningVi": "vận động viên",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "call for",
+    "meaningVi": "kêu gọi, đến đón",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "cart",
+    "meaningVi": "xe đẩy",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "customer service representative",
+    "meaningVi": "nhân viên chăm sóc khách hàng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "get a phone call",
+    "meaningVi": "nhận một cuộc gọi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "give a call",
+    "meaningVi": "thực hiện một cuộc gọi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "have one's hair cut",
+    "meaningVi": "cắt tóc",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "Just for a minute.",
+    "meaningVi": "Đợi một chút.",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "laundry service",
+    "meaningVi": "dịch vụ giặt là",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "leave a message",
+    "meaningVi": "để lại lời nhắn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "product logo",
+    "meaningVi": "logo sản phẩm",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rinse",
+    "meaningVi": "rửa, súc, giũ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "voice mail",
+    "meaningVi": "thư thoại",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "as soon as possible",
+    "meaningVi": "càng sớm càng tốt",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "counselor",
+    "meaningVi": "cố vấn viên",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "for free",
+    "meaningVi": "miễn phí",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "grocery store",
+    "meaningVi": "cửa hàng tạp hóa",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "invite",
+    "meaningVi": "mời",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "often",
+    "meaningVi": "thường, thường xuyên",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "option",
+    "meaningVi": "lựa chọn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pleasure",
+    "meaningVi": "niềm vui thích",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "positive",
+    "meaningVi": "lạc quan, tích cực",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "relationship",
+    "meaningVi": "mối quan hệ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "site",
+    "meaningVi": "địa điểm",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "successfully",
+    "meaningVi": "thành công",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "visit",
+    "meaningVi": "đi thăm; sự thăm viếng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "a loaf of",
+    "meaningVi": "một ổ (bánh mì)",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "affair",
+    "meaningVi": "việc, sự vụ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "aisle",
+    "meaningVi": "lối đi giữa các dãy ghế",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "annoy",
+    "meaningVi": "gây khó chịu, chọc tức",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "at no charge",
+    "meaningVi": "không mất phí",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "at no extra charge",
+    "meaningVi": "không mất thêm phí",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "be on another call",
+    "meaningVi": "(điện thoại) đang bận",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "ceremonial",
+    "meaningVi": "thuộc nghi lễ, long trọng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "for your own safety",
+    "meaningVi": "vì sự an toàn của chính bạn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "follow-up",
+    "meaningVi": "sắp tới, tiếp theo",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "get a replacement",
+    "meaningVi": "được đổi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "handheld",
+    "meaningVi": "cầm tay",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "head toward",
+    "meaningVi": "hướng về",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "hold the line",
+    "meaningVi": "giữ máy",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "just to make sure",
+    "meaningVi": "chỉ để chắc chắn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "leftover",
+    "meaningVi": "thừa, còn lại; thức ăn thừa",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "look through the manual",
+    "meaningVi": "xem qua sách hướng dẫn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "on delivery",
+    "meaningVi": "đang được giao",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "pharmacist",
+    "meaningVi": "dược sĩ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "potential customer",
+    "meaningVi": "khách hàng tiềm năng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prepaid",
+    "meaningVi": "trả trước",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "questionnaire",
+    "meaningVi": "bảng câu hỏi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "recall",
+    "meaningVi": "thu hồi (hàng lỗi); sự thu hồi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "return a phone call",
+    "meaningVi": "gọi lại (điện thoại)",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "ridiculously",
+    "meaningVi": "buồn cười, lố bịch",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "take back",
+    "meaningVi": "lấy lại, rút lại",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "troubleshoot",
+    "meaningVi": "khắc phục (sự cố); kiểm tra (trục trặc)",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "tune",
+    "meaningVi": "làm cho hòa hợp, điều chỉnh",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "wardrobe",
+    "meaningVi": "tủ quần áo",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "water-resistant",
+    "meaningVi": "chống nước, không ngấm nước",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "adverse",
+    "meaningVi": "bất lợi, đối địch",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "as requested",
+    "meaningVi": "theo yêu cầu",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "discouraging",
+    "meaningVi": "làm chán nản",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "escort",
+    "meaningVi": "hộ tống; đội hộ tống",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "exterior",
+    "meaningVi": "ở ngoài; bề ngoài",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "further",
+    "meaningVi": "xa hơn, thêm nữa",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "go on",
+    "meaningVi": "tiếp tục",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "graciously",
+    "meaningVi": "hòa nhã, tử tế",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "instant",
+    "meaningVi": "lập tức, dùng ngay được",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "loyalty",
+    "meaningVi": "lòng trung thành",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "refer to",
+    "meaningVi": "đề cập đến, ám chỉ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "smoothly",
+    "meaningVi": "trơn tru, trôi chảy",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "unlike",
+    "meaningVi": "khác với",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "user-friendly",
+    "meaningVi": "thân thiện với người dùng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "vivid",
+    "meaningVi": "sống động, sắc sảo",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "willing",
+    "meaningVi": "sẵn lòng, vui lòng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "at one's request",
+    "meaningVi": "theo yêu cầu của",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "breakage",
+    "meaningVi": "tổn thất, đồ/chỗ bị nứt",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "compliment",
+    "meaningVi": "lời khen, lời ca tụng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cut back",
+    "meaningVi": "cắt giảm",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "faulty",
+    "meaningVi": "có lỗi, gặp trục trặc",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "general population",
+    "meaningVi": "dân chúng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "make a complaint",
+    "meaningVi": "phàn nàn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make a request",
+    "meaningVi": "yêu cầu, đòi hỏi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make a response",
+    "meaningVi": "phản hồi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make an appointment",
+    "meaningVi": "đặt hẹn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "meet the standards",
+    "meaningVi": "đáp ứng tiêu chuẩn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "mistakenly",
+    "meaningVi": "nhầm lẫn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "people of all ages",
+    "meaningVi": "mọi người ở mọi lứa tuổi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "post a notice on",
+    "meaningVi": "đăng thông báo về",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "service depot",
+    "meaningVi": "trung tâm dịch vụ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stain",
+    "meaningVi": "vết nhơ, vết bẩn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "trace",
+    "meaningVi": "lần theo; dấu vết, vết tích",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "wear out",
+    "meaningVi": "sờn, tiêu hao",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "work properly",
+    "meaningVi": "hoạt động tốt/ổn định",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bare",
+    "meaningVi": "trần, trống không",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "button up",
+    "meaningVi": "cài khuy",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "casualty",
+    "meaningVi": "người thương vong, tổn thất",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "deputy",
+    "meaningVi": "người đại diện",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "mend",
+    "meaningVi": "hàn gắn, sửa chữa",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "testimonial",
+    "meaningVi": "thư tiến cử",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "adaptability",
+    "meaningVi": "khả năng thích nghi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "aggression",
+    "meaningVi": "sự gây hấn, sự xâm lược",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "censure",
+    "meaningVi": "sự phê bình; phê bình, chỉ trích",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "claims department",
+    "meaningVi": "phòng bồi thường (của công ty bảo hiểm)",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "compelling",
+    "meaningVi": "hấp dẫn, thuyết phục",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "decisive",
+    "meaningVi": "quyết định, quả quyết",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "distress",
+    "meaningVi": "nỗi đau khổ; làm đau khổ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "facilitate",
+    "meaningVi": "làm cho dễ dàng, tạo điều kiện",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "factually",
+    "meaningVi": "đúng như thật",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "fleetingly",
+    "meaningVi": "mau lẹ, nhanh chóng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "frankly",
+    "meaningVi": "thẳng thắn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "nourish",
+    "meaningVi": "nuôi dưỡng, ấp ủ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reinforcement",
+    "meaningVi": "sự củng cố",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sparsely",
+    "meaningVi": "thưa thớt, rải rác",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "unwavering",
+    "meaningVi": "kiên định, vững vàng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "vibrant",
+    "meaningVi": "rung động, sôi nổi",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "wonder",
+    "meaningVi": "tự hỏi; điều kỳ diệu",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "blemish",
+    "meaningVi": "vết nhơ, nhược điểm",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "genuine",
+    "meaningVi": "xác thực, chân thật",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "hazard",
+    "meaningVi": "rủi ro",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "intercept",
+    "meaningVi": "chặn, chặn đứng, ngăn chặn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "rebate",
+    "meaningVi": "hạ giá; số tiền được giảm",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "retrospective",
+    "meaningVi": "hồi tưởng lại",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "slip one's mind",
+    "meaningVi": "quên",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "soak up",
+    "meaningVi": "tiếp nhận, hấp thụ",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "swiftly",
+    "meaningVi": "nhanh chóng, ngay lập tức",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "make complaints against",
+    "meaningVi": "phàn nàn về",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "file a complaint with",
+    "meaningVi": "nộp đơn khiếu nại",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "to one's satisfaction",
+    "meaningVi": "đáp ứng sự hài lòng của",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "customer satisfaction",
+    "meaningVi": "sự hài lòng của khách hàng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "satisfaction survey",
+    "meaningVi": "khảo sát về mức độ hài lòng",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "replace A with B",
+    "meaningVi": "thay thế A bằng B",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "performance evaluation",
+    "meaningVi": "đánh giá hiệu suất làm việc",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "course evaluation",
+    "meaningVi": "đánh giá về khóa học",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "with a confident manner",
+    "meaningVi": "với vẻ tự tin",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "cause + damage/malfunction/delay",
+    "meaningVi": "gây ra hư hại/trục trặc/trì hoãn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "notification of",
+    "meaningVi": "thông báo về",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "apologize for",
+    "meaningVi": "xin lỗi vì",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "apologize to",
+    "meaningVi": "xin lỗi ai đó",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "commitment to",
+    "meaningVi": "cam kết",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be committed to",
+    "meaningVi": "tận tâm với",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be critical of",
+    "meaningVi": "có thái độ chỉ trích với",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "observe safety regulations",
+    "meaningVi": "tuân thủ quy định về an toàn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "observe guidelines",
+    "meaningVi": "làm theo hướng dẫn",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "insert A into B",
+    "meaningVi": "đưa A vào trong B",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "guarantee of",
+    "meaningVi": "đảm bảo về",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "take A seriously",
+    "meaningVi": "làm A một cách nghiêm túc",
+    "topic": "Dịch vụ khách hàng",
+    "partOfSpeech": "verb"
+  }
+]

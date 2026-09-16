@@ -1,0 +1,1298 @@
+[
+  {
+    "word": "stagnant",
+    "meaningVi": "trì trệ, uể oải, lờ đờ",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "stagnate",
+    "meaningVi": "đình trệ, đình đốn",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "sluggish",
+    "meaningVi": "uể oải, (tình trạng) suy thoái",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dramatically",
+    "meaningVi": "đột ngột, đáng kể",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "dramatic",
+    "meaningVi": "kịch tính, đột ngột",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "substantially",
+    "meaningVi": "đáng kể",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "brisk",
+    "meaningVi": "sôi động, phát đạt, nhanh nhẹn",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "strong",
+    "meaningVi": "mạnh mẽ, sống động",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "lively",
+    "meaningVi": "mạnh mẽ, sống động",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "unstable",
+    "meaningVi": "không ổn định, không bền vững",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "stable",
+    "meaningVi": "ổn định",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "rapidly",
+    "meaningVi": "nhanh chóng, mau lẹ",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "rapid",
+    "meaningVi": "nhanh chóng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "rapidity",
+    "meaningVi": "sự nhanh chóng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "soar",
+    "meaningVi": "bay vút lên, tăng vọt",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "plummet",
+    "meaningVi": "rơi, lao thẳng xuống",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "assert",
+    "meaningVi": "khẳng định, quả quyết, đòi",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "boost",
+    "meaningVi": "nâng lên, thúc đẩy; sự tăng giá, sự nổi tiếng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "analyst",
+    "meaningVi": "người phân tích, nhà phân tích",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "analyze",
+    "meaningVi": "phân tích",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "analysis",
+    "meaningVi": "sự phân tích, bản phân tích",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "potential",
+    "meaningVi": "tiềm năng, có khả năng; tiềm lực, tiềm năng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "pleased",
+    "meaningVi": "hài lòng, vui",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "remain",
+    "meaningVi": "giữ nguyên, vẫn, còn như cũ",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "remainder",
+    "meaningVi": "người còn lại, vật còn lại, phần còn lại",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "remaining",
+    "meaningVi": "còn lại",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "limited",
+    "meaningVi": "bị giới hạn, hạn chế",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "costly",
+    "meaningVi": "tốn kém, đắt tiền",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "particular",
+    "meaningVi": "đặc biệt, đặc thù, chi tiết; chi tiết, bản tường thuật chi tiết",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "drastic",
+    "meaningVi": "mạnh mẽ, quyết liệt",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "evenly",
+    "meaningVi": "công bằng, đều, ngang bằng nhau",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "even",
+    "meaningVi": "bằng phẳng, đều, công bằng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "evidence",
+    "meaningVi": "bằng chứng, dấu hiệu",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "evident",
+    "meaningVi": "rõ ràng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "evidently",
+    "meaningVi": "hiển nhiên",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "prospect",
+    "meaningVi": "viễn cảnh, triển vọng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prospective",
+    "meaningVi": "tương lai, về sau",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "lead",
+    "meaningVi": "chỉ huy, dẫn dắt, khiến cho, tạo nên (kết quả nào đó)",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "leading",
+    "meaningVi": "dẫn đầu",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fall",
+    "meaningVi": "giảm xuống (giá cả, giá trị); sự sụp đổ, sự sụt giá",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "decrease",
+    "meaningVi": "giảm",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "period",
+    "meaningVi": "thời kỳ, giai đoạn, khoảng thời gian",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "indicator",
+    "meaningVi": "chỉ số",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "indicate",
+    "meaningVi": "biểu thị, cho biết",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "indication",
+    "meaningVi": "sự biểu thị, dấu hiệu",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "industry",
+    "meaningVi": "công nghiệp, ngành, nghề",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "industrial",
+    "meaningVi": "(thuộc) công nghiệp",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "industrious",
+    "meaningVi": "cần cù, siêng năng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "likely",
+    "meaningVi": "có khả năng, có thể xảy ra",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "likelihood",
+    "meaningVi": "sự khả thi",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unlikely",
+    "meaningVi": "không chắc xảy ra",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "possible",
+    "meaningVi": "có thể, có khả năng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "boom",
+    "meaningVi": "sự bùng nổ",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "director",
+    "meaningVi": "giám đốc, người chỉ đạo",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "direction",
+    "meaningVi": "lời hướng dẫn",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "direct",
+    "meaningVi": "thẳng, trực tiếp; gửi, hướng tới",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "substitute",
+    "meaningVi": "người/vật thay thế; thay thế",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "consequence",
+    "meaningVi": "hậu quả, hệ quả, kết quả",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "consequential",
+    "meaningVi": "do hậu quả, tự đắc",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fairly",
+    "meaningVi": "công bằng, ngay thẳng, khá khá",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "fair",
+    "meaningVi": "công bằng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "quite",
+    "meaningVi": "khá, vừa phải, hợp lý",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "reasonably",
+    "meaningVi": "khá, vừa phải, hợp lý",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "economical",
+    "meaningVi": "tiết kiệm, kinh tế",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "economic",
+    "meaningVi": "thuộc về kinh tế, sinh lợi",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "economy",
+    "meaningVi": "nền kinh tế",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "economics",
+    "meaningVi": "kinh tế học",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "economist",
+    "meaningVi": "nhà kinh tế học",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "extravagant",
+    "meaningVi": "phung phí",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "thrive",
+    "meaningVi": "phát triển mạnh, phát đạt",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "prosper",
+    "meaningVi": "phát đạt, hưng thịnh",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "flourish",
+    "meaningVi": "phát đạt, hưng thịnh",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "implication",
+    "meaningVi": "sự liên quan, sự dính líu, hàm ý",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "implicate",
+    "meaningVi": "ngụ ý ám chỉ, lôi kéo vào",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "wane",
+    "meaningVi": "sự suy giảm; giảm",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prosperity",
+    "meaningVi": "sự hưng thịnh, sự phát đạt",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prosperous",
+    "meaningVi": "thịnh vượng, thuận lợi",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "depression",
+    "meaningVi": "sự sụt giá, tình trạng đình trệ",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "slump",
+    "meaningVi": "sự ế ẩm, tình trạng suy thoái",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "recession",
+    "meaningVi": "sự ế ẩm, tình trạng suy thoái",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dwindle",
+    "meaningVi": "thu nhỏ lại, giảm",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "diminish",
+    "meaningVi": "giảm bớt, thu nhỏ",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "impede",
+    "meaningVi": "cản trở, ngăn cản",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "impediment",
+    "meaningVi": "sự cản trở",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "facilitate",
+    "meaningVi": "tạo điều kiện thuận lợi",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "promising",
+    "meaningVi": "đầy hứa hẹn, nhiều triển vọng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "adversity",
+    "meaningVi": "sự bất lợi, nghịch cảnh",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "adverse",
+    "meaningVi": "bất lợi, ngược",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "business hours",
+    "meaningVi": "giờ làm việc",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cast",
+    "meaningVi": "quăng, ném",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "CEO (chief executive officer)",
+    "meaningVi": "giám đốc điều hành",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "enterprise",
+    "meaningVi": "doanh nghiệp",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "firm",
+    "meaningVi": "hãng, công ty",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "franchise",
+    "meaningVi": "nhượng quyền kinh doanh",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "nice-looking",
+    "meaningVi": "bắt mắt",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "plenty",
+    "meaningVi": "sự phong phú, sung túc",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "speed up",
+    "meaningVi": "tăng tốc",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "trading",
+    "meaningVi": "sự kinh doanh, việc mua bán",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "beginning",
+    "meaningVi": "sự khởi đầu; sớm",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "contribution to",
+    "meaningVi": "sự đóng góp cho",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "convenient",
+    "meaningVi": "thuận lợi, tiện lợi",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "differently",
+    "meaningVi": "khác, khác biệt",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "economy",
+    "meaningVi": "nền kinh tế",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "formally",
+    "meaningVi": "chính thức, trang trọng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "industrial",
+    "meaningVi": "(thuộc) công nghiệp",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "lightly",
+    "meaningVi": "nhẹ nhàng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "merge",
+    "meaningVi": "kết hợp, hợp nhất",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "not A but B",
+    "meaningVi": "không phải A mà là B",
+    "topic": "Kinh tế",
+    "partOfSpeech": "conjunction"
+  },
+  {
+    "word": "optimistic",
+    "meaningVi": "lạc quan",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "overall",
+    "meaningVi": "toàn bộ, toàn thể",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "possibility",
+    "meaningVi": "khả năng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "private",
+    "meaningVi": "riêng tư, cá nhân",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "rise",
+    "meaningVi": "tăng lên, đứng lên",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "situation",
+    "meaningVi": "tình huống",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "strengthen",
+    "meaningVi": "củng cố, tăng cường",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "up-and-down",
+    "meaningVi": "không ổn định, thăng trầm",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "blueprint",
+    "meaningVi": "bản thiết kế, bản kế hoạch",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "business deal",
+    "meaningVi": "thỏa thuận kinh doanh",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "family-run",
+    "meaningVi": "(công ty) gia đình",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fluctuation",
+    "meaningVi": "sự dao động",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "for business",
+    "meaningVi": "cho doanh nghiệp",
+    "topic": "Kinh tế",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "foreign trade",
+    "meaningVi": "ngoại thương",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "go into business",
+    "meaningVi": "bắt đầu kinh doanh",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "go out of business",
+    "meaningVi": "dừng kinh doanh",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "mutual",
+    "meaningVi": "lẫn nhau, qua lại",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "nationwide",
+    "meaningVi": "toàn quốc",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "need monitoring",
+    "meaningVi": "cần theo dõi",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "neighboring",
+    "meaningVi": "lân cận, gần kề",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "real estate sale",
+    "meaningVi": "kinh doanh bất động sản",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "recession",
+    "meaningVi": "tình trạng suy thoái",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "relieve pain",
+    "meaningVi": "giảm đau",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "role model",
+    "meaningVi": "người tiêu biểu, tấm gương",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "session",
+    "meaningVi": "phiên họp, kỳ họp",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unplug",
+    "meaningVi": "rút/tháo (phích cắm), tháo nút",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "worsen",
+    "meaningVi": "trở nên tồi tệ hơn",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "accumulation",
+    "meaningVi": "sự tích lũy",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ascend",
+    "meaningVi": "đi lên",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "commerce",
+    "meaningVi": "thương mại",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "indifferent",
+    "meaningVi": "lãnh đạm, thờ ơ, trung lập",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "prolong",
+    "meaningVi": "gia hạn",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "relevantly",
+    "meaningVi": "liên quan, thích hợp",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "stimulate",
+    "meaningVi": "thúc đẩy, khuyến khích",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "supplement",
+    "meaningVi": "bổ sung; phần bổ sung",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "tedious",
+    "meaningVi": "chán ngắt, nhạt nhẽo",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "unavoidable",
+    "meaningVi": "tất yếu, không thể tránh khỏi",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "be related to",
+    "meaningVi": "có liên quan đến",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bring in",
+    "meaningVi": "mang lại",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "brokerage",
+    "meaningVi": "sự môi giới, nghề môi giới",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "business management",
+    "meaningVi": "quản trị kinh doanh",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "business practice",
+    "meaningVi": "thực tiễn kinh doanh",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "collapse",
+    "meaningVi": "sự sụp đổ, sự sụt giá",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cope with",
+    "meaningVi": "đương đầu, đối phó với",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "cost-effective",
+    "meaningVi": "mang lại lợi nhuận, sinh lời",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "descending",
+    "meaningVi": "giảm xuống",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dominate",
+    "meaningVi": "chi phối, lấn át, thống trị",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "downturn",
+    "meaningVi": "sự suy sụp",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "entail",
+    "meaningVi": "đòi hỏi, bắt phải",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "exchange rate",
+    "meaningVi": "tỷ giá hối đoái",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "flourish",
+    "meaningVi": "phát đạt, phát triển",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "for large purchases",
+    "meaningVi": "với những khoản mua lớn",
+    "topic": "Kinh tế",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "for the benefit of",
+    "meaningVi": "vì lợi ích của",
+    "topic": "Kinh tế",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "foremost",
+    "meaningVi": "đầu tiên, trước nhất",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "forerunner",
+    "meaningVi": "người tiên phong, người mở đường",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "from around the globe",
+    "meaningVi": "từ khắp nơi trên thế giới",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "infrastructure",
+    "meaningVi": "cơ sở hạ tầng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "marketable",
+    "meaningVi": "có thể bán được, dễ tiêu thụ",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "multinational corporation",
+    "meaningVi": "công ty đa quốc gia",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "multi-regional",
+    "meaningVi": "đa vùng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "nationality",
+    "meaningVi": "quốc tịch",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "net income",
+    "meaningVi": "lợi nhuận ròng, thu nhập ròng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "penalize",
+    "meaningVi": "phạt",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "put forth",
+    "meaningVi": "đưa ra, đề xuất",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "ratio",
+    "meaningVi": "tỷ số, tỷ lệ",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "set up",
+    "meaningVi": "thành lập, thiết lập",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "skyrocket",
+    "meaningVi": "tăng vọt (giá cả)",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "so far (= to date)",
+    "meaningVi": "cho đến nay",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "surge",
+    "meaningVi": "dâng lên",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "synergy",
+    "meaningVi": "sự hợp lực",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "synthesis",
+    "meaningVi": "sự tổng hợp",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "tactics",
+    "meaningVi": "chiến thuật, chiến lược",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unemployment",
+    "meaningVi": "sự thất nghiệp, nạn thất nghiệp",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "variable",
+    "meaningVi": "thay đổi, hay thay đổi",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "vicious cycle",
+    "meaningVi": "vòng luẩn quẩn",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "without a doubt",
+    "meaningVi": "chắc chắn, không chút nghi ngờ",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "billing address",
+    "meaningVi": "địa chỉ thanh toán",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "government grant",
+    "meaningVi": "trợ cấp của chính phủ",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "market value",
+    "meaningVi": "giá thị trường",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pull down",
+    "meaningVi": "phá hủy, hạ xuống",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "stationary",
+    "meaningVi": "tĩnh, không di chuyển",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "abate",
+    "meaningVi": "hạ, bớt, làm dịu",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "cease",
+    "meaningVi": "dừng, ngừng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "conspicuously",
+    "meaningVi": "dễ thấy, rõ ràng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "deteriorate",
+    "meaningVi": "làm hỏng, làm giảm giá trị",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "implicitly",
+    "meaningVi": "hoàn toàn",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "leisurely",
+    "meaningVi": "rỗi rãi, thong thả; nhàn nhã, ung dung",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "menace",
+    "meaningVi": "đe dọa",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "perceptible",
+    "meaningVi": "có thể nhận ra, có thể cảm thấy",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "placement",
+    "meaningVi": "sự bố trí, sự sắp đặt",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "remark",
+    "meaningVi": "chú ý, nhận thấy",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "retrieval",
+    "meaningVi": "sự thu hồi, sự phục hồi",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "slowdown",
+    "meaningVi": "sự chậm lại, sự suy thoái",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "solitary",
+    "meaningVi": "một mình, đơn độc",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "ailing",
+    "meaningVi": "ốm yếu, khó khăn",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "financial statement",
+    "meaningVi": "báo cáo tài chính",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "have a monopoly on",
+    "meaningVi": "độc quyền về",
+    "topic": "Kinh tế",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "in demand",
+    "meaningVi": "có nhu cầu, được đòi hỏi nhiều",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "multilateral",
+    "meaningVi": "nhiều phía, đa phương",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "nontransferable",
+    "meaningVi": "không thể chuyển nhượng",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "parent company",
+    "meaningVi": "công ty mẹ",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "privatization",
+    "meaningVi": "sự tư nhân hóa",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rebound",
+    "meaningVi": "sự phục hồi; hồi phục",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "runner-up",
+    "meaningVi": "á quân, người xếp thứ hai",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "secondary effect",
+    "meaningVi": "hiệu ứng phụ, tác dụng phụ",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sluggish",
+    "meaningVi": "chậm chạp, lờ đờ",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "stagnation",
+    "meaningVi": "sự đình trệ",
+    "topic": "Kinh tế",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "volatile",
+    "meaningVi": "dễ thay đổi, dao động",
+    "topic": "Kinh tế",
+    "partOfSpeech": "adjective"
+  }
+]

@@ -1,0 +1,1418 @@
+[
+  {
+    "word": "conserve",
+    "meaningVi": "bảo tồn, duy trì",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "conservation",
+    "meaningVi": "sự bảo tồn",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "conservative",
+    "meaningVi": "bảo thủ, dễ dãi",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "preserve",
+    "meaningVi": "bảo tồn",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "maintain",
+    "meaningVi": "duy trì",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "chance",
+    "meaningVi": "khả năng, sự có khả năng",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "opportunity",
+    "meaningVi": "cơ hội",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "forecast",
+    "meaningVi": "sự dự báo; dự đoán",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prediction",
+    "meaningVi": "sự dự đoán",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "waste",
+    "meaningVi": "rác, đồ bỏ đi; lãng phí, để lỡ",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "wasteful",
+    "meaningVi": "lãng phí",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "garbage",
+    "meaningVi": "rác",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "trash",
+    "meaningVi": "rác",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rubbish",
+    "meaningVi": "rác",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dispose",
+    "meaningVi": "xử lý, vứt bỏ, thanh lý",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "disposable",
+    "meaningVi": "có thể bỏ đi, dùng một lần",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "disposal",
+    "meaningVi": "sự xử lý, sự vứt bỏ",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dumping",
+    "meaningVi": "sự vứt bỏ",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "recycling",
+    "meaningVi": "việc tái chế",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "recycle",
+    "meaningVi": "tái chế",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "clear",
+    "meaningVi": "trong, trong trẻo; rõ ràng, dễ hiểu; dọn dẹp, đuổi, thông qua; rõ ràng; hoàn toàn",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "clearly",
+    "meaningVi": "rõ ràng",
+    "topic": "Môi trường",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "clearable",
+    "meaningVi": "có thể làm sạch",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "obvious",
+    "meaningVi": "rõ ràng",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "damage",
+    "meaningVi": "sự thiệt hại, hư tổn; gây thiệt hại, làm hỏng",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "damaging",
+    "meaningVi": "có hại",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "damaged",
+    "meaningVi": "bị hư hại, hỏng",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "harm",
+    "meaningVi": "gây hại",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "significant",
+    "meaningVi": "lớn, mạnh; quan trọng, đáng kể",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "important",
+    "meaningVi": "quan trọng",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "solution",
+    "meaningVi": "giải pháp, đáp án",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "solve",
+    "meaningVi": "giải quyết",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "occur",
+    "meaningVi": "xảy ra, nảy ra, xuất hiện",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "occurrence",
+    "meaningVi": "chuyện xảy ra",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "happen",
+    "meaningVi": "xảy ra",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "ideal",
+    "meaningVi": "lý tưởng; lý tưởng, người/vật lý tưởng",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "perfect",
+    "meaningVi": "hoàn hảo",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "preserve",
+    "meaningVi": "giữ gìn, bảo tồn",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "preserved",
+    "meaningVi": "được bảo tồn",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "aid",
+    "meaningVi": "sự giúp đỡ, sự hỗ trợ; giúp, hỗ trợ",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "excessive",
+    "meaningVi": "quá mức, thừa, quá đáng",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "intensively",
+    "meaningVi": "mạnh mẽ, sâu sắc",
+    "topic": "Môi trường",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "vary",
+    "meaningVi": "thay đổi, biến đổi",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "variation",
+    "meaningVi": "sự biến đổi, biến thể",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "varied",
+    "meaningVi": "khác nhau, đa dạng",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "pleasing",
+    "meaningVi": "dễ chịu, thú vị, làm vừa ý",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "pleased",
+    "meaningVi": "hài lòng, thích thú",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "mark",
+    "meaningVi": "điểm, sự đánh giá, dấu, vết; cho điểm, đánh dấu, kỷ niệm",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rating",
+    "meaningVi": "sự đánh giá",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "celebrate",
+    "meaningVi": "kỷ niệm",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "inaccessible",
+    "meaningVi": "không vào được, khó nắm được, khó đạt được",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "disturb",
+    "meaningVi": "quấy rầy, làm phiền",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pollutant",
+    "meaningVi": "chất gây ô nhiễm",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pollute",
+    "meaningVi": "làm ô nhiễm",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pollution",
+    "meaningVi": "sự ô nhiễm",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "emission",
+    "meaningVi": "sự phát ra/tỏa ra, vật phát ra/tỏa ra",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "emit",
+    "meaningVi": "phát ra, bốc ra, tỏa ra",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dense",
+    "meaningVi": "dày đặc, đông đúc",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "environmental",
+    "meaningVi": "thuộc về môi trường",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "environment",
+    "meaningVi": "môi trường",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "environmentalist",
+    "meaningVi": "người quan tâm bảo vệ môi trường",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "environmentally",
+    "meaningVi": "về phương diện môi trường",
+    "topic": "Môi trường",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "consistent",
+    "meaningVi": "kiên định, nhất quán, phù hợp",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "consistently",
+    "meaningVi": "kiên định",
+    "topic": "Môi trường",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "leak",
+    "meaningVi": "lỗ thủng, sự rò rỉ; rò rỉ, để lọt ra",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "organization",
+    "meaningVi": "tổ chức, cơ quan",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "organize",
+    "meaningVi": "tổ chức",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "association",
+    "meaningVi": "đoàn thể",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "continually",
+    "meaningVi": "liên tục, không ngớt",
+    "topic": "Môi trường",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "continue",
+    "meaningVi": "tiếp tục",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "continual",
+    "meaningVi": "triền miên",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "continuous",
+    "meaningVi": "liên tục",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "continuity",
+    "meaningVi": "sự liên tục, tính liên tục",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "continuation",
+    "meaningVi": "sự tiếp diễn",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lastingly",
+    "meaningVi": "liên tục, mãi mãi",
+    "topic": "Môi trường",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "contaminate",
+    "meaningVi": "làm bẩn, làm nhiễm (bẩn, bệnh)",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "contamination",
+    "meaningVi": "sự làm ô uế",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pollute",
+    "meaningVi": "gây ô nhiễm",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "disaster",
+    "meaningVi": "thảm họa",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "discharge",
+    "meaningVi": "thải ra, tuôn ra, chảy ra; sự thải ra, sự tuôn ra",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "resource",
+    "meaningVi": "nguồn, nguồn tài nguyên",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "resourceful",
+    "meaningVi": "tháo vát",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "prominent",
+    "meaningVi": "nổi bật, nổi tiếng",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "prominence",
+    "meaningVi": "sự nổi bật",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prominently",
+    "meaningVi": "dễ thấy, nổi bật",
+    "topic": "Môi trường",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "renowned",
+    "meaningVi": "nổi tiếng",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "deplete",
+    "meaningVi": "làm suy yếu, làm cạn kiệt",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "depletion",
+    "meaningVi": "sự làm suy yếu",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "exhaust",
+    "meaningVi": "làm kiệt quệ",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "purify",
+    "meaningVi": "lọc, làm sạch",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "purification",
+    "meaningVi": "sự làm sạch",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "endangered",
+    "meaningVi": "bị đe dọa",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "threatened",
+    "meaningVi": "bị đe dọa",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "extinction",
+    "meaningVi": "sự tuyệt chủng",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "extinct",
+    "meaningVi": "bị đe dọa",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "drought",
+    "meaningVi": "hạn hán",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inflict",
+    "meaningVi": "gây ra, bắt phải chịu (sự trừng phạt, thuế)",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "infliction",
+    "meaningVi": "sự gây ra, tai ương",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "migration",
+    "meaningVi": "sự di cư, sự chuyển",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "migrate",
+    "meaningVi": "di cư, di trú",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "immigration",
+    "meaningVi": "sự nhập cư",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "emigration",
+    "meaningVi": "sự xuất cư",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ecology",
+    "meaningVi": "hệ sinh thái, sinh thái học",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "habitat",
+    "meaningVi": "môi trường sống, nơi sống",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "habitation",
+    "meaningVi": "sự cư trú",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inhabitant",
+    "meaningVi": "người cư trú, cư dân",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cave",
+    "meaningVi": "hang động",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "celsius",
+    "meaningVi": "độ C",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "chilly",
+    "meaningVi": "lạnh, ớn lạnh",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "clean up",
+    "meaningVi": "dọn dẹp, dọn sạch",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "cleaning supply",
+    "meaningVi": "dụng cụ vệ sinh",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "desert",
+    "meaningVi": "sa mạc",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dirt",
+    "meaningVi": "đất, bùn, bụi bẩn",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "empty a trash can",
+    "meaningVi": "đổ rác",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "factory",
+    "meaningVi": "nhà máy, xí nghiệp",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "harvest",
+    "meaningVi": "thu hoạch; vụ thu hoạch",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "humid",
+    "meaningVi": "ẩm, ẩm ướt",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "landscape",
+    "meaningVi": "phong cảnh, cảnh quan",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "point",
+    "meaningVi": "điểm, chấm; chỉ, nhắm",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "seed",
+    "meaningVi": "hạt, hạt giống; gieo hạt",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "shade",
+    "meaningVi": "bóng, bóng tối",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sunny",
+    "meaningVi": "có nắng",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "sunset",
+    "meaningVi": "hoàng hôn",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "wet",
+    "meaningVi": "ẩm, ướt",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "windy",
+    "meaningVi": "có gió, lộng gió",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "wood",
+    "meaningVi": "gỗ, củi, rừng",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dust",
+    "meaningVi": "bụi; rắc bụi, phủi bụi",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "flood",
+    "meaningVi": "lũ lụt",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "general",
+    "meaningVi": "chung, tổng",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "pollution",
+    "meaningVi": "sự ô nhiễm",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "shower",
+    "meaningVi": "trận mưa rào",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "source",
+    "meaningVi": "nguồn, nguồn gốc",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "southern",
+    "meaningVi": "phía nam",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "temperature",
+    "meaningVi": "nhiệt độ",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "along the shore",
+    "meaningVi": "dọc bờ biển",
+    "topic": "Môi trường",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "bay",
+    "meaningVi": "vịnh",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "body of water",
+    "meaningVi": "vùng nước, thực thể chứa nước",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "bush",
+    "meaningVi": "bụi cây, bụi rậm",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cliff",
+    "meaningVi": "vách đá",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "countryside",
+    "meaningVi": "vùng quê, nông thôn",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "eco-friendly",
+    "meaningVi": "thân thiện với môi trường",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "environment-friendly",
+    "meaningVi": "thân thiện với môi trường",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "footpath",
+    "meaningVi": "đường mòn, vỉa hè",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fountain",
+    "meaningVi": "suối nước, đài phun nước",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "freezing",
+    "meaningVi": "băng giá",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "gardening tool",
+    "meaningVi": "dụng cụ làm vườn",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "grasp",
+    "meaningVi": "nắm, tóm, nắm được",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "hail",
+    "meaningVi": "mưa đá",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lakefront",
+    "meaningVi": "ven hồ",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "landscaping",
+    "meaningVi": "sự tạo cảnh quan",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lighthouse",
+    "meaningVi": "đèn biển, hải đăng",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "nightfall",
+    "meaningVi": "lúc sẩm tối, lúc hoàng hôn",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "off the shore",
+    "meaningVi": "ngoài khơi",
+    "topic": "Môi trường",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "overlook the water",
+    "meaningVi": "nhìn ra hồ",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pull weeds",
+    "meaningVi": "nhổ cỏ",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "rain forest",
+    "meaningVi": "rừng mưa nhiệt đới",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rain or shine",
+    "meaningVi": "dù mưa hay nắng",
+    "topic": "Môi trường",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "rain shower",
+    "meaningVi": "mưa rào",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rainstorm",
+    "meaningVi": "mưa bão",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ranger",
+    "meaningVi": "người bảo vệ rừng, kiểm lâm",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "riverbank",
+    "meaningVi": "bờ sông",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "riverside",
+    "meaningVi": "ven sông",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "scenery",
+    "meaningVi": "phong cảnh, cảnh vật",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "scenic",
+    "meaningVi": "có phong cảnh đẹp",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "slope",
+    "meaningVi": "dốc, độ dốc; nghiêng, dốc",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stream",
+    "meaningVi": "suối, dòng chảy; chảy ra, tuôn ra",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "suburb",
+    "meaningVi": "ngoại ô",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sweep the leaves",
+    "meaningVi": "quét lá",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "thunderstorm",
+    "meaningVi": "bão",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "trail",
+    "meaningVi": "đường, đường mòn",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "trap",
+    "meaningVi": "bẫy, đặt bẫy",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "tree trunk",
+    "meaningVi": "thân cây",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "twilight",
+    "meaningVi": "lúc tranh tối tranh sáng",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "weather forecast",
+    "meaningVi": "dự báo thời tiết",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "weather report",
+    "meaningVi": "bản tin thời tiết",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "windstorm",
+    "meaningVi": "gió bão",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "affirmative",
+    "meaningVi": "khẳng định, quả quyết",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dislike",
+    "meaningVi": "không thích, ghét",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fertile",
+    "meaningVi": "tốt, màu mỡ",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "in particular",
+    "meaningVi": "nói riêng, đặc biệt",
+    "topic": "Môi trường",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "quietly",
+    "meaningVi": "thanh bình, êm ả",
+    "topic": "Môi trường",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "revolve",
+    "meaningVi": "quay tròn, xoay quanh",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "setting",
+    "meaningVi": "khung cảnh, môi trường",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sheer",
+    "meaningVi": "mỏng dính",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "solid",
+    "meaningVi": "đặc, rắn",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "tangible",
+    "meaningVi": "hữu hình, hiển nhiên",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "thoughtfully",
+    "meaningVi": "chín chắn, sâu sắc, chu đáo",
+    "topic": "Môi trường",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "atmospheric",
+    "meaningVi": "thuộc khí quyển",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "conservation",
+    "meaningVi": "sự bảo tồn",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "environmental regulations",
+    "meaningVi": "luật môi trường",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ground",
+    "meaningVi": "đất, mặt đất, khu đất",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inclement",
+    "meaningVi": "khắc nghiệt",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "mining",
+    "meaningVi": "sự khai thác mỏ",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "natural habitat",
+    "meaningVi": "môi trường sống tự nhiên",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "noise and air pollution",
+    "meaningVi": "ô nhiễm không khí và tiếng ồn",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "nourishment",
+    "meaningVi": "sự nuôi dưỡng",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "nurture",
+    "meaningVi": "nuôi dưỡng",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "overflow",
+    "meaningVi": "tràn qua, làm ngập tràn",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "react to",
+    "meaningVi": "phản ứng với",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "recyclable",
+    "meaningVi": "có thể tái chế",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "under construction",
+    "meaningVi": "đang được xây dựng",
+    "topic": "Môi trường",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "vague",
+    "meaningVi": "mơ hồ",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "water level",
+    "meaningVi": "mực nước",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "botanical",
+    "meaningVi": "thuộc thực vật/thực vật học",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "irrigation system",
+    "meaningVi": "hệ thống dẫn nước",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "mow the lawn",
+    "meaningVi": "cắt cỏ",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "overpass",
+    "meaningVi": "cầu vượt",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "potted",
+    "meaningVi": "trồng trong chậu",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "pull up",
+    "meaningVi": "nhổ lên, dừng (xe)",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "shrub",
+    "meaningVi": "bụi cây",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "vacant site",
+    "meaningVi": "khu đất trống",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "outwardly",
+    "meaningVi": "bề ngoài, hướng ra ngoài",
+    "topic": "Môi trường",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "precipitation",
+    "meaningVi": "mưa, lượng mưa",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "promptness",
+    "meaningVi": "sự mau lẹ, sự nhanh chóng",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "revert",
+    "meaningVi": "trở lại, trở lại nguyên thể",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "sustainable",
+    "meaningVi": "có thể chống đỡ được/chịu được",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "unsustainable",
+    "meaningVi": "không bền vững",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "tranquility",
+    "meaningVi": "sự yên bình, tĩnh mịch",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "trimming",
+    "meaningVi": "sự cắt tỉa",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "depletion",
+    "meaningVi": "sự rút hết, sự làm suy yếu",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "disposal",
+    "meaningVi": "sự xử lý, sự vứt bỏ",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "downpour",
+    "meaningVi": "trận mưa như trút nước",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "drench",
+    "meaningVi": "làm ướt sũng, ngâm nước",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fade",
+    "meaningVi": "mờ dần, làm phai màu",
+    "topic": "Môi trường",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fuel emission",
+    "meaningVi": "khí thải nhiên liệu",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fumes",
+    "meaningVi": "khí/khói có mùi",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "grazing",
+    "meaningVi": "đồng cỏ",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "logging",
+    "meaningVi": "việc đốn gỗ",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "outskirts",
+    "meaningVi": "cận, vùng ngoại ô",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "residue",
+    "meaningVi": "cặn, bã, dư lượng",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rugged",
+    "meaningVi": "gồ ghề",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "sewage",
+    "meaningVi": "chất thải, nước cống",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "splendor",
+    "meaningVi": "sự tráng lệ, huy hoàng",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "terrestrial",
+    "meaningVi": "ở trên mặt đất, trên cạn",
+    "topic": "Môi trường",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "timber",
+    "meaningVi": "gỗ, gỗ làm nhà",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "toxication",
+    "meaningVi": "sự đầu độc",
+    "topic": "Môi trường",
+    "partOfSpeech": "noun"
+  }
+]

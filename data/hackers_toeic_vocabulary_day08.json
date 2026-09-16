@@ -1,0 +1,1376 @@
+[
+  {
+    "word": "advertisement",
+    "meaningVi": "quảng cáo",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "marginal",
+    "meaningVi": "ở mép, ngoài lề, không đáng kể",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "margin",
+    "meaningVi": "lề, mép, giới hạn, biên, sự chênh lệch",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "approximate",
+    "meaningVi": "xấp xỉ, gần đúng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "customer",
+    "meaningVi": "người tiêu dùng, khách hàng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "patron",
+    "meaningVi": "khách quen",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "influence",
+    "meaningVi": "ảnh hưởng, tác động, chi phối; sự tác động, tác dụng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "influential",
+    "meaningVi": "có ảnh hưởng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "affect",
+    "meaningVi": "ảnh hưởng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "instantly",
+    "meaningVi": "ngay khi, ngay lập tức",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "instance",
+    "meaningVi": "ví dụ",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "instant",
+    "meaningVi": "ngay lập tức",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "urgently",
+    "meaningVi": "khẩn cấp",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "hastily",
+    "meaningVi": "vội vàng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "creative",
+    "meaningVi": "sáng tạo",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "create",
+    "meaningVi": "tạo ra",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "creativity",
+    "meaningVi": "sự sáng tạo",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "creatively",
+    "meaningVi": "một cách sáng tạo",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "aggressively",
+    "meaningVi": "xông xáo, tích cực",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "aggressive",
+    "meaningVi": "chủ động, tích cực",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "passively",
+    "meaningVi": "bị động",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "aim",
+    "meaningVi": "nhắm tới, có mục đích; mục tiêu, mục đích",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "intention",
+    "meaningVi": "ý định, mục đích",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "strategy",
+    "meaningVi": "chiến lược",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "strategic",
+    "meaningVi": "có tính chiến lược",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "strategically",
+    "meaningVi": "có chiến lược, mưu đồ",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "indicate",
+    "meaningVi": "biểu thị, cho biết, chỉ ra",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "indicative",
+    "meaningVi": "tỏ ra",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "indication",
+    "meaningVi": "sự biểu thị, dấu hiệu",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "indicator",
+    "meaningVi": "chỉ số, chỉ tiêu",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "show",
+    "meaningVi": "chỉ ra",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "attract",
+    "meaningVi": "thu hút, lôi cuốn",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "attractive",
+    "meaningVi": "lôi cuốn, quyến rũ",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "attraction",
+    "meaningVi": "sức hút, sự hấp dẫn",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "experience",
+    "meaningVi": "kinh nghiệm, sự trải nghiệm; trải nghiệm, trải qua",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "analyze",
+    "meaningVi": "phân tích",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "analysis",
+    "meaningVi": "sự phân tích; bản phân tích",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "analyst",
+    "meaningVi": "người phân tích",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "introduce",
+    "meaningVi": "giới thiệu, đưa ra",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "introduction",
+    "meaningVi": "lời giới thiệu",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "introductory",
+    "meaningVi": "mở đầu, để giới thiệu",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "advise",
+    "meaningVi": "khuyên nhủ, tư vấn",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "advice",
+    "meaningVi": "lời khuyên",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "advisor",
+    "meaningVi": "người cố vấn",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "advisory",
+    "meaningVi": "tư vấn",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "subscribe",
+    "meaningVi": "đăng ký, đặt mua dài hạn (báo, tạp chí)",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "subscription",
+    "meaningVi": "sự đăng ký",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "subscriber",
+    "meaningVi": "người đăng ký, người đặt mua",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "absence",
+    "meaningVi": "sự vắng mặt, nghỉ; sự thiếu, không có",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "means",
+    "meaningVi": "phương tiện, cách",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "instrument",
+    "meaningVi": "công cụ để làm gì",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prefer",
+    "meaningVi": "yêu thích hơn (những cái khác)",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "preference",
+    "meaningVi": "sở thích, sự ưu tiên",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "advantage",
+    "meaningVi": "lợi ích, lợi thế",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "advantageous",
+    "meaningVi": "có lợi, thuận lợi",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "disadvantage",
+    "meaningVi": "sự bất lợi",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "benefit",
+    "meaningVi": "sự ưu đãi, lợi ích",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "forward",
+    "meaningVi": "về phía trước; tiến bộ; gửi, chuyển tiếp (đồ vật, thông tin)",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "contemporary",
+    "meaningVi": "đương thời, hiện đại",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "discussion",
+    "meaningVi": "sự thảo luận, sự tranh luận",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "discuss",
+    "meaningVi": "thảo luận",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "initial",
+    "meaningVi": "ban đầu, lúc đầu",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "initiate",
+    "meaningVi": "đề xướng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "initially",
+    "meaningVi": "vào lúc đầu, ban đầu",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "steadily",
+    "meaningVi": "vững chắc, bình tĩnh, kiên định",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "steady",
+    "meaningVi": "vững vàng, bình tĩnh, ổn định",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "necessarily",
+    "meaningVi": "tất yếu, nhất thiết",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "necessary",
+    "meaningVi": "cần thiết, thiết yếu",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "necessitate",
+    "meaningVi": "bắt phải, đòi hỏi phải",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "necessity",
+    "meaningVi": "sự cần thiết",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "resolve",
+    "meaningVi": "giải quyết, kiên quyết",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "resolution",
+    "meaningVi": "sự giải quyết, sự quyết tâm",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "detect",
+    "meaningVi": "phát hiện ra, khám phá ra",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "intensify",
+    "meaningVi": "làm tăng lên, tăng cường",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "intense",
+    "meaningVi": "mãnh liệt",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "intensive",
+    "meaningVi": "tập trung, chuyên sâu, cao độ",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "favorably",
+    "meaningVi": "thuận lợi, tốt đẹp",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "favor",
+    "meaningVi": "thiện chí",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "favorable",
+    "meaningVi": "có thiện chí",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "favored",
+    "meaningVi": "được ưa chuộng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "cover",
+    "meaningVi": "bao gồm, thanh toán, che phủ",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "coverage",
+    "meaningVi": "độ che phủ",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "report on",
+    "meaningVi": "báo cáo, tường trình",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pay",
+    "meaningVi": "thanh toán",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "less",
+    "meaningVi": "ít hơn, kém hơn",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "lesser",
+    "meaningVi": "kém hơn",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "majority",
+    "meaningVi": "đa số, số đông",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "major",
+    "meaningVi": "chủ yếu, trọng đại; chuyên ngành, thiếu tá (lục quân)",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "most",
+    "meaningVi": "hầu hết",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "adopt",
+    "meaningVi": "thông qua, lựa chọn, làm theo",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "adoption",
+    "meaningVi": "sự chấp nhận",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "largely",
+    "meaningVi": "trên quy mô lớn, phần lớn",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "disregard",
+    "meaningVi": "xem nhẹ, không đếm xỉa đến; sự bỏ qua, sự lơ đi",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "effort",
+    "meaningVi": "sự cố gắng, sự nỗ lực",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "endeavor",
+    "meaningVi": "sự cố gắng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "incentive",
+    "meaningVi": "sự khích lệ, ưu đãi",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "budget",
+    "meaningVi": "ngân sách",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "earning",
+    "meaningVi": "thu nhập",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "need",
+    "meaningVi": "nhu cầu, sự cần thiết; cần, muốn",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "needy",
+    "meaningVi": "nghèo túng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "mastermind",
+    "meaningVi": "quân sư, đạo diễn (kế hoạch)",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "celebration",
+    "meaningVi": "sự kỷ niệm, lễ kỷ niệm",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "curious",
+    "meaningVi": "tò mò, ham hiểu biết",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "drop by",
+    "meaningVi": "ghé qua",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "first step",
+    "meaningVi": "bước đầu tiên",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "for now",
+    "meaningVi": "bây giờ, hiện tại",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "gather",
+    "meaningVi": "tập hợp, thu thập",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "get together",
+    "meaningVi": "gặp gỡ, tụ họp",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "hole",
+    "meaningVi": "lỗ thủng, lỗ hổng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "in total",
+    "meaningVi": "tổng cộng, toàn bộ",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "in use",
+    "meaningVi": "được sử dụng, thông dụng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "practical",
+    "meaningVi": "thiết thực, có ích",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "shovel",
+    "meaningVi": "dọn sạch (bằng xẻng); cái xẻng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "show",
+    "meaningVi": "cho xem, tỏ ra; buổi diễn, sự trưng bày",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "space",
+    "meaningVi": "chỗ, không gian; đặt cách nhau, cách ra (trên văn bản đánh máy)",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "advertise",
+    "meaningVi": "quảng cáo",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "belief",
+    "meaningVi": "niềm tin, tín ngưỡng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "belong to",
+    "meaningVi": "của, thuộc về",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be open for business",
+    "meaningVi": "mở cửa kinh doanh",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "best-selling author",
+    "meaningVi": "tác giả sách bán chạy",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "consumer",
+    "meaningVi": "người tiêu dùng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "entry fee",
+    "meaningVi": "phí vào cửa",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "experiment",
+    "meaningVi": "cuộc thí nghiệm, thử nghiệm",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "findings",
+    "meaningVi": "kết quả, các phát hiện",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "full",
+    "meaningVi": "đầy, no, hết sức",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "obviously",
+    "meaningVi": "rõ ràng, hiển nhiên",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "photographer",
+    "meaningVi": "nhiếp ảnh gia, thợ chụp ảnh",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "primarily",
+    "meaningVi": "đầu tiên, chủ yếu",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "sales target",
+    "meaningVi": "mục tiêu về doanh số",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "advertising campaign",
+    "meaningVi": "chiến dịch quảng cáo",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be anxious to do",
+    "meaningVi": "nóng lòng làm gì đó",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bring on",
+    "meaningVi": "gây ra",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "chase",
+    "meaningVi": "săn, đuổi",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "come along",
+    "meaningVi": "đi cùng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "come loose",
+    "meaningVi": "nới lỏng, lỏng ra",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "conditional",
+    "meaningVi": "có điều kiện",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "customer survey",
+    "meaningVi": "khảo sát khách hàng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "date back to",
+    "meaningVi": "từ, bắt đầu từ (thời gian trong quá khứ)",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "depict",
+    "meaningVi": "mô tả",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "destruction",
+    "meaningVi": "sự phá hủy",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "enter into",
+    "meaningVi": "tham gia vào, bắt đầu làm gì đó",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "get back to",
+    "meaningVi": "liên lạc lại",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "gradual",
+    "meaningVi": "dần dần, từng bước một",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "inactive",
+    "meaningVi": "không hoạt động, ì ạch",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "in the meantime",
+    "meaningVi": "trong lúc đó",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "invalid",
+    "meaningVi": "không có hiệu lực",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "look over",
+    "meaningVi": "xem qua",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make up one's mind",
+    "meaningVi": "quyết định",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "meaningful",
+    "meaningVi": "có ý nghĩa",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "put a rush",
+    "meaningVi": "vội vàng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "put a strain on",
+    "meaningVi": "gây áp lực lên",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "put up with",
+    "meaningVi": "chịu đựng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reach for",
+    "meaningVi": "vươn tới, tiếp cận với",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "stay ahead of",
+    "meaningVi": "dẫn đầu",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "A as well as B",
+    "meaningVi": "A cũng như là B",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "conjunction"
+  },
+  {
+    "word": "ample",
+    "meaningVi": "nhiều, phong phú",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "a range of",
+    "meaningVi": "một loạt",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "attend to a client",
+    "meaningVi": "chăm sóc khách hàng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "confront",
+    "meaningVi": "đương đầu",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "context",
+    "meaningVi": "bối cảnh, ngữ cảnh",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "despair",
+    "meaningVi": "sự thất vọng, nỗi tuyệt vọng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "disconnected",
+    "meaningVi": "bị ngắt, bị tháo rời ra",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dissatisfied",
+    "meaningVi": "không hài lòng, bất mãn",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "driven",
+    "meaningVi": "bị tác động",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dynamic",
+    "meaningVi": "năng động, sôi nổi",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "eagerly await",
+    "meaningVi": "háo hức chờ đợi",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "enormous",
+    "meaningVi": "to lớn, khổng lồ",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fall behind",
+    "meaningVi": "tụt lại phía sau",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "feasible",
+    "meaningVi": "khả thi",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "forwarding address",
+    "meaningVi": "địa chỉ gửi chuyển tiếp thư",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "get over",
+    "meaningVi": "vượt qua",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "impress",
+    "meaningVi": "gây ấn tượng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "inadequate",
+    "meaningVi": "không đủ, không tương xứng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "in a timely fashion",
+    "meaningVi": "một cách kịp thời",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "irreplaceable",
+    "meaningVi": "không thể thay thế được",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "limitation",
+    "meaningVi": "sự hạn chế, sự giới hạn",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "massive",
+    "meaningVi": "lớn, thô, có quy mô lớn",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "point out",
+    "meaningVi": "chỉ ra",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "rave review",
+    "meaningVi": "bài đánh giá tích cực",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "repeatedly",
+    "meaningVi": "lặp đi lặp lại",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "strategically",
+    "meaningVi": "một cách chiến lược",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "unveil",
+    "meaningVi": "tiết lộ, công bố",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "a great deal",
+    "meaningVi": "nhiều, rất nhiều",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be sensitive to",
+    "meaningVi": "nhạy cảm với",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bother to do",
+    "meaningVi": "mất thời gian, công sức để làm gì",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "call off",
+    "meaningVi": "hoãn lại, hủy bỏ",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "carry out market studies",
+    "meaningVi": "tiến hành nghiên cứu thị trường",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "come across",
+    "meaningVi": "tình cờ gặp",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "contrive to do",
+    "meaningVi": "xoay xở làm gì",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "deliberate",
+    "meaningVi": "thong thả, khoan thai, có tính toán",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "discounted rate",
+    "meaningVi": "tỷ lệ chiết khấu",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "have a tendency to do",
+    "meaningVi": "có xu hướng làm gì",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "have an opportunity to do",
+    "meaningVi": "có cơ hội làm gì",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "have something to do with",
+    "meaningVi": "có liên quan tới",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "in turn",
+    "meaningVi": "lần lượt, kết quả là",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "make no exception",
+    "meaningVi": "không có ngoại lệ",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "televise",
+    "meaningVi": "phát trên truyền hình",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "discipline",
+    "meaningVi": "kỷ luật",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "jingle",
+    "meaningVi": "tiếng leng keng",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "mobility",
+    "meaningVi": "tính lưu động, tính dễ biến đổi",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "abruptly",
+    "meaningVi": "bất ngờ, đột ngột",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "absorbing",
+    "meaningVi": "hấp dẫn, làm say mê",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "admiringly",
+    "meaningVi": "khâm phục, ngưỡng mộ",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "at large",
+    "meaningVi": "nói chung, phần lớn",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "boast about",
+    "meaningVi": "tự hào về, khoe khoang về",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "correspondent",
+    "meaningVi": "phóng viên",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "counterpart",
+    "meaningVi": "bản đối chiếu, người tương nhiệm",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "defeat",
+    "meaningVi": "đánh bại; sự thất bại",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "diversify",
+    "meaningVi": "đa dạng hóa",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dominant",
+    "meaningVi": "có ưu thế hơn, trội hơn",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fabulous",
+    "meaningVi": "hoang đường, khó tin",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fortify",
+    "meaningVi": "củng cố, tăng cường",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fundamental",
+    "meaningVi": "cơ bản, chủ yếu",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "mingle",
+    "meaningVi": "trộn lẫn, lẫn vào",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "preciously",
+    "meaningVi": "quý giá, kiểu cách",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "stark",
+    "meaningVi": "ảm đạm, bình dị",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "steadiness",
+    "meaningVi": "sự vững chắc, ổn định",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "alluring",
+    "meaningVi": "quyến rũ, lôi cuốn",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "assimilate",
+    "meaningVi": "đồng hóa, tiêu hóa",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "at all costs",
+    "meaningVi": "bằng mọi giá",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "await",
+    "meaningVi": "chờ đợi",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "captivate",
+    "meaningVi": "làm say đắm, quyến rũ",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "culminate in",
+    "meaningVi": "kết thúc bằng, đem lại kết quả",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "defiance",
+    "meaningVi": "sự thách thức, sự bất chấp",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dissipate",
+    "meaningVi": "xua tan, làm tiêu tan",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "driving force",
+    "meaningVi": "động lực",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "elicit",
+    "meaningVi": "gợi ra",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "overwhelming",
+    "meaningVi": "tràn ngập, lấn át",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "voiced",
+    "meaningVi": "bằng lời nói",
+    "topic": "Marketing (2)",
+    "partOfSpeech": "adjective"
+  }
+]

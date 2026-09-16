@@ -1,0 +1,1346 @@
+[
+  {
+    "word": "congestion",
+    "meaningVi": "sự tắc nghẽn",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "congest",
+    "meaningVi": "làm tắc nghẽn",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "traffic jam",
+    "meaningVi": "tắc đường",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "alleviate",
+    "meaningVi": "làm dịu, làm giảm bớt",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "alleviation",
+    "meaningVi": "sự làm giảm bớt",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ease",
+    "meaningVi": "làm dịu",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "exacerbate",
+    "meaningVi": "làm trầm trọng",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "divert",
+    "meaningVi": "làm chệch hướng, hướng sang phía khác",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "diversion",
+    "meaningVi": "sự làm chệch đi",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "detour",
+    "meaningVi": "khúc ngoặt, đường vòng; đi đường vòng",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fuel",
+    "meaningVi": "nhiên liệu",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "malfunction",
+    "meaningVi": "sự trục trặc, sự cố; hỏng, trục trặc",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "permit",
+    "meaningVi": "cho phép; giấy phép",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "permission",
+    "meaningVi": "sự cho phép",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "permissive",
+    "meaningVi": "tùy ý, không bắt buộc",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "permissibly",
+    "meaningVi": "theo cách chấp nhận được",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "allow",
+    "meaningVi": "cho phép",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "forbid",
+    "meaningVi": "cấm",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "prohibit",
+    "meaningVi": "cấm",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "transportation",
+    "meaningVi": "sự vận tải, phương tiện vận tải",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "transport",
+    "meaningVi": "chuyển chở, vận tải",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "opportunity",
+    "meaningVi": "cơ hội, thời cơ",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "clearly",
+    "meaningVi": "rõ ràng, cố nhiên",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "clear",
+    "meaningVi": "rõ ràng, dễ hiểu; hoàn toàn, tách hẳn",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "evidently",
+    "meaningVi": "rõ ràng, hiển nhiên",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "ongoing",
+    "meaningVi": "liên tục, đang tiếp diễn",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "detailed",
+    "meaningVi": "chi tiết, cặn kẽ, tỉ mỉ",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "detail",
+    "meaningVi": "chi tiết",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "alternative",
+    "meaningVi": "sự lựa chọn, phương án khác; thay đổi nhau, thay thế",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "alternatively",
+    "meaningVi": "như một sự lựa chọn",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "alternate",
+    "meaningVi": "xen kẽ, luân phiên",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "alternation",
+    "meaningVi": "sự luân phiên",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "obtain",
+    "meaningVi": "đạt được, giành được",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "obtainable",
+    "meaningVi": "có thể đạt được",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "secure",
+    "meaningVi": "chiếm được",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "designated",
+    "meaningVi": "được chỉ định, được chọn lựa",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "designate",
+    "meaningVi": "chỉ định, chọn lựa",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "designation",
+    "meaningVi": "sự chỉ định",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "appointed",
+    "meaningVi": "được chỉ định",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "intersection",
+    "meaningVi": "ngã tư, chỗ giao nhau",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "equip",
+    "meaningVi": "trang bị",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "equipment",
+    "meaningVi": "sự trang bị, dụng cụ",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "commute",
+    "meaningVi": "đi lại đều đặn (đi làm); việc đi làm hằng ngày",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "commuter",
+    "meaningVi": "người đi làm bằng vé tháng",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "downtown",
+    "meaningVi": "ở/về phía trung tâm thành phố; khu buôn bán kinh doanh (của thành phố)",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "automotive",
+    "meaningVi": "tự động, (thuộc) ô tô",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "closure",
+    "meaningVi": "sự đóng cửa",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "vehicle",
+    "meaningVi": "xe, xe cộ",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "platform",
+    "meaningVi": "sân ga",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "official",
+    "meaningVi": "viên chức, công chức, quan chức; chính thức, trang trọng",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "officially",
+    "meaningVi": "chính thức",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "formal",
+    "meaningVi": "chính thức, trang trọng",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "transit",
+    "meaningVi": "sự vận chuyển, quá trình vận chuyển",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fare",
+    "meaningVi": "tiền xe, tiền vé",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fee",
+    "meaningVi": "lệ phí, phí dịch vụ",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "toll",
+    "meaningVi": "thuế, phí (cầu đường)",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expense",
+    "meaningVi": "chi phí, phí tổn",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expensive",
+    "meaningVi": "đắt đỏ",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "charge",
+    "meaningVi": "tiền phải trả, chi phí",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cost",
+    "meaningVi": "tiền phải trả, chi phí",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expenditure",
+    "meaningVi": "chi phí, phí tổn",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "trust",
+    "meaningVi": "lòng tin, sự tin cậy; tin cậy, tin nhiệm",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "trusting",
+    "meaningVi": "không nghi ngờ",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "trustful",
+    "meaningVi": "tin người",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "trustworthy",
+    "meaningVi": "đáng tin cậy",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "head",
+    "meaningVi": "dẫn đầu, hướng về, đi về phía",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "drive",
+    "meaningVi": "lái xe, đi (bằng xe)",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fine",
+    "meaningVi": "tiền phạt; trở nên nhỏ/thon hơn; tốt, giỏi, đẹp",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "penalty",
+    "meaningVi": "tiền phạt",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "forfeit",
+    "meaningVi": "tiền phạt",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "tariff",
+    "meaningVi": "thuế quan",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "price",
+    "meaningVi": "giá cả",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pass",
+    "meaningVi": "đi qua, vượt qua",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "passable",
+    "meaningVi": "có thể qua lại",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "passage",
+    "meaningVi": "sự đi qua, đoạn văn",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "securely",
+    "meaningVi": "chắc chắn, an toàn",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "secure",
+    "meaningVi": "chắc chắn",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "security",
+    "meaningVi": "an ninh",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "insecurely",
+    "meaningVi": "bấp bênh, không chắc chắn",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "prominently",
+    "meaningVi": "dễ thấy, nổi bật",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "prominent",
+    "meaningVi": "nổi bật, đáng chú ý",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "noticeably",
+    "meaningVi": "đáng chú ý",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "markedly",
+    "meaningVi": "rõ rệt",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "explicitly",
+    "meaningVi": "rõ ràng, dứt khoát",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "reserved",
+    "meaningVi": "dành riêng, được đặt trước",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reserve",
+    "meaningVi": "đặt trước, giữ trước",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reservation",
+    "meaningVi": "sự đặt trước",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "preserved",
+    "meaningVi": "được bảo tồn",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "average",
+    "meaningVi": "số trung bình, mức bình quân; trung bình",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "collision",
+    "meaningVi": "sự va chạm",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "tow",
+    "meaningVi": "kéo, lai dắt (tàu, thuyền)",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reverse",
+    "meaningVi": "đảo, ngược, trái lại; mặt trái, điều trái ngược; đảo ngược, chạy lùi lại",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "obstruct",
+    "meaningVi": "chặn, che khuất (tầm nhìn); chặn, làm tắc (đường)",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "obstruction",
+    "meaningVi": "sự cản trở",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "obstructive",
+    "meaningVi": "gây trở ngại",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "block",
+    "meaningVi": "chặn, cản trở",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bus stop",
+    "meaningVi": "bến xe buýt",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "busy street",
+    "meaningVi": "con đường đông đúc",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cab",
+    "meaningVi": "xe taxi",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "car rental",
+    "meaningVi": "dịch vụ cho thuê xe",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "crosswalk",
+    "meaningVi": "vạch cho người đi bộ sang đường",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "free parking",
+    "meaningVi": "đỗ xe miễn phí",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "gas station",
+    "meaningVi": "trạm đổ xăng",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "get off",
+    "meaningVi": "xuống xe",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "hang",
+    "meaningVi": "treo, mắc",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "heavy traffic",
+    "meaningVi": "xe cộ đông đúc",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "highway",
+    "meaningVi": "đường cái, đường quốc lộ",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "on foot",
+    "meaningVi": "đi bộ",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "park",
+    "meaningVi": "đỗ xe",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "path",
+    "meaningVi": "con đường",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "subway station",
+    "meaningVi": "ga tàu điện ngầm",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "tour bus",
+    "meaningVi": "xe buýt du lịch",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "traffic light",
+    "meaningVi": "đèn giao thông",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "wall",
+    "meaningVi": "tường, vách",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "wash the car",
+    "meaningVi": "rửa xe",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "wheel",
+    "meaningVi": "bánh xe",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "access to",
+    "meaningVi": "vào, tiếp cận",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cite",
+    "meaningVi": "trích dẫn",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "hood",
+    "meaningVi": "nắp ca-pô (xe)",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inside",
+    "meaningVi": "ở trong, bên trong",
+    "topic": "Giao thông",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "route",
+    "meaningVi": "tuyến đường",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sharp",
+    "meaningVi": "sắc, nhọn",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "solve",
+    "meaningVi": "giải quyết",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "stand",
+    "meaningVi": "đứng",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "across the street",
+    "meaningVi": "bên kia đường",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "around the corner",
+    "meaningVi": "quanh góc phố, không xa lắm",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "be closed to traffic",
+    "meaningVi": "cấm phương tiện giao thông",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be held up in traffic",
+    "meaningVi": "bị tắc đường",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be lined with",
+    "meaningVi": "thống nhất với",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "broadcast",
+    "meaningVi": "phát sóng; buổi phát sóng",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bypass",
+    "meaningVi": "đường vòng",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "carpool",
+    "meaningVi": "đi chung xe",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "come to a standstill",
+    "meaningVi": "ngưng trệ, dừng lại",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "commuter",
+    "meaningVi": "người đi làm bằng vé tháng",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cross the street",
+    "meaningVi": "sang đường",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "direct traffic",
+    "meaningVi": "điều khiển giao thông",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "driver's license",
+    "meaningVi": "bằng lái xe",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "driveway",
+    "meaningVi": "đường lái xe vào nhà",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "driving direction",
+    "meaningVi": "hướng đi (xe)",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "footrest",
+    "meaningVi": "ghế kê chân",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "get a ride",
+    "meaningVi": "đi nhờ, quá giang",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "get lost",
+    "meaningVi": "bị lạc",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "get to",
+    "meaningVi": "tới đâu",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "give A a ride",
+    "meaningVi": "cho A đi nhờ",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "have a flat tire",
+    "meaningVi": "bị thủng lốp",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "headlight",
+    "meaningVi": "đèn pha (ô tô)",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "land at the dock",
+    "meaningVi": "cập bến",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "lane",
+    "meaningVi": "làn đường",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lean over the railing",
+    "meaningVi": "tựa vào lan can",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "license plate number",
+    "meaningVi": "biển số xe",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lock the key in the car",
+    "meaningVi": "để quên chìa khóa trong xe",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make a stop",
+    "meaningVi": "tạm dừng chân",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make a transfer",
+    "meaningVi": "chuyển xe",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "march",
+    "meaningVi": "diễu hành",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "mileage",
+    "meaningVi": "tổng số dặm xe đã đi",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "navigation",
+    "meaningVi": "tàu bè qua lại",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "one-way ticket",
+    "meaningVi": "vé một chiều",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "parking garage",
+    "meaningVi": "hầm đỗ xe",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pathway",
+    "meaningVi": "đường mòn, đường nhỏ",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "push one's way through",
+    "meaningVi": "chen qua, cố tìm đường qua",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "ride away",
+    "meaningVi": "lái xe đi",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "road sign",
+    "meaningVi": "biển báo giao thông",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "roadwork",
+    "meaningVi": "việc làm đường/sửa đường",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "shortcut",
+    "meaningVi": "lối tắt",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stop at a light",
+    "meaningVi": "dừng chờ đèn tín hiệu",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "stop for fuel",
+    "meaningVi": "dừng đổ xăng",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "storage compartment",
+    "meaningVi": "ngăn lưu trữ",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "street sign",
+    "meaningVi": "biển chỉ đường",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "toll price",
+    "meaningVi": "phí cầu đường",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "traffic jam",
+    "meaningVi": "tắc đường",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "walk through",
+    "meaningVi": "đi qua, bước qua",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "walking distance",
+    "meaningVi": "quãng đường đi bộ",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "walkway",
+    "meaningVi": "đường dành cho người đi bộ",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "windshield",
+    "meaningVi": "kính chắn gió",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "creation",
+    "meaningVi": "sự sáng tạo, tạo vật",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "motivate",
+    "meaningVi": "thúc đẩy",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "normal",
+    "meaningVi": "tình trạng bình thường, mức bình thường",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "still",
+    "meaningVi": "yên, tĩnh lặng; vẫn còn, thế mà",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "traffic signal",
+    "meaningVi": "tín hiệu giao thông",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "valuable",
+    "meaningVi": "quý giá, có thể định giá được",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "volunteer",
+    "meaningVi": "tình nguyện viên",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "at full speed",
+    "meaningVi": "với vận tốc tối đa",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "clear A from B",
+    "meaningVi": "dọn A khỏi B",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "collide",
+    "meaningVi": "va chạm, xung đột",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "congested",
+    "meaningVi": "chật ních, đông nghịt",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "encounter",
+    "meaningVi": "bắt gặp, chạm trán",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "move forward",
+    "meaningVi": "tiến lên",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "principal",
+    "meaningVi": "chính, chủ yếu",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "public transportation",
+    "meaningVi": "phương tiện giao thông công cộng",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "standing room",
+    "meaningVi": "chỗ đứng",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "steering wheel",
+    "meaningVi": "vô lăng",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "traffic congestion",
+    "meaningVi": "tắc nghẽn giao thông",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be towed away",
+    "meaningVi": "bị kéo đi",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bicycle rack",
+    "meaningVi": "giá đỡ xe đạp",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "carriage",
+    "meaningVi": "cỗ xe, xe ngựa",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fuel-efficient",
+    "meaningVi": "tiết kiệm nhiên liệu",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "navigate",
+    "meaningVi": "lái, dẫn đường",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "overnight express",
+    "meaningVi": "chuyến phát nhanh",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pass by",
+    "meaningVi": "ghé qua",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "passerby",
+    "meaningVi": "người qua đường",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pave",
+    "meaningVi": "lát (đường, sàn)",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pedestrian",
+    "meaningVi": "người đi bộ",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pull into",
+    "meaningVi": "đi vào, rẽ vào",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "sidewalk",
+    "meaningVi": "vỉa hè, lề đường",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "specialist",
+    "meaningVi": "chuyên gia, chuyên viên",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "spoke",
+    "meaningVi": "nan hoa",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "streetcar",
+    "meaningVi": "xe điện",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "towing service",
+    "meaningVi": "dịch vụ kéo xe",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "wagon",
+    "meaningVi": "xe kéo",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "bear",
+    "meaningVi": "mang, vác",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "emphatic",
+    "meaningVi": "nhấn mạnh, mạnh mẽ",
+    "topic": "Giao thông",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "hastily",
+    "meaningVi": "vội vàng, hấp tấp",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "inconveniently",
+    "meaningVi": "bất tiện, phiền phức",
+    "topic": "Giao thông",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "necessitate",
+    "meaningVi": "bắt phải, đòi hỏi phải",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "opposition",
+    "meaningVi": "sự đối lập, sự chống lại",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ridership",
+    "meaningVi": "lượng hành khách",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "surround",
+    "meaningVi": "bao quanh",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "compact car",
+    "meaningVi": "xe hơi hạng nhỏ",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "conform to",
+    "meaningVi": "tuân thủ, làm theo",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "drawbridge",
+    "meaningVi": "cầu rút",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "give off",
+    "meaningVi": "tạo ra, tỏa ra",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "gratuity",
+    "meaningVi": "tiền thưởng",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "ramp",
+    "meaningVi": "đoạn dốc",
+    "topic": "Giao thông",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "refurbish",
+    "meaningVi": "tân trang lại",
+    "topic": "Giao thông",
+    "partOfSpeech": "verb"
+  }
+]

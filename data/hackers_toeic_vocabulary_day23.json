@@ -1,0 +1,1334 @@
+[
+  {
+    "word": "host",
+    "meaningVi": "dẫn (chương trình), đăng cai (tổ chức hội nghị, hoạt động thể thao); chủ nhà, người dẫn chương trình",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "annual",
+    "meaningVi": "hằng năm, thường niên",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "annually",
+    "meaningVi": "hàng năm",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "biannual",
+    "meaningVi": "hai lần một năm",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "biennial",
+    "meaningVi": "hai năm một lần",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "purpose",
+    "meaningVi": "mục đích, ý định",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "purposely",
+    "meaningVi": "chủ định, chủ tâm",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "aim",
+    "meaningVi": "mục đích, mục tiêu",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "enroll",
+    "meaningVi": "ghi danh, đăng ký",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "enrollment",
+    "meaningVi": "sự ghi danh, sự đăng ký",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "register",
+    "meaningVi": "đăng ký",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "sign up",
+    "meaningVi": "đăng ký",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "lecture",
+    "meaningVi": "bài giảng, bài diễn thuyết",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lecturer",
+    "meaningVi": "giảng viên",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "participant",
+    "meaningVi": "người tham gia/tham dự",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "participate",
+    "meaningVi": "tham dự, tham gia",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "participation",
+    "meaningVi": "sự tham dự, sự góp phần",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "attendee",
+    "meaningVi": "người tham dự",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "attend",
+    "meaningVi": "dự, có mặt",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "attendance",
+    "meaningVi": "sự tham dự, sự có mặt",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "attendant",
+    "meaningVi": "người phục vụ, tiếp viên",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "encourage",
+    "meaningVi": "khuyến khích, cổ vũ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "promote",
+    "meaningVi": "khuyến khích",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "leave",
+    "meaningVi": "sự nghỉ phép; rời đi, để lại",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "absence",
+    "meaningVi": "sự vắng mặt, sự nghỉ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "recommendation",
+    "meaningVi": "sự giới thiệu, khuyến nghị, ý kiến đề xuất",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "conference",
+    "meaningVi": "cuộc họp, hội nghị",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "schedule",
+    "meaningVi": "xếp lịch, lên lịch; lịch trình, thời gian biểu, bảng liệt kê (giá cả, chi phí)",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "include",
+    "meaningVi": "bao gồm",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "inclusion",
+    "meaningVi": "sự kể vào, cái gồm vào",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inclusive",
+    "meaningVi": "gồm cả, tính toàn bộ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "contain",
+    "meaningVi": "chứa",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "exclude",
+    "meaningVi": "ngoại trừ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "consist",
+    "meaningVi": "cấu thành bởi",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "result",
+    "meaningVi": "kết quả; dẫn đến, đưa đến, kết quả là",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "register",
+    "meaningVi": "đăng ký, ghi vào sổ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "registration",
+    "meaningVi": "sự đăng ký",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "require",
+    "meaningVi": "đòi hỏi, yêu cầu",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "requirement",
+    "meaningVi": "sự đòi hỏi, yêu cầu",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "required",
+    "meaningVi": "cần thiết",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "call for",
+    "meaningVi": "yêu cầu",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "entail",
+    "meaningVi": "đòi hỏi",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "grateful",
+    "meaningVi": "biết ơn",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "overtime",
+    "meaningVi": "giờ làm thêm; quá giờ, ngoài giờ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "responsibility",
+    "meaningVi": "trách nhiệm",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "responsible",
+    "meaningVi": "chịu trách nhiệm, có trách nhiệm",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "assent",
+    "meaningVi": "tán thành, đồng ý; sự tán thành, sự phê chuẩn",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "regard",
+    "meaningVi": "coi như, xem như; sự quan tâm, sự để ý",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "regarding",
+    "meaningVi": "về, đối với",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "view",
+    "meaningVi": "xem là, coi là",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "tentative",
+    "meaningVi": "chưa chắc chắn, ướm thử",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "tentatively",
+    "meaningVi": "ngập ngừng, thăm dò",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "temporary",
+    "meaningVi": "nhất thời",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "indefinite",
+    "meaningVi": "mập mờ, không dứt khoát",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "welcome",
+    "meaningVi": "được hoan nghênh, được chào đón; chào đón, hoan nghênh",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "welcoming",
+    "meaningVi": "nồng ấm, ân cần",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "function",
+    "meaningVi": "chức năng, nhiệm vụ; thực hiện chức năng",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "functional",
+    "meaningVi": "có chức năng, hoạt động",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "functionality",
+    "meaningVi": "chức năng, tính năng",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "commence",
+    "meaningVi": "bắt đầu, khởi đầu",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "commencement",
+    "meaningVi": "sự khởi đầu",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "begin",
+    "meaningVi": "bắt đầu",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "objective",
+    "meaningVi": "mục tiêu, mục đích; khách quan",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "object",
+    "meaningVi": "phản đối; đối tượng",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "objection",
+    "meaningVi": "sự phản đối",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "objectivity",
+    "meaningVi": "tính khách quan",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "excited",
+    "meaningVi": "hào hứng, phấn khích",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "excite",
+    "meaningVi": "kích thích",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "exciting",
+    "meaningVi": "lý thú, làm say mê",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reimbursement",
+    "meaningVi": "sự hoàn tiền, sự trả lại",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reimburse",
+    "meaningVi": "hoàn lại, trả lại",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "treatment",
+    "meaningVi": "sự đối xử/cư xử",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "treat",
+    "meaningVi": "đối xử; buổi chiêu đãi",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "honor",
+    "meaningVi": "niềm vinh dự, danh dự; tôn trọng, trao vinh dự",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "emphasize",
+    "meaningVi": "nhấn mạnh",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "emphasis",
+    "meaningVi": "sự nhấn mạnh",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stress",
+    "meaningVi": "nhấn mạnh",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "entry",
+    "meaningVi": "sự đi vào, mục ghi vào; người dự thi, bài dự thi",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "enter",
+    "meaningVi": "đi vào",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "entrance",
+    "meaningVi": "lối vào",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "submission",
+    "meaningVi": "sự nộp/đề trình",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "bonus",
+    "meaningVi": "tiền thưởng, lợi tức thêm vào",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "salary",
+    "meaningVi": "lương",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "earn",
+    "meaningVi": "kiếm được (tiền); đạt được (danh tiếng)",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "earnings",
+    "meaningVi": "tiền kiếm được",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "gain",
+    "meaningVi": "giành được, đạt được",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "arise",
+    "meaningVi": "xuất hiện, phát sinh, xảy ra",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "happen",
+    "meaningVi": "xảy ra",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "labor",
+    "meaningVi": "lao động, nhân công; lao động, làm việc",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "union",
+    "meaningVi": "liên hiệp, hiệp hội, công đoàn",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "existing",
+    "meaningVi": "hiện tại, hiện hành",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "exist",
+    "meaningVi": "tồn tại",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "existence",
+    "meaningVi": "sự tồn tại",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "exploit",
+    "meaningVi": "khai thác, lợi dụng, bóc lột",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "exploitation",
+    "meaningVi": "sự khai thác",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "application",
+    "meaningVi": "đơn xin, sự áp dụng",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "award ceremony",
+    "meaningVi": "lễ trao giải",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "chat",
+    "meaningVi": "chuyện phiếm; tán gẫu",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "clap",
+    "meaningVi": "tiếng vỗ tay; vỗ tay",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fireplace",
+    "meaningVi": "lò sưởi",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "get paid",
+    "meaningVi": "nhận tiền, ăn lương",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "grab",
+    "meaningVi": "chộp lấy, nắm lấy",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "group",
+    "meaningVi": "phân nhóm, gộp thành nhóm",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "hook",
+    "meaningVi": "cái móc; móc vào, treo lên",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "introduction",
+    "meaningVi": "sự giới thiệu, lời giới thiệu",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "learning center",
+    "meaningVi": "trung tâm đào tạo",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "loudspeaker",
+    "meaningVi": "loa phóng thanh",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lounge",
+    "meaningVi": "phòng khách, phòng chờ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "management seminar",
+    "meaningVi": "hội thảo về quản lý",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "smoking section",
+    "meaningVi": "khu vực hút thuốc",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "take a vacation",
+    "meaningVi": "đi nghỉ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "bold",
+    "meaningVi": "táo bạo, liều lĩnh",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "finely",
+    "meaningVi": "đẹp đẽ, tinh xảo",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "friendly",
+    "meaningVi": "thân thiện",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "gentle",
+    "meaningVi": "nhẹ nhàng, lịch thiệp",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "in charge of",
+    "meaningVi": "chịu trách nhiệm về",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "lively",
+    "meaningVi": "sống động, sôi nổi",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "pharmacy",
+    "meaningVi": "hiệu thuốc",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "precise",
+    "meaningVi": "chính xác, tỉ mỉ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "prize",
+    "meaningVi": "giải thưởng; đánh giá cao, quý",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "registration",
+    "meaningVi": "sự đăng ký",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "vacation",
+    "meaningVi": "kỳ nghỉ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "a letter of gratitude",
+    "meaningVi": "bức thư cảm ơn",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "check out",
+    "meaningVi": "mượn (sách ở thư viện)",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "childcare",
+    "meaningVi": "sự chăm sóc trẻ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "don't have the nerve to do",
+    "meaningVi": "không có gan làm gì",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "give a raise",
+    "meaningVi": "tăng lương",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "going away party",
+    "meaningVi": "tiệc chia tay",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "it's about time",
+    "meaningVi": "đã đến lúc",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "it's no use -ing",
+    "meaningVi": "làm gì đó là vô ích",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "job satisfaction",
+    "meaningVi": "sự hài lòng trong công việc",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "just in case",
+    "meaningVi": "phòng trường hợp",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "keep A up to date",
+    "meaningVi": "đảm bảo A luôn được cập nhật",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "know A like the back of one's hand",
+    "meaningVi": "biết rõ A",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "miserable",
+    "meaningVi": "khổ sở, tồi tàn",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "paid leave",
+    "meaningVi": "nghỉ phép có lương",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pick up one's paycheck",
+    "meaningVi": "lấy lương",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pity",
+    "meaningVi": "lòng thương hại, điều đáng tiếc",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "privately",
+    "meaningVi": "riêng tư, cá nhân",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "psychological",
+    "meaningVi": "(thuộc) tâm lý",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "put in some overtime",
+    "meaningVi": "làm thêm giờ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "safety drill",
+    "meaningVi": "diễn tập về an toàn",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sensitivity",
+    "meaningVi": "tính nhạy cảm, độ nhạy",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "show around",
+    "meaningVi": "dẫn đi thăm xung quanh",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "stacks of books",
+    "meaningVi": "chồng sách",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "surprisingly",
+    "meaningVi": "đáng ngạc nhiên",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "take place",
+    "meaningVi": "diễn ra, xảy ra",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take some time off",
+    "meaningVi": "nghỉ một thời gian",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "terribly",
+    "meaningVi": "rất tệ; rất, quá",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "terrific",
+    "meaningVi": "rất tuyệt",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "the next best",
+    "meaningVi": "tốt thứ nhì",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "thrilling",
+    "meaningVi": "cảm động, hồi hộp, ly kỳ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "credit A with B",
+    "meaningVi": "tin tưởng giao B cho A",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "intentionally",
+    "meaningVi": "cố tình, cố ý",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "meanwhile",
+    "meaningVi": "trong lúc đó",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "respectfully",
+    "meaningVi": "kính cẩn, lễ phép",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "sign up",
+    "meaningVi": "đăng ký",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "unused",
+    "meaningVi": "không được dùng, chưa dùng đến",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "be tired of",
+    "meaningVi": "mệt mỏi với, chán",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "biannual",
+    "meaningVi": "hai lần một năm",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "charitable",
+    "meaningVi": "từ thiện, bác ái",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "course of study",
+    "meaningVi": "khóa học",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "depressed",
+    "meaningVi": "phiền muộn, suy nhược",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "extra pay",
+    "meaningVi": "tiền trả thêm, tiền phụ cấp",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "featured speaker",
+    "meaningVi": "diễn giả chính",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "generous",
+    "meaningVi": "hào phóng, rộng lượng",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "laugh away",
+    "meaningVi": "cười để gạt bỏ/xua tan điều gì",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "merit",
+    "meaningVi": "giá trị, công trạng",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "night shift",
+    "meaningVi": "ca đêm",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "occupational safety and health",
+    "meaningVi": "an toàn và vệ sinh lao động",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "overtime allowance",
+    "meaningVi": "phụ cấp làm thêm",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "overtime rate",
+    "meaningVi": "mức lương làm thêm",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "paid vacation",
+    "meaningVi": "kỳ nghỉ có lương",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pay increase",
+    "meaningVi": "sự tăng lương",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pension",
+    "meaningVi": "lương hưu",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "poorly paid",
+    "meaningVi": "được trả lương thấp",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "preservation area",
+    "meaningVi": "khu bảo tồn",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reference number",
+    "meaningVi": "số tham chiếu",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "regional allowance",
+    "meaningVi": "phụ cấp vùng miền",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "regular working hours",
+    "meaningVi": "giờ làm việc bình thường",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "retirement party",
+    "meaningVi": "bữa tiệc kỷ niệm nghỉ hưu",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "retirement plan",
+    "meaningVi": "kế hoạch nghỉ hưu",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "salary and benefits",
+    "meaningVi": "lương và phúc lợi",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sheltered housing",
+    "meaningVi": "mái ấm (dành cho người già và người tàn tật)",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sick leave",
+    "meaningVi": "nghỉ ốm",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "strong-willed",
+    "meaningVi": "cứng cỏi, cương quyết",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "time-off",
+    "meaningVi": "thời gian nghỉ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "welfare",
+    "meaningVi": "phúc lợi",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "work environment",
+    "meaningVi": "môi trường làm việc",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "working condition",
+    "meaningVi": "điều kiện làm việc",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "get reimbursed for",
+    "meaningVi": "được hoàn tiền cho",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "hearty",
+    "meaningVi": "nồng nhiệt, thật tâm",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "kindhearted",
+    "meaningVi": "tốt bụng",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "knock off",
+    "meaningVi": "ngừng, dừng",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "maternity leave",
+    "meaningVi": "nghỉ thai sản",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "misuse",
+    "meaningVi": "sự dùng sai, sự lạm dụng",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "nursery",
+    "meaningVi": "nhà trẻ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "nursing",
+    "meaningVi": "sự chăm sóc bệnh nhân, điều dưỡng",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "chronological",
+    "meaningVi": "theo niên đại, theo trình tự thời gian",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "exhibitor",
+    "meaningVi": "người trưng bày (tại triển lãm)",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "give in",
+    "meaningVi": "nhượng bộ, đầu hàng",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pending",
+    "meaningVi": "trong lúc, cho đến lúc",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "second",
+    "meaningVi": "ủng hộ, tán thành (một ý kiến)",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "citation",
+    "meaningVi": "sự trích dẫn, đoạn trích dẫn",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "commemorate",
+    "meaningVi": "kỷ niệm, tưởng nhớ",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "conjunction",
+    "meaningVi": "sự liên kết",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cut benefits",
+    "meaningVi": "cắt giảm quyền lợi/trợ cấp",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "discriminate",
+    "meaningVi": "phân biệt, đối xử phân biệt",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "distort",
+    "meaningVi": "bóp méo, xuyên tạc",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "flextime",
+    "meaningVi": "thời gian làm việc linh hoạt",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fringe benefits",
+    "meaningVi": "phúc lợi bổ sung",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "goodwill",
+    "meaningVi": "thiện chí, lòng tốt",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "labor costs",
+    "meaningVi": "chi phí nhân công",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "labor dispute",
+    "meaningVi": "tranh chấp lao động",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "off-peak",
+    "meaningVi": "ngoài giờ cao điểm",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "pique",
+    "meaningVi": "sự giận dỗi, sự oán giận",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sabotage",
+    "meaningVi": "sự phá hoại",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "salary review",
+    "meaningVi": "xét lại mức lương",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "severance pay",
+    "meaningVi": "trợ cấp mất việc",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "spry",
+    "meaningVi": "nhanh nhẹn, hoạt bát",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "straightforward",
+    "meaningVi": "thẳng thắn, cởi mở",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "yearn",
+    "meaningVi": "khao khát, mong mỏi",
+    "topic": "Phúc lợi của nhân viên",
+    "partOfSpeech": "verb"
+  }
+]

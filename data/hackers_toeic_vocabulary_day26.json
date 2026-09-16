@@ -1,0 +1,1454 @@
+[
+  {
+    "word": "delinquent",
+    "meaningVi": "không đúng hạn, chậm (trả tiền)",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "delinquency",
+    "meaningVi": "sự trả chậm/nộp chậm",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "delinquently",
+    "meaningVi": "trả muộn, chậm",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "overdue",
+    "meaningVi": "quá hạn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "outstanding",
+    "meaningVi": "chưa trả, chưa thanh toán",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "outdated",
+    "meaningVi": "cổ, lỗi thời",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "regrettably",
+    "meaningVi": "thật đáng tiếc",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "regret",
+    "meaningVi": "hối tiếc, tiếc",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "regrettable",
+    "meaningVi": "đáng tiếc",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "regretfully",
+    "meaningVi": "buồn rầu, hối tiếc",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "balance",
+    "meaningVi": "số dư tài khoản; làm cho cân bằng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "remainder",
+    "meaningVi": "số dư",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "deposit",
+    "meaningVi": "gửi, nộp (tiền ở ngân hàng); tiền gửi, tiền đặt cọc",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "withdraw",
+    "meaningVi": "rút",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "investigation",
+    "meaningVi": "sự điều tra",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "investigate",
+    "meaningVi": "điều tra",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "investigative",
+    "meaningVi": "để điều tra",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "account",
+    "meaningVi": "tài khoản; sự tường thuật, miêu tả; sự lưu tâm; giải thích cho; chiếm (tỷ lệ)",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "accounting",
+    "meaningVi": "việc tính toán, nghề kế toán",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "accountant",
+    "meaningVi": "kế toán viên",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "description",
+    "meaningVi": "sự miêu tả",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "statement",
+    "meaningVi": "báo cáo, bản kê",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "state",
+    "meaningVi": "tuyên bố, phát biểu",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "amount",
+    "meaningVi": "lượng, số lượng, số tiền; lên đến",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "withdrawal",
+    "meaningVi": "sự rút ra",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "previously",
+    "meaningVi": "trước, trước đây",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "previous",
+    "meaningVi": "trước",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "before",
+    "meaningVi": "trước đây",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "earlier",
+    "meaningVi": "sớm",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "due",
+    "meaningVi": "đến hạn; bởi vì, nhờ có, tùy thuộc vào",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "receive",
+    "meaningVi": "nhận, lĩnh, thu",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "receipt",
+    "meaningVi": "biên lai",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reception",
+    "meaningVi": "sự tiếp nhận, sự đón tiếp",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expect",
+    "meaningVi": "trông đợi, dự đoán",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "expectation",
+    "meaningVi": "sự mong chờ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expected",
+    "meaningVi": "được chờ đợi",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "expectedly",
+    "meaningVi": "đúng như dự đoán",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "anticipate",
+    "meaningVi": "dự đoán",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "certificate",
+    "meaningVi": "giấy chứng nhận, bằng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "certification",
+    "meaningVi": "giấy chứng nhận, sự chứng thực",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "certify",
+    "meaningVi": "chứng nhận",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "certified",
+    "meaningVi": "được chứng nhận",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "document",
+    "meaningVi": "giấy tờ, tài liệu; ghi chép, lưu lại thông tin",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "documentary",
+    "meaningVi": "phim tài liệu",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "documentation",
+    "meaningVi": "tài liệu",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "spending",
+    "meaningVi": "sự chi tiêu",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "spend",
+    "meaningVi": "tiêu, dùng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "expense",
+    "meaningVi": "phí tổn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expenditure",
+    "meaningVi": "sự tiêu",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "successfully",
+    "meaningVi": "có kết quả, thành công",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "succeed",
+    "meaningVi": "thành công trong việc gì",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "success",
+    "meaningVi": "sự thành công",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "successful",
+    "meaningVi": "thành công, thành đạt",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "bill",
+    "meaningVi": "gửi hóa đơn, yêu cầu thanh toán; hóa đơn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "charge",
+    "meaningVi": "đòi trả",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "check",
+    "meaningVi": "hóa đơn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pleasure",
+    "meaningVi": "niềm vui, sự hài lòng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "please",
+    "meaningVi": "làm vui lòng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pleased",
+    "meaningVi": "vui, hài lòng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "pleasant",
+    "meaningVi": "dễ chịu, vui vẻ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "unpleasant",
+    "meaningVi": "khó chịu",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "study",
+    "meaningVi": "sự nghiên cứu, sự tìm tòi; học, nghiên cứu",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "research",
+    "meaningVi": "nghiên cứu",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "summary",
+    "meaningVi": "bản tóm tắt",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "summarize",
+    "meaningVi": "tóm tắt",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "temporary",
+    "meaningVi": "tạm thời, nhất thời",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "temporarily",
+    "meaningVi": "tạm thời, nhất thời",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "lower",
+    "meaningVi": "hạ thấp, giảm",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "low",
+    "meaningVi": "thấp",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "raise",
+    "meaningVi": "tăng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "transaction",
+    "meaningVi": "sự giao dịch, thương vụ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "transact",
+    "meaningVi": "giao dịch, giao thương",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "double",
+    "meaningVi": "nhân đôi, tăng gấp đôi; lượng gấp đôi; gấp đôi, kép",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "identification",
+    "meaningVi": "sự nhận dạng, giấy tờ tùy thân",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "identify",
+    "meaningVi": "nhận diện",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "identity",
+    "meaningVi": "danh tính",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dissatisfaction",
+    "meaningVi": "sự không hài lòng, sự bất mãn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dissatisfy",
+    "meaningVi": "không làm thỏa mãn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "satisfaction",
+    "meaningVi": "sự thỏa mãn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "in common",
+    "meaningVi": "chung, giống nhau",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "commonly",
+    "meaningVi": "thông thường",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "interest",
+    "meaningVi": "sự quan tâm; lợi ích; tiền lãi",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "interested",
+    "meaningVi": "thích thú, quan tâm",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "interesting",
+    "meaningVi": "thú vị",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "reject",
+    "meaningVi": "từ chối, bác bỏ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "rejection",
+    "meaningVi": "sự từ chối",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "relation",
+    "meaningVi": "mối quan hệ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "related",
+    "meaningVi": "có quan hệ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "tentatively",
+    "meaningVi": "ngập ngừng, không dứt khoát",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "tentative",
+    "meaningVi": "ướm thử",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "alternatively",
+    "meaningVi": "hoặc, như một sự lựa chọn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "alternative",
+    "meaningVi": "luân phiên nhau",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "alternate",
+    "meaningVi": "xen kẽ; lần lượt kế tiếp nhau",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "alternation",
+    "meaningVi": "sự luân phiên",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "attentive",
+    "meaningVi": "chăm chú, lưu tâm",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "attend",
+    "meaningVi": "tham dự",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "attention",
+    "meaningVi": "sự chú ý",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inattentive",
+    "meaningVi": "không chú ý",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "convert",
+    "meaningVi": "đổi, biến đổi, chuyển",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "conversion",
+    "meaningVi": "sự biến đổi, sự chuyển",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "heavily",
+    "meaningVi": "nặng, nặng nề",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "heavy",
+    "meaningVi": "nặng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "loan",
+    "meaningVi": "sự cho vay, khoản vay",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unexpected",
+    "meaningVi": "không ngờ, không mong đợi",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "unexpectedly",
+    "meaningVi": "bất ngờ, đột ngột",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "cash",
+    "meaningVi": "đổi sang tiền mặt; tiền giấy",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "mortgage",
+    "meaningVi": "khoản thế chấp, việc vay thế chấp",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "payable",
+    "meaningVi": "có thể trả, phải trả",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "pay",
+    "meaningVi": "trả",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "payment",
+    "meaningVi": "sự trả tiền",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "personal",
+    "meaningVi": "riêng, cá nhân",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "person",
+    "meaningVi": "người",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "personality",
+    "meaningVi": "tính cách",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "personify",
+    "meaningVi": "nhân hóa",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "personally",
+    "meaningVi": "đích thân, đối với tôi",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "at the earliest",
+    "meaningVi": "sớm nhất là",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "at the same time",
+    "meaningVi": "cùng lúc",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "at this point",
+    "meaningVi": "lúc này, ngay bây giờ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "automatic payment",
+    "meaningVi": "thanh toán tự động",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "banker",
+    "meaningVi": "chủ/giám đốc ngân hàng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "banking",
+    "meaningVi": "công việc ngân hàng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be used to -ing",
+    "meaningVi": "quen với điều gì",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "by the end of the year",
+    "meaningVi": "đến cuối năm",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "by this time",
+    "meaningVi": "vào lúc này",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "clerk",
+    "meaningVi": "nhân viên",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cozy",
+    "meaningVi": "ấm cúng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "credit card number",
+    "meaningVi": "số thẻ tín dụng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "float",
+    "meaningVi": "nổi, thả nổi",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "for a short time",
+    "meaningVi": "trong một thời gian ngắn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "gesture",
+    "meaningVi": "cử chỉ, động tác",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "hand",
+    "meaningVi": "bàn tay; trao tay, chuyển giao",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "next to",
+    "meaningVi": "bên cạnh, kế bên",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "password",
+    "meaningVi": "mật khẩu",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "coin",
+    "meaningVi": "tiền xu",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "evening news",
+    "meaningVi": "bản tin tối",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "generously",
+    "meaningVi": "rộng lượng, hào phóng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "in addition",
+    "meaningVi": "ngoài ra, bên cạnh đó",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "in addition to",
+    "meaningVi": "ngoài việc, bên cạnh việc",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "in short",
+    "meaningVi": "tóm lại",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "thankful",
+    "meaningVi": "biết ơn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "unnecessary",
+    "meaningVi": "không cần thiết",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "useful",
+    "meaningVi": "hữu dụng, có ích",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "alternate",
+    "meaningVi": "xen kẽ, luân phiên",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "awfully",
+    "meaningVi": "khủng khiếp, vô cùng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "bank loan",
+    "meaningVi": "khoản vay ngân hàng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "bank teller",
+    "meaningVi": "giao dịch viên ngân hàng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be amazed at",
+    "meaningVi": "kinh ngạc, sửng sốt với",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be caught in",
+    "meaningVi": "bị mắc, bị kẹt trong",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be spread out",
+    "meaningVi": "được trải ra",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "every other day",
+    "meaningVi": "cứ hai ngày (một lần), cứ cách ngày",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "flawed",
+    "meaningVi": "có vết, có lỗi",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "foreign currency",
+    "meaningVi": "ngoại tệ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "gaze into",
+    "meaningVi": "nhìn chăm chú vào",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "get a loan",
+    "meaningVi": "được vay tiền",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "give out",
+    "meaningVi": "phân phối",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "glance at",
+    "meaningVi": "liếc nhìn, xem qua",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "go wrong with",
+    "meaningVi": "sai lầm với",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "hang out",
+    "meaningVi": "đi chơi, giao du",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "have sb around",
+    "meaningVi": "đón tiếp ai",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "if possible",
+    "meaningVi": "nếu có thể",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "if you insist",
+    "meaningVi": "nếu bạn vẫn muốn/nhất quyết",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "i'll bet",
+    "meaningVi": "tôi cá là",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "locally",
+    "meaningVi": "cục bộ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "pay off",
+    "meaningVi": "trả hết nợ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "perhaps",
+    "meaningVi": "có lẽ, có thể",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "put in",
+    "meaningVi": "gửi vào, đầu tư",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "savings",
+    "meaningVi": "tiền gửi, khoản tiết kiệm",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "short-term deposit",
+    "meaningVi": "tiền gửi ngắn hạn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "the following day",
+    "meaningVi": "ngày hôm sau",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "until the first of next month",
+    "meaningVi": "cho đến đầu tháng sau",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "across from",
+    "meaningVi": "đối diện với",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "alarming",
+    "meaningVi": "làm lo sợ, gây hốt hoảng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "anymore",
+    "meaningVi": "nữa",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "at a time",
+    "meaningVi": "cùng lúc, một lần",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "courteously",
+    "meaningVi": "lịch sự, nhã nhặn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "indeed",
+    "meaningVi": "quả thực, thật vậy",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "otherwise",
+    "meaningVi": "khác, khác đi; nếu không thì",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "owing to",
+    "meaningVi": "do, bởi vì",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "partial",
+    "meaningVi": "từng phần, thiên vị",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "pay out",
+    "meaningVi": "trả tiền, xuất tiền trả",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "receptive",
+    "meaningVi": "dễ tiếp thu, dễ lĩnh hội",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "simplify",
+    "meaningVi": "đơn giản hóa",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "someday",
+    "meaningVi": "một ngày nào đó, rồi đây",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "turn down",
+    "meaningVi": "từ chối, bác bỏ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "twofold",
+    "meaningVi": "gấp đôi, gồm hai phần",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "account payable",
+    "meaningVi": "khoản phải trả",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "bank account",
+    "meaningVi": "tài khoản ngân hàng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be highly regarded",
+    "meaningVi": "được đánh giá cao, được coi trọng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be of particular interest to",
+    "meaningVi": "là mối quan tâm đặc biệt đối với",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "billing information",
+    "meaningVi": "thông tin hóa đơn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "credit",
+    "meaningVi": "tín dụng, sự cho nợ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "creditor",
+    "meaningVi": "chủ nợ, người cho vay",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "currency",
+    "meaningVi": "tiền tệ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "debit card",
+    "meaningVi": "thẻ ghi nợ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "debt",
+    "meaningVi": "nợ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expiration date",
+    "meaningVi": "ngày đáo hạn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "financial history",
+    "meaningVi": "lịch sử tài chính",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "for the sake of",
+    "meaningVi": "vì lợi ích của",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "forge",
+    "meaningVi": "giả mạo",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "forgery",
+    "meaningVi": "sự giả mạo, chữ ký/giấy tờ giả mạo",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "forthcoming",
+    "meaningVi": "sắp tới",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "midtown",
+    "meaningVi": "trung tâm thành phố",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "owe",
+    "meaningVi": "nợ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "pin",
+    "meaningVi": "mã pin (mã số định danh cá nhân)",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pop up",
+    "meaningVi": "bật lên, xuất hiện bất ngờ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "public holiday",
+    "meaningVi": "ngày nghỉ lễ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reluctant",
+    "meaningVi": "do dự, miễn cưỡng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "requisition",
+    "meaningVi": "sự yêu cầu, lệnh",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "scrutinize",
+    "meaningVi": "rà soát, xem xét kỹ lưỡng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "sustain",
+    "meaningVi": "chống đỡ, chịu đựng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be held up",
+    "meaningVi": "bị hoãn lại",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "crash",
+    "meaningVi": "sự phá sản, sự sụp đổ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "make a withdrawal",
+    "meaningVi": "rút tiền",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "on loan",
+    "meaningVi": "cho vay, cho mượn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "overdrawn",
+    "meaningVi": "rút quá hạn mức, thấu chi",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "take out a loan",
+    "meaningVi": "vay tiền",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take out insurance on",
+    "meaningVi": "mua bảo hiểm cho",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "accrue",
+    "meaningVi": "dồn lại, tích lũy",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "credible",
+    "meaningVi": "đáng tin",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "curb",
+    "meaningVi": "kiểm chế, hạn chế; sự kiểm chế",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "redemption",
+    "meaningVi": "sự trả hết nợ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "remit",
+    "meaningVi": "gửi tiền, miễn, xóa (nợ, hình phạt)",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "secured",
+    "meaningVi": "đảm bảo, chắc chắn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "belatedly",
+    "meaningVi": "chậm, muộn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "bounce",
+    "meaningVi": "(séc) bị trả về",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "cluster",
+    "meaningVi": "bó, cụm, đàn, bầy",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "collateral",
+    "meaningVi": "tài sản ký quỹ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "confiscate",
+    "meaningVi": "tịch thu, sung công",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "contender",
+    "meaningVi": "đối thủ, địch thủ",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "counterfeit",
+    "meaningVi": "vật giả mạo, đồ giả",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "credit money to one's account",
+    "meaningVi": "chuyển tiền vào tài khoản của",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "deposit slip",
+    "meaningVi": "phiếu nộp tiền",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "deterrent",
+    "meaningVi": "sự ngăn ngừa, biện pháp ngăn chặn",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "direct deposit",
+    "meaningVi": "tiền gửi trực tiếp",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "draw a check",
+    "meaningVi": "viết séc để lĩnh tiền",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fortnight",
+    "meaningVi": "hai tuần, mười lăm ngày",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "on standby",
+    "meaningVi": "ở chế độ chờ, sẵn sàng",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "spurious",
+    "meaningVi": "giả, giả mạo",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "trust company",
+    "meaningVi": "công ty tín thác",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "trustee",
+    "meaningVi": "người được ủy thác",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "wire money to",
+    "meaningVi": "chuyển tiền cho",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "wire transfer",
+    "meaningVi": "điện chuyển tiền",
+    "topic": "Ngân hàng",
+    "partOfSpeech": "noun"
+  }
+]

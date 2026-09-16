@@ -1,0 +1,1412 @@
+[
+  {
+    "word": "lax",
+    "meaningVi": "không cẩn thận, không chú ý, thiếu nghiêm túc",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "negligent",
+    "meaningVi": "cẩu thả",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "procrastinate",
+    "meaningVi": "trì hoãn, chần chừ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "procrastination",
+    "meaningVi": "sự trì hoãn",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "hurry",
+    "meaningVi": "nhanh",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "hasten",
+    "meaningVi": "nhanh",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "combined",
+    "meaningVi": "được kết hợp, chung, tổng hợp",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "combine",
+    "meaningVi": "kết hợp",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "combination",
+    "meaningVi": "sự kết hợp",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "joint",
+    "meaningVi": "chung, được ghép lại, nối lại",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "accomplish",
+    "meaningVi": "hoàn thành, làm xong, đạt được, có đủ tài năng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "accomplishment",
+    "meaningVi": "sự hoàn thành",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "accomplished",
+    "meaningVi": "đã hoàn thành, trọn vẹn",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "achieve",
+    "meaningVi": "đạt được",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fulfill",
+    "meaningVi": "làm trọn vẹn",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "voluntarily",
+    "meaningVi": "tự nguyện, tình nguyện",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "voluntary",
+    "meaningVi": "tự nguyện",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "volunteer",
+    "meaningVi": "tình nguyện viên",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "grudgingly",
+    "meaningVi": "miễn cưỡng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "undertake",
+    "meaningVi": "đảm nhận, tiếp quản",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "assume",
+    "meaningVi": "cho rằng, giả sử (là đúng); đảm đương, gánh vác",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "assumption",
+    "meaningVi": "sự giả định",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "presume",
+    "meaningVi": "cho là, coi như là",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take on",
+    "meaningVi": "đảm nhiệm, gánh vác",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "occasionally",
+    "meaningVi": "thỉnh thoảng, đôi khi",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "occasion",
+    "meaningVi": "dịp",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "occasional",
+    "meaningVi": "thỉnh thoảng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "employee",
+    "meaningVi": "nhân viên, người lao động",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "assist",
+    "meaningVi": "trợ giúp, hỗ trợ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "assistant",
+    "meaningVi": "trợ lý",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "assistance",
+    "meaningVi": "sự giúp đỡ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "satisfied",
+    "meaningVi": "hài lòng, thỏa mãn",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "manner",
+    "meaningVi": "cách, lối; thái độ, cử chỉ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "responsible",
+    "meaningVi": "có trách nhiệm, chịu trách nhiệm về",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "responsibility",
+    "meaningVi": "trách nhiệm",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "responsive",
+    "meaningVi": "phản ứng nhanh, đáp lại nhiệt tình",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "conduct",
+    "meaningVi": "tiến hành, chỉ đạo, điều khiển; sự thi hành",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "carry out",
+    "meaningVi": "thi hành, thực hiện",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "perform",
+    "meaningVi": "thi hành, thực hiện",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "adjust",
+    "meaningVi": "điều chỉnh, làm cho thích hợp",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "adjustment",
+    "meaningVi": "sự điều chỉnh",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "adjustable",
+    "meaningVi": "có thể điều chỉnh được",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "adapt",
+    "meaningVi": "sửa lại cho phù hợp",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "personnel",
+    "meaningVi": "nhân viên, công chức",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "agree",
+    "meaningVi": "đồng ý",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "agreement",
+    "meaningVi": "sự đồng thuận, thỏa thuận",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "supervise",
+    "meaningVi": "giám sát",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "coworker",
+    "meaningVi": "đồng nghiệp",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "direct",
+    "meaningVi": "hướng dẫn, chỉ đạo",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "direction",
+    "meaningVi": "sự chỉ dẫn, chỉ thị",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "director",
+    "meaningVi": "người hướng dẫn, đạo diễn, giám đốc",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "directly",
+    "meaningVi": "trực tiếp",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "confidential",
+    "meaningVi": "bí mật, cẩn mật, tuyệt mật",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "confidentiality",
+    "meaningVi": "sự cẩn mật",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "confidentially",
+    "meaningVi": "một cách cẩn mật",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "classified",
+    "meaningVi": "bí mật, kín đáo",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "secret",
+    "meaningVi": "bí mật, kín đáo",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "assign",
+    "meaningVi": "phân công, bổ nhiệm",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "assigned",
+    "meaningVi": "được giao",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "assignment",
+    "meaningVi": "nhiệm vụ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "leading",
+    "meaningVi": "dẫn đầu, tiên phong, hàng đầu",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "formal",
+    "meaningVi": "trang trọng, chính thức",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "remove",
+    "meaningVi": "xóa, dẹp; đuổi, cách chức",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "collect",
+    "meaningVi": "thu thập, tập hợp",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "collective",
+    "meaningVi": "tập thể, chung",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "coordinate",
+    "meaningVi": "điều phối, kết hợp",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "coordinator",
+    "meaningVi": "điều phối viên, người phụ trách",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "coordination",
+    "meaningVi": "sự phối hợp",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "hardly",
+    "meaningVi": "hiếm khi, khó khăn, hầu như không",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "abstract",
+    "meaningVi": "trừu tượng, mơ hồ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "directory",
+    "meaningVi": "danh bạ, sổ địa chỉ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "accountable",
+    "meaningVi": "chịu trách nhiệm, có thể giải thích được",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "accountability",
+    "meaningVi": "trách nhiệm giải trình",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "skillfully",
+    "meaningVi": "thành thạo, khéo léo",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "skillful",
+    "meaningVi": "đầy kỹ năng, thành thạo",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "exclusive",
+    "meaningVi": "riêng biệt, độc quyền",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "intention",
+    "meaningVi": "ý định, mục đích, ý muốn",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "intent",
+    "meaningVi": "ý định, mục đích",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "intend",
+    "meaningVi": "dự định, định",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "intentional",
+    "meaningVi": "cố ý, có chủ ý",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "intently",
+    "meaningVi": "chăm chú",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "transform",
+    "meaningVi": "biến đổi, thay đổi",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "transformation",
+    "meaningVi": "sự biến đổi",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "respectful",
+    "meaningVi": "tôn trọng, lễ phép, kính cẩn",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "respect",
+    "meaningVi": "tôn trọng, đánh giá cao",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "respectfully",
+    "meaningVi": "một cách kính cẩn",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "respectable",
+    "meaningVi": "đáng kính",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "duplicate",
+    "meaningVi": "bản sao",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "copy",
+    "meaningVi": "bản sao",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "original",
+    "meaningVi": "nguyên bản",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "contrary",
+    "meaningVi": "sự trái ngược, điều ngược lại",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "disturbing",
+    "meaningVi": "làm nhiễu loạn, làm xáo trộn",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "disturb",
+    "meaningVi": "làm phiền",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "disturbance",
+    "meaningVi": "sự làm phiền",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "engage",
+    "meaningVi": "tham gia, cam kết, thu hút",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "engagement",
+    "meaningVi": "sự hứa hẹn, sự cam kết",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "engaging",
+    "meaningVi": "cuốn hút, duyên dáng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "foster",
+    "meaningVi": "thúc đẩy, bồi dưỡng, bồi đắp",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "enlarge",
+    "meaningVi": "mở rộng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "neutrality",
+    "meaningVi": "tính chất trung lập, thái độ trung lập",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "neutral",
+    "meaningVi": "trung lập",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "neutrally",
+    "meaningVi": "một cách trung lập",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "widely",
+    "meaningVi": "rộng, nhiều, xa",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "wide",
+    "meaningVi": "rộng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "width",
+    "meaningVi": "bề rộng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "widen",
+    "meaningVi": "mở rộng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "widening",
+    "meaningVi": "sự mở rộng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "bookcase",
+    "meaningVi": "kệ sách, tủ sách",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "bookshelf",
+    "meaningVi": "giá sách",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "case",
+    "meaningVi": "ca, trường hợp",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "central office",
+    "meaningVi": "văn phòng trung tâm",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "copy machine",
+    "meaningVi": "máy photocopy",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fax",
+    "meaningVi": "máy fax",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "file folder",
+    "meaningVi": "thư mục, tập tin",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "greet",
+    "meaningVi": "chào hỏi",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "handwriting",
+    "meaningVi": "chữ viết tay",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "keypad",
+    "meaningVi": "bàn phím",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "knife",
+    "meaningVi": "con dao",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "log on to",
+    "meaningVi": "đăng nhập vào",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "online",
+    "meaningVi": "trực tuyến, trên mạng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "photocopier",
+    "meaningVi": "máy photocopy",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "photocopy",
+    "meaningVi": "bản sao; sao chép",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "print out",
+    "meaningVi": "in ra",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "right away",
+    "meaningVi": "ngay, ngay lập tức",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "spell",
+    "meaningVi": "đánh vần, đọc chính tả",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "wrap",
+    "meaningVi": "bọc",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fold",
+    "meaningVi": "gấp",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "least",
+    "meaningVi": "ít nhất, nhỏ nhất",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "paper",
+    "meaningVi": "giấy",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "planning",
+    "meaningVi": "việc lập kế hoạch",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "post",
+    "meaningVi": "đăng lên, dán lên; gửi thư (qua đường bưu điện)",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "press the button",
+    "meaningVi": "nhấn nút",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "server",
+    "meaningVi": "người phục vụ, máy chủ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "store opening",
+    "meaningVi": "khai trương cửa hàng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "task",
+    "meaningVi": "nhiệm vụ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be satisfied with",
+    "meaningVi": "hài lòng với",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be seated",
+    "meaningVi": "được xếp chỗ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be surrounded by",
+    "meaningVi": "được bao quanh bởi",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "business contacts",
+    "meaningVi": "liên hệ công việc",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "chairperson",
+    "meaningVi": "chủ tịch",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "copy editor",
+    "meaningVi": "biên tập viên bản thảo",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "deep end",
+    "meaningVi": "tận cùng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "double-sided",
+    "meaningVi": "hai mặt",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "drawer",
+    "meaningVi": "ngăn kéo",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "get one's approval",
+    "meaningVi": "nhận được sự chấp thuận của ai đó",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "halfway",
+    "meaningVi": "ở giữa; nửa chừng, nửa vời",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "hand over",
+    "meaningVi": "bàn giao",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "in a pile",
+    "meaningVi": "thành chồng, thành đống",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "It could have been worse.",
+    "meaningVi": "Nó đã có thể tệ hơn.",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "just in time",
+    "meaningVi": "vừa kịp giờ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "literacy",
+    "meaningVi": "sự biết đọc, biết viết",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "litter",
+    "meaningVi": "lựa chọn; nhường chỗ cho",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "make a selection",
+    "meaningVi": "lựa chọn",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make room for",
+    "meaningVi": "nhường chỗ cho",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "out of paper",
+    "meaningVi": "hết giấy",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "raise one's hand",
+    "meaningVi": "giơ tay",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "report a problem",
+    "meaningVi": "báo lỗi",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "sort",
+    "meaningVi": "loại; sắp xếp",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "stationery",
+    "meaningVi": "văn phòng phẩm",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "take another look",
+    "meaningVi": "nhìn lại một lần nữa",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take A out",
+    "meaningVi": "đưa A ra",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "typewriter",
+    "meaningVi": "máy đánh chữ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "work in groups",
+    "meaningVi": "làm việc theo nhóm",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "writing pad",
+    "meaningVi": "tập giấy viết, sổ tay",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "anticipation",
+    "meaningVi": "sự đoán trước, sự mong đợi",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "automobile",
+    "meaningVi": "xe ô tô",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be asked to do",
+    "meaningVi": "được yêu cầu làm gì",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be paid for",
+    "meaningVi": "được trả tiền cho",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "be qualified for",
+    "meaningVi": "đủ điều kiện cho",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "casual",
+    "meaningVi": "không chính thức, giản dị",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "draft",
+    "meaningVi": "phác thảo, dự thảo; dự thảo",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "draw on",
+    "meaningVi": "dựa vào",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "excuse",
+    "meaningVi": "lý do, lời bào chữa; tha thứ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "head office",
+    "meaningVi": "trụ sở chính",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "in anticipation of",
+    "meaningVi": "phòng khi",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "in light of",
+    "meaningVi": "bởi vì",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "instrument",
+    "meaningVi": "dụng cụ, công cụ, nhạc cụ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "popularly",
+    "meaningVi": "phổ biến, đại chúng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "regarding",
+    "meaningVi": "về, đối với",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "preposition"
+  },
+  {
+    "word": "routinely",
+    "meaningVi": "thông thường, thường lệ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "supplementary",
+    "meaningVi": "bổ sung, phụ thêm vào",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "work overtime",
+    "meaningVi": "làm việc ngoài giờ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "workplace",
+    "meaningVi": "nơi làm việc",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "acting",
+    "meaningVi": "quyền, thay quyền; sự thủ vai",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "be full of",
+    "meaningVi": "chứa đầy",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "convert A to B",
+    "meaningVi": "chuyển đổi A thành B",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "count on",
+    "meaningVi": "tin vào, trông cậy vào",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "do one's best",
+    "meaningVi": "làm hết sức",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fill with",
+    "meaningVi": "lấp đầy bởi",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "get along with",
+    "meaningVi": "hòa đồng với",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "go down the steps",
+    "meaningVi": "đi xuống cầu thang",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "key to success",
+    "meaningVi": "chìa khóa dẫn tới thành công",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lose one's temper",
+    "meaningVi": "tức giận, mất bình tĩnh",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make a copy",
+    "meaningVi": "sao chép",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "obsess about",
+    "meaningVi": "ám ảnh về",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "overtime hours",
+    "meaningVi": "giờ làm thêm",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "personal effects",
+    "meaningVi": "tài sản cá nhân, đồ dùng cá nhân",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reunion",
+    "meaningVi": "cuộc hội họp, sự họp nhất",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "sales representative",
+    "meaningVi": "đại diện bán hàng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "seamless",
+    "meaningVi": "không có rắc rối, suôn sẻ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "submit A to B",
+    "meaningVi": "gửi A cho B",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "succeed in -ing",
+    "meaningVi": "thành công trong...",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "time-consuming",
+    "meaningVi": "tốn thời gian",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "bookkeeping",
+    "meaningVi": "công việc kế toán",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "have one's hands full",
+    "meaningVi": "rất bận",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "make an outside call",
+    "meaningVi": "gọi điện thoại ra ngoài",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "motivation",
+    "meaningVi": "động lực",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "newly listed",
+    "meaningVi": "mới vào danh sách",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "prioritize",
+    "meaningVi": "dành ưu tiên",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "sit in alternate seats",
+    "meaningVi": "ngồi kế tiếp nhau",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "written authorization",
+    "meaningVi": "văn bản chấp thuận",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "written consent",
+    "meaningVi": "văn bản thỏa thuận",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "acquaintance",
+    "meaningVi": "người quen",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dimension",
+    "meaningVi": "kích thước, cỡ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "directive",
+    "meaningVi": "chỉ dẫn, hướng dẫn",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "discerning",
+    "meaningVi": "thông minh, có học thức",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "elegantly",
+    "meaningVi": "thanh lịch, tao nhã",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "expectant",
+    "meaningVi": "có tính chất mong chờ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "invaluable",
+    "meaningVi": "vô giá",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "propel",
+    "meaningVi": "đẩy đi",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "realization",
+    "meaningVi": "sự thực hiện, sự nhận thức rõ",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "recline",
+    "meaningVi": "dựa vào, ngả vào",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "repository",
+    "meaningVi": "kho, chỗ chứa",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "respective",
+    "meaningVi": "tôn trọng, tôn kính",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "spontaneously",
+    "meaningVi": "tự ý, tự phát",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "trivial",
+    "meaningVi": "tầm thường, không quan trọng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "turn in",
+    "meaningVi": "trả lại, nộp lại",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "ambiance",
+    "meaningVi": "môi trường, đặc điểm, không khí (ở một nơi nào đó)",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "aspiration",
+    "meaningVi": "nguyện vọng, khát vọng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "creditable",
+    "meaningVi": "vẻ vang, đáng khen ngợi",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "eminent",
+    "meaningVi": "xuất sắc, xuất chúng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "endeavor",
+    "meaningVi": "sự nỗ lực, sự cố gắng",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "entrust A with B",
+    "meaningVi": "giao phó B cho A",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "on edge",
+    "meaningVi": "căng thẳng, buồn chán",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "reach one's full potential",
+    "meaningVi": "phát huy tối đa tiềm năng của ai đó",
+    "topic": "Công việc văn phòng (2)",
+    "partOfSpeech": "verb"
+  }
+]

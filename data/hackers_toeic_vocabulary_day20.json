@@ -1,0 +1,710 @@
+[
+  {
+    "word": "audit",
+    "meaningVi": "kiểm tra sổ sách, kiểm toán",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "auditor",
+    "meaningVi": "kiểm toán viên",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "accounting",
+    "meaningVi": "sự tính toán (tiền nong, sổ sách), kế toán",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "budget",
+    "meaningVi": "ngân sách",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "financial",
+    "meaningVi": "(thuộc) tài chính",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "finance",
+    "meaningVi": "tài chính; cấp tiền, đầu tư",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "curtail",
+    "meaningVi": "cắt bớt, rút ngắn",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "curtailment",
+    "meaningVi": "sự cắt xén",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "deficit",
+    "meaningVi": "sự thâm hụt, số tiền thâm hụt",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "shortfall",
+    "meaningVi": "sự thâm hụt",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "surplus",
+    "meaningVi": "số thặng dư",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "recently",
+    "meaningVi": "gần đây",
+    "topic": "Kế toán",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "recent",
+    "meaningVi": "mới, gần đây",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "substantially",
+    "meaningVi": "đáng kể, nhìn chung",
+    "topic": "Kế toán",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "substantial",
+    "meaningVi": "lớn, quan trọng",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "committee",
+    "meaningVi": "ủy ban",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "frequently",
+    "meaningVi": "thường xuyên",
+    "topic": "Kế toán",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "capability",
+    "meaningVi": "khả năng, năng lực",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "proceeds",
+    "meaningVi": "tiền thu về, thu nhập, doanh thu",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reimburse",
+    "meaningVi": "hoàn trả, trả lại",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "reimbursement",
+    "meaningVi": "sự hoàn trả",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "considerably",
+    "meaningVi": "đáng kể",
+    "topic": "Kế toán",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "adequate",
+    "meaningVi": "đủ, đầy đủ",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "adequacy",
+    "meaningVi": "sự đầy đủ",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "adequately",
+    "meaningVi": "tương xứng, thỏa đáng",
+    "topic": "Kế toán",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "total",
+    "meaningVi": "tổng, toàn bộ; tổng số, toàn bộ số lượng; tính tổng",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "totally",
+    "meaningVi": "hoàn toàn",
+    "topic": "Kế toán",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "allocate",
+    "meaningVi": "phân bổ, chia phần",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "allocation",
+    "meaningVi": "sự phân bổ",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inspector",
+    "meaningVi": "thanh tra viên",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "preferred",
+    "meaningVi": "được thích hơn, được ưu ái hơn",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "prefer",
+    "meaningVi": "thích hơn",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "preference",
+    "meaningVi": "sự thích hơn",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "quarter",
+    "meaningVi": "quý; một phần tư",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "quarterly",
+    "meaningVi": "hàng quý, ba tháng một lần",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "interrupt",
+    "meaningVi": "làm gián đoạn, ngắt lời",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "browse",
+    "meaningVi": "đọc lướt qua, xem qua",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "prompt",
+    "meaningVi": "ngay lập tức, nhanh chóng; thúc đẩy, gợi, gây",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "deduct",
+    "meaningVi": "lấy đi, trừ đi",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "deduction",
+    "meaningVi": "sự trừ đi, sự suy luận",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "measurement",
+    "meaningVi": "sự đo lường/tính toán; kích thước",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "shorten",
+    "meaningVi": "rút ngắn",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "amend",
+    "meaningVi": "sửa đổi, cải thiện, cải tạo",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "amendment",
+    "meaningVi": "sự cải thiện/sửa đổi",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "calculate",
+    "meaningVi": "tính toán",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "calculation",
+    "meaningVi": "sự tính toán",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "exempt",
+    "meaningVi": "được miễn (thuế)",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "exemption",
+    "meaningVi": "sự miễn (thuế)",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "deficient",
+    "meaningVi": "thiếu, thiếu hụt, không đủ",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "deficiency",
+    "meaningVi": "sự thiếu hụt",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "compare",
+    "meaningVi": "so sánh",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "comparison",
+    "meaningVi": "sự so sánh",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "comparable",
+    "meaningVi": "có thể so sánh",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fortunate",
+    "meaningVi": "may mắn, thuận lợi",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fortunately",
+    "meaningVi": "may thay",
+    "topic": "Kế toán",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "expenditure",
+    "meaningVi": "sự tiêu dùng, món tiền tiêu đi, phí tổn",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "expend",
+    "meaningVi": "tiêu, tiêu dùng",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "accurately",
+    "meaningVi": "chính xác",
+    "topic": "Kế toán",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "accurate",
+    "meaningVi": "chính xác",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "accuracy",
+    "meaningVi": "sự chính xác",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "worth",
+    "meaningVi": "đáng giá, bỏ công; giá, giá trị",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "worthy",
+    "meaningVi": "xứng đáng, đáng",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "worthwhile",
+    "meaningVi": "xứng đáng, đáng tiền/công",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "excess",
+    "meaningVi": "sự quá mức, sự vượt, sự thừa",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "exceed",
+    "meaningVi": "vượt trước, trội hơn",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "excessive",
+    "meaningVi": "quá mức, thừa",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "excessively",
+    "meaningVi": "quá mức",
+    "topic": "Kế toán",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "fiscal",
+    "meaningVi": "(thuộc) tài chính",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "incidental",
+    "meaningVi": "phụ, thứ yếu; ngẫu nhiên",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "incidentally",
+    "meaningVi": "ngẫu nhiên",
+    "topic": "Kế toán",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "inflation",
+    "meaningVi": "sự lạm phát",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "inflate",
+    "meaningVi": "làm phát, gây lạm phát",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "inflationary",
+    "meaningVi": "lạm phát",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "liable",
+    "meaningVi": "có trách nhiệm về pháp lý; có khả năng bị",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "liability",
+    "meaningVi": "trách nhiệm pháp lý",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "spend",
+    "meaningVi": "tiêu, chi tiêu, sử dụng (thời gian)",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "spending",
+    "meaningVi": "việc chi tiêu, khoản chi tiêu",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "turnover",
+    "meaningVi": "doanh số, doanh thu; biến động nhân sự",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "abundant",
+    "meaningVi": "phong phú, dồi dào",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "contest",
+    "meaningVi": "cuộc thi, cuộc tranh cãi",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "glass cabinet",
+    "meaningVi": "tủ kính",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "picture",
+    "meaningVi": "bức tranh",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "powerful",
+    "meaningVi": "mạnh, quyền lực",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "shore",
+    "meaningVi": "bờ, bờ biển",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "tie",
+    "meaningVi": "buộc, cột, trói",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "addition",
+    "meaningVi": "sự thêm, phần thêm",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "advisor",
+    "meaningVi": "người cố vấn",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "attack",
+    "meaningVi": "tấn công",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "double",
+    "meaningVi": "đôi, kép; tăng gấp đôi, nhân đôi",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "expressive",
+    "meaningVi": "có ý nghĩa, diễn cảm",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fund",
+    "meaningVi": "quỹ",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "funding",
+    "meaningVi": "kinh phí",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "generate",
+    "meaningVi": "tạo ra, phát ra",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "in the coming year",
+    "meaningVi": "trong năm tới",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "in the direction of",
+    "meaningVi": "theo hướng, về phía",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "model number",
+    "meaningVi": "mã số sản phẩm",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "overcome",
+    "meaningVi": "vượt qua",
+    "topic": "Kế toán",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "proper",
+    "meaningVi": "đúng, thích hợp, hợp lệ",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "question",
+    "meaningVi": "câu hỏi; hỏi",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "rare",
+    "meaningVi": "hiếm, ít có",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "score",
+    "meaningVi": "điểm, tỷ số; đạt điểm, cho điểm",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "senior",
+    "meaningVi": "người cấp cao hơn; cấp cao",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "temporary",
+    "meaningVi": "tạm thời, nhất thời",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "theme",
+    "meaningVi": "chủ đề",
+    "topic": "Kế toán",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "traditional",
+    "meaningVi": "theo truyền thống",
+    "topic": "Kế toán",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "in excess of",
+    "meaningVi": "lớn hơn, hơn cả",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "fiscal year",
+    "meaningVi": "năm tài chính",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "incidental expenses",
+    "meaningVi": "những khoản phụ phí",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "be liable for",
+    "meaningVi": "có trách nhiệm pháp lý với",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "be liable to do",
+    "meaningVi": "có khả năng làm",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "spend A on B",
+    "meaningVi": "chi A vào B",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "allocate sth for sth",
+    "meaningVi": "phân bổ cái gì cho việc gì",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "allocate sth to sb/sth",
+    "meaningVi": "phân bổ cái gì cho ai/việc gì",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "be exempt from",
+    "meaningVi": "được miễn thuế",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "compared to",
+    "meaningVi": "so sánh với",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "compare A with B",
+    "meaningVi": "so sánh A với B",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "worth + giá tiền",
+    "meaningVi": "có giá",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "worth -ing",
+    "meaningVi": "đáng để làm gì",
+    "topic": "Kế toán",
+    "partOfSpeech": "phrase"
+  }
+]

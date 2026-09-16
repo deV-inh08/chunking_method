@@ -1,0 +1,1256 @@
+[
+  {
+    "word": "international",
+    "meaningVi": "quốc tế",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "domestic",
+    "meaningVi": "trong nước, nội địa",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "attraction",
+    "meaningVi": "sự thu hút, điểm tham quan",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "attract",
+    "meaningVi": "thu hút, lôi cuốn",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "attractive",
+    "meaningVi": "hấp dẫn",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "itinerary",
+    "meaningVi": "hành trình, lộ trình",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "exotic",
+    "meaningVi": "kỳ lạ, đẹp kỳ lạ",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "diverse",
+    "meaningVi": "phong phú, đa dạng, nhiều loại",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "diversify",
+    "meaningVi": "đa dạng hóa",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "diversity",
+    "meaningVi": "tính đa dạng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "superb",
+    "meaningVi": "nguy nga, tráng lệ, tuyệt vời",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "superbly",
+    "meaningVi": "xuất sắc",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "baggage",
+    "meaningVi": "hành lý",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "luggage",
+    "meaningVi": "hành lý",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "destination",
+    "meaningVi": "đích, điểm đến",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "missing",
+    "meaningVi": "bị mất, thất lạc",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "locate",
+    "meaningVi": "có vị trí, nằm ở, định vị",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "location",
+    "meaningVi": "vị trí, địa điểm",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "approximately",
+    "meaningVi": "xấp xỉ, khoảng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "approximate",
+    "meaningVi": "xấp xỉ; gần đúng với",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "duty",
+    "meaningVi": "thuế, nhiệm vụ/nghĩa vụ",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "process",
+    "meaningVi": "quá trình, tiến trình; gia công, xử lý, giải quyết",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "board",
+    "meaningVi": "lên (tàu, xe, máy bay); ban, ủy ban, bộ",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "comfortable",
+    "meaningVi": "thoải mái, dễ chịu",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "comfort",
+    "meaningVi": "sự an ủi, lời an ủi; an ủi, khuyên giải",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "comfortably",
+    "meaningVi": "tiện lợi, thoải mái",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "declare",
+    "meaningVi": "công bố, tuyên bố, khai (để đóng thuế)",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "declaration",
+    "meaningVi": "tờ khai (hải quan)",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "specify",
+    "meaningVi": "làm rõ, ghi rõ",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "specific",
+    "meaningVi": "cụ thể, đặc trưng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "depart",
+    "meaningVi": "khởi hành",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "departure",
+    "meaningVi": "sự khởi hành",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "emergency",
+    "meaningVi": "trường hợp khẩn cấp",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "passenger",
+    "meaningVi": "hành khách",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "outgoing",
+    "meaningVi": "sắp đi (khởi hành); sắp nghỉ việc",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "tightly",
+    "meaningVi": "chặt, chặt chẽ",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "tour",
+    "meaningVi": "chuyến du lịch, chuyến tham quan; đi du lịch",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "tourist",
+    "meaningVi": "du khách",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "carrier",
+    "meaningVi": "người vận chuyển, hãng vận tải",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "customarily",
+    "meaningVi": "thông thường, theo lề thường",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "customary",
+    "meaningVi": "thông thường, theo thói quen",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "custom",
+    "meaningVi": "phong tục, thói quen",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "customs",
+    "meaningVi": "thuế nhập khẩu, hải quan",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "confuse",
+    "meaningVi": "làm xáo trộn, gây khó hiểu, gây bối rối",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "arrive",
+    "meaningVi": "đến, tới nơi",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "arrival",
+    "meaningVi": "sự đến, sự tới nơi",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "brochure",
+    "meaningVi": "cuốn sách mỏng, tờ gấp (để quảng cáo)",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "involve",
+    "meaningVi": "gồm, kéo theo; tham gia",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "ship",
+    "meaningVi": "vận chuyển, gửi (hàng hóa, hành khách); tàu",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "shipment",
+    "meaningVi": "việc gửi hàng, lô hàng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "suitcase",
+    "meaningVi": "va li",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unavailable",
+    "meaningVi": "không có sẵn, chưa xong, chưa sẵn sàng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "available",
+    "meaningVi": "có sẵn",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "fill out",
+    "meaningVi": "điền (thông tin)",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "fill in",
+    "meaningVi": "điền (thông tin)",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "away",
+    "meaningVi": "xa, cách xa, mất đi",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "dramatic",
+    "meaningVi": "kịch tính, gây xúc động; đột ngột, ấn tượng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "dramatically",
+    "meaningVi": "đáng kể",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "hospitality",
+    "meaningVi": "sự hiếu khách, sự thân thiện",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "hospitable",
+    "meaningVi": "mến khách, hiếu khách",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "indulge",
+    "meaningVi": "chiều theo; tận hưởng, say mê",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "indulgence",
+    "meaningVi": "sự ham mê, đặc ân",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "proximity",
+    "meaningVi": "sự gần, sự lân cận",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "seating",
+    "meaningVi": "chỗ ngồi; sự xếp chỗ",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "seat",
+    "meaningVi": "chỗ ngồi; ngồi",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unlimited",
+    "meaningVi": "vô hạn, vô tận, không giới hạn",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "agent",
+    "meaningVi": "người đại lý, trung gian",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "airport",
+    "meaningVi": "sân bay",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "beach",
+    "meaningVi": "bãi biển",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "boat",
+    "meaningVi": "thuyền, tàu",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "business class",
+    "meaningVi": "hạng thương gia",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "connect",
+    "meaningVi": "nối, kết nối",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "departure time",
+    "meaningVi": "giờ khởi hành",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "duty-free shop",
+    "meaningVi": "cửa hàng miễn thuế",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "first class",
+    "meaningVi": "hạng nhất (trên máy bay)",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "flight",
+    "meaningVi": "chuyến bay",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "go on vacation",
+    "meaningVi": "đi nghỉ",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "guidebook",
+    "meaningVi": "sách hướng dẫn (du lịch)",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "journey",
+    "meaningVi": "cuộc hành trình",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "nonstop flight",
+    "meaningVi": "chuyến bay thẳng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pack",
+    "meaningVi": "gói, túi; đóng gói, xếp đồ",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "passport",
+    "meaningVi": "hộ chiếu",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "pilot",
+    "meaningVi": "phi công",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "salon",
+    "meaningVi": "tiệm (làm đẹp, thời trang)",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "span",
+    "meaningVi": "mở rộng, nối, bắc qua (cầu)",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "trip",
+    "meaningVi": "chuyến đi",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "border",
+    "meaningVi": "biên giới, ranh giới",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "central",
+    "meaningVi": "thuộc trung tâm, ở giữa",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "safe",
+    "meaningVi": "an toàn",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "sudden",
+    "meaningVi": "bất ngờ, đột ngột",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "travel",
+    "meaningVi": "chuyến đi; đi lại, du lịch",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "underwater",
+    "meaningVi": "dưới nước",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "unique",
+    "meaningVi": "duy nhất, lạ thường",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "visitor",
+    "meaningVi": "du khách, khách đến thăm",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "aboard",
+    "meaningVi": "trên tàu/xe/máy bay; lên trên",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "aircraft",
+    "meaningVi": "máy bay",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "airfare",
+    "meaningVi": "tiền vé máy bay",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "aisle seat",
+    "meaningVi": "chỗ ngồi cạnh lối đi",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be on a trip",
+    "meaningVi": "trong chuyến đi",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "board a flight",
+    "meaningVi": "lên máy bay",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "boarding gate",
+    "meaningVi": "cửa lên máy bay",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "boarding pass",
+    "meaningVi": "vé máy bay",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "boarding time",
+    "meaningVi": "giờ lên máy bay",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "by air",
+    "meaningVi": "bằng đường hàng không",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "carry-on baggage",
+    "meaningVi": "hành lý xách tay",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "connecting flight",
+    "meaningVi": "chuyến bay chuyển tiếp",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "crew",
+    "meaningVi": "tổ bay",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "cruise",
+    "meaningVi": "tàu du lịch",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "currency exchange",
+    "meaningVi": "trao đổi tiền tệ",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "drift",
+    "meaningVi": "trôi dạt, cuốn đi",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "ferry",
+    "meaningVi": "phà",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "flight attendant",
+    "meaningVi": "tiếp viên hàng không",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "fluid",
+    "meaningVi": "chất lỏng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "guest pass",
+    "meaningVi": "thẻ ra vào của khách",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "guided tour",
+    "meaningVi": "chuyến đi có hướng dẫn viên",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "immigration",
+    "meaningVi": "sự nhập cư",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "in-flight",
+    "meaningVi": "trong chuyến bay",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "landing",
+    "meaningVi": "sự hạ cánh",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "landmark",
+    "meaningVi": "điểm mốc, mốc ranh giới",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "layover",
+    "meaningVi": "chặng nghỉ, thời gian tạm nghỉ",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "leave for",
+    "meaningVi": "lên đường đến",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "line up",
+    "meaningVi": "xếp hàng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "luggage tag",
+    "meaningVi": "thẻ tên hành lý",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "mainland",
+    "meaningVi": "lục địa, đất liền",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "missing luggage",
+    "meaningVi": "hành lý thất lạc",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "native",
+    "meaningVi": "bản địa",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "observation tower",
+    "meaningVi": "đài quan sát",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "overbook",
+    "meaningVi": "đặt chỗ trước quá nhiều (hết chỗ)",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "overhead rack",
+    "meaningVi": "giá để đồ ở trên đầu",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "overseas",
+    "meaningVi": "nước ngoài",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "port",
+    "meaningVi": "cảng, bến cảng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "porter",
+    "meaningVi": "người khuân vác",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "reclaim",
+    "meaningVi": "lấy lại (hành lý)",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "row the boat",
+    "meaningVi": "chèo thuyền",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "stop over",
+    "meaningVi": "tạm nghỉ lại",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take off",
+    "meaningVi": "cất cánh",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "take one's bag off",
+    "meaningVi": "bỏ túi xuống",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "train conductor",
+    "meaningVi": "nhân viên bảo vệ tàu",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "travel agency",
+    "meaningVi": "đại lý du lịch",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "unload",
+    "meaningVi": "dỡ ra, tháo ra",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "unlock",
+    "meaningVi": "mở khóa",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "walking tour",
+    "meaningVi": "chuyến đi bộ tham quan",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "distant",
+    "meaningVi": "xa, xa cách",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "favor",
+    "meaningVi": "sự ủng hộ, đặc ân",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "overhead",
+    "meaningVi": "ở trên đầu, trên cao",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "remains",
+    "meaningVi": "di tích",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "remote",
+    "meaningVi": "xa, cách biệt",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "rightly",
+    "meaningVi": "đúng đắn, công bằng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "travel arrangement",
+    "meaningVi": "sự chuẩn bị cho chuyến đi",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "accumulate",
+    "meaningVi": "chất đống, gom góp",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "geographic",
+    "meaningVi": "thuộc về địa lý",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "go through customs",
+    "meaningVi": "làm thủ tục qua cửa hải quan",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "jet lag",
+    "meaningVi": "mệt mỏi do lệch múi giờ",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "memorable",
+    "meaningVi": "đáng nhớ, không quên được",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "memorial",
+    "meaningVi": "đài tưởng niệm; thuộc ký ức",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "precisely",
+    "meaningVi": "đúng, chính xác",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adverb"
+  },
+  {
+    "word": "round trip",
+    "meaningVi": "chuyến đi khứ hồi",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "runway",
+    "meaningVi": "đường băng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "seasickness",
+    "meaningVi": "say sóng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "suburban train line",
+    "meaningVi": "tuyến tàu ngoại ô",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "voyage",
+    "meaningVi": "chuyến du lịch (đường biển)",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "wildlife",
+    "meaningVi": "động vật hoang dã",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "airsickness",
+    "meaningVi": "say máy bay",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "barge",
+    "meaningVi": "sà lan",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be left unattended",
+    "meaningVi": "bị bỏ mặc",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "buckle up",
+    "meaningVi": "cài dây an toàn",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "carousel",
+    "meaningVi": "băng chuyền hành lý",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "channel",
+    "meaningVi": "kênh, eo biển",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "deck",
+    "meaningVi": "sàn (tàu, xe buýt)",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "dock",
+    "meaningVi": "bến tàu",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "harbor",
+    "meaningVi": "bến cảng; bỏ neo ở cảng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "life preserver",
+    "meaningVi": "đồ cứu hộ",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "meet one's flight",
+    "meaningVi": "đón ai đó đúng lúc chuyến bay vừa đến",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "stall",
+    "meaningVi": "quầy, sạp bán hàng; ngăn, trì hoãn",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "tie the boat to",
+    "meaningVi": "buộc thuyền vào",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "turbulence",
+    "meaningVi": "sự hỗn loạn",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "allowance",
+    "meaningVi": "sự cho phép, sự thừa nhận, sự chiếu cố",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "concourse",
+    "meaningVi": "hội trường, phòng lớn",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "lodging",
+    "meaningVi": "chỗ trọ, chỗ tạm trú",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "presumable",
+    "meaningVi": "có thể đoán được",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "touch down",
+    "meaningVi": "hạ cánh, đậu xuống",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "aviation",
+    "meaningVi": "hàng không",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "charter plane",
+    "meaningVi": "máy bay thuê riêng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "confer",
+    "meaningVi": "bàn bạc, hội ý",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "disembark",
+    "meaningVi": "xuống xe, lên bờ",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dispense",
+    "meaningVi": "phân phối, phân phát",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "impound",
+    "meaningVi": "tịch thu",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "motion sickness",
+    "meaningVi": "say tàu xe",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "prestigious",
+    "meaningVi": "có uy tín",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "adjective"
+  },
+  {
+    "word": "quarantine desk",
+    "meaningVi": "đội kiểm dịch",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "remittance",
+    "meaningVi": "việc gửi tiền, khoản tiền gửi",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "swap",
+    "meaningVi": "trao đổi, hoán đổi",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "turn up",
+    "meaningVi": "xuất hiện",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "vessel",
+    "meaningVi": "thuyền lớn, tàu lớn",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "baggage claim",
+    "meaningVi": "nơi nhận hành lý (ở sân bay)",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "be (conveniently/perfectly) located",
+    "meaningVi": "nằm ở vị trí thuận lợi tại",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "a board member",
+    "meaningVi": "thành viên ban lãnh đạo",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "a board of directors",
+    "meaningVi": "ban lãnh đạo",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "on tour",
+    "meaningVi": "trong chuyến đi",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "customs regulations",
+    "meaningVi": "điều lệ hải quan",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "customs clearance",
+    "meaningVi": "việc thông quan",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "go through customs",
+    "meaningVi": "làm thủ tục qua cửa hải quan",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "dramatic scenery",
+    "meaningVi": "khung cảnh ấn tượng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "hospitality extended to",
+    "meaningVi": "sự hiếu khách dành cho",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "hospitality industry",
+    "meaningVi": "ngành khách sạn",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  },
+  {
+    "word": "indulge in",
+    "meaningVi": "tận hưởng",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "verb"
+  },
+  {
+    "word": "in close proximity to",
+    "meaningVi": "ở rất gần với",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "in the proximity of",
+    "meaningVi": "ở gần với",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "phrase"
+  },
+  {
+    "word": "unlimited mileage",
+    "meaningVi": "số dặm không giới hạn",
+    "topic": "Du lịch - Sân bay",
+    "partOfSpeech": "noun"
+  }
+]

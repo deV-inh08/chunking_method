@@ -1,44 +1,65 @@
+import React from 'react';
 import {
-  FileText, Layers, Mic, BarChart2,
-  Settings, ChevronRight, BookOpen, LogOut, LogIn, User, BookMarked,
-  Flame, Sparkles, Headphones,
+  LayoutDashboard, Headphones, BookOpen, BrainCircuit, Zap,
+  Target, Mic2, BarChart3, Settings, ChevronRight, LogOut,
+  LogIn, User, Flame, Sparkles, Search, CircleHelp,
 } from 'lucide-react';
 
-const NAV_ITEMS = [
-  { id: 'ai_listening', label: 'Luyện Nghe',   shortLabel: 'Nghe',    icon: Headphones },
-  { id: 'reading',      label: 'Luyện Đọc',    shortLabel: 'Đọc',     icon: BookOpen   },
-  { id: 'chunks',       label: 'Chunks',       shortLabel: 'Chunks',  icon: Layers     },
-  { id: 'vocab',        label: 'Từ vựng',     shortLabel: 'Từ vựng', icon: BookMarked },
-  { id: 'practice',     label: 'Practice',     shortLabel: 'Nói',     icon: Mic        },
-  { id: 'ai_speaking',  label: 'Luyện Nói AI', shortLabel: 'Nói AI',  icon: Sparkles,  isNew: true },
-  { id: 'progress',     label: 'Progress',     shortLabel: 'Tiến độ', icon: BarChart2  },
+export const NAV_ITEMS = [
+  { id: 'overview',     label: 'Overview',       shortLabel: 'Tổng quan', icon: LayoutDashboard },
+  { id: 'ai_listening', label: 'Listening Lab',  shortLabel: 'Nghe',      icon: Headphones },
+  { id: 'reading',      label: 'Reading Lab',    shortLabel: 'Đọc',       icon: BookOpen   },
+  { id: 'chunks',       label: 'Chunk Library',  shortLabel: 'Chunks',    icon: BrainCircuit },
+  { id: 'vocab',        label: 'Vocabulary',     shortLabel: 'Từ vựng',   icon: Zap },
+  { id: 'practice',     label: 'Practice Sets',  shortLabel: 'Luyện tập', icon: Target },
+  { id: 'ai_speaking',  label: 'AI Speaking',    shortLabel: 'Nói AI',    icon: Mic2, isNew: true },
+  { id: 'progress',     label: 'Progress',       shortLabel: 'Tiến độ',   icon: BarChart3 },
 ];
 
-const PAGE_TITLES = {
-  ai_listening: { title: 'Luyện Nghe',         subtitle: 'Tạo bài nghe AI, dán script đề thi ETS, luyện tai đa giọng bản xứ & trắc nghiệm' },
-  reading:      { title: 'Luyện Đọc & Ngữ Pháp TOEIC', subtitle: '24 Chuyên đề trọng tâm, bẫy 990, phản xạ 20s/câu & giải phẫu xương sống câu' },
-  chunks:       { title: 'Chunks',            subtitle: 'Danh sách cụm từ đã phân tích' },
-  vocab:        { title: 'Từ vựng',          subtitle: 'Học 5000 từ theo chủ đề — phân tích chunk & luyện viết' },
-  practice:     { title: 'Speaking Practice', subtitle: 'Luyện nói theo câu mẫu' },
-  ai_speaking:  { title: 'Luyện Nói Giao Tiếp AI', subtitle: 'Phản xạ đời thực theo Chunk & Chấm chuẩn âm vị IPA với Sherpa-ONNX' },
-  progress:     { title: 'Progress',          subtitle: 'Theo dõi tiến độ học tập' },
+export const PAGE_TITLES = {
+  overview:     { title: 'Overview',             subtitle: 'Không gian học tập cá nhân hóa & tổng quan tiến độ' },
+  ai_listening: { title: 'Listening Lab',        subtitle: 'Luyện nghe phản xạ, chép chính tả Dictation & phân tích hội thoại' },
+  reading:      { title: 'Reading Lab',          subtitle: 'Ngữ pháp chuyên sâu TOEIC Part 5 & 6 cùng giải thích chi tiết' },
+  chunks:       { title: 'Chunk Library',        subtitle: 'Kho lưu trữ cụm từ Collocation & Functional Chunks khoa học' },
+  vocab:        { title: 'Vocabulary',           subtitle: '5000 từ vựng cốt lõi theo chủ đề — trích xuất chunk ngữ cảnh' },
+  practice:     { title: 'Practice Sets',        subtitle: 'Luyện dịch câu đa cấp độ & chấm điểm phản hồi tức thì' },
+  ai_speaking:  { title: 'AI Speaking',          subtitle: 'Phòng luyện nói giao tiếp 2 chiều & đánh giá âm học GOP' },
+  progress:     { title: 'Progress',             subtitle: 'Theo dõi tiến độ học tập & chu kỳ lặp lại ngắt quãng SRS' },
 };
 
 // ─── Desktop Sidebar ──────────────────────────────────────────
 export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick, user, onSignOut, onLoginClick, dueCount = 0 }) {
+  const userInitials = user?.email ? user.email.slice(0, 2).toUpperCase() : 'AM';
+  const userName = user?.email ? user.email.split('@')[0] : 'Alex Morgan';
+
   return (
     <aside className="sidebar">
-      <div className="sidebar-logo">
-        <div className="sidebar-logo-icon">
-          <BookOpen size={16} color="white" />
-        </div>
-        <div className="sidebar-logo-text">
-          <span className="sidebar-logo-title">Chunk Trainer</span>
-          <span className="sidebar-logo-subtitle">TOEIC Speaking</span>
+      {/* Brand Header */}
+      <div className="brand">
+        <div className="brand-mark">T</div>
+        <div>
+          <strong>TOEIC</strong>
+          <span>ACADEMY</span>
         </div>
       </div>
 
-      <nav className="sidebar-nav">
+      {/* Workspace section */}
+      <div className="workspace-label">WORKSPACE</div>
+      <div
+        className="workspace-card"
+        onClick={user ? onSettingsClick : onLoginClick}
+        title={user ? 'Cài đặt tài khoản' : 'Đăng nhập / Đăng ký tài khoản'}
+      >
+        <div className="avatar">{userInitials}</div>
+        <div>
+          <b>{userName}</b>
+          <span>{user ? 'Cloud sync active' : 'Personal workspace'}</span>
+        </div>
+        <ChevronRight size={15} strokeWidth={1.75} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />
+      </div>
+
+      {/* Main Navigation */}
+      <nav className="sidebar-nav" aria-label="Main navigation">
         {NAV_ITEMS.map(({ id, label, icon: Icon, isNew }) => (
           <button
             key={id}
@@ -46,69 +67,53 @@ export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick, 
             className={`nav-item ${activePage === id ? 'active' : ''}`}
             onClick={() => onNavigate(id)}
           >
-            <Icon size={17} className="nav-icon" />
+            <Icon size={18} strokeWidth={1.75} className="nav-icon" />
             <span className="nav-label">{label}</span>
             {isNew ? (
-              <span className="nav-badge" style={{ background: 'linear-gradient(135deg, #38bdf8, #818cf8)', color: '#fff', fontSize: 9, fontWeight: 800 }}>
-                MỚI
-              </span>
+              <span className="new-badge">NEW</span>
             ) : id === 'practice' && dueCount > 0 ? (
-              <span className="nav-badge" style={{ background: '#ef4444', color: '#fff', display: 'inline-flex', alignItems: 'center', gap: 2 }}>
-                <Flame size={10} /> {dueCount}
+              <span className="nav-badge" style={{ background: '#ef4444', color: '#fff', marginLeft: 'auto', display: 'inline-flex', alignItems: 'center', gap: 2 }}>
+                <Flame size={10} strokeWidth={1.75} /> {dueCount}
               </span>
             ) : counts[id] > 0 ? (
-              <span className="nav-badge">{counts[id]}</span>
+              <span className="nav-badge" style={{ marginLeft: 'auto' }}>{counts[id]}</span>
             ) : null}
           </button>
         ))}
       </nav>
 
-      <div className="sidebar-footer" style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-        {user ? (
-          <div style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            padding: '8px 10px', borderRadius: 'var(--radius-md)',
-            background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)',
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0, flex: 1 }}>
-              <User size={13} style={{ color: 'var(--accent-400)', flexShrink: 0 }} />
-              <span style={{ fontSize: 12, color: 'var(--text-secondary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                {user.email}
-              </span>
-            </div>
+      {/* Sidebar Footer */}
+      <div className="sidebar-bottom">
+        <button id="nav-settings" className="nav-item" onClick={onSettingsClick}>
+          <Settings size={18} strokeWidth={1.75} className="nav-icon" />
+          <span className="nav-label">Settings</span>
+        </button>
+
+        <div className="help-card" onClick={onSettingsClick} role="button" tabIndex={0}>
+          <CircleHelp size={18} strokeWidth={1.75} />
+          <span>
+            <b>Need help?</b>
+            <small>View study guides</small>
+          </span>
+          <ChevronRight size={14} strokeWidth={1.75} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />
+        </div>
+
+        {user && (
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '4px 8px' }}>
+            <span style={{ fontSize: 11, color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              {user.email}
+            </span>
             <button
               id="sidebar-logout-btn"
               className="btn btn-ghost btn-icon"
               onClick={onSignOut}
               title="Đăng xuất"
-              style={{ color: 'var(--text-muted)', padding: 4, width: 24, height: 24 }}
+              style={{ color: 'var(--text-muted)', padding: 4 }}
             >
-              <LogOut size={13} />
+              <LogOut size={14} strokeWidth={1.75} />
             </button>
           </div>
-        ) : (
-          <button
-            id="sidebar-login-btn"
-            className="nav-item"
-            style={{ width: '100%', color: 'var(--accent-400)', fontWeight: 600 }}
-            onClick={onLoginClick}
-          >
-            <LogIn size={17} className="nav-icon" />
-            <span className="nav-label">Đăng nhập / Đăng ký</span>
-            <ChevronRight size={14} style={{ color: 'var(--text-muted)' }} />
-          </button>
         )}
-
-        <button
-          id="nav-settings"
-          className="nav-item"
-          style={{ width: '100%' }}
-          onClick={onSettingsClick}
-        >
-          <Settings size={17} className="nav-icon" />
-          <span className="nav-label">Settings</span>
-          <ChevronRight size={14} style={{ color: 'var(--text-muted)' }} />
-        </button>
       </div>
     </aside>
   );
@@ -116,27 +121,28 @@ export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick, 
 
 // ─── Mobile Bottom Navigation ─────────────────────────────────
 export function BottomNav({ activePage, onNavigate, counts = {}, dueCount = 0 }) {
+  // Mobile only shows 5 primary items for optimal spacing and touch area
+  const mobileItems = NAV_ITEMS.filter(item =>
+    ['overview', 'ai_listening', 'reading', 'practice', 'progress'].includes(item.id)
+  );
+
   return (
     <nav className="bottom-nav">
-      {NAV_ITEMS.map(({ id, label, shortLabel, icon: Icon, isNew }) => (
+      {mobileItems.map(({ id, label, shortLabel, icon: Icon }) => (
         <button
           key={id}
           id={`bottom-nav-${id}`}
           className={`bottom-nav-item ${activePage === id ? 'active' : ''}`}
           onClick={() => onNavigate(id)}
         >
-          {isNew ? (
-            <span className="bottom-nav-badge" style={{ background: 'linear-gradient(135deg, #38bdf8, #818cf8)', color: '#fff', fontSize: 8, padding: '1px 3px' }}>
-              NEW
-            </span>
-          ) : id === 'practice' && dueCount > 0 ? (
+          {id === 'practice' && dueCount > 0 ? (
             <span className="bottom-nav-badge" style={{ background: '#ef4444', color: '#fff' }}>
               {dueCount}
             </span>
           ) : counts[id] > 0 ? (
             <span className="bottom-nav-badge">{counts[id]}</span>
           ) : null}
-          <Icon size={19} />
+          <Icon size={19} strokeWidth={1.75} />
           <span>{shortLabel || label}</span>
         </button>
       ))}
@@ -144,118 +150,105 @@ export function BottomNav({ activePage, onNavigate, counts = {}, dueCount = 0 })
   );
 }
 
-// ─── Header ───────────────────────────────────────────────────
-export function Header({ page, rightSlot, onSettingsClick, user, onSignOut, onLoginClick, dueCount = 0, onDueClick, onOpenAiSpeaking }) {
-  const info = PAGE_TITLES[page] || {};
+// ─── Topbar / Header ──────────────────────────────────────────
+export function Header({
+  page,
+  rightSlot,
+  onSettingsClick,
+  user,
+  onSignOut,
+  onLoginClick,
+  dueCount = 0,
+  onDueClick,
+  onOpenAiSpeaking,
+  streakDays = 12,
+}) {
+  const info = PAGE_TITLES[page] || { title: 'Overview', subtitle: '' };
+  const userInitials = user?.email ? user.email.slice(0, 2).toUpperCase() : 'AM';
+
   return (
-    <header className="main-header">
-      <div style={{ minWidth: 0, flex: '1 1 auto', overflow: 'hidden' }}>
-        <div className="main-header-title">{info.title}</div>
-        {info.subtitle && <div className="main-header-subtitle desktop-only">{info.subtitle}</div>}
+    <header className="topbar">
+      {/* Breadcrumb navigation */}
+      <div className="breadcrumb">
+        <span>Learning workspace</span>
+        <ChevronRight size={14} strokeWidth={1.75} />
+        <b>{info.title}</b>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
-        {/* Nút Luyện Nói AI Nhanh */}
-        {onOpenAiSpeaking && (
-          <button
-            id="header-ai-speaking-btn"
-            className="btn btn-primary btn-sm"
-            onClick={onOpenAiSpeaking}
-            style={{
-              background: 'linear-gradient(135deg, #0284c7, #6366f1)',
-              borderColor: 'transparent',
-              color: '#ffffff',
-              fontWeight: 700,
-              fontSize: 12,
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 4,
-              padding: '4px 10px',
-              boxShadow: '0 2px 8px rgba(99, 102, 241, 0.25)',
-            }}
-            title="Luyện nói phản xạ giao tiếp với bạn bản xứ AI & Chấm chuẩn âm vị IPA"
-          >
-            <Sparkles size={13} color="#fef08a" />
-            <span className="desktop-only">Nói với AI</span>
-            <span className="mobile-only">AI</span>
-          </button>
-        )}
+      {/* Top right actions */}
+      <div className="top-actions">
+        {/* Search icon button */}
+        <button className="icon-button desktop-only" aria-label="Search" title="Tìm kiếm nhanh">
+          <Search size={18} strokeWidth={1.75} />
+        </button>
 
-        {/* Due review quick button */}
+        {/* Due review button */}
         {dueCount > 0 && onDueClick && (
           <button
             id="header-due-btn"
-            className="btn btn-secondary btn-sm"
+            className="btn btn-sm"
             onClick={onDueClick}
             style={{
-              background: 'rgba(239,68,68,0.12)',
-              borderColor: 'rgba(239,68,68,0.35)',
+              background: 'rgba(239, 68, 68, 0.12)',
+              borderColor: 'rgba(239, 68, 68, 0.35)',
               color: '#ef4444',
               fontWeight: 700,
               fontSize: 12,
               display: 'inline-flex',
               alignItems: 'center',
               gap: 4,
-              padding: '4px 8px',
+              padding: '4px 9px',
             }}
             title="Chạm để ôn tập các chunk đến hạn"
           >
-            <Flame size={13} color="#ef4444" />
+            <Flame size={13} strokeWidth={1.75} color="#ef4444" />
             <span className="desktop-only">Ôn tập ({dueCount})</span>
             <span className="mobile-only">{dueCount}</span>
           </button>
         )}
 
-        {rightSlot && <div>{rightSlot}</div>}
-
-        {/* User info + logout if logged in (Desktop only) */}
-        {user ? (
-          <div className="desktop-only" style={{ alignItems: 'center', gap: 6 }}>
-            <div style={{
-              display: 'flex', alignItems: 'center', gap: 5,
-              padding: '4px 8px', borderRadius: 'var(--radius-md)',
-              background: 'var(--bg-elevated)', border: '1px solid var(--border-subtle)',
-            }}>
-              <User size={13} style={{ color: 'var(--accent-400)', flexShrink: 0 }} />
-              <span style={{ fontSize: 11.5, color: 'var(--text-secondary)', maxWidth: 110, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                {user.email}
-              </span>
-            </div>
-            <button
-              id="logout-btn"
-              className="btn btn-ghost btn-icon"
-              onClick={onSignOut}
-              title="Đăng xuất"
-              style={{ color: 'var(--text-muted)', padding: 5 }}
-            >
-              <LogOut size={15} />
-            </button>
-          </div>
-        ) : (
-          /* Login button if not logged in */
-          onLoginClick && (
-            <button
-              id="header-login-btn"
-              className="btn btn-primary btn-sm"
-              onClick={onLoginClick}
-              style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '4px 8px', fontSize: 12, fontWeight: 600, whiteSpace: 'nowrap' }}
-            >
-              <LogIn size={13} />
-              <span className="desktop-only">Đăng nhập</span>
-            </button>
-          )
+        {/* Quick AI Speaking button */}
+        {onOpenAiSpeaking && (
+          <button
+            id="header-ai-speaking-btn"
+            className="primary-button btn-sm desktop-only"
+            onClick={onOpenAiSpeaking}
+            style={{ padding: '5px 12px', fontSize: 12, gap: 5 }}
+            title="Luyện nói phản xạ với AI & Chấm âm vị IPA"
+          >
+            <Sparkles size={14} strokeWidth={1.75} />
+            <span>Nói với AI</span>
+          </button>
         )}
 
-        {/* Settings button — mobile only */}
+        {/* Study Streak Badge */}
+        <div className="streak" title="Chuỗi ngày học tập liên tục">
+          <Zap size={15} strokeWidth={1.75} fill="currentColor" />
+          <b>{streakDays}</b>
+          <span className="desktop-only">day streak</span>
+        </div>
+
+        {rightSlot && <div>{rightSlot}</div>}
+
+        {/* User Profile Avatar */}
+        <div
+          className="profile-avatar"
+          onClick={user ? onSettingsClick : onLoginClick}
+          title={user ? `${user.email} (Bấm để mở Cài đặt)` : 'Bấm để đăng nhập'}
+          style={{ cursor: 'pointer' }}
+        >
+          {userInitials}
+        </div>
+
         {onSettingsClick && (
           <button
             id="mobile-settings-btn"
-            className="mobile-settings-btn"
+            className="mobile-settings-btn mobile-only"
             onClick={onSettingsClick}
             aria-label="Settings"
             title="Cài đặt & Tài khoản"
           >
-            <Settings size={17} />
+            <Settings size={18} strokeWidth={1.75} />
           </button>
         )}
       </div>
