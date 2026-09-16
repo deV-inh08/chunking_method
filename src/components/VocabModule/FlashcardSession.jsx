@@ -196,10 +196,19 @@ export function FlashcardSession({
   // Handle typing input change in Stage 2
   const handleInputChange = useCallback((newVal) => {
     // Only accept length up to target length
-    const sliced = newVal.slice(0, targetLetters.length);
+    let sliced = newVal.slice(0, targetLetters.length);
+
+    // Auto-advance if next target character is hyphen or space
+    if (sliced.length < targetLetters.length) {
+      const nextTargetChar = targetLetters[sliced.length];
+      if (nextTargetChar === '-' || nextTargetChar === ' ') {
+        sliced = sliced + nextTargetChar;
+      }
+    }
+
     setTypedInput(sliced);
 
-    // If typed letters reach target word length, automatically check!
+    // If typed letters reach target word length, check accuracy
     if (sliced.length === targetLetters.length) {
       const cleanInput = stripAccents(sliced.trim()).toLowerCase();
       const cleanTarget = stripAccents(targetWord).toLowerCase();
@@ -211,17 +220,23 @@ export function FlashcardSession({
         setTimeout(() => setSpellShake(false), 500);
       }
     }
-  }, [targetLetters.length, targetWord, handleSpellingSuccess]);
+  }, [targetLetters, targetWord, handleSpellingSuccess]);
 
-  // Hint button: reveal next correct letter
+  // Hint button: clean any trailing incorrect characters and reveal next correct letter
   const handleHint = useCallback(() => {
-    if (typedInput.length < targetLetters.length) {
-      const nextChar = targetLetters[typedInput.length];
-      const updated = typedInput + nextChar;
+    let base = typedInput;
+    while (base.length > 0) {
+      const lastIdx = base.length - 1;
+      const typed = stripAccents(base[lastIdx]).toLowerCase();
+      const target = stripAccents(targetLetters[lastIdx] || '').toLowerCase();
+      if (typed === target) break;
+      base = base.slice(0, -1);
+    }
+    if (base.length < targetLetters.length) {
+      const nextChar = targetLetters[base.length];
+      const updated = base + nextChar;
       handleInputChange(updated);
-      if (inputRef.current) {
-        inputRef.current.focus();
-      }
+      inputRef.current?.focus();
     }
   }, [typedInput, targetLetters, handleInputChange]);
 
@@ -268,12 +283,9 @@ export function FlashcardSession({
 
     const handleKeyDown = (e) => {
       if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) {
-        // If typing inside input, allow Enter to verify or Escape to go back to card
+        // If typing inside input, allow Escape to go back to card
         if (stage === 'spelling') {
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            verifySpelling(typedInput);
-          } else if (e.key === 'Escape') {
+          if (e.key === 'Escape') {
             e.preventDefault();
             setStage('card');
           }
@@ -295,12 +307,25 @@ export function FlashcardSession({
           e.preventDefault();
           if (currentWord) playAudio(currentWord.word);
         }
+      } else if (stage === 'spelling') {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          setStage('card');
+        } else if (e.key === 'Backspace') {
+          e.preventDefault();
+          setTypedInput(prev => prev.slice(0, -1));
+          inputRef.current?.focus();
+        } else if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey && /[a-zA-Z\s\-']/.test(e.key)) {
+          e.preventDefault();
+          handleInputChange(typedInput + e.key);
+          inputRef.current?.focus();
+        }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isFinished, stage, currentWord, typedInput, handleFlip, handleNeedReview, handleMasteredClick, verifySpelling, playAudio]);
+  }, [isFinished, stage, currentWord, typedInput, handleFlip, handleNeedReview, handleMasteredClick, playAudio, handleInputChange]);
 
   // Restart only review words
   const handleRestartReview = useCallback(() => {
@@ -682,7 +707,7 @@ export function FlashcardSession({
           {/* Body */}
           <div className="flashcard-face-body">
             <div className="flashcard-spelling-prompt">
-              Nhập chính xác từ tiếng Anh tương ứng với nghĩa bên dưới để qua từ:
+              Gõ trực tiếp các chữ cái vào ô bên dưới để qua từ:
             </div>
 
             {/* Meaning in Vietnamese */}
@@ -708,7 +733,11 @@ export function FlashcardSession({
             )}
 
             {/* Dots / Slots displaying corresponding number of letters */}
-            <div className={`flashcard-slots-wrapper ${spellShake ? 'shake' : ''}`}>
+            <div
+              className={`flashcard-slots-wrapper ${spellShake ? 'shake' : ''}`}
+              onClick={() => inputRef.current?.focus()}
+              title="Chạm vào đây để gõ chữ cái"
+            >
               {targetLetters.map((char, idx) => {
                 const isSpace = char === ' ';
                 const isHyphen = char === '-';
@@ -723,36 +752,60 @@ export function FlashcardSession({
                   return <div key={idx} className="flashcard-letter-slot filled">-</div>;
                 }
 
+                const expectedChar = char;
+                const isMatch = isFilled && (
+                  stripAccents(typedChar).toLowerCase() === stripAccents(expectedChar).toLowerCase()
+                );
+                const isWrong = isFilled && !isMatch;
+
+                let slotClass = 'flashcard-letter-slot';
+                if (isSuccess || (isFilled && isMatch)) {
+                  slotClass += ' correct';
+                } else if (isWrong) {
+                  slotClass += ' wrong';
+                } else if (isActive) {
+                  slotClass += ' active dot';
+                } else {
+                  slotClass += ' dot';
+                }
+
                 return (
                   <div
                     key={idx}
-                    className={`flashcard-letter-slot ${isSuccess ? 'correct' : ''} ${
-                      isFilled ? 'filled' : isActive ? 'active dot' : 'dot'
-                    }`}
-                    onClick={() => inputRef.current?.focus()}
+                    className={slotClass}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setTypedInput(typedInput.slice(0, idx));
+                      inputRef.current?.focus();
+                    }}
+                    title={isFilled ? 'Bấm để sửa từ vị trí này' : 'Gõ chữ cái'}
                   >
-                    {isFilled ? typedChar : null}
+                    {isFilled ? (isMatch ? expectedChar.toLowerCase() : typedChar.toLowerCase()) : null}
                   </div>
                 );
               })}
             </div>
 
-            {/* Hidden/Direct typing input */}
-            <div className="flashcard-input-container">
-              <input
-                ref={inputRef}
-                type="text"
-                className="flashcard-spelling-input"
-                value={typedInput}
-                onChange={(e) => handleInputChange(e.target.value)}
-                placeholder={`Gõ đúng ${targetLetters.length} chữ cái...`}
-                autoFocus
-                autoComplete="off"
-                autoCorrect="off"
-                spellCheck="false"
-                maxLength={targetLetters.length}
-                disabled={isSuccess}
-              />
+            {/* Hidden native input for mobile virtual keyboard and IME support */}
+            <input
+              ref={inputRef}
+              type="text"
+              className="flashcard-hidden-input"
+              value={typedInput}
+              onChange={(e) => handleInputChange(e.target.value)}
+              autoFocus
+              autoComplete="off"
+              autoCorrect="off"
+              autoCapitalize="off"
+              spellCheck="false"
+              aria-label="Nhập từ chính xác"
+            />
+
+            {/* Helper guide */}
+            <div className="flashcard-spelling-guide">
+              <span className="guide-item"><span className="guide-indicator green" /> Đúng (Xanh)</span>
+              <span className="guide-item"><span className="guide-indicator red" /> Sai (Đỏ)</span>
+              <span className="guide-item guide-note">• Bấm <kbd>Backspace</kbd> để xóa</span>
             </div>
           </div>
 

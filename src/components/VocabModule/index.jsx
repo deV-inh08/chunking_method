@@ -1134,8 +1134,7 @@ export function VocabModule({ onToast, onStartPractice }) {
   const handleMarkLearned = useCallback((wordId, word, topic) => {
     markVocabLearned(wordId, word, topic);
     setLearnedVocab(getLearnedVocab()); // refresh state
-    onToast('success', `"${word}" đã được đánh dấu hoàn thành!`);
-  }, [onToast]);
+  }, []);
 
   const topicWords = useMemo(() =>
     selectedTopic ? words.filter(w => w.topic === selectedTopic) : [],

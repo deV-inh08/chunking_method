@@ -4096,7 +4096,7 @@ textarea::placeholder {
   font-size: 24px;
   font-weight: 800;
   color: #ffffff;
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -4115,9 +4115,18 @@ textarea::placeholder {
 
 .flashcard-letter-slot.active {
   border-color: #38bdf8;
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.5);
-  background: rgba(56, 189, 248, 0.12);
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.6);
+  background: rgba(56, 189, 248, 0.15);
   transform: translateY(-2px);
+}
+
+.flashcard-letter-slot.active.dot::after {
+  animation: cursorPulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes cursorPulse {
+  from { opacity: 0.4; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1.35); box-shadow: 0 0 12px #38bdf8; }
 }
 
 .flashcard-letter-slot.filled {
@@ -4126,12 +4135,28 @@ textarea::placeholder {
   color: #ffffff;
 }
 
+/* ĐÚNG (GREEN) */
 .flashcard-letter-slot.correct {
-  border-color: #22c55e !important;
-  background: rgba(34, 197, 94, 0.22) !important;
-  color: #4ade80 !important;
-  box-shadow: 0 0 16px rgba(34, 197, 94, 0.4) !important;
+  border-color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.22) !important;
+  color: #34d399 !important;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.45) !important;
   transform: scale(1.05);
+}
+
+/* SAI (RED) */
+.flashcard-letter-slot.wrong {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.25) !important;
+  color: #f87171 !important;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.5) !important;
+  animation: letterShake 0.35s ease;
+}
+
+@keyframes letterShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
 }
 
 .flashcard-letter-slot.space {
@@ -4140,41 +4165,60 @@ textarea::placeholder {
   background: transparent;
 }
 
-/* Typing input box */
-.flashcard-input-container {
+/* Hidden input for mobile keyboard / typing bridge */
+.flashcard-hidden-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+  top: 0;
+  left: 0;
+}
+
+/* Spelling Guide Legend */
+.flashcard-spelling-guide {
   display: flex;
+  align-items: center;
   justify-content: center;
-  width: 100%;
-  margin-bottom: 12px;
-}
-
-.flashcard-spelling-input {
-  width: 100%;
-  max-width: 420px;
-  background: rgba(15, 23, 42, 0.8);
-  border: 1.5px solid rgba(56, 189, 248, 0.3);
-  border-radius: 12px;
-  padding: 12px 18px;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  letter-spacing: 2px;
-  outline: none;
-  transition: all 0.2s ease;
-}
-
-.flashcard-spelling-input:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.3);
-  background: rgba(15, 23, 42, 0.95);
-}
-
-.flashcard-spelling-input::placeholder {
-  letter-spacing: normal;
-  font-weight: 400;
-  font-size: 13px;
+  gap: 16px;
+  font-size: 12px;
   color: var(--text-muted);
+  margin: 10px 0 16px;
+  user-select: none;
+  flex-wrap: wrap;
+}
+
+.flashcard-spelling-guide .guide-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.flashcard-spelling-guide .guide-indicator {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.flashcard-spelling-guide .guide-indicator.green {
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.7);
+}
+
+.flashcard-spelling-guide .guide-indicator.red {
+  background: #ef4444;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.7);
+}
+
+.flashcard-spelling-guide .guide-note kbd {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Stage 2 Help Bar */
