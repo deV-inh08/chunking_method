@@ -3,6 +3,10 @@ import {
   ChevronLeft, Sparkles, Shuffle,
   X, CheckCircle, PenLine, RotateCcw,
   GraduationCap, Trophy, BookMarked,
+  Briefcase, Cpu, HeartPulse, Plane,
+  Utensils, Leaf, Palette, Landmark,
+  Home, BookText, TrendingUp, BookOpen,
+  AlertCircle, Search, Layers,
 } from 'lucide-react';
 import { Badge, Spinner } from '../ui';
 import { generateChunksBatch } from '../../services/ai';
@@ -43,8 +47,123 @@ const POS_COLORS = {
 const MIN_WORDS = 20;
 const MAX_WORDS = 50;
 
+const TOPIC_METADATA = {
+  'Daily Life & Family': {
+    titleVi: 'Đời sống & Gia đình',
+    desc: 'Từ vựng sinh hoạt hàng ngày, gia đình, nhà cửa và các mối quan hệ đời thường.',
+    Icon: Home,
+    accentColor: '#3b82f6',
+    accentBg: 'rgba(59, 130, 246, 0.14)',
+  },
+  'General & Function Words': {
+    titleVi: 'Từ vựng cốt lõi & Cấu trúc',
+    desc: 'Đại từ, liên từ, từ nối và các mẫu cấu trúc ngữ pháp thông dụng trong giao tiếp.',
+    Icon: BookText,
+    accentColor: '#8b5cf6',
+    accentBg: 'rgba(139, 92, 246, 0.14)',
+  },
+  'Business & Work': {
+    titleVi: 'Kinh doanh & Công sở',
+    desc: 'Đàm phán, thương mại, quy trình văn phòng, hợp đồng và quản trị dự án.',
+    Icon: Briefcase,
+    accentColor: '#f59e0b',
+    accentBg: 'rgba(245, 158, 11, 0.14)',
+  },
+  'Food & Dining': {
+    titleVi: 'Ẩm thực & Nhà hàng',
+    desc: 'Món ăn, đồ uống, cách đặt bàn, phong cách phục vụ và ẩm thực quốc tế.',
+    Icon: Utensils,
+    accentColor: '#f97316',
+    accentBg: 'rgba(249, 115, 22, 0.14)',
+  },
+  'Nature & Environment': {
+    titleVi: 'Tự nhiên & Môi trường',
+    desc: 'Thời tiết, sinh thái học, biến đổi khí hậu và thế giới động thực vật.',
+    Icon: Leaf,
+    accentColor: '#22c55e',
+    accentBg: 'rgba(34, 197, 94, 0.14)',
+  },
+  'Arts & Entertainment': {
+    titleVi: 'Nghệ thuật & Giải trí',
+    desc: 'Điện ảnh, âm nhạc, triển lãm, nghệ thuật thị giác và sự kiện văn hóa.',
+    Icon: Palette,
+    accentColor: '#f43f5e',
+    accentBg: 'rgba(244, 63, 94, 0.14)',
+  },
+  'Health & Medicine': {
+    titleVi: 'Sức khỏe & Y tế',
+    desc: 'Khám chữa bệnh, thể lực, triệu chứng thường gặp và chăm sóc sức khỏe.',
+    Icon: HeartPulse,
+    accentColor: '#ef4444',
+    accentBg: 'rgba(239, 68, 68, 0.14)',
+  },
+  'Emotions & Personality': {
+    titleVi: 'Cảm xúc & Tính cách',
+    desc: 'Tâm trạng, cảm xúc cá nhân, phẩm chất đạo đức và tâm lý con người.',
+    Icon: Sparkles,
+    accentColor: '#a855f7',
+    accentBg: 'rgba(168, 85, 247, 0.14)',
+  },
+  'Education & Academic': {
+    titleVi: 'Giáo dục & Học thuật',
+    desc: 'Trường học, nghiên cứu học thuật, thi cử, học bổng và môi trường đại học.',
+    Icon: GraduationCap,
+    accentColor: '#06b6d4',
+    accentBg: 'rgba(6, 182, 212, 0.14)',
+  },
+  'Social & Politics': {
+    titleVi: 'Xã hội & Chính trị',
+    desc: 'Cộng đồng, pháp chế, chính sách công quyền, ngoại giao và xã hội học.',
+    Icon: Landmark,
+    accentColor: '#ec4899',
+    accentBg: 'rgba(236, 72, 153, 0.14)',
+  },
+  'Travel & Transportation': {
+    titleVi: 'Du lịch & Di chuyển',
+    desc: 'Sân bay, khách sạn, phương tiện công cộng, đặt vé và trải nghiệm khám phá.',
+    Icon: Plane,
+    accentColor: '#0ea5e9',
+    accentBg: 'rgba(14, 165, 233, 0.14)',
+  },
+  'Communication & Media': {
+    titleVi: 'Truyền thông & Báo chí',
+    desc: 'Tin tức thời sự, mạng xã hội, viễn thông và trao đổi tương tác thông tin.',
+    Icon: BookOpen,
+    accentColor: '#10b981',
+    accentBg: 'rgba(16, 185, 129, 0.14)',
+  },
+  'Science & Technology': {
+    titleVi: 'Khoa học & Công nghệ',
+    desc: 'Công nghệ số, điện tử, vi mạch, phát minh đổi mới và trí tuệ nhân tạo.',
+    Icon: Cpu,
+    accentColor: '#6366f1',
+    accentBg: 'rgba(99, 102, 241, 0.14)',
+  },
+  'Law & Crime': {
+    titleVi: 'Pháp luật & Tư pháp',
+    desc: 'Hệ thống pháp luật, điều lệ tòa án, bản quyền và an ninh pháp lý.',
+    Icon: AlertCircle,
+    accentColor: '#eab308',
+    accentBg: 'rgba(234, 179, 8, 0.14)',
+  },
+};
+
+function getTopicMeta(topic) {
+  if (TOPIC_METADATA[topic]) return TOPIC_METADATA[topic];
+  return {
+    titleVi: 'Chủ đề chuyên sâu',
+    desc: 'Từ vựng trọng điểm và cụm chunking theo ngữ cảnh thực tế.',
+    Icon: BookOpen,
+    accentColor: '#3b82f6',
+    accentBg: 'rgba(59, 130, 246, 0.14)',
+  };
+}
+
 // ─── Screen 1: Topic Browser ─────────────────────────────────────
 function TopicBrowser({ words, learnedVocab, onSelectTopic }) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState('all'); // 'all' | 'in_progress' | 'completed'
+
   const topicStats = useMemo(() => {
     const map = {};
     words.forEach(w => {
@@ -58,111 +177,216 @@ function TopicBrowser({ words, learnedVocab, onSelectTopic }) {
 
   const topics = useMemo(() => Object.keys(topicStats).sort(), [topicStats]);
   const totalLearned = Object.values(learnedVocab).length;
+  const totalWords = words.length;
+  const overallPct = totalWords > 0 ? Math.round((totalLearned / totalWords) * 100) : 0;
 
-  // Emoji map theo topic
-  const topicEmoji = (t) => {
-    if (t.includes('Business')) return '💼';
-    if (t.includes('Tech') || t.includes('Science')) return '🔬';
-    if (t.includes('Education')) return '📚';
-    if (t.includes('Health') || t.includes('Medical')) return '🏥';
-    if (t.includes('Travel') || t.includes('Transport')) return '✈️';
-    if (t.includes('Food')) return '🍜';
-    if (t.includes('Environment') || t.includes('Nature')) return '🌿';
-    if (t.includes('Arts') || t.includes('Entertainment')) return '🎭';
-    if (t.includes('Social') || t.includes('Politic')) return '🏛️';
-    if (t.includes('Sport')) return '⚽';
-    if (t.includes('Daily') || t.includes('Family')) return '🏠';
-    if (t.includes('General') || t.includes('Function')) return '📖';
-    if (t.includes('Finance') || t.includes('Economy')) return '📈';
-    return '📝';
-  };
+  // Topic filter counts
+  const completedTopicsCount = useMemo(() => {
+    return topics.filter(t => {
+      const s = topicStats[t];
+      return s && s.total > 0 && s.learned >= s.total;
+    }).length;
+  }, [topics, topicStats]);
+
+  const inProgressTopicsCount = useMemo(() => {
+    return topics.filter(t => {
+      const s = topicStats[t];
+      return s && s.learned > 0 && s.learned < s.total;
+    }).length;
+  }, [topics, topicStats]);
+
+  const filteredTopics = useMemo(() => {
+    return topics.filter(topic => {
+      const meta = getTopicMeta(topic);
+      const s = topicStats[topic] || { total: 0, learned: 0 };
+      const isCompleted = s.total > 0 && s.learned >= s.total;
+      const isInProgress = s.learned > 0 && !isCompleted;
+
+      // Status filter
+      if (statusFilter === 'in_progress' && !isInProgress) return false;
+      if (statusFilter === 'completed' && !isCompleted) return false;
+
+      // Search filter
+      if (searchTerm.trim()) {
+        const q = searchTerm.toLowerCase();
+        const matchTitleEn = topic.toLowerCase().includes(q);
+        const matchTitleVi = meta.titleVi.toLowerCase().includes(q);
+        const matchDesc = meta.desc.toLowerCase().includes(q);
+        if (!matchTitleEn && !matchTitleVi && !matchDesc) return false;
+      }
+
+      return true;
+    });
+  }, [topics, topicStats, statusFilter, searchTerm]);
 
   return (
-    <div>
-      {/* Header stats */}
-      <div className="card mb-6" style={{
-        background: 'linear-gradient(135deg, rgba(99,102,241,0.12), rgba(67,56,202,0.08))',
-        borderColor: 'rgba(99,102,241,0.25)',
-      }}>
-        <div className="flex items-center gap-4 flex-wrap">
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{
-              width: 44, height: 44, borderRadius: 'var(--radius-md)',
-              background: 'linear-gradient(135deg, var(--accent-500), var(--accent-700))',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-              <GraduationCap size={20} color="white" />
-            </div>
-            <div>
-              <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--text-primary)' }}>
-                Thư viện từ vựng
-              </div>
-              <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
-                {words.length.toLocaleString()} từ · {topics.length} chủ đề
-              </div>
-            </div>
+    <div className="vocab-container">
+      {/* Hero Header Banner */}
+      <div className="vocab-hero-card">
+        <div className="vocab-hero-content">
+          <div className="vocab-hero-badge">
+            <GraduationCap size={13} /> Thư viện từ vựng chuẩn hóa
           </div>
-          <div style={{ flex: 1 }} />
-          <div style={{ textAlign: 'right' }}>
-            <div style={{ fontWeight: 700, fontSize: 22, color: 'var(--accent-300)' }}>
-              {totalLearned}
-            </div>
-            <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>từ đã học</div>
+          <h2 className="vocab-hero-title">Từ vựng TOEIC & Giao tiếp</h2>
+          <p className="vocab-hero-desc">
+            {words.length.toLocaleString()} từ vựng trọng tâm phân loại theo {topics.length} chủ đề thực chiến, tích hợp trích xuất cụm chunking phản xạ.
+          </p>
+        </div>
+
+        {/* 3 Metric cards */}
+        <div className="vocab-hero-stats">
+          <div className="vocab-stat-card">
+            <div className="vocab-stat-value">{totalLearned.toLocaleString()}</div>
+            <div className="vocab-stat-label">Từ đã thành thạo</div>
+          </div>
+          <div className="vocab-stat-card">
+            <div className="vocab-stat-value" style={{ color: '#38bdf8' }}>{overallPct}%</div>
+            <div className="vocab-stat-label">Độ phủ từ vựng</div>
+          </div>
+          <div className="vocab-stat-card">
+            <div className="vocab-stat-value" style={{ color: '#818cf8' }}>{topics.length}</div>
+            <div className="vocab-stat-label">Chủ đề thực chiến</div>
           </div>
         </div>
       </div>
 
-      <p style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 16 }}>
-        Chọn chủ đề để bắt đầu học từ vựng theo chunking method
-      </p>
-
-      {/* Topic grid */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-        gap: 12,
-      }}>
-        {topics.map(topic => {
-          const s = topicStats[topic];
-          const pct = s.total > 0 ? (s.learned / s.total) * 100 : 0;
-          const remaining = s.total - s.learned;
-          return (
+      {/* Search & Status Filters Bar */}
+      <div className="vocab-controls-bar">
+        <div className="vocab-search-wrapper">
+          <Search size={16} className="vocab-search-icon" />
+          <input
+            type="text"
+            className="vocab-search-input"
+            placeholder="Tìm kiếm theo chủ đề, lĩnh vực..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          {searchTerm && (
             <button
-              key={topic}
-              id={`topic-btn-${topic.replace(/\W+/g, '-')}`}
-              onClick={() => onSelectTopic(topic)}
-              className="card"
-              style={{
-                textAlign: 'left', cursor: 'pointer',
-                padding: '16px',
-                transition: 'all 0.2s',
-                borderColor: pct === 100 ? 'rgba(34,197,94,0.3)' : 'var(--border-subtle)',
-              }}
+              className="vocab-search-clear"
+              onClick={() => setSearchTerm('')}
+              title="Xóa tìm kiếm"
             >
-              <div style={{ fontSize: 28, marginBottom: 8 }}>{topicEmoji(topic)}</div>
-              <div style={{ fontWeight: 700, fontSize: 13, color: 'var(--text-primary)', marginBottom: 4, lineHeight: 1.3 }}>
-                {topic}
-              </div>
-              <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 10 }}>
-                {remaining > 0 ? `${remaining} từ chưa học` : '✓ Đã học hết!'}
-                {' '}· {s.total} từ
-              </div>
-              {/* Progress bar */}
-              <div style={{ height: 4, background: 'var(--bg-base)', borderRadius: 99 }}>
-                <div style={{
-                  height: '100%',
-                  width: `${pct}%`,
-                  background: pct === 100
-                    ? 'linear-gradient(90deg, #22c55e, #16a34a)'
-                    : 'linear-gradient(90deg, var(--accent-500), var(--accent-400))',
-                  borderRadius: 99,
-                  transition: 'width 0.4s ease',
-                }} />
-              </div>
+              <X size={14} />
             </button>
-          );
-        })}
+          )}
+        </div>
+
+        <div className="vocab-filter-pills">
+          <button
+            className={`vocab-filter-btn ${statusFilter === 'all' ? 'active' : ''}`}
+            onClick={() => setStatusFilter('all')}
+          >
+            Tất cả ({topics.length})
+          </button>
+          <button
+            className={`vocab-filter-btn ${statusFilter === 'in_progress' ? 'active' : ''}`}
+            onClick={() => setStatusFilter('in_progress')}
+          >
+            Đang học ({inProgressTopicsCount})
+          </button>
+          <button
+            className={`vocab-filter-btn ${statusFilter === 'completed' ? 'active' : ''}`}
+            onClick={() => setStatusFilter('completed')}
+          >
+            Đã xong ({completedTopicsCount})
+          </button>
+        </div>
       </div>
+
+      {/* Topic Grid */}
+      {filteredTopics.length === 0 ? (
+        <div className="vocab-empty-state">
+          <BookOpen size={36} color="var(--text-muted)" style={{ margin: '0 auto 12px' }} />
+          <p style={{ fontWeight: 600, color: 'var(--text-primary)', marginBottom: 6 }}>
+            Không tìm thấy chủ đề phù hợp
+          </p>
+          <p style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 16 }}>
+            Thử tìm kiếm với từ khóa khác hoặc chuyển bộ lọc trạng thái.
+          </p>
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={() => {
+              setSearchTerm('');
+              setStatusFilter('all');
+            }}
+          >
+            Xóa bộ lọc
+          </button>
+        </div>
+      ) : (
+        <div className="vocab-topic-grid">
+          {filteredTopics.map(topic => {
+            const s = topicStats[topic] || { total: 0, learned: 0 };
+            const pct = s.total > 0 ? Math.round((s.learned / s.total) * 100) : 0;
+            const isCompleted = s.total > 0 && s.learned >= s.total;
+            const meta = getTopicMeta(topic);
+            const TopicIcon = meta.Icon;
+
+            return (
+              <div
+                key={topic}
+                id={`topic-btn-${topic.replace(/\W+/g, '-')}`}
+                onClick={() => onSelectTopic(topic)}
+                className={`vocab-topic-card ${isCompleted ? 'completed' : ''}`}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onSelectTopic(topic);
+                  }
+                }}
+              >
+                <div className="vocab-card-header">
+                  <div
+                    className="vocab-topic-icon"
+                    style={{
+                      backgroundColor: meta.accentBg,
+                      color: meta.accentColor,
+                    }}
+                  >
+                    <TopicIcon size={22} strokeWidth={1.8} />
+                  </div>
+                  <span className={`vocab-badge-count ${isCompleted ? 'done' : ''}`}>
+                    {isCompleted ? '✓ Đã xong' : `${s.total} từ`}
+                  </span>
+                </div>
+
+                <h3 className="vocab-topic-title-en">{topic}</h3>
+                <div className="vocab-topic-title-vi">{meta.titleVi}</div>
+                <p className="vocab-topic-desc">{meta.desc}</p>
+
+                <div className="vocab-card-footer">
+                  <div className="vocab-progress-row">
+                    <span className="vocab-progress-label">
+                      {isCompleted
+                        ? 'Đã thành thạo 100%'
+                        : s.learned > 0
+                        ? `Đã học ${s.learned}/${s.total} từ`
+                        : 'Chưa học từ nào'}
+                    </span>
+                    <span className="vocab-progress-value" style={{ color: isCompleted ? '#4ade80' : undefined }}>
+                      {pct}%
+                    </span>
+                  </div>
+                  <div className="vocab-progress-track">
+                    <div
+                      className={`vocab-progress-bar ${isCompleted ? 'done' : ''}`}
+                      style={{
+                        width: `${pct}%`,
+                        background: isCompleted
+                          ? '#22c55e'
+                          : `linear-gradient(90deg, ${meta.accentColor}, #818cf8)`,
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
@@ -216,16 +440,13 @@ function WordSelector({ topic, words, learnedVocab, onStartLearning, onBack }) {
       </div>
 
       {/* Count stepper */}
-      <div className="card mb-5" style={{
-        background: 'linear-gradient(135deg, rgba(99,102,241,0.08), rgba(67,56,202,0.05))',
-        borderColor: 'rgba(99,102,241,0.2)',
-      }}>
+      <div className="vocab-stepper-card mb-5">
         <div className="flex items-center gap-4 flex-wrap">
           <div>
-            <div style={{ fontWeight: 600, fontSize: 13, color: 'var(--text-primary)', marginBottom: 2 }}>
+            <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--text-primary)', marginBottom: 2 }}>
               Số từ muốn học hôm nay
             </div>
-            <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>
+            <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
               {unlearnedWords.length} từ chưa học trong chủ đề này
             </div>
           </div>
@@ -236,17 +457,17 @@ function WordSelector({ topic, words, learnedVocab, onStartLearning, onBack }) {
               className="btn btn-ghost btn-sm"
               onClick={() => setCount(c => Math.max(1, c - 5))}
               disabled={count <= 1}
-              style={{ width: 32, height: 32, padding: 0 }}
+              style={{ width: 34, height: 34, padding: 0, borderRadius: 8 }}
             >-5</button>
             <span style={{
-              fontWeight: 800, fontSize: 24, color: 'var(--accent-300)',
-              minWidth: 40, textAlign: 'center',
+              fontWeight: 800, fontSize: 26, color: '#38bdf8',
+              minWidth: 44, textAlign: 'center',
             }}>{count}</span>
             <button
               className="btn btn-ghost btn-sm"
               onClick={() => setCount(c => Math.min(MAX_WORDS, unlearnedWords.length, c + 5))}
               disabled={count >= Math.min(MAX_WORDS, unlearnedWords.length)}
-              style={{ width: 32, height: 32, padding: 0 }}
+              style={{ width: 34, height: 34, padding: 0, borderRadius: 8 }}
             >+5</button>
           </div>
           {/* Quick preset buttons */}
@@ -254,28 +475,28 @@ function WordSelector({ topic, words, learnedVocab, onStartLearning, onBack }) {
             {[20, 30, 50].map(n => (
               <button
                 key={n}
-                className={`btn btn-sm ${count === n ? 'btn-secondary' : 'btn-ghost'}`}
+                className={`btn btn-sm ${count === n ? 'btn-primary' : 'btn-ghost'}`}
                 onClick={() => setCount(Math.min(n, unlearnedWords.length))}
                 disabled={unlearnedWords.length < n && n !== 20}
-                style={{ padding: '4px 10px' }}
+                style={{ padding: '5px 12px', borderRadius: 8 }}
               >{n}</button>
             ))}
           </div>
         </div>
 
         {/* Slider */}
-        <div style={{ marginTop: 12 }}>
+        <div style={{ marginTop: 14 }}>
           <input
             type="range"
             min={1}
             max={Math.min(MAX_WORDS, unlearnedWords.length)}
             value={count}
             onChange={e => setCount(Number(e.target.value))}
-            style={{ width: '100%', accentColor: 'var(--accent-500)' }}
+            style={{ width: '100%', accentColor: 'var(--primary)' }}
           />
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 10, color: 'var(--text-muted)', marginTop: 2 }}>
-            <span>1</span>
-            <span style={{ color: 'var(--text-muted)' }}>Tối đa {Math.min(MAX_WORDS, unlearnedWords.length)}</span>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--text-muted)', marginTop: 4 }}>
+            <span>1 từ</span>
+            <span>Tối đa {Math.min(MAX_WORDS, unlearnedWords.length)} từ</span>
           </div>
         </div>
       </div>
@@ -285,7 +506,7 @@ function WordSelector({ topic, words, learnedVocab, onStartLearning, onBack }) {
         <div className="card" style={{ textAlign: 'center', padding: 40 }}>
           <Trophy size={32} color="var(--accent-300)" style={{ margin: '0 auto 12px' }} />
           <p style={{ fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4 }}>
-            Đã học hết toàn bộ từ trong chủ đề này! 🎉
+            Đã học hết toàn bộ từ trong chủ đề này!
           </p>
           <p style={{ fontSize: 12, color: 'var(--text-muted)' }}>
             {learnedCount}/{words.length} từ đã hoàn thành
@@ -308,43 +529,27 @@ function WordSelector({ topic, words, learnedVocab, onStartLearning, onBack }) {
           </div>
 
           {/* Word chips grid */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
-            gap: 8,
-            marginBottom: 20,
-          }}>
+          <div className="vocab-word-grid mb-5">
             {selectedWords.map((w) => {
               const wid = makeWordId(w.word, w.topic);
               const posColor = POS_COLORS[w.partOfSpeech] || 'neutral';
               return (
                 <div
                   key={wid}
-                  className="card animate-fade-in"
-                  style={{ padding: '10px 12px', position: 'relative' }}
+                  className="vocab-word-card animate-fade-in"
                 >
                   <button
                     id={`swap-${wid}`}
                     onClick={() => handleSwap(w)}
                     title="Đổi từ khác"
-                    style={{
-                      position: 'absolute', top: 6, right: 6,
-                      background: 'rgba(239,68,68,0.1)',
-                      border: '1px solid rgba(239,68,68,0.2)',
-                      borderRadius: 'var(--radius-full)',
-                      padding: '1px 5px',
-                      cursor: 'pointer',
-                      color: 'var(--error-text)',
-                      fontSize: 10,
-                      display: 'flex', alignItems: 'center', gap: 2,
-                    }}
+                    className="vocab-word-swap-btn"
                   >
-                    <X size={10} />
+                    <X size={10} /> Đổi
                   </button>
-                  <div style={{ fontWeight: 700, fontSize: 13, color: 'var(--text-primary)', paddingRight: 20, marginBottom: 3 }}>
+                  <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--text-primary)', paddingRight: 40, marginBottom: 4 }}>
                     {w.word}
                   </div>
-                  <div style={{ fontSize: 11, color: 'var(--text-secondary)', marginBottom: 5, lineHeight: 1.4 }}>
+                  <div style={{ fontSize: 11.5, color: 'var(--text-secondary)', marginBottom: 8, lineHeight: 1.4 }}>
                     {w.meaningVi}
                   </div>
                   {w.partOfSpeech && (
@@ -639,7 +844,7 @@ function LearningSession({ topic, selectedWords, learnedVocab, onBack, onToast, 
             }} />
           </div>
           <p style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 6, margin: '6px 0 0' }}>
-            ⚡ Đang chia theo batch tối ưu tốc độ & tránh giới hạn API
+            Đang chia theo batch tối ưu tốc độ và tránh giới hạn API
           </p>
         </div>
       )}
@@ -651,8 +856,9 @@ function LearningSession({ topic, selectedWords, learnedVocab, onBack, onToast, 
           borderColor: 'var(--error-border)',
           padding: '14px 16px',
         }}>
-          <div style={{ color: 'var(--error-text)', fontSize: 13, fontWeight: 600, marginBottom: 8 }}>
-            ❌ {errorMsg || 'Không thể tạo chunk cho danh sách từ này.'}
+          <div style={{ color: 'var(--error-text)', fontSize: 13, fontWeight: 600, marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+            <AlertCircle size={15} />
+            <span>{errorMsg || 'Không thể tạo chunk cho danh sách từ này.'}</span>
           </div>
           <button
             className="btn btn-secondary btn-sm"
@@ -689,7 +895,7 @@ function LearningSession({ topic, selectedWords, learnedVocab, onBack, onToast, 
         }}>
           <Trophy size={36} color="var(--success-text)" style={{ margin: '0 auto 12px' }} />
           <div style={{ fontWeight: 800, fontSize: 18, color: 'var(--success-text)', marginBottom: 6 }}>
-            Tuyệt vời! Hoàn thành {selectedWords.length} từ! 🎉
+            Tuyệt vời! Hoàn thành {selectedWords.length} từ!
           </div>
           <p style={{ fontSize: 13, color: 'var(--text-muted)' }}>
             Các từ đã được lưu vào danh sách đã học. Bạn có thể luyện tập tiếp bất kỳ lúc nào.
@@ -735,7 +941,7 @@ export function VocabModule({ onToast, onStartPractice }) {
   const handleMarkLearned = useCallback((wordId, word, topic) => {
     markVocabLearned(wordId, word, topic);
     setLearnedVocab(getLearnedVocab()); // refresh state
-    onToast('success', `✓ "${word}" đã được đánh dấu hoàn thành!`);
+    onToast('success', `"${word}" đã được đánh dấu hoàn thành!`);
   }, [onToast]);
 
   const topicWords = useMemo(() =>

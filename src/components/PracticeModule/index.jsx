@@ -3,6 +3,7 @@ import {
   PenLine, ChevronRight, ChevronLeft, ChevronDown, ChevronUp, RotateCcw,
   CheckCircle, XCircle, Sparkles, Loader, Volume2, VolumeX,
   Flame, BookMarked, FileText, Layers, Mic, Headphones, Trash2,
+  Eye, EyeOff, HelpCircle,
 } from 'lucide-react';
 import { EmptyState, Badge, Spinner, Modal } from '../ui';
 import {
@@ -10,7 +11,7 @@ import {
   saveSpeakingProgress,
 } from '../../store/storage';
 import { gradeWritingBatch, generateWritingExercises } from '../../services/ai';
-import { formatTimeUntilReview, isDueForReview } from '../../services/srs';
+import { isDueForReview } from '../../services/srs';
 import { SpeakingSession } from './SpeakingSession';
 import { GroupCompletionModal } from './GroupCompletionModal';
 import { TranscriptListeningModal } from '../TranscriptModule/TranscriptListeningModal';
@@ -147,7 +148,7 @@ function GradingResult({ result, chunkPhrase }) {
           padding: '10px 12px',
         }}>
           <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--accent-400)', marginBottom: 4, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-            💡 Cách diễn đạt tự nhiên hơn
+            Cách diễn đạt tự nhiên hơn
           </p>
           <p style={{ fontSize: 13.5, color: 'var(--text-primary)', fontStyle: 'italic', margin: 0 }}>
             "{naturalSuggestion}"
@@ -170,7 +171,7 @@ function VocabHints({ hints = [] }) {
       }}
     >
       <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted)', alignSelf: 'center', marginRight: 2 }}>
-        💬 Gợi ý:
+        Gợi ý:
       </span>
       {hints.map((h, i) => (
         <span
@@ -226,7 +227,7 @@ function SampleWithTTS({ text, id, breakdown }) {
       <div style={{ padding: '10px 14px' }}>
         <div className="flex items-center justify-between mb-1">
           <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--success-text)', textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0 }}>
-            ✅ Câu dịch tham khảo
+            Câu dịch tham khảo
           </p>
           <button
             id={id ? `tts-${id}` : undefined}
@@ -283,7 +284,7 @@ function SampleWithTTS({ text, id, breakdown }) {
           }}
         >
           <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--accent-400)', textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 2px' }}>
-            🔍 Phân tích cấu trúc câu
+            Phân tích cấu trúc câu
           </p>
           {breakdown.map((item, i) => (
             <div
@@ -304,7 +305,7 @@ function SampleWithTTS({ text, id, breakdown }) {
               </div>
               {item.note && (
                 <p style={{ fontSize: 11.5, color: 'var(--text-muted)', margin: 0, lineHeight: 1.6 }}>
-                  💡 {item.note}
+                  {item.note}
                 </p>
               )}
             </div>
@@ -330,6 +331,7 @@ function ExerciseCard({
   userInput = '', setUserInput, showSample, setShowSample,
   gradingResult, isGrading,
 }) {
+  const [showGrammar, setShowGrammar] = useState(false);
   const text = (userInput || '').trim();
   const wordCount = text ? text.split(/\s+/).length : 0;
   const level = exercise.level || (index + 1);
@@ -370,7 +372,7 @@ function ExerciseCard({
       <div className="flex items-start justify-between gap-3 mb-3">
         <div style={{ flex: 1, minWidth: 0 }}>
           {/* Level badge row */}
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex items-center gap-2 mb-2 flex-wrap">
             <span style={{
               display: 'inline-flex', alignItems: 'center', gap: 4,
               background: lvCfg.bg,
@@ -380,7 +382,7 @@ function ExerciseCard({
               fontSize: 11, fontWeight: 700,
               color: `rgb(${lvCfg.color})`,
             }}>
-              {'★'.repeat(level)} {exercise.levelLabel || lvCfg.label}
+              {exercise.levelLabel || lvCfg.label}
             </span>
             {exercise.tenseUsed && (
               <span style={{
@@ -393,6 +395,16 @@ function ExerciseCard({
                 {exercise.tenseUsed}
               </span>
             )}
+            {exercise.tenseExplanation && (
+              <button
+                type="button"
+                className="grammar-toggle-btn"
+                onClick={() => setShowGrammar(s => !s)}
+              >
+                <HelpCircle size={12} />
+                <span>{showGrammar ? 'Ẩn ngữ pháp' : 'Gợi ý ngữ pháp'}</span>
+              </button>
+            )}
           </div>
 
           {/* Vietnamese sentence */}
@@ -403,26 +415,16 @@ function ExerciseCard({
           }}>
             {exercise.vietnameseSentence || exercise.context || exercise.prompt || (
               <span style={{ color: 'var(--error-text)', fontSize: 13, fontWeight: 500 }}>
-                ⚠️ Chưa có nội dung câu tiếng Việt cho bài tập này.
+                Chưa có nội dung câu tiếng Việt cho bài tập này.
               </span>
             )}
           </p>
 
-          {/* Tense explanation */}
-          {exercise.tenseExplanation && (
-            <div style={{
-              marginTop: 8,
-              display: 'flex', alignItems: 'flex-start', gap: 6,
-              background: 'rgba(99,102,241,0.06)',
-              border: '1px solid rgba(99,102,241,0.15)',
-              borderRadius: 'var(--radius-sm)',
-              padding: '7px 10px',
-            }}>
-              <span style={{ fontSize: 13, flexShrink: 0 }}>📘</span>
-              <p style={{ fontSize: 12, color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>
-                <span style={{ fontWeight: 700, color: 'var(--accent-300)' }}>{exercise.tenseUsed}: </span>
-                {exercise.tenseExplanation}
-              </p>
+          {/* Collapsible Tense explanation */}
+          {showGrammar && exercise.tenseExplanation && (
+            <div className="grammar-hint-box animate-fade-in">
+              <strong style={{ color: 'var(--accent-300)' }}>{exercise.tenseUsed}: </strong>
+              {exercise.tenseExplanation}
             </div>
           )}
 
@@ -476,12 +478,16 @@ function ExerciseCard({
           className="btn btn-sm"
           onClick={() => setShowSample(s => !s)}
           style={{
-            background: showSample ? 'rgba(99,102,241,0.15)' : 'rgba(99,102,241,0.1)',
+            background: showSample ? 'rgba(99,102,241,0.15)' : 'rgba(99,102,241,0.08)',
             color: 'var(--accent-300)',
             border: '1px solid rgba(99,102,241,0.25)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 6,
           }}
         >
-          👁 {showSample ? 'Ẩn câu mẫu' : 'Xem câu mẫu'}
+          {showSample ? <EyeOff size={13} strokeWidth={1.75} /> : <Eye size={13} strokeWidth={1.75} />}
+          <span>{showSample ? 'Ẩn câu mẫu' : 'Xem câu mẫu'}</span>
         </button>
       </div>
     </div>
@@ -748,102 +754,75 @@ function WritingSession({
 
   return (
     <div className="flex flex-col gap-4">
-      {/* Header */}
-      <div style={{ marginBottom: 4 }}>
-        <div className="flex items-center gap-2 flex-wrap mb-1">
-          <span style={{ fontSize: 18, fontWeight: 800, color: 'var(--text-primary)' }}>
-            {chunk.phrase}
-          </span>
-          {chunkIpa && (
-            <span style={{
-              fontSize: 13,
-              color: '#38bdf8',
-              background: 'rgba(56, 189, 248, 0.12)',
-              border: '1px solid rgba(56, 189, 248, 0.28)',
-              padding: '2px 8px',
-              borderRadius: 'var(--radius-sm)',
-              fontWeight: 600,
-              letterSpacing: '0.3px',
-            }}>
-              {formatIPA(chunkIpa)}
-            </span>
-          )}
-          <Badge type={chunk.type}>{CHUNK_TYPE_LABELS[chunk.type] || chunk.type}</Badge>
-          {progress && (
-            <Badge type="success">
-              {progress.practiceCount} lần luyện{progress.lastScore != null ? ` · ${progress.lastScore}đ` : ''}
-            </Badge>
-          )}
-          {progress && (
-            <span style={{
-              display: 'inline-flex', alignItems: 'center', gap: 4,
-              fontSize: 11.5, fontWeight: 700, padding: '2px 9px', borderRadius: 'var(--radius-full)',
-              background: progress.status === 'mastered' ? 'rgba(34, 197, 94, 0.15)' : 'rgba(99, 102, 241, 0.15)',
-              color: progress.status === 'mastered' ? '#4ade80' : 'var(--accent-300)',
-              border: `1px solid ${progress.status === 'mastered' ? 'rgba(34, 197, 94, 0.35)' : 'rgba(99, 102, 241, 0.35)'}`,
-            }}>
-              {progress.status === 'mastered' ? '🧠 ' : '⚡ '}Level {progress.srsLevel || 1}{progress.status === 'mastered' ? ' (Thành thạo)' : ''}
-            </span>
-          )}
-          {progress && (
-            <span style={{
-              display: 'inline-flex', alignItems: 'center', gap: 4,
-              fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 'var(--radius-full)',
-              background: isDueForReview(progress) ? 'rgba(239,68,68,0.15)' : 'rgba(245,158,11,0.12)',
-              color: isDueForReview(progress) ? 'var(--error-text)' : '#f59e0b',
-              border: `1px solid ${isDueForReview(progress) ? 'rgba(239,68,68,0.3)' : 'rgba(245,158,11,0.3)'}`,
-            }}>
-              <Flame size={11} color={isDueForReview(progress) ? '#ef4444' : '#f59e0b'} />
-              {isDueForReview(progress)
-                ? '🔥 Đến hạn ôn tập'
-                : formatTimeUntilReview(progress.nextReviewAt)?.text || 'Đang học'
-              }
-            </span>
-          )}
+      {/* Clean Enterprise Chunk Header */}
+      <div className="practice-header-card animate-fade-in">
+        <div className="flex items-center justify-between gap-3 flex-wrap mb-2">
+          <div className="flex items-center gap-2.5 flex-wrap">
+            <h2 style={{ fontSize: 20, fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>
+              {chunk.phrase}
+            </h2>
+            {chunkIpa && (
+              <span style={{
+                fontSize: 12.5,
+                color: '#38bdf8',
+                background: 'rgba(56, 189, 248, 0.12)',
+                border: '1px solid rgba(56, 189, 248, 0.28)',
+                padding: '2px 8px',
+                borderRadius: 'var(--radius-sm)',
+                fontWeight: 600,
+                letterSpacing: '0.3px',
+              }}>
+                {formatIPA(chunkIpa)}
+              </span>
+            )}
+            <Badge type={chunk.type}>{CHUNK_TYPE_LABELS[chunk.type] || chunk.type}</Badge>
+            {isDue && (
+              <span style={{
+                fontSize: 11,
+                color: '#ef4444',
+                background: 'rgba(239, 68, 68, 0.12)',
+                border: '1px solid rgba(239, 68, 68, 0.3)',
+                padding: '2px 8px',
+                borderRadius: 'var(--radius-full)',
+                fontWeight: 600,
+              }}>
+                Cần ôn tập
+              </span>
+            )}
+          </div>
 
-          <button
-            type="button"
-            className="btn btn-ghost btn-xs"
-            onClick={handleReset}
-            title="Làm mới ô nhập và kết quả chấm để bắt đầu một lượt ôn tập mới"
-            style={{
-              fontSize: 11,
-              color: isDue ? '#f87171' : 'var(--text-muted)',
-              display: 'inline-flex', alignItems: 'center', gap: 4,
-              border: isDue ? '1px solid rgba(239, 68, 68, 0.4)' : '1px solid var(--border-subtle)',
-              background: isDue ? 'rgba(239, 68, 68, 0.08)' : 'transparent',
-              borderRadius: 'var(--radius-full)', padding: '2px 8px',
-              cursor: 'pointer',
-            }}
-          >
-            <RotateCcw size={11} /> Làm mới bài làm
-          </button>
-
+          <div className="flex items-center gap-3">
+            {progress && (
+              <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>
+                Lv.{progress.srsLevel || 1} · {progress.practiceCount || 0} lần luyện
+                {progress.lastScore != null ? ` · ${progress.lastScore}đ` : ''}
+              </span>
+            )}
+            <button
+              type="button"
+              className="btn btn-ghost btn-xs"
+              onClick={handleReset}
+              title="Làm mới ô nhập bài làm"
+              style={{
+                fontSize: 11,
+                color: 'var(--text-muted)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 4,
+                padding: '3px 8px',
+                border: '1px solid var(--border-subtle)',
+                borderRadius: 'var(--radius-sm)',
+              }}
+            >
+              <RotateCcw size={11} /> Làm mới
+            </button>
+          </div>
         </div>
-        <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: 0 }}>
+
+        <p style={{ fontSize: 13.5, color: 'var(--text-secondary)', margin: 0, lineHeight: 1.5 }}>
           {chunk.meaningVi}
           {chunk.meaningEn && <span style={{ color: 'var(--text-muted)', marginLeft: 8 }}>· {chunk.meaningEn}</span>}
         </p>
-
-        {isDue && (
-          <div style={{
-            marginTop: 8,
-            padding: '8px 12px',
-            background: 'rgba(239, 68, 68, 0.08)',
-            border: '1px solid rgba(239, 68, 68, 0.25)',
-            borderRadius: 'var(--radius-sm)',
-            fontSize: 12,
-            color: '#fca5a5',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 6,
-          }}>
-            <Flame size={14} color="#ef4444" style={{ flexShrink: 0 }} />
-            <span>
-              <strong>Lượt ôn tập Spaced Repetition (Level {progress?.srsLevel || 1} · Lần {progress?.practiceCount ? progress.practiceCount + 1 : 1}):</strong> Dữ liệu đã được làm mới để bạn nhớ lại và tự dịch từ đầu!
-            </span>
-          </div>
-        )}
       </div>
 
       {/* All exercises stacked */}
@@ -988,7 +967,7 @@ function WritingSession({
           {hasCompletedSpeaking ? (
             <><RotateCcw size={15} /> Luyện nói lại</>
           ) : (
-            <><Mic size={16} /> 🎙️ Luyện nói với AI</>
+            <><Mic size={16} strokeWidth={1.75} /> Luyện nói với AI</>
           )}
         </button>
       </div>
@@ -1017,7 +996,7 @@ function WritingSession({
           marginTop: 8,
         }}>
           <span style={{ fontSize: 13.5, fontWeight: 700, color: '#34d399', display: 'flex', alignItems: 'center', gap: 8 }}>
-            <CheckCircle size={18} /> 🎉 Đã hoàn thành cả Viết & Nói! Đang chuyển sang chunk tiếp theo...
+            <CheckCircle size={18} /> Đã hoàn thành cả Viết & Nói! Đang chuyển sang chunk tiếp theo...
           </span>
           <Spinner size={16} />
         </div>
@@ -1127,13 +1106,7 @@ function PracticeOutline({
         return (
           <div
             key={group.id}
-            className="card"
-            style={{
-              padding: 0,
-              overflow: 'hidden',
-              borderColor: hasActive ? 'var(--accent-400)' : 'var(--border-subtle)',
-              background: hasActive ? 'rgba(99,102,241,0.04)' : 'var(--bg-surface)',
-            }}
+            className={`practice-outline-group ${hasActive ? 'active' : ''}`}
           >
             {/* Group Header */}
             <button
@@ -1144,10 +1117,11 @@ function PracticeOutline({
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 padding: '10px 12px',
-                background: hasActive ? 'rgba(99,102,241,0.12)' : 'var(--bg-elevated)',
+                background: hasActive ? 'rgba(99,102,241,0.08)' : 'transparent',
                 border: 'none',
                 cursor: 'pointer',
                 textAlign: 'left',
+                borderBottom: !isCollapsed ? '1px solid var(--border-subtle)' : 'none',
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0, flex: 1 }}>
@@ -1168,10 +1142,10 @@ function PracticeOutline({
                     {gIdx + 1}. {group.title}
                   </div>
                   <div style={{ fontSize: 11, color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <span>{completedCount}/{group.chunks.length} chunks</span>
+                    <span>{completedCount}/{group.chunks.length} đã xong</span>
                     {hasDue && (
-                      <span style={{ color: '#ef4444', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 2 }}>
-                        · <Flame size={10} color="#ef4444" /> Đến hạn ôn
+                      <span style={{ color: '#ef4444', fontWeight: 600 }}>
+                        · Cần ôn
                       </span>
                     )}
                   </div>
@@ -1190,31 +1164,31 @@ function PracticeOutline({
                     style={{
                       padding: '2px 8px',
                       fontSize: 11,
-                      fontWeight: 700,
+                      fontWeight: 600,
                       color: '#38bdf8',
-                      background: 'rgba(56, 189, 248, 0.12)',
-                      border: '1px solid rgba(56, 189, 248, 0.3)',
+                      background: 'rgba(56, 189, 248, 0.1)',
+                      border: '1px solid rgba(56, 189, 248, 0.25)',
                       borderRadius: 'var(--radius-full)',
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: 4,
                       cursor: 'pointer',
                     }}
-                    title="Nghe lại transcript của nhóm này để luyện Listening"
+                    title="Nghe lại transcript của nhóm này"
                   >
                     <Headphones size={11} />
                     <span>Nghe</span>
                   </span>
                 )}
                 <div style={{ color: 'var(--text-muted)' }}>
-                  {isCollapsed ? <ChevronDown size={15} /> : <ChevronUp size={15} />}
+                  {isCollapsed ? <ChevronDown size={14} /> : <ChevronUp size={14} />}
                 </div>
               </div>
             </button>
 
             {/* Chunks inside this group */}
             {!isCollapsed && (
-              <div style={{ padding: '6px', display: 'flex', flexDirection: 'column', gap: 4, background: 'var(--bg-surface)' }}>
+              <div style={{ padding: '4px 6px', display: 'flex', flexDirection: 'column', gap: 2 }}>
                 {group.chunks.map((chunk, cIdx) => {
                   const prog = allProgress[chunk.id];
                   const isActive = activeChunkId === chunk.id;
@@ -1226,32 +1200,26 @@ function PracticeOutline({
                       key={chunk.id}
                       id={`practice-nav-${chunk.id}`}
                       onClick={() => onSelectChunk(chunk.id)}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        gap: 8,
-                        padding: '8px 10px',
-                        borderRadius: 'var(--radius-sm)',
-                        background: isActive
-                          ? 'linear-gradient(135deg, rgba(99,102,241,0.25), rgba(67,56,202,0.2))'
-                          : 'transparent',
-                        border: isActive ? '1px solid rgba(99,102,241,0.5)' : '1px solid transparent',
-                        color: isActive ? '#fff' : 'var(--text-primary)',
-                        cursor: 'pointer',
-                        textAlign: 'left',
-                        transition: 'all 0.15s ease',
-                      }}
+                      className={`practice-item-btn ${isActive ? 'active' : ''}`}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: 7, minWidth: 0, flex: 1 }}>
                         {isDone ? (
-                          <CheckCircle size={14} style={{ color: 'var(--success-text)', flexShrink: 0 }} />
+                          <CheckCircle size={13} style={{ color: 'var(--success-text)', flexShrink: 0 }} />
+                        ) : isDue ? (
+                          <span style={{
+                            width: 6,
+                            height: 6,
+                            borderRadius: '50%',
+                            background: '#ef4444',
+                            flexShrink: 0,
+                            display: 'inline-block',
+                          }} />
                         ) : (
                           <span style={{
-                            width: 13,
-                            height: 13,
-                            borderRadius: 'var(--radius-full)',
-                            border: '1.5px solid var(--border-strong)',
+                            width: 6,
+                            height: 6,
+                            borderRadius: '50%',
+                            background: 'var(--border-subtle)',
                             flexShrink: 0,
                             display: 'inline-block',
                           }} />
@@ -1262,7 +1230,7 @@ function PracticeOutline({
                           overflow: 'hidden',
                           textOverflow: 'ellipsis',
                           whiteSpace: 'nowrap',
-                          color: isActive ? 'var(--accent-300)' : 'var(--text-primary)',
+                          color: isActive ? '#fff' : 'var(--text-primary)',
                         }}>
                           {gIdx + 1}.{cIdx + 1} {chunk.phrase}
                         </span>
@@ -1272,38 +1240,24 @@ function PracticeOutline({
                         {prog?.practiceCount > 0 && (
                           <span style={{
                             fontSize: 10,
-                            fontWeight: 700,
-                            color: prog.status === 'mastered' ? '#4ade80' : 'var(--accent-300)',
-                            background: prog.status === 'mastered' ? 'rgba(34,197,94,0.12)' : 'rgba(99,102,241,0.12)',
+                            fontWeight: 600,
+                            color: prog.status === 'mastered' ? '#4ade80' : 'var(--text-muted)',
+                            background: prog.status === 'mastered' ? 'rgba(34,197,94,0.1)' : 'rgba(255,255,255,0.06)',
                             padding: '1px 5px',
-                            borderRadius: 4,
+                            borderRadius: 3,
                           }}>
                             Lv.{prog.srsLevel || 1}
                           </span>
                         )}
-                        {isDue ? (
-                          <span style={{
-                            fontSize: 10,
-                            color: '#ef4444',
-                            background: 'rgba(239,68,68,0.12)',
-                            padding: '1px 5px',
-                            borderRadius: 4,
-                            fontWeight: 700,
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: 2,
-                          }}>
-                            <Flame size={10} color="#ef4444" /> Ôn
-                          </span>
-                        ) : prog?.lastScore != null ? (
+                        {prog?.lastScore != null && (
                           <span style={{
                             fontSize: 10.5,
-                            fontWeight: 700,
+                            fontWeight: 600,
                             color: prog.lastScore >= 80 ? 'var(--success-text)' : '#f59e0b',
                           }}>
                             {prog.lastScore}đ
                           </span>
-                        ) : null}
+                        )}
                       </div>
                     </button>
                   );
@@ -1620,14 +1574,14 @@ export function PracticeModule({
           <CheckCircle size={32} color="var(--success-text)" />
         </div>
         <h3 style={{ fontSize: 18, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8 }}>
-          🎉 Đã ôn xong tất cả {chunkList.length} bài luyện!
+          Đã hoàn thành tất cả {chunkList.length} bài luyện!
         </h3>
         <p style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: 20 }}>
           Tuyệt vời! Tất cả các bài bạn chọn đều đã được hoàn thành và chưa đến hạn ôn tập tiếp theo. Các bài đã hoàn thành được tự động ẩn đi để giao diện gọn gàng.
         </p>
         <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <button className="btn btn-primary" onClick={() => handleSetFilterMode('all')}>
-            👁️ Xem lại tất cả {chunkList.length} bài
+          <button className="btn btn-primary" onClick={() => handleSetFilterMode('all')} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+            <Eye size={14} /> Xem lại tất cả {chunkList.length} bài
           </button>
           {onRemoveChunksFromPractice && (
             <button
@@ -1636,8 +1590,9 @@ export function PracticeModule({
                 const completedIds = completedChunks.map(c => c.id);
                 onRemoveChunksFromPractice(completedIds);
               }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
             >
-              🧹 Dọn dẹp danh sách (Bỏ {completedChunks.length} bài đã xong)
+              <Trash2 size={14} /> Dọn dẹp danh sách ({completedChunks.length} bài đã xong)
             </button>
           )}
         </div>
@@ -1720,7 +1675,7 @@ export function PracticeModule({
       >
         <div style={{ minWidth: 0, flex: 1 }}>
           <div style={{ fontSize: 11, color: 'var(--accent-400)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-            {activeGroup?.type === 'vocab' ? '📖 Từ vựng' : '🎧 Transcript'}: {activeGroup?.title} ({activeChunkInGroupIndex + 1}/{activeGroup?.chunks.length})
+            {activeGroup?.type === 'vocab' ? 'Từ vựng' : 'Bài nghe'}: {activeGroup?.title} ({activeChunkInGroupIndex + 1}/{activeGroup?.chunks.length})
           </div>
           <div style={{ fontSize: 13.5, fontWeight: 700, color: 'var(--text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {activeChunk ? activeChunk.phrase : 'Chọn bài'}
@@ -1815,8 +1770,7 @@ export function PracticeModule({
                     transition: 'all 0.15s ease',
                   }}
                 >
-                  <Flame size={11} color={filterMode === 'pending' ? '#fff' : '#ef4444'} />
-                  <span>Cần ôn / Chưa xong ({pendingChunks.length})</span>
+                  <span>Chưa xong ({pendingChunks.length})</span>
                 </button>
                 <button
                   type="button"
@@ -1984,7 +1938,7 @@ export function PracticeModule({
                     padding: '6px 4px',
                   }}
                 >
-                  🔥 Cần ôn ({pendingChunks.length})
+                  Chưa xong ({pendingChunks.length})
                 </button>
                 <button
                   type="button"

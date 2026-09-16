@@ -214,8 +214,8 @@ export function GroupCompletionModal({
                 border: 'none',
               }}
             >
-              <Headphones size={18} />
-              <span>🎧 Luyện Listening (Nghe lại Transcript này)</span>
+              <Headphones size={18} strokeWidth={1.75} />
+              <span>Luyện Listening (Nghe lại Transcript này)</span>
             </button>
           )}
 

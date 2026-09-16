@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import {
   Mic, MicOff, Volume2, Sparkles, X, Check, ArrowRight,
   RotateCcw, MessageSquare, AlertCircle, Info, Radio,
-  ChevronDown, ChevronUp, ChevronLeft, ChevronRight, HelpCircle, Layers, CheckCircle2, Award, Plus, Lightbulb
+  ChevronDown, ChevronUp, ChevronLeft, ChevronRight, HelpCircle, Layers, CheckCircle2, Award, Plus, Lightbulb,
+  Coffee, Plane, Users, ShoppingBag, Briefcase, Utensils, Target, Car, HeartPulse, Dumbbell, Search
 } from 'lucide-react';
 import { playTextWithTts, stopAudio, checkVoiceStudioStatus } from '../../services/ttsService';
 import { evaluatePronunciationGOP } from '../../services/sherpaOnnxService';
@@ -16,7 +17,98 @@ import { formatIPA, getPhoneticTip } from '../../services/phonetics';
 import { saveMasteredChunksFromConversation } from '../../store/storage';
 import './ConversationalSpeaking.css';
 
-const TOPICS_PER_PAGE = 6;
+const PRESET_CONFIG = {
+  coffee_shop: {
+    category: 'lifestyle',
+    categoryName: 'Đời sống',
+    Icon: Coffee,
+    accentColor: '#f59e0b',
+    accentBg: 'rgba(245, 158, 11, 0.12)',
+  },
+  travel_checkin: {
+    category: 'travel',
+    categoryName: 'Du lịch',
+    Icon: Plane,
+    accentColor: '#0284c7',
+    accentBg: 'rgba(2, 132, 199, 0.12)',
+  },
+  friend_catchup: {
+    category: 'lifestyle',
+    categoryName: 'Đời sống',
+    Icon: Users,
+    accentColor: '#8b5cf6',
+    accentBg: 'rgba(139, 92, 246, 0.12)',
+  },
+  shopping_return: {
+    category: 'travel',
+    categoryName: 'Dịch vụ & Mua sắm',
+    Icon: ShoppingBag,
+    accentColor: '#ec4899',
+    accentBg: 'rgba(236, 72, 153, 0.12)',
+  },
+  work_catchup: {
+    category: 'work',
+    categoryName: 'Công sở',
+    Icon: Briefcase,
+    accentColor: '#6366f1',
+    accentBg: 'rgba(99, 102, 241, 0.12)',
+  },
+  restaurant_dinner: {
+    category: 'travel',
+    categoryName: 'Ẩm thực & Du lịch',
+    Icon: Utensils,
+    accentColor: '#10b981',
+    accentBg: 'rgba(16, 185, 129, 0.12)',
+  },
+  job_interview: {
+    category: 'work',
+    categoryName: 'Công sở & Phỏng vấn',
+    Icon: Target,
+    accentColor: '#3b82f6',
+    accentBg: 'rgba(59, 130, 246, 0.12)',
+  },
+  taxi_ride: {
+    category: 'travel',
+    categoryName: 'Đi lại & Du lịch',
+    Icon: Car,
+    accentColor: '#eab308',
+    accentBg: 'rgba(234, 179, 8, 0.12)',
+  },
+  pharmacy_visit: {
+    category: 'lifestyle',
+    categoryName: 'Đời sống & Y tế',
+    Icon: HeartPulse,
+    accentColor: '#14b8a6',
+    accentBg: 'rgba(20, 184, 166, 0.12)',
+  },
+  gym_membership: {
+    category: 'lifestyle',
+    categoryName: 'Đời sống & Thể thao',
+    Icon: Dumbbell,
+    accentColor: '#f97316',
+    accentBg: 'rgba(249, 115, 22, 0.12)',
+  },
+};
+
+const CATEGORIES = [
+  { id: 'all', label: 'Tất cả', count: 10 },
+  { id: 'work', label: 'Công sở & Phỏng vấn', count: 2 },
+  { id: 'lifestyle', label: 'Đời sống & Bạn bè', count: 4 },
+  { id: 'travel', label: 'Du lịch & Dịch vụ', count: 4 },
+];
+
+const QUICK_PROMPTS = [
+  'Phỏng vấn xin Visa du học tại Đại sứ quán Mỹ',
+  'Thương lượng tăng lương và thăng chức với Giám đốc',
+  'Hỏi đường khi bị lạc và đổi vé tàu tại ga Tokyo',
+  'Khiếu nại về hành lý thất lạc tại sân bay quốc tế',
+  'Hẹn gặp đối tác nước ngoài ăn tối ký hợp đồng',
+  'Nhờ đồng nghiệp hỗ trợ sửa lỗi dự án gấp trước deadline'
+];
+
+function stripEmoji(str = '') {
+  return str.replace(/[\u{1F300}-\u{1FAFF}]|[\u{2600}-\u{27BF}]/gu, '').trim();
+}
 
 /**
  * Helper tách chuỗi văn bản và tô sáng (green highlight) các cụm chunk mục tiêu
@@ -66,12 +158,13 @@ export default function ConversationalSpeakingModal({
   onNavigateToProgress = null,
 }) {
   // ─── Modes & Navigation ────────────────────────────────────────
-  // 'select_topic': màn hình chọn chủ đề / phân trang trước khi vào nói
+  // 'select_topic': màn hình chọn chủ đề trước khi vào nói
   // 'chat': màn hình đàm thoại luyện nói thực chiến với AI
   const [viewMode, setViewMode] = useState('select_topic');
-  const [topicPage, setTopicPage] = useState(1);
+  const [activeTab, setActiveTab] = useState('curated'); // 'curated' | 'custom'
+  const [selectedCategory, setSelectedCategory] = useState('all'); // 'all' | 'work' | 'lifestyle' | 'travel'
+  const [searchQuery, setSearchQuery] = useState('');
   const [customTopicInput, setCustomTopicInput] = useState('');
-  const [showCustomTopicInput, setShowCustomTopicInput] = useState(false);
   const [expandedHintId, setExpandedHintId] = useState(null); // ID tin nhắn đang mở gợi ý trả lời
 
   // ─── States ───────────────────────────────────────────────────
@@ -123,8 +216,9 @@ export default function ConversationalSpeakingModal({
     if (isOpen) {
       checkVoiceStudioStatus().then(active => setVoiceStudioActive(active));
       setViewMode('select_topic');
-      setTopicPage(1);
-      setShowCustomTopicInput(false);
+      setActiveTab('curated');
+      setSelectedCategory('all');
+      setSearchQuery('');
       setCustomTopicInput('');
       setScenario(null);
       setHistory([]);
@@ -200,17 +294,30 @@ export default function ConversationalSpeakingModal({
     if (!customTopicInput.trim()) return;
     const topic = customTopicInput.trim();
     setCustomTopicInput('');
-    setShowCustomTopicInput(false);
     setViewMode('chat');
     initScenario(null, topic);
   };
 
-  // Phân trang danh sách chủ đề (2 cột x 3 hàng = 6 chủ đề/trang)
-  const totalPages = Math.ceil(REAL_LIFE_PRESETS.length / TOPICS_PER_PAGE);
-  const currentPresets = useMemo(() => {
-    const start = (topicPage - 1) * TOPICS_PER_PAGE;
-    return REAL_LIFE_PRESETS.slice(start, start + TOPICS_PER_PAGE);
-  }, [topicPage]);
+  // Lọc danh sách chủ đề theo Category và Search
+  const filteredPresets = useMemo(() => {
+    return REAL_LIFE_PRESETS.filter((preset) => {
+      const config = PRESET_CONFIG[preset.id] || {};
+      const matchesCategory = selectedCategory === 'all' || config.category === selectedCategory;
+      if (!matchesCategory) return false;
+
+      if (!searchQuery.trim()) return true;
+      const q = searchQuery.toLowerCase().trim();
+      const titleClean = stripEmoji(preset.title).toLowerCase();
+      const descMatch = (preset.description || '').toLowerCase().includes(q);
+      const roleMatch = (preset.userRole || '').toLowerCase().includes(q) || (preset.aiRole || '').toLowerCase().includes(q);
+      const chunkMatch = (preset.defaultChunks || []).some((c) => {
+        const p = typeof c === 'string' ? c : c.phrase || '';
+        return p.toLowerCase().includes(q);
+      });
+
+      return titleClean.includes(q) || descMatch || roleMatch || chunkMatch;
+    });
+  }, [selectedCategory, searchQuery]);
 
   // ─── Web Audio API Volume Monitor ─────────────────────────────
   const startVolumeMonitor = (stream) => {
@@ -530,7 +637,7 @@ export default function ConversationalSpeakingModal({
       <div className="csm-dialog">
         {viewMode === 'select_topic' ? (
           // ══════════════════════════════════════════════════════════
-          // CHẾ ĐỘ 1: MÀN HÌNH CHỌN CHỦ ĐỀ LUYỆN NÓI (GRID 2 CỘT + PHÂN TRANG)
+          // CHẾ ĐỘ 1: MÀN HÌNH CHỌN CHỦ ĐỀ LUYỆN NÓI (CLEAN ENTERPRISE)
           // ══════════════════════════════════════════════════════════
           <>
             <div className="csm-header">
@@ -539,22 +646,34 @@ export default function ConversationalSpeakingModal({
                   <Sparkles size={18} />
                 </div>
                 <div className="csm-header-titles">
-                  <span className="csm-header-title">Chọn chủ đề luyện nói AI</span>
+                  <span className="csm-header-title">Luyện Nói Giao Tiếp AI</span>
                   <p className="csm-header-subtitle">
-                    Chọn tình huống thực tế để phản xạ 1-1 cùng AI
+                    Phản xạ 1-1 trong ngữ cảnh đời thực với trợ lý bản xứ
                   </p>
                 </div>
               </div>
-              <div className="csm-header-right">
+
+              {/* Mode Switcher Tabs */}
+              <div className="csm-header-tabs">
                 <button
                   type="button"
-                  onClick={() => setShowCustomTopicInput(prev => !prev)}
-                  className={`csm-btn-header-custom ${showCustomTopicInput ? 'active' : ''}`}
-                  title="Tự tạo tình huống luyện nói theo ý bạn"
+                  className={`csm-header-tab ${activeTab === 'curated' ? 'active' : ''}`}
+                  onClick={() => setActiveTab('curated')}
                 >
-                  <Plus size={14} />
-                  <span>Tạo tình huống</span>
+                  <Layers size={13} />
+                  <span>Tình huống mẫu ({REAL_LIFE_PRESETS.length})</span>
                 </button>
+                <button
+                  type="button"
+                  className={`csm-header-tab ${activeTab === 'custom' ? 'active' : ''}`}
+                  onClick={() => setActiveTab('custom')}
+                >
+                  <Plus size={13} />
+                  <span>Tự tạo tình huống</span>
+                </button>
+              </div>
+
+              <div className="csm-header-right">
                 <button
                   onClick={onClose}
                   className="csm-btn-close"
@@ -566,163 +685,229 @@ export default function ConversationalSpeakingModal({
             </div>
 
             <div className="csm-topic-body">
-              {/* Drawer nhập tình huống khi user nhấn button 'Tạo tình huống' trên header */}
-              {showCustomTopicInput && (
-                <div className="csm-custom-topic-drawer animate-fade-in">
-                  <div className="csm-custom-drawer-header">
-                    <div className="csm-custom-topic-label">
-                      <Sparkles size={13} color="#38bdf8" />
-                      <span>Nhập tình huống bạn muốn luyện tập cùng AI:</span>
-                    </div>
-                    <button
-                      type="button"
-                      className="csm-drawer-close-btn"
-                      onClick={() => {
-                        setShowCustomTopicInput(false);
-                        setCustomTopicInput('');
-                      }}
-                      title="Đóng"
+              {activeTab === 'curated' ? (
+                <>
+                  {/* Nếu có initialChunks được chọn: Cho phép tạo tình huống theo bài học */}
+                  {initialChunks.length > 0 && (
+                    <div
+                      className="csm-custom-chunks-banner"
+                      onClick={() => handleSelectPreset(null)}
+                      title="Bấm để luyện nói ngay với các cụm từ này"
                     >
-                      <X size={14} />
-                    </button>
-                  </div>
-                  <div className="csm-custom-topic-input-row">
-                    <input
-                      type="text"
-                      autoFocus
-                      value={customTopicInput}
-                      onChange={(e) => setCustomTopicInput(e.target.value)}
-                      placeholder="Ví dụ: Phỏng vấn xin visa, Đi mua quà lưu niệm, Hỏi đường ở sân bay..."
-                      className="csm-custom-topic-input"
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') handleSelectCustomTopic();
-                      }}
-                    />
-                    <button
-                      type="button"
-                      onClick={handleSelectCustomTopic}
-                      disabled={!customTopicInput.trim()}
-                      className="csm-btn-create-topic"
-                    >
-                      <span>Bắt đầu nói</span>
-                      <ArrowRight size={13} />
-                    </button>
-                  </div>
-                </div>
-              )}
-              {/* Nếu có initialChunks được chọn: Cho phép tạo tình huống theo bài học */}
-              {initialChunks.length > 0 && (
-                <div
-                  className="csm-custom-chunks-banner"
-                  onClick={() => handleSelectPreset(null)}
-                >
-                  <div className="csm-banner-content">
-                    <div className="csm-banner-badge">
-                      <Sparkles size={11} />
-                      <span>Theo bài học của bạn</span>
+                      <div className="csm-banner-content">
+                        <div className="csm-banner-badge">
+                          <Sparkles size={11} />
+                          <span>Theo bài học của bạn</span>
+                        </div>
+                        <div className="csm-banner-title">
+                          Luyện phản xạ với {initialChunks.length} cụm từ bạn đang chọn
+                        </div>
+                        <div className="csm-banner-chunks">
+                          {initialChunks.slice(0, 4).map((c, i) => (
+                            <span key={i} className="csm-banner-chunk-pill">
+                              {typeof c === 'string' ? c : c.phrase}
+                            </span>
+                          ))}
+                          {initialChunks.length > 4 && (
+                            <span className="csm-banner-chunk-more">+{initialChunks.length - 4}</span>
+                          )}
+                        </div>
+                      </div>
+                      <button className="csm-banner-btn" type="button">
+                        <span>Bắt đầu</span>
+                        <ArrowRight size={14} />
+                      </button>
                     </div>
-                    <div className="csm-banner-title">
-                      Luyện nói với {initialChunks.length} cụm từ bạn đang chọn
-                    </div>
-                    <div className="csm-banner-chunks">
-                      {initialChunks.slice(0, 4).map((c, i) => (
-                        <span key={i} className="csm-banner-chunk-pill">
-                          {typeof c === 'string' ? c : c.phrase}
-                        </span>
+                  )}
+
+                  {/* Filter & Search Bar */}
+                  <div className="csm-filter-bar">
+                    <div className="csm-filter-pills">
+                      {CATEGORIES.map(cat => (
+                        <button
+                          key={cat.id}
+                          type="button"
+                          className={`csm-filter-pill ${selectedCategory === cat.id ? 'active' : ''}`}
+                          onClick={() => setSelectedCategory(cat.id)}
+                        >
+                          <span>{cat.label}</span>
+                          <span className="csm-filter-count">{cat.count}</span>
+                        </button>
                       ))}
-                      {initialChunks.length > 4 && (
-                        <span className="csm-banner-chunk-more">+{initialChunks.length - 4}</span>
+                    </div>
+
+                    <div className="csm-search-box">
+                      <Search size={13} className="csm-search-icon" />
+                      <input
+                        type="text"
+                        className="csm-search-input"
+                        placeholder="Tìm tình huống, cụm từ..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                      />
+                      {searchQuery && (
+                        <button
+                          type="button"
+                          className="csm-search-clear"
+                          onClick={() => setSearchQuery('')}
+                          title="Xóa tìm kiếm"
+                        >
+                          <X size={13} />
+                        </button>
                       )}
                     </div>
                   </div>
-                  <button className="csm-banner-btn">
-                    <span>Bắt đầu</span>
-                    <ArrowRight size={14} />
-                  </button>
-                </div>
-              )}
 
-              {/* Tiêu đề mục chủ đề */}
-              <div className="csm-topic-section-header">
-                <span className="csm-topic-section-title">
-                  Tình huống đàm thoại thực tế ({REAL_LIFE_PRESETS.length} chủ đề)
-                </span>
-                <span className="csm-topic-page-hint">
-                  Trang {topicPage} / {totalPages}
-                </span>
-              </div>
+                  {/* Curated Grid */}
+                  <div className="csm-curated-grid">
+                    {filteredPresets.map((preset) => {
+                      const config = PRESET_CONFIG[preset.id] || {
+                        Icon: MessageSquare,
+                        accentColor: '#3b82f6',
+                        accentBg: 'rgba(59, 130, 246, 0.12)',
+                        categoryName: 'Thực tế',
+                      };
+                      const IconComp = config.Icon;
+                      const title = stripEmoji(preset.title);
 
-              {/* Grid 2 cột các chủ đề có sẵn */}
-              <div className="csm-topic-grid">
-                {currentPresets.map((preset) => (
-                  <div
-                    key={preset.id}
-                    onClick={() => handleSelectPreset(preset)}
-                    className="csm-topic-card"
-                  >
-                    <div className="csm-topic-card-title">
-                      {preset.title}
-                    </div>
-                    <p className="csm-topic-card-desc">
-                      {preset.description}
-                    </p>
-                    <div className="csm-topic-card-roles">
-                      <span className="csm-role-tag user">Bạn: {preset.userRole}</span>
-                      <span className="csm-role-tag ai">AI: {preset.aiRole}</span>
-                    </div>
-                    <div className="csm-topic-card-chunks">
-                      {preset.defaultChunks?.slice(0, 3).map((chunk, ci) => {
-                        const phrase = typeof chunk === 'string' ? chunk : chunk.phrase;
-                        return (
-                          <span key={ci} className="csm-topic-chunk-pill">
-                            {phrase}
-                          </span>
-                        );
-                      })}
-                    </div>
-                    <div className="csm-topic-card-action">
-                      <span>Bắt đầu nói</span>
-                      <ArrowRight size={13} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Phân trang (Pagination) */}
-              {totalPages > 1 && (
-                <div className="csm-pagination">
-                  <button
-                    disabled={topicPage === 1}
-                    onClick={() => setTopicPage((p) => Math.max(1, p - 1))}
-                    className="csm-page-nav-btn"
-                  >
-                    <ChevronLeft size={15} />
-                    <span>Trước</span>
-                  </button>
-
-                  <div className="csm-page-numbers">
-                    {[...Array(totalPages)].map((_, idx) => {
-                      const pageNum = idx + 1;
                       return (
-                        <button
-                          key={pageNum}
-                          onClick={() => setTopicPage(pageNum)}
-                          className={`csm-page-num-btn ${topicPage === pageNum ? 'active' : ''}`}
+                        <article
+                          key={preset.id}
+                          className="csm-card"
+                          onClick={() => handleSelectPreset(preset)}
                         >
-                          {pageNum}
-                        </button>
+                          {/* Top: Icon + Category Badge */}
+                          <div className="csm-card-header">
+                            <div
+                              className="csm-card-icon"
+                              style={{ background: config.accentBg, color: config.accentColor }}
+                            >
+                              <IconComp size={18} strokeWidth={2} />
+                            </div>
+                            <span className="csm-card-badge">{config.categoryName}</span>
+                          </div>
+
+                          {/* Title & Desc */}
+                          <h3 className="csm-card-title">{title}</h3>
+                          <p className="csm-card-desc">{preset.description}</p>
+
+                          {/* Roles line */}
+                          <div className="csm-card-meta-line">
+                            <span className="csm-card-role-item">
+                              <span className="csm-card-role-label">Bạn:</span> {preset.userRole}
+                            </span>
+                            <span className="csm-card-role-sep">•</span>
+                            <span className="csm-card-role-item">
+                              <span className="csm-card-role-label">AI:</span> {preset.aiRole}
+                            </span>
+                          </div>
+
+                          {/* Chunks preview */}
+                          <div className="csm-card-chunks-row">
+                            {preset.defaultChunks?.slice(0, 3).map((chunk, ci) => {
+                              const phrase = typeof chunk === 'string' ? chunk : chunk.phrase;
+                              return (
+                                <span key={ci} className="csm-card-chunk-tag">
+                                  {phrase}
+                                </span>
+                              );
+                            })}
+                          </div>
+
+                          {/* Action CTA */}
+                          <div className="csm-card-action">
+                            <span className="csm-card-action-label">Phản xạ 1-1</span>
+                            <button type="button" className="csm-card-btn">
+                              <Mic size={13} />
+                              <span>Bắt đầu</span>
+                            </button>
+                          </div>
+                        </article>
                       );
                     })}
+
+                    {filteredPresets.length === 0 && (
+                      <div className="csm-empty-state">
+                        <Search size={32} className="csm-empty-icon" />
+                        <p style={{ margin: 0, fontSize: 13, color: '#94a3b8' }}>
+                          Không tìm thấy tình huống nào với từ khóa "{searchQuery}"
+                        </p>
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-xs"
+                          onClick={() => {
+                            setSearchQuery('');
+                            setSelectedCategory('all');
+                          }}
+                        >
+                          Xem tất cả tình huống
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </>
+              ) : (
+                /* ─── Tự tạo tình huống AI (Custom Creator Panel) ─── */
+                <div className="csm-custom-panel animate-fade-in">
+                  <div className="csm-custom-hero">
+                    <div className="csm-custom-hero-icon">
+                      <Sparkles size={22} />
+                    </div>
+                    <div>
+                      <h3 className="csm-custom-hero-title">Tự do tạo kịch bản giao tiếp theo ý bạn</h3>
+                      <p className="csm-custom-hero-subtitle">
+                        Mô tả bất kỳ ngữ cảnh nào bạn muốn thực hành (công việc, du lịch, phỏng vấn, giao dịch...). AI sẽ tự động nhập vai đối ứng và phân bổ các cụm từ đắt giá cho bạn.
+                      </p>
+                    </div>
                   </div>
 
-                  <button
-                    disabled={topicPage === totalPages}
-                    onClick={() => setTopicPage((p) => Math.min(totalPages, p + 1))}
-                    className="csm-page-nav-btn"
-                  >
-                    <span>Sau</span>
-                    <ChevronRight size={15} />
-                  </button>
+                  <div className="csm-custom-input-box">
+                    <label className="csm-custom-input-label">
+                      Ngữ cảnh đàm thoại bạn muốn luyện tập:
+                    </label>
+                    <textarea
+                      rows={3}
+                      className="csm-custom-textarea"
+                      placeholder="Ví dụ: Phỏng vấn xin visa du học Mỹ, người phỏng vấn nghiêm khắc hỏi về kế hoạch học tập và chứng minh tài chính..."
+                      value={customTopicInput}
+                      onChange={(e) => setCustomTopicInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                          handleSelectCustomTopic();
+                        }
+                      }}
+                    />
+                    <div className="csm-custom-input-footer">
+                      <span className="csm-custom-hint">Mẹo: Nhấn Ctrl + Enter để bắt đầu ngay</span>
+                      <button
+                        type="button"
+                        className="csm-custom-submit-btn"
+                        disabled={!customTopicInput.trim() || isLoadingScenario}
+                        onClick={handleSelectCustomTopic}
+                      >
+                        <Sparkles size={14} />
+                        <span>Bắt đầu luyện nói ngay</span>
+                        <ArrowRight size={14} />
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="csm-custom-suggestions">
+                    <span className="csm-custom-sug-title">Gợi ý tình huống hay (Click để chọn nhanh):</span>
+                    <div className="csm-custom-sug-grid">
+                      {QUICK_PROMPTS.map((prompt, pi) => (
+                        <button
+                          key={pi}
+                          type="button"
+                          className="csm-custom-sug-pill"
+                          onClick={() => setCustomTopicInput(prompt)}
+                        >
+                          <Lightbulb size={13} className="csm-sug-icon" />
+                          <span>{prompt}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               )}
             </div>

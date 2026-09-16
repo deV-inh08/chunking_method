@@ -65,11 +65,12 @@ export function Modal({ title, description, children, footer, onClose, maxWidth,
       <div
         className="modal-box"
         style={{
+          padding: '24px 28px',
           ...(maxWidth ? { maxWidth } : {}),
           ...style,
         }}
       >
-        <div className="flex items-center justify-between mb-2" style={{ flexShrink: 0 }}>
+        <div className="flex items-center justify-between mb-1" style={{ flexShrink: 0 }}>
           <h2 className="modal-title" style={{ margin: 0, fontSize: 17, fontWeight: 700 }}>{title}</h2>
           {onClose && (
             <button className="icon-button" onClick={onClose} aria-label="Close">
@@ -77,8 +78,8 @@ export function Modal({ title, description, children, footer, onClose, maxWidth,
             </button>
           )}
         </div>
-        {description && <p className="modal-description" style={{ flexShrink: 0, fontSize: 13, marginBottom: 16 }}>{description}</p>}
-        <div style={{ flex: '1 1 auto', overflowY: 'auto', minHeight: 0, paddingRight: 4 }}>
+        {description && <p className="modal-description" style={{ flexShrink: 0, fontSize: 13, marginBottom: 14 }}>{description}</p>}
+        <div style={{ flex: '1 1 auto', overflowY: 'auto', minHeight: 0, paddingRight: 6, paddingBottom: 8 }}>
           {children}
         </div>
         {footer && (

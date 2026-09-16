@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Award, CheckCircle2, XCircle, RotateCcw,
-  ArrowRight, Zap, Trophy, ShieldCheck, ChevronRight
+  Zap, Trophy, ChevronRight
 } from 'lucide-react';
 
 export function QuizSummaryModal({
@@ -21,7 +21,7 @@ export function QuizSummaryModal({
   const isMastered = accuracy >= 85;
   const levelLabel = level === 'standard' ? 'Chặng Tiêu Chuẩn (550 - 750)' : 'Chặng Bẫy Nâng Cao 990';
   const oppositeLevel = level === 'standard' ? 'advanced' : 'standard';
-  const oppositeLabel = level === 'standard' ? 'Thử sức Chặng Bẫy 990 ⚡' : 'Luyện lại Chặng Tiêu Chuẩn';
+  const oppositeLabel = level === 'standard' ? 'Thử sức Chặng Bẫy 990' : 'Luyện lại Chặng Tiêu Chuẩn';
 
   const formatMinutes = (sec) => {
     const mins = Math.floor(sec / 60);

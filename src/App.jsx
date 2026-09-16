@@ -1,6 +1,5 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { Sidebar, Header, BottomNav } from './components/Layout';
-import { OverviewModule } from './components/OverviewModule';
 import { ListeningAiModule } from './components/ListeningAiModule';
 import { ReadingModule } from './components/ReadingModule';
 import { ChunkModule } from './components/ChunkModule';
@@ -38,10 +37,10 @@ export default function App() {
   const [page, setPage]                 = useState(() => {
     try {
       const p = localStorage.getItem('toeic_active_page');
-      if (p === 'transcripts') return 'ai_listening';
-      return p || 'overview';
+      if (p === 'transcripts' || p === 'overview') return 'ai_listening';
+      return p || 'ai_listening';
     } catch {
-      return 'overview';
+      return 'ai_listening';
     }
   });
   const [showSettings, setShowSettings] = useState(false);
@@ -368,7 +367,6 @@ export default function App() {
 
   // ── Nav badge counts ─────────────────────────────────────────
   const counts = {
-    overview:     0,
     ai_listening: transcripts.length,
     reading:      24,
     chunks:       allChunks.length,
@@ -499,25 +497,6 @@ export default function App() {
 
         <main className="page-content">
           <ErrorBoundary>
-            {page === 'overview' && (
-              <OverviewModule
-                user={user}
-                transcripts={transcripts}
-                chunks={allChunks}
-                allProgress={allProgress}
-                dueCount={dueChunks.length}
-                onNavigate={(targetPage) => {
-                  if (targetPage === 'ai_speaking') {
-                    setShowAiSpeakingModal(true);
-                  } else {
-                    setPage(targetPage);
-                  }
-                }}
-                onStartPractice={handleStartPractice}
-                onOpenAiSpeaking={() => setShowAiSpeakingModal(true)}
-              />
-            )}
-
             {(page === 'ai_listening' || page === 'transcripts') && (
               <ListeningAiModule
                 transcripts={transcripts}
@@ -611,6 +590,8 @@ export default function App() {
                 chunks={allChunks}
                 transcripts={transcripts}
                 onRepractice={handleRepractice}
+                onNavigate={setPage}
+                onStartDueReview={handleStartDueReview}
               />
             )}
           </ErrorBoundary>

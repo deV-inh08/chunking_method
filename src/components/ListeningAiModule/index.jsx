@@ -1,14 +1,11 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import {
   Headphones, Sparkles, Plus, Minus, Search, Trash2,
-  PenLine, HelpCircle, CheckCircle, Flame, Layers, Globe,
-  Calendar, ChevronRight, Filter, BookOpen, Volume2, Edit3,
-  Check, X, FileText, Shuffle
+  Edit3, Check, X,
 } from 'lucide-react';
 import { Modal, Spinner, Pagination } from '../ui';
 import { analyzeTranscript } from '../../services/ai';
 import { getApiKey, getChunks } from '../../store/storage';
-import { PRESET_LISTENING_TOPICS } from '../../services/listeningAi';
 import GenerateListeningModal from '../TranscriptModule/GenerateListeningModal';
 import { TranscriptListeningModal } from '../TranscriptModule/TranscriptListeningModal';
 
@@ -23,67 +20,123 @@ function formatDate(ts) {
   });
 }
 
-const QUICK_TOPIC_PRESETS = [
+export function getTranscriptDisplayTitle(item = {}) {
+  if (item.title && item.title.trim()) return item.title.trim();
+  if (item.themeVi && item.themeVi.trim()) return item.themeVi.trim();
+  if (item.theme && item.theme.trim()) return item.theme.trim();
+  if (item.sourceTopic && item.sourceTopic.trim()) return item.sourceTopic.trim();
+  if (item.topic && item.topic.trim()) return item.topic.trim();
+
+  // Try extracting the first line or first dialogue
+  if (item.text) {
+    const firstLine = item.text.split('\n').find(l => l.trim().length > 0) || '';
+    const cleanLine = firstLine.replace(/^[A-Za-z0-9_-]+:\s*/, '').trim();
+    if (cleanLine) {
+      return cleanLine.length > 55 ? cleanLine.slice(0, 52) + '...' : cleanLine;
+    }
+  }
+
+  return `Hội thoại TOEIC ${item.part || 'Part 3'} (#${(item.id || '').slice(-4)})`;
+}
+
+const DEFAULT_TRANSCRIPTS = [
   {
-    topicId: 'office_project',
-    title: 'Họp dự án & Báo cáo tiến độ',
+    id: 'tr_office_conversations',
+    title: 'Office Conversations',
+    theme: 'Office Conversations',
+    themeVi: 'Hội thoại văn phòng & Báo cáo tiến độ',
     part: 'Part 3',
-    partLabel: 'Part 3 • Hội thoại',
-    accents: '🇺🇸 Mỹ & 🇬🇧 Anh',
-    emoji: '💼',
+    level: 'Intermediate',
+    duration: 12,
+    progress: 72,
+    isAiGenerated: true,
+    createdAt: Date.now() - 1000 * 60 * 60 * 24 * 2,
+    text: `M-Am: Good morning, Rachel. Do you have a moment to review the quarterly budget report before the executive meeting?
+W-Am: Sure, Mark. I looked over the marketing projections earlier today. Most departments stayed well within their targets, but our cloud infrastructure costs increased by about fifteen percent.
+M-Am: That makes sense given the server upgrades we deployed last month. I'll make sure to highlight the long-term cost efficiencies in our slide deck.
+W-Am: Excellent idea. Let's make sure the revised figures are sent to everyone thirty minutes before the presentation starts.`,
+    chunks: [
+      { id: 'c_off_1', text: 'review the quarterly budget report', meaning: 'xem lại báo cáo ngân sách quý', type: 'collocation' },
+      { id: 'c_off_2', text: 'well within their targets', meaning: 'hoàn toàn nằm trong mục tiêu', type: 'collocation' },
+      { id: 'c_off_3', text: 'cloud infrastructure costs', meaning: 'chi phí hạ tầng đám mây', type: 'collocation' },
+      { id: 'c_off_4', text: 'long-term cost efficiencies', meaning: 'hiệu quả chi phí dài hạn', type: 'collocation' },
+      { id: 'c_off_5', text: 'revised figures', meaning: 'số liệu đã điều chỉnh', type: 'collocation' },
+    ],
+    questions: [
+      {
+        question: 'What are the speakers mainly discussing?',
+        options: ['A quarterly budget report', 'An employee orientation', 'An office relocation', 'A marketing campaign'],
+        answer: 0,
+        explanation: 'Người nam hỏi xem lại báo cáo ngân sách quý ("review the quarterly budget report").',
+      },
+      {
+        question: 'Why did the infrastructure costs increase?',
+        options: ['Office rent increase', 'Recent server upgrades', 'External consultants', 'Equipment repairs'],
+        answer: 1,
+        explanation: 'Người nam nhắc đến việc nâng cấp máy chủ vào tháng trước ("server upgrades we deployed last month").',
+      },
+      {
+        question: 'What does the woman suggest doing before the meeting?',
+        options: ['Print handouts', 'Cancel the meeting', 'Send revised figures to attendees', 'Call the director'],
+        answer: 2,
+        explanation: 'Người nữ đề xuất gửi số liệu đã chỉnh sửa cho người tham gia 30 phút trước giờ họp ("make sure the revised figures are sent to everyone thirty minutes before the presentation starts").',
+      },
+    ],
   },
   {
-    topicId: 'flight_travel',
-    title: 'Sân bay & Đổi vé máy bay',
+    id: 'tr_travel_transportation',
+    title: 'Travel & Transportation',
+    theme: 'Travel & Transportation',
+    themeVi: 'Lịch trình công tác & Đặt phòng khách sạn',
     part: 'Part 3',
-    partLabel: 'Part 3 • Hội thoại',
-    accents: '🇺🇸 Mỹ & 🇦🇺 Úc',
-    emoji: '✈️',
-  },
-  {
-    topicId: 'recruitment_hr',
-    title: 'Phỏng vấn & Tuyển dụng',
-    part: 'Part 3',
-    partLabel: 'Part 3 • Hội thoại',
-    accents: '🇺🇸 Mỹ, 🇬🇧 Anh & 🇨🇦 Canada',
-    emoji: '🤝',
-  },
-  {
-    topicId: 'flight_travel',
-    title: 'Thông báo chuyến bay & Sân ga',
-    part: 'Part 4',
-    partLabel: 'Part 4 • Độc thoại',
-    accents: '🇬🇧 Anh (Phát thanh)',
-    emoji: '📢',
-  },
-  {
-    topicId: 'customer_service',
-    title: 'Xử lý khiếu nại & Hoàn tiền',
-    part: 'Part 3',
-    partLabel: 'Part 3 • Hội thoại',
-    accents: '🇦🇺 Úc & 🇺🇸 Mỹ',
-    emoji: '🛍️',
-  },
-  {
-    topicId: 'tech_support',
-    title: 'Sự cố thiết bị & Bảo trì VP',
-    part: 'Part 3',
-    partLabel: 'Part 3 • Hội thoại',
-    accents: '🇺🇸 Mỹ & 🇬🇧 Anh',
-    emoji: '💻',
+    level: 'Intermediate',
+    duration: 15,
+    progress: 35,
+    isAiGenerated: true,
+    createdAt: Date.now() - 1000 * 60 * 60 * 24,
+    text: `W-Br: Good afternoon, Oliver. Have you managed to finalize the travel arrangements for next Tuesday's regional conference in Manchester?
+M-Br: Almost done, Fiona. I booked our round-trip train tickets leaving Euston Station at eight in the morning. However, the conference hotel is completely booked up for Tuesday night.
+W-Br: That's inconvenient. Did you check the boutique hotel across from the convention center?
+M-Br: Yes, I spoke with their front desk this morning. They have two executive rooms available, so I'll go ahead and confirm the reservation right away.`,
+    chunks: [
+      { id: 'c_trv_1', text: 'finalize the travel arrangements', meaning: 'hoàn tất sắp xếp chuyến đi', type: 'collocation' },
+      { id: 'c_trv_2', text: 'round-trip train tickets', meaning: 'vé tàu khứ hồi', type: 'collocation' },
+      { id: 'c_trv_3', text: 'completely booked up', meaning: 'đã hết sạch chỗ', type: 'collocation' },
+      { id: 'c_trv_4', text: 'confirm the reservation', meaning: 'xác nhận đặt phòng', type: 'collocation' },
+    ],
+    questions: [
+      {
+        question: 'Where are the speakers traveling next week?',
+        options: ['To Manchester', 'To Edinburgh', 'To Birmingham', 'To Bristol'],
+        answer: 0,
+        explanation: 'Người nữ nhắc tới hội nghị khu vực ở Manchester ("regional conference in Manchester").',
+      },
+      {
+        question: 'What problem does the man mention?',
+        options: ['Train tickets sold out', 'The conference hotel is fully booked', 'Flight was delayed', 'Meeting canceled'],
+        answer: 1,
+        explanation: 'Người nam cho biết khách sạn hội nghị đã hết phòng ("the conference hotel is completely booked up").',
+      },
+      {
+        question: 'What will the man do next?',
+        options: ['Cancel the trip', 'Book train tickets', 'Confirm hotel reservation', 'Contact organizers'],
+        answer: 2,
+        explanation: 'Người nam sẽ xác nhận đặt phòng ở khách sạn đối diện ("confirm the reservation right away").',
+      },
+    ],
   },
 ];
 
-// Helper trích xuất danh sách cờ accent từ nội dung script
+// Helper trích xuất danh sách accent từ nội dung script
 function extractSpeakerAccents(text = '') {
-  const flags = new Set();
+  const accents = new Set();
   const lower = (text || '').toLowerCase();
-  if (lower.includes('-am') || lower.includes('mỹ') || lower.includes('us')) flags.add('🇺🇸 US');
-  if (lower.includes('-br') || lower.includes('-uk') || lower.includes('anh') || lower.includes('gb')) flags.add('🇬🇧 UK');
-  if (lower.includes('-au') || lower.includes('úc') || lower.includes('australia')) flags.add('🇦🇺 AU');
-  if (lower.includes('-ca') || lower.includes('canada')) flags.add('🇨🇦 CA');
-  if (flags.size === 0) flags.add('🇺🇸 US');
-  return Array.from(flags);
+  if (lower.includes('-am') || lower.includes('mỹ') || lower.includes('us')) accents.add('US English');
+  if (lower.includes('-br') || lower.includes('-uk') || lower.includes('anh') || lower.includes('gb')) accents.add('UK English');
+  if (lower.includes('-au') || lower.includes('úc') || lower.includes('australia')) accents.add('AU English');
+  if (lower.includes('-ca') || lower.includes('canada')) accents.add('CA English');
+  if (accents.size === 0) accents.add('US English');
+  return Array.from(accents);
 }
 
 // ─── Modal Chỉnh Sửa Tên / Chủ Đề Script ────────────────────────
@@ -354,9 +407,14 @@ export function ListeningAiModule({
   const [filterType, setFilterType] = useState('all'); // 'all' | 'Part 3' | 'Part 4' | 'ai' | 'quiz'
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
 
+  // Danh sách bài nghe (sử dụng DEFAULT_TRANSCRIPTS nếu chưa có bài nào)
+  const displayList = useMemo(() => {
+    return transcripts && transcripts.length > 0 ? transcripts : DEFAULT_TRANSCRIPTS;
+  }, [transcripts]);
+
   // Bộ lọc danh sách toàn bộ bài nghe
   const filteredList = useMemo(() => {
-    return transcripts.filter(t => {
+    return displayList.filter(t => {
       // Filter theo tab
       if (filterType === 'Part 3' && t.part !== 'Part 3') return false;
       if (filterType === 'Part 4' && t.part !== 'Part 4') return false;
@@ -366,12 +424,13 @@ export function ListeningAiModule({
       // Filter theo từ khóa
       if (!searchQuery.trim()) return true;
       const q = searchQuery.toLowerCase().trim();
-      const matchTitle = (t.title || '').toLowerCase().includes(q);
-      const matchTheme = (t.themeVi || t.theme || '').toLowerCase().includes(q);
+      const title = getTranscriptDisplayTitle(t).toLowerCase();
+      const matchTitle = title.includes(q);
+      const matchTheme = (t.themeVi || t.theme || t.sourceTopic || '').toLowerCase().includes(q);
       const matchText = (t.text || '').toLowerCase().includes(q);
       return matchTitle || matchTheme || matchText;
     });
-  }, [transcripts, filterType, searchQuery]);
+  }, [displayList, filterType, searchQuery]);
 
   // Pagination states (Mặc định 10 bài / trang)
   const [currentPage, setCurrentPage] = useState(1);
@@ -417,7 +476,7 @@ export function ListeningAiModule({
     let quizCount = 0;
     let totalChunks = 0;
 
-    transcripts.forEach(t => {
+    displayList.forEach(t => {
       if (t.part === 'Part 3') part3++;
       if (t.part === 'Part 4') part4++;
       if (t.isAiGenerated) aiCount++;
@@ -426,15 +485,8 @@ export function ListeningAiModule({
       totalChunks += tChunks.length;
     });
 
-    return { total: transcripts.length, part3, part4, aiCount, quizCount, totalChunks };
-  }, [transcripts]);
-
-  // Mở modal sinh kịch bản với chủ đề gợi ý
-  const handleOpenPreset = (preset) => {
-    setGenerateInitialTopicId(preset.topicId);
-    setGenerateInitialPart(preset.part);
-    setIsGenerateOpen(true);
-  };
+    return { total: displayList.length, part3, part4, aiCount, quizCount, totalChunks };
+  }, [displayList]);
 
   // Mở modal sinh bài rỗng
   const handleOpenNew = () => {
@@ -453,7 +505,7 @@ export function ListeningAiModule({
     // Mở ngay modal nghe để trải nghiệm
     setActiveListeningTranscript(newTranscript);
     setListeningInitialMode('listen');
-    if (onToast) onToast('success', `🎉 Đã tạo bài nghe "${newTranscript.title}" thành công!`);
+    if (onToast) onToast('success', `Đã tạo bài nghe "${newTranscript.title}" thành công!`);
   };
 
   // Mở trình nghe theo mode
@@ -469,100 +521,35 @@ export function ListeningAiModule({
   };
 
   return (
-    <div className="listening-ai-page" style={{ maxWidth: 1080, margin: '0 auto', paddingBottom: 60 }}>
-      {/* ─── Hero Section ────────────────────────────────────────── */}
-      <div
-        className="card"
-        style={{
-          background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.95))',
-          border: '1px solid rgba(99, 102, 241, 0.3)',
-          borderRadius: 'var(--radius-lg)',
-          padding: '24px 22px',
-          marginBottom: 20,
-          position: 'relative',
-          overflow: 'hidden',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.28)',
-        }}
-      >
-        <div style={{
-          position: 'absolute', top: -50, right: -50, width: 220, height: 220,
-          background: 'radial-gradient(circle, rgba(99,102,241,0.22) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }} />
+    <div className="listening-lab-page">
+      {/* ─── Header: Exact match to media_1789550413700.png ─── */}
+      <div className="listening-lab-header">
+        <div>
+          <div className="listening-lab-tag">AUDIO TRAINING</div>
+          <h1 className="listening-lab-title">Listening Lab</h1>
+          <p className="listening-lab-subtitle">Train your ear with realistic workplace conversations.</p>
+        </div>
 
-        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
-          <div style={{ flex: '1 1 480px' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '3px 10px', borderRadius: 99, background: 'rgba(99,102,241,0.18)', border: '1px solid rgba(99,102,241,0.35)', marginBottom: 10 }}>
-              <Headphones size={13} color="#818cf8" />
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#a5b4fc', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                Trung tâm Luyện Nghe TOEIC &amp; Chép Chính Tả
-              </span>
-            </div>
+        <div className="listening-lab-actions">
+          <button
+            type="button"
+            className="primary-button"
+            onClick={handleOpenNew}
+            style={{ padding: '9px 18px', fontWeight: 600, fontSize: 13, gap: 7 }}
+          >
+            <Sparkles size={15} strokeWidth={1.75} />
+            <span>Tạo bài bằng AI</span>
+          </button>
 
-            <h1 style={{ fontSize: 22, fontWeight: 800, color: '#ffffff', marginBottom: 8, letterSpacing: '-0.02em', lineHeight: 1.25 }}>
-              Luyện Nghe Đàm Thoại &amp; Độc Thoại TOEIC
-            </h1>
-
-            <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6, maxWidth: 640, marginBottom: 16 }}>
-              Tự động tạo bài nghe với AI hoặc dán script đề thi ETS / Hacker TOEIC.
-              Luyện tai với giọng đọc bản xứ <strong style={{ color: '#ffffff' }}>Mỹ, Anh, Úc, Canada</strong>,
-              chép chính tả (Dictation) và làm trắc nghiệm kiểm tra độ hiểu bài có chấm điểm tức thì.
-            </p>
-
-            {/* Main Action Buttons */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={handleOpenNew}
-                style={{
-                  background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
-                  borderColor: 'transparent',
-                  padding: '8px 16px',
-                  fontWeight: 700,
-                  fontSize: 13,
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 6,
-                  boxShadow: '0 4px 14px rgba(99, 102, 241, 0.4)',
-                }}
-              >
-                <Sparkles size={15} color="#fef08a" />
-                ✨ Tạo bài nghe bằng AI
-              </button>
-
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={() => setShowManualInput(prev => !prev)}
-                style={{
-                  padding: '8px 16px',
-                  fontWeight: 700,
-                  fontSize: 13,
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 6,
-                  borderColor: showManualInput ? 'var(--accent-400)' : 'var(--border-subtle)',
-                  color: showManualInput ? 'var(--accent-300)' : 'var(--text-primary)',
-                }}
-              >
-                {showManualInput ? <Minus size={15} /> : <Plus size={15} />}
-                {showManualInput ? 'Thu gọn ô dán' : '+ Dán Script đề thi'}
-              </button>
-
-              {/* Quick stats inline */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingLeft: 6, flexWrap: 'wrap' }}>
-                <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>
-                  <strong style={{ color: 'var(--text-primary)' }}>{stats.total}</strong> bài nghe ({stats.totalChunks} chunks)
-                </span>
-                {stats.quizCount > 0 && (
-                  <span style={{ fontSize: 12, color: '#f472b6' }}>
-                    • <strong>{stats.quizCount}</strong> bài có quiz
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
+          <button
+            type="button"
+            className="secondary-button"
+            onClick={() => setShowManualInput(prev => !prev)}
+            style={{ padding: '9px 16px', fontWeight: 600, fontSize: 13, gap: 6 }}
+          >
+            {showManualInput ? <Minus size={15} strokeWidth={1.75} /> : <Plus size={15} strokeWidth={1.75} />}
+            <span>{showManualInput ? 'Thu gọn' : 'Dán Script đề thi'}</span>
+          </button>
         </div>
       </div>
 
@@ -576,506 +563,206 @@ export function ListeningAiModule({
         />
       )}
 
-      {/* ─── Quick Topic Presets ─────────────────────────────────── */}
-      <div style={{ marginBottom: 24 }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <Globe size={15} style={{ color: 'var(--accent-400)' }} />
-            <h3 style={{ fontSize: 13.5, fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>
-              Gợi ý chủ đề nhanh (Bấm để AI tạo kịch bản ngay)
-            </h3>
-          </div>
-          <span style={{ fontSize: 11.5, color: 'var(--text-muted)' }}>Đa dạng ngữ điệu bản xứ</span>
-        </div>
-
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-            gap: 10,
-          }}
-        >
-          {QUICK_TOPIC_PRESETS.map((preset, idx) => (
-            <div
-              key={idx}
-              className="card"
-              onClick={() => handleOpenPreset(preset)}
-              style={{
-                padding: '12px 14px',
-                borderRadius: 'var(--radius-md)',
-                background: 'var(--bg-elevated)',
-                border: '1px solid var(--border-subtle)',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(99,102,241,0.5)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--border-subtle)';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
+      {/* ─── Minimal Toolbar (Search & Filter Chips) ─────────────── */}
+      <div ref={listTopRef} className="listening-lab-toolbar">
+        {/* Filter Chips */}
+        <div className="listening-filter-chips">
+          {[
+            { id: 'all', label: `Tất cả (${stats.total})` },
+            { id: 'Part 3', label: `Part 3 (${stats.part3})` },
+            { id: 'Part 4', label: `Part 4 (${stats.part4})` },
+            { id: 'ai', label: `AI tạo (${stats.aiCount})` },
+            { id: 'quiz', label: `Quiz (${stats.quizCount})` },
+          ].map(f => (
+            <button
+              key={f.id}
+              type="button"
+              className={`listening-filter-chip ${filterType === f.id ? 'active' : ''}`}
+              onClick={() => setFilterType(f.id)}
             >
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
-                  <span style={{ fontSize: 18 }}>{preset.emoji}</span>
-                  <span
-                    style={{
-                      fontSize: 10,
-                      fontWeight: 700,
-                      padding: '2px 6px',
-                      borderRadius: 4,
-                      background: preset.part === 'Part 3' ? 'rgba(59,130,246,0.15)' : 'rgba(245,158,11,0.15)',
-                      color: preset.part === 'Part 3' ? '#60a5fa' : '#fbbf24',
-                    }}
-                  >
-                    {preset.partLabel}
-                  </span>
-                </div>
-
-                <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 2 }}>
-                  {preset.title}
-                </div>
-                <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>
-                  {preset.accents}
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginTop: 8, color: 'var(--accent-400)', fontSize: 11.5, fontWeight: 600, gap: 2 }}>
-                <span>Tạo bài này</span>
-                <ChevronRight size={12} />
-              </div>
-            </div>
+              {f.label}
+            </button>
           ))}
         </div>
-      </div>
 
-      {/* ─── Library Header & Filters ────────────────────────────── */}
-      <div ref={listTopRef} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', marginBottom: 14 }}>
-        <div>
-          <h3 style={{ fontSize: 15, fontWeight: 800, color: 'var(--text-primary)', margin: 0, display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span>Kho bài nghe của bạn</span>
-            <span className="badge badge-neutral" style={{ fontSize: 11 }}>{totalItems}</span>
-          </h3>
-          {totalItems > 0 && totalPages > 1 && (
-            <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 2 }}>
-              Hiển thị {startIndex + 1}–{endIndex} trong {totalItems} bài nghe (Trang {validPage}/{totalPages})
-            </div>
-          )}
-        </div>
-
-        {/* Toolbar: Search + Filter Tabs */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-          {/* Search Box */}
-          <div style={{ position: 'relative', width: 200 }}>
-            <Search size={13} style={{ position: 'absolute', left: 9, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
-            <input
-              type="text"
-              placeholder="Tìm theo tên, chủ đề..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '5px 8px 5px 28px',
-                fontSize: 12,
-                borderRadius: 'var(--radius-md)',
-                background: 'var(--bg-elevated)',
-                border: '1px solid var(--border-subtle)',
-                color: 'var(--text-primary)',
-              }}
-            />
-          </div>
-
-          {/* Filter Tabs */}
-          <div style={{ display: 'flex', background: 'var(--bg-elevated)', padding: 3, borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', flexWrap: 'wrap' }}>
-            {[
-              { id: 'all', label: `Tất cả (${stats.total})` },
-              { id: 'Part 3', label: `Part 3 (${stats.part3})` },
-              { id: 'Part 4', label: `Part 4 (${stats.part4})` },
-              { id: 'ai', label: `✨ AI tạo (${stats.aiCount})` },
-              { id: 'quiz', label: `📝 Quiz (${stats.quizCount})` },
-            ].map(f => (
-              <button
-                key={f.id}
-                type="button"
-                onClick={() => setFilterType(f.id)}
-                style={{
-                  border: 'none',
-                  background: filterType === f.id ? 'var(--accent-600)' : 'transparent',
-                  color: filterType === f.id ? '#ffffff' : 'var(--text-muted)',
-                  fontSize: 11.5,
-                  fontWeight: filterType === f.id ? 700 : 500,
-                  padding: '3px 8px',
-                  borderRadius: 5,
-                  cursor: 'pointer',
-                  transition: 'all 0.15s ease',
-                }}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
+        {/* Search box */}
+        <div className="listening-lab-search">
+          <Search size={13} className="listening-lab-search-icon" />
+          <input
+            type="text"
+            placeholder="Tìm theo tên, chủ đề..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
       </div>
 
-      {/* ─── Lessons List / Empty State ─────────────────────────── */}
+      {/* ─── Lessons Grid (Cards matching media_1789550413700.png) ─── */}
       {filteredList.length === 0 ? (
-        <div className="card text-center" style={{ padding: '44px 20px', textAlign: 'center' }}>
+        <div className="card text-center" style={{ padding: '48px 20px', textAlign: 'center' }}>
           <div
             style={{
-              width: 54, height: 54, borderRadius: 'var(--radius-full)',
-              background: 'linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2))',
+              width: 50, height: 50, borderRadius: 'var(--radius-full)',
+              background: 'rgba(53, 106, 230, 0.1)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              margin: '0 auto 14px', color: 'var(--accent-400)',
+              margin: '0 auto 14px', color: 'var(--primary)',
             }}
           >
-            <Headphones size={26} />
+            <Headphones size={24} />
           </div>
-
-          <h3 style={{ fontSize: 15, fontWeight: 800, color: 'var(--text-primary)', marginBottom: 6 }}>
-            {searchQuery || filterType !== 'all' ? 'Không tìm thấy bài nghe phù hợp' : 'Chưa có bài luyện nghe nào'}
+          <h3 style={{ fontSize: 15, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 6 }}>
+            Không tìm thấy bài nghe phù hợp
           </h3>
-
-          <p style={{ fontSize: 12.5, color: 'var(--text-muted)', maxWidth: 440, margin: '0 auto 18px', lineHeight: 1.5 }}>
-            {searchQuery || filterType !== 'all'
-              ? 'Hãy thử thay đổi từ khóa tìm kiếm hoặc bấm nút bên dưới để xóa bộ lọc.'
-              : 'Hãy chọn một chủ đề gợi ý ở trên, bấm "Tạo bài nghe bằng AI" hoặc bấm "Dán Script đề thi" để bắt đầu!'}
+          <p style={{ fontSize: 13, color: 'var(--text-muted)', maxWidth: 400, margin: '0 auto 16px' }}>
+            Hãy thử thay đổi từ khóa tìm kiếm hoặc chọn danh mục khác.
           </p>
-
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 10 }}>
-            {searchQuery || filterType !== 'all' ? (
-              <button
-                type="button"
-                className="btn btn-secondary btn-sm"
-                onClick={() => { setSearchQuery(''); setFilterType('all'); }}
-              >
-                Xóa bộ lọc tìm kiếm
-              </button>
-            ) : (
-              <>
-                <button
-                  type="button"
-                  className="btn btn-primary btn-sm"
-                  onClick={handleOpenNew}
-                  style={{ background: 'linear-gradient(135deg, var(--accent-600), #7c3aed)' }}
-                >
-                  <Sparkles size={13} color="#fef08a" /> ✨ Tạo bài nghe bằng AI
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-secondary btn-sm"
-                  onClick={() => setShowManualInput(true)}
-                >
-                  + Dán Script đề thi
-                </button>
-              </>
-            )}
-          </div>
+          <button
+            type="button"
+            className="secondary-button btn-sm"
+            onClick={() => { setSearchQuery(''); setFilterType('all'); }}
+            style={{ margin: '0 auto' }}
+          >
+            Xóa bộ lọc tìm kiếm
+          </button>
         </div>
       ) : (
         <>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <div className="listening-lab-grid">
             {paginatedList.map((item) => {
-            const accents = extractSpeakerAccents(item.text);
-            const questionCount = item.questions?.length || 0;
-            const tChunks = getChunks(item.id) || item.chunks || [];
-            const chunkCount = tChunks.length;
-            const isDeleting = confirmDeleteId === item.id;
+              const accents = extractSpeakerAccents(item.text);
+              const primaryAccent = accents[0] || (item.part === 'Part 4' ? 'UK English' : 'US English');
+              const tChunks = getChunks(item.id) || item.chunks || [];
+              const chunkCount = tChunks.length;
+              const isDeleting = confirmDeleteId === item.id;
 
-            // Snippet preview
-            const snippet = (item.text || '')
-              .split('\n')
-              .filter(l => l.trim() && !l.toLowerCase().includes('questions') && !l.toLowerCase().includes('refer to'))
-              .slice(0, 2)
-              .join(' • ');
+              // Calculate practice progress
+              const practicedChunksCount = tChunks.filter(c => (allProgress[c.id]?.practiceCount || 0) > 0).length;
+              const calculatedPct = chunkCount > 0 ? Math.round((practicedChunksCount / chunkCount) * 100) : 0;
+              const displayProgress = calculatedPct > 0 ? calculatedPct : (item.progress ?? 0);
 
-            return (
-              <div
-                key={item.id}
-                className="card"
-                style={{
-                  padding: '14px 18px',
-                  borderRadius: 'var(--radius-md)',
-                  background: 'var(--bg-elevated)',
-                  border: '1px solid var(--border-subtle)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 10,
-                  transition: 'all 0.15s ease',
-                }}
-              >
-                {/* Header: Badges + Date + Edit / Delete */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, flexWrap: 'wrap' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
-                    {/* Part Badge */}
-                    <span
-                      style={{
-                        fontSize: 10.5,
-                        fontWeight: 800,
-                        padding: '2px 7px',
-                        borderRadius: 5,
-                        background: item.part === 'Part 4' ? 'rgba(245,158,11,0.15)' : 'rgba(59,130,246,0.15)',
-                        color: item.part === 'Part 4' ? '#fbbf24' : '#60a5fa',
-                        border: `1px solid ${item.part === 'Part 4' ? 'rgba(245,158,11,0.3)' : 'rgba(59,130,246,0.3)'}`,
-                      }}
-                    >
-                      {item.part || 'Part 3'}
-                    </span>
+              // Duration estimate
+              const wordCount = (item.text || '').split(/\s+/).filter(Boolean).length;
+              const durationMin = item.duration || Math.max(8, Math.min(25, Math.round(wordCount / 16) + (item.questions?.length ? 4 : 0)));
 
-                    {/* AI Source badge */}
-                    {item.isAiGenerated ? (
-                      <span
-                        style={{
-                          fontSize: 10.5,
-                          fontWeight: 700,
-                          padding: '2px 6px',
-                          borderRadius: 5,
-                          background: 'rgba(168,85,247,0.15)',
-                          color: '#c084fc',
-                          border: '1px solid rgba(168,85,247,0.3)',
-                        }}
-                      >
-                        ✨ AI sinh
-                      </span>
-                    ) : (
-                      <span
-                        style={{
-                          fontSize: 10.5,
-                          fontWeight: 600,
-                          padding: '2px 6px',
-                          borderRadius: 5,
-                          background: 'rgba(255,255,255,0.06)',
-                          color: 'var(--text-muted)',
-                          border: '1px solid var(--border-subtle)',
-                        }}
-                      >
-                        📝 Tự dán
-                      </span>
-                    )}
+              const displayTitle = getTranscriptDisplayTitle(item);
+              const extraTheme = (item.themeVi && item.themeVi !== displayTitle)
+                ? item.themeVi
+                : (item.theme && item.theme !== displayTitle ? item.theme : null);
 
-                    {/* Level */}
-                    {item.level && (
-                      <span
-                        style={{
-                          fontSize: 10.5,
-                          fontWeight: 700,
-                          padding: '2px 6px',
-                          borderRadius: 5,
-                          background: item.level === 'advanced' ? 'rgba(168,85,247,0.15)' : 'rgba(16,185,129,0.15)',
-                          color: item.level === 'advanced' ? '#c084fc' : '#34d399',
-                        }}
-                      >
-                        {item.level === 'advanced' ? '750+' : '550-700'}
-                      </span>
-                    )}
-
-                    {/* Accent Badges */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-                      {accents.map((acc, aIdx) => (
-                        <span
-                          key={aIdx}
-                          style={{
-                            fontSize: 10.5,
-                            padding: '1px 5px',
-                            borderRadius: 4,
-                            background: 'rgba(255,255,255,0.06)',
-                            color: 'var(--text-secondary)',
-                            border: '1px solid var(--border-subtle)',
-                          }}
-                        >
-                          {acc}
-                        </span>
-                      ))}
+              return (
+                <article
+                  key={item.id}
+                  className="listening-lab-card"
+                  onClick={() => handleStartListening(item, 'listen')}
+                >
+                  {/* Top Row: Icon + Corner Shape & Badge + Hover Actions */}
+                  <div className="listening-card-top">
+                    <div className="listening-card-icon-box">
+                      <Headphones size={20} color="#2563eb" strokeWidth={2} />
                     </div>
 
-                    {/* Target Chunks count */}
-                    {chunkCount > 0 && (
-                      <span
-                        style={{
-                          fontSize: 10.5,
-                          padding: '1px 6px',
-                          borderRadius: 4,
-                          background: 'rgba(99,102,241,0.12)',
-                          color: 'var(--accent-300)',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: 3,
-                        }}
-                      >
-                        <Layers size={10} /> {chunkCount} chunks
+                    {/* Top Right Corner Organic Decor & Level Pill */}
+                    <div className="listening-card-corner-shape">
+                      <span className="listening-level-pill">
+                        {item.level || (item.part === 'Part 4' ? 'Advanced' : 'Intermediate')}
                       </span>
-                    )}
+                    </div>
 
-                    {/* Quiz Questions count */}
-                    {questionCount > 0 && (
-                      <span
-                        style={{
-                          fontSize: 10.5,
-                          padding: '1px 6px',
-                          borderRadius: 4,
-                          background: 'rgba(236,72,153,0.12)',
-                          color: '#f472b6',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: 3,
-                        }}
-                      >
-                        <HelpCircle size={10} /> {questionCount} câu quiz
-                      </span>
-                    )}
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    {item.createdAt && (
-                      <span style={{ fontSize: 11, color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: 3 }}>
-                        <Calendar size={11} /> {formatDate(item.createdAt)}
-                      </span>
-                    )}
-
-                    {/* Edit button */}
-                    <button
-                      type="button"
-                      className="btn btn-ghost btn-icon"
-                      onClick={() => setEditingTranscript(item)}
-                      title="Chỉnh sửa tên và chủ đề"
-                      style={{ color: 'var(--text-muted)', width: 26, height: 26, padding: 3 }}
-                    >
-                      <Edit3 size={13} />
-                    </button>
-
-                    {/* Delete action */}
-                    {isDeleting ? (
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                        <span style={{ fontSize: 10.5, color: '#ef4444', fontWeight: 600 }}>Xóa?</span>
-                        <button
-                          type="button"
-                          className="btn btn-sm"
-                          style={{ background: '#ef4444', color: '#fff', padding: '2px 6px', fontSize: 10.5 }}
-                          onClick={() => handleDelete(item.id)}
-                        >
-                          Xác nhận
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-secondary btn-sm"
-                          style={{ padding: '2px 5px', fontSize: 10.5 }}
-                          onClick={() => setConfirmDeleteId(null)}
-                        >
-                          Hủy
-                        </button>
-                      </div>
-                    ) : (
+                    {/* Hover Action Menu (Edit / Delete) */}
+                    <div className="listening-card-hover-actions" onClick={e => e.stopPropagation()}>
                       <button
                         type="button"
-                        className="btn btn-ghost btn-icon"
-                        onClick={() => setConfirmDeleteId(item.id)}
-                        title="Xóa bài nghe này"
-                        style={{ color: 'var(--text-muted)', width: 26, height: 26, padding: 3 }}
+                        className="listening-card-icon-btn"
+                        onClick={() => setEditingTranscript(item)}
+                        title="Chỉnh sửa thông tin"
                       >
-                        <Trash2 size={13} />
+                        <Edit3 size={13} strokeWidth={1.75} />
                       </button>
+                      {isDeleting ? (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                          <button
+                            type="button"
+                            className="listening-card-del-btn"
+                            onClick={() => handleDelete(item.id)}
+                          >
+                            Xóa
+                          </button>
+                          <button
+                            type="button"
+                            className="listening-card-cancel-btn"
+                            onClick={() => setConfirmDeleteId(null)}
+                          >
+                            Hủy
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          type="button"
+                          className="listening-card-icon-btn danger"
+                          onClick={() => setConfirmDeleteId(item.id)}
+                          title="Xóa bài nghe"
+                        >
+                          <Trash2 size={13} strokeWidth={1.75} />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Title & Subtitle */}
+                  <h3 className="listening-card-title" title={displayTitle}>
+                    {displayTitle}
+                  </h3>
+                  <div className="listening-card-subtitle" title={extraTheme ? `Listening · ${primaryAccent} · ${extraTheme}` : `Listening · ${primaryAccent}`}>
+                    <span>Listening · {primaryAccent}</span>
+                    {extraTheme && (
+                      <>
+                        <span style={{ opacity: 0.35 }}>•</span>
+                        <span style={{ color: 'var(--accent-400)', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          {extraTheme}
+                        </span>
+                      </>
                     )}
                   </div>
-                </div>
 
-                {/* Body: Title & Preview */}
-                <div>
-                  <h4 style={{ fontSize: 14.5, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 3 }}>
-                    {item.title}
-                  </h4>
-                  {item.themeVi && (
-                    <div style={{ fontSize: 11.5, color: 'var(--accent-400)', fontWeight: 600, marginBottom: 4 }}>
-                      Chủ đề: {item.themeVi}
+                  {/* Meta row & Progress track */}
+                  <div className="listening-card-footer">
+                    <div className="listening-card-meta">
+                      <span>{durationMin} min</span>
+                      <span>{displayProgress}% complete</span>
                     </div>
-                  )}
-                  {snippet && (
-                    <p style={{ fontSize: 12, color: 'var(--text-muted)', margin: 0, lineHeight: 1.5, fontStyle: 'italic' }}>
-                      &ldquo;{snippet}&rdquo;
-                    </p>
-                  )}
-                </div>
+                    <div className="listening-progress-track">
+                      <div
+                        className="listening-progress-fill"
+                        style={{ width: `${Math.max(displayProgress, 3)}%` }}
+                      />
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
 
-                {/* Footer Actions */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingTop: 2, flexWrap: 'wrap' }}>
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-sm"
-                    onClick={() => handleStartListening(item, 'listen')}
-                    style={{
-                      background: 'linear-gradient(135deg, var(--accent-600), #7c3aed)',
-                      fontWeight: 700,
-                      fontSize: 12,
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: 5,
-                    }}
-                  >
-                    <Headphones size={13} />
-                    Luyện nghe ngay
-                  </button>
-
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-sm"
-                    onClick={() => handleStartListening(item, 'dictation')}
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: 5,
-                      fontSize: 12,
-                      color: 'var(--text-primary)',
-                    }}
-                  >
-                    <PenLine size={12} style={{ color: '#38bdf8' }} />
-                    Chép chính tả
-                  </button>
-
-                  {questionCount > 0 && (
-                    <button
-                      type="button"
-                      className="btn btn-secondary btn-sm"
-                      onClick={() => handleStartListening(item, 'quiz')}
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 5,
-                        fontSize: 12,
-                        color: 'var(--text-primary)',
-                      }}
-                    >
-                      <HelpCircle size={12} style={{ color: '#f472b6' }} />
-                      Làm trắc nghiệm ({questionCount})
-                    </button>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Bottom Pagination Bar */}
-        {totalPages > 1 && (
-          <Pagination
-            currentPage={validPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-            pageSize={pageSize}
-            onPageSizeChange={(size) => {
-              setPageSize(size);
-              setCurrentPage(1);
-            }}
-            pageSizeOptions={[10, 20, 50]}
-            totalItems={totalItems}
-            startIndex={startIndex}
-            endIndex={endIndex}
-            itemLabel="bài nghe"
-          />
-        )}
-      </>
+          {/* Bottom Pagination Bar */}
+          {totalPages > 1 && (
+            <div style={{ marginTop: 24 }}>
+              <Pagination
+                currentPage={validPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+                pageSize={pageSize}
+                onPageSizeChange={(size) => {
+                  setPageSize(size);
+                  setCurrentPage(1);
+                }}
+                pageSizeOptions={[10, 20, 50]}
+                totalItems={totalItems}
+                startIndex={startIndex}
+                endIndex={endIndex}
+                itemLabel="bài nghe"
+              />
+            </div>
+          )}
+        </>
       )}
 
       {/* ─── Modals ──────────────────────────────────────────────── */}
@@ -1103,7 +790,7 @@ export function ListeningAiModule({
       {activeListeningTranscript && (
         <TranscriptListeningModal
           transcript={activeListeningTranscript}
-          chunks={activeListeningTranscript.chunks}
+          chunks={activeListeningTranscript.chunks || getChunks(activeListeningTranscript.id) || []}
           initialMode={listeningInitialMode}
           onClose={() => setActiveListeningTranscript(null)}
           onSaveGenerated={(tr) => {

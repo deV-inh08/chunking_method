@@ -1,20 +1,37 @@
 import React, { useState, useMemo } from 'react';
 import {
-  Sparkles, X, Shuffle, Users, User, Volume2,
-  CheckCircle2, ArrowRight, Layers, Flame, BookOpen, AlertCircle
+  Sparkles, Shuffle, Users, Volume2, BookOpen,
+  Briefcase, Plane, ShoppingBag, Package, BarChart2, Building2,
+  Laptop, TrendingUp, Utensils, Wrench, GraduationCap, Mic, Check,
+  PenLine, X
 } from 'lucide-react';
 import { Modal, Spinner } from '../ui';
 import { PRESET_LISTENING_TOPICS, generateListeningScenario } from '../../services/listeningAi';
 import { getApiKey, getAllChunks } from '../../store/storage';
 
+const TOPIC_ICONS = {
+  office_project: Briefcase,
+  flight_travel: Plane,
+  customer_service: ShoppingBag,
+  logistics_order: Package,
+  budget_finance: BarChart2,
+  recruitment_hr: Users,
+  hotel_hospitality: Building2,
+  tech_support: Laptop,
+  marketing_campaign: TrendingUp,
+  restaurant_catering: Utensils,
+  facility_maintenance: Wrench,
+  workshop_training: GraduationCap,
+};
+
 const ACCENT_OPTIONS = [
-  { lang: 'en-US', label: 'Mỹ (US)', flag: '🇺🇸', desc: 'Chuẩn phát thanh viên' },
-  { lang: 'en-GB', label: 'Anh (UK)', flag: '🇬🇧', desc: 'Ngữ điệu đĩnh đạc' },
-  { lang: 'en-AU', label: 'Úc (AU)', flag: '🇦🇺', desc: 'Nuốt âm r, bè âm' },
-  { lang: 'en-CA', label: 'Canada (CA)', flag: '🇨🇦', desc: 'Chuẩn Bắc Mỹ' },
+  { lang: 'en-US', label: 'Mỹ (US)', code: 'US', desc: 'Chuẩn phát thanh viên ETS' },
+  { lang: 'en-GB', label: 'Anh (UK)', code: 'UK', desc: 'Ngữ điệu đĩnh đạc Luân Đôn' },
+  { lang: 'en-AU', label: 'Úc (AU)', code: 'AU', desc: 'Nuốt âm r, bè âm tự nhiên' },
+  { lang: 'en-CA', label: 'Canada (CA)', code: 'CA', desc: 'Chuẩn giọng Bắc Mỹ' },
 ];
 
-function getSpeakerTag(gender, lang, index = 0) {
+function getSpeakerTag(gender, lang, _index = 0) {
   const gPrefix = gender === 'female' ? 'W' : 'M';
   let aSuffix = 'Am';
   if (lang.includes('au')) aSuffix = 'Au';
@@ -33,8 +50,6 @@ export default function GenerateListeningModal({
   initialTopicId = null,
   initialPart = 'Part 3',
 }) {
-  if (!isOpen) return null;
-
   const [part, setPart] = useState(initialPart || 'Part 3'); // 'Part 3' | 'Part 4'
   const [selectedTopicId, setSelectedTopicId] = useState(initialTopicId || PRESET_LISTENING_TOPICS[0].id);
   const [customTopic, setCustomTopic] = useState('');
@@ -55,6 +70,8 @@ export default function GenerateListeningModal({
   const activePreset = useMemo(() => {
     return PRESET_LISTENING_TOPICS.find(t => t.id === selectedTopicId) || PRESET_LISTENING_TOPICS[0];
   }, [selectedTopicId]);
+
+  if (!isOpen) return null;
 
   // Ngẫu nhiên chọn 1 chủ đề
   const handleRandomTopic = () => {
@@ -87,7 +104,6 @@ export default function GenerateListeningModal({
         label: `Người 2 (${speaker2.gender === 'female' ? 'Nữ' : 'Nam'} ${speaker2.lang.slice(3)})`,
       });
       if (speaker3Enabled) {
-        // Đảm bảo tag không bị trùng
         let tag3 = getSpeakerTag(speaker3.gender, speaker3.lang, 3);
         if (tag3 === speakersList[0].tag || tag3 === speakersList[1].tag) {
           tag3 += '2';
@@ -115,7 +131,6 @@ export default function GenerateListeningModal({
       try {
         const allUserChunks = getAllChunks() || [];
         if (allUserChunks.length > 0) {
-          // Shuffle và lấy 3-4 chunks
           const shuffled = [...allUserChunks].sort(() => 0.5 - Math.random());
           chunksToEmbed = shuffled.slice(0, 3).map(c => ({
             phrase: c.phrase,
@@ -128,7 +143,7 @@ export default function GenerateListeningModal({
     }
 
     setIsLoading(true);
-    setLoadingStep('Đang biên soạn kịch bản hội thoại TOEIC...');
+    setLoadingStep('Đang biên soạn kịch bản đàm thoại TOEIC...');
 
     try {
       const scenario = await generateListeningScenario({
@@ -144,7 +159,6 @@ export default function GenerateListeningModal({
       setLoadingStep('Hoàn tất kịch bản, đang mở phòng nghe...');
       onToast?.('success', `Đã tạo bài luyện nghe: "${scenario.title}"!`);
 
-      // Callback gửi scenario cho parent component xử lý
       onGenerated?.({
         ...scenario,
         generatedByAi: true,
@@ -163,11 +177,12 @@ export default function GenerateListeningModal({
 
   return (
     <Modal
-      title="✨ Tạo Bài Luyện Nghe TOEIC Bằng AI"
+      title="Tạo bài luyện nghe TOEIC bằng AI"
+      description="Biên soạn kịch bản đàm thoại Part 3 & 4 với ngữ cảnh bản xứ theo chuẩn khảo thí ETS."
       onClose={isLoading ? null : onClose}
-      maxWidth="620px"
+      maxWidth="720px"
       footer={
-        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, width: '100%' }}>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 10, width: '100%' }}>
           <button
             type="button"
             className="btn btn-secondary btn-sm"
@@ -182,162 +197,231 @@ export default function GenerateListeningModal({
             onClick={handleGenerate}
             disabled={isLoading}
             style={{
-              background: 'linear-gradient(135deg, var(--accent-600), #7c3aed)',
               padding: '8px 18px',
               display: 'inline-flex',
               alignItems: 'center',
               gap: 6,
               fontWeight: 700,
-              boxShadow: '0 2px 10px rgba(99, 102, 241, 0.35)',
             }}
           >
             {isLoading ? (
               <>
-                <Spinner size={14} /> Đang tạo...
+                <Spinner size={14} />
+                <span>Đang xử lý...</span>
               </>
             ) : (
               <>
-                <Sparkles size={14} color="#fef08a" /> Tạo bài luyện nghe ngay
+                <Sparkles size={14} strokeWidth={1.75} />
+                <span>Tạo bài luyện nghe</span>
               </>
             )}
           </button>
         </div>
       }
     >
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: '4px 2px 14px' }}>
 
-        {/* 1. Chọn Part 3 vs Part 4 */}
+        {/* ── 1. Dạng bài thi TOEIC (Part 3 vs Part 4) ─────────── */}
         <div>
-          <label className="label" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <BookOpen size={15} color="var(--accent-400)" />
+          <label style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+            <BookOpen size={14} style={{ color: 'var(--accent-400)' }} />
             Dạng bài thi TOEIC
           </label>
-          <div className="toggle-group" style={{ maxWidth: 360, marginTop: 4 }}>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
             <div
-              className={`toggle-option ${part === 'Part 3' ? 'active' : ''}`}
+              className={`ai-modal-part-card ${part === 'Part 3' ? 'active' : ''}`}
               onClick={() => setPart('Part 3')}
             >
-              <Users size={14} style={{ marginRight: 6 }} /> Part 3 (Hội thoại)
+              <div
+                style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: 'var(--radius-sm)',
+                  display: 'grid',
+                  placeItems: 'center',
+                  background: part === 'Part 3' ? 'var(--accent-500)' : 'var(--bg-elevated)',
+                  color: part === 'Part 3' ? '#fff' : 'var(--text-secondary)',
+                  flexShrink: 0,
+                }}
+              >
+                <Users size={16} strokeWidth={1.75} />
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontWeight: 700, fontSize: 13, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span>Part 3 (Hội thoại)</span>
+                  {part === 'Part 3' && <Check size={14} style={{ color: 'var(--accent-400)' }} />}
+                </div>
+                <div style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 2 }}>
+                  2–3 người đàm thoại trao đổi công việc, công sở
+                </div>
+              </div>
             </div>
+
             <div
-              className={`toggle-option ${part === 'Part 4' ? 'active' : ''}`}
+              className={`ai-modal-part-card ${part === 'Part 4' ? 'active' : ''}`}
               onClick={() => setPart('Part 4')}
             >
-              <User size={14} style={{ marginRight: 6 }} /> Part 4 (Độc thoại)
+              <div
+                style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: 'var(--radius-sm)',
+                  display: 'grid',
+                  placeItems: 'center',
+                  background: part === 'Part 4' ? 'var(--accent-500)' : 'var(--bg-elevated)',
+                  color: part === 'Part 4' ? '#fff' : 'var(--text-secondary)',
+                  flexShrink: 0,
+                }}
+              >
+                <Mic size={16} strokeWidth={1.75} />
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontWeight: 700, fontSize: 13, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span>Part 4 (Độc thoại)</span>
+                  {part === 'Part 4' && <Check size={14} style={{ color: 'var(--accent-400)' }} />}
+                </div>
+                <div style={{ fontSize: 11.5, color: 'var(--text-muted)', marginTop: 2 }}>
+                  1 người phát biểu, thông báo sân bay, tin nhắn thoại
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* 2. Chọn chủ đề */}
+        {/* ── 2. Chọn chủ đề hội thoại (Không bao giờ bị tràn/cắt chữ) ─ */}
         <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-            <label className="label" style={{ margin: 0 }}>Chủ đề hội thoại</label>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+            <label style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>
+              Chủ đề bài nghe
+            </label>
             <button
               type="button"
               className="btn btn-secondary btn-xs"
               onClick={handleRandomTopic}
-              title="Chọn ngẫu nhiên một chủ đề để đổi gió"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, padding: '3px 8px' }}
+              title="Chọn ngẫu nhiên một chủ đề để thay đổi ngữ cảnh"
             >
-              <Shuffle size={12} /> Đổi chủ đề ngẫu nhiên
+              <Shuffle size={12} strokeWidth={1.75} />
+              <span>Đổi ngẫu nhiên</span>
             </button>
           </div>
 
-          {/* Quick chips */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(170px, 1fr))',
-            gap: 6,
-            maxHeight: 130,
-            overflowY: 'auto',
-            padding: 4,
-            border: '1px solid var(--border-color)',
-            borderRadius: 'var(--radius-md)',
-            background: 'rgba(0,0,0,0.15)',
-          }}>
+          {/* 2-Column Responsive Topic Grid (Không bị cắt chữ, padding chuẩn) */}
+          <div className="ai-modal-topic-container">
             {PRESET_LISTENING_TOPICS.map((t) => {
+              const IconComp = TOPIC_ICONS[t.id] || Briefcase;
               const isSelected = selectedTopicId === t.id && !customTopic.trim();
+
               return (
                 <div
                   key={t.id}
+                  className={`ai-modal-topic-item ${isSelected ? 'active' : ''}`}
                   onClick={() => {
                     setSelectedTopicId(t.id);
                     setCustomTopic('');
                   }}
-                  style={{
-                    padding: '8px 10px',
-                    borderRadius: 'var(--radius-sm)',
-                    cursor: 'pointer',
-                    background: isSelected ? 'rgba(99, 102, 241, 0.22)' : 'rgba(255,255,255,0.03)',
-                    border: `1px solid ${isSelected ? 'var(--accent-500)' : 'transparent'}`,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 8,
-                    fontSize: 12,
-                    fontWeight: isSelected ? 700 : 500,
-                    color: isSelected ? 'var(--text-primary)' : 'var(--text-secondary)',
-                    transition: 'all 0.15s ease',
-                  }}
                 >
-                  <span style={{ fontSize: 16 }}>{t.emoji}</span>
-                  <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    {t.title}
+                  <div
+                    style={{
+                      width: 28,
+                      height: 28,
+                      borderRadius: 6,
+                      display: 'grid',
+                      placeItems: 'center',
+                      background: isSelected ? 'var(--accent-500)' : 'rgba(255,255,255,0.05)',
+                      color: isSelected ? '#fff' : 'var(--text-secondary)',
+                      flexShrink: 0,
+                    }}
+                  >
+                    <IconComp size={14} strokeWidth={1.75} />
                   </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div
+                      style={{
+                        fontSize: 12.5,
+                        fontWeight: isSelected ? 700 : 500,
+                        color: isSelected ? 'var(--text-primary)' : 'var(--text-secondary)',
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {t.title}
+                    </div>
+                  </div>
+                  {isSelected && <Check size={14} style={{ color: 'var(--accent-400)', flexShrink: 0 }} />}
                 </div>
               );
             })}
           </div>
 
-          {/* Custom topic input */}
-          <div style={{ marginTop: 8 }}>
+          {/* Custom topic input with icon & clear button */}
+          <div className="ai-modal-input-wrapper">
+            <PenLine size={15} className="ai-modal-input-icon" />
             <input
               type="text"
-              className="input-field"
-              placeholder="Hoặc gõ chủ đề cụ thể (Ví dụ: Xin nghỉ phép gấp, Thương lượng giá thuê văn phòng...)"
+              className="ai-modal-input"
+              placeholder="Hoặc nhập chủ đề cụ thể (Ví dụ: Xin nghỉ phép gấp, Thương lượng giá thuê văn phòng...)"
               value={customTopic}
               onChange={(e) => setCustomTopic(e.target.value)}
-              style={{ fontSize: 13 }}
             />
+            {customTopic.trim() && (
+              <button
+                type="button"
+                className="ai-modal-input-clear"
+                onClick={() => setCustomTopic('')}
+                title="Xóa chủ đề đã nhập"
+              >
+                <X size={14} />
+              </button>
+            )}
           </div>
         </div>
 
-        {/* 3. Cấu hình nhân vật & Accent */}
-        <div style={{
-          background: 'rgba(255,255,255,0.02)',
-          border: '1px solid var(--border-color)',
-          borderRadius: 'var(--radius-md)',
-          padding: 12,
-        }}>
-          <label className="label" style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
-            <Volume2 size={15} color="var(--accent-400)" />
-            Cấu hình nhân vật & Giọng đọc bản xứ
-          </label>
+        {/* ── 3. Cấu hình nhân vật & Giọng đọc bản xứ ──────────── */}
+        <div className="ai-modal-speaker-card">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+            <label style={{ fontSize: 12.5, fontWeight: 700, color: 'var(--text-primary)', margin: 0, display: 'flex', alignItems: 'center', gap: 6 }}>
+              <Volume2 size={15} style={{ color: 'var(--accent-400)' }} />
+              {part === 'Part 3' ? 'Cấu hình nhân vật hội thoại' : 'Cấu hình giọng đọc độc thoại'}
+            </label>
+
+            {part === 'Part 3' && !speaker3Enabled && (
+              <button
+                type="button"
+                className="btn btn-secondary btn-xs"
+                onClick={() => setSpeaker3Enabled(true)}
+                style={{ fontSize: 11, padding: '3px 8px' }}
+              >
+                + Thêm người thứ 3 (Đề khó)
+              </button>
+            )}
+          </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {/* Speaker 1 */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-              <span style={{ fontSize: 12, fontWeight: 700, minWidth: 70, color: 'var(--text-muted)' }}>
+              <span style={{ fontSize: 12, fontWeight: 600, minWidth: 72, color: 'var(--text-muted)' }}>
                 {part === 'Part 3' ? 'Người 1:' : 'Người đọc:'}
               </span>
               <select
-                className="input-field"
-                style={{ width: 110, padding: '5px 8px', fontSize: 12 }}
+                className="ai-modal-select"
+                style={{ width: 130 }}
                 value={speaker1.gender}
                 onChange={(e) => setSpeaker1({ ...speaker1, gender: e.target.value })}
               >
-                <option value="female">👩 Nữ</option>
-                <option value="male">👨 Nam</option>
+                <option value="female">Nữ (Female)</option>
+                <option value="male">Nam (Male)</option>
               </select>
 
               <select
-                className="input-field"
-                style={{ width: 180, padding: '5px 8px', fontSize: 12 }}
+                className="ai-modal-select"
+                style={{ flex: '1 1 240px', minWidth: 220 }}
                 value={speaker1.lang}
                 onChange={(e) => setSpeaker1({ ...speaker1, lang: e.target.value })}
               >
                 {ACCENT_OPTIONS.map(a => (
                   <option key={a.lang} value={a.lang}>
-                    {a.flag} {a.label}
+                    {a.label} — {a.desc}
                   </option>
                 ))}
               </select>
@@ -346,146 +430,177 @@ export default function GenerateListeningModal({
             {/* Speaker 2 (chỉ cho Part 3) */}
             {part === 'Part 3' && (
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-                <span style={{ fontSize: 12, fontWeight: 700, minWidth: 70, color: 'var(--text-muted)' }}>
+                <span style={{ fontSize: 12, fontWeight: 600, minWidth: 72, color: 'var(--text-muted)' }}>
                   Người 2:
                 </span>
                 <select
-                  className="input-field"
-                  style={{ width: 110, padding: '5px 8px', fontSize: 12 }}
+                  className="ai-modal-select"
+                  style={{ width: 130 }}
                   value={speaker2.gender}
                   onChange={(e) => setSpeaker2({ ...speaker2, gender: e.target.value })}
                 >
-                  <option value="male">👨 Nam</option>
-                  <option value="female">👩 Nữ</option>
+                  <option value="male">Nam (Male)</option>
+                  <option value="female">Nữ (Female)</option>
                 </select>
 
                 <select
-                  className="input-field"
-                  style={{ width: 180, padding: '5px 8px', fontSize: 12 }}
+                  className="ai-modal-select"
+                  style={{ flex: '1 1 240px', minWidth: 220 }}
                   value={speaker2.lang}
                   onChange={(e) => setSpeaker2({ ...speaker2, lang: e.target.value })}
                 >
                   {ACCENT_OPTIONS.map(a => (
                     <option key={a.lang} value={a.lang}>
-                      {a.flag} {a.label}
+                      {a.label} — {a.desc}
                     </option>
                   ))}
                 </select>
               </div>
             )}
 
-            {/* Speaker 3 (tùy chọn mở rộng cho Part 3) */}
-            {part === 'Part 3' && (
-              <div>
-                {!speaker3Enabled ? (
-                  <button
-                    type="button"
-                    className="btn btn-secondary btn-xs"
-                    onClick={() => setSpeaker3Enabled(true)}
-                    style={{ marginTop: 4 }}
-                  >
-                    + Thêm người thứ 3 (Hội thoại 3 người chuẩn đề khó)
-                  </button>
-                ) : (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', marginTop: 4 }}>
-                    <span style={{ fontSize: 12, fontWeight: 700, minWidth: 70, color: '#f59e0b' }}>
-                      Người 3:
-                    </span>
-                    <select
-                      className="input-field"
-                      style={{ width: 110, padding: '5px 8px', fontSize: 12 }}
-                      value={speaker3.gender}
-                      onChange={(e) => setSpeaker3({ ...speaker3, gender: e.target.value })}
-                    >
-                      <option value="male">👨 Nam</option>
-                      <option value="female">👩 Nữ</option>
-                    </select>
+            {/* Speaker 3 (khi bật tùy chọn 3 người) */}
+            {part === 'Part 3' && speaker3Enabled && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', paddingTop: 8, borderTop: '1px dashed var(--border-subtle)' }}>
+                <span style={{ fontSize: 12, fontWeight: 600, minWidth: 72, color: '#f59e0b' }}>
+                  Người 3:
+                </span>
+                <select
+                  className="ai-modal-select"
+                  style={{ width: 130 }}
+                  value={speaker3.gender}
+                  onChange={(e) => setSpeaker3({ ...speaker3, gender: e.target.value })}
+                >
+                  <option value="male">Nam (Male)</option>
+                  <option value="female">Nữ (Female)</option>
+                </select>
 
-                    <select
-                      className="input-field"
-                      style={{ width: 180, padding: '5px 8px', fontSize: 12 }}
-                      value={speaker3.lang}
-                      onChange={(e) => setSpeaker3({ ...speaker3, lang: e.target.value })}
-                    >
-                      {ACCENT_OPTIONS.map(a => (
-                        <option key={a.lang} value={a.lang}>
-                          {a.flag} {a.label}
-                        </option>
-                      ))}
-                    </select>
+                <select
+                  className="ai-modal-select"
+                  style={{ flex: '1 1 240px', minWidth: 220 }}
+                  value={speaker3.lang}
+                  onChange={(e) => setSpeaker3({ ...speaker3, lang: e.target.value })}
+                >
+                  {ACCENT_OPTIONS.map(a => (
+                    <option key={a.lang} value={a.lang}>
+                      {a.label} — {a.desc}
+                    </option>
+                  ))}
+                </select>
 
-                    <button
-                      type="button"
-                      className="btn btn-secondary btn-xs"
-                      onClick={() => setSpeaker3Enabled(false)}
-                      style={{ color: 'var(--text-muted)' }}
-                    >
-                      ✕ Bỏ
-                    </button>
-                  </div>
-                )}
+                <button
+                  type="button"
+                  className="btn btn-ghost btn-xs"
+                  onClick={() => setSpeaker3Enabled(false)}
+                  style={{ color: 'var(--text-muted)', padding: '4px 6px' }}
+                  title="Hủy người thứ 3"
+                >
+                  ✕ Bỏ
+                </button>
               </div>
             )}
           </div>
         </div>
 
-        {/* 4. Trình độ & Lồng ghép Chunks */}
-        <div style={{ display: 'flex', gap: 16, alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+        {/* ── 4. Cấp độ & Lồng ghép Chunks (Không bị che khuất) ─── */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, alignItems: 'start' }}>
           <div>
-            <label className="label" style={{ marginBottom: 4 }}>Cấp độ thử thách</label>
-            <div className="toggle-group" style={{ maxWidth: 260 }}>
-              <div
-                className={`toggle-option ${level === 'standard' ? 'active' : ''}`}
+            <label style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 6, display: 'block' }}>
+              Độ khó kịch bản
+            </label>
+            <div style={{ display: 'flex', background: 'var(--bg-surface)', padding: 3, borderRadius: 'var(--radius-md)', border: '1px solid var(--border-default)', gap: 3 }}>
+              <button
+                type="button"
                 onClick={() => setLevel('standard')}
+                style={{
+                  flex: 1,
+                  padding: '6px 8px',
+                  borderRadius: 'calc(var(--radius-md) - 3px)',
+                  fontSize: 12,
+                  fontWeight: level === 'standard' ? 700 : 500,
+                  background: level === 'standard' ? 'var(--accent-500)' : 'transparent',
+                  color: level === 'standard' ? '#fff' : 'var(--text-muted)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                }}
               >
                 Tiêu chuẩn (550-700)
-              </div>
-              <div
-                className={`toggle-option ${level === 'advanced' ? 'active' : ''}`}
+              </button>
+              <button
+                type="button"
                 onClick={() => setLevel('advanced')}
+                style={{
+                  flex: 1,
+                  padding: '6px 8px',
+                  borderRadius: 'calc(var(--radius-md) - 3px)',
+                  fontSize: 12,
+                  fontWeight: level === 'advanced' ? 700 : 500,
+                  background: level === 'advanced' ? 'var(--accent-500)' : 'transparent',
+                  color: level === 'advanced' ? '#fff' : 'var(--text-muted)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                }}
               >
                 Nâng cao (750+)
-              </div>
+              </button>
             </div>
           </div>
 
-          <label style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 8,
-            cursor: 'pointer',
-            fontSize: 12,
-            color: 'var(--text-secondary)',
-            marginTop: 18,
-          }}>
-            <input
-              type="checkbox"
-              checked={embedChunksEnabled}
-              onChange={(e) => setEmbedChunksEnabled(e.target.checked)}
-              style={{ accentColor: 'var(--accent-500)' }}
-            />
-            <span>Lồng ghép 2-3 Chunks từ kho ôn tập</span>
-          </label>
+          <div>
+            <label style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 6, display: 'block' }}>
+              Tích hợp học tập
+            </label>
+            <label
+              style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: 8,
+                cursor: 'pointer',
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border-default)',
+                borderRadius: 'var(--radius-md)',
+                padding: '8px 12px',
+              }}
+            >
+              <input
+                type="checkbox"
+                checked={embedChunksEnabled}
+                onChange={(e) => setEmbedChunksEnabled(e.target.checked)}
+                style={{ accentColor: 'var(--accent-500)', marginTop: 2 }}
+              />
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-primary)' }}>
+                  Lồng ghép Chunks từ kho ôn tập
+                </div>
+                <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 2, lineHeight: 1.4 }}>
+                  Tự động đưa 2–3 cụm từ đang học vào ngữ cảnh hội thoại
+                </div>
+              </div>
+            </label>
+          </div>
         </div>
 
         {/* Loading Indicator */}
         {isLoading && (
-          <div style={{
-            padding: 14,
-            borderRadius: 'var(--radius-md)',
-            background: 'rgba(99, 102, 241, 0.1)',
-            border: '1px solid rgba(99, 102, 241, 0.25)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 12,
-          }}>
+          <div
+            style={{
+              padding: 14,
+              borderRadius: 'var(--radius-md)',
+              background: 'rgba(53, 106, 230, 0.1)',
+              border: '1px solid rgba(53, 106, 230, 0.25)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 12,
+            }}
+          >
             <Spinner size={20} />
             <div>
               <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-primary)' }}>
-                Đang tạo bài nghe bằng Gemini AI...
+                Đang biên soạn bài nghe TOEIC bằng AI...
               </div>
               <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>
-                {loadingStep || 'Vui lòng chờ khoảng 2 giây...'}
+                {loadingStep || 'Vui lòng chờ giây lát...'}
               </div>
             </div>
           </div>

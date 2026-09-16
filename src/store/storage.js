@@ -51,9 +51,117 @@ export function saveTranscript(transcript) {
   dbSaveTranscript(transcript).catch(err => console.error('Cloud sync error:', err));
 }
 
+// ─── Default Initial Transcripts (Matching target UI: media_1789550413700.png) ──
+const DEFAULT_INITIAL_TRANSCRIPTS = [
+  {
+    id: 'tr_office_conversations',
+    title: 'Office Conversations',
+    theme: 'Office Conversations',
+    themeVi: 'Hội thoại văn phòng & Báo cáo tiến độ',
+    part: 'Part 3',
+    level: 'Intermediate',
+    duration: 12,
+    progress: 72,
+    isAiGenerated: true,
+    createdAt: 1710000000000,
+    text: `M-Am: Good morning, Rachel. Do you have a moment to review the quarterly budget report before the executive meeting?
+W-Am: Sure, Mark. I looked over the marketing projections earlier today. Most departments stayed well within their targets, but our cloud infrastructure costs increased by about fifteen percent.
+M-Am: That makes sense given the server upgrades we deployed last month. I'll make sure to highlight the long-term cost efficiencies in our slide deck.
+W-Am: Excellent idea. Let's make sure the revised figures are sent to everyone thirty minutes before the presentation starts.`,
+    questions: [
+      {
+        question: 'What are the speakers mainly discussing?',
+        options: ['A quarterly budget report', 'An employee orientation', 'An office relocation', 'A marketing campaign'],
+        answer: 0,
+        explanation: 'Người nam hỏi xem lại báo cáo ngân sách quý ("review the quarterly budget report").',
+      },
+      {
+        question: 'Why did the infrastructure costs increase?',
+        options: ['Office rent increase', 'Recent server upgrades', 'External consultants', 'Equipment repairs'],
+        answer: 1,
+        explanation: 'Người nam nhắc đến việc nâng cấp máy chủ vào tháng trước ("server upgrades we deployed last month").',
+      },
+      {
+        question: 'What does the woman suggest doing before the meeting?',
+        options: ['Print handouts', 'Cancel the meeting', 'Send revised figures to attendees', 'Call the director'],
+        answer: 2,
+        explanation: 'Người nữ đề xuất gửi số liệu đã chỉnh sửa cho người tham gia 30 phút trước giờ họp ("make sure the revised figures are sent to everyone thirty minutes before the presentation starts").',
+      },
+    ],
+  },
+  {
+    id: 'tr_travel_transportation',
+    title: 'Travel & Transportation',
+    theme: 'Travel & Transportation',
+    themeVi: 'Lịch trình công tác & Đặt phòng khách sạn',
+    part: 'Part 3',
+    level: 'Intermediate',
+    duration: 15,
+    progress: 35,
+    isAiGenerated: true,
+    createdAt: 1709900000000,
+    text: `W-Br: Good afternoon, Oliver. Have you managed to finalize the travel arrangements for next Tuesday's regional conference in Manchester?
+M-Br: Almost done, Fiona. I booked our round-trip train tickets leaving Euston Station at eight in the morning. However, the conference hotel is completely booked up for Tuesday night.
+W-Br: That's inconvenient. Did you check the boutique hotel across from the convention center?
+M-Br: Yes, I spoke with their front desk this morning. They have two executive rooms available, so I'll go ahead and confirm the reservation right away.`,
+    chunks: [
+      { id: 'c_trv_1', text: 'finalize the travel arrangements', meaning: 'hoàn tất sắp xếp chuyến đi', type: 'collocation', transcriptId: 'tr_travel_transportation' },
+      { id: 'c_trv_2', text: 'round-trip train tickets', meaning: 'vé tàu khứ hồi', type: 'collocation', transcriptId: 'tr_travel_transportation' },
+      { id: 'c_trv_3', text: 'completely booked up', meaning: 'đã hết sạch chỗ', type: 'collocation', transcriptId: 'tr_travel_transportation' },
+      { id: 'c_trv_4', text: 'confirm the reservation', meaning: 'xác nhận đặt phòng', type: 'collocation', transcriptId: 'tr_travel_transportation' },
+    ],
+    questions: [
+      {
+        question: 'Where are the speakers traveling next week?',
+        options: ['To Manchester', 'To Edinburgh', 'To Birmingham', 'To Bristol'],
+        answer: 0,
+        explanation: 'Người nữ nhắc tới hội nghị khu vực ở Manchester ("regional conference in Manchester").',
+      },
+      {
+        question: 'What problem does the man mention?',
+        options: ['Train tickets sold out', 'The conference hotel is fully booked', 'Flight was delayed', 'Meeting canceled'],
+        answer: 1,
+        explanation: 'Người nam cho biết khách sạn hội nghị đã hết phòng ("the conference hotel is completely booked up").',
+      },
+      {
+        question: 'What will the man do next?',
+        options: ['Cancel the trip', 'Book train tickets', 'Confirm hotel reservation', 'Contact organizers'],
+        answer: 2,
+        explanation: 'Người nam sẽ xác nhận đặt phòng ở khách sạn đối diện ("confirm the reservation right away").',
+      },
+    ],
+  },
+];
+
+const DEFAULT_INITIAL_CHUNKS = {
+  tr_office_conversations: [
+    { id: 'c_off_1', text: 'review the quarterly budget report', meaning: 'xem lại báo cáo ngân sách quý', type: 'collocation', transcriptId: 'tr_office_conversations' },
+    { id: 'c_off_2', text: 'well within their targets', meaning: 'hoàn toàn nằm trong mục tiêu', type: 'collocation', transcriptId: 'tr_office_conversations' },
+    { id: 'c_off_3', text: 'cloud infrastructure costs', meaning: 'chi phí hạ tầng đám mây', type: 'collocation', transcriptId: 'tr_office_conversations' },
+    { id: 'c_off_4', text: 'long-term cost efficiencies', meaning: 'hiệu quả chi phí dài hạn', type: 'collocation', transcriptId: 'tr_office_conversations' },
+    { id: 'c_off_5', text: 'revised figures', meaning: 'số liệu đã điều chỉnh', type: 'collocation', transcriptId: 'tr_office_conversations' },
+  ],
+  tr_travel_transportation: [
+    { id: 'c_trv_1', text: 'finalize the travel arrangements', meaning: 'hoàn tất sắp xếp chuyến đi', type: 'collocation', transcriptId: 'tr_travel_transportation' },
+    { id: 'c_trv_2', text: 'round-trip train tickets', meaning: 'vé tàu khứ hồi', type: 'collocation', transcriptId: 'tr_travel_transportation' },
+    { id: 'c_trv_3', text: 'completely booked up', meaning: 'đã hết sạch chỗ', type: 'collocation', transcriptId: 'tr_travel_transportation' },
+    { id: 'c_trv_4', text: 'confirm the reservation', meaning: 'xác nhận đặt phòng', type: 'collocation', transcriptId: 'tr_travel_transportation' },
+  ],
+};
+
 export function getTranscripts() {
-  const all = get(KEYS.transcripts) || {};
-  return Object.values(all).sort((a, b) => b.createdAt - a.createdAt);
+  let all = get(KEYS.transcripts);
+  if ((!all || Object.keys(all).length === 0) && typeof window !== 'undefined' && !localStorage.getItem('toeic_transcripts_seeded')) {
+    all = {};
+    DEFAULT_INITIAL_TRANSCRIPTS.forEach(t => {
+      all[t.id] = t;
+    });
+    set(KEYS.transcripts, all);
+    try {
+      localStorage.setItem('toeic_transcripts_seeded', '1');
+    } catch {}
+  }
+  return Object.values(all || {}).sort((a, b) => b.createdAt - a.createdAt);
 }
 
 export function getTranscript(id) {
@@ -84,12 +192,14 @@ export function saveChunks(transcriptId, chunks) {
 
 export function getChunks(transcriptId) {
   const all = get(KEYS.chunks) || {};
-  return all[transcriptId] || [];
+  if (all[transcriptId] && all[transcriptId].length > 0) return all[transcriptId];
+  if (DEFAULT_INITIAL_CHUNKS[transcriptId]) return DEFAULT_INITIAL_CHUNKS[transcriptId];
+  return [];
 }
 
 export function getAllChunks() {
   const all = get(KEYS.chunks) || {};
-  const flat = Object.values(all).flat();
+  const flat = [...Object.values(all).flat(), ...Object.values(DEFAULT_INITIAL_CHUNKS).flat()];
   // Deduplicate by ID (tránh trùng chunk cũ từ script + chunk mới từ session)
   const seen = new Set();
   return flat.filter(c => {

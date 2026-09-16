@@ -1,12 +1,11 @@
 import React from 'react';
 import {
-  LayoutDashboard, Headphones, BookOpen, BrainCircuit, Zap,
+  Headphones, BookOpen, BrainCircuit, Zap,
   Target, Mic2, BarChart3, Settings, ChevronRight, LogOut,
-  LogIn, User, Flame, Sparkles, Search, CircleHelp,
+  Flame, Sparkles, Search, CircleHelp,
 } from 'lucide-react';
 
 export const NAV_ITEMS = [
-  { id: 'overview',     label: 'Overview',       shortLabel: 'Tổng quan', icon: LayoutDashboard },
   { id: 'ai_listening', label: 'Listening Lab',  shortLabel: 'Nghe',      icon: Headphones },
   { id: 'reading',      label: 'Reading Lab',    shortLabel: 'Đọc',       icon: BookOpen   },
   { id: 'chunks',       label: 'Chunk Library',  shortLabel: 'Chunks',    icon: BrainCircuit },
@@ -17,7 +16,6 @@ export const NAV_ITEMS = [
 ];
 
 export const PAGE_TITLES = {
-  overview:     { title: 'Overview',             subtitle: 'Không gian học tập cá nhân hóa & tổng quan tiến độ' },
   ai_listening: { title: 'Listening Lab',        subtitle: 'Luyện nghe phản xạ, chép chính tả Dictation & phân tích hội thoại' },
   reading:      { title: 'Reading Lab',          subtitle: 'Ngữ pháp chuyên sâu TOEIC Part 5 & 6 cùng giải thích chi tiết' },
   chunks:       { title: 'Chunk Library',        subtitle: 'Kho lưu trữ cụm từ Collocation & Functional Chunks khoa học' },
@@ -123,7 +121,7 @@ export function Sidebar({ activePage, onNavigate, counts = {}, onSettingsClick, 
 export function BottomNav({ activePage, onNavigate, counts = {}, dueCount = 0 }) {
   // Mobile only shows 5 primary items for optimal spacing and touch area
   const mobileItems = NAV_ITEMS.filter(item =>
-    ['overview', 'ai_listening', 'reading', 'practice', 'progress'].includes(item.id)
+    ['ai_listening', 'reading', 'chunks', 'practice', 'progress'].includes(item.id)
   );
 
   return (
@@ -163,7 +161,7 @@ export function Header({
   onOpenAiSpeaking,
   streakDays = 12,
 }) {
-  const info = PAGE_TITLES[page] || { title: 'Overview', subtitle: '' };
+  const info = PAGE_TITLES[page] || { title: 'Listening Lab', subtitle: '' };
   const userInitials = user?.email ? user.email.slice(0, 2).toUpperCase() : 'AM';
 
   return (

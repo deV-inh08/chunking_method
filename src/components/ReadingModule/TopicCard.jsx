@@ -4,7 +4,7 @@ import {
   Clock, History, Shield, Scale, Sliders, Repeat,
   Scissors, Link, HelpCircle, TrendingUp, Boxes, Calendar,
   RefreshCw, PieChart, Share2, AlertTriangle, Workflow, BookOpen,
-  CheckCircle2, Award, Play, ChevronRight, Lock
+  Award, Play, Lock
 } from 'lucide-react';
 
 const ICON_MAP = {
@@ -12,6 +12,14 @@ const ICON_MAP = {
   Clock, History, Shield, Scale, Sliders, Repeat,
   Scissors, Link, HelpCircle, TrendingUp, Boxes, Calendar,
   RefreshCw, PieChart, Share2, AlertTriangle, Workflow, BookOpen,
+};
+
+// Map category to enterprise color theme class
+const CATEGORY_COLORS = {
+  word_forms: 'blue',
+  verbs_tenses: 'amber',
+  clauses_syntax: 'violet',
+  advanced_traps: 'emerald',
 };
 
 export function TopicCard({ topic, progress, onStartPractice }) {
@@ -22,278 +30,193 @@ export function TopicCard({ topic, progress, onStartPractice }) {
   const advProg = progress?.advanced;
   const isMastered = progress?.isMastered;
 
+  // Calculate overall completion percent for this topic
+  let completedPercent = 0;
+  if (isMastered) {
+    completedPercent = 100;
+  } else {
+    const stdScore = stdProg ? Math.min(100, stdProg.score || 0) : 0;
+    const advScore = advProg ? Math.min(100, advProg.score || 0) : 0;
+    if (stdProg && advProg) {
+      completedPercent = Math.round((stdScore + advScore) / 2);
+    } else if (stdProg) {
+      completedPercent = Math.round(stdScore / 2);
+    } else if (advProg) {
+      completedPercent = Math.round(advScore / 2);
+    }
+  }
+
+  const colorClass = CATEGORY_COLORS[topic.category] || 'blue';
+
   return (
     <div
-      className={`card reading-topic-card animate-fade-in ${!isAvailable ? 'topic-unavailable' : ''}`}
+      className={`lesson-card ${colorClass} ${!isAvailable ? 'opacity-60' : ''}`}
       style={{
-        padding: '1.25rem',
+        cursor: isAvailable ? 'pointer' : 'default',
+        padding: '18px 20px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        borderRadius: '12px',
-        border: isMastered
-          ? '1px solid rgba(234, 179, 8, 0.4)'
-          : isAvailable
-            ? '1px solid var(--border-subtle, rgba(255,255,255,0.08))'
-            : '1px dashed rgba(255,255,255,0.06)',
-        background: isMastered
-          ? 'linear-gradient(145deg, rgba(234, 179, 8, 0.05) 0%, rgba(20, 20, 24, 0.95) 100%)'
-          : isAvailable
-            ? 'var(--bg-elevated, #16171d)'
-            : 'rgba(255,255,255,0.02)',
-        position: 'relative',
-        transition: 'all 0.2s ease',
+        height: '100%',
+      }}
+      onClick={() => {
+        if (isAvailable) {
+          onStartPractice(topic, stdProg && !advProg ? 'advanced' : 'standard');
+        }
       }}
     >
-      {/* Top Header */}
       <div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.85rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-            <div
-              style={{
-                width: 38,
-                height: 38,
-                borderRadius: 10,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: isAvailable
-                  ? 'linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.2))'
-                  : 'rgba(255,255,255,0.04)',
-                color: isAvailable ? 'var(--accent-400, #818cf8)' : 'var(--text-muted, #71717a)',
-                border: '1px solid rgba(255,255,255,0.06)',
-              }}
-            >
-              <IconComponent size={20} />
-            </div>
-
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <span
-                  style={{
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
-                    letterSpacing: '0.05em',
-                    color: 'var(--text-muted, #71717a)',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  Chuyên đề #{String(topic.topicNumber).padStart(2, '0')}
-                </span>
-                {isMastered && (
-                  <span
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: 3,
-                      fontSize: '0.68rem',
-                      fontWeight: 700,
-                      color: '#eab308',
-                      background: 'rgba(234, 179, 8, 0.15)',
-                      padding: '1px 6px',
-                      borderRadius: 99,
-                    }}
-                  >
-                    <Award size={11} /> Mastered
-                  </span>
-                )}
-              </div>
-              <h3
-                style={{
-                  margin: '2px 0 0',
-                  fontSize: '1.05rem',
-                  fontWeight: 700,
-                  color: isAvailable ? 'var(--text-normal, #f4f4f5)' : 'var(--text-muted, #a1a1aa)',
-                }}
-              >
-                {topic.nameVi}
-              </h3>
-            </div>
+        {/* Top bar: Icon & Pill badges */}
+        <div className="lesson-top" style={{ marginBottom: 12 }}>
+          <div className="lesson-icon">
+            <IconComponent size={18} strokeWidth={1.75} />
           </div>
 
-          {/* Status Badge */}
-          {isAvailable ? (
-            <span
-              style={{
-                fontSize: '0.72rem',
-                fontWeight: 600,
-                padding: '3px 8px',
-                borderRadius: 6,
-                background: 'rgba(16, 185, 129, 0.12)',
-                color: '#34d399',
-                border: '1px solid rgba(16, 185, 129, 0.25)',
-              }}
-            >
-              {topic.totalQuestions} câu ({topic.standardCount}+{topic.advancedCount})
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            {isMastered && (
+              <span
+                className="level-pill"
+                style={{
+                  background: 'rgba(234, 179, 8, 0.12)',
+                  color: '#eab308',
+                  borderColor: 'rgba(234, 179, 8, 0.3)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 3,
+                  fontWeight: 700,
+                }}
+              >
+                <Award size={11} /> Mastered
+              </span>
+            )}
+            <span className="level-pill">
+              Chuyên đề #{String(topic.topicNumber).padStart(2, '0')}
             </span>
-          ) : (
-            <span
-              style={{
-                fontSize: '0.72rem',
-                fontWeight: 500,
-                padding: '3px 8px',
-                borderRadius: 6,
-                background: 'rgba(255, 255, 255, 0.05)',
-                color: '#71717a',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-              }}
-            >
-              Chờ nạp JSON
-            </span>
-          )}
+          </div>
         </div>
 
-        {/* English Name & Description */}
-        <div style={{ fontSize: '0.78rem', color: 'var(--accent-300, #a5b4fc)', marginBottom: '0.4rem', fontWeight: 500 }}>
-          {topic.nameEn}
-        </div>
-        <p
+        {/* Title */}
+        <h3
+          className="line-clamp-1"
           style={{
-            fontSize: '0.82rem',
-            color: 'var(--text-muted, #9ca3af)',
-            lineHeight: 1.45,
-            margin: '0 0 0.75rem',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
+            fontSize: 15,
+            fontWeight: 700,
+            margin: '0 0 4px',
+            letterSpacing: '-0.02em',
+            color: isAvailable ? 'var(--text-primary)' : 'var(--text-muted)',
           }}
         >
+          {topic.nameVi}
+        </h3>
+
+        {/* Subtitle & English Name */}
+        <p
+          className="line-clamp-2"
+          style={{
+            margin: '0 0 10px',
+            fontSize: 12,
+            color: 'var(--text-secondary)',
+            lineHeight: 1.5,
+          }}
+        >
+          <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{topic.nameEn}</span>
+          {' · '}
           {topic.description}
         </p>
 
-        {/* Tip / Clue */}
+        {/* 1-line clean Mẹo 3s hint */}
         {topic.tips && (
           <div
             style={{
-              fontSize: '0.75rem',
-              background: 'rgba(99, 102, 241, 0.06)',
-              borderLeft: '2px solid var(--accent-400, #818cf8)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              fontSize: 11,
+              color: 'var(--text-muted)',
+              background: 'var(--bg-elevated)',
               padding: '4px 8px',
-              borderRadius: '0 4px 4px 0',
-              color: '#c7d2fe',
-              marginBottom: '1rem',
-              lineHeight: 1.4,
+              borderRadius: 'var(--radius-sm)',
+              marginBottom: 12,
+              border: '1px solid var(--border-subtle)',
             }}
+            title={topic.tips}
           >
-            <strong>Mẹo 3s:</strong> {topic.tips}
+            <Sparkles size={11} style={{ color: 'var(--accent-400)', flexShrink: 0 }} />
+            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <strong style={{ color: 'var(--text-secondary)' }}>Mẹo 3s:</strong> {topic.tips}
+            </span>
           </div>
         )}
       </div>
 
-      {/* Progress & Actions Section */}
-      <div style={{ marginTop: 'auto', paddingTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      {/* Meta, Progress & Launch Buttons */}
+      <div style={{ marginTop: 'auto' }}>
+        <div className="lesson-meta" style={{ marginBottom: 6, display: 'flex', alignItems: 'center', gap: 6 }}>
+          <span>{topic.totalQuestions || 60} câu hỏi</span>
+          <span className="accent-dot" />
+          <span>{completedPercent}% hoàn thành</span>
+          {(stdProg || advProg) && (
+            <>
+              <span className="accent-dot" />
+              <span style={{ color: isMastered ? 'var(--success-text)' : 'var(--text-muted)', fontWeight: 600 }}>
+                {stdProg ? `${stdProg.score}đ TC` : ''}
+                {stdProg && advProg ? ' · ' : ''}
+                {advProg ? `${advProg.score}đ Bẫy` : ''}
+              </span>
+            </>
+          )}
+        </div>
+
+        {/* Progress Track */}
+        <div className="progress-track mb-3" style={{ height: 5, borderRadius: 999 }}>
+          <span style={{ width: `${completedPercent}%`, borderRadius: 999 }} />
+        </div>
+
+        {/* Action Buttons: 2 Levels */}
         {isAvailable ? (
-          <div>
-            {/* Progress indicators for 2 levels */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.85rem' }}>
-              <div
-                style={{
-                  background: 'rgba(255,255,255,0.03)',
-                  padding: '6px 8px',
-                  borderRadius: 6,
-                  border: '1px solid rgba(255,255,255,0.04)',
-                }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: 'var(--text-muted, #9ca3af)' }}>
-                  <span>Tiêu chuẩn</span>
-                  <span style={{ fontWeight: 600, color: stdProg ? '#34d399' : '#71717a' }}>
-                    {stdProg ? `${stdProg.score}%` : 'Chưa thi'}
-                  </span>
-                </div>
-                <div style={{ height: 4, background: 'rgba(255,255,255,0.08)', borderRadius: 2, marginTop: 4, overflow: 'hidden' }}>
-                  <div
-                    style={{
-                      height: '100%',
-                      width: `${stdProg ? stdProg.score : 0}%`,
-                      background: 'linear-gradient(90deg, #3b82f6, #10b981)',
-                      borderRadius: 2,
-                    }}
-                  />
-                </div>
-              </div>
+          <div className="lesson-card-secondary-actions" style={{ marginTop: 8, display: 'flex', gap: 6 }}>
+            <button
+              type="button"
+              className="lesson-card-secondary-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                onStartPractice(topic, 'standard');
+              }}
+              style={{
+                borderColor: stdProg ? 'rgba(53, 106, 230, 0.35)' : undefined,
+                color: stdProg ? '#60a5fa' : undefined,
+                padding: '6px 8px',
+                fontSize: 11,
+              }}
+              title={`Luyện ${topic.standardCount || 30} câu tiêu chuẩn`}
+            >
+              <Play size={11} strokeWidth={2} />
+              <span>Tiêu chuẩn ({topic.standardCount || 30})</span>
+            </button>
 
-              <div
-                style={{
-                  background: 'rgba(255,255,255,0.03)',
-                  padding: '6px 8px',
-                  borderRadius: 6,
-                  border: '1px solid rgba(255,255,255,0.04)',
-                }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: 'var(--text-muted, #9ca3af)' }}>
-                  <span>Bẫy 990</span>
-                  <span style={{ fontWeight: 600, color: advProg ? '#f59e0b' : '#71717a' }}>
-                    {advProg ? `${advProg.score}%` : 'Chưa thi'}
-                  </span>
-                </div>
-                <div style={{ height: 4, background: 'rgba(255,255,255,0.08)', borderRadius: 2, marginTop: 4, overflow: 'hidden' }}>
-                  <div
-                    style={{
-                      height: '100%',
-                      width: `${advProg ? advProg.score : 0}%`,
-                      background: 'linear-gradient(90deg, #f59e0b, #ef4444)',
-                      borderRadius: 2,
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Level Launch Buttons */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.4rem' }}>
-              <button
-                className="btn btn-sm"
-                onClick={() => onStartPractice(topic, 'standard')}
-                style={{
-                  background: 'rgba(59, 130, 246, 0.15)',
-                  border: '1px solid rgba(59, 130, 246, 0.3)',
-                  color: '#93c5fd',
-                  fontSize: '0.75rem',
-                  fontWeight: 600,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 4,
-                  padding: '6px 8px',
-                }}
-              >
-                <Play size={12} fill="#93c5fd" /> Tiêu chuẩn ({topic.standardCount})
-              </button>
-
-              <button
-                className="btn btn-sm"
-                onClick={() => onStartPractice(topic, 'advanced')}
-                style={{
-                  background: 'rgba(245, 158, 11, 0.15)',
-                  border: '1px solid rgba(245, 158, 11, 0.3)',
-                  color: '#fcd34d',
-                  fontSize: '0.75rem',
-                  fontWeight: 600,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 4,
-                  padding: '6px 8px',
-                }}
-              >
-                <Zap size={12} fill="#fcd34d" /> Bẫy 990 ({topic.advancedCount})
-              </button>
-            </div>
+            <button
+              type="button"
+              className="lesson-card-secondary-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                onStartPractice(topic, 'advanced');
+              }}
+              style={{
+                borderColor: advProg ? 'rgba(245, 158, 11, 0.35)' : undefined,
+                color: advProg ? '#fbbf24' : undefined,
+                padding: '6px 8px',
+                fontSize: 11,
+              }}
+              title={`Luyện ${topic.advancedCount || 30} câu bẫy 990`}
+            >
+              <Zap size={11} strokeWidth={2} />
+              <span>Bẫy 990 ({topic.advancedCount || 30})</span>
+            </button>
           </div>
         ) : (
-          <div style={{ textAlign: 'center', padding: '0.4rem 0' }}>
-            <span
-              style={{
-                fontSize: '0.75rem',
-                color: '#6b7280',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 4,
-              }}
-            >
-              <Lock size={12} /> Thêm file JSON vào data/grammar/ để mở khóa
-            </span>
+          <div style={{ textAlign: 'center', padding: '6px 0', fontSize: 11, color: 'var(--text-muted)' }}>
+            <Lock size={12} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: 4 }} />
+            Sắp ra mắt
           </div>
         )}
       </div>

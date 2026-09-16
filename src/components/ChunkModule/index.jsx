@@ -1,10 +1,10 @@
 import { useState, useMemo, useEffect } from 'react';
 import {
   ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Layers, PenLine,
-  CheckSquare, Square, BookOpen, EyeOff, Eye, Flame, Headphones,
-  Sparkles, Search, X, Mic, CheckCircle2, RotateCcw
+  CheckSquare, Square, BookOpen, BookText, Flame, Headphones,
+  Sparkles, Search, X, Mic, CheckCircle2
 } from 'lucide-react';
-import { EmptyState, Badge, SkeletonCard } from '../ui';
+import { EmptyState, Badge, Spinner } from '../ui';
 import { generateWritingExercises } from '../../services/ai';
 import { getApiKey } from '../../store/storage';
 import * as storage from '../../store/storage';
@@ -84,16 +84,20 @@ function ChunkCard({
             
             {showSourceBadge && transcriptName && (
               <span className="cm-source-badge" title={transcriptName}>
-                📚 {transcriptName}
+                <BookOpen size={11} style={{ display: 'inline', marginRight: 4 }} />
+                {transcriptName}
               </span>
             )}
 
             {chunk.sourceType === 'vocab' && chunk.sourceWord && (
-              <Badge type="neutral">📖 {chunk.sourceWord}</Badge>
+              <Badge type="neutral">
+                <BookText size={11} style={{ display: 'inline', marginRight: 4 }} />
+                {chunk.sourceWord}
+              </Badge>
             )}
 
             {progress && progress.practiceCount > 0 && (
-              <Badge type="success">✓ {progress.practiceCount}×</Badge>
+              <Badge type="success">{progress.practiceCount}×</Badge>
             )}
 
             {progress && (
@@ -105,7 +109,7 @@ function ChunkCard({
                 border: `1px solid ${isDue ? 'rgba(239,68,68,0.3)' : 'rgba(99,102,241,0.25)'}`,
               }}>
                 <Flame size={10} color={isDue ? '#ef4444' : '#f59e0b'} />
-                {progress.status === 'mastered' ? '🧠 ' : ''}Lv.{progress.srsLevel || 1} · {isDue ? 'Cần ôn ngay' : reviewTimeInfo?.text || 'Đang học'}
+                {progress.status === 'mastered' ? 'Mastered · ' : ''}Lv.{progress.srsLevel || 1} · {isDue ? 'Cần ôn ngay' : reviewTimeInfo?.text || 'Đang học'}
               </span>
             )}
           </div>
@@ -130,7 +134,7 @@ function ChunkCard({
               {chunk.originalSentence && (
                 <div>
                   <span style={{ fontSize: 10.5, fontWeight: 600, color: 'var(--text-muted)', display: 'block', marginBottom: 2 }}>
-                    📌 Trong ngữ cảnh bài học
+                    Ngữ cảnh bài học
                   </span>
                   <blockquote style={{
                     borderLeft: '3px solid var(--accent-500)',
@@ -148,7 +152,7 @@ function ChunkCard({
               {chunk.anotherExample && (
                 <div>
                   <span style={{ fontSize: 10.5, fontWeight: 600, color: 'var(--text-muted)', display: 'block', marginBottom: 2 }}>
-                    💡 Ví dụ khác
+                    Ví dụ mở rộng
                   </span>
                   <blockquote style={{
                     borderLeft: '3px solid var(--chunk-connector-text)',
@@ -187,7 +191,7 @@ function ChunkCard({
             disabled={generatingSit}
             title="Sinh bài luyện viết ngữ cảnh"
           >
-            {generatingSit ? '⏳' : <><PenLine size={12} /> Viết</>}
+            {generatingSit ? <Spinner size={12} /> : <><PenLine size={12} strokeWidth={1.75} /> Viết</>}
           </button>
         </div>
       </div>
@@ -332,7 +336,7 @@ export function ChunkModule({
         // Khi xem tất cả bài học: gom theo tên bài học
         key = chunk.transcriptId || (chunk.sourceType === 'vocab' ? '__vocab__' : 'other');
         name = chunk.sourceType === 'vocab'
-          ? '📖 Từ vựng cá nhân'
+          ? 'Từ vựng cá nhân'
           : (transcriptTitleMap.get(chunk.transcriptId) || 'Bài học khác');
       }
 
@@ -385,13 +389,13 @@ export function ChunkModule({
   };
 
   const filterOptions = [
-    { id: 'all',         label: 'Tất cả',           count: counts.all },
-    { id: 'due',         label: '🔥 Cần ôn tập',    count: counts.due },
-    { id: 'unpracticed', label: 'Chưa luyện',       count: counts.unpracticed },
-    { id: 'practiced',   label: '✓ Đã luyện',       count: counts.practiced },
-    { id: 'collocation', label: 'Collocation',      count: counts.collocation },
-    { id: 'functional',  label: 'Functional',       count: counts.functional },
-    { id: 'connector',   label: 'Connector',        count: counts.connector },
+    { id: 'all',         label: 'Tất cả',       count: counts.all },
+    { id: 'due',         label: 'Cần ôn tập',   count: counts.due },
+    { id: 'unpracticed', label: 'Chưa luyện',   count: counts.unpracticed },
+    { id: 'practiced',   label: 'Đã luyện',     count: counts.practiced },
+    { id: 'collocation', label: 'Collocation',  count: counts.collocation },
+    { id: 'functional',  label: 'Functional',   count: counts.functional },
+    { id: 'connector',   label: 'Connector',    count: counts.connector },
   ];
 
   return (
@@ -411,9 +415,9 @@ export function ChunkModule({
             <button
               className="cm-btn-view-all"
               onClick={() => onSelectTranscript(null)}
-              title="Xem toàn bộ 185 chunks trong kho"
+              title="Xem toàn bộ chunks trong kho"
             >
-              🌟 Xem tất cả ({allChunks.length || chunks.length})
+              Xem tất cả ({allChunks.length || chunks.length})
             </button>
           )}
         </div>
@@ -428,7 +432,7 @@ export function ChunkModule({
             className="cm-scope-select"
           >
             <option value="__all__">
-              🌟 Tất cả bài học ({allChunks.length || chunks.length} chunks)
+              Tất cả bài học ({allChunks.length || chunks.length} chunks)
             </option>
             {transcripts.map(t => {
               const count = (storage.getChunks(t.id) || []).length;
@@ -442,7 +446,7 @@ export function ChunkModule({
             })}
             {vocabChunksCount > 0 && (
               <option value="__vocab__">
-                📖 Từ vựng cá nhân ({vocabChunksCount} chunks)
+                Từ vựng cá nhân ({vocabChunksCount} chunks)
               </option>
             )}
           </select>
