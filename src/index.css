@@ -325,7 +325,7 @@ input, textarea {
   padding: var(--space-6);
 }
 
-/* ═══════════════════════════════��═══════════
+/* ═══════════════════════════════���═══════════
    BUTTONS
 ═══════════════════════════════════════════ */
 .btn {
@@ -657,7 +657,7 @@ input, textarea {
   margin-top: var(--space-6);
 }
 
-/* ═══════════════════════════════════════════
+/* ══════════════════════════════════════════���
    EMPTY STATE
 ═══════════════════════════════════════════ */
 .empty-state {
@@ -1086,7 +1086,7 @@ input, textarea {
     -webkit-overflow-scrolling: touch;
   }
 
-  /* ── Bottom navigation bar ──────��──────── */
+  /* ── Bottom navigation bar ─────����──────── */
   .bottom-nav {
     display: flex;
     position: fixed;
@@ -1285,8 +1285,26 @@ input, textarea {
 }
 
 /* Enterprise education refinements */
+:root {
+  --accent-subtle: rgba(99, 102, 241, .14);
+  --surface-strong: #171c27;
+  --focus-ring: 0 0 0 3px rgba(129, 140, 248, .22);
+}
 :focus-visible { outline: 2px solid var(--accent-300); outline-offset: 2px; }
-.ds-button, .btn { min-height: 38px; }
+.ds-button, .btn { min-height: 40px; }
+.btn-primary { background: var(--accent-600); box-shadow: 0 4px 14px rgba(79,70,229,.24); }
+.btn-primary:hover { background: var(--accent-500); box-shadow: 0 6px 18px rgba(79,70,229,.34); }
+.input-field:focus, .textarea-field:focus, select:focus { box-shadow: var(--focus-ring); }
+.main-header { box-shadow: 0 1px 0 rgba(255,255,255,.02); }
+.page-content { background: radial-gradient(circle at 85% 0%, rgba(99,102,241,.045), transparent 30%); }
+.sidebar { background: linear-gradient(180deg, #11151e 0%, #0d1118 100%); }
+.sidebar-logo { min-height: 72px; padding-inline: 20px; }
+.sidebar-logo-icon { background: var(--accent-600); box-shadow: 0 6px 18px rgba(79,70,229,.28); }
+.nav-item { min-height: 42px; }
+.nav-item.active { background: var(--accent-subtle); border-color: rgba(129,140,248,.24); box-shadow: inset 3px 0 0 var(--accent-400); }
+.nav-item::before { display: none; }
+.card, .ds-card { box-shadow: 0 1px 2px rgba(0,0,0,.18); }
+.card:hover, .ds-card:hover { border-color: rgba(255,255,255,.14); }
 .auth-page { position: relative; overflow: auto; background: radial-gradient(circle at 15% 20%, rgba(99,102,241,.12), transparent 34%), var(--bg-base) !important; }
 .auth-page::after { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(90deg, rgba(0,0,0,.7), transparent 72%); }
 .auth-panel { z-index: 1; }
