@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
-import { Sidebar, Header, BottomNav } from './components/Layout';
+import { Sidebar, Header, BottomNav, MobileFloatingMenuBtn } from './components/Layout';
 import { ListeningAiModule } from './components/ListeningAiModule';
 import { ReadingModule } from './components/ReadingModule';
 import { ChunkModule } from './components/ChunkModule';
@@ -459,6 +459,12 @@ export default function App() {
         onSettingsClick={() => setShowSettings(true)}
         mobileOpen={mobileMenuOpen}
         onCloseMobile={() => setMobileMenuOpen(false)}
+      />
+
+      {/* Floating Menu Trigger Button (Bottom-Left for Mobile) */}
+      <MobileFloatingMenuBtn
+        onClick={() => setMobileMenuOpen(true)}
+        isOpen={mobileMenuOpen}
       />
 
       <div className="main-content">

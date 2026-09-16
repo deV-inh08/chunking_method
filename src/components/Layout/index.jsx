@@ -16,13 +16,13 @@ export const NAV_ITEMS = [
 ];
 
 export const PAGE_TITLES = {
-  ai_listening: { title: 'Listening Lab',        subtitle: 'Luyện nghe phản xạ, chép chính tả Dictation & phân tích hội thoại' },
-  reading:      { title: 'Reading Lab',          subtitle: 'Ngữ pháp chuyên sâu TOEIC Part 5 & 6 cùng giải thích chi tiết' },
-  vocab:        { title: 'Vocabulary',           subtitle: 'Học từ vựng Flashcard 3D & trích xuất Chunks ngữ cảnh' },
-  chunks:       { title: 'Chunk Library',        subtitle: 'Kho lưu trữ cụm từ Collocation & Functional Chunks khoa học' },
-  practice:     { title: 'Practice Sets',        subtitle: 'Luyện dịch câu đa cấp độ & chấm điểm phản hồi tức thì' },
-  ai_speaking:  { title: 'AI Speaking',          subtitle: 'Phòng luyện nói giao tiếp 2 chiều & đánh giá âm học GOP' },
-  progress:     { title: 'Progress',             subtitle: 'Theo dõi tiến độ học tập & chu kỳ lặp lại ngắt quãng SRS' },
+  ai_listening: { title: 'Listening Lab', shortTitle: 'Listening', subtitle: 'Luyện nghe phản xạ, chép chính tả Dictation & phân tích hội thoại' },
+  reading:      { title: 'Reading Lab',   shortTitle: 'Reading',   subtitle: 'Ngữ pháp chuyên sâu TOEIC Part 5 & 6 cùng giải thích chi tiết' },
+  vocab:        { title: 'Vocabulary',    shortTitle: 'Vocab',     subtitle: 'Học từ vựng Flashcard 3D & trích xuất Chunks ngữ cảnh' },
+  chunks:       { title: 'Chunk Library', shortTitle: 'Chunk',     subtitle: 'Kho lưu trữ cụm từ Collocation & Functional Chunks khoa học' },
+  practice:     { title: 'Practice Sets', shortTitle: 'Practice',  subtitle: 'Luyện dịch câu đa cấp độ & chấm điểm phản hồi tức thì' },
+  ai_speaking:  { title: 'AI Speaking',   shortTitle: 'Speaking',  subtitle: 'Phòng luyện nói giao tiếp 2 chiều & đánh giá âm học GOP' },
+  progress:     { title: 'Progress',      shortTitle: 'Progress',  subtitle: 'Theo dõi tiến độ học tập & chu kỳ lặp lại ngắt quãng SRS' },
 };
 
 // ─── Desktop Sidebar & Mobile Slide-Out Drawer ───────────────
@@ -223,24 +223,11 @@ export function Header({
 
   return (
     <header className="topbar">
-      {/* Mobile Hamburger Toggle Button */}
-      {onOpenMobileDrawer && (
-        <button
-          id="mobile-hamburger-btn"
-          className="mobile-only icon-button mobile-menu-toggle"
-          onClick={onOpenMobileDrawer}
-          aria-label="Mở menu điều hướng"
-          title="Mở menu"
-        >
-          <Menu size={20} strokeWidth={2} />
-        </button>
-      )}
-
       {/* Breadcrumb navigation */}
       <div className="breadcrumb">
-        <span>Learning workspace</span>
+        <span>Workspace</span>
         <ChevronRight size={14} strokeWidth={1.75} />
-        <b>{info.title}</b>
+        <b>{info.shortTitle || info.title}</b>
       </div>
 
       {/* Top right actions */}
@@ -275,40 +262,18 @@ export function Header({
           </button>
         )}
 
-        {/* Quick AI Speaking button */}
+        {/* Quick AI Speaking button (desktop only) */}
         {onOpenAiSpeaking && (
-          <>
-            <button
-              id="header-ai-speaking-btn"
-              className="primary-button btn-sm desktop-only"
-              onClick={onOpenAiSpeaking}
-              style={{ padding: '5px 12px', fontSize: 12, gap: 5 }}
-              title="Luyện nói phản xạ với AI & Chấm âm vị IPA"
-            >
-              <Sparkles size={14} strokeWidth={1.75} />
-              <span>Nói với AI</span>
-            </button>
-            <button
-              id="header-ai-speaking-btn-mobile"
-              className="icon-button mobile-only"
-              onClick={onOpenAiSpeaking}
-              style={{
-                background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(56, 189, 248, 0.25))',
-                borderColor: 'rgba(56, 189, 248, 0.4)',
-                color: '#38bdf8',
-                padding: '5px',
-                width: 32,
-                height: 32,
-                borderRadius: '50%',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-              title="Luyện nói phản xạ với AI"
-            >
-              <Mic2 size={16} strokeWidth={2} />
-            </button>
-          </>
+          <button
+            id="header-ai-speaking-btn"
+            className="primary-button btn-sm desktop-only"
+            onClick={onOpenAiSpeaking}
+            style={{ padding: '5px 12px', fontSize: 12, gap: 5 }}
+            title="Luyện nói phản xạ với AI & Chấm âm vị IPA"
+          >
+            <Sparkles size={14} strokeWidth={1.75} />
+            <span>Nói với AI</span>
+          </button>
         )}
 
         {/* Study Streak Badge */}
@@ -329,19 +294,22 @@ export function Header({
         >
           {userInitials}
         </div>
-
-        {onSettingsClick && (
-          <button
-            id="mobile-settings-btn"
-            className="mobile-settings-btn mobile-only"
-            onClick={onSettingsClick}
-            aria-label="Settings"
-            title="Cài đặt & Tài khoản"
-          >
-            <Settings size={18} strokeWidth={1.75} />
-          </button>
-        )}
       </div>
     </header>
+  );
+}
+
+// ─── Floating Menu Trigger Button for Mobile (Bottom-Left) ───
+export function MobileFloatingMenuBtn({ onClick, isOpen }) {
+  return (
+    <button
+      id="mobile-floating-menu-btn"
+      className={`mobile-floating-menu-btn mobile-only ${isOpen ? 'drawer-open' : ''}`}
+      onClick={onClick}
+      aria-label="Mở menu điều hướng"
+      title="Mở menu"
+    >
+      <Menu size={22} strokeWidth={2.2} />
+    </button>
   );
 }
