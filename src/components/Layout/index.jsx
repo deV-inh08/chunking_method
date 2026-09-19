@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Headphones, BookOpen, BrainCircuit, Zap,
   Target, Mic2, BarChart3, Settings, ChevronRight, LogOut,
-  Flame, Sparkles, Search, CircleHelp, Menu, X, Eye
+  Flame, Sparkles, Search, CircleHelp, Menu, X, Eye, ShoppingBag
 } from 'lucide-react';
+import { StreakPopover } from './StreakPopover';
+import { getStreakData } from '../../services/streakService';
 
 export const NAV_ITEMS = [
   { id: 'ai_listening', label: 'Listening Lab',  shortLabel: 'Nghe',      icon: Headphones },
   { id: 'reading',      label: 'Reading Lab',    shortLabel: 'Đọc',       icon: BookOpen   },
   { id: 'vocab',        label: 'Vocabulary',     shortLabel: 'Từ vựng',   icon: Zap },
+  { id: 'word_basket',  label: 'Giỏ từ Extension', shortLabel: 'Giỏ từ',   icon: ShoppingBag, isNew: true },
   { id: 'visual_vocab', label: 'Không gian thị giác', shortLabel: 'Thị giác', icon: Eye, isNew: true },
   { id: 'chunks',       label: 'Chunk Library',  shortLabel: 'Chunks',    icon: BrainCircuit },
   { id: 'practice',     label: 'Practice Sets',  shortLabel: 'Luyện tập', icon: Target },
@@ -20,6 +23,7 @@ export const PAGE_TITLES = {
   ai_listening: { title: 'Listening Lab', shortTitle: 'Listening', subtitle: 'Luyện nghe phản xạ, chép chính tả Dictation & phân tích hội thoại' },
   reading:      { title: 'Reading Lab',   shortTitle: 'Reading',   subtitle: 'Ngữ pháp chuyên sâu TOEIC Part 5 & 6 cùng giải thích chi tiết' },
   vocab:        { title: 'Vocabulary',    shortTitle: 'Vocab',     subtitle: 'Học từ vựng Flashcard 3D & trích xuất Chunks ngữ cảnh' },
+  word_basket:  { title: 'Giỏ từ Extension', shortTitle: 'Giỏ từ', subtitle: 'Các từ bôi đen lưu từ Chrome Extension và chuyển hóa thành Chunks học' },
   visual_vocab: { title: 'Không gian thị giác', shortTitle: 'Thị giác', subtitle: 'Khám phá từ vựng & phản xạ bối cảnh qua hình ảnh thực tế (Visual Learning)' },
   chunks:       { title: 'Chunk Library', shortTitle: 'Chunk',     subtitle: 'Kho lưu trữ cụm từ Collocation & Functional Chunks khoa học' },
   practice:     { title: 'Practice Sets', shortTitle: 'Practice',  subtitle: 'Luyện dịch câu đa cấp độ & chấm điểm phản hồi tức thì' },
@@ -218,10 +222,28 @@ export function Header({
   onDueClick,
   onOpenAiSpeaking,
   onOpenMobileDrawer,
-  streakDays = 12,
 }) {
   const info = PAGE_TITLES[page] || { title: 'Listening Lab', subtitle: '' };
   const userInitials = user?.email ? user.email.slice(0, 2).toUpperCase() : 'AM';
+
+  const [streakData, setStreakData] = useState(() => getStreakData());
+  const [showStreakPopover, setShowStreakPopover] = useState(false);
+
+  useEffect(() => {
+    const handleStreakUpdate = (e) => {
+      if (e.detail) {
+        setStreakData(e.detail);
+      } else {
+        setStreakData(getStreakData());
+      }
+    };
+
+    window.addEventListener('toeic_streak_updated', handleStreakUpdate);
+    return () => window.removeEventListener('toeic_streak_updated', handleStreakUpdate);
+  }, []);
+
+  const currentStreak = streakData?.currentStreak || 0;
+  const isLearnedToday = Boolean(streakData?.isLearnedToday);
 
   return (
     <header className="topbar">
@@ -278,11 +300,38 @@ export function Header({
           </button>
         )}
 
-        {/* Study Streak Badge */}
-        <div className="streak" title="Chuỗi ngày học tập liên tục">
-          <Zap size={15} strokeWidth={1.75} fill="currentColor" />
-          <b>{streakDays}</b>
-          <span className="desktop-only">day streak</span>
+        {/* Study Streak Badge with Popover */}
+        <div style={{ position: 'relative' }}>
+          <button
+            id="header-streak-btn"
+            type="button"
+            className="streak"
+            onClick={() => setShowStreakPopover(s => !s)}
+            title="Nhấp để xem lịch tuần và tiến độ chuỗi ngày học"
+            style={{
+              cursor: 'pointer',
+              border: isLearnedToday ? '1px solid rgba(249, 115, 22, 0.45)' : undefined,
+              background: isLearnedToday
+                ? 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(239, 68, 68, 0.14) 100%)'
+                : undefined,
+              color: isLearnedToday ? '#f97316' : undefined,
+              boxShadow: isLearnedToday ? '0 0 14px rgba(249, 115, 22, 0.25)' : undefined,
+              transition: 'all 0.25s ease',
+            }}
+          >
+            {isLearnedToday ? (
+              <Flame size={15} strokeWidth={1.75} fill="#f97316" color="#f97316" />
+            ) : (
+              <Zap size={15} strokeWidth={1.75} fill="currentColor" />
+            )}
+            <b>{currentStreak}</b>
+            <span className="desktop-only">day streak</span>
+          </button>
+
+          <StreakPopover
+            isOpen={showStreakPopover}
+            onClose={() => setShowStreakPopover(false)}
+          />
         </div>
 
         {rightSlot && <div>{rightSlot}</div>}

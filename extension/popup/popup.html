@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speaking Chunk</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="logo-group">
+        <div class="logo-icon">⚡</div>
+        <div>
+          <h1 class="logo-title">Speaking Chunk</h1>
+          <p class="logo-subtitle">Dịch ngữ cảnh & Giỏ từ vựng</p>
+        </div>
+      </div>
+      <span class="badge-version">v1.0</span>
+    </header>
+
+    <!-- Alert Message (nếu có lỗi / thành công) -->
+    <div id="alert-box" class="alert-box hidden"></div>
+
+    <!-- VIEW 1: Form Auth (Đăng nhập / Đăng ký) -->
+    <div id="auth-view" class="view-section">
+      <div class="tab-switch">
+        <button id="tab-login" class="tab-btn active">Đăng nhập</button>
+        <button id="tab-signup" class="tab-btn">Đăng ký</button>
+      </div>
+
+      <form id="auth-form">
+        <div class="form-group">
+          <label for="input-email">Email</label>
+          <input type="email" id="input-email" placeholder="name@example.com" required autocomplete="email" />
+        </div>
+
+        <div class="form-group">
+          <label for="input-password">Mật khẩu</label>
+          <input type="password" id="input-password" placeholder="Tối thiểu 6 ký tự" required autocomplete="current-password" />
+        </div>
+
+        <button type="submit" id="btn-auth-submit" class="btn-primary">
+          <span id="btn-auth-text">Đăng nhập</span>
+          <div id="auth-spinner" class="spinner hidden"></div>
+        </button>
+      </form>
+
+      <div class="auth-hint">
+        Tài khoản dùng chung với <strong>Speaking Chunk Web App</strong>.
+      </div>
+    </div>
+
+    <!-- VIEW 2: Dashboard (Khi đã đăng nhập) -->
+    <div id="dashboard-view" class="view-section hidden">
+      <!-- User Info Card -->
+      <div class="user-card">
+        <div class="user-avatar">👤</div>
+        <div class="user-details">
+          <div id="user-email" class="user-email">loading...</div>
+          <div class="user-status-row">
+            <span class="status-dot"></span>
+            <span class="status-text">Đã kết nối Supabase</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Card: Giỏ từ -->
+      <div class="stats-card">
+        <div class="stats-label">Giỏ từ vựng của bạn</div>
+        <div class="stats-number-row">
+          <span id="word-count" class="stats-number">0</span>
+          <span class="stats-unit">từ đang chờ học</span>
+        </div>
+        <div class="stats-desc">Các từ đã bôi đen và lưu từ các bài báo, tài liệu.</div>
+      </div>
+
+      <!-- AI Key Status -->
+      <div class="ai-status-card">
+        <div class="ai-status-icon" id="ai-status-icon">✓</div>
+        <div class="ai-status-text" style="flex: 1;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div class="ai-status-title" id="ai-status-title">AI Gemini</div>
+            <button id="btn-toggle-key-input" style="font-size: 11px; background: none; border: none; color: #818cf8; cursor: pointer; text-decoration: underline;">Đổi Key</button>
+          </div>
+          <div class="ai-status-desc" id="ai-status-desc">Đang kiểm tra API Key...</div>
+        </div>
+      </div>
+
+      <!-- Quick Key Input Box -->
+      <div id="key-input-box" class="hidden" style="background: var(--bg-card); padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 6px;">
+        <label for="input-api-key" style="font-size: 11px; color: var(--text-muted); display: block; margin-bottom: 4px;">Gemini API Key (Google AI Studio):</label>
+        <div style="display: flex; gap: 6px;">
+          <input type="password" id="input-api-key" placeholder="AIzaSy..." style="flex: 1; background: #090d16; border: 1px solid var(--border-color); color: #fff; padding: 6px 8px; border-radius: 6px; font-size: 12px;" />
+          <button id="btn-save-key" class="btn-primary" style="width: auto; padding: 6px 12px; font-size: 12px;">Lưu</button>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-group">
+        <button id="btn-open-app" class="btn-primary btn-open-app">
+          🚀 Mở Web App Luyện Chunking
+        </button>
+        <button id="btn-logout" class="btn-outline">
+          Đăng xuất
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer Guide -->
+    <footer class="popup-footer">
+      💡 <strong>Cách dùng:</strong> Bôi đen từ bất kỳ trên web để AI dịch ngữ cảnh và bấm <strong>[+ Lưu vào Giỏ]</strong>.
+    </footer>
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

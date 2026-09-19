@@ -1,5 +1,6 @@
 // ─── Grammar Progress & SRS Integration Service ────────────────────
 import * as storage from '../store/storage';
+import { recordStudyActivity } from './streakService';
 
 const STORAGE_KEY = 'toeic_grammar_progress';
 
@@ -72,6 +73,7 @@ export function saveTopicQuizResult(topicId, level, { correctCount, totalCount, 
 
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
+    recordStudyActivity();
   } catch (err) {
     console.error('Failed to save grammar progress:', err);
   }

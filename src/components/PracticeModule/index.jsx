@@ -3,7 +3,7 @@ import {
   PenLine, ChevronRight, ChevronLeft, ChevronDown, ChevronUp, RotateCcw,
   CheckCircle, XCircle, Sparkles, Loader, Volume2, VolumeX,
   Flame, BookMarked, FileText, Layers, Mic, Headphones, Trash2,
-  Eye, EyeOff, HelpCircle,
+  Eye, EyeOff, HelpCircle, Zap,
 } from 'lucide-react';
 import { EmptyState, Badge, Spinner, Modal } from '../ui';
 import {
@@ -17,6 +17,11 @@ import { GroupCompletionModal } from './GroupCompletionModal';
 import { TranscriptListeningModal } from '../TranscriptModule/TranscriptListeningModal';
 import { getChunkIPA, getSentenceIPA, formatIPA } from '../../services/phonetics';
 import { playTextWithTts, stopAudio } from '../../services/ttsService';
+import { ChunkRadar, InteractiveVocabCollector, ComboMeter, SoundToggleBtn } from './TypingGameHUD';
+import {
+  playKeyClick, playChunkActivated, playVocabCollected, playComboStreak,
+  isSoundMuted, toggleSound,
+} from '../../services/soundEffects';
 
 
 const CHUNK_TYPE_LABELS = {
@@ -325,18 +330,90 @@ const LEVEL_CONFIG = {
 };
 
 
-// ─── ExerciseCard (single sentence row with input & sample) ────
+// ─── ExerciseCard (single sentence row with gamified typing & sample) ────
 function ExerciseCard({
   exercise, index, total, chunk,
   userInput = '', setUserInput, showSample, setShowSample,
   gradingResult, isGrading,
 }) {
   const [showGrammar, setShowGrammar] = useState(false);
+  const [soundMuted, setSoundMutedState] = useState(() => isSoundMuted());
+  const [combo, setCombo] = useState(0);
+
+  const comboTimerRef = useRef(null);
+  const lastChunkActiveRef = useRef(false);
+  const lastCollectedSetRef = useRef(new Set());
+
   const text = (userInput || '').trim();
   const wordCount = text ? text.split(/\s+/).length : 0;
   const level = exercise.level || (index + 1);
   const lvCfg = LEVEL_CONFIG[level] || LEVEL_CONFIG[1];
 
+  // 1. Live target chunk detection
+  const isChunkActive = useMemo(() => {
+    if (!chunk?.phrase || !userInput) return false;
+    const cleanUserText = userInput.toLowerCase().replace(/['’]/g, "'").replace(/[^a-z0-9'\s]/g, ' ').replace(/\s+/g, ' ');
+    const cleanChunk = chunk.phrase.toLowerCase().replace(/['’]/g, "'").replace(/[^a-z0-9'\s]/g, ' ').replace(/\s+/g, ' ').trim();
+    return Boolean(cleanChunk && cleanUserText.includes(cleanChunk));
+  }, [chunk?.phrase, userInput]);
+
+  // Trigger sound when chunk newly activates
+  useEffect(() => {
+    if (isChunkActive && !lastChunkActiveRef.current) {
+      playChunkActivated();
+    }
+    lastChunkActiveRef.current = isChunkActive;
+  }, [isChunkActive]);
+
+  // 2. Live vocabulary hints collection detection
+  const collectedIndices = useMemo(() => {
+    const set = new Set();
+    if (!Array.isArray(exercise?.vocabHints) || !userInput) return set;
+
+    const cleanUserText = userInput.toLowerCase().replace(/['’]/g, "'");
+    const words = cleanUserText.replace(/[^a-z0-9'\s]/g, ' ').split(/\s+/).filter(Boolean);
+
+    exercise.vocabHints.forEach((hint, idx) => {
+      if (!hint?.en) return;
+      const enClean = hint.en.toLowerCase().replace(/['’]/g, "'").trim();
+      if (enClean.includes(' ')) {
+        const normPhrase = enClean.replace(/[^a-z0-9'\s]/g, ' ').replace(/\s+/g, ' ');
+        if (cleanUserText.replace(/[^a-z0-9'\s]/g, ' ').replace(/\s+/g, ' ').includes(normPhrase)) {
+          set.add(idx);
+        }
+      } else {
+        const matched = words.some(w => {
+          return w === enClean || (enClean.length >= 4 && (w.startsWith(enClean) || enClean.startsWith(w)));
+        });
+        if (matched) set.add(idx);
+      }
+    });
+
+    return set;
+  }, [exercise?.vocabHints, userInput]);
+
+  // Trigger sound when new vocab hint is collected
+  useEffect(() => {
+    let hasNew = false;
+    for (const idx of collectedIndices) {
+      if (!lastCollectedSetRef.current.has(idx)) {
+        hasNew = true;
+        break;
+      }
+    }
+    if (hasNew) {
+      playVocabCollected();
+    }
+    lastCollectedSetRef.current = new Set(collectedIndices);
+  }, [collectedIndices]);
+
+  // Toggle sound handler
+  const handleToggleSound = useCallback(() => {
+    const nextMuted = toggleSound();
+    setSoundMutedState(nextMuted);
+  }, []);
+
+  // Keyboard navigation & Shortcuts
   const handleKeyDown = (e) => {
     if (e.key === 'Tab') {
       if (!e.shiftKey) {
@@ -360,51 +437,104 @@ function ExerciseCard({
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       setShowSample(s => !s);
+      return;
+    }
+
+    if (e.key === 'Backspace' || e.key === 'Delete') {
+      playKeyClick(true);
     }
   };
+
+  // Typing change handler with thock mechanical sound & combo flow
+  const handleInputChange = (e) => {
+    const val = e.target.value;
+    const isSpace = (e.nativeEvent?.data === ' ') || (val.length > (userInput || '').length && val.endsWith(' '));
+    setUserInput(val);
+    playKeyClick(isSpace);
+
+    // Increment combo flow
+    setCombo(prev => {
+      const next = prev + 1;
+      if (next === 6 || next === 12 || next === 20) {
+        playComboStreak();
+      }
+      return next;
+    });
+
+    if (comboTimerRef.current) {
+      clearTimeout(comboTimerRef.current);
+    }
+    comboTimerRef.current = setTimeout(() => {
+      setCombo(0);
+    }, 2800);
+  };
+
+  // Clean timer on unmount
+  useEffect(() => {
+    return () => {
+      if (comboTimerRef.current) clearTimeout(comboTimerRef.current);
+    };
+  }, []);
 
   return (
     <div
       className="card animate-fade-in"
-      style={{ padding: '18px 20px' }}
+      style={{
+        padding: '18px 20px',
+        borderColor: isChunkActive ? 'rgba(245, 158, 11, 0.4)' : undefined,
+        transition: 'border-color 0.3s ease',
+      }}
     >
       {/* Level badge + sentence header */}
       <div className="flex items-start justify-between gap-3 mb-3">
         <div style={{ flex: 1, minWidth: 0 }}>
-          {/* Level badge row */}
-          <div className="flex items-center gap-2 mb-2 flex-wrap">
-            <span style={{
-              display: 'inline-flex', alignItems: 'center', gap: 4,
-              background: lvCfg.bg,
-              border: `1px solid ${lvCfg.border}`,
-              borderRadius: 'var(--radius-full)',
-              padding: '2px 10px',
-              fontSize: 11, fontWeight: 700,
-              color: `rgb(${lvCfg.color})`,
-            }}>
-              {exercise.levelLabel || lvCfg.label}
-            </span>
-            {exercise.tenseUsed && (
+          {/* Level badge row + Game status indicators */}
+          <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
+            <div className="flex items-center gap-2 flex-wrap">
               <span style={{
-                fontSize: 11, color: 'var(--accent-300)',
-                background: 'rgba(99,102,241,0.1)',
-                border: '1px solid rgba(99,102,241,0.2)',
+                display: 'inline-flex', alignItems: 'center', gap: 4,
+                background: lvCfg.bg,
+                border: `1px solid ${lvCfg.border}`,
                 borderRadius: 'var(--radius-full)',
-                padding: '2px 8px', fontWeight: 600,
+                padding: '2px 10px',
+                fontSize: 11, fontWeight: 700,
+                color: `rgb(${lvCfg.color})`,
               }}>
-                {exercise.tenseUsed}
+                {exercise.levelLabel || lvCfg.label}
               </span>
-            )}
-            {exercise.tenseExplanation && (
-              <button
-                type="button"
-                className="grammar-toggle-btn"
-                onClick={() => setShowGrammar(s => !s)}
-              >
-                <HelpCircle size={12} />
-                <span>{showGrammar ? 'Ẩn ngữ pháp' : 'Gợi ý ngữ pháp'}</span>
-              </button>
-            )}
+              {exercise.tenseUsed && (
+                <span style={{
+                  fontSize: 11, color: 'var(--accent-300)',
+                  background: 'rgba(99,102,241,0.1)',
+                  border: '1px solid rgba(99,102,241,0.2)',
+                  borderRadius: 'var(--radius-full)',
+                  padding: '2px 8px', fontWeight: 600,
+                }}>
+                  {exercise.tenseUsed}
+                </span>
+              )}
+              {exercise.tenseExplanation && (
+                <button
+                  type="button"
+                  className="grammar-toggle-btn"
+                  onClick={() => setShowGrammar(s => !s)}
+                >
+                  <HelpCircle size={12} />
+                  <span>{showGrammar ? 'Ẩn ngữ pháp' : 'Gợi ý ngữ pháp'}</span>
+                </button>
+              )}
+            </div>
+
+            {/* Right side: Combo indicator & Sound toggle */}
+            <div className="flex items-center gap-2">
+              <ComboMeter combo={combo} />
+              <SoundToggleBtn isMuted={soundMuted} onToggle={handleToggleSound} />
+            </div>
+          </div>
+
+          {/* Target Chunk Radar indicator */}
+          <div style={{ marginBottom: 8 }}>
+            <ChunkRadar phrase={chunk?.phrase} isActivated={isChunkActive} />
           </div>
 
           {/* Vietnamese sentence */}
@@ -428,33 +558,60 @@ function ExerciseCard({
             </div>
           )}
 
-          {/* Vocab hints */}
+          {/* Interactive Vocab hints collector */}
           {Array.isArray(exercise.vocabHints) && exercise.vocabHints.length > 0 && (
-            <VocabHints hints={exercise.vocabHints} />
+            <InteractiveVocabCollector hints={exercise.vocabHints} collectedIndices={collectedIndices} />
           )}
         </div>
       </div>
 
-      {/* Textarea */}
-      <div style={{ position: 'relative', marginBottom: 12 }}>
+      {/* Textarea with dynamic glow effect */}
+      <div style={{ position: 'relative', marginBottom: 12, marginTop: 12 }}>
         <textarea
           id={`ex-input-${chunk.id}-${index}`}
-          className="textarea-field"
+          className={`textarea-field ${isChunkActive ? 'chunk-textarea-active' : ''}`}
           rows={2}
-          placeholder={`Viết bản dịch tiếng Anh cho câu ${index + 1}…`}
+          placeholder={`Gõ bản dịch tiếng Anh cho câu ${index + 1} (nhớ dùng cụm "${chunk?.phrase || ''}")…`}
           value={userInput}
-          onChange={e => setUserInput(e.target.value)}
+          onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           disabled={isGrading}
-          style={{ resize: 'none', minHeight: 72, paddingBottom: 28, fontSize: 14 }}
+          style={{
+            resize: 'none',
+            minHeight: 74,
+            paddingBottom: 28,
+            fontSize: 14,
+            transition: 'all 0.25s ease',
+          }}
         />
-        <span style={{
+        <div style={{
           position: 'absolute', bottom: 8, right: 12,
-          fontSize: 11, color: 'var(--text-muted)',
+          display: 'flex', alignItems: 'center', gap: 8,
           pointerEvents: 'none',
         }}>
-          {wordCount} từ
-        </span>
+          {isChunkActive && (
+            <span
+              className="animate-fade-in"
+              style={{
+                fontSize: 10.5,
+                fontWeight: 800,
+                color: '#f59e0b',
+                background: 'rgba(245, 158, 11, 0.15)',
+                border: '1px solid rgba(245, 158, 11, 0.3)',
+                padding: '1px 6px',
+                borderRadius: 4,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 3,
+              }}
+            >
+              <Zap size={11} /> Chunk Ready
+            </span>
+          )}
+          <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>
+            {wordCount} từ
+          </span>
+        </div>
       </div>
 
       {/* Sample answer — shown on toggle */}

@@ -23,74 +23,39 @@
       },
       "items": [
         {
-          "id": "or_turnstile",
-          "word": "turnstile gate",
-          "ipa": "/ˈtɜːrnstaɪl ɡeɪt/",
-          "meaningVi": "cổng xoay an ninh tự động",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4369",
           "hotspot": {
             "x": 0.55,
             "y": 0.7
-          },
-          "example": "Employees pass through the electronic turnstile gates each morning.",
-          "collocation": "pass through a turnstile"
+          }
         },
         {
-          "id": "or_reader",
-          "word": "card reader",
-          "ipa": "/kɑːrd ˈriːdər/",
-          "meaningVi": "máy đọc thẻ từ cảm ứng",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4370",
           "hotspot": {
             "x": 0.6,
             "y": 0.6
-          },
-          "example": "Tap your electronic badge against the card reader to enter.",
-          "collocation": "tap the card reader"
+          }
         },
         {
-          "id": "or_id_badge",
-          "word": "ID badge",
-          "ipa": "/ˌaɪ ˈdiː bædʒ/",
-          "meaningVi": "thẻ nhân viên nhận diện",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4371",
           "hotspot": {
             "x": 0.7,
             "y": 0.58
-          },
-          "example": "Security requires all staff to wear their ID badges at all times.",
-          "collocation": "display an ID badge"
+          }
         },
         {
-          "id": "or_lanyard",
-          "word": "lanyard",
-          "ipa": "/ˈlænjərd/",
-          "meaningVi": "dây đeo thẻ cổ",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4372",
           "hotspot": {
             "x": 0.53,
             "y": 0.5
-          },
-          "example": "He wore his visitor pass on a navy blue lanyard.",
-          "collocation": "wear a lanyard"
+          }
         },
         {
-          "id": "or_swipe",
-          "word": "swipe a badge",
-          "ipa": "/swaɪp ə bædʒ/",
-          "meaningVi": "quẹt thẻ an ninh",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4373",
           "hotspot": {
             "x": 0.63,
             "y": 0.58
-          },
-          "example": "She swiped her security badge to unlock the glass barrier.",
-          "collocation": "swipe a badge"
+          }
         }
       ]
     },
@@ -106,74 +71,39 @@
       },
       "items": [
         {
-          "id": "or_reception_desk",
-          "word": "reception desk",
-          "ipa": "/rɪˈsepʃn desk/",
-          "meaningVi": "quầy lễ tân tiền sảnh",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4374",
           "hotspot": {
             "x": 0.2,
             "y": 0.65
-          },
-          "example": "Guests should register at the front reception desk upon arrival.",
-          "collocation": "at the reception desk"
+          }
         },
         {
-          "id": "or_receptionist",
-          "word": "receptionist",
-          "ipa": "/rɪˈsepʃənɪst/",
-          "meaningVi": "nhân viên lễ tân",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4375",
           "hotspot": {
             "x": 0.13,
             "y": 0.52
-          },
-          "example": "The friendly receptionist greeted visitors and checked their IDs.",
-          "collocation": "greet the receptionist"
+          }
         },
         {
-          "id": "or_visitor_log",
-          "word": "visitor log",
-          "ipa": "/ˈvɪzɪtər lɔːɡ/",
-          "meaningVi": "sổ đăng ký khách ra vào",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4376",
           "hotspot": {
             "x": 0.22,
             "y": 0.54
-          },
-          "example": "Please write your name and company in the visitor log.",
-          "collocation": "sign the visitor log"
+          }
         },
         {
-          "id": "or_countertop",
-          "word": "marble counter",
-          "ipa": "/ˈmɑːrbl ˈkaʊntər/",
-          "meaningVi": "mặt bàn đá cẩm thạch",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4377",
           "hotspot": {
             "x": 0.12,
             "y": 0.66
-          },
-          "example": "Brochures and maps were arranged on the marble counter.",
-          "collocation": "on the counter"
+          }
         },
         {
-          "id": "or_issue_pass",
-          "word": "issue a visitor pass",
-          "ipa": "/ˈɪʃuː ə ˈvɪzɪtər pæs/",
-          "meaningVi": "cấp thẻ ra vào cho khách",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4378",
           "hotspot": {
             "x": 0.2,
             "y": 0.48
-          },
-          "example": "The front desk staff issued a temporary visitor pass.",
-          "collocation": "issue a pass"
+          }
         }
       ]
     },
@@ -189,74 +119,39 @@
       },
       "items": [
         {
-          "id": "or_camera",
-          "word": "surveillance camera",
-          "ipa": "/sɜːrˈveɪləns ˈkæmrə/",
-          "meaningVi": "camera giám sát an ninh",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4379",
           "hotspot": {
             "x": 0.38,
             "y": 0.15
-          },
-          "example": "CCTV surveillance cameras monitor all building entry points 24/7.",
-          "collocation": "install a camera"
+          }
         },
         {
-          "id": "or_company_logo",
-          "word": "corporate emblem",
-          "ipa": "/ˈkɔːrpərət ˈembləm/",
-          "meaningVi": "biểu trưng thương hiệu công ty",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4380",
           "hotspot": {
             "x": 0.04,
             "y": 0.3
-          },
-          "example": "The corporate emblem is carved into the granite wall.",
-          "collocation": "display the emblem"
+          }
         },
         {
-          "id": "or_notice",
-          "word": "security policy",
-          "ipa": "/sɪˈkjʊrəti ˈpɑːləsi/",
-          "meaningVi": "chính sách an toàn bảo mật",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4381",
           "hotspot": {
             "x": 0.27,
             "y": 0.47
-          },
-          "example": "Employees are trained to comply with the company security policy.",
-          "collocation": "follow security policy"
+          }
         },
         {
-          "id": "or_ceiling_lights",
-          "word": "recessed lighting",
-          "ipa": "/rɪˈsest ˈlaɪtɪŋ/",
-          "meaningVi": "hệ thống đèn âm trần",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4382",
           "hotspot": {
             "x": 0.38,
             "y": 0.06
-          },
-          "example": "The modern high ceiling features recessed LED lighting fixtures.",
-          "collocation": "bright lighting"
+          }
         },
         {
-          "id": "or_comply",
-          "word": "comply with regulations",
-          "ipa": "/kəmˈplaɪ wɪð ˌreɡjuˈleɪʃnz/",
-          "meaningVi": "tuân thủ các quy định",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4383",
           "hotspot": {
             "x": 0.33,
             "y": 0.48
-          },
-          "example": "All personnel must strictly comply with building regulations.",
-          "collocation": "comply with regulations"
+          }
         }
       ]
     },
@@ -272,74 +167,39 @@
       },
       "items": [
         {
-          "id": "or_revolving_door",
-          "word": "revolving door",
-          "ipa": "/rɪˈvɑːlvɪŋ dɔːr/",
-          "meaningVi": "cửa xoay tự động sảnh lớn",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4384",
           "hotspot": {
             "x": 0.65,
             "y": 0.45
-          },
-          "example": "Visitors entered the grand lobby through the glass revolving door.",
-          "collocation": "enter via a revolving door"
+          }
         },
         {
-          "id": "or_glass_facade",
-          "word": "glass atrium",
-          "ipa": "/ɡlæs ˈeɪtriəm/",
-          "meaningVi": "khung kính giếng trời sảnh chính",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4385",
           "hotspot": {
             "x": 0.85,
             "y": 0.25
-          },
-          "example": "The multi-story glass atrium lets in plenty of natural daylight.",
-          "collocation": "modern glass atrium"
+          }
         },
         {
-          "id": "or_briefcase",
-          "word": "leather briefcase",
-          "ipa": "/ˈleðər ˈbriːfkeɪs/",
-          "meaningVi": "cặp da công tác",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4386",
           "hotspot": {
             "x": 0.74,
             "y": 0.68
-          },
-          "example": "The visiting consultant carried a black leather briefcase.",
-          "collocation": "carry a briefcase"
+          }
         },
         {
-          "id": "or_polished_floor",
-          "word": "polished terrazzo",
-          "ipa": "/ˈpɑːlɪʃt təˈrɑːtsoʊ/",
-          "meaningVi": "sàn đá mài bóng loáng",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4387",
           "hotspot": {
             "x": 0.42,
             "y": 0.9
-          },
-          "example": "Maintenance staff keep the terrazzo floor clean and polished.",
-          "collocation": "polished floor"
+          }
         },
         {
-          "id": "or_grant_access",
-          "word": "grant authorized access",
-          "ipa": "/ɡrænt ˈɔːθəraɪzd ˈækses/",
-          "meaningVi": "cấp quyền ra vào hợp lệ",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4388",
           "hotspot": {
             "x": 0.96,
             "y": 0.55
-          },
-          "example": "The automated system grants access only to authorized personnel.",
-          "collocation": "grant access"
+          }
         }
       ]
     }

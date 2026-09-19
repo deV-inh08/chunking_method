@@ -1,8 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import {
-  ChevronLeft, Sparkles, Trophy, CheckCircle,
-  Eye, PenTool, ArrowRight, RotateCcw, LayoutGrid
-} from 'lucide-react';
+import { ChevronLeft, Eye, PenTool, Lock } from 'lucide-react';
 import { SceneViewer } from './SceneViewer';
 import { Level1RecognitionCard } from './Level1RecognitionCard';
 import { Level2RecallSession } from './Level2RecallSession';
@@ -20,7 +17,6 @@ import { ALL_SCENES } from '../../data/scenes';
 export function VisualVocabModule({ onToast, onStartPractice, onNavigate }) {
   // Current view: 'catalog' | 'scene'
   const [viewMode, setViewMode] = useState(() => {
-    // If previously learning a scene, can load or default to 'catalog'
     return 'catalog';
   });
 
@@ -41,13 +37,6 @@ export function VisualVocabModule({ onToast, onStartPractice, onNavigate }) {
     return getVisualProgress(scene.sceneId);
   });
 
-  // Re-load progress when scene changes
-  useEffect(() => {
-    setProgress(getVisualProgress(scene.sceneId));
-    setActiveZoneIndex(0);
-    setSelectedItem(null);
-  }, [scene.sceneId]);
-
   // Current active mode in Scene: 'level1' | 'level2'
   const [mode, setMode] = useState('level1');
 
@@ -57,17 +46,41 @@ export function VisualVocabModule({ onToast, onStartPractice, onNavigate }) {
   // Selected item in Level 1 for card view
   const [selectedItem, setSelectedItem] = useState(null);
 
-  // Completed items in current session
-  const [completedItemIds, setCompletedItemIds] = useState(() => {
-    return new Set(Object.keys(progress.completedHotspots || {}));
-  });
+  // Bug 2: Derive completedItemIds directly from progress (no redundant state)
+  const completedItemIds = useMemo(() => {
+    const map = progress.completedHotspots?.[mode] || {};
+    return new Set(Object.keys(map));
+  }, [progress.completedHotspots, mode]);
 
-  // Keep completedItemIds in sync when scene/progress changes
+  // Bug 1: Check if all Level 1 items in the current scene are fully completed
+  const level1FullyDone = useMemo(() => {
+    if (!scene?.zones) return false;
+    const allItemIds = scene.zones.flatMap(z => (z.items || []).map(i => i.id));
+    const level1Completed = progress.completedHotspots?.level1 || {};
+    return allItemIds.length > 0 && allItemIds.every(id => level1Completed[id]);
+  }, [scene, progress.completedHotspots]);
+
+  // Auto-fallback to level1 if currently in level2 but level1 is not fully completed
   useEffect(() => {
-    setCompletedItemIds(new Set(Object.keys(progress.completedHotspots || {})));
-  }, [progress.completedHotspots]);
+    if (mode === 'level2' && !level1FullyDone) {
+      setMode('level1');
+    }
+  }, [mode, level1FullyDone]);
 
-  // Completed zones set
+  // Bug 5: Auto-resume to first unfinished zone in current mode when scene or mode changes
+  useEffect(() => {
+    const currentProgress = getVisualProgress(scene.sceneId);
+    setProgress(currentProgress);
+    setSelectedItem(null);
+
+    const completedMap = currentProgress.completedZones || {};
+    const firstUnfinished = scene.zones.findIndex(
+      z => !completedMap[z.zoneId]?.[mode]
+    );
+    setActiveZoneIndex(firstUnfinished !== -1 ? firstUnfinished : 0);
+  }, [scene.sceneId, mode, scene.zones]);
+
+  // Completed zones set for current mode
   const completedZoneIds = useMemo(() => {
     const set = new Set();
     Object.entries(progress.completedZones || {}).forEach(([zid, status]) => {
@@ -78,11 +91,16 @@ export function VisualVocabModule({ onToast, onStartPractice, onNavigate }) {
     return set;
   }, [progress.completedZones, mode]);
 
-  // Unlocked zones set
+  // Bug 2: Unlocked zones set segregated by mode
   const unlockedZoneIds = useMemo(() => {
     const defaultZone = scene.zones[0]?.zoneId || 'zone_1';
-    return new Set(progress.unlockedZoneIds || [defaultZone]);
-  }, [progress.unlockedZoneIds, scene.zones]);
+    const raw = progress.unlockedZoneIds?.[mode];
+    if (Array.isArray(raw) && raw.length > 0) return new Set(raw);
+    if (Array.isArray(progress.unlockedZoneIds)) {
+      return mode === 'level1' ? new Set(progress.unlockedZoneIds) : new Set([defaultZone]);
+    }
+    return new Set([defaultZone]);
+  }, [progress.unlockedZoneIds, mode, scene.zones]);
 
   const activeZone = scene.zones[activeZoneIndex] || scene.zones[0];
 
@@ -107,7 +125,6 @@ export function VisualVocabModule({ onToast, onStartPractice, onNavigate }) {
     localStorage.setItem('speaking_chunk_active_visual_scene', sceneId);
     setViewMode('scene');
     setSelectedItem(null);
-    setActiveZoneIndex(0);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -118,104 +135,122 @@ export function VisualVocabModule({ onToast, onStartPractice, onNavigate }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // When Level 1 item is marked recognized
+  // Mode Switch with resume logic
+  const handleModeSwitch = (newMode) => {
+    if (newMode === 'level2' && !level1FullyDone) return;
+    setMode(newMode);
+    setSelectedItem(null);
+    const completedMap = progress.completedZones || {};
+    const firstUnfinished = scene.zones.findIndex(
+      z => !completedMap[z.zoneId]?.[newMode]
+    );
+    setActiveZoneIndex(firstUnfinished !== -1 ? firstUnfinished : 0);
+  };
+
+  // Bug 3 & 4: Pure Level 1 item recognition handler (no side-effects inside state updater)
   const handleItemRecognized = useCallback((item) => {
-    setCompletedItemIds(prev => {
-      const next = new Set(prev).add(item.id);
+    const currentMode = 'level1';
+    const prevCompletedMap = progress.completedHotspots?.[currentMode] || {};
+    const nextCompletedMap = { ...prevCompletedMap, [item.id]: true };
+    const nextCompletedSet = new Set(Object.keys(nextCompletedMap));
 
-      // Check if all items in current zone are now completed
-      const allInZoneDone = activeZone.items.every(it => next.has(it.id));
+    // Check if all items in current zone are now completed
+    const allInZoneDone = activeZone.items.every(it => nextCompletedSet.has(it.id));
 
-      if (allInZoneDone) {
-        // Mark zone completed for Level 1
-        const nextCompletedZones = {
-          ...(progress.completedZones || {}),
-          [activeZone.zoneId]: {
-            ...(progress.completedZones?.[activeZone.zoneId] || {}),
-            level1: true,
-          },
-        };
-
-        // Unlock next zone
-        const nextIndex = activeZoneIndex + 1;
-        const defaultZone = scene.zones[0]?.zoneId || 'zone_1';
-        const nextUnlocked = new Set(progress.unlockedZoneIds || [defaultZone]);
-        if (nextIndex < scene.zones.length) {
-          nextUnlocked.add(scene.zones[nextIndex].zoneId);
-        }
-
-        const updatedProgress = {
-          ...progress,
-          unlockedZoneIds: Array.from(nextUnlocked),
-          completedZones: nextCompletedZones,
-          completedHotspots: {
-            ...(progress.completedHotspots || {}),
-            ...Object.fromEntries(Array.from(next).map(id => [id, true])),
-          },
-        };
-
-        setProgress(updatedProgress);
-        saveVisualProgress(scene.sceneId, updatedProgress);
-
-        // Advance to next zone if available
-        if (nextIndex < scene.zones.length) {
-          setTimeout(() => {
-            setActiveZoneIndex(nextIndex);
-            setSelectedItem(null);
-          }, 450);
-        }
-      } else {
-        // Save individual hotspot
-        const updatedProgress = {
-          ...progress,
-          completedHotspots: {
-            ...(progress.completedHotspots || {}),
-            [item.id]: true,
-          },
-        };
-        setProgress(updatedProgress);
-        saveVisualProgress(scene.sceneId, updatedProgress);
-      }
-
-      return next;
-    });
-
-    // Advance to next uncompleted item in zone
-    const remaining = activeZone.items.filter(it => it.id !== item.id && !completedItemIds.has(it.id));
-    if (remaining.length > 0) {
-      setSelectedItem(remaining[0]);
-    } else {
-      setSelectedItem(null);
-    }
-  }, [activeZone, activeZoneIndex, completedItemIds, progress, scene.sceneId, scene.zones]);
-
-  // When Level 2 completes a zone
-  const handleLevel2ZoneComplete = useCallback((zoneId) => {
     const nextCompletedZones = {
       ...(progress.completedZones || {}),
-      [zoneId]: {
-        ...(progress.completedZones?.[zoneId] || {}),
-        level2: true,
+      [activeZone.zoneId]: {
+        ...(progress.completedZones?.[activeZone.zoneId] || {}),
+        [currentMode]: allInZoneDone ? true : (progress.completedZones?.[activeZone.zoneId]?.[currentMode] || false),
       },
     };
 
+    // Unlock next zone
     const nextIndex = activeZoneIndex + 1;
     const defaultZone = scene.zones[0]?.zoneId || 'zone_1';
-    const nextUnlocked = new Set(progress.unlockedZoneIds || [defaultZone]);
-    if (nextIndex < scene.zones.length) {
+    const currentUnlocked = progress.unlockedZoneIds?.[currentMode] || [defaultZone];
+    const nextUnlocked = new Set(currentUnlocked);
+    if (allInZoneDone && nextIndex < scene.zones.length) {
       nextUnlocked.add(scene.zones[nextIndex].zoneId);
     }
 
     const updatedProgress = {
       ...progress,
-      unlockedZoneIds: Array.from(nextUnlocked),
+      unlockedZoneIds: {
+        ...(progress.unlockedZoneIds || {}),
+        [currentMode]: Array.from(nextUnlocked),
+      },
       completedZones: nextCompletedZones,
+      completedHotspots: {
+        ...(progress.completedHotspots || {}),
+        [currentMode]: nextCompletedMap,
+      },
+    };
+
+    // Update state and persistent storage cleanly outside updater
+    setProgress(updatedProgress);
+    saveVisualProgress(scene.sceneId, updatedProgress);
+
+    // Advance to next uncompleted item or next zone
+    if (allInZoneDone) {
+      if (nextIndex < scene.zones.length) {
+        setTimeout(() => {
+          setActiveZoneIndex(nextIndex);
+          setSelectedItem(null);
+        }, 450);
+      } else {
+        setSelectedItem(null);
+      }
+    } else {
+      const remaining = activeZone.items.filter(it => it.id !== item.id && !nextCompletedSet.has(it.id));
+      setSelectedItem(remaining.length > 0 ? remaining[0] : null);
+    }
+  }, [activeZone, activeZoneIndex, progress, scene.sceneId, scene.zones]);
+
+  // Bug 3 & 4: Pure Level 2 complete zone handler
+  const handleLevel2ZoneComplete = useCallback((zoneId) => {
+    const currentMode = 'level2';
+    const nextCompletedZones = {
+      ...(progress.completedZones || {}),
+      [zoneId]: {
+        ...(progress.completedZones?.[zoneId] || {}),
+        [currentMode]: true,
+      },
+    };
+
+    const nextIndex = activeZoneIndex + 1;
+    const defaultZone = scene.zones[0]?.zoneId || 'zone_1';
+    const currentUnlocked = progress.unlockedZoneIds?.[currentMode] || [defaultZone];
+    const nextUnlocked = new Set(currentUnlocked);
+    if (nextIndex < scene.zones.length) {
+      nextUnlocked.add(scene.zones[nextIndex].zoneId);
+    }
+
+    // Collect all vocabIds of the completed zone into completedHotspots.level2
+    const zoneObj = scene.zones.find(z => z.zoneId === zoneId);
+    const zoneItemIds = (zoneObj?.items || []).map(i => i.id);
+    const nextLevel2Hotspots = {
+      ...(progress.completedHotspots?.level2 || {}),
+      ...Object.fromEntries(zoneItemIds.map(id => [id, true])),
+    };
+
+    const updatedProgress = {
+      ...progress,
+      unlockedZoneIds: {
+        ...(progress.unlockedZoneIds || {}),
+        [currentMode]: Array.from(nextUnlocked),
+      },
+      completedZones: nextCompletedZones,
+      completedHotspots: {
+        ...(progress.completedHotspots || {}),
+        [currentMode]: nextLevel2Hotspots,
+      },
     };
 
     setProgress(updatedProgress);
     saveVisualProgress(scene.sceneId, updatedProgress);
 
-    // If more zones, advance
+    // Advance to next zone if available
     if (nextIndex < scene.zones.length) {
       setTimeout(() => {
         setActiveZoneIndex(nextIndex);
@@ -273,11 +308,11 @@ export function VisualVocabModule({ onToast, onStartPractice, onNavigate }) {
           </select>
         </div>
 
-        {/* Level Switcher (Level 1 vs Level 2) */}
+        {/* Level Switcher (Bug 1: Level 2 Locked until Level 1 fully done) */}
         <div className="flex items-center p-0.5 rounded-lg bg-slate-900/90 border border-slate-800">
           <button
             type="button"
-            onClick={() => { setMode('level1'); setSelectedItem(null); }}
+            onClick={() => handleModeSwitch('level1')}
             className={`btn btn-xs ${mode === 'level1' ? 'btn-primary' : 'btn-ghost'}`}
             style={{
               borderRadius: 6,
@@ -291,7 +326,8 @@ export function VisualVocabModule({ onToast, onStartPractice, onNavigate }) {
           </button>
           <button
             type="button"
-            onClick={() => { setMode('level2'); setSelectedItem(null); }}
+            disabled={!level1FullyDone}
+            onClick={() => handleModeSwitch('level2')}
             className={`btn btn-xs ${mode === 'level2' ? 'btn-primary' : 'btn-ghost'}`}
             style={{
               borderRadius: 6,
@@ -299,9 +335,21 @@ export function VisualVocabModule({ onToast, onStartPractice, onNavigate }) {
               fontWeight: 700,
               padding: '3px 8px',
               color: mode === 'level2' ? '#ffffff' : '#94a3b8',
+              opacity: level1FullyDone ? 1 : 0.4,
+              cursor: level1FullyDone ? 'pointer' : 'not-allowed',
             }}
+            title={
+              level1FullyDone
+                ? 'Chuyển sang Cấp độ 2: Gợi nhớ chủ động (SRS)'
+                : 'Hoàn thành tất cả từ ở Cấp độ 1 để mở khoá Cấp độ 2'
+            }
           >
-            <PenTool size={12} className="inline mr-1" /> Cấp độ 2
+            {level1FullyDone ? (
+              <PenTool size={12} className="inline mr-1" />
+            ) : (
+              <Lock size={12} className="inline mr-1" />
+            )}
+            Cấp độ 2
           </button>
         </div>
       </div>
@@ -403,7 +451,7 @@ export function VisualVocabModule({ onToast, onStartPractice, onNavigate }) {
           zone={activeZone}
           topic={scene.topic || 'Business & Work'}
           onCompleteZone={handleLevel2ZoneComplete}
-          onCancel={() => setMode('level1')}
+          onCancel={() => handleModeSwitch('level1')}
         />
       )}
     </div>

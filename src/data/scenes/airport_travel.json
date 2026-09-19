@@ -23,74 +23,39 @@
       },
       "items": [
         {
-          "id": "at_display_board",
-          "word": "flight departures board",
-          "ipa": "/flaɪt dɪˈpɑːrtʃərz bɔːrd/",
-          "meaningVi": "bảng điện tử hiển thị chuyến bay đi",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4476",
           "hotspot": {
             "x": 0.5,
             "y": 0.38
-          },
-          "example": "Check the flight departures board for gate numbers and boarding times.",
-          "collocation": "check the board"
+          }
         },
         {
-          "id": "at_terminal_sign",
-          "word": "terminal signage",
-          "ipa": "/ˈtɜːrmɪnl ˈsaɪnɪdʒ/",
-          "meaningVi": "biển chỉ dẫn số nhà ga",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4477",
           "hotspot": {
             "x": 0.49,
             "y": 0.31
-          },
-          "example": "Yellow terminal signage directed international passengers to Terminal 5.",
-          "collocation": "follow terminal signage"
+          }
         },
         {
-          "id": "at_suspension",
-          "word": "steel framework",
-          "ipa": "/stiːl ˈfreɪmwɜːrk/",
-          "meaningVi": "khung thép giàn mái nhà ga",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4478",
           "hotspot": {
             "x": 0.28,
             "y": 0.15
-          },
-          "example": "The vast terminal is supported by intricate architectural steel framework.",
-          "collocation": "steel framework"
+          }
         },
         {
-          "id": "at_airliner",
-          "word": "commercial airliner",
-          "ipa": "/kəˈmɜːrʃl ˈerlaɪnər/",
-          "meaningVi": "máy bay thương mại ngoài sân đỗ",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4479",
           "hotspot": {
             "x": 0.9,
             "y": 0.6
-          },
-          "example": "Several commercial airliners were parked at their assigned boarding gates.",
-          "collocation": "board an airliner"
+          }
         },
         {
-          "id": "at_check_status",
-          "word": "check flight status",
-          "ipa": "/tʃek flaɪt ˈsteɪtəs/",
-          "meaningVi": "kiểm tra tình trạng chuyến bay",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4480",
           "hotspot": {
             "x": 0.37,
             "y": 0.7
-          },
-          "example": "The businessman stopped to check his flight status on his mobile app.",
-          "collocation": "check flight status"
+          }
         }
       ]
     },
@@ -106,74 +71,39 @@
       },
       "items": [
         {
-          "id": "at_checkin_desk",
-          "word": "check-in counter",
-          "ipa": "/ˈtʃek ɪn ˈkaʊntər/",
-          "meaningVi": "quầy làm thủ tục bay",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4481",
           "hotspot": {
             "x": 0.1,
             "y": 0.7
-          },
-          "example": "Passengers formed an orderly queue at the airline check-in counter.",
-          "collocation": "at the check-in counter"
+          }
         },
         {
-          "id": "at_agent",
-          "word": "airline ground agent",
-          "ipa": "/ˈerlaɪn ɡraʊnd ˈeɪdʒənt/",
-          "meaningVi": "nhân viên mặt đất hãng bay",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4482",
           "hotspot": {
             "x": 0.16,
             "y": 0.64
-          },
-          "example": "The ground agent inspected passports and weighed checked suitcases.",
-          "collocation": "airline agent"
+          }
         },
         {
-          "id": "at_stanchion",
-          "word": "queue barrier stanchion",
-          "ipa": "/kjuː ˈbæriər ˈstæntʃən/",
-          "meaningVi": "cọc phân luồng xếp hàng",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4483",
           "hotspot": {
             "x": 0.28,
             "y": 0.7
-          },
-          "example": "Polished metal stanchions with blue straps guided the passenger line.",
-          "collocation": "queue barrier"
+          }
         },
         {
-          "id": "at_monitor",
-          "word": "counter screen",
-          "ipa": "/ˈkaʊntər skriːn/",
-          "meaningVi": "màn hình hiển thị hạng vé quầy",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4484",
           "hotspot": {
             "x": 0.15,
             "y": 0.52
-          },
-          "example": "The digital screen indicated counter service for Business Class flyers.",
-          "collocation": "counter display"
+          }
         },
         {
-          "id": "at_check_luggage",
-          "word": "check in luggage",
-          "ipa": "/tʃek ɪn ˈlʌɡɪdʒ/",
-          "meaningVi": "làm thủ tục ký gửi hành lý",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4485",
           "hotspot": {
             "x": 0.2,
             "y": 0.65
-          },
-          "example": "He checked in two large bags before heading to security.",
-          "collocation": "check in luggage"
+          }
         }
       ]
     },
@@ -189,74 +119,39 @@
       },
       "items": [
         {
-          "id": "at_cart",
-          "word": "luggage cart",
-          "ipa": "/ˈlʌɡɪdʒ kɑːrt/",
-          "meaningVi": "xe đẩy hành lý sân bay",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4486",
           "hotspot": {
             "x": 0.65,
             "y": 0.78
-          },
-          "example": "A family loaded four heavy duffel bags onto a metal luggage cart.",
-          "collocation": "push a luggage cart"
+          }
         },
         {
-          "id": "at_rolling_suitcase",
-          "word": "wheeled suitcase",
-          "ipa": "/wiːld ˈsuːtkeɪs/",
-          "meaningVi": "vali kéo có bánh xe",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4487",
           "hotspot": {
             "x": 0.42,
             "y": 0.85
-          },
-          "example": "He navigated the crowded terminal pulling his wheeled suitcase behind him.",
-          "collocation": "pull a wheeled suitcase"
+          }
         },
         {
-          "id": "at_traveler",
-          "word": "business traveler",
-          "ipa": "/ˈbɪznəs ˈtrævlər/",
-          "meaningVi": "hành khách đi công tác",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4488",
           "hotspot": {
             "x": 0.37,
             "y": 0.75
-          },
-          "example": "The frequent business traveler walked briskly toward the priority lounge.",
-          "collocation": "business traveler"
+          }
         },
         {
-          "id": "at_duffel",
-          "word": "carry-on bag",
-          "ipa": "/ˈkæri ɑːn bæɡ/",
-          "meaningVi": "túi hành lý xách tay",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4489",
           "hotspot": {
             "x": 0.78,
             "y": 0.82
-          },
-          "example": "Ensure your carry-on bag fits in the overhead bin dimensions.",
-          "collocation": "carry-on baggage"
+          }
         },
         {
-          "id": "at_wheel_luggage",
-          "word": "wheel a suitcase",
-          "ipa": "/wiːl ə ˈsuːtkeɪs/",
-          "meaningVi": "kéo đẩy vali di chuyển",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4490",
           "hotspot": {
             "x": 0.74,
             "y": 0.76
-          },
-          "example": "The passenger wheeled her suitcase toward the passport control gate.",
-          "collocation": "wheel a suitcase"
+          }
         }
       ]
     },
@@ -272,74 +167,39 @@
       },
       "items": [
         {
-          "id": "at_seating",
-          "word": "terminal waiting seats",
-          "ipa": "/ˈtɜːrmɪnl ˈweɪtɪŋ siːts/",
-          "meaningVi": "dãy ghế chờ nhà ga",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4491",
           "hotspot": {
             "x": 0.84,
             "y": 0.74
-          },
-          "example": "Tired passengers rested in the rows of airport waiting seats.",
-          "collocation": "seats in the terminal"
+          }
         },
         {
-          "id": "at_window_curtain",
-          "word": "curved glass facade",
-          "ipa": "/kɜːrvd ɡlæs fəˈsɑːd/",
-          "meaningVi": "vách kính cong kiến trúc sân bay",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4492",
           "hotspot": {
             "x": 0.84,
             "y": 0.3
-          },
-          "example": "The curved glass facade provides a wide panoramic view of the runway.",
-          "collocation": "panoramic glass facade"
+          }
         },
         {
-          "id": "at_executive_flyer",
-          "word": "departing flyer",
-          "ipa": "/dɪˈpɑːrtɪŋ ˈflaɪər/",
-          "meaningVi": "hành khách sắp khởi hành",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4493",
           "hotspot": {
             "x": 0.93,
             "y": 0.78
-          },
-          "example": "A departing flyer in a suit walked briskly toward gate A12.",
-          "collocation": "departing passenger"
+          }
         },
         {
-          "id": "at_shops",
-          "word": "duty-free boutique",
-          "ipa": "/ˈduːti friː buːˈtiːk/",
-          "meaningVi": "gian hàng miễn thuế sân bay",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4494",
           "hotspot": {
             "x": 0.62,
             "y": 0.58
-          },
-          "example": "Travelers browsed perfumes and souvenirs at the duty-free boutique.",
-          "collocation": "duty-free shop"
+          }
         },
         {
-          "id": "at_board_plane",
-          "word": "board the aircraft",
-          "ipa": "/bɔːrd ði ˈerkræft/",
-          "meaningVi": "lên máy bay",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4495",
           "hotspot": {
             "x": 0.9,
             "y": 0.7
-          },
-          "example": "Passengers with children were invited to board the aircraft first.",
-          "collocation": "board the aircraft"
+          }
         }
       ]
     }

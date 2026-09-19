@@ -47,7 +47,8 @@ export function TopicGridCatalog({ onSelectScene }) {
       words += sceneItemsCount;
 
       const sp = allProgress[s.sceneId] || {};
-      const learnedCount = Object.keys(sp.completedHotspots || {}).length;
+      const ch = sp.completedHotspots || {};
+      const learnedCount = ch.level1 ? Object.keys(ch.level1).length : Object.keys(ch).length;
       learned += learnedCount;
 
       map[s.sceneId] = {

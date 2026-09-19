@@ -1,14 +1,26 @@
 // Master Scene Data Index
-import JOB_INTERVIEW from './job_interview.json';
-import OFFICE_RULES from './office_rules.json';
-import OFFICE_MAIN from './office_main.json';
-import OFFICE_EQUIPMENT from './office_equipment.json';
-import BUSINESS_MEETING from './business_meeting.json';
-import LEISURE_COMMUNITY from './leisure_community.json';
-import RESTAURANT_CAFE from './restaurant_cafe.json';
-import AIRPORT_TRAVEL from './airport_travel.json';
-import CONFERENCE_HALL from './conference_hall.json';
-import RETAIL_STORE from './retail_store.json';
+import { resolveScene } from '../../utils/resolveVocab.js';
+import RAW_JOB_INTERVIEW from './job_interview.json';
+import RAW_OFFICE_RULES from './office_rules.json';
+import RAW_OFFICE_MAIN from './office_main.json';
+import RAW_OFFICE_EQUIPMENT from './office_equipment.json';
+import RAW_BUSINESS_MEETING from './business_meeting.json';
+import RAW_LEISURE_COMMUNITY from './leisure_community.json';
+import RAW_RESTAURANT_CAFE from './restaurant_cafe.json';
+import RAW_AIRPORT_TRAVEL from './airport_travel.json';
+import RAW_CONFERENCE_HALL from './conference_hall.json';
+import RAW_RETAIL_STORE from './retail_store.json';
+
+export const JOB_INTERVIEW = resolveScene(RAW_JOB_INTERVIEW);
+export const OFFICE_RULES = resolveScene(RAW_OFFICE_RULES);
+export const OFFICE_MAIN = resolveScene(RAW_OFFICE_MAIN);
+export const OFFICE_EQUIPMENT = resolveScene(RAW_OFFICE_EQUIPMENT);
+export const BUSINESS_MEETING = resolveScene(RAW_BUSINESS_MEETING);
+export const LEISURE_COMMUNITY = resolveScene(RAW_LEISURE_COMMUNITY);
+export const RESTAURANT_CAFE = resolveScene(RAW_RESTAURANT_CAFE);
+export const AIRPORT_TRAVEL = resolveScene(RAW_AIRPORT_TRAVEL);
+export const CONFERENCE_HALL = resolveScene(RAW_CONFERENCE_HALL);
+export const RETAIL_STORE = resolveScene(RAW_RETAIL_STORE);
 
 export const ALL_SCENES = [
   {
@@ -132,16 +144,3 @@ export const ALL_SCENES = [
     data: RETAIL_STORE,
   },
 ];
-
-export {
-  JOB_INTERVIEW,
-  OFFICE_RULES,
-  OFFICE_MAIN,
-  OFFICE_EQUIPMENT,
-  BUSINESS_MEETING,
-  LEISURE_COMMUNITY,
-  RESTAURANT_CAFE,
-  AIRPORT_TRAVEL,
-  CONFERENCE_HALL,
-  RETAIL_STORE,
-};

@@ -5,10 +5,17 @@ import {
   dbSaveSituations,
   dbSaveProgress,
   dbFetchAllData,
+  dbSaveUserSettings,
+  dbFetchUserSettings,
+  dbFetchSavedWords,
+  dbSaveWord,
+  dbUpdateSavedWordStatus,
+  dbDeleteSavedWord,
   isSupabaseConfigured,
   getSupabaseClient,
 } from '../services/supabase';
 import { calculateNextReview, updateSRSAfterSpeaking } from '../services/srs';
+import { recordStudyActivity } from '../services/streakService';
 
 // ─── Storage keys ─────────────────────────────────────────────
 const KEYS = {
@@ -17,6 +24,7 @@ const KEYS = {
   situations:       'toeic_situations',
   progress:         'toeic_progress',
   settings:         'toeic_settings',
+  savedWords:       'toeic_saved_words',   // Danh sách từ lưu từ Chrome Extension
   vocabCache:       'toeic_vocab_cache',   // cache danh sách từ vựng (fetch 1 lần từ Supabase)
   vocabLearned:     'toeic_vocab_learned', // { [wordId]: { learnedAt, word, topic } }
   vocabDailySession:'toeic_vocab_daily',   // { date: 'YYYY-MM-DD', wordIds: [] }
@@ -276,6 +284,9 @@ export function updateProgress(chunkId, result, score = null, feedback = null) {
     autoMarkVocabLearnedFromChunk(chunkId);
   }
 
+  // Ghi nhận chuỗi ngày học liên tục (Day Streak)
+  recordStudyActivity();
+
   return updated;
 }
 
@@ -325,6 +336,9 @@ export function saveSpeakingProgress(chunkId, speakingResult) {
   if (isSuccess || updated.successCount > 0) {
     autoMarkVocabLearnedFromChunk(chunkId);
   }
+
+  // Ghi nhận chuỗi ngày học liên tục (Day Streak)
+  recordStudyActivity();
 
   return updated;
 }
@@ -508,6 +522,62 @@ export function getSettings() {
 
 export function saveSettings(settings) {
   set(KEYS.settings, settings);
+  // Đồng bộ lên Supabase nếu có đăng nhập
+  dbSaveUserSettings(settings).catch(err => console.warn('Sync user settings error:', err));
+}
+
+// ─── Saved Words (Extension Sync & Local Storage) ────────────
+export function getSavedWords() {
+  return get(KEYS.savedWords) || [];
+}
+
+export function saveSavedWord(wordItem) {
+  const current = getSavedWords();
+  const exists = current.some(w => w.id === wordItem.id || (w.word.toLowerCase() === wordItem.word.toLowerCase() && w.contextSentence === wordItem.contextSentence));
+  if (exists) return;
+  const updated = [wordItem, ...current];
+  set(KEYS.savedWords, updated);
+  dbSaveWord(wordItem).catch(err => console.warn('Supabase save word error:', err));
+}
+
+export function updateSavedWordStatusLocal(id, status) {
+  const current = getSavedWords();
+  const updated = current.map(w => (w.id === id ? { ...w, status } : w));
+  set(KEYS.savedWords, updated);
+  dbUpdateSavedWordStatus(id, status).catch(err => console.warn('Supabase update word status error:', err));
+}
+
+export function deleteSavedWordLocal(id) {
+  const current = getSavedWords();
+  const updated = current.filter(w => w.id !== id);
+  set(KEYS.savedWords, updated);
+  dbDeleteSavedWord(id).catch(err => console.warn('Supabase delete word error:', err));
+}
+
+export async function syncSavedWordsFromCloud() {
+  if (!isSupabaseConfigured()) return getSavedWords();
+  try {
+    const cloudWords = await dbFetchSavedWords();
+    if (cloudWords && Array.isArray(cloudWords)) {
+      const normalized = cloudWords.map(w => ({
+        id: w.id,
+        word: w.word,
+        meaningVi: w.meaning_vi,
+        contextSentence: w.context_sentence,
+        partOfSpeech: w.part_of_speech,
+        ipa: w.ipa,
+        sourceUrl: w.source_url,
+        sourceTitle: w.source_title,
+        status: w.status,
+        createdAt: w.created_at,
+      }));
+      set(KEYS.savedWords, normalized);
+      return normalized;
+    }
+  } catch (err) {
+    console.warn('Sync saved words error:', err);
+  }
+  return getSavedWords();
 }
 
 /** Lấy tất cả các Gemini API key khả dụng (Key chính + Key dự phòng) */
@@ -616,6 +686,27 @@ export async function syncFromSupabase() {
 
     set(KEYS.progress, mergedP);
   }
+
+  // Đồng bộ giỏ từ Extension
+  await syncSavedWordsFromCloud();
+
+  // Đồng bộ settings nếu local chưa có API key mà cloud có
+  try {
+    const cloudSettings = await dbFetchUserSettings();
+    if (cloudSettings) {
+      const current = getSettings();
+      let updated = false;
+      if (!current.apiKey && cloudSettings.api_key) {
+        current.apiKey = cloudSettings.api_key;
+        updated = true;
+      }
+      if (!current.apiKey2 && cloudSettings.api_key_2) {
+        current.apiKey2 = cloudSettings.api_key_2;
+        updated = true;
+      }
+      if (updated) set(KEYS.settings, current);
+    }
+  } catch { /* ignore */ }
 
   return true;
 }
@@ -772,6 +863,7 @@ export function markVocabLearned(wordId, word, topic) {
     all[wordId] = { learnedAt: Date.now(), word, topic };
     set(KEYS.vocabLearned, all);
   }
+  recordStudyActivity();
   return all[wordId];
 }
 
@@ -847,17 +939,67 @@ export function clearPracticeDraft(chunkId) {
 
 // ─── Visual Vocab Progress ──────────────────────────────────────────
 
+// ─── Visual Vocab Progress ──────────────────────────────────────────
+
+/**
+ * Normalizes visual progress object to guarantee separate level1 and level2 structures
+ */
+function normalizeVisualSceneProgress(data, defaultZone = 'zone_1') {
+  const normalized = data ? { ...data } : {};
+
+  // unlockedZoneIds: { level1: string[], level2: string[] }
+  if (Array.isArray(normalized.unlockedZoneIds)) {
+    normalized.unlockedZoneIds = {
+      level1: normalized.unlockedZoneIds.length > 0 ? normalized.unlockedZoneIds : [defaultZone],
+      level2: [defaultZone],
+    };
+  } else if (!normalized.unlockedZoneIds) {
+    normalized.unlockedZoneIds = {
+      level1: [defaultZone],
+      level2: [defaultZone],
+    };
+  } else {
+    normalized.unlockedZoneIds = {
+      level1: Array.isArray(normalized.unlockedZoneIds.level1) && normalized.unlockedZoneIds.level1.length > 0
+        ? normalized.unlockedZoneIds.level1
+        : [defaultZone],
+      level2: Array.isArray(normalized.unlockedZoneIds.level2) && normalized.unlockedZoneIds.level2.length > 0
+        ? normalized.unlockedZoneIds.level2
+        : [defaultZone],
+    };
+  }
+
+  // completedZones: { [zoneId]: { level1?: boolean, level2?: boolean } }
+  if (!normalized.completedZones || typeof normalized.completedZones !== 'object') {
+    normalized.completedZones = {};
+  }
+
+  // completedHotspots: { level1: { [vocabId]: boolean }, level2: { [vocabId]: boolean } }
+  if (!normalized.completedHotspots || typeof normalized.completedHotspots !== 'object') {
+    normalized.completedHotspots = { level1: {}, level2: {} };
+  } else if (!normalized.completedHotspots.level1 && !normalized.completedHotspots.level2) {
+    // Legacy format was flat { [id]: boolean } -> map to level1
+    normalized.completedHotspots = {
+      level1: { ...normalized.completedHotspots },
+      level2: {},
+    };
+  } else {
+    normalized.completedHotspots = {
+      level1: normalized.completedHotspots.level1 || {},
+      level2: normalized.completedHotspots.level2 || {},
+    };
+  }
+
+  return normalized;
+}
+
 /**
  * Lấy tiến độ học Visual Scene (các zone đã mở khoá, level đã hoàn thành)
  */
 export function getVisualProgress(sceneId) {
   const all = get(KEYS.visualProgress) || {};
   if (sceneId) {
-    return all[sceneId] || {
-      unlockedZoneIds: ['zone_desk_area'],
-      completedZones: {},
-      completedHotspots: {},
-    };
+    return normalizeVisualSceneProgress(all[sceneId]);
   }
   return all;
 }
@@ -868,12 +1010,9 @@ export function getVisualProgress(sceneId) {
 export function saveVisualProgress(sceneId, data) {
   if (!sceneId) return;
   const all = get(KEYS.visualProgress) || {};
+  const current = normalizeVisualSceneProgress(all[sceneId]);
   all[sceneId] = {
-    ...(all[sceneId] || {
-      unlockedZoneIds: ['zone_desk_area'],
-      completedZones: {},
-      completedHotspots: {},
-    }),
+    ...current,
     ...data,
     updatedAt: Date.now(),
   };
@@ -883,20 +1022,20 @@ export function saveVisualProgress(sceneId, data) {
 /**
  * Ghi nhận một từ hoàn thành ở Level 2 (Active Recall)
  * - Tự động cập nhật markVocabLearned
- * - Tự động tạo/cập nhật SRS progress SM-2
+ * - Tự động tạo/cập nhật SRS progress SM-2 dùng trực tiếp vocabId
  */
-export function recordVisualRecallSuccess(wordId, word, topic, collocation = null) {
-  if (!wordId) return;
+export function recordVisualRecallSuccess(vocabId, word, topic, collocation = null, score = 95) {
+  if (!vocabId) return;
   // 1. Đánh dấu từ đã học trong kho Vocab
-  markVocabLearned(wordId, word, topic);
+  markVocabLearned(vocabId, word, topic);
 
-  // 2. Kích hoạt bản ghi SRS SM-2
-  const chunkId = `visual_${wordId}`;
-  updateProgress(chunkId, true, 95, {
+  // 2. Kích hoạt bản ghi SRS SM-2 bằng chính vocabId (không dùng tiền tố visual_)
+  updateProgress(vocabId, true, score, {
     source: 'visual_vocabulary',
     collocation: collocation || word,
     masteredAt: Date.now(),
     note: `Đã phản xạ thị giác thành thạo tại Visual Mode (${word})`,
   });
 }
+
 

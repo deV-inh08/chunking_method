@@ -20,74 +20,39 @@
       },
       "items": [
         {
-          "id": "item_menu",
-          "word": "menu",
-          "ipa": "/ˈmenjuː/",
-          "meaningVi": "thực đơn nhà hàng",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_2736",
           "hotspot": {
             "x": 0.18,
             "y": 0.88
-          },
-          "example": "The guest examined the specials on the dinner menu.",
-          "collocation": "look at the menu"
+          }
         },
         {
-          "id": "item_fork",
-          "word": "fork",
-          "ipa": "/fɔːrk/",
-          "meaningVi": "dĩa, nĩa ăn",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_3318",
           "hotspot": {
             "x": 0.25,
             "y": 0.84
-          },
-          "example": "Cutlery including forks and knives were set neatly on the table.",
-          "collocation": "fork and knife"
+          }
         },
         {
-          "id": "item_napkin",
-          "word": "napkin",
-          "ipa": "/ˈnæpkɪn/",
-          "meaningVi": "khăn ăn vải",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4462",
           "hotspot": {
             "x": 0.33,
             "y": 0.81
-          },
-          "example": "He placed the folded cloth napkin on his lap.",
-          "collocation": "fold a napkin"
+          }
         },
         {
-          "id": "item_wine_glass",
-          "word": "wine glass",
-          "ipa": "/waɪn ɡlæs/",
-          "meaningVi": "ly uống rượu có chân",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4463",
           "hotspot": {
             "x": 0.22,
             "y": 0.67
-          },
-          "example": "The server poured mineral water into the crystal wine glass.",
-          "collocation": "a glass of wine"
+          }
         },
         {
-          "id": "item_reserve_table",
-          "word": "reserve a table",
-          "ipa": "/rɪˈzɜːrv ə ˈteɪbl/",
-          "meaningVi": "đặt trước bàn ăn",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4464",
           "hotspot": {
             "x": 0.14,
             "y": 0.7
-          },
-          "example": "Customers are advised to reserve a table in advance during peak hours.",
-          "collocation": "reserve a table"
+          }
         }
       ]
     },
@@ -103,74 +68,39 @@
       },
       "items": [
         {
-          "id": "item_pastry",
-          "word": "pastry",
-          "ipa": "/ˈpeɪstri/",
-          "meaningVi": "bánh ngọt, bánh nướng",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4465",
           "hotspot": {
             "x": 0.49,
             "y": 0.56
-          },
-          "example": "Freshly baked pastries and croissants are displayed in the glass case.",
-          "collocation": "fresh pastry"
+          }
         },
         {
-          "id": "item_espresso_machine",
-          "word": "coffee machine",
-          "ipa": "/ˈkɔːfi məˌʃiːn/",
-          "meaningVi": "máy pha cà phê chuyên nghiệp",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4466",
           "hotspot": {
             "x": 0.35,
             "y": 0.46
-          },
-          "example": "The barista used the Italian coffee machine to brew cappuccinos.",
-          "collocation": "brew coffee"
+          }
         },
         {
-          "id": "item_barista",
-          "word": "barista",
-          "ipa": "/bəˈriːstə/",
-          "meaningVi": "nhân viên pha chế cà phê",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4467",
           "hotspot": {
             "x": 0.43,
             "y": 0.41
-          },
-          "example": "The skilled barista prepared latte art for the customer.",
-          "collocation": "friendly barista"
+          }
         },
         {
-          "id": "item_cash_register",
-          "word": "cash register",
-          "ipa": "/ˈkæʃ ˌredʒɪstər/",
-          "meaningVi": "máy tính tiền thu ngân",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4468",
           "hotspot": {
             "x": 0.58,
             "y": 0.49
-          },
-          "example": "The cashier processed the payment at the digital cash register.",
-          "collocation": "operate a cash register"
+          }
         },
         {
-          "id": "item_pay_bill",
-          "word": "pay the bill",
-          "ipa": "/peɪ ðə bɪl/",
-          "meaningVi": "thanh toán hóa đơn",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4469",
           "hotspot": {
             "x": 0.54,
             "y": 0.5
-          },
-          "example": "He inserted his credit card into the terminal to pay the bill.",
-          "collocation": "pay the bill"
+          }
         }
       ]
     },
@@ -186,74 +116,39 @@
       },
       "items": [
         {
-          "id": "item_chef",
-          "word": "chef",
-          "ipa": "/ʃef/",
-          "meaningVi": "đầu bếp chuyên nghiệp",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_2804",
           "hotspot": {
             "x": 0.69,
             "y": 0.43
-          },
-          "example": "The head chef carefully plated the main course in the kitchen.",
-          "collocation": "executive chef"
+          }
         },
         {
-          "id": "item_tray",
-          "word": "tray",
-          "ipa": "/treɪ/",
-          "meaningVi": "khay bưng đồ ăn/uống",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_3935",
           "hotspot": {
             "x": 0.7,
             "y": 0.51
-          },
-          "example": "The server carried several beverage glasses on a circular tray.",
-          "collocation": "serving tray"
+          }
         },
         {
-          "id": "item_waiter",
-          "word": "waiter",
-          "ipa": "/ˈweɪtər/",
-          "meaningVi": "nhân viên bồi bàn / phục vụ",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4470",
           "hotspot": {
             "x": 0.75,
             "y": 0.46
-          },
-          "example": "The attentive waiter brought complimentary bread to the table.",
-          "collocation": "ask the waiter"
+          }
         },
         {
-          "id": "item_apron",
-          "word": "apron",
-          "ipa": "/ˈeɪprən/",
-          "meaningVi": "tạp dề phục vụ / bếp",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4471",
           "hotspot": {
             "x": 0.75,
             "y": 0.54
-          },
-          "example": "All staff wear clean dark aprons while on restaurant duty.",
-          "collocation": "wear an apron"
+          }
         },
         {
-          "id": "item_serve_dish",
-          "word": "serve a dish",
-          "ipa": "/sɜːrv ə dɪʃ/",
-          "meaningVi": "phục vụ / mang món ăn lên",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4472",
           "hotspot": {
             "x": 0.65,
             "y": 0.48
-          },
-          "example": "The kitchen staff swiftly served dishes to eager diners.",
-          "collocation": "serve a dish"
+          }
         }
       ]
     },
@@ -269,74 +164,39 @@
       },
       "items": [
         {
-          "id": "item_armchair",
-          "word": "armchair",
-          "ipa": "/ˈɑːrmtʃer/",
-          "meaningVi": "ghế bành tựa êm",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4473",
           "hotspot": {
             "x": 0.72,
             "y": 0.8
-          },
-          "example": "Guests relaxed in comfortable velvet armchairs by the window.",
-          "collocation": "comfortable armchair"
+          }
         },
         {
-          "id": "item_coffee_cup",
-          "word": "coffee cup",
-          "ipa": "/ˈkɔːfi kʌp/",
-          "meaningVi": "tách cà phê kèm đĩa lót",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4474",
           "hotspot": {
             "x": 0.87,
             "y": 0.77
-          },
-          "example": "A steaming ceramic coffee cup rested on the marble table.",
-          "collocation": "a cup of coffee"
+          }
         },
         {
-          "id": "item_round_table",
-          "word": "table",
-          "ipa": "/ˈteɪbl/",
-          "meaningVi": "bàn cafe tròn nhỏ",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_0496",
           "hotspot": {
             "x": 0.85,
             "y": 0.78
-          },
-          "example": "Laptops and coffee were arranged neatly on the small cafe table.",
-          "collocation": "sit at a table"
+          }
         },
         {
-          "id": "item_window",
-          "word": "window",
-          "ipa": "/ˈwɪndoʊ/",
-          "meaningVi": "cửa sổ kính lớn",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_0556",
           "hotspot": {
             "x": 0.94,
             "y": 0.38
-          },
-          "example": "Large glass windows let in plenty of natural afternoon light.",
-          "collocation": "look out the window"
+          }
         },
         {
-          "id": "item_enjoy_drink",
-          "word": "enjoy a drink",
-          "ipa": "/ɪnˈdʒɔɪ ə drɪŋk/",
-          "meaningVi": "thưởng thức đồ uống",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4475",
           "hotspot": {
             "x": 0.94,
             "y": 0.68
-          },
-          "example": "Patrons enjoy cold drinks on sunny afternoons by the window.",
-          "collocation": "enjoy a drink"
+          }
         }
       ]
     }

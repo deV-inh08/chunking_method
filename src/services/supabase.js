@@ -403,3 +403,144 @@ export async function testSupabaseConnection(url, key) {
     return false;
   }
 }
+
+// ─── Data — Saved Words (Extension Sync) ────────────────────────
+export async function dbFetchSavedWords() {
+  const client = getSupabaseClient();
+  if (!client) return [];
+  const userId = await getCurrentUserId();
+  if (!userId) return [];
+
+  try {
+    const { data, error } = await client
+      .from('saved_words')
+      .select('*')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Supabase fetch saved_words error:', error);
+      return [];
+    }
+    return data || [];
+  } catch (err) {
+    console.error('Supabase fetch saved_words error:', err);
+    return [];
+  }
+}
+
+export async function dbSaveWord(wordItem) {
+  const client = getSupabaseClient();
+  if (!client) return null;
+  const userId = await getCurrentUserId();
+  if (!userId) return null;
+
+  try {
+    const { data, error } = await client.from('saved_words').insert({
+      user_id: userId,
+      word: wordItem.word,
+      meaning_vi: wordItem.meaningVi || wordItem.meaning_vi || '',
+      context_sentence: wordItem.contextSentence || wordItem.context_sentence || '',
+      part_of_speech: wordItem.partOfSpeech || wordItem.part_of_speech || '',
+      ipa: wordItem.ipa || '',
+      source_url: wordItem.sourceUrl || wordItem.source_url || '',
+      source_title: wordItem.sourceTitle || wordItem.source_title || '',
+      status: wordItem.status || 'pending',
+    }).select().single();
+
+    if (error) {
+      console.error('Supabase save word error:', error);
+      return null;
+    }
+    return data;
+  } catch (err) {
+    console.error('Supabase save word error:', err);
+    return null;
+  }
+}
+
+export async function dbUpdateSavedWordStatus(id, status) {
+  const client = getSupabaseClient();
+  if (!client || !id) return;
+  const userId = await getCurrentUserId();
+  if (!userId) return;
+
+  try {
+    const { error } = await client
+      .from('saved_words')
+      .update({ status })
+      .eq('id', id)
+      .eq('user_id', userId);
+
+    if (error) console.error('Supabase update saved_word status error:', error);
+  } catch (err) {
+    console.error('Supabase update saved_word status error:', err);
+  }
+}
+
+export async function dbDeleteSavedWord(id) {
+  const client = getSupabaseClient();
+  if (!client || !id) return;
+  const userId = await getCurrentUserId();
+  if (!userId) return;
+
+  try {
+    const { error } = await client
+      .from('saved_words')
+      .delete()
+      .eq('id', id)
+      .eq('user_id', userId);
+
+    if (error) console.error('Supabase delete saved_word error:', error);
+  } catch (err) {
+    console.error('Supabase delete saved_word error:', err);
+  }
+}
+
+// ─── Data — User Settings Sync ─────────────────────────────────
+export async function dbSaveUserSettings(settings) {
+  const client = getSupabaseClient();
+  if (!client || !settings) return;
+  const userId = await getCurrentUserId();
+  if (!userId) return;
+
+  try {
+    const payload = {
+      user_id: userId,
+      updated_at: new Date().toISOString(),
+    };
+    if (settings.apiKey !== undefined) payload.api_key = settings.apiKey;
+    if (settings.apiKey2 !== undefined) payload.api_key_2 = settings.apiKey2;
+    if (settings.speakingVoice !== undefined) payload.speaking_voice = settings.speakingVoice;
+    if (settings.srsTrack !== undefined) payload.srs_track = settings.srsTrack;
+
+    const { error } = await client.from('user_settings').upsert(payload);
+    if (error) console.warn('Supabase save user_settings warn:', error.message);
+  } catch (err) {
+    console.warn('Supabase save user_settings error:', err);
+  }
+}
+
+export async function dbFetchUserSettings() {
+  const client = getSupabaseClient();
+  if (!client) return null;
+  const userId = await getCurrentUserId();
+  if (!userId) return null;
+
+  try {
+    const { data, error } = await client
+      .from('user_settings')
+      .select('*')
+      .eq('user_id', userId)
+      .maybeSingle();
+
+    if (error) {
+      console.warn('Supabase fetch user_settings warn:', error.message);
+      return null;
+    }
+    return data;
+  } catch (err) {
+    console.warn('Supabase fetch user_settings error:', err);
+    return null;
+  }
+}

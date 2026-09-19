@@ -1,5 +1,5 @@
 import { useEffect, useCallback } from 'react';
-import { Volume2, CheckCircle2, X, Zap, Box, ArrowRight } from 'lucide-react';
+import { Volume2, CheckCircle2, X, Zap, Box } from 'lucide-react';
 
 /**
  * Level1RecognitionCard Component
@@ -12,13 +12,9 @@ export function Level1RecognitionCard({
   onRecognized,
   isLastInZone = false,
 }) {
-  if (!item) return null;
-
-  const isAction = item.visualType === 'action';
-
   // Pronounce audio using Web Speech API
   const playAudio = useCallback(() => {
-    if (!window.speechSynthesis) return;
+    if (!window.speechSynthesis || !item?.word) return;
     try {
       window.speechSynthesis.cancel();
       const utter = new SpeechSynthesisUtterance(item.word);
@@ -28,13 +24,18 @@ export function Level1RecognitionCard({
     } catch (e) {
       console.warn('Speech synthesis error:', e);
     }
-  }, [item.word]);
+  }, [item?.word]);
 
   // Auto-play pronunciation when card opens
   useEffect(() => {
+    if (!item) return;
     const timer = setTimeout(playAudio, 150);
     return () => clearTimeout(timer);
-  }, [playAudio]);
+  }, [playAudio, item]);
+
+  if (!item) return null;
+
+  const isAction = item.visualType === 'action';
 
   return (
     <div

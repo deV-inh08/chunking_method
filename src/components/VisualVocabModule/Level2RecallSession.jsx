@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
-import { Sparkles, Trophy, Volume2, ArrowRight, Eye, CheckCircle2 } from 'lucide-react';
+import { useState, useEffect, useCallback } from 'react';
+import { Trophy, Eye } from 'lucide-react';
 import { DotMaskInput } from '../common/DotMaskInput';
 import { recordVisualRecallSuccess } from '../../store/storage';
 
@@ -53,27 +53,33 @@ export function Level2RecallSession({
     setIsSuccessFlash(true);
     playAudio(currentItem.word);
 
-    // Record SRS and learned status
+    // Record SRS and learned status: if user skipped/peeked earlier, score is 60 (grade 3), else 95 (grade 5)
+    const itemId = currentItem.vocabId || currentItem.id;
+    const wasQuickPeeked = firstAttemptErrors.has(itemId) || firstAttemptErrors.has(currentItem.id);
+    const score = wasQuickPeeked ? 60 : 95;
+
     recordVisualRecallSuccess(
-      currentItem.id,
-      currentItem.word,
+      itemId,
+      currentItem.term || currentItem.word,
       topic,
-      currentItem.collocation || null
+      currentItem.collocation || null,
+      score
     );
 
-    setCompletedIds(prev => new Set(prev).add(currentItem.id));
+    setCompletedIds(prev => new Set(prev).add(itemId));
 
     setTimeout(() => {
       setIsSuccessFlash(false);
       setCurrentIndex(i => i + 1);
     }, 600);
-  }, [currentItem, topic, playAudio]);
+  }, [currentItem, topic, playAudio, firstAttemptErrors]);
 
   // Handle Skip / Forgot: Show quick peek for 3s, then re-queue at end
   const handleSkip = useCallback(() => {
     if (!currentItem) return;
 
-    setFirstAttemptErrors(prev => new Set(prev).add(currentItem.id));
+    const itemId = currentItem.vocabId || currentItem.id;
+    setFirstAttemptErrors(prev => new Set(prev).add(itemId));
     setQuickPeekItem(currentItem);
     playAudio(currentItem.word);
 

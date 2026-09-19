@@ -23,74 +23,39 @@
       },
       "items": [
         {
-          "id": "lc_umbrella",
-          "word": "patio umbrella",
-          "ipa": "/ˈpætioʊ ʌmˈbrelə/",
-          "meaningVi": "dù che nắng hiên cafe ngoài trời",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4442",
           "hotspot": {
             "x": 0.28,
             "y": 0.35
-          },
-          "example": "Customers sat beneath the broad patio umbrellas to escape the midday heat.",
-          "collocation": "under an umbrella"
+          }
         },
         {
-          "id": "lc_table",
-          "word": "wooden table",
-          "ipa": "/ˈwʊdn ˈteɪbl/",
-          "meaningVi": "bàn gỗ cafe ngoài trời",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4443",
           "hotspot": {
             "x": 0.22,
             "y": 0.85
-          },
-          "example": "Two friends shared coffee and pastries at an outdoor wooden table.",
-          "collocation": "sit at a table"
+          }
         },
         {
-          "id": "lc_mug",
-          "word": "ceramic mug",
-          "ipa": "/səˈræmɪk mʌɡ/",
-          "meaningVi": "tách gốm uống cà phê",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4444",
           "hotspot": {
             "x": 0.21,
             "y": 0.78
-          },
-          "example": "Steaming hot cappuccino was served in heavy white ceramic mugs.",
-          "collocation": "sip from a mug"
+          }
         },
         {
-          "id": "lc_patron",
-          "word": "cafe customer",
-          "ipa": "/kæˈfeɪ ˈkʌstəmər/",
-          "meaningVi": "thực khách quán cafe",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4445",
           "hotspot": {
             "x": 0.33,
             "y": 0.72
-          },
-          "example": "The cheerful cafe customer chatted with his friend over breakfast.",
-          "collocation": "regular customer"
+          }
         },
         {
-          "id": "lc_enjoy_drink",
-          "word": "enjoy a refreshment",
-          "ipa": "/ɪnˈdʒɔɪ ə rɪˈfreʃmənt/",
-          "meaningVi": "thưởng thức thức uống giải khát",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4446",
           "hotspot": {
             "x": 0.16,
             "y": 0.72
-          },
-          "example": "Office workers enjoyed morning refreshments during their break.",
-          "collocation": "enjoy a refreshment"
+          }
         }
       ]
     },
@@ -106,74 +71,39 @@
       },
       "items": [
         {
-          "id": "lc_bicycle",
-          "word": "city bicycle",
-          "ipa": "/ˈsɪti ˈbaɪsɪkl/",
-          "meaningVi": "xe đạp dạo phố có giỏ",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4447",
           "hotspot": {
             "x": 0.58,
             "y": 0.72
-          },
-          "example": "The commuter rode her commuter city bicycle to the transit station.",
-          "collocation": "ride a bicycle"
+          }
         },
         {
-          "id": "lc_basket",
-          "word": "front basket",
-          "ipa": "/frʌnt ˈbæskɪt/",
-          "meaningVi": "giỏ xe đạp phía trước",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4448",
           "hotspot": {
             "x": 0.6,
             "y": 0.64
-          },
-          "example": "Her tote bag and a water bottle were placed in the woven front basket.",
-          "collocation": "bicycle basket"
+          }
         },
         {
-          "id": "lc_cyclist",
-          "word": "cyclist",
-          "ipa": "/ˈsaɪklɪst/",
-          "meaningVi": "người đi xe đạp",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4449",
           "hotspot": {
             "x": 0.6,
             "y": 0.54
-          },
-          "example": "The cyclist stopped at the intersection to let pedestrians cross safely.",
-          "collocation": "active cyclist"
+          }
         },
         {
-          "id": "lc_pathway",
-          "word": "paved walkway",
-          "ipa": "/peɪvd ˈwɔːkweɪ/",
-          "meaningVi": "lối đi lát đá trong công viên",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4450",
           "hotspot": {
             "x": 0.66,
             "y": 0.88
-          },
-          "example": "A smooth paved walkway winds through the landscaped city park.",
-          "collocation": "walk along the pathway"
+          }
         },
         {
-          "id": "lc_commute",
-          "word": "commute on a bike",
-          "ipa": "/kəˈmjuːt ɑːn ə baɪk/",
-          "meaningVi": "đi làm bằng xe đạp",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4451",
           "hotspot": {
             "x": 0.56,
             "y": 0.62
-          },
-          "example": "More professionals choose to commute on a bike to stay active.",
-          "collocation": "commute on a bike"
+          }
         }
       ]
     },
@@ -189,74 +119,39 @@
       },
       "items": [
         {
-          "id": "lc_bench",
-          "word": "wooden park bench",
-          "ipa": "/ˈwʊdn pɑːrk bentʃ/",
-          "meaningVi": "ghế băng gỗ công viên",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4452",
           "hotspot": {
             "x": 0.83,
             "y": 0.72
-          },
-          "example": "Senior citizens rested comfortably on the slatted wooden park bench.",
-          "collocation": "sit on a bench"
+          }
         },
         {
-          "id": "lc_flower_bed",
-          "word": "flower border",
-          "ipa": "/ˈflaʊər ˈbɔːrdər/",
-          "meaningVi": "luống hoa cảnh rực rỡ",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4453",
           "hotspot": {
             "x": 0.85,
             "y": 0.6
-          },
-          "example": "Purple lavender blossoms flourished along the curved flower border.",
-          "collocation": "blooming flower bed"
+          }
         },
         {
-          "id": "lc_retirees",
-          "word": "park visitors",
-          "ipa": "/pɑːrk ˈvɪzɪtərz/",
-          "meaningVi": "người dạo mát công viên",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4454",
           "hotspot": {
             "x": 0.77,
             "y": 0.64
-          },
-          "example": "Park visitors enjoy reading newspapers in the fresh morning air.",
-          "collocation": "park visitors"
+          }
         },
         {
-          "id": "lc_oak_tree",
-          "word": "shade tree",
-          "ipa": "/ʃeɪd triː/",
-          "meaningVi": "cây cổ thụ tỏa bóng mát",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4455",
           "hotspot": {
             "x": 0.4,
             "y": 0.15
-          },
-          "example": "Mature oak shade trees provide relief from direct sunshine.",
-          "collocation": "under a shade tree"
+          }
         },
         {
-          "id": "lc_relax",
-          "word": "relax in the park",
-          "ipa": "/rɪˈlæks ɪn ðə pɑːrk/",
-          "meaningVi": "thư giãn trong công viên",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4456",
           "hotspot": {
             "x": 0.8,
             "y": 0.68
-          },
-          "example": "Local residents frequently gather to relax in the park after work.",
-          "collocation": "relax in the park"
+          }
         }
       ]
     },
@@ -272,74 +167,39 @@
       },
       "items": [
         {
-          "id": "lc_cafe_sign",
-          "word": "storefront sign",
-          "ipa": "/ˈstɔːrfrʌnt saɪn/",
-          "meaningVi": "biển hiệu cửa hàng mặt tiền",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4457",
           "hotspot": {
             "x": 0.45,
             "y": 0.44
-          },
-          "example": "A circular storefront sign clearly identified 'The Park Cafe'.",
-          "collocation": "storefront sign"
+          }
         },
         {
-          "id": "lc_strollers",
-          "word": "pedestrians",
-          "ipa": "/pəˈdestriənz/",
-          "meaningVi": "người đi bộ tản bộ",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4458",
           "hotspot": {
             "x": 0.54,
             "y": 0.54
-          },
-          "example": "Pedestrians strolled leisurely along the wide car-free promenade.",
-          "collocation": "group of pedestrians"
+          }
         },
         {
-          "id": "lc_skyline",
-          "word": "city high-rises",
-          "ipa": "/ˈsɪti ˈhaɪraɪzɪz/",
-          "meaningVi": "các tòa nhà cao tầng đô thị",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4459",
           "hotspot": {
             "x": 0.63,
             "y": 0.22
-          },
-          "example": "Modern glass office high-rises surround the tranquil municipal park.",
-          "collocation": "urban high-rises"
+          }
         },
         {
-          "id": "lc_dog",
-          "word": "pet dog",
-          "ipa": "/pet dɔːɡ/",
-          "meaningVi": "chú chó đi dạo",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4460",
           "hotspot": {
             "x": 0.7,
             "y": 0.56
-          },
-          "example": "A playful pet dog trotted on the lawn alongside its owner.",
-          "collocation": "walk a dog"
+          }
         },
         {
-          "id": "lc_stroll",
-          "word": "take a leisurely stroll",
-          "ipa": "/teɪk ə ˈliːʒərli stroʊl/",
-          "meaningVi": "đi dạo thong thả",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4461",
           "hotspot": {
             "x": 0.64,
             "y": 0.52
-          },
-          "example": "Families took a leisurely stroll under the sunny blue sky.",
-          "collocation": "take a stroll"
+          }
         }
       ]
     }

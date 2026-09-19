@@ -5,6 +5,7 @@ import { ReadingModule } from './components/ReadingModule';
 import { ChunkModule } from './components/ChunkModule';
 import { VocabModule } from './components/VocabModule';
 import { VisualVocabModule } from './components/VisualVocabModule';
+import { WordBasketModule } from './components/WordBasketModule';
 import { PracticeModule } from './components/PracticeModule';
 import { ProgressModule } from './components/ProgressModule';
 import { SettingsModal } from './components/Settings';
@@ -16,6 +17,7 @@ import { useAuth } from './hooks/useAuth';
 import { generateWritingExercises } from './services/ai';
 import { getDueChunks } from './services/srs';
 import { registerServiceWorker, sendDueNotification } from './services/notifications';
+import { dbSaveUserSettings } from './services/supabase';
 import * as storage from './store/storage';
 
 // ─── Toast hook ───────────────────────────────────────────────
@@ -76,6 +78,17 @@ export default function App() {
   });
   const [allChunks, setAllChunks]       = useState(() => storage.getAllChunks());
 
+  // Kiểm tra URL query param (mở tab từ Extension)
+  useEffect(() => {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tab = urlParams.get('tab');
+      if (tab === 'basket' || tab === 'word_basket') {
+        setPage('word_basket');
+      }
+    } catch { /* ignore */ }
+  }, []);
+
   // Lưu active states vào localStorage để sống sót qua các lần F5
   useEffect(() => {
     try {
@@ -129,6 +142,13 @@ export default function App() {
     } catch { /* ignore */ }
     addToast('info', 'Đã đăng xuất.');
   }, [authSignOut, addToast]);
+
+  // Tự động đồng bộ Gemini API key lên Supabase khi user đã đăng nhập
+  useEffect(() => {
+    if (user && (settings.apiKey || settings.apiKey2)) {
+      dbSaveUserSettings(settings).catch(() => {});
+    }
+  }, [user, settings.apiKey, settings.apiKey2]);
 
   // Refresh all chunks whenever transcripts change
   useEffect(() => {
@@ -367,6 +387,15 @@ export default function App() {
     addToast('info', `Đã dọn dẹp ${chunkIdsToRemove.length} bài đã ôn xong khỏi tab Practice.`);
   }, [addToast]);
 
+  const handleStartBasketPractice = useCallback((chunkIds) => {
+    if (!chunkIds || chunkIds.length === 0) return;
+    const freshAll = storage.getAllChunks();
+    setAllChunks(freshAll);
+    setSelectedChunks(new Set(chunkIds));
+    setPage('practice');
+    addToast('success', `⚡ Đã tạo thành công ${chunkIds.length} Chunks và bài luyện từ giỏ từ!`);
+  }, [addToast]);
+
   // ── Nav badge counts ─────────────────────────────────────────
   const learnedVocabCount = useMemo(() => {
     try {
@@ -376,10 +405,19 @@ export default function App() {
     }
   }, []);
 
+  const basketPendingCount = useMemo(() => {
+    try {
+      return storage.getSavedWords().filter(w => w.status === 'pending').length;
+    } catch {
+      return 0;
+    }
+  }, []);
+
   const counts = {
     ai_listening: transcripts.length,
     reading:      24,
     vocab:        learnedVocabCount,
+    word_basket:  basketPendingCount,
     visual_vocab: 10,
     chunks:       allChunks.length,
     practice:     selectedChunks.size,
@@ -589,6 +627,14 @@ export default function App() {
                 onToast={addToast}
                 onStartPractice={handleStartVocabPractice}
                 onNavigate={setPage}
+              />
+            </div>
+
+            {/* WordBasketModule: Giỏ từ vựng lưu từ Chrome Extension */}
+            <div style={{ display: page === 'word_basket' ? 'block' : 'none' }}>
+              <WordBasketModule
+                onStartPractice={handleStartBasketPractice}
+                onOpenSettings={() => setShowSettings(true)}
               />
             </div>
 

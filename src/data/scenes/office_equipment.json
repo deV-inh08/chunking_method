@@ -23,74 +23,39 @@
       },
       "items": [
         {
-          "id": "oe_copier",
-          "word": "photocopier",
-          "ipa": "/ˈfoʊtoʊkɑːpiər/",
-          "meaningVi": "máy photocopy đa chức năng",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4404",
           "hotspot": {
             "x": 0.42,
             "y": 0.55
-          },
-          "example": "The multifunction photocopier can print, scan, and staple reports.",
-          "collocation": "use the photocopier"
+          }
         },
         {
-          "id": "oe_panel",
-          "word": "touchscreen panel",
-          "ipa": "/ˈtʌtʃskriːn ˈpænl/",
-          "meaningVi": "bảng điều khiển cảm ứng",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4405",
           "hotspot": {
             "x": 0.46,
             "y": 0.45
-          },
-          "example": "Select two-sided printing on the touchscreen control panel.",
-          "collocation": "touchscreen panel"
+          }
         },
         {
-          "id": "oe_paper_tray",
-          "word": "output paper tray",
-          "ipa": "/ˈaʊtpʊt ˈpeɪpər treɪ/",
-          "meaningVi": "khay đón giấy in ra",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4406",
           "hotspot": {
             "x": 0.3,
             "y": 0.44
-          },
-          "example": "Retrieve your printed documents from the top output paper tray.",
-          "collocation": "paper tray"
+          }
         },
         {
-          "id": "oe_paper_drawer",
-          "word": "paper feeder drawer",
-          "ipa": "/ˈpeɪpər ˈfiːdər drɔːr/",
-          "meaningVi": "ngăn nạp giấy khay dưới",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4407",
           "hotspot": {
             "x": 0.43,
             "y": 0.8
-          },
-          "example": "Drawer 2 is empty and needs to be reloaded with A4 paper.",
-          "collocation": "load paper drawer"
+          }
         },
         {
-          "id": "oe_make_copies",
-          "word": "make copies",
-          "ipa": "/meɪk ˈkɑːpiz/",
-          "meaningVi": "sao chụp tài liệu",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4408",
           "hotspot": {
             "x": 0.43,
             "y": 0.6
-          },
-          "example": "She made fifty double-sided copies of the financial report.",
-          "collocation": "make copies"
+          }
         }
       ]
     },
@@ -106,74 +71,39 @@
       },
       "items": [
         {
-          "id": "oe_shredder",
-          "word": "paper shredder",
-          "ipa": "/ˈpeɪpər ˈʃredər/",
-          "meaningVi": "máy hủy tài liệu bảo mật",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4409",
           "hotspot": {
             "x": 0.27,
             "y": 0.78
-          },
-          "example": "Always destroy confidential client contracts in the paper shredder.",
-          "collocation": "insert into shredder"
+          }
         },
         {
-          "id": "oe_view_window",
-          "word": "wastebasket window",
-          "ipa": "/ˈweɪstbæskɪt ˈwɪndoʊ/",
-          "meaningVi": "khe kính quan sát lượng giấy vụn",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4410",
           "hotspot": {
             "x": 0.28,
             "y": 0.84
-          },
-          "example": "The clear window shows when the shredder bin is full.",
-          "collocation": "shredder bin"
+          }
         },
         {
-          "id": "oe_power_switch",
-          "word": "feed slot",
-          "ipa": "/fiːd slɑːt/",
-          "meaningVi": "khe luồn giấy hủy",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4411",
           "hotspot": {
             "x": 0.25,
             "y": 0.68
-          },
-          "example": "Do not insert paper clips into the document feed slot.",
-          "collocation": "paper feed slot"
+          }
         },
         {
-          "id": "oe_shredded_paper",
-          "word": "shredded paper",
-          "ipa": "/ˈʃredɪd ˈpeɪpər/",
-          "meaningVi": "giấy vụn đã hủy",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4412",
           "hotspot": {
             "x": 0.28,
             "y": 0.88
-          },
-          "example": "Empty the bag of shredded paper into the recycling container.",
-          "collocation": "dispose of shredded paper"
+          }
         },
         {
-          "id": "oe_shred_docs",
-          "word": "shred confidential files",
-          "ipa": "/ʃred ˌkɑːnfɪˈdenʃl faɪlz/",
-          "meaningVi": "hủy tài liệu mật",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4413",
           "hotspot": {
             "x": 0.27,
             "y": 0.7
-          },
-          "example": "Human resources regularly shreds expired confidential files.",
-          "collocation": "shred files"
+          }
         }
       ]
     },
@@ -189,74 +119,39 @@
       },
       "items": [
         {
-          "id": "oe_clerk",
-          "word": "office assistant",
-          "ipa": "/ˈɔːfɪs əˈsɪstənt/",
-          "meaningVi": "nhân viên phụ trách văn thư",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4414",
           "hotspot": {
             "x": 0.7,
             "y": 0.4
-          },
-          "example": "The office assistant organized the printed meeting handouts.",
-          "collocation": "assist with printing"
+          }
         },
         {
-          "id": "oe_paper_stack",
-          "word": "paper ream",
-          "ipa": "/ˈpeɪpər riːm/",
-          "meaningVi": "ram giấy in nguyên bao bì",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4415",
           "hotspot": {
             "x": 0.64,
             "y": 0.72
-          },
-          "example": "Open a fresh ream of letter-sized copy paper.",
-          "collocation": "ream of paper"
+          }
         },
         {
-          "id": "oe_sorting_tray",
-          "word": "document sorting tray",
-          "ipa": "/ˈdɑːkjumənt ˈsɔːrtɪŋ treɪ/",
-          "meaningVi": "khay phân loại tài liệu",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4416",
           "hotspot": {
             "x": 0.81,
             "y": 0.66
-          },
-          "example": "Place outgoing invoices in the top document sorting tray.",
-          "collocation": "in the sorting tray"
+          }
         },
         {
-          "id": "oe_stapler",
-          "word": "heavy-duty stapler",
-          "ipa": "/ˈsteɪplər/",
-          "meaningVi": "bấm kim chuyên dụng",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4417",
           "hotspot": {
             "x": 0.77,
             "y": 0.8
-          },
-          "example": "Use the heavy-duty stapler to bind the thick quarterly prospectus.",
-          "collocation": "staple pages together"
+          }
         },
         {
-          "id": "oe_collate",
-          "word": "sort and collate documents",
-          "ipa": "/sɔːrt ənd kəˈleɪt ˈdɑːkjumənts/",
-          "meaningVi": "phân loại & tập hợp tài liệu",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4418",
           "hotspot": {
             "x": 0.78,
             "y": 0.58
-          },
-          "example": "She sorted and collated documents before distributing them to staff.",
-          "collocation": "collate documents"
+          }
         }
       ]
     },
@@ -272,74 +167,39 @@
       },
       "items": [
         {
-          "id": "oe_filing_cabinet",
-          "word": "filing cabinet",
-          "ipa": "/ˈfaɪlɪŋ ˈkæbɪnət/",
-          "meaningVi": "tủ sắt đựng hồ sơ",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4392",
           "hotspot": {
             "x": 0.9,
             "y": 0.4
-          },
-          "example": "Confidential employee files are securely locked inside the filing cabinet.",
-          "collocation": "store in a cabinet"
+          }
         },
         {
-          "id": "oe_cabinet_handles",
-          "word": "drawer handle",
-          "ipa": "/drɔːr ˈhændl/",
-          "meaningVi": "tay nắm ngăn kéo tủ",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4419",
           "hotspot": {
             "x": 0.81,
             "y": 0.32
-          },
-          "example": "Each drawer handle has a slot for categorical alphabetical labels.",
-          "collocation": "pull the handle"
+          }
         },
         {
-          "id": "oe_paper_cutter",
-          "word": "paper trimmer",
-          "ipa": "/ˈpeɪpər ˈtrɪmər/",
-          "meaningVi": "bàn cắt giấy có thước đo",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4420",
           "hotspot": {
             "x": 0.69,
             "y": 0.85
-          },
-          "example": "Trim the marketing flyers neatly with the rotary paper trimmer.",
-          "collocation": "trim with a cutter"
+          }
         },
         {
-          "id": "oe_tape_dispenser",
-          "word": "tape dispenser",
-          "ipa": "/teɪp dɪˈspensər/",
-          "meaningVi": "khay cắt băng keo dán",
-          "pos": "noun",
-          "visualType": "object",
+          "vocabId": "word_4421",
           "hotspot": {
             "x": 0.95,
             "y": 0.69
-          },
-          "example": "The desk tape dispenser was refilled with heavy-duty clear packaging tape.",
-          "collocation": "tape dispenser"
+          }
         },
         {
-          "id": "oe_archive",
-          "word": "archive project records",
-          "ipa": "/ˈɑːrkaɪv ˈprɑːdʒekt ˈrekərdz/",
-          "meaningVi": "lưu trữ hồ sơ dự án",
-          "pos": "phrase",
-          "visualType": "action",
+          "vocabId": "word_4422",
           "hotspot": {
             "x": 0.88,
             "y": 0.55
-          },
-          "example": "At year-end, the administrative team archives all completed project records.",
-          "collocation": "archive records"
+          }
         }
       ]
     }
