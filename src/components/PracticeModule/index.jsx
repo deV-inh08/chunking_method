@@ -1240,7 +1240,7 @@ function groupPracticeChunks(chunkList = [], transcripts = []) {
 // ─── PracticeOutline Accordion Component ───────────────────────────
 function PracticeOutline({
   groups, activeChunkId, onSelectChunk, allProgress, autoGenerating,
-  transcripts = [], onListenScript,
+  transcripts = [], onListenScript, prefetchingChunkIds = [],
 }) {
   const [collapsedGroups, setCollapsedGroups] = useState({});
 
@@ -1394,6 +1394,20 @@ function PracticeOutline({
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', gap: 5, flexShrink: 0 }}>
+                        {prefetchingChunkIds.includes(chunk.id) && (
+                          <span
+                            title="Đang tải trước bài tập ngầm..."
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              color: 'var(--accent-400)',
+                              fontSize: 10,
+                              opacity: 0.85,
+                            }}
+                          >
+                            <Loader size={11} className="animate-spin" />
+                          </span>
+                        )}
                         {prog?.practiceCount > 0 && (
                           <span style={{
                             fontSize: 10,
@@ -1511,6 +1525,9 @@ export function PracticeModule({
   }, [activeChunkId]);
 
   const [situationsVersion, setSituationsVersion] = useState(0);
+  const [prefetchingChunkIds, setPrefetchingChunkIds] = useState([]);
+  const prefetchAttemptedRef = useRef(new Set());
+  const isPrefetchWorkerRunningRef = useRef(false);
   const [isGeneratingCurrent, setIsGeneratingCurrent] = useState(false);
   const [isGeneratingAll, setIsGeneratingAll] = useState(false);
   const [genAllProgress, setGenAllProgress] = useState({ done: 0, total: 0 });
@@ -1585,12 +1602,114 @@ export function PracticeModule({
       !autoGenerating &&
       !isGeneratingCurrent &&
       !isGeneratingAll &&
+      !prefetchingChunkIds.includes(activeChunk.id) &&
       !autoAttemptedRef.current.has(activeChunk.id)
     ) {
       autoAttemptedRef.current.add(activeChunk.id);
       handleGenerateSingleChunk(activeChunk);
     }
-  }, [activeChunk, hasValidExercises, autoGenerating, isGeneratingCurrent, isGeneratingAll, handleGenerateSingleChunk]);
+  }, [activeChunk, hasValidExercises, autoGenerating, isGeneratingCurrent, isGeneratingAll, prefetchingChunkIds, handleGenerateSingleChunk]);
+
+  // Background Pre-fetch: Tự động chuẩn bị trước 1-2 chunk kế tiếp khi đang học chunk hiện tại
+  useEffect(() => {
+    // Chỉ chạy prefetch khi:
+    // 1. Chunk hiện tại đã có bài tập hợp lệ để người dùng học
+    // 2. Không đang chạy các tác vụ sinh bài ưu tiên cao (active chunk, batch all, v.v.)
+    if (
+      !activeChunk ||
+      !hasValidExercises ||
+      autoGenerating ||
+      isGeneratingCurrent ||
+      isGeneratingAll
+    ) {
+      return;
+    }
+
+    const apiKey = getApiKey();
+    if (!apiKey) return;
+
+    let isCancelled = false;
+
+    const prefetchNextChunks = async () => {
+      if (isPrefetchWorkerRunningRef.current) return;
+      isPrefetchWorkerRunningRef.current = true;
+
+      try {
+        // Lookahead: Tìm 1-2 chunk tiếp theo sau activeChunkIndex mà chưa có bài
+        const lookaheadCandidates = displayedChunkList.slice(activeChunkIndex + 1, activeChunkIndex + 3);
+
+        for (const targetChunk of lookaheadCandidates) {
+          if (isCancelled) break;
+          if (isGeneratingCurrent || isGeneratingAll || autoGenerating) break;
+          if (!targetChunk || prefetchAttemptedRef.current.has(targetChunk.id)) continue;
+
+          // Kiểm tra xem chunk này đã có bài tập hợp lệ chưa
+          const existingSituations = getSituations(targetChunk.id);
+          const hasValid =
+            existingSituations &&
+            existingSituations.length > 0 &&
+            existingSituations.every(ex => (ex.vietnameseSentence || ex.context || ex.prompt || '').trim().length > 0);
+
+          if (hasValid) {
+            prefetchAttemptedRef.current.add(targetChunk.id);
+            continue;
+          }
+
+          prefetchAttemptedRef.current.add(targetChunk.id);
+          setPrefetchingChunkIds(prev => (prev.includes(targetChunk.id) ? prev : [...prev, targetChunk.id]));
+
+          try {
+            console.log(`[Prefetch] Đang âm thầm chuẩn bị bài tập cho "${targetChunk.phrase}"...`);
+            const currentKey = getApiKey();
+            if (!currentKey) break;
+
+            const result = await generateWritingExercises(targetChunk, currentKey);
+            const exercises = (result.exercises || []).map((ex, i) => ({
+              ...ex,
+              id: ex.id || `ex_${targetChunk.id}_${i}`,
+              chunkId: targetChunk.id,
+            }));
+
+            if (exercises.length > 0 && !isCancelled) {
+              saveSituations(targetChunk.id, exercises);
+              setSituationsVersion(v => v + 1);
+              console.log(`[Prefetch] Đã chuẩn bị sẵn sàng bài tập cho "${targetChunk.phrase}" 🎉`);
+            }
+          } catch (err) {
+            console.warn(`[Prefetch] Không thể tạo trước cho "${targetChunk.phrase}":`, err?.message || err);
+          } finally {
+            if (!isCancelled) {
+              setPrefetchingChunkIds(prev => prev.filter(id => id !== targetChunk.id));
+            }
+          }
+
+          // Giãn cách an toàn 2.5s trước khi prefetch chunk tiếp theo để không dính rate limit
+          if (!isCancelled) {
+            await new Promise(r => setTimeout(r, 2500));
+          }
+        }
+      } finally {
+        isPrefetchWorkerRunningRef.current = false;
+        if (isCancelled) {
+          setPrefetchingChunkIds([]);
+        }
+      }
+    };
+
+    prefetchNextChunks();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [
+    activeChunk,
+    activeChunkIndex,
+    hasValidExercises,
+    autoGenerating,
+    isGeneratingCurrent,
+    isGeneratingAll,
+    displayedChunkList,
+  ]);
 
   const handleGenerateAllMissing = async () => {
     const apiKey = getApiKey();
@@ -1963,6 +2082,7 @@ export function PracticeModule({
             autoGenerating={autoGenerating}
             transcripts={transcripts}
             onListenScript={(tr) => setListeningTranscript(tr)}
+            prefetchingChunkIds={prefetchingChunkIds}
           />
         </div>
 
@@ -1994,14 +2114,14 @@ export function PracticeModule({
                 {autoGenProgress.done} / {autoGenProgress.total} chunk xong
               </p>
             </div>
-          ) : isGeneratingCurrent ? (
+          ) : isGeneratingCurrent || (activeChunk && prefetchingChunkIds.includes(activeChunk.id)) ? (
             <div className="card animate-fade-in" style={{ padding: '48px 24px', textAlign: 'center' }}>
               <Spinner size={36} />
               <p style={{ marginTop: 16, color: 'var(--text-primary)', fontWeight: 700, fontSize: 15 }}>
-                Đang tạo 3 câu bài tập cho &ldquo;{activeChunk?.phrase}&rdquo;…
+                Đang chuẩn bị 3 câu bài tập cho &ldquo;{activeChunk?.phrase}&rdquo;…
               </p>
               <p style={{ marginTop: 6, color: 'var(--text-muted)', fontSize: 13 }}>
-                AI đang soạn các tình huống thực tế theo độ khó Cơ bản → Nâng cao. Vui lòng đợi vài giây.
+                AI đang soạn các tình huống thực tế theo độ khó Cơ bản → Nâng cao. Sắp hoàn tất!
               </p>
             </div>
           ) : isGeneratingAll ? (
@@ -2126,6 +2246,7 @@ export function PracticeModule({
                 setShowMobileOutline(false);
                 setListeningTranscript(tr);
               }}
+              prefetchingChunkIds={prefetchingChunkIds}
             />
           </div>
         </Modal>
