@@ -282,15 +282,24 @@ export async function dbFetchAllData() {
 
     const chunksMap = {};
     (cRes.data || []).forEach(c => {
-      if (!chunksMap[c.transcript_id]) chunksMap[c.transcript_id] = [];
-      chunksMap[c.transcript_id].push({
-        id: c.id, transcriptId: c.transcript_id,
-        phrase: c.phrase, type: c.type,
-        meaningVi: c.meaning_vi || '', usageNote: c.usage_note || '',
+      const key = c.transcript_id || c.source_word_id || (c.group_id ? c.group_id.replace(/^vocab_/, '') : '__vocab__');
+      if (!chunksMap[key]) chunksMap[key] = [];
+      chunksMap[key].push({
+        id: c.id,
+        transcriptId: c.transcript_id || null,
+        phrase: c.phrase,
+        type: c.type,
+        meaningVi: c.meaning_vi || '',
+        usageNote: c.usage_note || '',
         originalSentence: c.original_sentence || '',
         anotherExample: c.another_example || '',
         formality: c.formality || 'neutral',
-        groupId: c.group_id || '', groupName: c.group_name || '',
+        groupId: c.group_id || '',
+        groupName: c.group_name || '',
+        sourceType: c.source_type || (c.transcript_id ? 'transcript' : 'vocab'),
+        sourceWordId: c.source_word_id || null,
+        sourceWord: c.source_word || c.group_name || '',
+        topic: c.topic || null,
       });
     });
 

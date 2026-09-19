@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect } from 'react';
 import {
   ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Layers, PenLine,
   CheckSquare, Square, BookOpen, BookText, Flame, Headphones,
-  Sparkles, Search, X, Mic, CheckCircle2
+  Sparkles, Search, X, Mic, CheckCircle2, ArrowUpDown
 } from 'lucide-react';
 import { EmptyState, Badge, Spinner } from '../ui';
 import { generateWritingExercises } from '../../services/ai';
@@ -30,6 +30,7 @@ function ChunkCard({
   onOpenAiSpeaking,
   showSourceBadge,
   transcriptName,
+  hideWordBadge = false,
 }) {
   const [expanded, setExpanded] = useState(false);
   const isDue = isDueForReview(progress);
@@ -89,7 +90,7 @@ function ChunkCard({
               </span>
             )}
 
-            {chunk.sourceType === 'vocab' && chunk.sourceWord && (
+            {!hideWordBadge && chunk.sourceType === 'vocab' && chunk.sourceWord && (
               <Badge type="neutral">
                 <BookText size={11} style={{ display: 'inline', marginRight: 4 }} />
                 {chunk.sourceWord}
@@ -199,6 +200,210 @@ function ChunkCard({
   );
 }
 
+// ─── Helper: Xác định từ vựng / nhóm của Chunk ────────────────
+export function getChunkWordInfo(chunk, transcriptTitleMap) {
+  // 1. Nếu là chunk thuộc một bài nghe transcript cụ thể
+  if (chunk.transcriptId && chunk.sourceType !== 'vocab' && !chunk.sourceWordId) {
+    const title = transcriptTitleMap?.get(chunk.transcriptId) || 'Bài học hội thoại';
+    return {
+      key: `transcript_${chunk.transcriptId}`,
+      word: title,
+      rawWord: title.toLowerCase(),
+      topic: 'Transcript',
+      type: 'transcript',
+    };
+  }
+
+  // 2. Nếu là chunk từ vựng (vocab) hoặc có sourceWord / groupName
+  let word = '';
+  if (chunk.sourceWord && typeof chunk.sourceWord === 'string' && chunk.sourceWord.trim()) {
+    word = chunk.sourceWord.trim();
+  } else if (chunk.groupName && typeof chunk.groupName === 'string' && chunk.groupName.trim()) {
+    const gn = chunk.groupName.trim();
+    if (gn.startsWith('Từ mở rộng: ')) {
+      word = gn.replace('Từ mở rộng: ', '').trim();
+    } else if (!gn.toLowerCase().startsWith('nhóm ') && !gn.toLowerCase().startsWith('group ')) {
+      word = gn;
+    }
+  }
+
+  // Dự phòng: parse từ groupId nếu bắt đầu bằng vocab_
+  if (!word && chunk.groupId && chunk.groupId.startsWith('vocab_')) {
+    const raw = chunk.groupId.replace(/^vocab_/, '');
+    if (raw.startsWith('w_')) {
+      const parts = raw.split('_');
+      if (parts.length >= 2) word = parts[1];
+    } else {
+      word = raw;
+    }
+  }
+
+  // Dự phòng: lấy từ đầu tiên trong phrase
+  if (!word && chunk.phrase) {
+    word = chunk.phrase.trim().split(/\s+/)[0].toLowerCase();
+  }
+
+  if (!word) word = 'Cụm từ khác';
+
+  const cleanWord = word.trim();
+  return {
+    key: `word_${cleanWord.toLowerCase()}`,
+    word: cleanWord,
+    rawWord: cleanWord.toLowerCase(),
+    topic: chunk.topic || null,
+    type: 'word',
+  };
+}
+
+// ─── WordGroupCard ────────────────────────────────────────────
+function WordGroupCard({
+  group,
+  selectedChunks,
+  onToggleChunk,
+  onSelectMultipleChunks,
+  allProgress,
+  genId,
+  onGenerate,
+  onOpenAiSpeaking,
+  onStartPractice,
+  isCollapsed,
+  onToggleCollapse,
+  transcriptTitleMap,
+  selectedTranscriptId,
+}) {
+  const groupChunkIds = useMemo(() => group.chunks.map(c => c.id), [group.chunks]);
+  const allSelected = groupChunkIds.length > 0 && groupChunkIds.every(id => selectedChunks.has(id));
+  const someSelected = groupChunkIds.some(id => selectedChunks.has(id));
+
+  const dueCount = useMemo(() => {
+    return group.chunks.filter(c => isDueForReview(allProgress[c.id])).length;
+  }, [group.chunks, allProgress]);
+
+  const handleToggleSelectGroup = (e) => {
+    e.stopPropagation();
+    if (allSelected) {
+      onSelectMultipleChunks(groupChunkIds, false);
+    } else {
+      onSelectMultipleChunks(groupChunkIds, true);
+    }
+  };
+
+  const handleGroupAiSpeak = (e) => {
+    e.stopPropagation();
+    if (onOpenAiSpeaking) {
+      onOpenAiSpeaking(groupChunkIds);
+    }
+  };
+
+  const handleGroupPractice = (e) => {
+    e.stopPropagation();
+    onSelectMultipleChunks(groupChunkIds, true);
+    if (onStartPractice) {
+      onStartPractice();
+    }
+  };
+
+  return (
+    <div className={`cm-word-group-card animate-fade-in ${isCollapsed ? 'is-collapsed' : ''} ${someSelected ? 'has-selected' : ''}`}>
+      {/* Header */}
+      <div className="cm-word-header" onClick={onToggleCollapse}>
+        <div className="cm-word-header-left">
+          {/* Checkbox select all chunks of word */}
+          <button
+            type="button"
+            className="btn btn-ghost btn-icon cm-chunk-checkbox"
+            onClick={handleToggleSelectGroup}
+            title={allSelected ? 'Bỏ chọn cả từ này' : 'Chọn tất cả cụm của từ này'}
+          >
+            {allSelected ? (
+              <CheckSquare size={18} style={{ color: 'var(--accent-400)' }} />
+            ) : (
+              <Square size={18} style={{ color: 'var(--text-muted)' }} />
+            )}
+          </button>
+
+          {/* Word Name */}
+          <div className="cm-word-title">
+            <span>{group.word}</span>
+          </div>
+
+          {/* Count Badge */}
+          <span className="cm-word-count-badge">
+            {group.chunks.length} {group.chunks.length === 1 ? 'chunk' : 'chunks'}
+          </span>
+
+          {/* Topic Badge if available */}
+          {group.topic && (
+            <span className="cm-word-topic-badge">
+              {group.topic}
+            </span>
+          )}
+
+          {/* Due Badge if any chunk due */}
+          {dueCount > 0 && (
+            <span className="cm-word-due-badge" title={`${dueCount} cụm cần ôn tập SRS`}>
+              <Flame size={10} />
+              {dueCount} cần ôn
+            </span>
+          )}
+        </div>
+
+        <div className="cm-word-header-right">
+          {/* AI Speaking button for this word */}
+          {onOpenAiSpeaking && (
+            <button
+              type="button"
+              className="cm-btn-word-speak"
+              onClick={handleGroupAiSpeak}
+              title={`Luyện nói AI với tất cả ${group.chunks.length} cụm của từ "${group.word}"`}
+            >
+              <Mic size={12} />
+              <span>Nói AI ({group.chunks.length})</span>
+            </button>
+          )}
+
+          {/* Practice writing button for this word */}
+          {onStartPractice && (
+            <button
+              type="button"
+              className="cm-btn-word-write"
+              onClick={handleGroupPractice}
+              title={`Luyện viết ${group.chunks.length} cụm của từ "${group.word}"`}
+            >
+              <PenLine size={12} />
+              <span>Viết ({group.chunks.length})</span>
+            </button>
+          )}
+
+          {/* Chevron */}
+          <ChevronDown size={18} className="cm-word-chevron" />
+        </div>
+      </div>
+
+      {/* Chunks List */}
+      {!isCollapsed && (
+        <div className="cm-word-chunks">
+          {group.chunks.map(chunk => (
+            <ChunkCard
+              key={chunk.id}
+              chunk={chunk}
+              selected={selectedChunks.has(chunk.id)}
+              onToggle={onToggleChunk}
+              progress={allProgress[chunk.id] || null}
+              generatingSit={genId === chunk.id}
+              onGenerate={onGenerate}
+              onOpenAiSpeaking={onOpenAiSpeaking}
+              showSourceBadge={!selectedTranscriptId && group.type === 'transcript'}
+              transcriptName={transcriptTitleMap?.get(chunk.transcriptId)}
+              hideWordBadge={group.type === 'word'}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── ChunkModule (main export) ────────────────────────────────
 export function ChunkModule({
   chunks = [],
@@ -222,6 +427,11 @@ export function ChunkModule({
   const [pageSize, setPageSize] = useState(15);
   const [genId, setGenId] = useState(null);
   const [listeningTranscript, setListeningTranscript] = useState(null);
+
+  // Chế độ xem & sắp xếp
+  const [viewMode, setViewMode] = useState('byWord'); // 'byWord' | 'flat'
+  const [sortBy, setSortBy] = useState('alpha-asc'); // 'alpha-asc' | 'alpha-desc' | 'count-desc' | 'due-first'
+  const [collapsedGroups, setCollapsedGroups] = useState(new Set());
 
   // 1. Xác định nguồn Chunks hiện tại theo Scope bài học
   const sourceChunks = useMemo(() => {
@@ -288,7 +498,8 @@ export function ChunkModule({
       list = list.filter(c =>
         (c.phrase && c.phrase.toLowerCase().includes(q)) ||
         (c.meaningVi && c.meaningVi.toLowerCase().includes(q)) ||
-        (c.sourceWord && c.sourceWord.toLowerCase().includes(q))
+        (c.sourceWord && c.sourceWord.toLowerCase().includes(q)) ||
+        (c.groupName && c.groupName.toLowerCase().includes(q))
       );
     }
 
@@ -306,24 +517,79 @@ export function ChunkModule({
     return list;
   }, [sourceChunks, searchQuery, filter, allProgress]);
 
-  // Reset về trang 1 khi đổi bộ lọc hoặc từ khóa tìm kiếm
+  // Reset về trang 1 khi đổi bộ lọc, từ khóa tìm kiếm, chế độ xem hoặc sắp xếp
   useEffect(() => {
     setPageNumber(1);
-  }, [searchQuery, filter, selectedTranscriptId]);
+  }, [searchQuery, filter, selectedTranscriptId, viewMode, sortBy]);
 
-  // 4. Phân trang (Pagination)
-  const totalItems = filteredChunks.length;
-  const isAllPages = pageSize === 'all' || totalItems <= pageSize;
-  const totalPages = isAllPages ? 1 : Math.max(1, Math.ceil(totalItems / pageSize));
+  // 4a. Gom nhóm theo Từ vựng (Word Grouping)
+  const wordGroups = useMemo(() => {
+    const groupMap = new Map();
 
+    filteredChunks.forEach(chunk => {
+      const info = getChunkWordInfo(chunk, transcriptTitleMap);
+      if (!groupMap.has(info.key)) {
+        groupMap.set(info.key, {
+          key: info.key,
+          word: info.word,
+          rawWord: info.rawWord || info.word.toLowerCase(),
+          topic: info.topic,
+          type: info.type,
+          chunks: [],
+        });
+      }
+      groupMap.get(info.key).chunks.push(chunk);
+    });
+
+    const list = Array.from(groupMap.values());
+
+    // Sắp xếp các nhóm từ
+    if (sortBy === 'alpha-asc') {
+      list.sort((a, b) => a.rawWord.localeCompare(b.rawWord));
+    } else if (sortBy === 'alpha-desc') {
+      list.sort((a, b) => b.rawWord.localeCompare(a.rawWord));
+    } else if (sortBy === 'count-desc') {
+      list.sort((a, b) => b.chunks.length - a.chunks.length || a.rawWord.localeCompare(b.rawWord));
+    } else if (sortBy === 'due-first') {
+      list.sort((a, b) => {
+        const aDue = a.chunks.some(c => isDueForReview(allProgress[c.id]));
+        const bDue = b.chunks.some(c => isDueForReview(allProgress[c.id]));
+        if (aDue && !bDue) return -1;
+        if (!aDue && bDue) return 1;
+        return a.rawWord.localeCompare(b.rawWord);
+      });
+    }
+
+    return list;
+  }, [filteredChunks, transcriptTitleMap, sortBy, allProgress]);
+
+  // 4b. Phân trang (Pagination)
+  const totalChunksCount = filteredChunks.length;
+  const totalWordsCount = wordGroups.length;
+  const totalDisplayItems = viewMode === 'byWord' ? totalWordsCount : totalChunksCount;
+
+  const isAllPages = pageSize === 'all' || totalDisplayItems <= pageSize;
+  const totalPages = isAllPages ? 1 : Math.max(1, Math.ceil(totalDisplayItems / pageSize));
+
+  // Paged word groups (khi ở chế độ byWord)
+  const pagedGroups = useMemo(() => {
+    if (viewMode !== 'byWord') return [];
+    if (isAllPages) return wordGroups;
+    const start = (pageNumber - 1) * pageSize;
+    return wordGroups.slice(start, start + pageSize);
+  }, [wordGroups, pageNumber, pageSize, isAllPages, viewMode]);
+
+  // Paged chunks (khi ở chế độ flat)
   const pagedChunks = useMemo(() => {
+    if (viewMode !== 'flat') return [];
     if (isAllPages) return filteredChunks;
     const start = (pageNumber - 1) * pageSize;
     return filteredChunks.slice(start, start + pageSize);
-  }, [filteredChunks, pageNumber, pageSize, isAllPages]);
+  }, [filteredChunks, pageNumber, pageSize, isAllPages, viewMode]);
 
-  // 5. Gom nhóm hiển thị
-  const groups = useMemo(() => {
+  // Gom nhóm phẳng cho chế độ flat
+  const flatGroups = useMemo(() => {
+    if (viewMode !== 'flat') return [];
     const grps = [];
     const seen = new Map();
 
@@ -333,7 +599,6 @@ export function ChunkModule({
         key = chunk.groupId || 'ungrouped';
         name = chunk.groupName || '';
       } else {
-        // Khi xem tất cả bài học: gom theo tên bài học
         key = chunk.transcriptId || (chunk.sourceType === 'vocab' ? '__vocab__' : 'other');
         name = chunk.sourceType === 'vocab'
           ? 'Từ vựng cá nhân'
@@ -348,10 +613,41 @@ export function ChunkModule({
     });
 
     return grps;
-  }, [pagedChunks, selectedTranscriptId, transcriptTitleMap]);
+  }, [pagedChunks, selectedTranscriptId, transcriptTitleMap, viewMode]);
 
-  // Xử lý chọn tất cả chunks trên trang hiện tại
-  const currentPageChunkIds = useMemo(() => pagedChunks.map(c => c.id), [pagedChunks]);
+  // Xử lý collapse/expand word groups
+  const isAllCollapsed = useMemo(() => {
+    return wordGroups.length > 0 && wordGroups.every(g => collapsedGroups.has(g.key));
+  }, [wordGroups, collapsedGroups]);
+
+  const toggleGroupCollapse = (key) => {
+    setCollapsedGroups(prev => {
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
+      return next;
+    });
+  };
+
+  const handleToggleAllCollapse = () => {
+    if (isAllCollapsed) {
+      setCollapsedGroups(new Set());
+    } else {
+      setCollapsedGroups(new Set(wordGroups.map(g => g.key)));
+    }
+  };
+
+  // Chunks trên trang hiện tại
+  const currentPageChunkIds = useMemo(() => {
+    if (viewMode === 'byWord') {
+      return pagedGroups.flatMap(g => g.chunks.map(c => c.id));
+    }
+    return pagedChunks.map(c => c.id);
+  }, [viewMode, pagedGroups, pagedChunks]);
+
   const isCurrentPageAllSelected = useMemo(() => {
     return currentPageChunkIds.length > 0 && currentPageChunkIds.every(id => selectedChunks.has(id));
   }, [currentPageChunkIds, selectedChunks]);
@@ -549,6 +845,75 @@ export function ChunkModule({
         ))}
       </div>
 
+      {/* ─── 4b. THANH CÔNG CỤ HIỂN THỊ & SẮP XẾP (TOOLBAR ROW) ─────────── */}
+      <div className="cm-toolbar-row">
+        <div className="cm-toolbar-left">
+          {/* Chế độ hiển thị: Gom theo từ / Danh sách lẻ */}
+          <div className="cm-view-mode-group">
+            <button
+              type="button"
+              className={`cm-view-mode-btn ${viewMode === 'byWord' ? 'active' : ''}`}
+              onClick={() => setViewMode('byWord')}
+              title="Gom nhóm các cụm từ theo từ vựng gốc (economic, sales...)"
+            >
+              <Layers size={13} />
+              <span>Theo từ vựng</span>
+            </button>
+            <button
+              type="button"
+              className={`cm-view-mode-btn ${viewMode === 'flat' ? 'active' : ''}`}
+              onClick={() => setViewMode('flat')}
+              title="Hiển thị danh sách từng cụm từ riêng lẻ"
+            >
+              <BookText size={13} />
+              <span>Danh sách lẻ</span>
+            </button>
+          </div>
+
+          {/* Sắp xếp (Sort select khi ở chế độ gom theo từ) */}
+          {viewMode === 'byWord' && (
+            <div className="cm-sort-wrap">
+              <ArrowUpDown size={12} />
+              <span>Sắp xếp:</span>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="cm-sort-select"
+              >
+                <option value="alpha-asc">Từ A → Z</option>
+                <option value="alpha-desc">Từ Z → A</option>
+                <option value="count-desc">Nhiều cụm nhất</option>
+                <option value="due-first">Cần ôn tập trước</option>
+              </select>
+            </div>
+          )}
+        </div>
+
+        <div className="cm-toolbar-right">
+          {/* Mở rộng / Thu gọn tất cả (khi ở chế độ byWord) */}
+          {viewMode === 'byWord' && wordGroups.length > 0 && (
+            <button
+              type="button"
+              className="cm-btn-toggle-all"
+              onClick={handleToggleAllCollapse}
+              title={isAllCollapsed ? 'Mở rộng tất cả các thẻ từ' : 'Thu gọn tất cả các thẻ từ'}
+            >
+              {isAllCollapsed ? (
+                <>
+                  <ChevronDown size={13} />
+                  <span>Mở rộng tất cả</span>
+                </>
+              ) : (
+                <>
+                  <ChevronUp size={13} />
+                  <span>Thu gọn tất cả</span>
+                </>
+              )}
+            </button>
+          )}
+        </div>
+      </div>
+
       {/* ─── 5. THANH TÁC VỤ KHI TICK CHỌN CHUNKS (ACTION BAR) ──────── */}
       {selectedChunks.size > 0 && (
         <div className="cm-action-bar">
@@ -595,71 +960,113 @@ export function ChunkModule({
         </div>
       )}
 
-      {/* ─── 6. DANH SÁCH CHUNKS ĐÃ PHÂN TRANG (PAGED CHUNKS) ────────── */}
-      {groups.length > 0 ? (
-        <div className="flex flex-col gap-5">
-          {groups.map((group, gi) => (
-            <div key={group.key}>
-              {/* Tiêu đề nhóm hoặc bài học */}
-              {group.name && (
-                <div className="flex items-center gap-2 mb-2.5">
-                  <span
-                    style={{
-                      fontSize: 11,
-                      fontWeight: 700,
-                      color: 'var(--accent-400)',
-                      letterSpacing: '0.05em',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    {selectedTranscriptId && selectedTranscriptId !== '__vocab__' ? `Nhóm ${gi + 1}` : 'Nguồn'}
-                  </span>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-secondary)' }}>
-                    {group.name}
-                  </span>
-                  <div style={{ flex: 1, height: 1, background: 'var(--border-subtle)' }} />
-                  <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>
-                    {group.chunks.length} chunks
-                  </span>
-                </div>
-              )}
-
-              <div className="cm-chunk-list">
-                {group.chunks.map((chunk) => (
-                  <ChunkCard
-                    key={chunk.id}
-                    chunk={chunk}
-                    selected={selectedChunks.has(chunk.id)}
-                    onToggle={onToggleChunk}
-                    progress={allProgress[chunk.id] || null}
-                    generatingSit={genId === chunk.id}
-                    onGenerate={handleGenerate}
-                    onOpenAiSpeaking={onOpenAiSpeaking}
-                    showSourceBadge={!selectedTranscriptId}
-                    transcriptName={transcriptTitleMap.get(chunk.transcriptId)}
-                  />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* ─── 6. DANH SÁCH CHUNKS ĐÃ PHÂN TRANG (PAGED CHUNKS / WORD GROUPS) ── */}
+      {viewMode === 'byWord' ? (
+        pagedGroups.length > 0 ? (
+          <div className="flex flex-col gap-4">
+            {pagedGroups.map((group) => (
+              <WordGroupCard
+                key={group.key}
+                group={group}
+                selectedChunks={selectedChunks}
+                onToggleChunk={onToggleChunk}
+                onSelectMultipleChunks={onSelectMultipleChunks}
+                allProgress={allProgress}
+                genId={genId}
+                onGenerate={handleGenerate}
+                onOpenAiSpeaking={onOpenAiSpeaking}
+                onStartPractice={onStartPractice}
+                isCollapsed={collapsedGroups.has(group.key)}
+                onToggleCollapse={() => toggleGroupCollapse(group.key)}
+                transcriptTitleMap={transcriptTitleMap}
+                selectedTranscriptId={selectedTranscriptId}
+              />
+            ))}
+          </div>
+        ) : (
+          <EmptyState
+            icon={<Layers size={24} />}
+            title={searchQuery ? 'Không tìm thấy từ vựng nào' : 'Không có từ trong bộ lọc này'}
+            description={
+              searchQuery
+                ? `Không có kết quả nào khớp với "${searchQuery}". Thử từ khóa khác.`
+                : 'Thử chuyển sang bộ lọc "Tất cả" hoặc chọn bài học khác.'
+            }
+          />
+        )
       ) : (
-        <EmptyState
-          icon={<Layers size={24} />}
-          title={searchQuery ? 'Không tìm thấy cụm từ nào' : 'Không có chunk trong bộ lọc này'}
-          description={
-            searchQuery
-              ? `Không có kết quả nào khớp với "${searchQuery}". Thử từ khóa khác.`
-              : 'Thử chuyển sang bộ lọc "Tất cả" hoặc chọn bài học khác.'
-          }
-        />
+        flatGroups.length > 0 ? (
+          <div className="flex flex-col gap-5">
+            {flatGroups.map((group, gi) => (
+              <div key={group.key}>
+                {group.name && (
+                  <div className="flex items-center gap-2 mb-2.5">
+                    <span
+                      style={{
+                        fontSize: 11,
+                        fontWeight: 700,
+                        color: 'var(--accent-400)',
+                        letterSpacing: '0.05em',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      {selectedTranscriptId && selectedTranscriptId !== '__vocab__' ? `Nhóm ${gi + 1}` : 'Nguồn'}
+                    </span>
+                    <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-secondary)' }}>
+                      {group.name}
+                    </span>
+                    <div style={{ flex: 1, height: 1, background: 'var(--border-subtle)' }} />
+                    <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>
+                      {group.chunks.length} chunks
+                    </span>
+                  </div>
+                )}
+
+                <div className="cm-chunk-list">
+                  {group.chunks.map((chunk) => (
+                    <ChunkCard
+                      key={chunk.id}
+                      chunk={chunk}
+                      selected={selectedChunks.has(chunk.id)}
+                      onToggle={onToggleChunk}
+                      progress={allProgress[chunk.id] || null}
+                      generatingSit={genId === chunk.id}
+                      onGenerate={handleGenerate}
+                      onOpenAiSpeaking={onOpenAiSpeaking}
+                      showSourceBadge={!selectedTranscriptId}
+                      transcriptName={transcriptTitleMap?.get(chunk.transcriptId)}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <EmptyState
+            icon={<Layers size={24} />}
+            title={searchQuery ? 'Không tìm thấy cụm từ nào' : 'Không có chunk trong bộ lọc này'}
+            description={
+              searchQuery
+                ? `Không có kết quả nào khớp với "${searchQuery}". Thử từ khóa khác.`
+                : 'Thử chuyển sang bộ lọc "Tất cả" hoặc chọn bài học khác.'
+            }
+          />
+        )
       )}
 
       {/* ─── 7. THANH PHÂN TRANG (PAGINATION BAR) ───────────────────── */}
-      {totalItems > 0 && (
+      {totalDisplayItems > 0 && (
         <div className="cm-pagination-bar">
           <div className="cm-pagination-info">
-            Hiển thị <b>{(pageNumber - 1) * (pageSize === 'all' ? totalItems : pageSize) + 1}</b> - <b>{Math.min(pageNumber * (pageSize === 'all' ? totalItems : pageSize), totalItems)}</b> trên tổng số <b>{totalItems}</b> chunks
+            {viewMode === 'byWord' ? (
+              <>
+                Hiển thị <b>{(pageNumber - 1) * (pageSize === 'all' ? totalWordsCount : pageSize) + 1}</b> - <b>{Math.min(pageNumber * (pageSize === 'all' ? totalWordsCount : pageSize), totalWordsCount)}</b> trên tổng số <b>{totalWordsCount}</b> từ vựng ({totalChunksCount} cụm)
+              </>
+            ) : (
+              <>
+                Hiển thị <b>{(pageNumber - 1) * (pageSize === 'all' ? totalChunksCount : pageSize) + 1}</b> - <b>{Math.min(pageNumber * (pageSize === 'all' ? totalChunksCount : pageSize), totalChunksCount)}</b> trên tổng số <b>{totalChunksCount}</b> chunks
+              </>
+            )}
           </div>
 
           <div className="cm-pagination-controls">
@@ -672,12 +1079,12 @@ export function ChunkModule({
                 setPageNumber(1);
               }}
               className="cm-page-size-select"
-              title="Số lượng chunks mỗi trang"
+              title="Số lượng mỗi trang"
             >
-              <option value={10}>10 / trang</option>
-              <option value={15}>15 / trang</option>
-              <option value={25}>25 / trang</option>
-              <option value={50}>50 / trang</option>
+              <option value={10}>10 {viewMode === 'byWord' ? 'từ' : 'cụm'} / trang</option>
+              <option value={15}>15 {viewMode === 'byWord' ? 'từ' : 'cụm'} / trang</option>
+              <option value={25}>25 {viewMode === 'byWord' ? 'từ' : 'cụm'} / trang</option>
+              <option value={50}>50 {viewMode === 'byWord' ? 'từ' : 'cụm'} / trang</option>
               <option value="all">Xem tất cả</option>
             </select>
 
