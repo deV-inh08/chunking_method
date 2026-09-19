@@ -1,4 +1,4 @@
-import { getApiKeys } from '../store/storage';
+import { getApiKeys, removeInvalidApiKey } from '../store/storage';
 
 // Priority list — gemini-3.6-flash is Google's latest, fastest, and recommended multimodal model
 const MODEL_CANDIDATES = [
@@ -14,9 +14,7 @@ const BASE_URL = 'https://generativelanguage.googleapis.com/v1beta';
 const _rateLimitedModels = new Set();
 
 // ─── Throttle: delay giữa các lần gọi API ────────────────────
-// Gemini free tier: 5 RPM → tối thiểu 12s/request
-// Dùng 2.5s delay nhẹ nhàng + backoff khi 429 để không spam
-const _minDelayMs = 2500; // 2.5s giữa mỗi request (an toàn với 15 RPM Lite)
+const _minDelayMs = 2500; // 2.5s giữa mỗi request
 let _lastCallTime = 0;
 
 async function waitForRateLimit() {
@@ -36,13 +34,14 @@ async function resolveModel(apiKey) {
   for (const model of MODEL_CANDIDATES) {
     if (_rateLimitedModels.has(model)) continue;
     try {
-      const testRes = await fetch(
-        `${BASE_URL}/models/${model}?key=${apiKey}`
-      );
+      const testRes = await callGeminiProxy({
+        model,
+        contents: [{ role: 'user', parts: [{ text: 'hi' }] }],
+        apiKey,
+      });
       if (testRes.ok) return model;
     } catch {}
   }
-  // Mặc định an toàn: gemini-3.6-flash
   return 'gemini-3.6-flash';
 }
 
@@ -54,11 +53,38 @@ async function getModel(apiKey) {
   return _cachedModel;
 }
 
-const GEMINI_URL = (model, apiKey) =>
-  `${BASE_URL}/models/${model}:generateContent?key=${apiKey}`;
-
 // Rate-limit blacklist (model & key combined)
 const _rateLimitedKeys = new Set();
+
+/**
+ * Chuyển tiếp request qua Serverless Proxy /api/gemini
+ * Giúp giấu kín API Key 100% khỏi tab Network của trình duyệt
+ */
+async function callGeminiProxy(payload, signal = null) {
+  try {
+    const res = await fetch('/api/gemini', {
+      method: 'POST',
+      signal,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    return res;
+  } catch (netErr) {
+    // Fallback gọi trực tiếp nếu proxy không khả dụng
+    if (payload.apiKey) {
+      const cleanModel = payload.model || 'gemini-3.6-flash';
+      const directUrl = `${BASE_URL}/models/${cleanModel}:generateContent?key=${payload.apiKey}`;
+      const { apiKey, model, ...directPayload } = payload;
+      return fetch(directUrl, {
+        method: 'POST',
+        signal,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(directPayload),
+      });
+    }
+    throw netErr;
+  }
+}
 
 export async function callGemini(passedApiKey, systemPrompt, userMessage, opts = {}) {
   // Lấy danh sách tất cả API key khả dụng (Key 1, Key 2...)
@@ -66,50 +92,56 @@ export async function callGemini(passedApiKey, systemPrompt, userMessage, opts =
   if (passedApiKey && !allKeys.includes(passedApiKey)) {
     allKeys = [passedApiKey, ...allKeys];
   }
-  if (allKeys.length === 0) {
-    throw new Error('Chưa có API key. Vào Settings để nhập.');
-  }
+  // Cho phép gọi proxy bằng server key nếu client chưa cấu hình key cá nhân
+  const keysToTry = allKeys.length > 0 ? allKeys : [null];
 
   let lastError = null;
 
-  // Thử lần lượt từng API Key (Account 1 → Account 2)
-  for (let kIdx = 0; kIdx < allKeys.length; kIdx++) {
-    const currentApiKey = allKeys[kIdx];
+  // Thử lần lượt từng API Key (hoặc server key)
+  for (let kIdx = 0; kIdx < keysToTry.length; kIdx++) {
+    const currentApiKey = keysToTry[kIdx];
 
     // Với mỗi Key, thử các model candidates
     for (let attempt = 0; attempt < MODEL_CANDIDATES.length; attempt++) {
       const model = await getModel(currentApiKey);
-      const keyModelId = `${currentApiKey.slice(-6)}_${model}`;
+      const keyModelId = `${(currentApiKey || 'server').slice(-6)}_${model}`;
 
       if (_rateLimitedKeys.has(keyModelId) || _rateLimitedModels.has(model)) continue;
 
       try {
         await waitForRateLimit();
 
-        const res = await fetch(GEMINI_URL(model, currentApiKey), {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            systemInstruction: { parts: [{ text: systemPrompt }] },
-            contents: [{ role: 'user', parts: [{ text: userMessage }] }],
-            generationConfig: {
-              maxOutputTokens: opts.maxOutputTokens || 4096,
-              temperature: opts.temperature ?? 0.7,
-            },
-          }),
+        const res = await callGeminiProxy({
+          model,
+          systemInstruction: { parts: [{ text: systemPrompt }] },
+          contents: [{ role: 'user', parts: [{ text: userMessage }] }],
+          generationConfig: {
+            maxOutputTokens: opts.maxOutputTokens || 4096,
+            temperature: opts.temperature ?? 0.7,
+          },
+          apiKey: currentApiKey || undefined,
         });
+
+        // Xử lý 401: Key đã bị xóa/revoke trên Google -> Tự động dọn dẹp khỏi storage
+        if (res.status === 401) {
+          console.warn(`[AI] API Key ${(currentApiKey || 'server').slice(-6)} bị lỗi 401 Unauthorized (Key đã bị xóa hoặc không hợp lệ).`);
+          if (currentApiKey) {
+            removeInvalidApiKey(currentApiKey);
+          }
+          break; // Chuyển sang key tiếp theo
+        }
 
         // Xử lý 429 Rate Limit
         if (res.status === 429) {
-          console.warn(`[AI] Key ${kIdx + 1} (${currentApiKey.slice(0, 8)}…) hit 429 on ${model}.`);
+          console.warn(`[AI] Key ${kIdx + 1} (${(currentApiKey || 'server').slice(-6)}) hit 429 on ${model}.`);
           _rateLimitedKeys.add(keyModelId);
           _rateLimitedModels.add(model);
           _cachedModel = null;
 
-          // Nếu có Key dự phòng (Account 2), chuyển sang Key 2 ngay lập tức!
-          if (kIdx < allKeys.length - 1) {
-            console.warn(`[AI] 🔄 Tự động chuyển sang API Key dự phòng (Account ${kIdx + 2})…`);
-            break; // Thử key tiếp theo
+          // Nếu có Key dự phòng, chuyển sang Key dự phòng ngay lập tức!
+          if (kIdx < keysToTry.length - 1) {
+            console.warn(`[AI] 🔄 Tự động chuyển sang API Key dự phòng…`);
+            break;
           }
 
           const retryAfter = parseInt(res.headers.get('Retry-After') || '0', 10);
@@ -133,10 +165,9 @@ export async function callGemini(passedApiKey, systemPrompt, userMessage, opts =
         return JSON.parse(jsonMatch[1]);
       } catch (err) {
         lastError = err;
-        // Nếu lỗi rate limit/quota từ response error message
         if (err.message?.includes('429') || err.message?.includes('QUOTA') || err.message?.includes('RESOURCE_EXHAUSTED')) {
-          if (kIdx < allKeys.length - 1) {
-            console.warn(`[AI] 🔄 Quota hết ở Key ${kIdx + 1}. Chuyển sang API Key dự phòng (Account ${kIdx + 2})…`);
+          if (kIdx < keysToTry.length - 1) {
+            console.warn(`[AI] 🔄 Quota hết ở key hiện tại. Chuyển sang API Key dự phòng…`);
             break;
           }
         }
@@ -144,7 +175,7 @@ export async function callGemini(passedApiKey, systemPrompt, userMessage, opts =
     }
   }
 
-  throw lastError || new Error('Tất cả API Key và Model đều bị rate limit. Vui lòng thử lại sau ít phút.');
+  throw lastError || new Error('Dịch vụ AI hiện không khả dụng. Vui lòng thử lại sau ít phút.');
 }
 
 // ─── Analyze transcript → extract chunks ──────────────────────
@@ -519,16 +550,16 @@ export async function testApiKey(apiKey) {
     return false;
   }
   const cleanKey = apiKey.trim();
-  for (const model of MODEL_CANDIDATES) {
-    try {
-      const res = await fetch(`${BASE_URL}/models/${model}?key=${cleanKey}`);
-      if (res.ok) {
-        _cachedModel = model;
-        return true;
-      }
-    } catch {}
+  try {
+    const res = await callGeminiProxy({
+      model: 'gemini-3.6-flash',
+      contents: [{ role: 'user', parts: [{ text: 'ping' }] }],
+      apiKey: cleanKey,
+    });
+    return res.ok;
+  } catch {
+    return false;
   }
-  return false;
 }
 
 
@@ -820,30 +851,26 @@ export async function transcribeAudioWithGemini(audioInput, mimeType = 'audio/we
       if (_rateLimitedModels.has(model)) continue;
 
       try {
-        const url = `${BASE_URL}/models/${model}:generateContent?key=${apiKey}`;
-
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [
-              {
-                role: 'user',
-                parts: [
-                  { text: 'Transcribe this spoken English audio recording. Return ONLY the English words spoken, with no commentary, no markdown, and no quotation marks.' },
-                  {
-                    inlineData: {
-                      mimeType: cleanMime,
-                      data: audioBase64,
-                    },
+        const response = await callGeminiProxy({
+          model,
+          contents: [
+            {
+              role: 'user',
+              parts: [
+                { text: 'Transcribe this spoken English audio recording. Return ONLY the English words spoken, with no commentary, no markdown, and no quotation marks.' },
+                {
+                  inlineData: {
+                    mimeType: cleanMime,
+                    data: audioBase64,
                   },
-                ],
-              },
-            ],
-            generationConfig: {
-              temperature: 0.0,
+                },
+              ],
             },
-          }),
+          ],
+          generationConfig: {
+            temperature: 0.0,
+          },
+          apiKey: apiKey || undefined,
         });
 
         if (response.status === 404 || response.status === 400) {
@@ -937,13 +964,9 @@ Return compact JSON:
       const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout bảo vệ
 
       try {
-        const url = `${BASE_URL}/models/${model}:generateContent?key=${apiKey}`;
-
-        const response = await fetch(url, {
-          method: 'POST',
-          signal: controller.signal,
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
+        const response = await callGeminiProxy(
+          {
+            model,
             contents: [
               {
                 role: 'user',
@@ -962,8 +985,10 @@ Return compact JSON:
               temperature: 0.0,
               responseMimeType: 'application/json',
             },
-          }),
-        });
+            apiKey: apiKey || undefined,
+          },
+          controller.signal
+        );
 
         clearTimeout(timeoutId);
 

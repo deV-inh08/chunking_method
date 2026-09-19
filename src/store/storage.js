@@ -526,6 +526,25 @@ export function saveSettings(settings) {
   dbSaveUserSettings(settings).catch(err => console.warn('Sync user settings error:', err));
 }
 
+/** Tự động dọn dẹp API key không hợp lệ (bị lỗi 401 Unauthorized / revoked) */
+export function removeInvalidApiKey(keyToRemove) {
+  if (!keyToRemove) return;
+  const current = getSettings();
+  let changed = false;
+  if (current.apiKey === keyToRemove) {
+    current.apiKey = '';
+    changed = true;
+  }
+  if (current.apiKey2 === keyToRemove) {
+    current.apiKey2 = '';
+    changed = true;
+  }
+  if (changed) {
+    saveSettings(current);
+    console.warn(`[Storage] Đã tự động dọn dẹp API key không hợp lệ (${keyToRemove.slice(-6)}) khỏi bộ nhớ và cloud.`);
+  }
+}
+
 // ─── Saved Words (Extension Sync & Local Storage) ────────────
 export function getSavedWords() {
   return get(KEYS.savedWords) || [];

@@ -494,10 +494,11 @@ ${conversationHistory}
 Task: Output ONLY 1 short spoken conversational response (1-2 brief sentences, under 15 words).
 Direct speech ONLY. NO thinking, NO formatting, NO labels, NO prefixes.`;
 
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${encodeURIComponent(this.apiKey)}`, {
+      const res = await fetch('/api/gemini', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          model: 'gemini-3.6-flash',
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
             maxOutputTokens: 50,
@@ -506,6 +507,7 @@ Direct speech ONLY. NO thinking, NO formatting, NO labels, NO prefixes.`;
               thinkingBudget: 0,
             },
           },
+          apiKey: this.apiKey || undefined,
         }),
       });
 
